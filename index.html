@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-brand>Mahitek 3D Lab — Landing</title>
+  <meta name="description" content="Impresión 3D en PETG y PLA. Tiradas cortas, personalización, promos y narrativa.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="brand">
+        <img src="assets/img/logo.png" alt="Logo" />
+        <div class="brand-name" data-brand>Mahitek 3D Lab</div>
+      </div>
+      <div class="links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#promos">Promos</a>
+        <a href="#narrativa">Narrativa</a>
+        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div id="header-social" class="social"></div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <h1 class="reveal">Impresión 3D en <span style="color:var(--brand-primary)">PETG</span> para uso real</h1>
+        <p class="reveal" data-tagline>Durabilidad · Función · Personalización</p>
+        <div class="reveal" style="display:flex; gap:10px; margin-top:14px">
+          <a class="btn" href="#catalogo">Ver catálogo</a>
+          <a class="btn ghost" href="#promos">Ver promos</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="title">Pachuca, México</div>
+        <p class="lead">Lotes cortos 5–50, medios 50–300. Personalización y empaque holográfico.</p>
+      </div>
+    </header>
+
+    <section id="promos" class="section">
+      <h2>Promos activas</h2>
+      <div class="slider reveal">
+        <div id="promo-slider"></div>
+        <div id="promo-dots" class="slider-controls"></div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <h2>Catálogo</h2>
+      <p class="lead">Productos y precios a cliente. Filtra por material o busca por nombre.</p>
+      <div class="reveal" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px">
+        <label class="badge">Material
+          <select id="filter-material">
+            <option value="all">Todos</option>
+            <option value="PETG">PETG</option>
+            <option value="PLA">PLA</option>
+          </select>
+        </label>
+        <div class="searchbar" style="min-width:260px; flex:1">
+          <input id="search" type="search" placeholder="Buscar producto…">
+        </div>
+      </div>
+      <div id="grid-catalogo" class="grid cards"></div>
+    </section>
+
+    <section id="narrativa" class="section">
+      <h2>Narrativa de marca</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal">
+          <div class="title">Quiénes somos</div>
+          <p>Micro-taller de manufactura aditiva. PETG como estándar para piezas funcionales y PLA cuando aporta ventajas en costo o estética.</p>
+          <p>Operamos con enfoque Lean Startup: construir, medir y aprender con tiradas cortas para validar y escalar lo que funciona.</p>
+        </div>
+        <div class="card reveal">
+          <div class="title">Lo que nos distingue</div>
+          <ul>
+            <li>Durabilidad y acabado consistente</li>
+            <li>Personalización real de bajo volumen</li>
+            <li>Empaque holográfico y entrega local</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-comprar" class="section">
+      <h2>Cómo comprar</h2>
+      <p class="lead">Pedidos por mensaje directo. Efectivo o transferencia. Entrega local o envío nacional.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal">
+          <div class="title">Flujo</div>
+          <ol>
+            <li>Elige SKU y cantidad</li>
+            <li>Personalización opcional</li>
+            <li>Pago</li>
+            <li>Producción y empaque</li>
+            <li>Entrega</li>
+          </ol>
+        </div>
+        <div class="card reveal">
+          <div class="title">Empaque</div>
+          <p>Bolsa holográfica + sticker oficial. En línea: sobre poly 20×30.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2>Contacto</h2>
+      <p class="lead">Canales oficiales y atención directa.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
+        <a class="card reveal" data-instagram href="#" target="_blank" rel="noopener">
+          <div class="title">Instagram</div>
+          <p>@mahitek_3d_lab_mx</p>
+        </a>
+        <a class="card reveal" data-facebook href="#" target="_blank" rel="noopener">
+          <div class="title">Facebook</div>
+          <p>/mahitek3dlabmx</p>
+        </a>
+        <a class="card reveal" data-email href="#">
+          <div class="title">Email</div>
+          <p>contacto@example.com</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span data-year></span> <span data-brand>Mahitek 3D Lab</span> · Hecho con FDM · GitHub Pages</div>
+      <div id="footer-social" class="social"></div>
+    </footer>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
