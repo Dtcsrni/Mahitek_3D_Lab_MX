@@ -290,41 +290,6 @@ function updateProductLayout() {
   }
 }
 
-function updateQRBannerCopy() {
-  const message = document.getElementById('qr-banner-message');
-  if (!message) return;
-  const variant = activeExperiments.values.qr_banner_copy;
-  if (variant) {
-    message.textContent = variant;
-  }
-}
-
-function shouldShowQRBanner() {
-  if (visitorContext.src === 'qr') return true;
-  const source = visitorContext.utm?.utm_source;
-  return ['sticker', 'lona', 'flyer'].includes(source);
-}
-
-function showQRBanner() {
-  const banner = document.getElementById('qr-banner');
-  if (!banner || !shouldShowQRBanner()) return;
-  banner.hidden = false;
-  updateQRBannerCopy();
-  recordImpression('qr_banner_copy');
-  window.dataLayer.push({
-    event: 'qr_entry',
-    src: visitorContext.src || visitorContext.utm?.utm_source,
-    utm: visitorContext.utm
-  });
-  const closeButton = banner.querySelector('.banner-close');
-  const hide = () => {
-    banner.hidden = true;
-    closeButton?.removeEventListener('click', hide);
-  };
-  closeButton?.addEventListener('click', hide);
-  setTimeout(hide, 8000);
-}
-
 function createSocialAnchor(name, url, placement) {
   const anchor = document.createElement('a');
   anchor.className = 'social-link';
@@ -639,7 +604,6 @@ async function bootstrap() {
   updateProductLayout();
   decorateWhatsAppLinks();
   setupCTAAnalytics();
-  showQRBanner();
 
   try {
     const [social, products, promos, faq] = await Promise.all([
