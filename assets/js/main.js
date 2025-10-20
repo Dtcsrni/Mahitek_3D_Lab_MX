@@ -1,9 +1,22 @@
+async function loadJSON(path){
+  const res = await fetch(path);
+  return res.json();
+}
 
-async function loadJSON(path){ const res = await fetch(path); return res.json(); }
-function el(tag, attrs={}, children=[]){ const e = document.createElement(tag); Object.entries(attrs).forEach(([k,v])=>{
-  if(k==="class") e.className = v; else if(k==="text") e.textContent = v; else e.setAttribute(k,v);
-}); children.forEach(c => e.appendChild(c)); return e; }
-function money(n){ return `$${n} MXN`; }
+function el(tag, attrs = {}, children = []){
+  const element = document.createElement(tag);
+  Object.entries(attrs).forEach(([key, value]) => {
+    if(key === "class") element.className = value;
+    else if(key === "text") element.textContent = value;
+    else element.setAttribute(key, value);
+  });
+  children.forEach(child => element.appendChild(child));
+  return element;
+}
+
+function money(n){
+  return `$${n} MXN`;
+}
 
 const ICONS = {
   instagram: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.8A5.2 5.2 0 1 1 6.8 13 5.2 5.2 0 0 1 12 7.8zm0 2A3.2 3.2 0 1 0 15.2 13 3.2 3.2 0 0 0 12 9.8zm5.6-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"/></svg>`,
@@ -13,67 +26,105 @@ const ICONS = {
 };
 
 function socialLink(name, url){
-  const a = el('a', {href:url, target:'_blank', rel:'noopener', title:name});
-  a.innerHTML = ICONS[name] || '';
-  return a;
+  const anchor = el('a', {href:url, target:'_blank', rel:'noopener', title:name});
+  anchor.innerHTML = ICONS[name] || '';
+  return anchor;
 }
 
 function renderSocial(container, social){
   const wrap = el('div', {class:'social'});
-  Object.entries(social).forEach(([k,v])=>{
-    if(v) wrap.appendChild(socialLink(k, v));
+  Object.entries(social).forEach(([key, value]) => {
+    if(value) wrap.appendChild(socialLink(key, value));
   });
   container.appendChild(wrap);
 }
 
-function renderPromo(p){
+function renderPromo(promo){
   const wrap = el('div', {class:'promo slide'});
-  wrap.append(el('div', {class:'t', text:p.title}));
-  wrap.append(el('div', {class:'d', text:p.detail}));
-  wrap.append(el('a', {href:p.href, class:'btn pill', text:p.cta}));
+  wrap.append(el('div', {class:'t', text: promo.title}));
+  if(promo.value){
+    wrap.append(el('div', {class:'value', text: promo.value}));
+  }
+  wrap.append(el('div', {class:'d', text: promo.detail}));
+  wrap.append(el('a', {href: promo.href, class:'btn pill', text: promo.cta}));
   return wrap;
 }
-function renderCard(prod, promoDict){
-  const card = el('div', {class:'card reveal', 'data-material':prod.material});
-  if(prod.promo_id && promoDict[prod.promo_id]){
-    const rib = el('div', {class:'ribbon', text: promoDict[prod.promo_id].title});
+
+function renderCard(product, promoDict){
+  const card = el('article', {class:'card glass product-card reveal', 'data-material': product.material});
+
+  if(product.promo_id && promoDict[product.promo_id]){
+    const rib = el('div', {class:'ribbon', text: promoDict[product.promo_id].title});
     card.append(rib);
   }
-  card.append(el('div', {class:'tag', text: prod.material}));
-  card.append(el('div', {class:'title', text: prod.name}));
-  card.append(el('div', {class:'price', text: money(prod.price_mxn)}));
-  card.append(el('p', {text: prod.desc}));
-  const acts = el('div', {class:'actions'});
-  acts.append(el('a', {class:'btn', href:'#contacto', text:'Pedir'}));
-  acts.append(el('a', {class:'btn ghost', href:'#', text:'Detalles'}));
-  card.append(acts);
+
+  const visual = el('div', {class:'product-visual'});
+  if(product.image){
+    const img = el('img', {src: product.image, alt: `Foto de ${product.name}`});
+    visual.append(img);
+  } else {
+    const placeholder = el('div', {class:'placeholder', text:'Bosquejo en progreso'});
+    visual.append(placeholder);
+  }
+  card.append(visual);
+
+  card.append(el('div', {class:'tag', text: product.material}));
+  card.append(el('div', {class:'title', text: product.name}));
+  card.append(el('div', {class:'price', text: money(product.price_mxn)}));
+  card.append(el('p', {text: product.desc}));
+
+  if(product.sku){
+    card.append(el('div', {class:'product-meta', text: `SKU · ${product.sku}`}));
+  }
+
+  if(Array.isArray(product.tags) && product.tags.length){
+    const tags = el('div', {class:'tags'});
+    product.tags.forEach(tag => tags.append(el('span', {class:'chip', text: `#${tag}`})));
+    card.append(tags);
+  }
+
+  const actions = el('div', {class:'actions'});
+  actions.append(el('a', {class:'btn', href:'#contacto', text:'Pedir por DM'}));
+  actions.append(el('a', {class:'btn ghost', href:'#showroom', text:'Ver moodboard'}));
+  card.append(actions);
+
   return card;
 }
 
 function makeSlider(slides){
   const slider = document.getElementById('promo-slider');
   const dotsWrap = document.getElementById('promo-dots');
-  slides.forEach((s,i)=>{
-    slider.appendChild(s);
-    const d = el('div',{class:'dot' + (i===0?' active':'')});
-    d.addEventListener('click', ()=> show(i));
-    dotsWrap.appendChild(d);
+  slides.forEach((slide, index) => {
+    slider.appendChild(slide);
+    const dot = el('div', {class:'dot' + (index === 0 ? ' active' : '')});
+    dot.addEventListener('click', () => show(index));
+    dotsWrap.appendChild(dot);
   });
-  let cur = 0; const N = slides.length; if(N===0) return;
-  function show(i){
-    cur = i;
-    slides.forEach((s,k)=> s.classList.toggle('active', k===i));
-    dotsWrap.querySelectorAll('.dot').forEach((d,k)=> d.classList.toggle('active', k===i));
+
+  let current = 0;
+  const total = slides.length;
+  if(total === 0) return;
+
+  function show(next){
+    current = next;
+    slides.forEach((slide, idx) => slide.classList.toggle('active', idx === next));
+    dotsWrap.querySelectorAll('.dot').forEach((dot, idx) => dot.classList.toggle('active', idx === next));
   }
+
   show(0);
-  setInterval(()=> show((cur+1)%N), 5000);
+  setInterval(() => show((current + 1) % total), 5000);
 }
 
 function enableReveal(){
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
-  }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(n => io.observe(n));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('on');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal').forEach(node => io.observe(node));
 }
 
 async function bootstrap(){
@@ -83,16 +134,14 @@ async function bootstrap(){
     loadJSON('assets/data/products.json')
   ]);
 
-  // Brand and socials
-  document.querySelectorAll('[data-brand]').forEach(n=> n.textContent = brand.brand_name);
-  document.querySelectorAll('[data-tagline]').forEach(n=> n.textContent = brand.tagline);
+  document.querySelectorAll('[data-brand]').forEach(node => node.textContent = brand.brand_name);
+  document.querySelectorAll('[data-tagline]').forEach(node => node.textContent = brand.tagline);
 
   const headerSocial = document.getElementById('header-social');
   const footerSocial = document.getElementById('footer-social');
   renderSocial(headerSocial, brand.social);
   renderSocial(footerSocial, brand.social);
 
-  // Contacts quick links for section
   const ig = document.querySelector('[data-instagram]');
   const fb = document.querySelector('[data-facebook]');
   const mail = document.querySelector('[data-email]');
@@ -100,38 +149,33 @@ async function bootstrap(){
   if(fb && brand.social.facebook) fb.setAttribute('href', brand.social.facebook);
   if(mail && brand.contact.email) mail.setAttribute('href', `mailto:${brand.contact.email}`);
 
-  // Promo slider
-  const activePromos = promos.filter(p=>p.active).map(renderPromo);
-  const promoDict = Object.fromEntries(promos.filter(p=>p.active).map(p=>[p.id,p]));
+  const activePromos = promos.filter(promo => promo.active).map(renderPromo);
+  const promoDict = Object.fromEntries(promos.filter(promo => promo.active).map(promo => [promo.id, promo]));
   makeSlider(activePromos);
 
-  // Catalog
   const grid = document.getElementById('grid-catalogo');
-  products.filter(p=>p.active).forEach(p => grid.appendChild(renderCard(p, promoDict)));
+  products.filter(product => product.active).forEach(product => grid.appendChild(renderCard(product, promoDict)));
 
-  // Filters
   const filter = document.getElementById('filter-material');
-  filter.addEventListener('change', ()=>{
+  filter.addEventListener('change', () => {
     const val = filter.value;
-    document.querySelectorAll("#grid-catalogo .card").forEach(card => {
+    document.querySelectorAll('#grid-catalogo .card').forEach(card => {
       const mat = card.getAttribute('data-material');
-      card.style.display = (val==="all" || val===mat) ? "" : "none";
+      card.style.display = (val === 'all' || val === mat) ? '' : 'none';
     });
   });
 
-  // Search
   const search = document.getElementById('search');
-  search.addEventListener('input', ()=>{
-    const q = search.value.trim().toLowerCase();
-    document.querySelectorAll("#grid-catalogo .card").forEach(card => {
-      const t = card.querySelector('.title').textContent.toLowerCase();
-      const d = card.querySelector('p').textContent.toLowerCase();
-      card.style.display = (t.includes(q) || d.includes(q)) ? "" : "none";
+  search.addEventListener('input', () => {
+    const query = search.value.trim().toLowerCase();
+    document.querySelectorAll('#grid-catalogo .card').forEach(card => {
+      const title = card.querySelector('.title').textContent.toLowerCase();
+      const description = card.querySelector('p').textContent.toLowerCase();
+      card.style.display = (title.includes(query) || description.includes(query)) ? '' : 'none';
     });
   });
 
-  // Year
-  document.querySelectorAll("[data-year]").forEach(el=> el.textContent = new Date().getFullYear());
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 
   enableReveal();
 }

@@ -8,49 +8,142 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <div class="aurora"></div>
   <div class="container">
     <nav>
       <div class="brand">
-        <img src="assets/img/logo.png" alt="Logo" />
-        <div class="brand-name" data-brand>Mahitek 3D Lab</div>
+        <img src="assets/img/logo.png" alt="Logo Mahitek" />
+        <div>
+          <div class="brand-name" data-brand>Mahitek 3D Lab</div>
+          <div class="brand-sub">Telar de tecnología aditiva e IoT</div>
+        </div>
       </div>
       <div class="links">
+        <a href="#showroom">Showroom</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#promos">Promos</a>
-        <a href="#narrativa">Narrativa</a>
-        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#como-comprar">Flujo</a>
         <a href="#contacto">Contacto</a>
       </div>
       <div id="header-social" class="social"></div>
     </nav>
 
     <header class="hero">
-      <div>
-        <h1 class="reveal">Impresión 3D en <span style="color:var(--brand-primary)">PETG</span> para uso real</h1>
+      <div class="hero-copy">
+        <span class="eyebrow">✨ Impresión 3D con acento mexicano futurista</span>
+        <h1 class="reveal">Del concepto al producto funcional en <span class="gradient">48&nbsp;h</span></h1>
         <p class="reveal" data-tagline>Durabilidad · Función · Personalización</p>
-        <div class="reveal" style="display:flex; gap:10px; margin-top:14px">
-          <a class="btn" href="#catalogo">Ver catálogo</a>
-          <a class="btn ghost" href="#promos">Ver promos</a>
+        <ul class="hero-benefits reveal">
+          <li>⚡ Tiradas cortas, listas para entregar en bazares o envíos express.</li>
+          <li>🛡️ PETG y PLA optimizados para piezas que resisten el día a día.</li>
+          <li>🎨 Personalización con colores neón, empaques holográficos y storytelling.</li>
+        </ul>
+        <div class="hero-cta reveal">
+          <a class="btn" href="#catalogo">Explorar catálogo</a>
+          <a class="btn ghost" href="#showroom">Ver showroom</a>
+        </div>
+        <div class="metrics reveal">
+          <div class="metric">
+            <span class="metric-number">+380</span>
+            <span class="metric-label">Piezas entregadas sin devoluciones</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">96%</span>
+            <span class="metric-label">Clientes recurrentes en bazares</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">24/7</span>
+            <span class="metric-label">Monitoreo IoT de cada impresión</span>
+          </div>
         </div>
       </div>
-      <div class="card reveal">
-        <div class="title">Pachuca, México</div>
-        <p class="lead">Lotes cortos 5–50, medios 50–300. Personalización y empaque holográfico.</p>
+      <div class="hero-visual reveal">
+        <div class="hero-frame glass">
+          <img src="assets/img/showcase-hero.svg" alt="Showroom Mahitek con vegetación neon" class="hero-photo" />
+          <div class="hero-stamp glass">
+            <img src="assets/img/mark-icon.svg" alt="Ícono Mahitek" />
+            <span>Serie limitada PETG</span>
+          </div>
+        </div>
+        <div class="hero-bubble glass">🔥 Prototipos listos en 48&nbsp;h</div>
+        <div class="hero-bubble glass alt">💬 Atención por DM con briefs guiados</div>
       </div>
     </header>
 
-    <section id="promos" class="section">
-      <h2>Promos activas</h2>
-      <div class="slider reveal">
-        <div id="promo-slider"></div>
-        <div id="promo-dots" class="slider-controls"></div>
+    <section id="showroom" class="section alt">
+      <div class="section-header">
+        <h2 class="reveal">Showroom Mahitek</h2>
+        <p class="lead reveal">Más contenido visual para inspirar tus lanzamientos. Un mix entre cultura pop, biomateriales y estética cyber-mex.</p>
+      </div>
+      <div class="showcase-grid">
+        <figure class="showcase-card glass reveal">
+          <img src="assets/img/showcase-hero.svg" alt="Display Mahitek con cactáceas" />
+          <figcaption>
+            <span class="chip">Colección Bazar 🌵</span>
+            Visual merchandising listo para stands y pop-ups nocturnos.
+          </figcaption>
+        </figure>
+        <figure class="showcase-card glass reveal">
+          <img src="assets/img/mark-icon.svg" alt="Hexágono Mahitek" class="iconic" />
+          <figcaption>
+            <span class="chip">Sello Mahitek ✨</span>
+            Identidad modular con acentos rojo, turquesa y azul eléctrico.
+          </figcaption>
+        </figure>
+        <figure class="showcase-card sketch reveal">
+          <div class="sketch-art" aria-hidden="true"></div>
+          <figcaption>
+            <span class="chip">Bosquejo detallado 🛠️</span>
+            Render de porta-llaves PETG listo para personalizar con tu marca.
+          </figcaption>
+        </figure>
+        <figure class="showcase-card sketch reveal">
+          <div class="sketch-art alt" aria-hidden="true"></div>
+          <figcaption>
+            <span class="chip">Work in progress ⚙️</span>
+            Mockup de empaques holográficos con stickers UV y QR.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="feature-grid">
+        <article class="feature glass reveal">
+          <h3>🚀 Prototipado express</h3>
+          <p>Validamos ideas en horas con slicing calibrado, bitácoras digitales y reportes IoT en vivo.</p>
+        </article>
+        <article class="feature glass reveal">
+          <h3>🌈 Personalización total</h3>
+          <p>Colores neón, insertos metálicos y storytelling en fichas técnicas listos para redes.</p>
+        </article>
+        <article class="feature glass reveal">
+          <h3>🤝 Acompañamiento</h3>
+          <p>Brief guiado, shooting básico incluido y plantillas sociales editables para tu marca.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="promos" class="section alt">
+      <div class="section-header">
+        <h2 class="reveal">Promos activas</h2>
+        <p class="lead reveal">Bundles pensados para elevar el margen, subir el ticket promedio y mantener la experiencia neon.</p>
+      </div>
+      <div class="promo-wrap glass reveal">
+        <div class="slider">
+          <div id="promo-slider"></div>
+          <div id="promo-dots" class="slider-controls"></div>
+        </div>
+        <div class="promo-note">💡 Incluye asesoría de pricing y shooting express para marketplaces.</div>
       </div>
     </section>
 
     <section id="catalogo" class="section">
-      <h2>Catálogo</h2>
-      <p class="lead">Productos y precios a cliente. Filtra por material o busca por nombre.</p>
-      <div class="reveal" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px">
+      <div class="section-header">
+        <h2 class="reveal">Catálogo con lookbook incluido</h2>
+        <p class="lead reveal">Filtra por material, busca por nombre y selecciona el mood visual para tus listados digitales.</p>
+      </div>
+      <div class="filters reveal">
         <label class="badge">Material
           <select id="filter-material">
             <option value="all">Todos</option>
@@ -58,68 +151,127 @@
             <option value="PLA">PLA</option>
           </select>
         </label>
-        <div class="searchbar" style="min-width:260px; flex:1">
+        <div class="searchbar">
           <input id="search" type="search" placeholder="Buscar producto…">
         </div>
+        <span class="hint">🔍 Usa palabras clave como "llavero", "hogar" o "retro".</span>
       </div>
       <div id="grid-catalogo" class="grid cards"></div>
     </section>
 
-    <section id="narrativa" class="section">
-      <h2>Narrativa de marca</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card reveal">
-          <div class="title">Quiénes somos</div>
-          <p>Micro-taller de manufactura aditiva. PETG como estándar para piezas funcionales y PLA cuando aporta ventajas en costo o estética.</p>
-          <p>Operamos con enfoque Lean Startup: construir, medir y aprender con tiradas cortas para validar y escalar lo que funciona.</p>
+    <section class="section alt" id="materiales">
+      <div class="section-header">
+        <h2 class="reveal">Materiales que brillan</h2>
+        <p class="lead reveal">Seleccionamos pellets premium y calibramos cada rollo para lograr acabados vítreos y funcionales.</p>
+      </div>
+      <div class="material-grid">
+        <div class="material glass reveal">
+          <h3>PETG 🛡️</h3>
+          <p>Ideal para piezas funcionales. Resiste calor moderado y humedad. Textura satinada que refleja la iluminación RGB.</p>
         </div>
-        <div class="card reveal">
+        <div class="material glass reveal">
+          <h3>PLA 💡</h3>
+          <p>Perfecto para series coloridas y props. Permite degradados y acabados mate para fotografía de producto.</p>
+        </div>
+        <div class="material glass reveal">
+          <h3>Acabados 🔧</h3>
+          <p>Lijado, acetona en frío, pinturas metalizadas y empaques holográficos incluidos en paquetes premium.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="narrativa" class="section">
+      <div class="section-header">
+        <h2 class="reveal">Narrativa de marca</h2>
+        <p class="lead reveal">Somos un micro-taller de manufactura aditiva que mezcla artesanía digital con estética retro-futurista mexicana.</p>
+      </div>
+      <div class="grid two">
+        <article class="card glass reveal">
+          <div class="title">Quiénes somos</div>
+          <p>Operamos desde Pachuca, México con un laboratorio modular. Iteramos con filosofía Lean Startup: construir, medir y aprender para escalar lanzamientos que funcionan.</p>
+          <p>Documentamos cada experimento con fotos, fichas técnicas y contenido listo para redes.</p>
+        </article>
+        <article class="card glass reveal">
           <div class="title">Lo que nos distingue</div>
           <ul>
-            <li>Durabilidad y acabado consistente</li>
-            <li>Personalización real de bajo volumen</li>
-            <li>Empaque holográfico y entrega local</li>
+            <li>Durabilidad y acabado consistente.</li>
+            <li>Storytelling listo para campañas digitales.</li>
+            <li>Empaque holográfico con códigos QR y seguimiento.</li>
           </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="como-comprar" class="section alt">
+      <div class="section-header">
+        <h2 class="reveal">Cómo comprar</h2>
+        <p class="lead reveal">Pedidos por mensaje directo. Efectivo o transferencia. Entrega local o envío nacional empaquetado con estilo glass.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-step glass reveal">
+          <span class="step-index">1</span>
+          <h3>Brief express</h3>
+          <p>Define propósito, colores y cantidad. Te guiamos con un formulario interactivo.</p>
+        </div>
+        <div class="timeline-step glass reveal">
+          <span class="step-index">2</span>
+          <h3>Cotización + mockup</h3>
+          <p>Recibe render o bosquejo en 12&nbsp;h con recomendaciones de empaque.</p>
+        </div>
+        <div class="timeline-step glass reveal">
+          <span class="step-index">3</span>
+          <h3>Producción y control</h3>
+          <p>Seguimiento 24/7 y shooting básico para tus catálogos digitales.</p>
+        </div>
+        <div class="timeline-step glass reveal">
+          <span class="step-index">4</span>
+          <h3>Entrega</h3>
+          <p>Pickup en Pachuca o envío nacional con packaging holográfico.</p>
         </div>
       </div>
     </section>
 
-    <section id="como-comprar" class="section">
-      <h2>Cómo comprar</h2>
-      <p class="lead">Pedidos por mensaje directo. Efectivo o transferencia. Entrega local o envío nacional.</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card reveal">
-          <div class="title">Flujo</div>
-          <ol>
-            <li>Elige SKU y cantidad</li>
-            <li>Personalización opcional</li>
-            <li>Pago</li>
-            <li>Producción y empaque</li>
-            <li>Entrega</li>
-          </ol>
-        </div>
-        <div class="card reveal">
-          <div class="title">Empaque</div>
-          <p>Bolsa holográfica + sticker oficial. En línea: sobre poly 20×30.</p>
-        </div>
+    <section id="testimonios" class="section">
+      <div class="section-header">
+        <h2 class="reveal">Testimonios con brillo real</h2>
+        <p class="lead reveal">Clientes que transformaron su merchandising con piezas Mahitek.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial glass reveal">
+          <p>“Necesitábamos llaveros resistentes para un festival. Nos entregaron 80 piezas con empaques holográficos y shooting incluido. Volvimos al mes siguiente.”</p>
+          <span class="author">— Mariana, Concept Store indie</span>
+        </article>
+        <article class="testimonial glass reveal">
+          <p>“El soporte para exhibición llegó con fotos y fichas técnicas listas para e-commerce. La personalización en colores nos hizo ganar visibilidad.”</p>
+          <span class="author">— Carlos, Agencia Creativa</span>
+        </article>
+        <article class="testimonial glass reveal">
+          <p>“La mezcla entre estética neon y control de calidad IoT nos dio confianza para lanzar colecciones limitadas cada mes.”</p>
+          <span class="author">— Laura, Community Builder</span>
+        </article>
       </div>
     </section>
 
-    <section id="contacto" class="section">
-      <h2>Contacto</h2>
-      <p class="lead">Canales oficiales y atención directa.</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
-        <a class="card reveal" data-instagram href="#" target="_blank" rel="noopener">
+    <section id="contacto" class="section alt">
+      <div class="section-header">
+        <h2 class="reveal">Contacto</h2>
+        <p class="lead reveal">Canales oficiales para activar tu próxima colección. Respondemos en menos de 2&nbsp;h.</p>
+      </div>
+      <div class="grid contact">
+        <a class="card glass reveal" data-instagram href="#" target="_blank" rel="noopener">
           <div class="title">Instagram</div>
           <p>@mahitek_3d_lab_mx</p>
+          <span class="chip">Historias diarias</span>
         </a>
-        <a class="card reveal" data-facebook href="#" target="_blank" rel="noopener">
+        <a class="card glass reveal" data-facebook href="#" target="_blank" rel="noopener">
           <div class="title">Facebook</div>
           <p>/mahitek3dlabmx</p>
+          <span class="chip">Catálogos interactivos</span>
         </a>
-        <a class="card reveal" data-email href="#">
+        <a class="card glass reveal" data-email href="#">
           <div class="title">Email</div>
           <p>contacto@example.com</p>
+          <span class="chip">Respuestas detalladas</span>
         </a>
       </div>
     </section>

@@ -3,13 +3,13 @@
     "sku": "LLQZ-PETG-TR",
     "name": "Llavero Quetzalcóatl (Translúcido)",
     "material": "PETG",
-    "price_mxn": 50,
-    "desc": "Edición translúcida. Herraje 5.3 cm.",
+    "price_mxn": 68,
+    "desc": "Edición translúcida premium con herraje 5.3 cm y empaque holográfico.",
     "tags": [
       "llavero",
       "edición"
     ],
-    "image": "",
+    "image": "assets/img/showcase-hero.svg",
     "active": true,
     "promo_id": "bazar_bundle"
   },
@@ -17,12 +17,12 @@
     "sku": "LLQZ-PETG-BK",
     "name": "Llavero Quetzalcóatl (Negro)",
     "material": "PETG",
-    "price_mxn": 50,
-    "desc": "Acabado negro de alto contraste.",
+    "price_mxn": 68,
+    "desc": "Acabado negro de alto contraste con sellado UV y storytelling listo para retail.",
     "tags": [
       "llavero"
     ],
-    "image": "",
+    "image": "assets/img/mark-icon.svg",
     "active": true,
     "promo_id": "bazar_bundle"
   },
@@ -30,13 +30,13 @@
     "sku": "ZBFI-PETG-BK",
     "name": "Zombie_Fidget",
     "material": "PETG",
-    "price_mxn": 50,
-    "desc": "Base negra, ojos a color. Antiestrés visual.",
+    "price_mxn": 72,
+    "desc": "Base negra, ojos a color. Incluye stand mini para foto y copy antiestrés visual.",
     "tags": [
       "fidget",
       "bazar"
     ],
-    "image": "",
+    "image": "assets/img/product-holo.svg",
     "active": true,
     "promo_id": "bazar_bundle"
   },
@@ -44,8 +44,8 @@
     "sku": "CABA-PETG-BK",
     "name": "Llavero Cabra Negra",
     "material": "PETG",
-    "price_mxn": 30,
-    "desc": "Edición económica. Textura difusa opcional.",
+    "price_mxn": 42,
+    "desc": "Edición económica optimizada: textura difusa y tarjeta de marca incluida.",
     "tags": [
       "llavero",
       "económico"
@@ -57,8 +57,8 @@
     "sku": "CHIM-PETG-BK",
     "name": "Chimuelo (cráneo mini)",
     "material": "PETG",
-    "price_mxn": 40,
-    "desc": "Mini calavera estilizada.",
+    "price_mxn": 58,
+    "desc": "Mini calavera estilizada con barniz satinado y ficha narrativa.",
     "tags": [
       "decorativo"
     ],
@@ -69,8 +69,8 @@
     "sku": "GLOW-PETG-BK",
     "name": "Gato Low-Poly mini",
     "material": "PETG",
-    "price_mxn": 40,
-    "desc": "Figura minimalista para escritorio.",
+    "price_mxn": 58,
+    "desc": "Figura minimalista para escritorio con base antideslizante y tarjeta coleccionable.",
     "tags": [
       "decorativo"
     ],
@@ -81,8 +81,8 @@
     "sku": "HEAR-PETG-TR",
     "name": "Corazón anatómico mini",
     "material": "PETG",
-    "price_mxn": 45,
-    "desc": "Buen detalle y resistencia.",
+    "price_mxn": 62,
+    "desc": "Buen detalle y resistencia, incluye display acrílico mini y copy anatómico.",
     "tags": [
       "decorativo",
       "anatómico"
@@ -94,8 +94,8 @@
     "sku": "CABL-PETG-BK",
     "name": "Clip sujeta-cables x2",
     "material": "PETG",
-    "price_mxn": 30,
-    "desc": "Gestión de cables. Adhesivo opcional.",
+    "price_mxn": 44,
+    "desc": "Gestión de cables con adhesivo premium y sticker de instrucciones.",
     "tags": [
       "funcional",
       "escritorio"
@@ -107,8 +107,8 @@
     "sku": "HOOK-PETG-BK",
     "name": "Mini gancho adhesivo x2",
     "material": "PETG",
-    "price_mxn": 35,
-    "desc": "Carga ligera. Superficie lisa recomendada.",
+    "price_mxn": 48,
+    "desc": "Carga ligera. Incluye pads nano gel reutilizables y guía de instalación.",
     "tags": [
       "funcional",
       "hogar"
@@ -120,8 +120,8 @@
     "sku": "KEYW-PETG-BK",
     "name": "Porta-llaves pared mini",
     "material": "PETG",
-    "price_mxn": 50,
-    "desc": "3 posiciones. Tornillería no incluida.",
+    "price_mxn": 75,
+    "desc": "3 posiciones. Incluye plantilla de montaje y guía visual para reels.",
     "tags": [
       "hogar",
       "funcional"
@@ -133,8 +133,8 @@
     "sku": "STND-PETG-BK",
     "name": "Soporte celular simple",
     "material": "PETG",
-    "price_mxn": 45,
-    "desc": "Compatibilidad universal. Compacto.",
+    "price_mxn": 65,
+    "desc": "Compatibilidad universal. Incluye set de branding para mostrar en ferias.",
     "tags": [
       "soporte",
       "funcional"
@@ -146,8 +146,8 @@
     "sku": "PLTC-PETG-TR",
     "name": "Maceta mini suculenta",
     "material": "PETG",
-    "price_mxn": 45,
-    "desc": "Decorativa. Uso interior.",
+    "price_mxn": 64,
+    "desc": "Decorativa. Incluye cápsula nutritiva y guía visual para styling.",
     "tags": [
       "decorativo",
       "hogar"
@@ -159,8 +159,8 @@
     "sku": "TUX-PLA-MN",
     "name": "Figurilla Tux mini",
     "material": "PLA",
-    "price_mxn": 40,
-    "desc": "Versión económica para eventos.",
+    "price_mxn": 58,
+    "desc": "Versión económica para eventos con empaque de colección y copy techy.",
     "tags": [
       "figurilla",
       "PLA"
@@ -172,8 +172,8 @@
     "sku": "STAR-PLA-MN",
     "name": "Estrella pixel mini",
     "material": "PLA",
-    "price_mxn": 30,
-    "desc": "Estilo retro accesible.",
+    "price_mxn": 46,
+    "desc": "Estilo retro accesible con barniz brillante y tarjeta pixel art.",
     "tags": [
       "decorativo",
       "retro"
@@ -185,8 +185,8 @@
     "sku": "HEAR-PLA-FLT",
     "name": "Llavero corazón plano",
     "material": "PLA",
-    "price_mxn": 25,
-    "desc": "Colores vivos. Ideal volumen.",
+    "price_mxn": 38,
+    "desc": "Colores vivos. Incluye gift tag listo para punto de venta.",
     "tags": [
       "llavero",
       "económico"

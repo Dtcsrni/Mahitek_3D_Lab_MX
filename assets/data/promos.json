@@ -1,25 +1,28 @@
 [
   {
     "id": "preventa_oct",
-    "title": "Preventa de fin de mes",
-    "detail": "10% de descuento en pedidos anticipados de 6–12 piezas",
-    "cta": "Apartar ahora",
+    "title": "Preventa con margen alto",
+    "detail": "Aparta con 30% y asegura prioridad sin recargos express.",
+    "value": "📸 Incluye sesión foto express",
+    "cta": "Programar preventa",
     "href": "#contacto",
     "active": true
   },
   {
     "id": "bazar_bundle",
-    "title": "Bundle bazar",
-    "detail": "4 llaveros por $160 MXN",
-    "cta": "Quiero el bundle",
+    "title": "Bundle vitrinas PRO",
+    "detail": "3 llaveros premium o fidgets combinados por $210 MXN.",
+    "value": "💼 Ticket promedio $70 MXN / pieza",
+    "cta": "Armar mi bundle rentable",
     "href": "#catalogo",
     "active": true
   },
   {
     "id": "envio_local",
-    "title": "Entrega local",
-    "detail": "Gratis en Pachuca en compras ≥ $200 MXN",
-    "cta": "Ver condiciones",
+    "title": "Entrega local rentable",
+    "detail": "Gratis en Pachuca a partir de $300 MXN (pedido mínimo rentable).",
+    "value": "📍 Margen objetivo 35%",
+    "cta": "Ver cobertura",
     "href": "#como-comprar",
     "active": true
   }
