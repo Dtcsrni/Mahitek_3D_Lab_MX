@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Logotipo Mahitek 3D Lab monocromo</title>
+  <desc id="desc">Versión monocroma del hexágono Mahitek con trazos internos.</desc>
+  <polygon points="128 6 233 66 233 190 128 250 23 190 23 66" fill="#0f172a"/>
+  <polygon points="128 26 214 76 214 180 128 230 42 180 42 76" fill="#ffffff" stroke="#0f172a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M70 96h30c13 0 19 8 19 19v26c0 11-6 19-19 19h-9v26H70z" fill="#0f172a"/>
+  <path d="M128 68v48c0 16 12 28 28 28h18" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M171 144c12 0 19 8 19 19v27l-32 18" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64 164l18 10v26" fill="none" stroke="#0f172a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M108 198l20 12 20-12" fill="none" stroke="#0f172a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

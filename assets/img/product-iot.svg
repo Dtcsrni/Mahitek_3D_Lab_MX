@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Dispositivo Micro-IoT</title>
+  <desc id="desc">Dispositivo compacto con sensor iluminado.</desc>
+  <rect width="200" height="200" rx="28" fill="#eefaff"/>
+  <rect x="64" y="64" width="72" height="72" rx="16" fill="#0f172a" opacity="0.15"/>
+  <rect x="72" y="72" width="64" height="64" rx="14" fill="#ffffff" opacity="0.95"/>
+  <circle cx="104" cy="104" r="22" fill="#2f80ff" opacity="0.35"/>
+  <circle cx="104" cy="104" r="12" fill="#eb3b5a" opacity="0.85"/>
+  <path d="M104 48v16" stroke="#007a7c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M56 104h16" stroke="#007a7c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M136 104h16" stroke="#007a7c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M104 136v16" stroke="#007a7c" stroke-width="6" stroke-linecap="round"/>
+</svg>

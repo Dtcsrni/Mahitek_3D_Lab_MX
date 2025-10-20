@@ -1,0 +1,63 @@
+[
+  {
+    "id": "colgante-claridad",
+    "nombre": "Colgante de línea clara",
+    "categoria": "colgantes",
+    "precio_mxn": 180,
+    "imagen": "/assets/img/product-colgante.svg",
+    "material": "PETG",
+    "coda": "luz quieta en capa",
+    "historia": "Un trazo que deja pasar la luz. La forma descansa en planos simples. La guía enseña a cuidar y retocar el color cuando haga falta.",
+    "estado": "activo",
+    "tags": ["ligero", "pintable", "local", "PETG"]
+  },
+  {
+    "id": "figura-silencio",
+    "nombre": "Figura de escritorio Silencio",
+    "categoria": "figuras",
+    "precio_mxn": 320,
+    "imagen": "/assets/img/product-figura.svg",
+    "material": "PETG",
+    "coda": "silencio que trabaja",
+    "historia": "Volúmenes suaves que ordenan cables y papeles. Incluye base antideslizante y nota de uso.",
+    "estado": "activo",
+    "tags": ["escritorio", "organiza", "PETG"]
+  },
+  {
+    "id": "utilitario-rutina",
+    "nombre": "Utilitario Rutina",
+    "categoria": "utilitarios",
+    "precio_mxn": 260,
+    "imagen": "/assets/img/product-utilitario.svg",
+    "material": "PETG",
+    "coda": "forma paciente, sentido claro",
+    "historia": "Solución compacta para escritorio o cocina. Incluye piezas intercambiables y guía de cuidado.",
+    "estado": "activo",
+    "tags": ["hogar", "organiza", "PETG"]
+  },
+  {
+    "id": "iot-pulso",
+    "nombre": "Micro-IoT Pulso",
+    "categoria": "micro-iot",
+    "precio_mxn": 680,
+    "imagen": "/assets/img/product-iot.svg",
+    "material": "PETG",
+    "coda": "pulso que aprende a escuchar",
+    "historia": "Dispositivo compacto con sensor modular. Incluye soporte humano cuando lo necesites.",
+    "estado": "activo",
+    "tags": ["iot", "compacto", "PETG"]
+  },
+  {
+    "id": "stickers-laminados",
+    "nombre": "Stickers laminados y variantes",
+    "categoria": "stickers",
+    "precio_mxn": 150,
+    "imagen": "/assets/img/product-stickers.svg",
+    "material": "PETG",
+    "coda": "memoria en forma, uso que perdura",
+    "historia": "Identidad que viaja contigo. Acabados mate, brillante u holográfico. Variante con QR a catálogo o contacto. Pedidos por sets y personalización bajo criterio.",
+    "variantes": ["mate", "brillante", "holográfico", "QR-catálogo", "QR-contacto"],
+    "estado": "activo",
+    "tags": ["resistentes", "set", "qr", "PETG"]
+  }
+]

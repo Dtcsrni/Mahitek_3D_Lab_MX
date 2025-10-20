@@ -3,133 +3,341 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-brand>Mahitek 3D Lab — Landing</title>
-  <meta name="description" content="Impresión 3D en PETG y PLA. Tiradas cortas, personalización, promos y narrativa.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Mahitek 3D Lab — Identidad impresa</title>
+  <meta name="description" content="Mahitek 3D Lab. Ingeniería local con PETG como base. Catálogo, pedidos personalizados y acompañamiento cercano desde Pachuca.">
+  <link rel="preload" href="assets/img/logo-color.svg" as="image" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="canonical" href="https://mahitek-3d-lab-mx.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mahitek 3D Lab">
+  <meta property="og:description" content="Ingeniería local. Forma precisa. Historia breve en cada pieza.">
+  <meta property="og:image" content="https://mahitek-3d-lab-mx.github.io/assets/img/logo-color.svg">
+  <meta property="og:locale" content="es_MX">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mahitek 3D Lab">
+  <meta name="twitter:description" content="Ingeniería local. Forma precisa. Historia breve en cada pieza.">
+  <meta name="twitter:image" content="https://mahitek-3d-lab-mx.github.io/assets/img/logo-color.svg">
+  <meta name="theme-color" content="#020617">
+  <link rel="icon" type="image/svg+xml" href="assets/img/mark-icon.svg">
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <div class="brand">
-        <img src="assets/img/logo.png" alt="Logo" />
-        <div class="brand-name" data-brand>Mahitek 3D Lab</div>
-      </div>
-      <div class="links">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#promos">Promos</a>
-        <a href="#narrativa">Narrativa</a>
-        <a href="#como-comprar">Cómo comprar</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-      <div id="header-social" class="social"></div>
-    </nav>
-
-    <header class="hero">
-      <div>
-        <h1 class="reveal">Impresión 3D en <span style="color:var(--brand-primary)">PETG</span> para uso real</h1>
-        <p class="reveal" data-tagline>Durabilidad · Función · Personalización</p>
-        <div class="reveal" style="display:flex; gap:10px; margin-top:14px">
-          <a class="btn" href="#catalogo">Ver catálogo</a>
-          <a class="btn ghost" href="#promos">Ver promos</a>
+  <script>window.dataLayer = window.dataLayer || [];</script>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" id="top">
+    <div class="shell">
+      <nav class="navbar" aria-label="Principal">
+        <a class="logo" href="#top">
+          <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab logo a color" width="72" height="72">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+        <div class="nav-links" id="nav-links" aria-expanded="false">
+          <a href="#que-hacemos">Qué hacemos</a>
+          <a href="#para-quien">Para quién</a>
+          <a href="#lineas">Líneas</a>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#comunidad">Comunidad</a>
+          <a href="#faq">FAQ</a>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="title">Pachuca, México</div>
-        <p class="lead">Lotes cortos 5–50, medios 50–300. Personalización y empaque holográfico.</p>
-      </div>
-    </header>
+        <div class="nav-cta">
+          <a class="btn ghost" data-whatsapp-intent="general" data-track-cta="nav_whatsapp" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <section id="promos" class="section">
-      <h2>Promos activas</h2>
-      <div class="slider reveal">
-        <div id="promo-slider"></div>
-        <div id="promo-dots" class="slider-controls"></div>
+  <div id="qr-banner" class="qr-banner" role="status" aria-live="polite" hidden>
+    <p id="qr-banner-message">Llegaste desde nuestro QR. Explora el catálogo o pide personalizado.</p>
+    <a class="btn" data-whatsapp-intent="qr" data-whatsapp-campaign="qr_banner" data-track-cta="qr_banner_whatsapp" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    <button type="button" class="banner-close" aria-label="Cerrar aviso">×</button>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal" data-exp-impression="hero_copy">
+          <span class="hero-note">Mahitek 3D Lab</span>
+          <p class="hero-lede">🚀 Somos el taller, la marca y el laboratorio. Creamos en pequeño para aprender en grande.</p>
+          <h1 id="hero-title">Mahitek 3D Lab</h1>
+          <p id="hero-subtitle">Ingeniería local. Forma precisa. Historia breve en cada pieza. Material base: PETG.</p>
+          <div class="hero-ctas" role="group" aria-label="Acciones principales">
+            <a class="btn hero-action" data-action="catalogo" data-track-cta="hero_catalogo" href="#catalogo">Explorar catálogo</a>
+            <a class="btn ghost hero-action" data-action="personalizado" data-track-cta="hero_personalizado" href="#personalizado">Pedir personalizado</a>
+            <a class="btn ghost hero-action" data-action="whatsapp" data-track-cta="hero_whatsapp" data-whatsapp-intent="general" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+          <p class="hero-footnote">Nota: luz quieta en capa.</p>
+        </div>
+        <div class="hero-visual reveal" data-exp-impression="hero_visual">
+          <figure class="hero-card">
+            <img src="assets/img/showcase-hero.svg" alt="Montaje de piezas Mahitek 3D Lab" width="480" height="360" loading="lazy">
+            <figcaption>Catálogo listo para QR y conversación directa.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section id="catalogo" class="section">
-      <h2>Catálogo</h2>
-      <p class="lead">Productos y precios a cliente. Filtra por material o busca por nombre.</p>
-      <div class="reveal" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px">
-        <label class="badge">Material
-          <select id="filter-material">
-            <option value="all">Todos</option>
-            <option value="PETG">PETG</option>
-            <option value="PLA">PLA</option>
-          </select>
-        </label>
-        <div class="searchbar" style="min-width:260px; flex:1">
-          <input id="search" type="search" placeholder="Buscar producto…">
+    <section class="section" id="que-hacemos">
+      <div class="shell split">
+        <div class="section-copy">
+          <h2 class="reveal">Qué hacemos</h2>
+          <p class="section-intro reveal">✨ Narramos con objetos. Cada entrega es un experimento controlado con acompañamiento humano.</p>
+          <p class="reveal">Diseñamos objetos con identidad local que sirven al día a día y cuentan una historia breve. Series cortas, trato directo y opción de personalizar. Material base: PETG. PLA solo en casos justificados por uso y costo. Recibes pieza, guía de cuidado y acompañamiento.</p>
+          <ul class="list-emoji reveal">
+            <li>🔬 Iteraciones medibles y bitácoras compartidas.</li>
+            <li>🧵 Historias breves listas para contar en tienda o en casa.</li>
+            <li>🤝 Seguimiento directo desde Pachuca.</li>
+          </ul>
+        </div>
+        <div class="section-visual">
+          <div class="lab-gallery reveal" aria-label="Muestras del laboratorio Mahitek">
+            <figure>
+              <img src="assets/img/product-colgante.svg" width="160" height="160" alt="Colgante translúcido Mahitek">
+              <figcaption>Colgantes translúcidos</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/img/product-utilitario.svg" width="160" height="160" alt="Utilitario cotidiano Mahitek">
+              <figcaption>Utilitarios cotidianos</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/img/product-iot.svg" width="160" height="160" alt="Micro IoT Mahitek">
+              <figcaption>Micro-IoT cercano</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
-      <div id="grid-catalogo" class="grid cards"></div>
     </section>
 
-    <section id="narrativa" class="section">
-      <h2>Narrativa de marca</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card reveal">
-          <div class="title">Quiénes somos</div>
-          <p>Micro-taller de manufactura aditiva. PETG como estándar para piezas funcionales y PLA cuando aporta ventajas en costo o estética.</p>
-          <p>Operamos con enfoque Lean Startup: construir, medir y aprender con tiradas cortas para validar y escalar lo que funciona.</p>
+    <section class="section alt" id="para-quien">
+      <div class="shell split">
+        <div class="section-copy">
+          <h2 class="reveal">Para quién</h2>
+          <p class="section-intro reveal">💡 Pensamos en quienes buscan piezas con historia y funcionalidad real.</p>
+          <p class="reveal">Personas que valoran lo funcional con carácter. Tiendas, marcas y colectivos que necesitan tiradas pequeñas con sentido claro. Quien prefiere cuidar y reparar antes que desechar.</p>
         </div>
-        <div class="card reveal">
-          <div class="title">Lo que nos distingue</div>
-          <ul>
-            <li>Durabilidad y acabado consistente</li>
-            <li>Personalización real de bajo volumen</li>
-            <li>Empaque holográfico y entrega local</li>
+        <div class="section-visual reveal">
+          <ul class="list-marked">
+            <li>Series cortas con indicadores de seguimiento.</li>
+            <li>Micro-historias listas para compartir.</li>
+            <li>Acompañamiento directo desde Pachuca.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="como-comprar" class="section">
-      <h2>Cómo comprar</h2>
-      <p class="lead">Pedidos por mensaje directo. Efectivo o transferencia. Entrega local o envío nacional.</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card reveal">
-          <div class="title">Flujo</div>
-          <ol>
-            <li>Elige SKU y cantidad</li>
-            <li>Personalización opcional</li>
-            <li>Pago</li>
-            <li>Producción y empaque</li>
-            <li>Entrega</li>
-          </ol>
+    <section class="section" id="para-tiendas">
+      <div class="shell split">
+        <div class="section-copy">
+          <h2 class="reveal">Para tiendas y marcas</h2>
+          <p class="section-intro reveal">🏪 Pensado para quienes lanzan colecciones ágiles sin perder coherencia.</p>
+          <p class="reveal">Series cortas con identidad clara. Personalización bajo criterio. Entregables consistentes y comunicación directa. Material estándar: PETG.</p>
+          <a class="btn" id="cta-b2b" data-whatsapp-intent="b2b" data-whatsapp-campaign="b2b" data-track-cta="b2b_whatsapp" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">Solicitar tirada corta</a>
         </div>
-        <div class="card reveal">
-          <div class="title">Empaque</div>
-          <p>Bolsa holográfica + sticker oficial. En línea: sobre poly 20×30.</p>
+        <div class="section-visual reveal">
+          <div class="card glass">
+            <p>Onboarding ágil, bitácoras y verificación de piezas antes del envío.</p>
+            <p class="card-foot">📈 Reportes breves para tus propios experimentos.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="section">
-      <h2>Contacto</h2>
-      <p class="lead">Canales oficiales y atención directa.</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
-        <a class="card reveal" data-instagram href="#" target="_blank" rel="noopener">
-          <div class="title">Instagram</div>
-          <p>@mahitek_3d_lab_mx</p>
-        </a>
-        <a class="card reveal" data-facebook href="#" target="_blank" rel="noopener">
-          <div class="title">Facebook</div>
-          <p>/mahitek3dlabmx</p>
-        </a>
-        <a class="card reveal" data-email href="#">
-          <div class="title">Email</div>
-          <p>contacto@example.com</p>
-        </a>
+    <section class="section alt" id="lineas">
+      <div class="shell">
+        <h2 class="reveal">Líneas de producto</h2>
+        <p class="section-intro reveal">🧭 Cada familia cubre una necesidad concreta y deja espacio para personalizar.</p>
+        <div class="lineas-grid" data-exp-impression="product_grid_layout">
+          <article class="card glass line-card reveal">
+            <img src="assets/img/product-colgante.svg" width="96" height="96" alt="Ilustración de colgante translúcido">
+            <h3>Colgantes translúcidos</h3>
+            <p>Accesorios ligeros con carácter. Cierre: <em>luz quieta en capa</em>.</p>
+          </article>
+          <article class="card glass line-card reveal">
+            <img src="assets/img/product-figura.svg" width="96" height="96" alt="Ilustración de figura de escritorio">
+            <h3>Figuras de escritorio</h3>
+            <p>Presencia serena que ordena el espacio. Cierre: <em>silencio que trabaja</em>.</p>
+          </article>
+          <article class="card glass line-card reveal">
+            <img src="assets/img/product-utilitario.svg" width="96" height="96" alt="Ilustración de utilitario cotidiano">
+            <h3>Utilitarios cotidianos</h3>
+            <p>Soluciones simples a problemas reales. Cierre: <em>forma paciente, sentido claro</em>.</p>
+          </article>
+          <article class="card glass line-card reveal">
+            <img src="assets/img/product-iot.svg" width="96" height="96" alt="Ilustración de dispositivo Micro-IoT">
+            <h3>Micro-IoT cercano</h3>
+            <p>Dispositivos compactos para lo diario. Cierre: <em>pulso que aprende a escuchar</em>.</p>
+          </article>
+          <article class="card glass line-card reveal">
+            <img src="assets/img/product-stickers.svg" width="96" height="96" alt="Ilustración de stickers laminados">
+            <h3>Stickers laminados y variantes</h3>
+            <p>Identidad que viaja contigo. Mate, brillante u holográfico. Variante con QR a catálogo o contacto. Cierre: <em>memoria en forma, uso que perdura</em>.</p>
+          </article>
+        </div>
+        <p class="note">Nota de material: Trabajamos en PETG como regla. PLA se ofrece solo cuando su relación uso/costo lo justifica.</p>
       </div>
     </section>
 
-    <footer class="footer">
-      <div>© <span data-year></span> <span data-brand>Mahitek 3D Lab</span> · Hecho con FDM · GitHub Pages</div>
-      <div id="footer-social" class="social"></div>
-    </footer>
-  </div>
+    <section class="section" id="catalogo">
+      <div class="shell">
+        <div class="section-header">
+          <h2 class="reveal">Catálogo</h2>
+          <p class="section-intro reveal">📚 Datos vivos desde nuestro laboratorio. Ajusta filtros, busca por etiquetas y decide.</p>
+          <p class="reveal">Explora piezas activas, ajusta filtros y busca por nombre o etiqueta.</p>
+        </div>
+        <div class="filters" role="search">
+          <label for="category-filter" class="filter-label">Categoría
+            <select id="category-filter" name="categoria">
+              <option value="todas">Todas</option>
+            </select>
+          </label>
+          <label for="search-input" class="filter-label">Buscar
+            <input id="search-input" type="search" name="search" placeholder="Buscar por nombre o etiqueta" autocomplete="off">
+          </label>
+        </div>
+        <div class="catalog-grid" id="product-grid" data-layout="grid-3">
+          <article class="card product-card" data-noscript>
+            <h3>Catálogo disponible bajo petición</h3>
+            <p>Activa JavaScript o escríbenos por WhatsApp para recibir la lista actualizada.</p>
+            <a class="btn" data-whatsapp-fallback data-whatsapp-intent="general" data-track-cta="catalogo_fallback" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">Solicitar catálogo</a>
+          </article>
+        </div>
+        <p class="note">Guía de cuidado: limpiar con paño suave, evitar calor directo y almacenar en sombra para mayor duración.</p>
+      </div>
+    </section>
 
-  <script src="assets/js/main.js"></script>
+    <section class="section alt" id="promos">
+      <div class="shell">
+        <div class="section-header">
+          <h2 class="reveal">Promociones activas</h2>
+          <p class="section-intro reveal">🎯 Cada promoción es un experimento controlado con métricas claras.</p>
+          <p class="reveal">Bundles diseñados para validar hipótesis y mejorar margen.</p>
+        </div>
+        <div class="promo-panel reveal" aria-live="polite">
+          <div class="promo-slider" id="promo-slider" role="list"></div>
+          <div class="promo-dots" id="promo-dots" role="tablist"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-trabajamos">
+      <div class="shell">
+        <h2 class="reveal">Cómo trabajamos</h2>
+        <p class="section-intro reveal">🛠️ Procesos claros, comunicación abierta y acompañamiento real.</p>
+        <ol class="steps">
+          <li><strong>Explora</strong>. Selecciona una pieza o cuéntanos tu idea.</li>
+          <li><strong>Ajusta</strong>. Ajusta acabado, uso previsto y material (PETG por defecto; PLA solo si conviene).</li>
+          <li><strong>Recibe</strong>. Entrega con micro-historia y guía de cuidado.</li>
+          <li><strong>Acompañamos</strong>. Reparación sencilla si ocurre un imprevisto. Coda: <em>tiempo impreso, uso vivo</em>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section alt" id="porque">
+      <div class="shell">
+        <h2 class="reveal">Por qué elegirnos</h2>
+        <p class="section-intro reveal">💙 Elegimos materiales consistentes y entregas honestas.</p>
+        <ul class="list-marked reveal">
+          <li>Identidad con rostro local.</li>
+          <li>Cuidado desde el inicio.</li>
+          <li>Coherencia en piezas que conviven.</li>
+          <li>Cercanía con respuesta clara.</li>
+          <li>Materiales consistentes: PETG como estándar. PLA solo si aporta valor real por uso/costo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="comunidad">
+      <div class="shell">
+        <h2 class="reveal">Comunidad y canales</h2>
+        <p class="section-intro reveal">🌐 Sigue las pruebas, comparte feedback y abre conversación cuando te convenga.</p>
+        <p class="reveal">Escuchamos, probamos en pequeño y mejoramos con evidencia.</p>
+        <div class="social-links" id="community-links"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="faq">
+      <div class="shell">
+        <h2 class="reveal">Preguntas frecuentes</h2>
+        <p class="section-intro reveal">❓ Dudas rápidas con respuestas directas.</p>
+        <div class="faq" id="faq-list">
+          <details>
+            <summary>¿Personalizan?</summary>
+            <p>Sí, con criterios claros y tiempos definidos.</p>
+          </details>
+          <details>
+            <summary>¿Tiradas pequeñas?</summary>
+            <p>Sí, por eso existimos.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="personalizado">
+      <div class="shell split">
+        <div class="section-copy">
+          <h2 class="reveal">Pedidos personalizados</h2>
+          <p class="section-intro reveal">💬 Conversamos contigo para definir la pieza exacta.</p>
+          <p class="reveal">Cuéntanos qué necesitas, registramos requerimientos y proponemos ajustes según uso previsto, presupuesto y tiempo.</p>
+        </div>
+        <div class="section-visual">
+          <div class="card glass reveal">
+            <p>Incluye guía de cuidado general y bitácora de cambios para cada entrega.</p>
+            <p class="card-foot">🧾 Documentamos pruebas y aprendizajes compartidos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="cuidado">
+      <div class="shell">
+        <h2 class="reveal">Guía de cuidado general</h2>
+        <p class="section-intro reveal">🧼 Unos minutos de cuidado prolongan la historia de cada pieza.</p>
+        <p class="reveal">Mantén tus piezas lejos de calor extremo, limpia con paño suave y guarda en sombra para extender la vida útil. Si surge algo, escríbenos y respondemos con opciones de reparación.</p>
+        <p class="reveal care-note">Para mayor duración y cuidado, revisa la guía breve que incluimos en cada entrega.</p>
+      </div>
+    </section>
+  </main>
+
+  <aside class="promo-drawer" id="promo-drawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-promo></div>
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="promo-drawer-title">
+      <button class="drawer-close" type="button" data-close-promo aria-label="Cerrar promociones">×</button>
+      <div class="drawer-content">
+        <h2 id="promo-drawer-title">Promociones</h2>
+        <div id="promo-drawer-body"></div>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="site-footer" id="contacto">
+    <div class="shell footer-grid">
+      <div>
+        <img src="assets/img/logo-mono.svg" alt="Mahitek 3D Lab logo monocromo" width="64" height="64" loading="lazy">
+        <p>Mahitek 3D Lab · Pachuca, México</p>
+        <p class="footer-tagline">🔁 Somos laboratorio abierto con experimentos controlados.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#cuidado">Política de cuidado y reparación</a>
+        <a href="https://wa.me/52XXXXXXXXXX" data-whatsapp-intent="general" data-track-cta="footer_whatsapp" target="_blank" rel="noopener">Contacto</a>
+      </div>
+      <div class="footer-social" id="footer-social"></div>
+    </div>
+    <p class="footer-coda">Coda: memoria en forma, uso que perdura.</p>
+  </footer>
+
+  <noscript>
+    <div class="noscript-box">Esta landing utiliza JavaScript para cargar catálogo, FAQ y métricas. Puedes escribirnos directamente a WhatsApp.</div>
+  </noscript>
+
+  <script type="application/ld+json" id="org-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mahitek 3D Lab",
+    "url": "https://mahitek-3d-lab-mx.github.io/",
+    "logo": "https://mahitek-3d-lab-mx.github.io/assets/img/logo-color.svg",
+    "sameAs": []
+  }
+  </script>
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>

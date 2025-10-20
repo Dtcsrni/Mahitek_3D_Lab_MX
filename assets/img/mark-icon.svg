@@ -1,0 +1,22 @@
+<svg width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#65FF8F" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%" filterUnits="objectBoundingBox">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#00F0FF" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="30" y="30" width="360" height="360" rx="56" fill="#011315"/>
+  <path d="M210 40L360 126V294L210 380L60 294V126L210 40Z" fill="#0B1C1F" stroke="url(#glow)" stroke-width="14" filter="url(#shadow)"/>
+  <path d="M210 84L324 150V270L210 336L96 270V150L210 84Z" fill="#010E10" stroke="#F4F5F7" stroke-width="12"/>
+  <path d="M122 188C122 170 134 156 152 156H204V120L252 144V210H298V264H252V300C252 324 232 344 208 344H180V296H212C218 296 224 290 224 284V264H152C134 264 122 250 122 232V188Z" fill="#0EF6E3"/>
+  <path d="M252 144H300V196H252V144Z" fill="#F04F63"/>
+  <path d="M180 120L220 96L260 120L220 144L180 120Z" fill="#FF3B30"/>
+  <circle cx="188" cy="220" r="20" fill="#FF5C9B"/>
+  <circle cx="248" cy="238" r="16" fill="#00E5FF"/>
+  <path d="M140 160V184H120V160H140ZM120 232H140V256H120V232Z" fill="#F4F5F7"/>
+  <path d="M300 204H320V232H300V204Z" fill="#65FF8F"/>
+  <path d="M300 244H320V272H300V244Z" fill="#9B5CFF"/>
+</svg>

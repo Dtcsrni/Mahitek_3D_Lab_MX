@@ -1,0 +1,37 @@
+{
+  "enabled": true,
+  "bucket_mode": "50_50",
+  "tests": {
+    "hero_copy": {
+      "variant": "auto",
+      "A": {
+        "title": "Mahitek 3D Lab",
+        "subtitle": "Ingeniería local. Forma precisa. Historia breve en cada pieza. Material base: PETG."
+      },
+      "B": {
+        "title": "Objetos con identidad local",
+        "subtitle": "Series cortas. Cuidado real. Relatos breves que se usan."
+      }
+    },
+    "cta_primary": {
+      "variant": "auto",
+      "A": "catalogo",
+      "B": "whatsapp"
+    },
+    "qr_banner_copy": {
+      "variant": "auto",
+      "A": "Llegaste desde nuestro QR. Explora el catálogo o pide personalizado.",
+      "B": "Hola, vienes del QR. ¿Prefieres ver el catálogo o hablar por WhatsApp?"
+    },
+    "product_grid_layout": {
+      "variant": "auto",
+      "A": "grid-3",
+      "B": "grid-2"
+    },
+    "promo_drawer_default": {
+      "variant": "auto",
+      "A": true,
+      "B": false
+    }
+  }
+}

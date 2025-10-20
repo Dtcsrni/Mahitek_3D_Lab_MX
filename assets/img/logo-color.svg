@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Logotipo Mahitek 3D Lab a color</title>
+  <desc id="desc">Hexágono con trazos que combinan tecnología y raíces locales en colores rojo, turquesa y azul.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#00a6a8"/>
+      <stop offset="100%" stop-color="#006c6e"/>
+    </linearGradient>
+  </defs>
+  <polygon points="128 6 233 66 233 190 128 250 23 190 23 66" fill="url(#bg)" stroke="#000" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="128 26 214 76 214 180 128 230 42 180 42 76" fill="#fff" stroke="#000" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M70 98h28c12 0 18 8 18 18v24c0 10-6 18-18 18H88v28H70z" fill="#000"/>
+  <circle cx="88" cy="116" r="10" fill="#eb3b5a" stroke="#000" stroke-width="4"/>
+  <path d="M128 72v44c0 16 12 28 28 28h18" fill="none" stroke="#000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="156" cy="98" r="9" fill="#2f80ff" stroke="#000" stroke-width="4"/>
+  <path d="M173 142c12 0 19 8 19 19v25l-32 18" fill="none" stroke="#000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="190" cy="160" r="10" fill="#00a6a8" stroke="#000" stroke-width="4"/>
+  <path d="M62 164l18 10v24" fill="none" stroke="#eb3b5a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M108 196l20 12 20-12" fill="none" stroke="#2f80ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
