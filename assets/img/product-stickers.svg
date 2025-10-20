@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Stickers laminados</title>
+  <desc id="desc">Paquete de stickers con acabado holográfico y QR.</desc>
+  <rect width="200" height="200" rx="28" fill="#f4f1ff"/>
+  <rect x="54" y="60" width="92" height="92" rx="24" fill="#ffffff" opacity="0.95"/>
+  <rect x="64" y="70" width="72" height="72" rx="20" fill="url(#grad)" opacity="0.6"/>
+  <rect x="86" y="90" width="28" height="28" rx="6" fill="#0f172a" opacity="0.15"/>
+  <path d="M110 86l20-20" stroke="#eb3b5a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M90 142l-20 20" stroke="#2f80ff" stroke-width="6" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eb3b5a"/>
+      <stop offset="40%" stop-color="#2f80ff"/>
+      <stop offset="80%" stop-color="#00a6a8"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Figura de escritorio</title>
+  <desc id="desc">Figura orgánica para escritorio con base sólida.</desc>
+  <rect width="200" height="200" rx="28" fill="#f1f5ff"/>
+  <path d="M60 150h80l-10-64a30 30 0 0 0-30-26 30 30 0 0 0-30 26z" fill="#0f172a" opacity="0.12"/>
+  <path d="M70 142h60l-8-58a22 22 0 0 0-22-19 22 22 0 0 0-22 19z" fill="#ffffff" opacity="0.9"/>
+  <path d="M100 58a16 16 0 0 0-16 16v10h32V74a16 16 0 0 0-16-16z" fill="#007a7c" opacity="0.6"/>
+  <circle cx="100" cy="64" r="10" fill="#eb3b5a" opacity="0.8"/>
+</svg>
