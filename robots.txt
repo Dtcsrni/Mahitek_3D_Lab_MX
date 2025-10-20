@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mahitek-3d-lab-mx.github.io/sitemap.xml
