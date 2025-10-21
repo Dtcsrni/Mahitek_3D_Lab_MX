@@ -1,95 +1,251 @@
-# Mahitek 3D Lab · Landing QR-first
+# Mahitek 3D Lab — Landing Moderna
 
-Landing estática optimizada para tráfico desde QR, redes sociales y búsqueda directa. Incluye narrativa prescrita, catálogo dinámico, experimentos controlados y métricas ligeras.
+Landing estática moderna con diseño oscuro + glassmorphism, sistema de precios transparente (base + 30%) y optimizada para tráfico QR, redes sociales y búsqueda directa.
 
-## Estructura principal
+## 🚀 Características
+
+- **Diseño dark + glass**: Fondo oscuro (#0B0F14) con efectos glassmorphism
+- **Sistema de precios automático**: Calcula precio venta = base × 1.30 con redondeo configurable
+- **Catálogo dinámico**: Filtros por categoría y búsqueda en tiempo real
+- **Emojis sobrios**: Iconografía visual sin sobrecarga
+- **Performance optimizado**: Sin dependencias pesadas, solo vanilla JS
+
+## 📁 Estructura
 
 ```
-/index.html
-/assets/css/styles.css
-/assets/js/app.js
-/assets/img/
-/data/products.json
-/data/promos.json
-/data/social.json
-/data/faq.json
-/data/experiments.json
-sitemap.xml
-robots.txt
+/index.html                  → Landing principal
+/assets/css/styles.css       → Estilos modernos dark + glass
+/assets/js/app.js           → Lógica, cálculo precios, carga datos
+/assets/img/                → Imágenes, logos, productos
+/data/products_base.json    → Catálogo con precios base
+/data/products.json         → [DEPRECADO] Migrar a products_base.json
+/data/promos.json          → Promociones activas
+/data/social.json          → Enlaces redes sociales
+/data/faq.json             → Preguntas frecuentes
 ```
 
-## Contenido editable
+## ⚙️ Sistema de Precios
 
-### Catálogo (`/data/products.json`)
-- Cada producto requiere `id`, `nombre`, `categoria`, `precio_mxn`, `imagen`, `material`, `coda`, `historia`, `estado` y `tags`.
-- Solo se muestran elementos con `"estado": "activo"`.
-- Añade `variantes` opcional y suma etiquetas que ayuden a la búsqueda.
+El sistema calcula automáticamente precios de venta basándose en:
+
+**Fórmula**: `precio_venta = round_to_step(precio_base × 1.30, step)`
+
+### Configuración en `/assets/js/app.js`
+
+```javascript
+const CONFIG = {
+  PRICE_MARKUP: 1.30,  // 30% markup (cambiar a 1.25 para 25%, etc.)
+  PRICE_STEP: 10,      // Redondea a múltiplos de 10 MXN
+  ...
+};
+```
+
+### Ejemplo de cálculo
+
+```
+Precio base: $200 MXN
+Markup: 30% (1.30)
+Cálculo: $200 × 1.30 = $260
+Redondeo: step=10 → $260 (ya es múltiplo de 10)
+
+Precio base: $185 MXN
+Cálculo: $185 × 1.30 = $240.50
+Redondeo: step=10 → $240 MXN
+```
+
+## 📝 Editar Contenido
+
+### Catálogo (`/data/products_base.json`)
+
+```json
+[
+  {
+    "id": "producto-id",
+    "nombre": "Nombre del producto",
+    "categoria": "colgantes",
+    "precio_base_mxn": 200,
+    "imagen": "/assets/img/producto.svg",
+    "coda": "Una frase corta",
+    "historia": "Descripción del producto y su uso",
+    "material_preferente": "PETG",
+    "estado": "activo",
+    "tags": ["ligero", "local", "PETG"]
+  }
+]
+```
+
+**Campos obligatorios:**
+- `id`: Identificador único
+- `nombre`: Nombre del producto
+- `categoria`: Categoría para filtros
+- `precio_base_mxn`: Precio base (se calcula +30% automáticamente)
+- `imagen`: Ruta a la imagen
+- `material_preferente`: Material principal (PETG recomendado)
+- `estado`: `"activo"` para mostrar, `"inactivo"` para ocultar
+
+**Campos opcionales:**
+- `coda`: Frase poética corta
+- `historia`: Descripción detallada
+- `tags`: Array de etiquetas para búsqueda
+- `variantes`: Array de variantes disponibles
 
 ### Promociones (`/data/promos.json`)
-- Estructura mínima: `id`, `titulo`, `mensaje`, `desde`, `hasta`, `cta_text`, `cta_url`.
-- El texto de WhatsApp (`text=`) se extrae automáticamente para generar CTAs con UTM consistentes.
-- Con `?promo=ID` en la URL se abre el drawer de promos.
 
-### Redes (`/data/social.json`)
-- Define enlaces a Instagram, Facebook y TikTok. Se actualizan en comunidad, footer y esquema JSON-LD.
+```json
+[
+  {
+    "id": "promo-id",
+    "titulo": "Título de la promoción",
+    "mensaje": "Descripción de la oferta",
+    "desde": "2025-01-01",
+    "hasta": "2025-12-31",
+    "cta_text": "Texto del botón",
+    "cta_url": "https://wa.me/52XXXXXXXXXX?text=..."
+  }
+]
+```
+
+Solo se muestran las promociones cuya fecha actual esté entre `desde` y `hasta`.
+
+### Redes Sociales (`/data/social.json`)
+
+```json
+{
+  "instagram": "https://www.instagram.com/usuario/",
+  "facebook": "https://www.facebook.com/pagina",
+  "tiktok": "https://www.tiktok.com/@usuario"
+}
+```
 
 ### FAQ (`/data/faq.json`)
-- Lista de objetos con `q` y `a`. El acordeón es accesible y respeta `prefers-reduced-motion`.
 
-### Experimentos (`/data/experiments.json`)
-- Configura pruebas A/B. Campos clave:
-  - `enabled`: activar/desactivar todos los tests.
-  - `bucket_mode`: actualmente `50_50`.
-  - `tests`: cada test define variantes `A` y `B`. Usa `variant: "auto"` para repartir visitantes.
-- Variantes disponibles por defecto:
-  - `hero_copy` (título/subtítulo del hero)
-  - `cta_primary` (`catalogo` o `whatsapp`)
-  - `qr_banner_copy` (mensaje del banner QR)
-  - `product_grid_layout` (`grid-3` o `grid-2`)
-  - `promo_drawer_default` (true/false)
-- Forzar una variante: añade `?force_exp=hero_copy:B`. Para pausar todo: `?exp=off`.
-- Asignaciones por visitante se guardan en `localStorage` (`mahitek_exp_bucket_v1`).
+```json
+[
+  {
+    "q": "¿Pregunta?",
+    "a": "Respuesta clara y concisa."
+  }
+]
+```
 
-## Comportamiento QR-first
+## 🛠️ Desarrollo Local
 
-- Detecta `src=qr` o `utm_source=sticker|lona|flyer` y muestra banner de bienvenida por 8 segundos.
-- Persiste parámetros en `localStorage` (`mahitek_ctx_v1`) para reutilizarlos en CTAs.
-- CTA de WhatsApp ajusta el mensaje según contexto (general, QR, B2B o producto).
+No requiere build ni dependencias:
 
-## Analítica y eventos
+```bash
+# Opción 1: Servidor simple con Python
+python -m http.server 8000
 
-`window.dataLayer` recopila:
-- `qr_entry` `{src, utm}` al mostrar el banner.
-- `catalog_view` `{count}` cuando se cargan productos.
-- `product_view` `{id}` al entrar en viewport.
-- `cta_click` `{id, target}` en cada CTA etiquetado.
-- `whatsapp_click` `{params}` en enlaces a WhatsApp.
-- `exp_assign`, `exp_impression`, `exp_conversion` para experimentos activos.
+# Opción 2: Con Node.js
+npx serve .
 
-## Accesibilidad y rendimiento
+# Opción 3: Live Server (VS Code extension)
+```
 
-- Semántica con `<header>`, `<main>`, `<section>`, `<nav>` y `<footer>`.
-- Animaciones controladas por `IntersectionObserver`, desactivadas con `prefers-reduced-motion`.
-- Imágenes SVG livianas con `loading="lazy"` donde aplica.
-- Meta OG/Twitter + JSON-LD para organización y productos.
-- `robots.txt` y `sitemap.xml` listos para GitHub Pages.
+Luego abre `http://localhost:8000` en tu navegador.
 
-## Despliegue
+## 🌐 Despliegue en GitHub Pages
 
-1. Haz commit y push en `main`.
-2. Activa GitHub Pages en **Settings → Pages** apuntando a la rama `main` carpeta raíz.
-3. Verifica métricas con Lighthouse (objetivo ≥ 90 en Performance, Accessibility y SEO).
+1. Haz commit de tus cambios:
+   ```bash
+   git add .
+   git commit -m "Actualizar catálogo"
+   git push origin main
+   ```
 
-## Actualizar el logo
+2. Activa GitHub Pages:
+   - Ve a **Settings** → **Pages**
+   - Source: Deploy from branch
+   - Branch: `main` / `root`
+   - Guarda cambios
 
-- Logo principal: `/assets/img/logo-color.svg`.
-- Variante monocroma: `/assets/img/logo-mono.svg`.
-- Sustituye estos archivos si recibes una versión oficial distinta.
+3. Espera 1-2 minutos y visita tu sitio en:
+   `https://[usuario].github.io/[repositorio]/`
 
-## Desarrollo local
+## 🎨 Personalización
 
-No requiere build. Basta con servir la carpeta (ejemplo: `npx serve .`).
+### Cambiar colores
 
-- Edita los JSON y refresca el navegador.
-- Usa `?force_exp=` para validar variantes.
-- Asegúrate de mantener la narrativa obligatoria indicada en `index.html`.
+Edita variables en `/assets/css/styles.css`:
+
+```css
+:root {
+  --bg-dark: #0B0F14;           /* Fondo principal */
+  --accent-cyan: #06B6D4;       /* Color acento 1 */
+  --accent-green: #10B981;      /* Color acento 2 */
+  --glass-bg: rgba(255, 255, 255, 0.06);  /* Fondo glass */
+  ...
+}
+```
+
+### Cambiar markup de precios
+
+Edita en `/assets/js/app.js`:
+
+```javascript
+const CONFIG = {
+  PRICE_MARKUP: 1.25,  // 25% en lugar de 30%
+  PRICE_STEP: 5,       // Redondear a múltiplos de 5
+  ...
+};
+```
+
+### Cambiar número de WhatsApp
+
+En `/assets/js/app.js`:
+
+```javascript
+const CONFIG = {
+  WHATSAPP_NUMBER: '521234567890',  // Tu número con código de país
+  ...
+};
+```
+
+También actualiza en `/index.html` todos los enlaces `https://wa.me/52XXXXXXXXXX`.
+
+## 📱 WhatsApp QR-first
+
+Para crear enlaces con contexto desde stickers/QR:
+
+```
+https://tu-sitio.com/?src=qr&utm_source=sticker
+https://tu-sitio.com/?src=qr&utm_source=lona
+https://tu-sitio.com/?src=instagram
+```
+
+El sistema detecta estos parámetros y ajusta el mensaje de WhatsApp automáticamente.
+
+## ♿ Accesibilidad
+
+- Semántica HTML5 completa
+- Contraste WCAG AA
+- Teclado navegable
+- `prefers-reduced-motion` respetado
+- Skip link para lectores de pantalla
+
+## 📊 Performance
+
+- Sin dependencias externas
+- CSS y JS inline cuando sea posible
+- Imágenes SVG optimizadas
+- Lazy loading en imágenes
+- Objetivo: Lighthouse ≥90 en todas las métricas
+
+## 🐛 Debugging
+
+Abre la consola del navegador para ver información de debug:
+
+```javascript
+// Ver configuración actual
+console.log(window.MahitekLab.config);
+
+// Ver productos cargados
+console.log(window.MahitekLab.products());
+
+// Calcular precio manualmente
+window.MahitekLab.calculateSalePrice(200); // → 260
+```
+
+## 📄 Licencia
+
+Proyecto propietario de Mahitek 3D Lab.
