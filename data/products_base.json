@@ -1,0 +1,63 @@
+[
+  {
+    "id": "colgante-claridad",
+    "nombre": "Colgante de línea clara",
+    "categoria": "colgantes",
+    "precio_base_mxn": 30,
+    "imagen": "/assets/img/product-colgante.svg",
+    "coda": "luz quieta en capa",
+    "historia": "Un trazo que deja pasar la luz. La forma descansa en planos simples.",
+    "material_preferente": "PETG",
+    "estado": "activo",
+    "tags": ["ligero", "pintable", "local", "PETG"]
+  },
+  {
+    "id": "figura-silencio",
+    "nombre": "Figura de escritorio Silencio",
+    "categoria": "figuras",
+    "precio_base_mxn": 250,
+    "imagen": "/assets/img/product-figura.svg",
+    "coda": "silencio que trabaja",
+    "historia": "Volúmenes suaves que ordenan cables y papeles. Incluye base antideslizante y nota de uso.",
+    "material_preferente": "PETG",
+    "estado": "activo",
+    "tags": ["escritorio", "organiza", "PETG"]
+  },
+  {
+    "id": "utilitario-rutina",
+    "nombre": "Utilitario Rutina",
+    "categoria": "utilitarios",
+    "precio_base_mxn": 200,
+    "imagen": "/assets/img/product-utilitario.svg",
+    "coda": "forma paciente, sentido claro",
+    "historia": "Solución compacta para escritorio o cocina. Incluye piezas intercambiables y guía de cuidado.",
+    "material_preferente": "PETG",
+    "estado": "activo",
+    "tags": ["hogar", "organiza", "PETG"]
+  },
+  {
+    "id": "iot-pulso",
+    "nombre": "Micro-IoT Pulso",
+    "categoria": "micro-iot",
+    "precio_base_mxn": 520,
+    "imagen": "/assets/img/product-iot.svg",
+    "coda": "pulso que aprende a escuchar",
+    "historia": "Dispositivo compacto con sensor modular. Incluye soporte humano cuando lo necesites.",
+    "material_preferente": "PETG",
+    "estado": "activo",
+    "tags": ["iot", "compacto", "PETG"]
+  },
+  {
+    "id": "stickers-laminados",
+    "nombre": "Stickers laminados",
+    "categoria": "stickers",
+    "precio_base_mxn": 120,
+    "imagen": "/assets/img/product-stickers.svg",
+    "coda": "memoria en forma, uso que perdura",
+    "historia": "Identidad que viaja contigo. Acabados mate, brillante u holográfico. Variante con QR a catálogo o contacto. Pedidos por sets y personalización bajo criterio.",
+    "material_preferente": "PETG",
+    "variantes": ["mate", "brillante", "holográfico", "QR-catálogo", "QR-contacto"],
+    "estado": "activo",
+    "tags": ["resistentes", "set", "qr", "PETG"]
+  }
+]
