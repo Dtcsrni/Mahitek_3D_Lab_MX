@@ -603,6 +603,16 @@ function setupNav() {
     const isOpen = menu.classList.toggle('active');
     toggle.setAttribute('aria-expanded', String(isOpen));
     toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    
+    // Prevent body scroll when menu is open on mobile
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    // Log menu interaction
+    log('nav_menu_toggle', { state: isOpen ? 'open' : 'closed' });
   });
 
   // Close menu when clicking on a link
@@ -611,7 +621,19 @@ function setupNav() {
       menu.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Abrir menú');
+      document.body.style.overflow = '';
     });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('active')) {
+      menu.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
   });
 }
 
