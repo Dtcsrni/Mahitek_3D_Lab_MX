@@ -640,17 +640,62 @@ async function loadFAQ() {
     return;
   }
 
+  // Render de items con IDs linkeables
   container.innerHTML = faqData.map((item, index) => {
     const delay = Math.min(index, 5) * 70;
+    const id = `faq-${slugify(item.q)}`;
     return `
-    <details class="faq-item" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
-      <summary>${item.q}</summary>
+    <details class="faq-item" id="${id}" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
+      <summary><span>${item.q}</span></summary>
       <p>${item.a}</p>
     </details>
   `;
   }).join('');
 
   registerAnimatedElements(container);
+
+  // Interacciones: búsqueda y expandir/contraer
+  const search = document.getElementById('faq-search');
+  const btnExpand = document.getElementById('faq-expand');
+  const btnCollapse = document.getElementById('faq-collapse');
+  const items = Array.from(container.querySelectorAll('.faq-item'));
+
+  function applyFilter(query) {
+    const q = (query || '').trim().toLowerCase();
+    items.forEach(el => {
+      const text = el.textContent.toLowerCase();
+      const match = q.length === 0 || text.includes(q);
+      el.style.display = match ? '' : 'none';
+    });
+  }
+
+  if (search) {
+    search.addEventListener('input', (e) => applyFilter(e.target.value));
+  }
+  if (btnExpand) {
+    btnExpand.addEventListener('click', () => items.forEach(el => el.open = true));
+  }
+  if (btnCollapse) {
+    btnCollapse.addEventListener('click', () => items.forEach(el => el.open = false));
+  }
+
+  // Abre item si URL tiene hash a su ID
+  if (location.hash && location.hash.startsWith('#faq-')) {
+    const targeted = document.querySelector(location.hash);
+    if (targeted && targeted.classList.contains('faq-item')) {
+      targeted.open = true;
+      targeted.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
+function slugify(str) {
+  return String(str)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
 }
 
 // ===== Social Links =====

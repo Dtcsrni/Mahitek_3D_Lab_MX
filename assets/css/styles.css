@@ -2064,10 +2064,65 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding-right: 2rem;
 }
 
 .faq-item summary::-webkit-details-marker {
   display: none;
+}
+
+/* Indicador visual de expansión */
+.faq-item summary::after {
+  content: '▾';
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+  color: var(--text-secondary);
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-item[open] {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
+}
+
+.faq-item p {
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+}
+
+/* Barra de herramientas de FAQ */
+.faq-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  max-width: 800px;
+  margin: 0 auto 1rem auto;
+}
+
+.faq-toolbar .input {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.875rem;
+  color: var(--text-primary);
+}
+
+.faq-toolbar .faq-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.faq-toolbar .btn {
+  white-space: nowrap;
 }
 
 .faq-item summary::after {
@@ -2312,6 +2367,67 @@ button {
 /* Footer contact minor tweak */
 .footer-contact .btn {
   width: fit-content;
+}
+
+/* Footer mejoras */
+.footer-grid {
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  }
+}
+
+.hours-list {
+  list-style: none;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+  color: var(--text-secondary);
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.footer-location .btn {
+  margin-top: 0.5rem;
+}
+
+.footer-extras {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.footer-payments .label {
+  color: var(--text-secondary);
+  margin-right: 0.5rem;
+}
+
+.newsletter label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.newsletter-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.newsletter input[type="email"] {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.875rem;
+  color: var(--text-primary);
 }
 
 /* ===== Process ===== */

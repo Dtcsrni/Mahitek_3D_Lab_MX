@@ -367,6 +367,14 @@
           </div>
             <p class="section-intro">Todo lo que necesitas saber sobre <span class="accent-text">personalización, tiempos, materiales y costos</span>. ¿No encuentras tu respuesta? Escríbenos directamente.</p>
         </div>
+        <div class="faq-toolbar" data-animate="fade-up" style="--animate-delay: 70ms">
+          <label for="faq-search" class="sr-only">Buscar en las preguntas</label>
+          <input id="faq-search" class="input" type="search" placeholder="Buscar en preguntas…" aria-label="Buscar en preguntas frecuentes">
+          <div class="faq-actions">
+            <button id="faq-expand" class="btn btn-ghost" type="button" aria-controls="faq-list">Expandir todo</button>
+            <button id="faq-collapse" class="btn btn-ghost" type="button" aria-controls="faq-list">Contraer todo</button>
+          </div>
+        </div>
         <div id="faq-list" class="faq-list" aria-live="polite">
           <div class="card glass placeholder-card" aria-hidden="true" data-animate="fade-up">
             <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
@@ -419,6 +427,30 @@
         <div class="footer-social animate-delay-2" id="footer-social" data-animate="fade-up">
           <h4>Redes sociales</h4>
           <div id="social-links"></div>
+        </div>
+        <div class="footer-hours animate-delay-3" data-animate="fade-up">
+          <h4>Horario</h4>
+          <ul class="hours-list" aria-label="Horario de atención">
+            <li><span>Lun–Vie</span> <strong>10:00–18:00</strong></li>
+            <li><span>Sáb</span> <strong>10:00–14:00</strong></li>
+            <li><span>Dom</span> <strong>Con cita</strong></li>
+          </ul>
+          <div class="footer-location">
+            <a class="btn btn-ghost" href="https://maps.google.com/?q=Pachuca%2C%20Hidalgo%2C%20Mexico" target="_blank" rel="noopener" aria-label="Abrir ubicación en Google Maps">🗺️ Ver mapa</a>
+          </div>
+        </div>
+        <div class="footer-extras animate-delay-4" data-animate="fade-up" style="grid-column: 1 / -1;">
+          <div class="footer-payments">
+            <span class="label">Métodos de pago:</span>
+            <span class="icons" aria-label="Tarjeta, efectivo, contraentrega">💳 💵 📦</span>
+          </div>
+          <form class="newsletter" action="https://formspree.io/f/xayzlqny" method="POST" aria-label="Suscripción por correo">
+            <label for="newsletter-email">Suscríbete (máx. 1 correo/mes)</label>
+            <div class="newsletter-row">
+              <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" required>
+              <button type="submit" class="btn btn-primary">Suscribirme</button>
+            </div>
+          </form>
         </div>
       </div>
           <p class="footer-copy">© 2025 Mahitek 3D Lab — Coda: <span class="accent-text">memoria en forma</span>, uso que perdura ✨</p>
