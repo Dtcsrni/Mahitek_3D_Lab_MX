@@ -76,6 +76,50 @@ button {
   background: none;
 }
 
+/* ===== Accent Helpers ===== */
+.accent-text {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.accent-text--green {
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+.accent-text--gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.accent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.32);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.accent-chip--green {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.32);
+}
+
+.hero-title-emoji {
+  display: inline-block;
+  margin-left: 0.35rem;
+  filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.5));
+}
+
 /* ===== Skip Link ===== */
 .skip-link {
   position: absolute;
@@ -289,7 +333,7 @@ button {
   transform: scaleX(1);
 }
 
-.btn-whatsapp {
+.btn-messenger {
   padding: 0.5rem 1rem;
   background: var(--gradient-accent);
   border-radius: 8px;
@@ -298,7 +342,7 @@ button {
   display: inline-block;
 }
 
-.btn-whatsapp:hover {
+.btn-messenger:hover {
   transform: translateY(-2px);
 }
 
@@ -332,6 +376,7 @@ button {
   gap: 0.5rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
+  align-items: flex-start;
 }
 
 .hero-gallery {

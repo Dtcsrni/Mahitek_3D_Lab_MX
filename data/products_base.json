@@ -1,1011 +1,365 @@
-[[[
-
+[
   {
-
-    "id": "m3d-ll-zmb-a",  {  {
-
+    "id": "m3d-ll-zmb-a",
     "sku": "M3D-LL-ZMB-A",
-
-    "nombre": "Llavero \"Zombie\" Serie A",    "id": "m3d-ll-zmb-a",    "id": "m3d-ll-zmb-a",
-
+    "nombre": "Llavero Zombie Serie A",
     "categoria": "llaveros",
-
-    "linea": "PETG",    "sku": "M3D-LL-ZMB-A",    "sku": "M3D-LL-ZMB-A",
-
-    "descripcion": "Llavero resistente con relieve tipo zombie, ideal para uso diario y regalo casual.",
-
-    "material": "PETG",    "nombre": "Llavero \"Zombie\" Serie A",    "nombre": "Llavero Zombie Serie A",
-
-    "material_preferente": "PETG",
-
-    "tamano": "45-55 mm",    "categoria": "llaveros",    "categoria": "llaveros",
-
-    "colores": "Negro, humo, rojo",
-
-    "herraje": "Aro 25 mm + argolla",    "linea": "PETG",    "precio_base_mxn": 30,
-
-    "personalizacion": "Iniciales",
-
-    "tiempo_entrega": "1-2 dias",    "descripcion": "Llavero resistente con relieve tipo zombie, ideal para uso diario y regalo casual.",    "imagen": "/assets/img/product-llavero-zombie.svg",
-
+    "linea": "PETG",
     "precio_base_mxn": 30,
-
-    "imagen": "assets/img/placeholder-catalog.svg",    "material": "PETG",    "material": "PETG",
-
+    "descripcion": "Llavero resistente con relieve zombie, ideal para uso diario o eventos.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "45-55 mm",
+    "colores": "Negro, humo, rojo",
+    "herraje": "Aro 25 mm + argolla",
+    "personalizacion": "Iniciales grabadas",
+    "tiempo_entrega": "1-2 dias",
+    "incluye": "Bolsa holografica y sticker",
+    "imagen": "assets/img/product-llavero-zombie.svg",
     "estado": "activo",
-
-    "tags": ["llavero", "petg", "zombie"]    "material_preferente": "PETG",    "material_preferente": "PETG",
-
+    "tags": ["llavero", "zombie", "petg", "gift"]
   },
-
-  {    "tamano": "45-55 mm",    "tamano": "45-55 mm",
-
+  {
     "id": "m3d-ll-chm",
-
-    "sku": "M3D-LL-CHM",    "colores": "Negro, humo, rojo",    "colores": "Negro, humo, rojo",
-
-    "nombre": "Llavero \"Chimuelo\"",
-
-    "categoria": "llaveros",    "herraje": "Aro 25 mm + argolla",    "herraje": "Aro 25 mm + argolla",
-
+    "sku": "M3D-LL-CHM",
+    "nombre": "Llavero Chimuelo",
+    "categoria": "llaveros",
     "linea": "PETG",
-
-    "descripcion": "Dragon minimal ligero con bordes suaves, comodo en el bolsillo diario.",    "personalizacion": "Iniciales",    "personalizacion": "Iniciales grabadas",
-
+    "precio_base_mxn": 30,
+    "descripcion": "Dragon minimal con bordes suaves que no maltrata bolsillos ni mochilas.",
     "material": "PETG",
-
-    "material_preferente": "PETG",    "tiempo_entrega": "1-2 dias",    "tiempo_entrega": "1-2 días",
-
+    "material_preferente": "PETG",
     "tamano": "50 mm",
-
-    "colores": "Negro, humo, verde",    "precio_base_mxn": 30,    "incluye": "Bolsa holográfica y sticker",
-
-    "herraje": "Herraje incluido",
-
-    "personalizacion": "Nombre corto",    "imagen": "assets/img/placeholder-catalog.svg",    "estado": "activo",
-
+    "colores": "Negro, humo, verde",
+    "herraje": "Aro 25 mm + argolla",
+    "personalizacion": "Nombre corto",
     "tiempo_entrega": "1-2 dias",
-
-    "precio_base_mxn": 30,    "estado": "activo",    "tags": ["llavero", "zombie", "petg", "gift"]
-
-    "imagen": "assets/img/placeholder-catalog.svg",
-
-    "estado": "activo",    "tags": ["llavero", "petg", "zombie"]  },
-
-    "tags": ["llavero", "petg", "dragon"]
-
-  },  },  {
-
+    "incluye": "Empaque holografico",
+    "imagen": "assets/img/product-llavero-chimuelo.svg",
+    "estado": "activo",
+    "tags": ["llavero", "dragon", "petg"]
+  },
   {
-
-    "id": "m3d-cl-qtz",  {    "id": "m3d-ll-chm",
-
+    "id": "m3d-cl-qtz",
     "sku": "M3D-CL-QTZ",
-
-    "nombre": "Colgante Quetzalcoatl",    "id": "m3d-ll-chm",    "sku": "M3D-LL-CHM",
-
+    "nombre": "Colgante Quetzalcoatl",
     "categoria": "colgantes",
-
-    "linea": "PETG",    "sku": "M3D-LL-CHM",    "nombre": "Llavero Chimuelo",
-
-    "descripcion": "Pieza decorativa translucida con pintura ligera para resaltar la silueta.",
-
-    "material": "PETG",    "nombre": "Llavero \"Chimuelo\"",    "categoria": "llaveros",
-
+    "linea": "PETG",
+    "precio_base_mxn": 80,
+    "descripcion": "Pieza translucida inspirada en Quetzalcoatl con detalles pintados a mano.",
+    "material": "PETG",
     "material_preferente": "PETG",
-
-    "tamano": "53-60 mm",    "categoria": "llaveros",    "precio_base_mxn": 30,
-
+    "tamano": "53-60 mm",
     "colores": "Transparente, negro",
-
-    "herraje": "Aro metalico 53 mm",    "linea": "PETG",    "imagen": "/assets/img/product-llavero-chimuelo.svg",
-
-    "personalizacion": "Iniciales",
-
-    "tiempo_entrega": "2-3 dias",    "descripcion": "Dragon minimal ligero con bordes suaves, comodo en el bolsillo diario.",    "material": "PETG",
-
-    "precio_base_mxn": 80,
-
-    "imagen": "assets/img/product-colgante.svg",    "material": "PETG",    "material_preferente": "PETG",
-
+    "herraje": "Aro metalico 53 mm",
+    "personalizacion": "Iniciales grabadas",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Empaque con tarjeta ilustrada",
+    "imagen": "assets/img/product-colgante-quetzal.svg",
     "estado": "activo",
-
-    "tags": ["colgante", "petg", "decorativo"]    "material_preferente": "PETG",    "tamano": "50 mm",
-
+    "tags": ["colgante", "quetzal", "petg", "artesania"]
   },
-
-  {    "tamano": "50 mm",    "colores": "Negro, humo, verde",
-
+  {
     "id": "m3d-fg-tux10",
-
-    "sku": "M3D-FG-TUX10",    "colores": "Negro, humo, verde",    "herraje": "Aro 25 mm + argolla",
-
+    "sku": "M3D-FG-TUX10",
     "nombre": "Figura Tux Linuxero 10 cm",
-
-    "categoria": "figuras",    "herraje": "Herraje incluido",    "personalizacion": "Nombre corto",
-
+    "categoria": "figuras",
     "linea": "PETG",
-
-    "descripcion": "Figura de escritorio estable, ideal para setups y oficinas.",    "personalizacion": "Nombre corto",    "tiempo_entrega": "1-2 días",
-
-    "material": "PETG",
-
-    "material_preferente": "PETG",    "tiempo_entrega": "1-2 dias",    "incluye": "Empaque holográfico",
-
-    "tamano": "100 mm alto",
-
-    "colores": "Negro, blanco, naranja",    "precio_base_mxn": 30,    "estado": "activo",
-
-    "personalizacion": "Placa con nombre opcional",
-
-    "tiempo_entrega": "2-4 dias",    "imagen": "assets/img/placeholder-catalog.svg",    "tags": ["llavero", "dragon", "petg"]
-
     "precio_base_mxn": 150,
-
-    "imagen": "assets/img/product-figura.svg",    "estado": "activo",  },
-
+    "descripcion": "Figura coleccionable de Tux con acabado brillante y base estable.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "100 mm alto",
+    "colores": "Negro, blanco, naranja",
+    "personalizacion": "Placa con nombre",
+    "tiempo_entrega": "2-4 dias",
+    "incluye": "Empaque listo para regalo",
+    "imagen": "assets/img/product-figura-tux.svg",
     "estado": "activo",
-
-    "tags": ["figura", "petg", "linux"]    "tags": ["llavero", "petg", "dragon"]  {
-
+    "tags": ["figura", "linux", "geek", "petg"]
   },
-
-  {  },    "id": "m3d-cl-qtz",
-
+  {
     "id": "m3d-fg-clv8",
-
-    "sku": "M3D-FG-CLV8",  {    "sku": "M3D-CL-QTZ",
-
+    "sku": "M3D-FG-CLV8",
     "nombre": "Calaverita minimal 8 cm",
-
-    "categoria": "figuras",    "id": "m3d-cl-qtz",    "nombre": "Colgante Quetzalcóatl",
-
+    "categoria": "figuras",
     "linea": "PETG",
-
-    "descripcion": "Adorno compacto de lineas limpias para repisas y escritorios.",    "sku": "M3D-CL-QTZ",    "categoria": "colgantes",
-
+    "precio_base_mxn": 100,
+    "descripcion": "Figura decorativa con planos facetados y estilo minimalista.",
     "material": "PETG",
-
-    "material_preferente": "PETG",    "nombre": "Colgante Quetzalcoatl",    "precio_base_mxn": 80,
-
+    "material_preferente": "PETG",
     "tamano": "80 mm",
-
-    "colores": "Humo, negro, blanco",    "categoria": "colgantes",    "imagen": "/assets/img/product-colgante-quetzal.svg",
-
-    "personalizacion": "Grabado corto opcional",
-
-    "tiempo_entrega": "2-3 dias",    "linea": "PETG",    "material": "PETG",
-
-    "precio_base_mxn": 100,
-
-    "imagen": "assets/img/product-figura.svg",    "descripcion": "Pieza decorativa translucida con pintura ligera para resaltar la silueta.",    "material_preferente": "PETG",
-
+    "colores": "Humo, negro, blanco",
+    "personalizacion": "Grabado corto",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Empaque listo para regalo",
+    "imagen": "assets/img/product-figura-calaverita.svg",
     "estado": "activo",
-
-    "tags": ["figura", "petg", "calaverita"]    "material": "PETG",    "tamano": "53-60 mm",
-
+    "tags": ["figura", "calaverita", "petg"]
   },
-
-  {    "material_preferente": "PETG",    "colores": "Transparente, negro",
-
+  {
     "id": "m3d-fd-zset",
-
-    "sku": "M3D-FD-ZSET",    "tamano": "53-60 mm",    "acabado": "Translúcido con pintura mínima",
-
-    "nombre": "Set \"Zombie_Fidget\" (3 pzas)",
-
-    "categoria": "fidget",    "colores": "Transparente, negro",    "herraje": "Aro metálico 53 mm",
-
+    "sku": "M3D-FD-ZSET",
+    "nombre": "Set Zombie Fidget (3 piezas)",
+    "categoria": "fidget",
     "linea": "PETG",
-
-    "descripcion": "Trio antistress con textura zombie para mano y bolsillo.",    "herraje": "Aro metalico 53 mm",    "personalizacion": "Iniciales grabadas",
-
+    "precio_base_mxn": 80,
+    "descripcion": "Trio de piezas tipo fidget con texturas tematicas para liberar estres.",
     "material": "PETG",
-
-    "material_preferente": "PETG",    "personalizacion": "Iniciales",    "tiempo_entrega": "2-3 días",
-
+    "material_preferente": "PETG",
     "tamano": "35-55 mm cada pieza",
-
-    "colores": "Surtido tematico",    "tiempo_entrega": "2-3 dias",    "incluye": "Empaque con tarjeta",
-
+    "colores": "Mix tematico",
+    "personalizacion": "No disponible",
     "tiempo_entrega": "1-2 dias",
-
-    "precio_base_mxn": 80,    "precio_base_mxn": 80,    "estado": "activo",
-
-    "imagen": "assets/img/placeholder-catalog.svg",
-
-    "estado": "activo",    "imagen": "assets/img/product-colgante.svg",    "tags": ["colgante", "quetzal", "petg", "artesania"]
-
-    "tags": ["fidget", "petg", "set"]
-
-  },    "estado": "activo",  },
-
+    "incluye": "Empaque holografico",
+    "imagen": "assets/img/product-fidget-zombie.svg",
+    "estado": "activo",
+    "tags": ["fidget", "zombie", "set"]
+  },
   {
-
-    "id": "m3d-ac-hpw",    "tags": ["colgante", "petg", "decorativo"]  {
-
+    "id": "m3d-ac-hpw",
     "sku": "M3D-AC-HPW",
-
-    "nombre": "Soporte de pared para audifonos",  },    "id": "m3d-fg-tux10",
-
+    "nombre": "Soporte de pared para audifonos",
     "categoria": "accesorios",
-
-    "linea": "PETG",  {    "sku": "M3D-FG-TUX10",
-
-    "descripcion": "Gancho curvo que distribuye la carga y cuida la diadema.",
-
-    "material": "PETG",    "id": "m3d-fg-tux10",    "nombre": "Figura Tux Linuxero 10 cm",
-
-    "material_preferente": "PETG",
-
-    "tamano": "90x70x55 mm",    "sku": "M3D-FG-TUX10",    "categoria": "figuras",
-
-    "colores": "Negro, humo",
-
-    "carga": "Hasta 700 g",    "nombre": "Figura Tux Linuxero 10 cm",    "precio_base_mxn": 150,
-
-    "montaje": "Cinta o tornillos",
-
-    "tiempo_entrega": "2-3 dias",    "categoria": "figuras",    "imagen": "/assets/img/product-figura-tux.svg",
-
+    "linea": "PETG",
     "precio_base_mxn": 100,
-
-    "imagen": "assets/img/product-utilitario.svg",    "linea": "PETG",    "material": "PETG",
-
+    "descripcion": "Gancho curvo que protege el acolchado y mantiene cables organizados.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "90x70x55 mm",
+    "colores": "Negro, humo",
+    "carga": "<=700 g",
+    "montaje": "Cinta 3M o tornillos",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Tornillos y taquetes",
+    "imagen": "assets/img/product-soporte-audifonos.svg",
     "estado": "activo",
-
-    "tags": ["accesorio", "petg", "audio"]    "descripcion": "Figura de escritorio estable, ideal para setups y oficinas.",    "material_preferente": "PETG",
-
+    "tags": ["setup", "audio", "pared", "petg"]
   },
-
-  {    "material": "PETG",    "tamano": "100 mm alto",
-
+  {
     "id": "m3d-ac-phst",
-
-    "sku": "M3D-AC-PHST",    "material_preferente": "PETG",    "colores": "Negro, blanco, naranja",
-
+    "sku": "M3D-AC-PHST",
     "nombre": "Porta-celular inclinable",
-
-    "categoria": "accesorios",    "tamano": "100 mm alto",    "personalizacion": "Placa con nombre",
-
-    "linea": "PETG",
-
-    "descripcion": "Base estable con angulo variable para video y videollamadas.",    "colores": "Negro, blanco, naranja",    "tiempo_entrega": "2-4 días",
-
-    "material": "PETG",
-
-    "material_preferente": "PETG",    "personalizacion": "Placa con nombre opcional",    "incluye": "Empaque listo para regalo",
-
-    "tamano": "95x75x70 mm",
-
-    "angulo": "20-60 grados",    "tiempo_entrega": "2-4 dias",    "estado": "activo",
-
-    "colores": "Negro, humo",
-
-    "tiempo_entrega": "1-2 dias",    "precio_base_mxn": 150,    "tags": ["figura", "linux", "geek", "petg"]
-
-    "precio_base_mxn": 80,
-
-    "imagen": "assets/img/product-utilitario.svg",    "imagen": "assets/img/product-figura.svg",  },
-
-    "estado": "activo",
-
-    "tags": ["accesorio", "petg", "movil"]    "estado": "activo",  {
-
-  },
-
-  {    "tags": ["figura", "petg", "linux"]    "id": "m3d-fg-clv8",
-
-    "id": "m3d-or-cbl5",
-
-    "sku": "M3D-OR-CBL5",  },    "sku": "M3D-FG-CLV8",
-
-    "nombre": "Organizador de cables (pack 5)",
-
-    "categoria": "organizacion",  {    "nombre": "Calaverita minimal 8 cm",
-
-    "linea": "PETG",
-
-    "descripcion": "Clips para guiar cables en escritorio y pared.",    "id": "m3d-fg-clv8",    "categoria": "figuras",
-
-    "material": "PETG",
-
-    "material_preferente": "PETG",    "sku": "M3D-FG-CLV8",    "precio_base_mxn": 100,
-
-    "tamano": "20-30 mm diametro",
-
-    "colores": "Surtido",    "nombre": "Calaverita minimal 8 cm",    "imagen": "/assets/img/product-figura-calaverita.svg",
-
-    "tiempo_entrega": "1 dia",
-
-    "precio_base_mxn": 50,    "categoria": "figuras",    "material": "PETG",
-
-    "imagen": "assets/img/product-utilitario.svg",
-
-    "estado": "activo",    "linea": "PETG",    "material_preferente": "PETG",
-
-    "tags": ["organizacion", "petg", "cables"]
-
-  },    "descripcion": "Adorno compacto de lineas limpias para repisas y escritorios.",    "tamano": "80 mm",
-
-  {
-
-    "id": "m3d-hg-clip4",    "material": "PETG",    "colores": "Humo, negro, blanco",
-
-    "sku": "M3D-HG-CLIP4",
-
-    "nombre": "Clip multiusos (pack 4)",    "material_preferente": "PETG",    "personalizacion": "Grabado corto",
-
-    "categoria": "hogar",
-
-    "linea": "PETG",    "tamano": "80 mm",    "tiempo_entrega": "2-3 días",
-
-    "descripcion": "Pinzas compactas para bolsas, papeles y sujecion ligera.",
-
-    "material": "PETG",    "colores": "Humo, negro, blanco",    "incluye": "Empaque listo para regalo",
-
-    "material_preferente": "PETG",
-
-    "tamano": "35-45 mm",    "personalizacion": "Grabado corto opcional",    "estado": "activo",
-
-    "colores": "Surtido",
-
-    "tiempo_entrega": "1 dia",    "tiempo_entrega": "2-3 dias",    "tags": ["figura", "calaverita", "petg"]
-
-    "precio_base_mxn": 50,
-
-    "imagen": "assets/img/product-utilitario.svg",    "precio_base_mxn": 100,  },
-
-    "estado": "activo",
-
-    "tags": ["hogar", "petg", "clip"]    "imagen": "assets/img/product-figura.svg",  {
-
-  },
-
-  {    "estado": "activo",    "id": "m3d-fd-zset",
-
-    "id": "m3d-hg-ganch2",
-
-    "sku": "M3D-HG-GANCH2",    "tags": ["figura", "petg", "calaverita"]    "sku": "M3D-FD-ZSET",
-
-    "nombre": "Gancho universal (par)",
-
-    "categoria": "hogar",  },    "nombre": "Set Zombie Fidget (3 piezas)",
-
-    "linea": "PETG",
-
-    "descripcion": "Ganchos finos para mochilas, llaves o cables.",  {    "categoria": "fidget",
-
-    "material": "PETG",
-
-    "material_preferente": "PETG",    "id": "m3d-fd-zset",    "precio_base_mxn": 80,
-
-    "tamano": "60x12 mm",
-
-    "carga": "Hasta 1 kg",    "sku": "M3D-FD-ZSET",    "imagen": "/assets/img/product-fidget-zombie.svg",
-
-    "colores": "Negro, humo",
-
-    "tiempo_entrega": "1-2 dias",    "nombre": "Set \"Zombie_Fidget\" (3 pzas)",    "material": "PETG",
-
-    "precio_base_mxn": 50,
-
-    "imagen": "assets/img/product-utilitario.svg",    "categoria": "fidget",    "material_preferente": "PETG",
-
-    "estado": "activo",
-
-    "tags": ["hogar", "petg", "gancho"]    "linea": "PETG",    "tamano": "35-55 mm cada pieza",
-
-  },
-
-  {    "descripcion": "Trio antestres con textura zombie para mano y bolsillo.",    "colores": "Mix temático",
-
-    "id": "m3d-hg-sdoor",
-
-    "sku": "M3D-HG-SDOOR",    "material": "PETG",    "personalizacion": "No disponible",
-
-    "nombre": "Sujetapuertas robusto",
-
-    "categoria": "hogar",    "material_preferente": "PETG",    "tiempo_entrega": "1-2 días",
-
-    "linea": "PETG",
-
-    "descripcion": "Calza estable con agarre para superficies lisas.",    "tamano": "35-55 mm cada pieza",    "incluye": "Empaque holográfico",
-
-    "material": "PETG",
-
-    "material_preferente": "PETG",    "colores": "Surtido tematico",    "estado": "activo",
-
-    "tamano": "110x35x25 mm",
-
-    "colores": "Negro",    "tiempo_entrega": "1-2 dias",    "tags": ["fidget", "zombie", "set"]
-
-    "tiempo_entrega": "1-2 dias",
-
-    "precio_base_mxn": 50,    "precio_base_mxn": 80,  },
-
-    "imagen": "assets/img/product-utilitario.svg",
-
-    "estado": "activo",    "imagen": "assets/img/placeholder-catalog.svg",  {
-
-    "tags": ["hogar", "petg", "puerta"]
-
-  },    "estado": "activo",    "id": "m3d-ac-hpw",
-
-  {
-
-    "id": "m3d-hg-key4",    "tags": ["fidget", "petg", "set"]    "sku": "M3D-AC-HPW",
-
-    "sku": "M3D-HG-KEY4",
-
-    "nombre": "Porta-llaves mural (4 ganchos)",  },    "nombre": "Soporte de pared para audífonos",
-
-    "categoria": "hogar",
-
-    "linea": "PETG",  {    "categoria": "accesorios",
-
-    "descripcion": "Riel compacto para entradas y cocinas.",
-
-    "material": "PETG",    "id": "m3d-ac-hpw",    "precio_base_mxn": 100,
-
-    "material_preferente": "PETG",
-
-    "tamano": "150x45 mm",    "sku": "M3D-AC-HPW",    "imagen": "/assets/img/product-soporte-audifonos.svg",
-
-    "colores": "Negro, blanco",
-
-    "montaje": "Cinta o tornillos",    "nombre": "Soporte de pared para audifonos",    "material": "PETG",
-
-    "tiempo_entrega": "2-3 dias",
-
-    "precio_base_mxn": 100,    "categoria": "accesorios",    "material_preferente": "PETG",
-
-    "imagen": "assets/img/product-utilitario.svg",
-
-    "estado": "activo",    "linea": "PETG",    "tamano": "90x70x55 mm",
-
-    "tags": ["hogar", "petg", "llaves"]
-
-  },    "descripcion": "Gancho curvo que distribuye la carga y cuida la diadema.",    "colores": "Negro, humo",
-
-  {
-
-    "id": "m3d-ac-ctrl",    "material": "PETG",    "carga": "<=700 g",
-
-    "sku": "M3D-AC-CTRL",
-
-    "nombre": "Soporte pared para control remoto",    "material_preferente": "PETG",    "montaje": "Cinta o tornillos",
-
     "categoria": "accesorios",
-
-    "linea": "PETG",    "tamano": "90x70x55 mm",    "tiempo_entrega": "2-3 días",
-
-    "descripcion": "Holster frontal abierto para acceso rapido y orden.",
-
-    "material": "PETG",    "colores": "Negro, humo",    "incluye": "Empaque estándar",
-
-    "material_preferente": "PETG",
-
-    "tamano": "115x55x25 mm",    "carga": "Hasta 700 g",    "estado": "activo",
-
-    "colores": "Negro",
-
-    "montaje": "Cinta o tornillos",    "montaje": "Cinta o tornillos",    "tags": ["setup", "audio", "pared", "petg"]
-
-    "tiempo_entrega": "2-3 dias",
-
-    "precio_base_mxn": 80,    "tiempo_entrega": "2-3 dias",  },
-
-    "imagen": "assets/img/product-utilitario.svg",
-
-    "estado": "activo",    "precio_base_mxn": 100,  {
-
-    "tags": ["accesorio", "petg", "control"]
-
-  },    "imagen": "assets/img/product-utilitario.svg",    "id": "m3d-ac-phst",
-
-  {
-
-    "id": "m3d-iot-box54",    "estado": "activo",    "sku": "M3D-AC-PHST",
-
-    "sku": "M3D-IOT-BOX54",
-
-    "nombre": "Caja IoT IP54 para ESP32",    "tags": ["accesorio", "petg", "audio"]    "nombre": "Porta-celular inclinable",
-
-    "categoria": "iot",
-
-    "linea": "PETG",  },    "categoria": "accesorios",
-
-    "descripcion": "Gabinete basico con junta simple para interiores exigentes y salpicaduras.",
-
-    "material": "PETG",  {    "precio_base_mxn": 80,
-
-    "material_preferente": "PETG",
-
-    "tamano": "120x80x45 mm",    "id": "m3d-ac-phst",    "imagen": "/assets/img/product-porta-celular.svg",
-
-    "colores": "Negro",
-
-    "fijacion": "Orejas laterales",    "sku": "M3D-AC-PHST",    "material": "PETG",
-
-    "tiempo_entrega": "3-4 dias",
-
-    "precio_base_mxn": 150,    "nombre": "Porta-celular inclinable",    "material_preferente": "PETG",
-
-    "imagen": "assets/img/product-iot.svg",
-
-    "estado": "activo",    "categoria": "accesorios",    "tamano": "95x75x70 mm",
-
-    "tags": ["iot", "petg", "caja"]
-
-  },    "linea": "PETG",    "colores": "Negro, humo",
-
-  {
-
-    "id": "m3d-ll-clv-pla",    "descripcion": "Base estable con angulo variable para video y videollamadas.",    "caracteristicas": "Angulo ajustable 20-60 deg",
-
-    "sku": "M3D-LL-CLV-PLA",
-
-    "nombre": "Llavero Calaverita PLA",    "material": "PETG",    "tiempo_entrega": "1-2 días",
-
-    "categoria": "pla",
-
-    "linea": "PLA decorativa",    "material_preferente": "PETG",    "incluye": "Empaque estándar",
-
-    "descripcion": "Llavero ligero de alto contraste para temporada y uso diario.",
-
-    "material": "PLA",    "tamano": "95x75x70 mm",    "estado": "activo",
-
-    "material_preferente": "PLA",
-
-    "tamano": "45-50 mm",    "angulo": "20-60 grados",    "tags": ["setup", "movil", "petg"]
-
-    "colores": "Blanco, morado, naranja",
-
-    "personalizacion": "Nombre corto",    "colores": "Negro, humo",  },
-
-    "tiempo_entrega": "1-2 dias",
-
-    "precio_base_mxn": 30,    "tiempo_entrega": "1-2 dias",  {
-
-    "imagen": "assets/img/placeholder-catalog.svg",
-
-    "estado": "activo",    "precio_base_mxn": 80,    "id": "m3d-or-cbl5",
-
-    "tags": ["llavero", "pla", "calaverita"]
-
-  },    "imagen": "assets/img/product-utilitario.svg",    "sku": "M3D-OR-CBL5",
-
-  {
-
-    "id": "m3d-mc-mini-pla",    "estado": "activo",    "nombre": "Organizador de cables (pack 5)",
-
-    "sku": "M3D-MC-MINI-PLA",
-
-    "nombre": "Maceta mini poligonal",    "tags": ["accesorio", "petg", "movil"]    "categoria": "organizacion",
-
-    "categoria": "pla",
-
-    "linea": "PLA decorativa",  },    "precio_base_mxn": 50,
-
-    "descripcion": "Maceta para suculentas y mini esquejes.",
-
-    "material": "PLA",  {    "imagen": "/assets/img/product-organizador-cables.svg",
-
-    "material_preferente": "PLA",
-
-    "tamano": "60-70 mm diametro",    "id": "m3d-or-cbl5",    "material": "PETG",
-
-    "colores": "Varios",
-
-    "tiempo_entrega": "1-2 dias",    "sku": "M3D-OR-CBL5",    "material_preferente": "PETG",
-
-    "precio_base_mxn": 50,
-
-    "imagen": "assets/img/product-colgante.svg",    "nombre": "Organizador de cables (pack 5)",    "tamano": "20-30 mm diametro",
-
-    "estado": "activo",
-
-    "tags": ["maceta", "pla", "decoracion"]    "categoria": "organizacion",    "colores": "Surtido",
-
-  },
-
-  {    "linea": "PETG",    "tiempo_entrega": "1 día",
-
-    "id": "m3d-dk-top-pla",
-
-    "sku": "M3D-DK-TOP-PLA",    "descripcion": "Clips para guiar cables en escritorio y pared.",    "incluye": "Empaque estándar",
-
-    "nombre": "Topper de pastel personalizable",
-
-    "categoria": "pla",    "material": "PETG",    "estado": "activo",
-
-    "linea": "PLA decorativa",
-
-    "descripcion": "Texto a eleccion para eventos y celebraciones.",    "material_preferente": "PETG",    "tags": ["organizador", "cables", "set"]
-
-    "material": "PLA",
-
-    "material_preferente": "PLA",    "tamano": "20-30 mm diametro",  },
-
-    "tamano": "120-160 mm",
-
-    "colores": "Dorado, negro, blanco",    "colores": "Surtido",  {
-
-    "personalizacion": "Texto a eleccion",
-
-    "tiempo_entrega": "2-3 dias",    "tiempo_entrega": "1 dia",    "id": "m3d-hg-clip4",
-
+    "linea": "PETG",
     "precio_base_mxn": 80,
-
-    "imagen": "assets/img/placeholder-catalog.svg",    "precio_base_mxn": 50,    "sku": "M3D-HG-CLIP4",
-
-    "estado": "activo",
-
-    "tags": ["topper", "pla", "evento"]    "imagen": "assets/img/product-utilitario.svg",    "nombre": "Clip multiusos (pack 4)",
-
-  },
-
-  {    "estado": "activo",    "categoria": "hogar",
-
-    "id": "m3d-dc-star3-pla",
-
-    "sku": "M3D-DC-STAR3-PLA",    "tags": ["organizacion", "petg", "cables"]    "precio_base_mxn": 50,
-
-    "nombre": "Adorno colgante estrella (pack 3)",
-
-    "categoria": "pla",  },    "imagen": "/assets/img/product-clip-multi.svg",
-
-    "linea": "PLA decorativa",
-
-    "descripcion": "Estrellas ligeras para arbol, ventanas o fotos.",  {    "material": "PETG",
-
-    "material": "PLA",
-
-    "material_preferente": "PLA",    "id": "m3d-hg-clip4",    "material_preferente": "PETG",
-
-    "tamano": "60 mm cada pieza",
-
-    "colores": "Blanco, dorado",    "sku": "M3D-HG-CLIP4",    "tamano": "35-45 mm",
-
+    "descripcion": "Base plegable con varias posiciones para escritorio o mesita.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "95x75x70 mm",
+    "colores": "Negro, humo",
+    "angulo": "20-60 deg",
     "tiempo_entrega": "1-2 dias",
-
-    "precio_base_mxn": 50,    "nombre": "Clip multiusos (pack 4)",    "colores": "Surtido",
-
-    "imagen": "assets/img/placeholder-catalog.svg",
-
-    "estado": "activo",    "categoria": "hogar",    "tiempo_entrega": "1 día",
-
-    "tags": ["adorno", "pla", "estrella"]
-
-  }    "linea": "PETG",    "incluye": "Empaque estándar",
-
-]
-
-    "descripcion": "Pinzas compactas para bolsas, papeles y sujecion ligera.",    "estado": "activo",
-
-    "material": "PETG",    "tags": ["clip", "hogar", "petg"]
-
-    "material_preferente": "PETG",  },
-
-    "tamano": "35-45 mm",  {
-
-    "colores": "Surtido",    "id": "m3d-hg-ganch2",
-
-    "tiempo_entrega": "1 dia",    "sku": "M3D-HG-GANCH2",
-
-    "precio_base_mxn": 50,    "nombre": "Gancho universal (par)",
-
-    "imagen": "assets/img/product-utilitario.svg",    "categoria": "hogar",
-
-    "estado": "activo",    "precio_base_mxn": 50,
-
-    "tags": ["hogar", "petg", "clip"]    "imagen": "/assets/img/product-gancho-universal.svg",
-
-  },    "material": "PETG",
-
-  {    "material_preferente": "PETG",
-
-    "id": "m3d-hg-ganch2",    "tamano": "60x12 mm",
-
-    "sku": "M3D-HG-GANCH2",    "carga": "<=1 kg",
-
-    "nombre": "Gancho universal (par)",    "colores": "Negro, humo",
-
-    "categoria": "hogar",    "tiempo_entrega": "1-2 días",
-
-    "linea": "PETG",    "incluye": "Empaque estándar",
-
-    "descripcion": "Ganchos finos para mochilas, llaves o cables.",    "estado": "activo",
-
-    "material": "PETG",    "tags": ["gancho", "hogar", "petg"]
-
-    "material_preferente": "PETG",  },
-
-    "tamano": "60x12 mm",  {
-
-    "carga": "Hasta 1 kg",    "id": "m3d-hg-sdoor",
-
-    "colores": "Negro, humo",    "sku": "M3D-HG-SDOOR",
-
-    "tiempo_entrega": "1-2 dias",    "nombre": "Sujetapuertas robusto",
-
-    "precio_base_mxn": 50,    "categoria": "hogar",
-
-    "imagen": "assets/img/product-utilitario.svg",    "precio_base_mxn": 50,
-
-    "estado": "activo",    "imagen": "/assets/img/product-sujetapuerta.svg",
-
-    "tags": ["hogar", "petg", "gancho"]    "material": "PETG",
-
-  },    "material_preferente": "PETG",
-
-  {    "tamano": "110x35x25 mm",
-
-    "id": "m3d-hg-sdoor",    "colores": "Negro",
-
-    "sku": "M3D-HG-SDOOR",    "tiempo_entrega": "1-2 días",
-
-    "nombre": "Sujetapuertas robusto",    "incluye": "Empaque estándar",
-
-    "categoria": "hogar",    "estado": "activo",
-
-    "linea": "PETG",    "tags": ["hogar", "puertas", "petg"]
-
-    "descripcion": "Cuna estable con agarre para superficies lisas.",  },
-
-    "material": "PETG",  {
-
-    "material_preferente": "PETG",    "id": "m3d-hg-key4",
-
-    "tamano": "110x35x25 mm",    "sku": "M3D-HG-KEY4",
-
-    "colores": "Negro",    "nombre": "Porta-llaves mural (4 ganchos)",
-
-    "tiempo_entrega": "1-2 dias",    "categoria": "hogar",
-
-    "precio_base_mxn": 50,    "precio_base_mxn": 100,
-
-    "imagen": "assets/img/product-utilitario.svg",    "imagen": "/assets/img/product-portallaves.svg",
-
-    "estado": "activo",    "material": "PETG",
-
-    "tags": ["hogar", "petg", "puerta"]    "material_preferente": "PETG",
-
-  },    "tamano": "150x45 mm",
-
-  {    "colores": "Negro, blanco",
-
-    "id": "m3d-hg-key4",    "montaje": "Cinta o tornillos",
-
-    "sku": "M3D-HG-KEY4",    "tiempo_entrega": "2-3 días",
-
-    "nombre": "Porta-llaves mural (4 ganchos)",    "incluye": "Empaque estándar",
-
-    "categoria": "hogar",    "estado": "activo",
-
-    "linea": "PETG",    "tags": ["organizador", "llaves", "pared", "petg"]
-
-    "descripcion": "Riel compacto para entradas y cocinas.",  },
-
-    "material": "PETG",  {
-
-    "material_preferente": "PETG",    "id": "m3d-ac-ctrl",
-
-    "tamano": "150x45 mm",    "sku": "M3D-AC-CTRL",
-
-    "colores": "Negro, blanco",    "nombre": "Soporte pared para control remoto",
-
-    "montaje": "Cinta o tornillos",    "categoria": "accesorios",
-
-    "tiempo_entrega": "2-3 dias",    "precio_base_mxn": 80,
-
-    "precio_base_mxn": 100,    "imagen": "/assets/img/product-soporte-control.svg",
-
-    "imagen": "assets/img/product-utilitario.svg",    "material": "PETG",
-
-    "estado": "activo",    "material_preferente": "PETG",
-
-    "tags": ["hogar", "petg", "llaves"]    "tamano": "115x55x25 mm",
-
-  },    "colores": "Negro",
-
-  {    "montaje": "Cinta o tornillos",
-
-    "id": "m3d-ac-ctrl",    "tiempo_entrega": "2-3 días",
-
-    "sku": "M3D-AC-CTRL",    "incluye": "Empaque estándar",
-
-    "nombre": "Soporte pared para control remoto",    "estado": "activo",
-
-    "categoria": "accesorios",    "tags": ["setup", "control", "pared"]
-
-    "linea": "PETG",  },
-
-    "descripcion": "Holster frontal abierto para acceso rapido y orden.",  {
-
-    "material": "PETG",    "id": "m3d-iot-box54",
-
-    "material_preferente": "PETG",    "sku": "M3D-IOT-BOX54",
-
-    "tamano": "115x55x25 mm",    "nombre": "Caja IoT IP54 para ESP32",
-
-    "colores": "Negro",    "categoria": "iot",
-
-    "montaje": "Cinta o tornillos",    "precio_base_mxn": 150,
-
-    "tiempo_entrega": "2-3 dias",    "imagen": "/assets/img/product-iot-box.svg",
-
-    "precio_base_mxn": 80,    "material": "PETG",
-
-    "imagen": "assets/img/product-utilitario.svg",    "material_preferente": "PETG",
-
-    "estado": "activo",    "tamano": "120x80x45 mm",
-
-    "tags": ["accesorio", "petg", "control"]    "colores": "Negro",
-
-  },    "sellado": "Junta simple",
-
-  {    "montaje": "Orejas laterales",
-
-    "id": "m3d-iot-box54",    "tiempo_entrega": "3-4 días",
-
-    "sku": "M3D-IOT-BOX54",    "incluye": "Empaque estándar",
-
-    "nombre": "Caja IoT IP54 para ESP32",    "estado": "activo",
-
-    "categoria": "iot",    "tags": ["iot", "esp32", "caja", "petg"]
-
-    "linea": "PETG",  },
-
-    "descripcion": "Gabinete basico con junta simple para interiores exigentes y salpicaduras.",  {
-
-    "material": "PETG",    "id": "m3d-ll-clv-pla",
-
-    "material_preferente": "PETG",    "sku": "M3D-LL-CLV-PLA",
-
-    "tamano": "120x80x45 mm",    "nombre": "Llavero Calaverita PLA",
-
-    "colores": "Negro",    "categoria": "pla",
-
-    "fijacion": "Orejas laterales",    "precio_base_mxn": 30,
-
-    "tiempo_entrega": "3-4 dias",    "imagen": "/assets/img/product-llavero-calaverita-pla.svg",
-
-    "precio_base_mxn": 150,    "material": "PLA",
-
-    "imagen": "assets/img/product-iot.svg",    "material_preferente": "PLA",
-
-    "estado": "activo",    "tamano": "45-50 mm",
-
-    "tags": ["iot", "petg", "caja"]    "colores": "Blanco, morado, naranja",
-
-  },    "personalizacion": "Nombre corto",
-
-  {    "tiempo_entrega": "1-2 días",
-
-    "id": "m3d-ll-clv-pla",    "incluye": "Empaque estándar",
-
-    "sku": "M3D-LL-CLV-PLA",    "estado": "activo",
-
-    "nombre": "Llavero Calaverita PLA",    "tags": ["llavero", "pla", "calaverita"]
-
-    "categoria": "pla",  },
-
-    "linea": "PLA decorativa",  {
-
-    "descripcion": "Llavero ligero de alto contraste para temporada y uso diario.",    "id": "m3d-mc-mini-pla",
-
-    "material": "PLA",    "sku": "M3D-MC-MINI-PLA",
-
-    "material_preferente": "PLA",    "nombre": "Maceta mini poligonal",
-
-    "tamano": "45-50 mm",    "categoria": "pla",
-
-    "colores": "Blanco, morado, naranja",    "precio_base_mxn": 50,
-
-    "personalizacion": "Nombre corto",    "imagen": "/assets/img/product-maceta-mini.svg",
-
-    "tiempo_entrega": "1-2 dias",    "material": "PLA",
-
-    "precio_base_mxn": 30,    "material_preferente": "PLA",
-
-    "imagen": "assets/img/placeholder-catalog.svg",    "tamano": "60-70 mm diametro",
-
-    "estado": "activo",    "uso": "Suculentas",
-
-    "tags": ["llavero", "pla", "calaverita"]    "colores": "Varios",
-
-  },    "tiempo_entrega": "1-2 días",
-
-  {    "incluye": "Empaque estándar",
-
-    "id": "m3d-mc-mini-pla",    "estado": "activo",
-
-    "sku": "M3D-MC-MINI-PLA",    "tags": ["maceta", "pla", "decoracion"]
-
-    "nombre": "Maceta mini poligonal",  },
-
-    "categoria": "pla",  {
-
-    "linea": "PLA decorativa",    "id": "m3d-dk-top-pla",
-
-    "descripcion": "Maceta para suculentas y mini esquejes.",    "sku": "M3D-DK-TOP-PLA",
-
-    "material": "PLA",    "nombre": "Topper de pastel personalizable",
-
-    "material_preferente": "PLA",    "categoria": "pla",
-
-    "tamano": "60-70 mm diametro",    "precio_base_mxn": 80,
-
-    "colores": "Varios",    "imagen": "/assets/img/product-topper-pastel.svg",
-
-    "tiempo_entrega": "1-2 dias",    "material": "PLA",
-
-    "precio_base_mxn": 50,    "material_preferente": "PLA",
-
-    "imagen": "assets/img/product-colgante.svg",    "tamano": "120-160 mm",
-
-    "estado": "activo",    "personalizacion": "Texto a elección",
-
-    "tags": ["maceta", "pla", "decoracion"]    "colores": "Dorado, negro, blanco",
-
-  },    "tiempo_entrega": "2-3 días",
-
-  {    "incluye": "Empaque plano",
-
-    "id": "m3d-dk-top-pla",    "estado": "activo",
-
-    "sku": "M3D-DK-TOP-PLA",    "tags": ["topper", "evento", "pla"]
-
-    "nombre": "Topper de pastel personalizable",  },
-
-    "categoria": "pla",  {
-
-    "linea": "PLA decorativa",    "id": "m3d-dc-star3-pla",
-
-    "descripcion": "Texto a eleccion para eventos y celebraciones.",    "sku": "M3D-DC-STAR3-PLA",
-
-    "material": "PLA",    "nombre": "Adorno colgante estrella (pack 3)",
-
-    "material_preferente": "PLA",    "categoria": "pla",
-
-    "tamano": "120-160 mm",    "precio_base_mxn": 50,
-
-    "colores": "Dorado, negro, blanco",    "imagen": "/assets/img/product-adorno-estrella.svg",
-
-    "personalizacion": "Texto a eleccion",    "material": "PLA",
-
-    "tiempo_entrega": "2-3 dias",    "material_preferente": "PLA",
-
-    "precio_base_mxn": 80,    "tamano": "60 mm cada pieza",
-
-    "imagen": "assets/img/placeholder-catalog.svg",    "colores": "Blanco, dorado",
-
-    "estado": "activo",    "tiempo_entrega": "1-2 días",
-
-    "tags": ["topper", "pla", "evento"]    "incluye": "Empaque estándar",
-
-  },    "estado": "activo",
-
-  {    "tags": ["adorno", "estrella", "pla"]
-
-    "id": "m3d-dc-star3-pla",  }
-
-    "sku": "M3D-DC-STAR3-PLA",]
-
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-porta-celular.svg",
+    "estado": "activo",
+    "tags": ["setup", "movil", "petg"]
+  },
+  {
+    "id": "m3d-or-cbl5",
+    "sku": "M3D-OR-CBL5",
+    "nombre": "Organizador de cables (pack 5)",
+    "categoria": "organizacion",
+    "linea": "PETG",
+    "precio_base_mxn": 50,
+    "descripcion": "Clips flexibles para fijar cables a la orilla de escritorios o racks.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "20-30 mm diametro",
+    "colores": "Surtido",
+    "tiempo_entrega": "1 dia",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-organizador-cables.svg",
+    "estado": "activo",
+    "tags": ["organizador", "cables", "set"]
+  },
+  {
+    "id": "m3d-hg-clip4",
+    "sku": "M3D-HG-CLIP4",
+    "nombre": "Clip multiusos (pack 4)",
+    "categoria": "hogar",
+    "linea": "PETG",
+    "precio_base_mxn": 50,
+    "descripcion": "Pinzas versatiles para sellar bolsas o sujetar notas en casa.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "35-45 mm",
+    "colores": "Surtido",
+    "tiempo_entrega": "1 dia",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-clip-multi.svg",
+    "estado": "activo",
+    "tags": ["clip", "hogar", "petg"]
+  },
+  {
+    "id": "m3d-hg-ganch2",
+    "sku": "M3D-HG-GANCH2",
+    "nombre": "Gancho universal (par)",
+    "categoria": "hogar",
+    "linea": "PETG",
+    "precio_base_mxn": 50,
+    "descripcion": "Par de ganchos compactos perfectos para mochilas, llaves o audifonos.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "60x12 mm",
+    "colores": "Negro, humo",
+    "carga": "<=1 kg",
+    "montaje": "Cinta 3M o tornillos",
+    "tiempo_entrega": "1-2 dias",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-gancho-universal.svg",
+    "estado": "activo",
+    "tags": ["gancho", "hogar", "petg"]
+  },
+  {
+    "id": "m3d-hg-sdoor",
+    "sku": "M3D-HG-SDOOR",
+    "nombre": "Sujetapuertas robusto",
+    "categoria": "hogar",
+    "linea": "PETG",
+    "precio_base_mxn": 50,
+    "descripcion": "Cuña robusta con grip antideslizante para mantener puertas abiertas.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "110x35x25 mm",
+    "colores": "Negro",
+    "tiempo_entrega": "1-2 dias",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-sujetapuerta.svg",
+    "estado": "activo",
+    "tags": ["hogar", "puertas", "petg"]
+  },
+  {
+    "id": "m3d-hg-key4",
+    "sku": "M3D-HG-KEY4",
+    "nombre": "Porta-llaves mural (4 ganchos)",
+    "categoria": "hogar",
+    "linea": "PETG",
+    "precio_base_mxn": 100,
+    "descripcion": "Organizador mural de perfil delgado con iconos para cada gancho.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "150x45 mm",
+    "colores": "Negro, blanco",
+    "montaje": "Cinta 3M o tornillos",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Tornillos y taquetes",
+    "imagen": "assets/img/product-portallaves.svg",
+    "estado": "activo",
+    "tags": ["organizador", "llaves", "pared", "petg"]
+  },
+  {
+    "id": "m3d-ac-ctrl",
+    "sku": "M3D-AC-CTRL",
+    "nombre": "Soporte pared para control remoto",
+    "categoria": "accesorios",
+    "linea": "PETG",
+    "precio_base_mxn": 80,
+    "descripcion": "Bolsillo montable compatible con controles tipo streaming o climatizacion.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "115x55x25 mm",
+    "colores": "Negro",
+    "montaje": "Cinta 3M o tornillos",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Tornillos y taquetes",
+    "imagen": "assets/img/product-soporte-control.svg",
+    "estado": "activo",
+    "tags": ["setup", "control", "pared"]
+  },
+  {
+    "id": "m3d-iot-box54",
+    "sku": "M3D-IOT-BOX54",
+    "nombre": "Caja IoT IP54 para ESP32",
+    "categoria": "iot",
+    "linea": "PETG",
+    "precio_base_mxn": 150,
+    "descripcion": "Enclosure robusto con puntos de montaje y espacio para sensor externo.",
+    "material": "PETG",
+    "material_preferente": "PETG",
+    "tamano": "120x80x45 mm",
+    "colores": "Negro",
+    "sellado": "Junta simple",
+    "montaje": "Orejas laterales",
+    "tiempo_entrega": "3-4 dias",
+    "incluye": "Tornillos y prensa cable",
+    "imagen": "assets/img/product-iot-box.svg",
+    "estado": "activo",
+    "tags": ["iot", "esp32", "caja", "petg"]
+  },
+  {
+    "id": "m3d-ll-clv-pla",
+    "sku": "M3D-LL-CLV-PLA",
+    "nombre": "Llavero Calaverita PLA",
+    "categoria": "pla",
+    "linea": "PLA",
+    "precio_base_mxn": 30,
+    "descripcion": "Llavero ligero en PLA ideal para colecciones tematicas o souvenires.",
+    "material": "PLA",
+    "material_preferente": "PLA",
+    "tamano": "45-50 mm",
+    "colores": "Blanco, morado, naranja",
+    "personalizacion": "Nombre corto",
+    "tiempo_entrega": "1-2 dias",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-llavero-calaverita-pla.svg",
+    "estado": "activo",
+    "tags": ["llavero", "pla", "calaverita"]
+  },
+  {
+    "id": "m3d-mc-mini-pla",
+    "sku": "M3D-MC-MINI-PLA",
+    "nombre": "Maceta mini poligonal",
+    "categoria": "pla",
+    "linea": "PLA",
+    "precio_base_mxn": 50,
+    "descripcion": "Maceta pequena con geometria low-poly perfecta para suculentas.",
+    "material": "PLA",
+    "material_preferente": "PLA",
+    "tamano": "60-70 mm diametro",
+    "uso": "Suculentas",
+    "colores": "Varios",
+    "tiempo_entrega": "1-2 dias",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-maceta-mini.svg",
+    "estado": "activo",
+    "tags": ["maceta", "pla", "decoracion"]
+  },
+  {
+    "id": "m3d-dk-top-pla",
+    "sku": "M3D-DK-TOP-PLA",
+    "nombre": "Topper de pastel personalizable",
+    "categoria": "pla",
+    "linea": "PLA",
+    "precio_base_mxn": 80,
+    "descripcion": "Topper elegante con tipografia moderna y nombre personalizable.",
+    "material": "PLA",
+    "material_preferente": "PLA",
+    "tamano": "120-160 mm",
+    "personalizacion": "Texto a eleccion",
+    "colores": "Dorado, negro, blanco",
+    "tiempo_entrega": "2-3 dias",
+    "incluye": "Empaque plano",
+    "imagen": "assets/img/product-topper-pastel.svg",
+    "estado": "activo",
+    "tags": ["topper", "evento", "pla"]
+  },
+  {
+    "id": "m3d-dc-star3-pla",
+    "sku": "M3D-DC-STAR3-PLA",
     "nombre": "Adorno colgante estrella (pack 3)",
     "categoria": "pla",
-    "linea": "PLA decorativa",
-    "descripcion": "Estrellas ligeras para arbol, ventanas o fotos.",
+    "linea": "PLA",
+    "precio_base_mxn": 50,
+    "descripcion": "Juego de tres estrellas livianas para ventanas o arboles de temporada.",
     "material": "PLA",
     "material_preferente": "PLA",
     "tamano": "60 mm cada pieza",
     "colores": "Blanco, dorado",
     "tiempo_entrega": "1-2 dias",
-    "precio_base_mxn": 50,
-    "imagen": "assets/img/placeholder-catalog.svg",
+    "incluye": "Empaque estandar",
+    "imagen": "assets/img/product-adorno-estrella.svg",
     "estado": "activo",
-    "tags": ["adorno", "pla", "estrella"]
+    "tags": ["adorno", "estrella", "pla"]
   }
 ]
