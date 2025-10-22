@@ -110,13 +110,9 @@ async function loadProducts() {
   const productsBase = await loadJSON(CONFIG.DATA_PATHS.productsBase);
   if (!productsBase) return;
 
-  // Calculate sale prices
+  // Filter active products (no price calculation needed, prices are final)
   allProducts = productsBase
-    .filter(p => p.estado === 'activo')
-    .map(product => ({
-      ...product,
-      precio_venta_mxn: calculateSalePrice(product.precio_base_mxn)
-    }));
+    .filter(p => p.estado === 'activo');
 
   displayedProducts = [...allProducts];
   renderProducts();
@@ -448,7 +444,7 @@ function filterProducts() {
     const matchesSearch = !searchTerm || 
       product.nombre.toLowerCase().includes(searchTerm) ||
   (product.descripcion || '').toLowerCase().includes(searchTerm) ||
-  (product.sku || '').toLowerCase().includes(searchTerm) ||
+  (product.id || '').toLowerCase().includes(searchTerm) ||
       product.tags?.some(tag => tag.toLowerCase().includes(searchTerm));
     
     return matchesCategory && matchesSearch;
