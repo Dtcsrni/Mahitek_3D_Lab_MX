@@ -1199,7 +1199,7 @@ button {
   margin: 1.5rem auto;
   width: 100%;
   max-width: 100%;
-  padding: 0;
+  padding: 0 56px; /* espacio para flechas a los lados */
 }
 
 /* Barra superior del carrusel (buscador integrado) */
@@ -1303,7 +1303,9 @@ button {
 }
 
 .carousel-btn {
-  position: relative;
+  position: absolute; /* siempre encima del carrusel */
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 10;
   flex-shrink: 0;
   width: 44px;
@@ -1319,6 +1321,7 @@ button {
   justify-content: center;
   transition: all var(--transition);
   box-shadow: 0 2px 12px rgba(6, 182, 212, 0.25);
+  pointer-events: auto;
 }
 
 .carousel-btn:hover {
@@ -1329,7 +1332,7 @@ button {
 }
 
 .carousel-btn:active {
-  transform: translateY(0);
+  transform: translateY(-50%) scale(0.98);
 }
 
 .carousel-btn:disabled {
@@ -1344,11 +1347,18 @@ button {
   stroke-width: 2.5;
 }
 
+/* Posiciones específicas de las flechas */
+.carousel-btn--prev {
+  left: max(8px, env(safe-area-inset-left));
+}
+
+.carousel-btn--next {
+  right: max(8px, env(safe-area-inset-right));
+}
+
 @media (max-width: 768px) {
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-  }
+  .carousel-container { padding: 0 48px; }
+  .carousel-btn { width: 40px; height: 40px; }
   
   .carousel-btn svg {
     width: 20px;
