@@ -124,21 +124,22 @@ async function loadProducts() {
 }
 
 function renderProducts() {
-  const grid = document.getElementById('product-grid');
-  if (!grid) return;
+  const carousel = document.getElementById('product-carousel');
+  if (!carousel) return;
 
   if (displayedProducts.length === 0) {
-    grid.innerHTML = `
+    carousel.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
         <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>No se encontraron productos con los filtros seleccionados. Ajusta los filtros o cuéntanos qué estás buscando.</p>
       </div>
     `;
-    registerAnimatedElements(grid);
+    registerAnimatedElements(carousel);
+    initCarousel();
     return;
   }
 
-  grid.innerHTML = displayedProducts.map((product, index) => {
+  carousel.innerHTML = displayedProducts.map((product, index) => {
     const delay = Math.min(index, 5) * 80;
     const imageSrc = (product.imagen || '').replace(/^\//, '') || CONFIG.PLACEHOLDER_IMAGE;
     const details = [
@@ -210,10 +211,11 @@ function renderProducts() {
   `;
   }).join('');
 
-  registerAnimatedElements(grid);
+  registerAnimatedElements(carousel);
+  initCarousel();
 
   // Log de interacción: add_to_cart en CTA
-  grid.addEventListener('click', (ev) => {
+  carousel.addEventListener('click', (ev) => {
     const btn = ev.target.closest('.product-cta');
     if (!btn) return;
     log('add_to_cart', {
@@ -221,6 +223,113 @@ function renderProducts() {
       item_name: btn.getAttribute('data-name') || ''
     });
   }, { once: true });
+}
+
+// ===== Carousel Controls =====
+function initCarousel() {
+  const carousel = document.getElementById('product-carousel');
+  const prevBtn = document.querySelector('.carousel-btn--prev');
+  const nextBtn = document.querySelector('.carousel-btn--next');
+  const indicatorsContainer = document.querySelector('.carousel-indicators');
+  
+  if (!carousel || !prevBtn || !nextBtn) return;
+
+  const cards = carousel.querySelectorAll('.product-card');
+  if (cards.length === 0) return;
+
+  let currentIndex = 0;
+
+  // Crear indicadores
+  if (indicatorsContainer) {
+    indicatorsContainer.innerHTML = Array.from(cards).map((_, i) => 
+      `<button class="carousel-indicator ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Ir a producto ${i + 1}"></button>`
+    ).join('');
+
+    indicatorsContainer.addEventListener('click', (e) => {
+      const indicator = e.target.closest('.carousel-indicator');
+      if (!indicator) return;
+      const index = parseInt(indicator.dataset.index, 10);
+      scrollToCard(index);
+    });
+  }
+
+  function scrollToCard(index) {
+    if (index < 0 || index >= cards.length) return;
+    
+    currentIndex = index;
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    
+    updateControls();
+  }
+
+  function updateControls() {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+
+    // Actualizar indicadores
+    if (indicatorsContainer) {
+      indicatorsContainer.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === currentIndex);
+      });
+    }
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) scrollToCard(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) scrollToCard(currentIndex + 1);
+  });
+
+  // Detectar scroll manual y actualizar índice
+  let scrollTimeout;
+  carousel.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollLeft = carousel.scrollLeft;
+      // Encontrar la tarjeta más cercana a la posición actual de scroll
+      let nearestIndex = 0;
+      let minDelta = Infinity;
+      cards.forEach((card, i) => {
+        const delta = Math.abs(card.offsetLeft - scrollLeft);
+        if (delta < minDelta) {
+          minDelta = delta;
+          nearestIndex = i;
+        }
+      });
+      currentIndex = nearestIndex;
+      updateControls();
+    }, 80);
+  }, { passive: true });
+
+  // Soporte táctil mejorado
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0 && currentIndex < cards.length - 1) {
+        scrollToCard(currentIndex + 1);
+      } else if (diff < 0 && currentIndex > 0) {
+        scrollToCard(currentIndex - 1);
+      }
+    }
+  }
+
+  updateControls();
 }
 
 function populateCategoryFilter() {
