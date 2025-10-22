@@ -193,9 +193,9 @@ function renderProducts() {
         <span class="product-sku">${product.id}</span>
         ${product.categoria ? `<span class="product-line">${product.categoria}</span>` : ''}
       </div>
-      <h3 class="product-name">${product.nombre}</h3>
-      <p class="product-price">$${product.precio_mxn} MXN</p>
-      <p class="product-price-note">Precio por pieza. Personalización básica incluida donde aplica.</p>
+  <h3 class="product-name">${product.nombre}</h3>
+  <p class="product-price">${product.precio_rango_mxn ? `$${product.precio_rango_mxn} MXN` : `$${product.precio_mxn} MXN`}</p>
+  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, urgencia y tirada.</p>
       <p class="product-description">${product.descripcion || ''}</p>
       ${detailMarkup}
       ${tagsMarkup}
@@ -472,6 +472,8 @@ async function loadPromos() {
 
   const now = new Date();
   const activePromos = promos.filter(promo => {
+    if (promo.estado && promo.estado === 'inactivo') return false;
+    if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
     const start = new Date(promo.desde);
     const end = new Date(promo.hasta);
     return now >= start && now <= end;
@@ -489,21 +491,103 @@ async function loadPromos() {
   }
 
   container.innerHTML = activePromos.map((promo, index) => {
-    const delay = Math.min(index, 4) * 90;
+    const delay = Math.min(index, 5) * 70;
+    const destacadoClass = promo.destacado ? 'promo-destacado' : '';
+    const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
+    const accentColor = promo.color_acento || '#6366F1';
+    
+    // Construir precio visual
+    let precioHTML = '';
+    if (promo.precio_regular) {
+      const unitario = promo.precio_unitario 
+        ? `<span class="promo-unitario">$${promo.precio_unitario.toFixed(2)} c/u</span>` 
+        : '';
+      precioHTML = `
+        <div class="promo-precio">
+          <span class="promo-precio-total">$${promo.precio_regular}</span>
+          ${unitario}
+        </div>
+      `;
+    } else if (promo.precio_especial) {
+      precioHTML = `
+        <div class="promo-precio">
+          <span class="promo-precio-especial">$${promo.precio_especial}</span>
+        </div>
+      `;
+    } else if (promo.monto_minimo) {
+      precioHTML = `
+        <div class="promo-minimo">
+          <span>Mínimo: $${promo.monto_minimo}</span>
+        </div>
+      `;
+    }
+
+    // Badge
+    const badgeHTML = promo.badge 
+      ? `<span class="promo-badge" style="--badge-color: ${accentColor}">${promo.badge}</span>` 
+      : '';
+
+    // Beneficios
+    const beneficiosHTML = promo.beneficios && promo.beneficios.length > 0
+      ? `
+        <ul class="promo-beneficios">
+          ${promo.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}
+        </ul>
+      `
+      : '';
+
+    // Fechas o permanente
+    let validezHTML = '';
+    if (promo.tipo === 'permanente') {
+      validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
+    } else if (promo.desde && promo.hasta) {
+      validezHTML = `<p class="promo-validez">📅 Válido ${formatDate(promo.desde)} – ${formatDate(promo.hasta)}</p>`;
+    }
+
+    // CTA
+    const ctaHTML = promo.cta_url 
+      ? `
+        <a href="${promo.cta_url}" 
+           class="btn btn-primary promo-cta" 
+           target="_blank" 
+           rel="noopener" 
+           data-promo-id="${promo.id}" 
+           data-promo-name="${promo.titulo}"
+           style="--btn-accent: ${accentColor}">
+          ${promo.cta_text || 'Más info'}
+        </a>
+      `
+      : `
+        <button class="btn btn-primary promo-cta-contact" 
+                data-promo-id="${promo.id}" 
+                data-promo-name="${promo.titulo}"
+                style="--btn-accent: ${accentColor}">
+          Consultar por WhatsApp
+        </button>
+      `;
+
     return `
-    <article class="card glass promo-card" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
-      <h3>${promo.titulo}</h3>
-      <p>${promo.mensaje}</p>
-      <p class="promo-dates">📅 Válido del ${formatDate(promo.desde)} al ${formatDate(promo.hasta)}</p>
-      <a href="${promo.cta_url}" class="btn btn-primary promo-cta" target="_blank" rel="noopener" data-promo-id="${promo.id || promo.titulo}" data-promo-name="${promo.titulo}">
-        ${promo.cta_text}
-      </a>
+    <article class="card glass promo-card ${destacadoClass} ${animClass}" 
+             data-animate="fade-up" 
+             data-promo-tipo="${promo.tipo}"
+             style="--animate-delay: ${delay}ms; --promo-accent: ${accentColor};">
+      <div class="promo-header">
+        <span class="promo-icono" aria-hidden="true">${promo.icono || '🎁'}</span>
+        ${badgeHTML}
+      </div>
+      <h3 class="promo-titulo">${promo.titulo}</h3>
+      <p class="promo-subtitulo">${promo.subtitulo || promo.descripcion || ''}</p>
+      ${precioHTML}
+      ${beneficiosHTML}
+      ${validezHTML}
+      ${ctaHTML}
     </article>
   `;
   }).join('');
 
   registerAnimatedElements(container);
 
+  // Analytics para CTAs externas
   container.addEventListener('click', (ev) => {
     const a = ev.target.closest('.promo-cta');
     if (!a) return;
@@ -511,7 +595,20 @@ async function loadPromos() {
       promotion_id: a.getAttribute('data-promo-id') || '',
       promotion_name: a.getAttribute('data-promo-name') || ''
     });
-  }, { once: true });
+  });
+
+  // CTAs de contacto interno
+  container.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.promo-cta-contact');
+    if (!btn) return;
+    const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
+    const message = encodeURIComponent(`Hola, quiero consultar sobre: ${promoName}`);
+    window.open(`https://wa.me/52XXXXXXXXXX?text=${message}`, '_blank', 'noopener');
+    log('contact_promo', {
+      promotion_id: btn.getAttribute('data-promo-id') || '',
+      promotion_name: promoName
+    });
+  });
 }
 
 function formatDate(dateString) {
