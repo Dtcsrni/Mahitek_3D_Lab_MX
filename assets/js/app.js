@@ -1,7 +1,7 @@
 // ===== Configuration =====
 const CONFIG = {
-  PRICE_MARKUP: 1.30,  // 30% markup
-  PRICE_STEP: 10,      // Round to nearest 10 MXN
+  PRICE_MARKUP: 1.0,   // Ajusta si requieres recargo adicional
+  PRICE_STEP: 10,      // Redondea al múltiplo de 10 MXN más cercano
   WHATSAPP_NUMBER: '52XXXXXXXXXX',
   DATA_PATHS: {
     productsBase: '/data/products_base.json',
@@ -10,6 +10,9 @@ const CONFIG = {
     faq: '/data/faq.json'
   }
 };
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let scrollObserver = null;
 
 // ===== Price Calculation =====
 function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONFIG.PRICE_STEP) {
@@ -27,6 +30,68 @@ async function loadJSON(path) {
     console.error(`Error loading ${path}:`, error);
     return null;
   }
+}
+
+// ===== Motion Helpers =====
+function setupHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+
+  const toggleState = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+
+  toggleState();
+  window.addEventListener('scroll', toggleState, { passive: true });
+}
+
+function setupScrollReveal() {
+  const animatedNodes = document.querySelectorAll('[data-animate]');
+  if (!animatedNodes.length) return;
+
+  if (prefersReducedMotion.matches) {
+    animatedNodes.forEach(node => node.classList.add('is-visible'));
+    return;
+  }
+
+  scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+
+  animatedNodes.forEach(node => scrollObserver.observe(node));
+}
+
+function registerAnimatedElements(root) {
+  if (!root || !(root instanceof Element)) return;
+
+  if (prefersReducedMotion.matches) {
+    if (root.matches('[data-animate]')) {
+      root.classList.add('is-visible');
+    }
+    root.querySelectorAll('[data-animate]').forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  if (!scrollObserver) return;
+
+  const candidates = [];
+
+  if (root.matches('[data-animate]') && !root.classList.contains('is-visible')) {
+    candidates.push(root);
+  }
+
+  root.querySelectorAll('[data-animate]').forEach(el => {
+    if (!el.classList.contains('is-visible')) {
+      candidates.push(el);
+    }
+  });
+
+  candidates.forEach(el => scrollObserver.observe(el));
 }
 
 // ===== Products =====
@@ -56,19 +121,23 @@ function renderProducts() {
 
   if (displayedProducts.length === 0) {
     grid.innerHTML = `
-      <div class="card glass">
-        <p>No se encontraron productos con los filtros seleccionados.</p>
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No se encontraron productos con los filtros seleccionados. Ajusta los filtros o cuéntanos qué estás buscando.</p>
       </div>
     `;
+    registerAnimatedElements(grid);
     return;
   }
 
-  grid.innerHTML = displayedProducts.map(product => `
-    <article class="card glass product-card">
+  grid.innerHTML = displayedProducts.map((product, index) => {
+    const delay = Math.min(index, 5) * 80;
+    return `
+    <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
       <img src="${product.imagen}" alt="${product.nombre}" />
       <h3 class="product-name">${product.nombre}</h3>
       <p class="product-price">$${product.precio_venta_mxn} MXN</p>
-      <p class="product-price-note">💡 Precio base: $${product.precio_base_mxn} + 30%</p>
+  <p class="product-price-note">💡 Precio estimado con personalización básica incluida. Ajustamos según acabados.</p>
       <p class="product-historia">${product.historia}</p>
       <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
         <strong>Material:</strong> ${product.material_preferente}
@@ -87,7 +156,10 @@ function renderProducts() {
         Consultar disponibilidad
       </a>
     </article>
-  `).join('');
+  `;
+  }).join('');
+
+  registerAnimatedElements(grid);
 }
 
 function populateCategoryFilter() {
@@ -120,10 +192,19 @@ function filterProducts() {
 // ===== Promos =====
 async function loadPromos() {
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
-  if (!promos || promos.length === 0) return;
-
   const container = document.getElementById('promos-container');
   if (!container) return;
+
+  if (!promos || promos.length === 0) {
+    container.innerHTML = `
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
+      </div>
+    `;
+    registerAnimatedElements(container);
+    return;
+  }
 
   const now = new Date();
   const activePromos = promos.filter(promo => {
@@ -134,15 +215,19 @@ async function loadPromos() {
 
   if (activePromos.length === 0) {
     container.innerHTML = `
-      <div class="card glass">
-        <p>No hay promociones activas en este momento. ¡Regresa pronto!</p>
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No hay promociones activas en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
       </div>
     `;
+    registerAnimatedElements(container);
     return;
   }
 
-  container.innerHTML = activePromos.map(promo => `
-    <article class="card glass promo-card">
+  container.innerHTML = activePromos.map((promo, index) => {
+    const delay = Math.min(index, 4) * 90;
+    return `
+    <article class="card glass promo-card" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
       <h3>${promo.titulo}</h3>
       <p>${promo.mensaje}</p>
       <p class="promo-dates">📅 Válido del ${formatDate(promo.desde)} al ${formatDate(promo.hasta)}</p>
@@ -150,7 +235,10 @@ async function loadPromos() {
         ${promo.cta_text}
       </a>
     </article>
-  `).join('');
+  `;
+  }).join('');
+
+  registerAnimatedElements(container);
 }
 
 function formatDate(dateString) {
@@ -161,17 +249,31 @@ function formatDate(dateString) {
 // ===== FAQ =====
 async function loadFAQ() {
   const faqData = await loadJSON(CONFIG.DATA_PATHS.faq);
-  if (!faqData) return;
-
   const container = document.getElementById('faq-list');
   if (!container) return;
 
-  container.innerHTML = faqData.map(item => `
-    <details class="faq-item">
+  if (!faqData || faqData.length === 0) {
+    container.innerHTML = `
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>Aún estamos documentando las preguntas frecuentes. Escríbenos por WhatsApp y resolvemos tu caso.</p>
+      </div>
+    `;
+    registerAnimatedElements(container);
+    return;
+  }
+
+  container.innerHTML = faqData.map((item, index) => {
+    const delay = Math.min(index, 5) * 70;
+    return `
+    <details class="faq-item" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
       <summary>${item.q}</summary>
       <p>${item.a}</p>
     </details>
-  `).join('');
+  `;
+  }).join('');
+
+  registerAnimatedElements(container);
 }
 
 // ===== Social Links =====
@@ -199,14 +301,22 @@ function setupNav() {
   
   if (!toggle || !menu) return;
 
+  const initialState = menu.classList.contains('active');
+  toggle.setAttribute('aria-expanded', String(initialState));
+  toggle.setAttribute('aria-label', initialState ? 'Cerrar menú' : 'Abrir menú');
+
   toggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
+    const isOpen = menu.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
   });
 
   // Close menu when clicking on a link
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
     });
   });
 }
@@ -229,6 +339,8 @@ function setupFilters() {
 async function init() {
   setupNav();
   setupFilters();
+  setupHeaderScroll();
+  setupScrollReveal();
   
   // Load all data
   await Promise.all([

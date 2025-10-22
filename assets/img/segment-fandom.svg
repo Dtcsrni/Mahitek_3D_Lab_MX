@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Coleccionables y fandom</title>
+  <desc id="desc">Display con figura, soporte para mando y luces neón.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4f1ff"/>
+      <stop offset="100%" stop-color="#e3e0ff"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2f80ff"/>
+      <stop offset="50%" stop-color="#8f5bff"/>
+      <stop offset="100%" stop-color="#c85bff"/>
+    </linearGradient>
+    <linearGradient id="hud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f80ff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#8f5bff" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="scan" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M12 0H0V12" fill="none" stroke="#8f5bff" stroke-width="0.6" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+  <rect x="30" y="30" width="140" height="140" rx="30" fill="url(#scan)" opacity="0.28"/>
+  <rect x="52" y="70" width="96" height="72" rx="22" fill="#0f172a" opacity="0.08"/>
+  <rect x="60" y="78" width="80" height="56" rx="18" fill="#ffffff"/>
+  <rect x="66" y="84" width="68" height="40" rx="14" fill="url(#hud)"/>
+  <rect x="76" y="90" width="48" height="32" rx="12" fill="#0f172a" opacity="0.08"/>
+  <rect x="84" y="86" width="32" height="12" rx="6" fill="#2f80ff" opacity="0.65"/>
+  <path d="M80 116h40l-4-16a12 12 0 0 0-12-9 12 12 0 0 0-12 9z" fill="#eb3b5a" opacity="0.7"/>
+  <path d="M76 122h48" stroke="#8f5bff" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <rect x="48" y="136" width="112" height="16" rx="8" fill="#0f172a" opacity="0.12"/>
+  <rect x="128" y="64" width="24" height="48" rx="12" fill="#0f172a" opacity="0.12"/>
+  <rect x="132" y="68" width="16" height="40" rx="10" fill="#ffffff"/>
+  <circle cx="140" cy="80" r="6" fill="#2f80ff" opacity="0.65"/>
+  <circle cx="140" cy="92" r="4" fill="#8f5bff" opacity="0.6"/>
+  <path d="M44 72h16v64H44z" fill="#ffffff" opacity="0.75"/>
+  <path d="M40 68h24v12H40z" fill="url(#neon)"/>
+  <path d="M40 74h24" stroke="#c85bff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <rect x="52" y="148" width="92" height="6" rx="3" fill="#0f172a" opacity="0.2"/>
+  <g fill="none" stroke-width="1.6" opacity="0.3">
+    <path d="M56 60l-12-12" stroke="#2f80ff" stroke-linecap="round"/>
+    <path d="M148 60l12-12" stroke="#8f5bff" stroke-linecap="round"/>
+    <path d="M60 162h80" stroke="#c85bff" stroke-dasharray="8 6"/>
+  </g>
+</svg>

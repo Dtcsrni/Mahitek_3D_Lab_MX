@@ -1,0 +1,74 @@
+[
+	{
+		"id": 1,
+		"title": "Actualizar referencias de imágenes",
+		"description": "Reemplazar rutas brand-mark por logo-color.svg y logo-mono.svg, y ajustar meta og:image.",
+		"status": "completed"
+	},
+	{
+		"id": 2,
+		"title": "Eliminar sección de métricas",
+		"description": "Quitar sección 'Clientes felices' y limpiar estilos relacionados.",
+		"status": "completed"
+	},
+	{
+		"id": 3,
+		"title": "Verificar activos gráficos",
+		"description": "Eliminar placeholders vacíos y confirmar que solo se usen SVG existentes.",
+		"status": "completed"
+	},
+	{
+		"id": 4,
+		"title": "Agregar placeholders SVG",
+		"description": "Crear e insertar ilustraciones SVG de relleno en secciones clave (catálogo, promos, FAQ, proceso, etc.) para cuando falte contenido visual.",
+		"status": "completed"
+	},
+	{
+		"id": 5,
+		"title": "Planificar animaciones y microinteracciones",
+		"description": "Definir qué secciones requieren animaciones de entrada, microinteracciones y transiciones; decidir entre CSS puro o IntersectionObserver.",
+		"status": "completed"
+	},
+	{
+		"id": 6,
+		"title": "Implementar animaciones CSS en secciones clave",
+		"description": "Agregar transiciones y keyframes para hero, tarjetas, secciones y navegación manteniendo buenas prácticas de rendimiento.",
+		"status": "completed"
+	},
+	{
+		"id": 7,
+		"title": "Añadir microinteracciones y scroll reveal",
+		"description": "Incorporar efectos suaves al hacer scroll (IntersectionObserver) y microinteracciones en botones y filtros.",
+		"status": "completed"
+	},
+	{
+		"id": 8,
+		"title": "Validar rendimiento y accesibilidad de animaciones",
+		"description": "Asegurar que se respeten preferencias de movimiento reducido y que las animaciones no afecten la legibilidad ni el rendimiento.",
+		"status": "completed"
+	},
+	{
+		"id": 9,
+		"title": "Planificar nuevas ilustraciones e imágenes",
+		"description": "Definir qué secciones requieren imágenes adicionales y qué categorías necesitan mejoras visuales coherentes con la marca.",
+		"status": "in-progress"
+	},
+	{
+		"id": 10,
+		"title": "Crear y optimizar nuevas imágenes SVG",
+		"description": "Diseñar ilustraciones SVG originales para hero, servicios, segmentos y categorías de productos, y guardarlas en assets/img.",
+		"status": "not-started"
+	},
+	{
+		"id": 11,
+		"title": "Integrar imágenes en el HTML y placeholders",
+		"description": "Actualizar index.html y las tarjetas de productos/segmentos para mostrar las nuevas ilustraciones y asegurar accesibilidad.",
+		"status": "not-started"
+	},
+	{
+		"id": 12,
+		"title": "Actualizar referencias y datos de catálogo",
+		"description": "Sincronizar paths en data/products_base.json y validar que todas las referencias apunten a imágenes disponibles.",
+		"status": "not-started"
+	}
+]

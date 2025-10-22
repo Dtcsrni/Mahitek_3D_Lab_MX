@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Soporte cercano</title>
+  <desc id="desc">Smartphone con conversación activa y piezas impresas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e9fff8"/>
+      <stop offset="100%" stop-color="#e9fff3"/>
+    </linearGradient>
+    <linearGradient id="bubble" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2f80ff"/>
+      <stop offset="50%" stop-color="#00a6a8"/>
+      <stop offset="100%" stop-color="#5fffe1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.65"/>
+    </linearGradient>
+    <pattern id="signal" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0V14" fill="none" stroke="#00f5ff" stroke-width="0.6" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+  <rect x="30" y="36" width="140" height="128" rx="28" fill="url(#signal)" opacity="0.32"/>
+  <rect x="70" y="44" width="60" height="112" rx="22" fill="#0f172a" opacity="0.08"/>
+  <rect x="76" y="50" width="48" height="100" rx="20" fill="url(#glass)"/>
+  <rect x="82" y="58" width="36" height="48" rx="12" fill="#0f172a" opacity="0.1"/>
+  <rect x="86" y="64" width="20" height="4" rx="2" fill="#2f80ff" opacity="0.7"/>
+  <rect x="86" y="74" width="28" height="4" rx="2" fill="#eb3b5a" opacity="0.65"/>
+  <rect x="86" y="84" width="24" height="4" rx="2" fill="#00a6a8" opacity="0.6"/>
+  <rect x="82" y="112" width="36" height="28" rx="12" fill="#0f172a" opacity="0.12"/>
+  <circle cx="100" cy="120" r="7" fill="#2f80ff"/>
+  <circle cx="100" cy="120" r="3" fill="#ffffff" opacity="0.75"/>
+  <rect x="84" y="142" width="32" height="6" rx="3" fill="#0f172a" opacity="0.18"/>
+  <path d="M122 74h36v28h-20l-16 12z" fill="url(#bubble)"/>
+  <circle cx="134" cy="86" r="4" fill="#ffffff" opacity="0.8"/>
+  <circle cx="144" cy="86" r="4" fill="#ffffff" opacity="0.8"/>
+  <rect x="52" y="96" width="28" height="32" rx="12" fill="#ffffff" opacity="0.78"/>
+  <path d="M56 108h20" stroke="#00f5ff" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+  <rect x="44" y="128" width="44" height="10" rx="5" fill="#0f172a" opacity="0.1"/>
+  <rect x="122" y="116" width="40" height="36" rx="14" fill="#ffffff" opacity="0.82"/>
+  <rect x="130" y="124" width="24" height="20" rx="8" fill="#eb3b5a" opacity="0.78"/>
+  <path d="M130 138h12" stroke="#2f80ff" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M140 130l8-8" stroke="#00f5ff" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <g fill="none" stroke-width="1.6" opacity="0.35">
+    <path d="M60 70l-12-12" stroke="#00a6a8" stroke-linecap="round"/>
+    <path d="M152 70l12-12" stroke="#2f80ff" stroke-linecap="round"/>
+    <path d="M70 158h60" stroke="#2f80ff" stroke-dasharray="6 4"/>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="title desc">
+  <title id="title">Catálogo Mahitek en preparación</title>
+  <desc id="desc">Caja de envío con filamento 3D y destellos que transmiten expectativa por nuevos productos.</desc>
+  <defs>
+    <linearGradient id="box" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="240" rx="24" fill="#0b1120" />
+  <g transform="translate(40 70)">
+    <rect x="0" y="48" width="240" height="96" rx="16" fill="url(#box)" stroke="#1f2937" stroke-width="4" />
+    <path d="M16 64h208" stroke="#334155" stroke-width="4" stroke-linecap="round" stroke-dasharray="16 12" />
+    <path d="M120 0c32 0 58 26 58 58s-26 58-58 58-58-26-58-58" fill="none" stroke="url(#glow)" stroke-width="8" stroke-linecap="round" />
+    <path d="M120 12c24 0 44 20 44 44s-20 44-44 44-44-20-44-44" fill="none" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 12" />
+    <circle cx="120" cy="56" r="20" fill="#0ea5e9" opacity="0.25" />
+    <path d="M106 46l16-16 16 16" fill="none" stroke="#38bdf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M106 66l16 16 16-16" fill="none" stroke="#22d3ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <g fill="#e2e8f0" opacity="0.65">
+      <rect x="32" y="92" width="56" height="12" rx="6" />
+      <rect x="152" y="92" width="56" height="12" rx="6" />
+    </g>
+  </g>
+  <g fill="#38bdf8" opacity="0.8">
+    <circle cx="54" cy="58" r="6" />
+    <circle cx="268" cy="54" r="4" />
+    <circle cx="288" cy="158" r="3" />
+  </g>
+  <g stroke="#facc15" stroke-width="6" stroke-linecap="round">
+    <path d="M84 46v14" />
+    <path d="M240 44v14" />
+    <path d="M254 74h14" />
+  </g>
+</svg>

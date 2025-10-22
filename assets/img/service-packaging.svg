@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Empaques listos</title>
+  <desc id="desc">Caja de regalo con tarjeta personalizada y lazo holográfico.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff1fb"/>
+      <stop offset="100%" stop-color="#ffe1f9"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eb3b5a"/>
+      <stop offset="60%" stop-color="#ff74d2"/>
+      <stop offset="100%" stop-color="#b583ff"/>
+    </linearGradient>
+    <linearGradient id="hud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9be6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffa7d9" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="scan" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M10 0H0V10" fill="none" stroke="#ffbdf0" stroke-width="0.5" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+  <rect x="30" y="40" width="140" height="124" rx="28" fill="url(#scan)" opacity="0.35"/>
+  <rect x="44" y="64" width="112" height="80" rx="22" fill="#0f172a" opacity="0.08"/>
+  <rect x="52" y="72" width="96" height="64" rx="20" fill="#ffffff"/>
+  <rect x="60" y="80" width="80" height="48" rx="18" fill="url(#hud)"/>
+  <rect x="76" y="58" width="48" height="92" rx="16" fill="url(#ribbon)"/>
+  <path d="M88 58h8v92h-8z" fill="#ffffff" opacity="0.55"/>
+  <path d="M76 92c12-6 16-16 24-16s12 10 24 16c-12 6-16 16-24 16s-12-10-24-16z" fill="#ffd6f0"/>
+  <path d="M72 100h56" stroke="#ff9be6" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <rect x="64" y="104" width="72" height="24" rx="12" fill="#0f172a" opacity="0.08"/>
+  <rect x="40" y="132" width="120" height="18" rx="9" fill="#0f172a" opacity="0.12"/>
+  <rect x="126" y="44" width="36" height="26" rx="10" fill="#ffffff" opacity="0.85"/>
+  <path d="M132 56h20" stroke="#eb3b5a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="142" cy="52" r="4" fill="#2f80ff"/>
+  <path d="M50 146h20" stroke="#ff9be6" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M132 146h20" stroke="#b583ff" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+</svg>

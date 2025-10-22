@@ -1,11 +1,11 @@
 # Mahitek 3D Lab — Landing Moderna
 
-Landing estática moderna con diseño oscuro + glassmorphism, sistema de precios transparente (base + 30%) y optimizada para tráfico QR, redes sociales y búsqueda directa.
+Landing estática moderna con diseño oscuro + glassmorphism, sistema de precios y optimizada para tráfico QR, redes sociales y búsqueda directa.
 
 ## 🚀 Características
 
 - **Diseño dark + glass**: Fondo oscuro (#0B0F14) con efectos glassmorphism
-- **Sistema de precios automático**: Calcula precio venta = base × 1.30 con redondeo configurable
+- **Sistema de precios automático**: Calcula precio venta = base con redondeo configurable
 - **Catálogo dinámico**: Filtros por categoría y búsqueda en tiempo real
 - **Emojis sobrios**: Iconografía visual sin sobrecarga
 - **Performance optimizado**: Sin dependencias pesadas, solo vanilla JS
@@ -28,13 +28,13 @@ Landing estática moderna con diseño oscuro + glassmorphism, sistema de precios
 
 El sistema calcula automáticamente precios de venta basándose en:
 
-**Fórmula**: `precio_venta = round_to_step(precio_base × 1.30, step)`
+**Fórmula**: `precio_venta = round_to_step(precio_base × multiplicador, step)`
 
 ### Configuración en `/assets/js/app.js`
 
 ```javascript
 const CONFIG = {
-  PRICE_MARKUP: 1.30,  // 30% markup (cambiar a 1.25 para 25%, etc.)
+  PRICE_MARKUP: 1.0,   // 1 = precio base; aumenta si necesitas recargo
   PRICE_STEP: 10,      // Redondea a múltiplos de 10 MXN
   ...
 };
@@ -44,13 +44,14 @@ const CONFIG = {
 
 ```
 Precio base: $200 MXN
-Markup: 30% (1.30)
-Cálculo: $200 × 1.30 = $260
-Redondeo: step=10 → $260 (ya es múltiplo de 10)
+Multiplicador: 1.15 (15% de recargo)
+Cálculo: $200 × 1.15 = $230
+Redondeo: step=10 → $230 MXN
 
 Precio base: $185 MXN
-Cálculo: $185 × 1.30 = $240.50
-Redondeo: step=10 → $240 MXN
+Multiplicador: 1.10 (10% de recargo)
+Cálculo: $185 × 1.10 = $203.5
+Redondeo: step=10 → $200 MXN
 ```
 
 ## 📝 Editar Contenido
@@ -78,7 +79,7 @@ Redondeo: step=10 → $240 MXN
 - `id`: Identificador único
 - `nombre`: Nombre del producto
 - `categoria`: Categoría para filtros
-- `precio_base_mxn`: Precio base (se calcula +30% automáticamente)
+- `precio_base_mxn`: Precio base (el multiplicador se define en `app.js`)
 - `imagen`: Ruta a la imagen
 - `material_preferente`: Material principal (PETG recomendado)
 - `estado`: `"activo"` para mostrar, `"inactivo"` para ocultar
@@ -184,7 +185,7 @@ Edita en `/assets/js/app.js`:
 
 ```javascript
 const CONFIG = {
-  PRICE_MARKUP: 1.25,  // 25% en lugar de 30%
+  PRICE_MARKUP: 1.15,  // 15% de recargo
   PRICE_STEP: 5,       // Redondear a múltiplos de 5
   ...
 };

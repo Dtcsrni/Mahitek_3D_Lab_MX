@@ -1,9 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Figura de escritorio</title>
-  <desc id="desc">Figura orgánica para escritorio con base sólida.</desc>
-  <rect width="200" height="200" rx="28" fill="#f1f5ff"/>
-  <path d="M60 150h80l-10-64a30 30 0 0 0-30-26 30 30 0 0 0-30 26z" fill="#0f172a" opacity="0.12"/>
-  <path d="M70 142h60l-8-58a22 22 0 0 0-22-19 22 22 0 0 0-22 19z" fill="#ffffff" opacity="0.9"/>
-  <path d="M100 58a16 16 0 0 0-16 16v10h32V74a16 16 0 0 0-16-16z" fill="#007a7c" opacity="0.6"/>
-  <circle cx="100" cy="64" r="10" fill="#eb3b5a" opacity="0.8"/>
+  <title id="title">Figura Silencio</title>
+  <desc id="desc">Figura orgánica para escritorio con base doble y compartimento para cables.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef3ff"/>
+      <stop offset="100%" stop-color="#f7faff"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dfe9ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+  <ellipse cx="100" cy="156" rx="54" ry="16" fill="#0f172a" opacity="0.12"/>
+  <path d="M58 152h84l-12-70a30 30 0 0 0-28-24 30 30 0 0 0-28 24z" fill="#0f172a" opacity="0.08"/>
+  <path d="M68 146h64l-10-58a24 24 0 0 0-22-19 24 24 0 0 0-22 19z" fill="url(#body)"/>
+  <path d="M96 60a18 18 0 0 0-18 18v12h44V78a18 18 0 0 0-18-18z" fill="#007a7c" opacity="0.35"/>
+  <circle cx="110" cy="70" r="10" fill="#2f80ff" opacity="0.45"/>
+  <circle cx="92" cy="74" r="8" fill="#eb3b5a" opacity="0.8"/>
+  <rect x="76" y="134" width="48" height="12" rx="6" fill="#2f80ff" opacity="0.3"/>
+  <path d="M70 150c10 8 24 12 30 12s20-4 30-12" stroke="#00a6a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+  <path d="M88 62c-2-6 2-12 8-14" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
 </svg>
