@@ -1,0 +1,24 @@
+# Windows noise
+desktop.ini
+**/desktop.ini
+Thumbs.db
+**/Thumbs.db
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Node/npm (por si a futuro)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+log/
+logs/
+
+# Editor/OS swaps
+*.swp
+*.swo
+*.tmp
+~$*
