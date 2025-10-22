@@ -656,21 +656,39 @@ async function loadFAQ() {
 
   // Interacciones: búsqueda y expandir/contraer
   const search = document.getElementById('faq-search');
+  const categorySelect = document.getElementById('faq-category');
   const btnExpand = document.getElementById('faq-expand');
   const btnCollapse = document.getElementById('faq-collapse');
   const items = Array.from(container.querySelectorAll('.faq-item'));
 
+  // Poblar categorías desde data
+  if (categorySelect) {
+    const categories = Array.from(new Set(faqData.map(i => i.categoria).filter(Boolean))).sort();
+    categories.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      categorySelect.appendChild(opt);
+    });
+  }
+
   function applyFilter(query) {
     const q = (query || '').trim().toLowerCase();
+    const cat = (categorySelect && categorySelect.value) ? categorySelect.value : '';
     items.forEach(el => {
       const text = el.textContent.toLowerCase();
-      const match = q.length === 0 || text.includes(q);
+      const matchText = q.length === 0 || text.includes(q);
+      const matchCat = !cat || (text.includes(cat) || (el.querySelector('summary span')?.textContent.toLowerCase().includes(cat)));
+      const match = matchText && matchCat;
       el.style.display = match ? '' : 'none';
     });
   }
 
   if (search) {
     search.addEventListener('input', (e) => applyFilter(e.target.value));
+  }
+  if (categorySelect) {
+    categorySelect.addEventListener('change', () => applyFilter(search ? search.value : ''));
   }
   if (btnExpand) {
     btnExpand.addEventListener('click', () => items.forEach(el => el.open = true));
@@ -687,6 +705,13 @@ async function loadFAQ() {
       targeted.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  // Inyectar JSON-LD de FAQPage (SEO)
+  try {
+    injectFAQSchema(faqData);
+  } catch (e) {
+    console.warn('FAQ schema injection skipped:', e);
+  }
 }
 
 function slugify(str) {
@@ -696,6 +721,31 @@ function slugify(str) {
     .replace(/\p{Diacritic}/gu, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
+}
+
+function injectFAQSchema(items) {
+  if (!Array.isArray(items) || items.length === 0) return;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(it => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: it.a
+      }
+    }))
+  };
+  const json = JSON.stringify(schema);
+  let script = document.getElementById('faq-schema');
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-schema';
+    document.head.appendChild(script);
+  }
+  script.textContent = json;
 }
 
 // ===== Social Links =====

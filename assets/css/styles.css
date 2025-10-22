@@ -2100,7 +2100,7 @@ button {
 /* Barra de herramientas de FAQ */
 .faq-toolbar {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 0.75rem;
   max-width: 800px;
   margin: 0 auto 1rem auto;
