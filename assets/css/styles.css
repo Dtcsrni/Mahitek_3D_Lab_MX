@@ -1410,25 +1410,97 @@ button {
 
 #social-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.875rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
-#social-links a {
-  padding: 0.5rem 1rem;
+/* Icon buttons: bigger, animated, accessible */
+#social-links .social-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
   background: var(--glass-bg);
   -webkit-backdrop-filter: var(--blur);
   backdrop-filter: var(--blur);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  transition: all var(--transition);
+  color: var(--text-primary);
+  /* SVGs usan currentColor; controlamos tamaño en svg */
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease),
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    background var(--motion-duration-fast) var(--motion-ease);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-#social-links a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent-cyan);
-  transform: translateY(-2px);
+#social-links .social-icon:hover,
+#social-links .social-icon:focus-visible {
+  transform: translateY(-4px) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 42px rgba(6, 182, 212, 0.18);
+  outline: none;
+}
+
+#social-links .social-icon svg,
+#social-links .social-icon img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  transition: transform var(--motion-duration-fast) var(--motion-ease),
+              filter var(--motion-duration-fast) var(--motion-ease);
+}
+
+#social-links .social-icon:hover svg,
+#social-links .social-icon:focus-visible svg,
+#social-links .social-icon:hover img,
+#social-links .social-icon:focus-visible img {
+  transform: translateY(-1px) scale(1.06);
+  filter: drop-shadow(0 4px 10px rgba(6, 182, 212, 0.25));
+}
+
+/* Platform multicolor backgrounds */
+#social-links .social-icon--instagram {
+  /* Instagram conic gradient per brand look */
+  background: conic-gradient(from 210deg, #F58529, #FEDA77, #DD2A7B, #8134AF, #515BD4, #F58529);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#social-links .social-icon--instagram:hover,
+#social-links .social-icon--instagram:focus-visible {
+  background: conic-gradient(from 210deg, #ff8a3d, #ffe089, #e23b8a, #8e40be, #5f6ae4, #ff8a3d);
+}
+
+#social-links .social-icon--facebook {
+  background: #1877F2;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#social-links .social-icon--facebook:hover,
+#social-links .social-icon--facebook:focus-visible {
+  background: linear-gradient(135deg, #1b74e4, #1877F2, #0f5fd6);
+}
+
+#social-links .social-icon--tiktok {
+  /* TikTok brand accents over dark base */
+  background: radial-gradient(40% 60% at 30% 30%, rgba(37, 244, 238, 0.55), transparent),
+              radial-gradient(40% 60% at 70% 70%, rgba(254, 44, 85, 0.55), transparent),
+              #0B0F14;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#social-links .social-icon--tiktok:hover,
+#social-links .social-icon--tiktok:focus-visible {
+  background: radial-gradient(42% 62% at 30% 28%, rgba(37, 244, 238, 0.7), transparent),
+              radial-gradient(42% 62% at 72% 72%, rgba(254, 44, 85, 0.68), transparent),
+              #0B0F14;
+}
+
+/* Footer contact minor tweak */
+.footer-contact .btn {
+  width: fit-content;
 }
 
 /* ===== Process ===== */

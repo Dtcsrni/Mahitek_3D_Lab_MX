@@ -14,10 +14,25 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mahitek 3D Lab — Impresión 3D en PETG">
   <meta name="twitter:description" content="Impresión 3D en Pachuca para regalos personalizados, decoración y proyectos creativos con envío nacional.">
+  <!-- GA4: Reemplaza G-XXXXXXXXXX por tu Measurement ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { transport_type: 'beacon', anonymize_ip: true });
+  </script>
   <link rel="canonical" href="https://mahitek3dlab.mx/">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" type="image/png" href="assets/img/favicon_512.png" sizes="512x512">
+  <!-- Favicons (añade archivos en raíz si los tienes disponibles) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- OG/Twitter image opcional en raíz: /og-image.png (1200x630) -->
+  <!-- <meta property="og:image" content="/og-image.png"> -->
   <meta name="theme-color" content="#0B0F14">
+  
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -85,7 +100,7 @@
           </ul>
           <div class="hero-ctas">
             <a href="#catalogo" class="btn btn-primary">Explorar catálogo 🧭</a>
-            <a href="https://wa.me/52XXXXXXXXXX" class="btn btn-ghost" target="_blank" rel="noopener">Solicitar cotización ✨</a>
+            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener">Solicitar cotización en Messenger ✨</a>
           </div>
           <div class="hero-note">
             <span class="accent-chip">✨ Material base: <span class="accent-text">PETG</span> resistente y libre de olor</span>
@@ -347,8 +362,9 @@
           <h2 id="cta-title">💬 ¿Lista tu próxima pieza personalizada?</h2>
           <p>Cuéntanos qué quieres regalar, decorar o lanzar. Creamos <span class="accent-text">moodboard, costos y calendario</span> para que tomes decisiones con calma.</p>
           <div class="cta-actions">
-            <a href="mailto:armsystechno@gmail.com" class="btn btn-primary">Escribir correo �</a>
-            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener">Mensaje en Messenger �</a>
+            <a class="btn btn-primary email-link" data-email-user="armsystechno" data-email-domain="gmail.com" data-email-label="Escribir correo ✉️" href="#" rel="nofollow">Escribir correo ✉️</a>
+            <noscript><span style="display:block;margin-top:0.5rem;color:#9CA3AF;">Escríbenos: armsystechno [at] gmail [dot] com</span></noscript>
+            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener">💬 Mensaje en Messenger</a>
           </div>
           <p class="cta-note">🕒 Horario de atención: Lunes a viernes de 10:00 a 18:00 (GMT-6). Atendemos eventos y micro-marcas los fines de semana con cita.</p>
         </div>
@@ -364,8 +380,10 @@
           <p>🔁 Laboratorio abierto con impresión 3D en PETG</p>
           <p>📍 Pachuca, México</p>
           <address class="footer-contact">
-            <a href="mailto:hola@mahitek3dlab.mx">hola@mahitek3dlab.mx</a><br>
-            <a href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">+52 XXXXX XXX XXX</a>
+            <a class="email-link" data-email-user="armsystechno" data-email-domain="gmail.com">armsystechno@gmail.com</a>
+            <noscript><span style="display:block;color:#9CA3AF;">armsystechno [at] gmail [dot] com</span></noscript>
+            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost footer-messenger" target="_blank" rel="noopener" style="margin-top:0.5rem;">💬 Mensaje en Messenger</a>
+            <a href="https://m.me/mahitek3dlabmx" target="_blank" rel="noopener">💬 Facebook Messenger</a>
           </address>
           <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="brand-mark brand-mark--footer" width="160" height="160" loading="lazy" decoding="async">
         </div>
