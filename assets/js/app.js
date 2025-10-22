@@ -334,7 +334,7 @@ async function loadFAQ() {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
         <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Aún estamos documentando las preguntas frecuentes. Escríbenos por WhatsApp y resolvemos tu caso.</p>
+        <p>Aún estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
       </div>
     `;
     registerAnimatedElements(container);

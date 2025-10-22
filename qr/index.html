@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Redirigiendo…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  const TARGET="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/?utm_source=qr&utm_medium=print&utm_campaign=default";
+  const sp=new URLSearchParams(location.search);
+  const utm_campaign=sp.get("c")||"default";
+  const utm_medium=sp.get("m")||"print";
+  const utm_source=sp.get("s")||"qr";
+  function withUTM(u0){const u=new URL(u0);u.searchParams.set("utm_source",utm_source);u.searchParams.set("utm_medium",utm_medium);u.searchParams.set("utm_campaign",utm_campaign);return u.toString();}
+  const FINAL_URL=withUTM(TARGET);
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} 
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX',{transport_type:'beacon',anonymize_ip:true});
+  function go(){try{gtag('event','qr_redirect',{event_category:'qr',event_label:utm_campaign,qr_medium:utm_medium,qr_source:utm_source,destination:FINAL_URL});}catch(e){} setTimeout(()=>location.replace(FINAL_URL),350);} 
+  document.addEventListener('DOMContentLoaded',go);
+</script>
+<style>body{font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;display:grid;place-items:center;min-height:100vh;background:#0B0F14;color:#E8EDF4} .card{padding:1.25rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px)} .muted{color:#9CA3AF;font-size:.95rem;margin-top:.5rem}</style>
+</head><body>
+  <div class="card">
+    <strong>Redirigiendo…</strong>
+    <div class="muted">Si no pasa nada en menos de 1 segundo, <a href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" style="color:#06B6D4">haz clic aquí</a>.</div>
+  </div>
+</body></html>
