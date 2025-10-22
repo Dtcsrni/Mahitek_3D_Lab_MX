@@ -3,11 +3,12 @@ const CONFIG = {
   PRICE_MARKUP: 1.0,   // Ajusta si requieres recargo adicional
   PRICE_STEP: 10,      // Redondea al múltiplo de 10 MXN más cercano
   WHATSAPP_NUMBER: '52XXXXXXXXXX',
+  PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   DATA_PATHS: {
-    productsBase: '/data/products_base.json',
-    promos: '/data/promos.json',
-    social: '/data/social.json',
-    faq: '/data/faq.json'
+    productsBase: 'data/products_base.json',
+    promos: 'data/promos.json',
+    social: 'data/social.json',
+    faq: 'data/faq.json'
   }
 };
 
@@ -132,25 +133,58 @@ function renderProducts() {
 
   grid.innerHTML = displayedProducts.map((product, index) => {
     const delay = Math.min(index, 5) * 80;
-    return `
-    <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
-      <img src="${product.imagen}" alt="${product.nombre}" />
-      <h3 class="product-name">${product.nombre}</h3>
-      <p class="product-price">$${product.precio_venta_mxn} MXN</p>
-  <p class="product-price-note">💡 Precio estimado con personalización básica incluida. Ajustamos según acabados.</p>
-      <p class="product-historia">${product.historia}</p>
-      <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-        <strong>Material:</strong> ${product.material_preferente}
-      </p>
-      ${product.coda ? `<p style="font-size: 0.875rem; font-style: italic; color: var(--text-secondary);">"${product.coda}"</p>` : ''}
-      ${product.tags ? `
+    const imageSrc = (product.imagen || '').replace(/^\//, '') || CONFIG.PLACEHOLDER_IMAGE;
+    const details = [
+      { label: 'Material', value: product.material || product.material_preferente },
+      { label: 'Tamano', value: product.tamano },
+      { label: 'Colores', value: product.colores },
+      { label: 'Herraje', value: product.herraje },
+      { label: 'Personalizacion', value: product.personalizacion },
+      { label: 'Montaje', value: product.montaje },
+      { label: 'Angulo', value: product.angulo },
+      { label: 'Carga', value: product.carga },
+      { label: 'Fijacion', value: product.fijacion },
+      { label: 'Entrega', value: product.tiempo_entrega }
+    ].filter(item => item.value);
+
+    const detailMarkup = details.length
+      ? `
+        <dl class="product-details">
+          ${details.map(detail => `
+            <div>
+              <dt>${detail.label}</dt>
+              <dd>${detail.value}</dd>
+            </div>
+          `).join('')}
+        </dl>
+      `
+      : '';
+
+    const tagsMarkup = product.tags && product.tags.length
+      ? `
         <div class="product-tags">
           ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
-      ` : ''}
+      `
+      : '';
+
+    return `
+    <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
+      <div class="product-media">
+        <img src="${imageSrc}" alt="${product.nombre}" onerror="this.onerror=null;this.src='${CONFIG.PLACEHOLDER_IMAGE}';" />
+      </div>
+      <div class="product-meta">
+        <span class="product-sku">SKU: ${product.sku}</span>
+        ${product.linea ? `<span class="product-line">${product.linea}</span>` : ''}
+      </div>
+      <h3 class="product-name">${product.nombre}</h3>
+      <p class="product-price">$${product.precio_venta_mxn} MXN</p>
+      <p class="product-price-note">Precio publico por pieza. Personalizacion basica incluida donde aplica.</p>
+      <p class="product-description">${product.descripcion || ''}</p>
+      ${detailMarkup}
+      ${tagsMarkup}
       <a href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola, me interesa: ${encodeURIComponent(product.nombre)}" 
-         class="btn btn-primary" 
-         style="margin-top: 1rem; width: 100%;"
+         class="btn btn-primary product-cta" 
          target="_blank" 
          rel="noopener">
         Consultar disponibilidad
@@ -180,7 +214,8 @@ function filterProducts() {
     const matchesCategory = categoryFilter === 'todas' || product.categoria === categoryFilter;
     const matchesSearch = !searchTerm || 
       product.nombre.toLowerCase().includes(searchTerm) ||
-      product.historia.toLowerCase().includes(searchTerm) ||
+  (product.descripcion || '').toLowerCase().includes(searchTerm) ||
+  (product.sku || '').toLowerCase().includes(searchTerm) ||
       product.tags?.some(tag => tag.toLowerCase().includes(searchTerm));
     
     return matchesCategory && matchesSearch;
