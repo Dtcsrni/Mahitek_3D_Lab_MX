@@ -373,8 +373,11 @@ function initCarousel() {
     }
   });
 
-  // Autoplay opcional (respeta reduced motion)
+  // Autoplay deshabilitado para no mover el scroll automáticamente
   function startAutoplay() {
+    // Autoplay disabled - users prefer manual control
+    return;
+    /* 
     if (prefersReducedMotion.matches) return;
     stopAutoplay();
     autoplayTimer = setInterval(() => {
@@ -386,6 +389,7 @@ function initCarousel() {
       }
       log('carousel_navigation', { method: 'autoplay', index: currentIndex });
     }, 5000);
+    */
   }
 
   function stopAutoplay() {
@@ -394,22 +398,28 @@ function initCarousel() {
   }
 
   function pauseAutoplayTemporarily() {
+    // Autoplay disabled - no need to pause/resume
+    return;
+    /*
     stopAutoplay();
     if (interactionTimeout) clearTimeout(interactionTimeout);
     interactionTimeout = setTimeout(() => {
       startAutoplay();
     }, 8000);
+    */
   }
 
-  // Pausa en hover/focus dentro del contenedor
+  // Eventos de hover/focus deshabilitados (autoplay inactivo)
+  /*
   if (container) {
     container.addEventListener('mouseenter', stopAutoplay, { passive: true });
     container.addEventListener('mouseleave', startAutoplay, { passive: true });
     container.addEventListener('focusin', stopAutoplay);
     container.addEventListener('focusout', startAutoplay);
   }
+  */
 
-  startAutoplay();
+  // startAutoplay(); // Comentado - autoplay deshabilitado
   log('carousel_init', { items: cards.length });
   updateControls();
 }
