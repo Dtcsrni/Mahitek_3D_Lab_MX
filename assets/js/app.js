@@ -141,24 +141,23 @@ function renderProducts() {
 
   carousel.innerHTML = displayedProducts.map((product, index) => {
     const delay = Math.min(index, 5) * 80;
-    const imageSrc = (product.imagen || '').replace(/^\//, '') || CONFIG.PLACEHOLDER_IMAGE;
-    const details = [
-      { label: 'Material', value: product.material || product.material_preferente },
-      { label: 'Tamano', value: product.tamano },
-      { label: 'Colores', value: product.colores },
-      { label: 'Herraje', value: product.herraje },
-      { label: 'Personalizacion', value: product.personalizacion },
-      { label: 'Montaje', value: product.montaje },
-      { label: 'Angulo', value: product.angulo },
-      { label: 'Carga', value: product.carga },
-      { label: 'Fijacion', value: product.fijacion },
-      { label: 'Entrega', value: product.tiempo_entrega }
+    
+    // Usar emoji como imagen animada
+    const emojiDisplay = product.imagen && !product.imagen.startsWith('/') && !product.imagen.includes('.') 
+      ? `<div class="product-emoji">${product.imagen}</div>`
+      : `<img src="${product.imagen}" alt="${product.nombre}" onerror="this.onerror=null;this.src='${CONFIG.PLACEHOLDER_IMAGE}';" />`;
+
+    // Construir detalles del producto
+    const detailsData = [
+      { label: 'Material', value: product.material },
+      { label: 'Incluye', value: product.incluye },
+      { label: 'Variantes', value: product.variantes }
     ].filter(item => item.value);
 
-    const detailMarkup = details.length
+    const detailMarkup = detailsData.length
       ? `
         <dl class="product-details">
-          ${details.map(detail => `
+          ${detailsData.map(detail => `
             <div>
               <dt>${detail.label}</dt>
               <dd>${detail.value}</dd>
@@ -176,34 +175,40 @@ function renderProducts() {
       `
       : '';
 
+    // Sugerencias de negocio
+    const sugerenciasMarkup = product.sugerencias
+      ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${product.sugerencias}</p>`
+      : '';
+
     // Analytics: vista de item al render
     log('view_item', {
-      item_id: product.sku,
+      item_id: product.id,
       item_name: product.nombre,
-      price: product.precio_venta_mxn,
-      item_category: product.material || product.material_preferente
+      price: product.precio_mxn,
+      item_category: product.categoria
     });
 
     return `
     <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
       <div class="product-media">
-        <img src="${imageSrc}" alt="${product.nombre}" onerror="this.onerror=null;this.src='${CONFIG.PLACEHOLDER_IMAGE}';" />
+        ${emojiDisplay}
       </div>
       <div class="product-meta">
-        <span class="product-sku">SKU: ${product.sku}</span>
-        ${product.linea ? `<span class="product-line">${product.linea}</span>` : ''}
+        <span class="product-sku">${product.id}</span>
+        ${product.categoria ? `<span class="product-line">${product.categoria}</span>` : ''}
       </div>
       <h3 class="product-name">${product.nombre}</h3>
-      <p class="product-price">$${product.precio_venta_mxn} MXN</p>
-      <p class="product-price-note">Precio publico por pieza. Personalizacion basica incluida donde aplica.</p>
+      <p class="product-price">$${product.precio_mxn} MXN</p>
+      <p class="product-price-note">Precio por pieza. Personalización básica incluida donde aplica.</p>
       <p class="product-description">${product.descripcion || ''}</p>
       ${detailMarkup}
       ${tagsMarkup}
-      <a href="${buildMessengerURL(`product:${encodeURIComponent(product.sku || '')}|${encodeURIComponent(product.nombre)}`)}" 
+      ${sugerenciasMarkup}
+      <a href="${buildMessengerURL(`product:${encodeURIComponent(product.id || '')}|${encodeURIComponent(product.nombre)}`)}" 
          class="btn btn-primary product-cta" 
          target="_blank" 
          rel="noopener" 
-         data-sku="${product.sku}" 
+         data-sku="${product.id}" 
          data-name="${product.nombre}">
         Consultar disponibilidad en Messenger
       </a>
