@@ -35,6 +35,8 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -141,8 +143,10 @@ button {
 /* ===== Container ===== */
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -580,6 +584,10 @@ button {
 .hero {
   padding: 4rem 0;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .hero-grid {
@@ -953,6 +961,10 @@ button {
 .section {
   padding: 4rem 0;
   scroll-margin-top: 96px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -1181,6 +1193,9 @@ button {
   align-items: center;
   gap: 1rem;
   margin: 2rem 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Efecto de desvanecido en bordes para indicar desplazamiento */
@@ -1190,18 +1205,18 @@ button {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 56px;
+  width: 40px;
   pointer-events: none;
   z-index: 5;
 }
 
 .carousel-container::before {
-  left: 0;
+  left: 48px;
   background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
 }
 
 .carousel-container::after {
-  right: 0;
+  right: 48px;
   background: linear-gradient(270deg, var(--bg-dark) 0%, transparent 100%);
 }
 
@@ -1209,12 +1224,15 @@ button {
   display: flex;
   gap: 2rem;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 1rem 1.5rem;
+  padding: 1rem 0.5rem;
   flex: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .product-carousel::-webkit-scrollbar {
@@ -1307,23 +1325,24 @@ button {
   scroll-snap-align: start;
   flex: 0 0 auto;
   width: 100%;
-  min-width: 340px;
+  min-width: min(340px, calc(100vw - 140px));
   max-width: 400px;
   padding: 2.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .product-card {
-    min-width: 380px;
+    min-width: min(380px, calc(100vw - 160px));
   }
 }
 
 @media (min-width: 1024px) {
   .product-card {
-    min-width: 420px;
+    min-width: min(420px, calc(100vw - 180px));
   }
 }
 
