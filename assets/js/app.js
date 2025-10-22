@@ -231,6 +231,7 @@ function initCarousel() {
   const prevBtn = document.querySelector('.carousel-btn--prev');
   const nextBtn = document.querySelector('.carousel-btn--next');
   const indicatorsContainer = document.querySelector('.carousel-indicators');
+  const container = carousel?.closest('.carousel-container');
   
   if (!carousel || !prevBtn || !nextBtn) return;
 
@@ -238,6 +239,13 @@ function initCarousel() {
   if (cards.length === 0) return;
 
   let currentIndex = 0;
+  let autoplayTimer = null;
+  let interactionTimeout = null;
+
+  // Accesibilidad básica
+  carousel.setAttribute('tabindex', '0');
+  carousel.setAttribute('aria-roledescription', 'Carrusel de productos');
+  carousel.setAttribute('aria-label', 'Catálogo de productos');
 
   // Crear indicadores
   if (indicatorsContainer) {
@@ -250,6 +258,8 @@ function initCarousel() {
       if (!indicator) return;
       const index = parseInt(indicator.dataset.index, 10);
       scrollToCard(index);
+      log('carousel_navigation', { method: 'indicator', index });
+      pauseAutoplayTemporarily();
     });
   }
 
@@ -276,10 +286,14 @@ function initCarousel() {
 
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) scrollToCard(currentIndex - 1);
+    log('carousel_navigation', { method: 'button', direction: 'prev', index: currentIndex });
+    pauseAutoplayTemporarily();
   });
 
   nextBtn.addEventListener('click', () => {
     if (currentIndex < cards.length - 1) scrollToCard(currentIndex + 1);
+    log('carousel_navigation', { method: 'button', direction: 'next', index: currentIndex });
+    pauseAutoplayTemporarily();
   });
 
   // Detectar scroll manual y actualizar índice
@@ -323,12 +337,80 @@ function initCarousel() {
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0 && currentIndex < cards.length - 1) {
         scrollToCard(currentIndex + 1);
+        log('carousel_navigation', { method: 'swipe', direction: 'next', index: currentIndex });
       } else if (diff < 0 && currentIndex > 0) {
         scrollToCard(currentIndex - 1);
+        log('carousel_navigation', { method: 'swipe', direction: 'prev', index: currentIndex });
       }
+      pauseAutoplayTemporarily();
     }
   }
 
+  // Controles de teclado
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (currentIndex < cards.length - 1) {
+        scrollToCard(currentIndex + 1);
+        log('carousel_navigation', { method: 'keyboard', direction: 'next', index: currentIndex });
+        pauseAutoplayTemporarily();
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (currentIndex > 0) {
+        scrollToCard(currentIndex - 1);
+        log('carousel_navigation', { method: 'keyboard', direction: 'prev', index: currentIndex });
+        pauseAutoplayTemporarily();
+      }
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      scrollToCard(0);
+      pauseAutoplayTemporarily();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      scrollToCard(cards.length - 1);
+      pauseAutoplayTemporarily();
+    }
+  });
+
+  // Autoplay opcional (respeta reduced motion)
+  function startAutoplay() {
+    if (prefersReducedMotion.matches) return;
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (document.hidden) return; // pausa si tab no es visible
+      if (currentIndex < cards.length - 1) {
+        scrollToCard(currentIndex + 1);
+      } else {
+        scrollToCard(0);
+      }
+      log('carousel_navigation', { method: 'autoplay', index: currentIndex });
+    }, 5000);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+
+  function pauseAutoplayTemporarily() {
+    stopAutoplay();
+    if (interactionTimeout) clearTimeout(interactionTimeout);
+    interactionTimeout = setTimeout(() => {
+      startAutoplay();
+    }, 8000);
+  }
+
+  // Pausa en hover/focus dentro del contenedor
+  if (container) {
+    container.addEventListener('mouseenter', stopAutoplay, { passive: true });
+    container.addEventListener('mouseleave', startAutoplay, { passive: true });
+    container.addEventListener('focusin', stopAutoplay);
+    container.addEventListener('focusout', startAutoplay);
+  }
+
+  startAutoplay();
+  log('carousel_init', { items: cards.length });
   updateControls();
 }
 

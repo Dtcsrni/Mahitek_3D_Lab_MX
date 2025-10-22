@@ -953,6 +953,28 @@ button {
   margin: 2rem 0;
 }
 
+/* Efecto de desvanecido en bordes para indicar desplazamiento */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg-dark) 0%, transparent 100%);
+}
+
 .product-carousel {
   display: flex;
   gap: 2rem;
@@ -961,7 +983,7 @@ button {
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 1rem 0.5rem;
+  padding: 1rem 1.5rem;
   flex: 1;
 }
 
