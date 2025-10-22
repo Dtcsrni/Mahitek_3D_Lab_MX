@@ -1,38 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Empaques listos</title>
-  <desc id="desc">Caja de regalo con tarjeta personalizada y lazo holográfico.</desc>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff1fb"/>
-      <stop offset="100%" stop-color="#ffe1f9"/>
+    <linearGradient id="grad-pack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DD2A7B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FEDA77;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="ribbon" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#eb3b5a"/>
-      <stop offset="60%" stop-color="#ff74d2"/>
-      <stop offset="100%" stop-color="#b583ff"/>
-    </linearGradient>
-    <linearGradient id="hud" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ff9be6" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#ffa7d9" stop-opacity="0.08"/>
-    </linearGradient>
-    <pattern id="scan" width="10" height="10" patternUnits="userSpaceOnUse">
-      <path d="M10 0H0V10" fill="none" stroke="#ffbdf0" stroke-width="0.5" opacity="0.18"/>
-    </pattern>
   </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <rect x="30" y="40" width="140" height="124" rx="28" fill="url(#scan)" opacity="0.35"/>
-  <rect x="44" y="64" width="112" height="80" rx="22" fill="#0f172a" opacity="0.08"/>
-  <rect x="52" y="72" width="96" height="64" rx="20" fill="#ffffff"/>
-  <rect x="60" y="80" width="80" height="48" rx="18" fill="url(#hud)"/>
-  <rect x="76" y="58" width="48" height="92" rx="16" fill="url(#ribbon)"/>
-  <path d="M88 58h8v92h-8z" fill="#ffffff" opacity="0.55"/>
-  <path d="M76 92c12-6 16-16 24-16s12 10 24 16c-12 6-16 16-24 16s-12-10-24-16z" fill="#ffd6f0"/>
-  <path d="M72 100h56" stroke="#ff9be6" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-  <rect x="64" y="104" width="72" height="24" rx="12" fill="#0f172a" opacity="0.08"/>
-  <rect x="40" y="132" width="120" height="18" rx="9" fill="#0f172a" opacity="0.12"/>
-  <rect x="126" y="44" width="36" height="26" rx="10" fill="#ffffff" opacity="0.85"/>
-  <path d="M132 56h20" stroke="#eb3b5a" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="142" cy="52" r="4" fill="#2f80ff"/>
-  <path d="M50 146h20" stroke="#ff9be6" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-  <path d="M132 146h20" stroke="#b583ff" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  
+  <!-- Caja de regalo -->
+  <g class="box">
+    <!-- Cuerpo de la caja -->
+    <rect x="60" y="90" width="80" height="70" rx="4" fill="url(#grad-pack)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
+      <animate attributeName="y" values="90;87;90" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Tapa -->
+    <path d="M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90" fill="url(#grad-pack)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
+      <animate attributeName="d" values="M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90; M55 87 L55 72 Q55 67 60 67 L140 67 Q145 67 145 72 L145 87; M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Lazo holográfico -->
+    <g class="bow">
+      <ellipse cx="100" cy="70" rx="20" ry="8" fill="#FEDA77" opacity="0.9">
+        <animate attributeName="rx" values="20;22;20" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="100" cy="70" rx="8" ry="4" fill="#E8EDF4" opacity="0.8"/>
+      
+      <path d="M80 70 Q75 55 85 50" stroke="#FEDA77" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
+      <path d="M120 70 Q125 55 115 50" stroke="#FEDA77" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
+      
+      <!-- Cinta vertical -->
+      <rect x="95" y="70" width="10" height="90" fill="#FEDA77" opacity="0.3"/>
+    </g>
+    
+    <!-- Tarjeta personalizada -->
+    <rect x="110" y="105" width="22" height="18" rx="2" fill="#E8EDF4" stroke="#06B6D4" stroke-width="1.5" opacity="0.95">
+      <animateTransform attributeName="transform" type="rotate" values="0 121 114; 5 121 114; 0 121 114" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <line x1="113" y1="110" x2="129" y2="110" stroke="#06B6D4" stroke-width="1.5"/>
+    <line x1="113" y1="115" x2="125" y2="115" stroke="#06B6D4" stroke-width="1"/>
+    <line x1="113" y1="119" x2="127" y2="119" stroke="#06B6D4" stroke-width="1"/>
+  </g>
+  
+  <!-- Estrellas de calidad -->
+  <g class="stars" opacity="0.8">
+    <path d="M40 100 L42 106 L48 106 L43 110 L45 116 L40 112 L35 116 L37 110 L32 106 L38 106 Z" fill="#FEDA77">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M160 110 L162 116 L168 116 L163 120 L165 126 L160 122 L155 126 L157 120 L152 116 L158 116 Z" fill="#FEDA77">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Sombra -->
+  <ellipse cx="100" cy="175" rx="50" ry="7" fill="#0B0F14" opacity="0.25"/>
 </svg>

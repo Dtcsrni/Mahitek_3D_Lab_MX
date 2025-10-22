@@ -1,45 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Coleccionables y fandom</title>
-  <desc id="desc">Display con figura, soporte para mando y luces neón.</desc>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f4f1ff"/>
-      <stop offset="100%" stop-color="#e3e0ff"/>
+    <linearGradient id="grad-fandom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#515BD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DD2A7B;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2f80ff"/>
-      <stop offset="50%" stop-color="#8f5bff"/>
-      <stop offset="100%" stop-color="#c85bff"/>
-    </linearGradient>
-    <linearGradient id="hud" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2f80ff" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#8f5bff" stop-opacity="0.08"/>
-    </linearGradient>
-    <pattern id="scan" width="12" height="12" patternUnits="userSpaceOnUse">
-      <path d="M12 0H0V12" fill="none" stroke="#8f5bff" stroke-width="0.6" opacity="0.16"/>
-    </pattern>
   </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <rect x="30" y="30" width="140" height="140" rx="30" fill="url(#scan)" opacity="0.28"/>
-  <rect x="52" y="70" width="96" height="72" rx="22" fill="#0f172a" opacity="0.08"/>
-  <rect x="60" y="78" width="80" height="56" rx="18" fill="#ffffff"/>
-  <rect x="66" y="84" width="68" height="40" rx="14" fill="url(#hud)"/>
-  <rect x="76" y="90" width="48" height="32" rx="12" fill="#0f172a" opacity="0.08"/>
-  <rect x="84" y="86" width="32" height="12" rx="6" fill="#2f80ff" opacity="0.65"/>
-  <path d="M80 116h40l-4-16a12 12 0 0 0-12-9 12 12 0 0 0-12 9z" fill="#eb3b5a" opacity="0.7"/>
-  <path d="M76 122h48" stroke="#8f5bff" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-  <rect x="48" y="136" width="112" height="16" rx="8" fill="#0f172a" opacity="0.12"/>
-  <rect x="128" y="64" width="24" height="48" rx="12" fill="#0f172a" opacity="0.12"/>
-  <rect x="132" y="68" width="16" height="40" rx="10" fill="#ffffff"/>
-  <circle cx="140" cy="80" r="6" fill="#2f80ff" opacity="0.65"/>
-  <circle cx="140" cy="92" r="4" fill="#8f5bff" opacity="0.6"/>
-  <path d="M44 72h16v64H44z" fill="#ffffff" opacity="0.75"/>
-  <path d="M40 68h24v12H40z" fill="url(#neon)"/>
-  <path d="M40 74h24" stroke="#c85bff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-  <rect x="52" y="148" width="92" height="6" rx="3" fill="#0f172a" opacity="0.2"/>
-  <g fill="none" stroke-width="1.6" opacity="0.3">
-    <path d="M56 60l-12-12" stroke="#2f80ff" stroke-linecap="round"/>
-    <path d="M148 60l12-12" stroke="#8f5bff" stroke-linecap="round"/>
-    <path d="M60 162h80" stroke="#c85bff" stroke-dasharray="8 6"/>
+  
+  <!-- Display base -->
+  <rect x="40" y="140" width="120" height="15" rx="4" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2" opacity="0.95"/>
+  
+  <!-- Figura coleccionable en display -->
+  <g class="collectible">
+    <!-- Cuerpo heroico -->
+    <path d="M85 100 Q85 80 100 75 Q115 80 115 100 L115 125 Q115 135 100 135 Q85 135 85 125 Z" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cabeza -->
+    <circle cx="100" cy="65" r="15" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Capa -->
+    <path d="M85 90 Q70 100 75 120 L75 130 Q80 125 85 120" fill="#DD2A7B" opacity="0.7">
+      <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M115 90 Q130 100 125 120 L125 130 Q120 125 115 120" fill="#DD2A7B" opacity="0.7">
+      <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Detalles brillantes -->
+    <circle cx="95" cy="63" r="2" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="105" cy="63" r="2" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Insignia en pecho -->
+    <circle cx="100" cy="100" r="6" fill="#FEDA77" stroke="#E8EDF4" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="6;7;6" dur="2s" repeatCount="indefinite"/>
+    </circle>
   </g>
+  
+  <!-- Iluminación de vitrina -->
+  <g class="lighting">
+    <circle cx="100" cy="100" r="60" fill="url(#grad-fandom)" opacity="0.05">
+      <animate attributeName="r" values="60;65;60" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Spotlight -->
+    <path d="M80 40 L70 80 L130 80 L120 40 Z" fill="#FEDA77" opacity="0.08">
+      <animate attributeName="opacity" values="0.08;0.03;0.08" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Props secundarios -->
+  <g opacity="0.7">
+    <!-- Escudo pequeño -->
+    <path d="M40 110 L35 115 L40 125 L45 115 Z" fill="#06B6D4" stroke="#E8EDF4" stroke-width="1.5"/>
+    
+    <!-- Espada pequeña -->
+    <rect x="155" y="115" width="4" height="20" rx="1" fill="#9CA3AF"/>
+    <path d="M153 115 L161 115 L157 110 Z" fill="#9CA3AF"/>
+  </g>
+  
+  <!-- Partículas mágicas -->
+  <circle cx="60" cy="70" r="1.5" fill="#515BD4" opacity="0.6">
+    <animate attributeName="cy" values="70;50;70" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="80" r="1.5" fill="#DD2A7B" opacity="0.6">
+    <animate attributeName="cy" values="80;60;80" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Sombra -->
+  <ellipse cx="100" cy="175" rx="60" ry="8" fill="#0B0F14" opacity="0.25"/>
 </svg>

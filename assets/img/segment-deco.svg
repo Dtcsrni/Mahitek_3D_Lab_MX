@@ -1,43 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Decoración y hogar</title>
-  <desc id="desc">Maceta geométrica con planta y lámpara colgante.</desc>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f5fff0"/>
-      <stop offset="100%" stop-color="#dcffe8"/>
+    <linearGradient id="grad-deco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FEDA77;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="lamp" x1="0%" y1="0%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#2f80ff"/>
-      <stop offset="100%" stop-color="#48ffcd"/>
-    </linearGradient>
-    <linearGradient id="planter" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#eefaff"/>
-    </linearGradient>
-    <pattern id="grid" width="14" height="14" patternUnits="userSpaceOnUse">
-      <path d="M14 0H0V14" fill="none" stroke="#2f80ff" stroke-width="0.6" opacity="0.12"/>
-    </pattern>
   </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <rect x="32" y="28" width="136" height="144" rx="30" fill="url(#grid)" opacity="0.25"/>
-  <path d="M100 36v48" stroke="#0f172a" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
-  <path d="M100 36l-18-12" stroke="#2f80ff" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-  <path d="M100 36l18-12" stroke="#00a6a8" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-  <path d="M92 84h16l4 6-12 18-12-18z" fill="url(#lamp)"/>
-  <circle cx="100" cy="108" r="14" fill="#ffffff" opacity="0.9"/>
-  <path d="M92 108h16" stroke="#2f80ff" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-  <rect x="54" y="110" width="92" height="48" rx="20" fill="#0f172a" opacity="0.08"/>
-  <path d="M68 126l32-20 32 20-12 28H80z" fill="url(#planter)"/>
-  <path d="M80 126l20-12 20 12-8 18h-24z" fill="#eb3b5a" opacity="0.58"/>
-  <path d="M72 150h16" stroke="#00a6a8" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-  <path d="M112 150h16" stroke="#2f80ff" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-  <path d="M68 126l12 28" stroke="#2f80ff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-  <path d="M132 126l-12 28" stroke="#2f80ff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-  <path d="M100 114c-8-6-18-10-28-12" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-  <path d="M100 114c8-6 18-10 28-12" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-  <g fill="none" stroke-width="1.6" opacity="0.28">
-    <path d="M64 96l-14-14" stroke="#2f80ff" stroke-linecap="round"/>
-    <path d="M136 96l14-14" stroke="#00a6a8" stroke-linecap="round"/>
-    <path d="M54 170h92" stroke="#00a6a8" stroke-dasharray="8 6"/>
+  
+  <!-- Maceta -->
+  <g class="planter">
+    <path d="M70 120 L65 160 L135 160 L130 120 Z" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95"/>
+    <ellipse cx="100" cy="120" rx="30" ry="8" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95"/>
+    
+    <!-- Tierra -->
+    <ellipse cx="100" cy="120" rx="28" ry="6" fill="#0B0F14" opacity="0.4"/>
   </g>
+  
+  <!-- Planta -->
+  <g class="plant">
+    <!-- Tallo -->
+    <path d="M100 120 Q95 100 90 80" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none">
+      <animateTransform attributeName="transform" type="rotate" values="0 100 120; -3 100 120; 0 100 120; 3 100 120; 0 100 120" dur="4s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Hojas -->
+    <ellipse cx="88" cy="95" rx="12" ry="8" fill="#10B981" opacity="0.9" transform="rotate(-30 88 95)">
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="92" cy="85" rx="14" ry="9" fill="#10B981" opacity="0.9" transform="rotate(20 92 85)">
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="3.2s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="87" cy="75" rx="10" ry="7" fill="#10B981" opacity="0.9" transform="rotate(-40 87 75)">
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="2.8s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Flor -->
+    <circle cx="90" cy="70" r="8" fill="#FEDA77" opacity="0.95">
+      <animate attributeName="r" values="8;9;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="70" r="3" fill="#DD2A7B" opacity="0.9"/>
+  </g>
+  
+  <!-- Lámpara decorativa -->
+  <g transform="translate(130, 50)">
+    <!-- Base/cord -->
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#9CA3AF" stroke-width="2"/>
+    
+    <!-- Pantalla -->
+    <path d="M-15 30 L-10 45 L10 45 L15 30 Z" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2" opacity="0.95"/>
+    
+    <!-- Luz -->
+    <ellipse cx="0" cy="42" rx="8" ry="4" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Brillo -->
+    <circle cx="0" cy="45" r="20" fill="#FEDA77" opacity="0.1">
+      <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Partículas de ambiente -->
+  <circle cx="50" cy="80" r="1.5" fill="#10B981" opacity="0.5">
+    <animate attributeName="cy" values="80;60;80" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="160" cy="100" r="1.5" fill="#FEDA77" opacity="0.5">
+    <animate attributeName="cy" values="100;80;100" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Sombra -->
+  <ellipse cx="100" cy="175" rx="55" ry="7" fill="#0B0F14" opacity="0.2"/>
 </svg>

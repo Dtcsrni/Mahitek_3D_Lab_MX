@@ -1,43 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Diseño colaborativo</title>
-  <desc id="desc">Computadora portátil mostrando un modelo 3D y notas de color.</desc>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#dce9ff"/>
-      <stop offset="100%" stop-color="#f6fbff"/>
+    <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8134AF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2f80ff"/>
-      <stop offset="50%" stop-color="#00a6a8"/>
-      <stop offset="100%" stop-color="#57f5ff"/>
-    </linearGradient>
-    <linearGradient id="hudLayer" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2f80ff" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#00a6a8" stop-opacity="0.05"/>
-    </linearGradient>
-    <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
-      <path d="M12 0H0V12" fill="none" stroke="#00f5ff" stroke-width="0.6" opacity="0.12"/>
-    </pattern>
   </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <rect x="28" y="36" width="144" height="132" rx="26" fill="url(#grid)" opacity="0.3"/>
-  <rect x="36" y="66" width="128" height="86" rx="18" fill="#0f172a" opacity="0.08"/>
-  <rect x="44" y="74" width="112" height="70" rx="16" fill="#ffffff"/>
-  <rect x="48" y="78" width="104" height="48" rx="14" fill="#0f172a" opacity="0.12"/>
-  <rect x="52" y="82" width="96" height="40" rx="12" fill="url(#hudLayer)"/>
-  <path d="M60 116h80l-6-30a14 14 0 0 0-14-11H80a14 14 0 0 0-14 11z" fill="#ffffff"/>
-  <path d="M70 108h60l-4-20a10 10 0 0 0-10-8H84a10 10 0 0 0-10 8z" fill="url(#screen)"/>
-  <circle cx="100" cy="98" r="12" fill="#ffffff" opacity="0.85"/>
-  <circle cx="100" cy="98" r="6" fill="#eb3b5a"/>
-  <path d="M88 94h24" stroke="#00f5ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-  <path d="M88 102h12" stroke="#2f80ff" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
-  <rect x="48" y="130" width="104" height="12" rx="6" fill="#0f172a" opacity="0.16"/>
-  <rect x="32" y="56" width="26" height="26" rx="10" fill="#ffffff" opacity="0.95"/>
-  <path d="M38 68h14" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-  <rect x="142" y="54" width="28" height="28" rx="10" fill="#2f80ff" opacity="0.25"/>
-  <path d="M150 68h12" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-  <rect x="96" y="140" width="40" height="8" rx="4" fill="#ffffff"/>
-  <rect x="64" y="140" width="28" height="8" rx="4" fill="#eb3b5a" opacity="0.65"/>
-  <path d="M56 122h20" stroke="#00f5ff" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-  <path d="M124 122h20" stroke="#2f80ff" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  
+  <!-- Pantalla/Monitor -->
+  <rect x="40" y="50" width="120" height="80" rx="6" fill="url(#grad-design)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95"/>
+  <rect x="45" y="55" width="110" height="70" rx="4" fill="#0B0F14" opacity="0.4"/>
+  
+  <!-- Grid de diseño en pantalla -->
+  <g opacity="0.8">
+    <line x1="65" y1="70" x2="135" y2="70" stroke="#06B6D4" stroke-width="1.5">
+      <animate attributeName="x2" values="135;140;135" dur="3s" repeatCount="indefinite"/>
+    </line>
+    <line x1="65" y1="85" x2="120" y2="85" stroke="#10B981" stroke-width="1.5">
+      <animate attributeName="x2" values="120;125;120" dur="2.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="65" y1="100" x2="130" y2="100" stroke="#FEDA77" stroke-width="1.5">
+      <animate attributeName="x2" values="130;135;130" dur="2.8s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- Formas 3D preview -->
+    <circle cx="70" cy="110" r="6" fill="none" stroke="#06B6D4" stroke-width="2">
+      <animate attributeName="r" values="6;7;6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="85" y="104" width="12" height="12" rx="2" fill="none" stroke="#10B981" stroke-width="2">
+      <animate attributeName="width" values="12;14;12" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="12;14;12" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+    <path d="M105 105 L115 105 L110 118 Z" fill="none" stroke="#FEDA77" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate" values="0 110 111; 5 110 111; 0 110 111" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Base del monitor -->
+  <rect x="85" y="130" width="30" height="4" rx="2" fill="#9CA3AF" opacity="0.7"/>
+  <path d="M95 130 L90 145 L110 145 L105 130" fill="#9CA3AF" opacity="0.5"/>
+  
+  <!-- Mano/Cursor interactuando -->
+  <g class="cursor">
+    <path d="M150 95 L160 85 L163 90 L170 87 L167 92 L175 95 L165 105 L160 100 Z" fill="#E8EDF4" stroke="#06B6D4" stroke-width="1.5" opacity="0.9">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -10,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Partículas de creatividad -->
+  <circle cx="30" cy="70" r="2" fill="#FEDA77" opacity="0.7">
+    <animate attributeName="cy" values="70;50;70" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="170" cy="90" r="2" fill="#10B981" opacity="0.7">
+    <animate attributeName="cy" values="90;70;90" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Sombra base -->
+  <ellipse cx="100" cy="175" rx="60" ry="8" fill="#0B0F14" opacity="0.2"/>
 </svg>

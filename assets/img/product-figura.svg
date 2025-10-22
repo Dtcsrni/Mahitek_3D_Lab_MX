@@ -1,24 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Figura Silencio</title>
-  <desc id="desc">Figura orgánica para escritorio con base doble y compartimento para cables.</desc>
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#eef3ff"/>
-      <stop offset="100%" stop-color="#f7faff"/>
-    </linearGradient>
-    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#dfe9ff"/>
-    </linearGradient>
-  </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <ellipse cx="100" cy="156" rx="54" ry="16" fill="#0f172a" opacity="0.12"/>
-  <path d="M58 152h84l-12-70a30 30 0 0 0-28-24 30 30 0 0 0-28 24z" fill="#0f172a" opacity="0.08"/>
-  <path d="M68 146h64l-10-58a24 24 0 0 0-22-19 24 24 0 0 0-22 19z" fill="url(#body)"/>
-  <path d="M96 60a18 18 0 0 0-18 18v12h44V78a18 18 0 0 0-18-18z" fill="#007a7c" opacity="0.35"/>
-  <circle cx="110" cy="70" r="10" fill="#2f80ff" opacity="0.45"/>
-  <circle cx="92" cy="74" r="8" fill="#eb3b5a" opacity="0.8"/>
-  <rect x="76" y="134" width="48" height="12" rx="6" fill="#2f80ff" opacity="0.3"/>
-  <path d="M70 150c10 8 24 12 30 12s20-4 30-12" stroke="#00a6a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
-  <path d="M88 62c-2-6 2-12 8-14" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+
+  <defs>  <title id="title">Figura Silencio</title>
+
+    <linearGradient id="grad-figura" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Figura orgánica para escritorio con base doble y compartimento para cables.</desc>
+
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />  <defs>
+
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    </linearGradient>      <stop offset="0%" stop-color="#eef3ff"/>
+
+    <filter id="glow">      <stop offset="100%" stop-color="#f7faff"/>
+
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>    </linearGradient>
+
+      <feMerge>    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+
+        <feMergeNode in="coloredBlur"/>      <stop offset="0%" stop-color="#ffffff"/>
+
+        <feMergeNode in="SourceGraphic"/>      <stop offset="100%" stop-color="#dfe9ff"/>
+
+      </feMerge>    </linearGradient>
+
+    </filter>  </defs>
+
+  </defs>  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+
+    <ellipse cx="100" cy="156" rx="54" ry="16" fill="#0f172a" opacity="0.12"/>
+
+  <!-- Base pedestal -->  <path d="M58 152h84l-12-70a30 30 0 0 0-28-24 30 30 0 0 0-28 24z" fill="#0f172a" opacity="0.08"/>
+
+  <ellipse cx="100" cy="170" rx="45" ry="8" fill="#0B0F14" opacity="0.3">  <path d="M68 146h64l-10-58a24 24 0 0 0-22-19 24 24 0 0 0-22 19z" fill="url(#body)"/>
+
+    <animate attributeName="rx" values="45;48;45" dur="3s" repeatCount="indefinite"/>  <path d="M96 60a18 18 0 0 0-18 18v12h44V78a18 18 0 0 0-18-18z" fill="#007a7c" opacity="0.35"/>
+
+  </ellipse>  <circle cx="110" cy="70" r="10" fill="#2f80ff" opacity="0.45"/>
+
+    <circle cx="92" cy="74" r="8" fill="#eb3b5a" opacity="0.8"/>
+
+  <!-- Figura coleccionable -->  <rect x="76" y="134" width="48" height="12" rx="6" fill="#2f80ff" opacity="0.3"/>
+
+  <g class="figura-main">  <path d="M70 150c10 8 24 12 30 12s20-4 30-12" stroke="#00a6a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Cuerpo -->  <path d="M88 62c-2-6 2-12 8-14" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+    <path d="M70 120 Q70 80 100 80 Q130 80 130 120 L130 150 Q130 160 100 160 Q70 160 70 150 Z" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95"></svg>
+
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cabeza -->
+    <circle cx="100" cy="65" r="18" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Detalles brillantes -->
+    <circle cx="95" cy="62" r="3" fill="#FEDA77" filter="url(#glow)">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="105" cy="62" r="3" fill="#FEDA77" filter="url(#glow)">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Brazos -->
+    <path d="M65 100 Q60 110 65 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M135 100 Q140 110 135 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Base soporte -->
+    <rect x="85" y="160" width="30" height="8" rx="2" fill="#0B0F14" opacity="0.5"/>
+  </g>
+  
+  <!-- Partículas flotantes -->
+  <circle cx="50" cy="90" r="2" fill="#06B6D4" opacity="0.6">
+    <animate attributeName="cy" values="90;70;90" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="100" r="2" fill="#10B981" opacity="0.6">
+    <animate attributeName="cy" values="100;80;100" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
 </svg>

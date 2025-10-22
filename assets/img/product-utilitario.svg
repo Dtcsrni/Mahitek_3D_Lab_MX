@@ -1,47 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Hub Utilitario Flux</title>
-  <desc id="desc">Módulos intercambiables con bandejas magnéticas, especiero y charola inteligente.</desc>
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff2e6"/>
-      <stop offset="60%" stop-color="#ffe9d7"/>
-      <stop offset="100%" stop-color="#ffe0cc"/>
-    </linearGradient>
-    <linearGradient id="module" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2f80ff"/>
-      <stop offset="100%" stop-color="#00a6a8"/>
-    </linearGradient>
-    <linearGradient id="tray" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f5f0ff"/>
-    </linearGradient>
-    <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
-      <path d="M12 0H0V12" fill="none" stroke="#00a6a8" stroke-width="0.6" opacity="0.18"/>
-    </pattern>
-  </defs>
-  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-  <rect x="24" y="36" width="152" height="128" rx="28" fill="url(#grid)" opacity="0.35"/>
-  <ellipse cx="100" cy="160" rx="60" ry="18" fill="#0f172a" opacity="0.12"/>
-  <g transform="translate(44 78)">
-    <rect width="112" height="68" rx="22" fill="#0f172a" opacity="0.08"/>
-    <rect x="8" y="-18" width="64" height="44" rx="14" fill="#ffffff"/>
-    <rect x="14" y="-10" width="52" height="28" rx="12" fill="#0f172a" opacity="0.08"/>
-    <rect x="18" y="-6" width="44" height="18" rx="9" fill="url(#module)" opacity="0.65"/>
-    <rect x="76" y="-12" width="28" height="56" rx="12" fill="#ffffff"/>
-    <rect x="82" y="-6" width="16" height="26" rx="8" fill="#2f80ff" opacity="0.5"/>
-    <rect x="6" y="28" width="100" height="30" rx="14" fill="url(#tray)"/>
-    <rect x="16" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.16"/>
-    <rect x="60" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.18"/>
-    <path d="M24 12h64" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-    <g fill="none" stroke-linecap="round" stroke-width="2">
-      <path d="M20 44h12" stroke="#2f80ff" opacity="0.5"/>
-      <path d="M68 44h12" stroke="#eb3b5a" opacity="0.6"/>
-      <path d="M92 16v12" stroke="#eb3b5a" opacity="0.5"/>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+
+  <defs>  <title id="title">Hub Utilitario Flux</title>
+
+    <linearGradient id="grad-util" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Módulos intercambiables con bandejas magnéticas, especiero y charola inteligente.</desc>
+
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />  <defs>
+
+      <stop offset="50%" style="stop-color:#0F766E;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />      <stop offset="0%" stop-color="#fff2e6"/>
+
+    </linearGradient>      <stop offset="60%" stop-color="#ffe9d7"/>
+
+  </defs>      <stop offset="100%" stop-color="#ffe0cc"/>
+
+      </linearGradient>
+
+  <!-- Organizador tipo grid -->    <linearGradient id="module" x1="0%" y1="0%" x2="100%" y2="0%">
+
+  <g class="organizer">      <stop offset="0%" stop-color="#2f80ff"/>
+
+    <!-- Base principal -->      <stop offset="100%" stop-color="#00a6a8"/>
+
+    <rect x="50" y="70" width="100" height="90" rx="8" fill="url(#grad-util)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">    </linearGradient>
+
+      <animate attributeName="y" values="70;68;70" dur="3s" repeatCount="indefinite"/>    <linearGradient id="tray" x1="0%" y1="0%" x2="0%" y2="100%">
+
+    </rect>      <stop offset="0%" stop-color="#ffffff"/>
+
+          <stop offset="100%" stop-color="#f5f0ff"/>
+
+    <!-- Divisiones internas -->    </linearGradient>
+
+    <line x1="100" y1="75" x2="100" y2="155" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>    <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
+
+    <line x1="55" y1="112" x2="145" y2="112" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>      <path d="M12 0H0V12" fill="none" stroke="#00a6a8" stroke-width="0.6" opacity="0.18"/>
+
+        </pattern>
+
+    <!-- Compartimentos con items -->  </defs>
+
+    <g class="items">  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+
+      <!-- Item 1: lápiz -->  <rect x="24" y="36" width="152" height="128" rx="28" fill="url(#grid)" opacity="0.35"/>
+
+      <rect x="60" y="85" width="4" height="20" rx="2" fill="#FEDA77" opacity="0.9">  <ellipse cx="100" cy="160" rx="60" ry="18" fill="#0f172a" opacity="0.12"/>
+
+        <animate attributeName="height" values="20;22;20" dur="2s" repeatCount="indefinite"/>  <g transform="translate(44 78)">
+
+      </rect>    <rect width="112" height="68" rx="22" fill="#0f172a" opacity="0.08"/>
+
+      <rect x="68" y="88" width="4" height="17" rx="2" fill="#DD2A7B" opacity="0.9">    <rect x="8" y="-18" width="64" height="44" rx="14" fill="#ffffff"/>
+
+        <animate attributeName="height" values="17;19;17" dur="2.3s" repeatCount="indefinite"/>    <rect x="14" y="-10" width="52" height="28" rx="12" fill="#0f172a" opacity="0.08"/>
+
+      </rect>    <rect x="18" y="-6" width="44" height="18" rx="9" fill="url(#module)" opacity="0.65"/>
+
+          <rect x="76" y="-12" width="28" height="56" rx="12" fill="#ffffff"/>
+
+      <!-- Item 2: clips -->    <rect x="82" y="-6" width="16" height="26" rx="8" fill="#2f80ff" opacity="0.5"/>
+
+      <circle cx="120" cy="95" r="3" fill="#06B6D4" opacity="0.9">    <rect x="6" y="28" width="100" height="30" rx="14" fill="url(#tray)"/>
+
+        <animate attributeName="cy" values="95;93;95" dur="2.5s" repeatCount="indefinite"/>    <rect x="16" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.16"/>
+
+      </circle>    <rect x="60" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.18"/>
+
+      <circle cx="128" cy="98" r="3" fill="#06B6D4" opacity="0.9">    <path d="M24 12h64" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+        <animate attributeName="cy" values="98;96;98" dur="2.7s" repeatCount="indefinite"/>    <g fill="none" stroke-linecap="round" stroke-width="2">
+
+      </circle>      <path d="M20 44h12" stroke="#2f80ff" opacity="0.5"/>
+
+      <circle cx="135" cy="95" r="3" fill="#06B6D4" opacity="0.9">      <path d="M68 44h12" stroke="#eb3b5a" opacity="0.6"/>
+
+        <animate attributeName="cy" values="95;93;95" dur="2.9s" repeatCount="indefinite"/>      <path d="M92 16v12" stroke="#eb3b5a" opacity="0.5"/>
+
+      </circle>    </g>
+
+          <circle cx="40" cy="12" r="8" fill="#eb3b5a" opacity="0.75"/>
+
+      <!-- Item 3: USB -->    <circle cx="96" cy="12" r="8" fill="#2f80ff" opacity="0.55"/>
+
+      <rect x="65" y="125" width="20" height="8" rx="2" fill="#9CA3AF" opacity="0.9"/>  </g>
+
+      <rect x="67" y="127" width="4" height="4" rx="1" fill="#FEDA77" opacity="0.9">  <path d="M60 60h80" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>  <path d="M60 60l-10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+
+      </rect>  <path d="M140 60l10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+
+      </svg>
+
+      <!-- Item 4: llaves -->
+      <circle cx="120" cy="135" r="5" fill="none" stroke="#E8EDF4" stroke-width="2" opacity="0.8"/>
+      <rect x="125" y="133" width="12" height="4" rx="1" fill="#E8EDF4" opacity="0.8"/>
     </g>
-    <circle cx="40" cy="12" r="8" fill="#eb3b5a" opacity="0.75"/>
-    <circle cx="96" cy="12" r="8" fill="#2f80ff" opacity="0.55"/>
+    
+    <!-- Detalle superior -->
+    <rect x="70" y="60" width="60" height="6" rx="3" fill="#0B0F14" opacity="0.3"/>
   </g>
-  <path d="M60 60h80" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
-  <path d="M60 60l-10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-  <path d="M140 60l10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  
+  <!-- Sombra -->
+  <ellipse cx="100" cy="170" rx="50" ry="6" fill="#0B0F14" opacity="0.25">
+    <animate attributeName="opacity" values="0.25;0.15;0.25" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Partículas de orden -->
+  <circle cx="40" cy="100" r="1.5" fill="#10B981" opacity="0.5">
+    <animate attributeName="cy" values="100;80;100" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="160" cy="120" r="1.5" fill="#06B6D4" opacity="0.5">
+    <animate attributeName="cy" values="120;100;120" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
 </svg>

@@ -826,11 +826,23 @@ button {
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
   transition: transform var(--motion-duration-fast) var(--motion-ease),
               filter var(--motion-duration-fast) var(--motion-ease);
+  animation: float-gentle 6s ease-in-out infinite;
 }
 
 .card:hover .card-illustration {
   transform: translateY(-6px) scale(1.02);
   filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.45));
+  animation-play-state: paused;
+}
+
+/* Animación suave de flotación para ilustraciones */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .card:hover {
