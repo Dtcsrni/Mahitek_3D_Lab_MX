@@ -7,7 +7,7 @@ const CONFIG = {
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   DATA_PATHS: {
     brand: 'assets/data/brand.json',
-    productsBase: 'data/products_base.json',
+    productsBase: 'data/products.json',
     promos: 'data/promos.json',
     social: 'data/social.json',
     faq: 'data/faq.json'
