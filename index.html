@@ -259,20 +259,11 @@
               <p class="section-intro">Explora nuestro inventario actualizado con <span class="accent-text">precios transparentes en MXN</span>. Filtra por categoría, busca por nombre o SKU. ¿Viste algo en redes? Pregúntanos y te enviamos fotos recientes.</p>
         </div>
         <div class="catalog-layout">
-          <div class="catalog-sidebar">
-            <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="catalog-logo" loading="lazy" decoding="async">
-            <div class="catalog-filters" role="search" aria-label="Filtrar catálogo" data-animate="fade-up">
-              <label for="category-filter">
-                Categoría
+          <div class="catalog-results" role="region" aria-live="polite" aria-label="Resultados del catálogo">
+              <div class="carousel-toolbar" role="search" aria-label="Buscar en el catálogo">
                 <select id="category-filter" aria-label="Filtrar por categoría">
                   <option value="todas">Todas</option>
                 </select>
-              </label>
-            </div>
-              <p class="catalog-note" data-animate="fade-up">💎 Todos los precios incluyen <span class="accent-text">personalización básica</span>, empaque cuidado y guía de cuidados. ¿Necesitas tirajes o diseños custom? Cotiza sin compromiso.</p>
-          </div>
-          <div class="catalog-results" role="region" aria-live="polite" aria-label="Resultados del catálogo">
-              <div class="carousel-toolbar" role="search" aria-label="Buscar en el catálogo">
                 <input type="search" id="search-input" placeholder="Nombre, ocasión o etiqueta" aria-label="Buscar en el catálogo" />
               </div>
               <div class="carousel-container">
@@ -290,6 +281,7 @@
                 </button>
               </div>
               <div class="carousel-indicators" role="tablist" aria-label="Indicadores de posición del carrusel"></div>
+              <p class="catalog-note" data-animate="fade-up">💎 Todos los precios incluyen <span class="accent-text">personalización básica</span>, empaque cuidado y guía de cuidados. ¿Necesitas tirajes o diseños custom? Cotiza sin compromiso.</p>
           </div>
         </div>
         <div class="catalog-notes card glass" data-animate="fade-up">
