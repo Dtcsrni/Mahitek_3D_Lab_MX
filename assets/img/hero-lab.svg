@@ -166,90 +166,210 @@
     </g>
   </g>
   
-  <!-- BRUJO TECH (basado en tus rasgos) -->
-  <g class="tech-wizard" filter="url(#shadow-strong)">
+  <!-- CARRETES DE FILAMENTO ANIMADOS -->
+  <g class="filament-spools">
+    <!-- Carrete izquierdo (cyan) -->
+    <g class="spool-left" transform="translate(50, 200)">
+      <ellipse cx="0" cy="0" rx="18" ry="6" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2"/>
+      <rect x="-18" y="0" width="36" height="35" fill="url(#magic-cyan)" opacity="0.8"/>
+      <ellipse cx="0" cy="35" rx="18" ry="6" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="18" ry="6" fill="#06B6D4" opacity="0.3"/>
+      
+      <!-- Filamento enrollándose -->
+      <path d="M-15 5 Q-10 8 -5 5 Q0 2 5 5 Q10 8 15 5" stroke="#06B6D4" stroke-width="2" fill="none" opacity="0.7">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,5; 0,10; 0,15; 0,20" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="4s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Rotación del carrete -->
+      <animateTransform attributeName="transform" type="rotate" values="0 50 200; 360 50 200" dur="8s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Carrete derecho (purple) -->
+    <g class="spool-right" transform="translate(350, 220)">
+      <ellipse cx="0" cy="0" rx="18" ry="6" fill="url(#magic-dark)" stroke="#8b5cf6" stroke-width="2"/>
+      <rect x="-18" y="0" width="36" height="35" fill="url(#magic-purple)" opacity="0.8"/>
+      <ellipse cx="0" cy="35" rx="18" ry="6" fill="url(#magic-dark)" stroke="#8b5cf6" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="18" ry="6" fill="#8b5cf6" opacity="0.3"/>
+      
+      <!-- Filamento enrollándose -->
+      <path d="M-15 5 Q-10 8 -5 5 Q0 2 5 5 Q10 8 15 5" stroke="#8b5cf6" stroke-width="2" fill="none" opacity="0.7">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,5; 0,10; 0,15; 0,20" dur="4.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="4.5s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Rotación del carrete -->
+      <animateTransform attributeName="transform" type="rotate" values="0 350 220; 360 350 220" dur="7s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Carrete pequeño (verde tech) -->
+    <g class="spool-small" transform="translate(100, 120)">
+      <ellipse cx="0" cy="0" rx="12" ry="4" fill="url(#magic-dark)" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="-12" y="0" width="24" height="20" fill="#10B981" opacity="0.7"/>
+      <ellipse cx="0" cy="20" rx="12" ry="4" fill="url(#magic-dark)" stroke="#10B981" stroke-width="1.5"/>
+      
+      <animateTransform attributeName="transform" type="rotate" values="0 100 120; -360 100 120" dur="6s" repeatCount="indefinite" additive="sum"/>
+    </g>
+  </g>
+
+  <!-- BRUJO TECH MEXICANO (en el fondo, más detallado) -->
+  <g class="tech-wizard" opacity="0.85" filter="url(#shadow-strong)">
     <!-- Posición nerviosa -->
     <g class="wizard-body">
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0; 0,-1; 0,0" dur="3s" repeatCount="indefinite"/>
       
-      <!-- Cuerpo con hoodie tech -->
-      <ellipse cx="300" cy="260" rx="20" ry="35" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
-      <path d="M280 230 Q300 240 320 230" fill="#0f172a" stroke="#06B6D4" stroke-width="2"/>
+      <!-- Cuerpo con hoodie tech - con detalles mexicanos -->
+      <ellipse cx="80" cy="200" rx="22" ry="38" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
       
-      <!-- Capucha con símbolos -->
-      <path d="M285 220 Q300 210 315 220 Q315 240 300 245 Q285 240 285 220" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.5"/>
+      <!-- Hoodie con patrón geométrico mexicano -->
+      <path d="M60 170 Q80 180 100 170" fill="#0f172a" stroke="#8b5cf6" stroke-width="2"/>
+      <rect x="70" y="190" width="20" height="5" fill="#D4AF37" opacity="0.6"/>
+      <rect x="72" y="195" width="16" height="3" fill="#C41E3A" opacity="0.6"/>
+      <rect x="74" y="198" width="12" height="3" fill="#10B981" opacity="0.6"/>
       
-      <!-- Cabeza - rasgos latinos -->
-      <ellipse cx="300" cy="230" rx="12" ry="14" fill="#c19277" stroke="#8b5cf6" stroke-width="1.5"/>
-      
-      <!-- Cabello oscuro despeinado -->
-      <path d="M288 220 Q290 215 295 218 Q298 216 302 218 Q305 216 308 218 Q310 215 312 220" fill="#1a1614" stroke="#1a1614" stroke-width="2"/>
-      <ellipse cx="294" cy="222" rx="8" ry="6" fill="#1a1614" opacity="0.8"/>
-      <ellipse cx="306" cy="222" rx="8" ry="6" fill="#1a1614" opacity="0.8"/>
-      
-      <!-- Cejas gruesas -->
-      <path d="M293 228 Q295 227 297 228" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M303 228 Q305 227 307 228" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round"/>
-      
-      <!-- Ojos concentrados/nerviosos -->
-      <ellipse cx="295" cy="231" rx="2" ry="2.5" fill="#3a2817">
-        <animate attributeName="ry" values="2.5;0.5;2.5" dur="4s" repeatCount="indefinite"/>
-      </ellipse>
-      <ellipse cx="305" cy="231" rx="2" ry="2.5" fill="#3a2817">
-        <animate attributeName="ry" values="2.5;0.5;2.5" dur="4s" begin="0.2s" repeatCount="indefinite"/>
-      </ellipse>
-      
-      <!-- Brillo en los ojos (tech-magic) -->
-      <circle cx="295" cy="230.5" r="0.8" fill="#06B6D4" opacity="0.9">
+      <!-- Capucha con bordado de calavera tech -->
+      <path d="M65 160 Q80 150 95 160 Q95 180 80 185 Q65 180 65 160" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.5"/>
+      <circle cx="80" cy="168" r="4" fill="#D4AF37" opacity="0.7"/>
+      <circle cx="77" cy="170" r="1.5" fill="#06B6D4" opacity="0.9">
         <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="305" cy="230.5" r="0.8" fill="#06B6D4" opacity="0.9">
-        <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
+      <circle cx="83" cy="170" r="1.5" fill="#06B6D4" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" begin="0.2s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Nariz -->
-      <path d="M299 233 Q300 235 301 233" stroke="#8b6f5f" stroke-width="1" fill="none"/>
+      <!-- Cabeza - piel morena mexicana -->
+      <ellipse cx="80" cy="170" rx="13" ry="15" fill="#b89968" stroke="#8b5cf6" stroke-width="1.5"/>
       
-      <!-- Barba y bigote -->
-      <ellipse cx="300" cy="237" rx="8" ry="5" fill="#2d2420" opacity="0.9"/>
-      <path d="M294 234 Q297 235 300 234 Q303 235 306 234" fill="#2d2420" stroke="#2d2420" stroke-width="1.5"/>
+      <!-- Cabello negro abundante y rizado -->
+      <ellipse cx="80" cy="160" rx="14" ry="10" fill="#0d0c0b"/>
+      <path d="M66 160 Q68 155 70 158 Q72 156 74 159 Q76 157 78 160" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="1.5"/>
+      <path d="M82 160 Q84 157 86 159 Q88 156 90 158 Q92 155 94 160" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="1.5"/>
+      <ellipse cx="74" cy="162" rx="9" ry="7" fill="#0d0c0b" opacity="0.9"/>
+      <ellipse cx="86" cy="162" rx="9" ry="7" fill="#0d0c0b" opacity="0.9"/>
       
-      <!-- Brazos levantados (nervioso/controlando) -->
-      <!-- Brazo izquierdo -->
-      <path d="M285 250 Q275 245 270 255" stroke="#1e293b" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <ellipse cx="270" cy="255" rx="5" ry="5" fill="#c19277"/>
+      <!-- Cejas gruesas y expresivas -->
+      <path d="M73 168 Q75 166 78 167" stroke="#0d0c0b" stroke-width="2" stroke-linecap="round"/>
+      <path d="M82 167 Q85 166 87 168" stroke="#0d0c0b" stroke-width="2" stroke-linecap="round"/>
       
-      <!-- Brazo derecho -->
-      <path d="M315 250 Q325 245 330 255" stroke="#1e293b" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <ellipse cx="330" cy="255" rx="5" ry="5" fill="#c19277"/>
+      <!-- Ojos grandes concentrados/nerviosos -->
+      <ellipse cx="75" cy="171" rx="2.5" ry="3" fill="#2a1810">
+        <animate attributeName="ry" values="3;0.5;3" dur="4s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="85" cy="171" rx="2.5" ry="3" fill="#2a1810">
+        <animate attributeName="ry" values="3;0.5;3" dur="4s" begin="0.2s" repeatCount="indefinite"/>
+      </ellipse>
       
-      <!-- Auriculares tech -->
-      <rect x="288" y="228" width="4" height="8" rx="2" fill="#06B6D4" opacity="0.8"/>
-      <rect x="308" y="228" width="4" height="8" rx="2" fill="#06B6D4" opacity="0.8"/>
-      <path d="M292 232 Q300 230 308 232" stroke="#06B6D4" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <!-- Brillo tech-mágico en los ojos -->
+      <circle cx="75" cy="170.5" r="1" fill="#06B6D4" opacity="0.95">
+        <animate attributeName="opacity" values="0.95;0.4;0.95" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="85" cy="170.5" r="1" fill="#06B6D4" opacity="0.95">
+        <animate attributeName="opacity" values="0.95;0.4;0.95" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Nariz prominente -->
+      <path d="M79 173 Q80 176 81 173" stroke="#8b6f5f" stroke-width="1.5" fill="none"/>
+      <ellipse cx="78" cy="176" rx="1" ry="1.5" fill="#8b6f5f" opacity="0.6"/>
+      <ellipse cx="82" cy="176" rx="1" ry="1.5" fill="#8b6f5f" opacity="0.6"/>
+      
+      <!-- Bigote mexicano prominente -->
+      <path d="M72 176 Q75 178 80 177 Q85 178 88 176" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="2"/>
+      <ellipse cx="76" cy="177" rx="4" ry="2" fill="#0d0c0b"/>
+      <ellipse cx="84" cy="177" rx="4" ry="2" fill="#0d0c0b"/>
+      
+      <!-- Barba abundante -->
+      <ellipse cx="80" cy="180" rx="9" ry="6" fill="#1a1614" opacity="0.95"/>
+      <path d="M74 179 Q80 182 86 179" fill="#1a1614" stroke="#1a1614" stroke-width="1.5"/>
+      
+      <!-- Brazos levantados controlando la magia -->
+      <path d="M65 190 Q55 185 50 195" stroke="#1e293b" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <ellipse cx="50" cy="195" rx="5.5" ry="5.5" fill="#b89968"/>
+      
+      <path d="M95 190 Q105 185 110 195" stroke="#1e293b" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <ellipse cx="110" cy="195" rx="5.5" ry="5.5" fill="#b89968"/>
+      
+      <!-- Auriculares tech con LEDs -->
+      <rect x="66" y="168" width="4" height="9" rx="2" fill="#06B6D4" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.5;0.85" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="90" y="168" width="4" height="9" rx="2" fill="#06B6D4" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.5;0.85" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      </rect>
+      <path d="M70 172 Q80 170 90 172" stroke="#06B6D4" stroke-width="2" fill="none" opacity="0.7"/>
+      
+      <!-- Collar con dije azteca tech -->
+      <circle cx="80" cy="186" r="3" fill="#D4AF37" stroke="#06B6D4" stroke-width="1">
+        <animate attributeName="fill" values="#D4AF37;#FEDA77;#D4AF37" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <path d="M78 186 L80 184 L82 186 L80 188 Z" fill="#06B6D4" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+      </path>
     </g>
     
     <!-- Energía mágica emanando de las manos -->
     <g class="magic-energy">
-      <!-- Mano izquierda -->
-      <circle cx="270" cy="255" r="12" fill="url(#glow-purple)" opacity="0.5">
-        <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+      <circle cx="50" cy="195" r="14" fill="url(#glow-purple)" opacity="0.6">
+        <animate attributeName="r" values="14;20;14" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Mano derecha -->
-      <circle cx="330" cy="255" r="12" fill="url(#glow-cyan)" opacity="0.5">
-        <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+      <circle cx="110" cy="195" r="14" fill="url(#glow-cyan)" opacity="0.6">
+        <animate attributeName="r" values="14;20;14" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Rayos de magia -->
-      <path d="M270 255 Q260 240 250 230" stroke="#8b5cf6" stroke-width="2" opacity="0.6" fill="none">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+      <!-- Rayos de magia hacia la impresora -->
+      <path d="M50 195 Q80 210 120 220" stroke="#8b5cf6" stroke-width="2.5" opacity="0.7" fill="none" stroke-dasharray="5,5">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0;-10;0" dur="2s" repeatCount="indefinite"/>
       </path>
-      <path d="M330 255 Q340 240 350 230" stroke="#06B6D4" stroke-width="2" opacity="0.6" fill="none">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+      <path d="M110 195 Q140 210 180 220" stroke="#06B6D4" stroke-width="2.5" opacity="0.7" fill="none" stroke-dasharray="5,5">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0;-10;0" dur="2s" repeatCount="indefinite"/>
       </path>
+    </g>
+  </g>
+  
+  <!-- MONITOR HOLOGRÁFICO -->
+  <g class="holographic-monitor" transform="translate(320, 80)">
+    <rect x="0" y="0" width="55" height="40" rx="4" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2" opacity="0.8"/>
+    <rect x="3" y="3" width="49" height="30" rx="2" fill="#06B6D4" opacity="0.15">
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Datos en el monitor -->
+    <text x="8" y="12" font-family="monospace" font-size="6" fill="#06B6D4" opacity="0.9">TEMP: 210°C</text>
+    <text x="8" y="20" font-family="monospace" font-size="6" fill="#10B981" opacity="0.9">Z: 45.2mm</text>
+    <text x="8" y="28" font-family="monospace" font-size="6" fill="#8b5cf6" opacity="0.9">SPEED: 60mm/s</text>
+    
+    <!-- Parpadeo de datos -->
+    <rect x="40" y="9" width="8" height="3" fill="#10B981" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Base del monitor -->
+    <rect x="22" y="40" width="11" height="8" rx="2" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="1.5"/>
+    <rect x="20" y="48" width="15" height="3" rx="1.5" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="1"/>
+  </g>
+  
+  <!-- HERRAMIENTAS FLOTANTES -->
+  <g class="floating-tools">
+    <!-- Espátula tech -->
+    <g transform="translate(300, 280)">
+      <rect x="0" y="0" width="4" height="25" rx="1" fill="#D4AF37" stroke="#FEDA77" stroke-width="1"/>
+      <path d="M0 0 L4 0 L6 -8 L-2 -8 Z" fill="#8b5cf6" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+      <animateTransform attributeName="transform" type="rotate" values="0 302 280; 15 302 280; 0 302 280; -15 302 280; 0 302 280" dur="6s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="3s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Pinzas tech -->
+    <g transform="translate(280, 120)">
+      <path d="M0 0 L2 0 L3 12 L1 12 Z" fill="#06B6D4" stroke="#3b82f6" stroke-width="1"/>
+      <path d="M4 0 L6 0 L5 12 L3 12 Z" fill="#06B6D4" stroke="#3b82f6" stroke-width="1"/>
+      <circle cx="3" cy="14" r="2" fill="#8b5cf6" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,5; 0,0" dur="4s" repeatCount="indefinite" additive="sum"/>
     </g>
   </g>
   
