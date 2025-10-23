@@ -46,18 +46,20 @@
     </filter>
   </defs>
   
-  <!-- Fondo oscuro con textura -->
-  <rect width="400" height="400" fill="url(#bg-dark)"/>
-  
-  <!-- Círculos mágicos de fondo -->
-  <circle cx="320" cy="100" r="60" fill="url(#glow-purple)" opacity="0.3">
-    <animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="4s" repeatCount="indefinite"/>
+  <!-- Círculos mágicos de fondo (sin rect de fondo para transparencia) -->
+  <circle cx="320" cy="100" r="80" fill="url(#glow-purple)" opacity="0.25">
+    <animate attributeName="r" values="80;95;80" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.25;0.45;0.25" dur="4s" repeatCount="indefinite"/>
   </circle>
   
-  <circle cx="80" cy="280" r="50" fill="url(#glow-cyan)" opacity="0.3">
-    <animate attributeName="r" values="50;60;50" dur="3.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3.5s" repeatCount="indefinite"/>
+  <circle cx="80" cy="280" r="70" fill="url(#glow-cyan)" opacity="0.25">
+    <animate attributeName="r" values="70;85;70" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.25;0.45;0.25" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="200" cy="150" r="100" fill="url(#glow-cyan)" opacity="0.15">
+    <animate attributeName="r" values="100;115;100" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.15;0.3;0.15" dur="5s" repeatCount="indefinite"/>
   </circle>
   
   <!-- Mesa de trabajo tech-mágica -->
@@ -71,16 +73,19 @@
     <text x="260" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">⟨ ◊ ⟩</text>
   </g>
   
-  <!-- IMPRESORA 3D CENTRAL - Tech-Mágica -->
-  <g class="printer-magic">
-    <!-- Aura mágica pulsante -->
-    <ellipse cx="200" cy="250" rx="110" ry="30" fill="url(#glow-cyan)" opacity="0.4">
-      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="rx" values="110;120;110" dur="2s" repeatCount="indefinite"/>
+  <!-- IMPRESORA 3D CENTRAL - CYBERPUNK (elemento principal) -->
+  <g class="printer-magic" transform="scale(1.2) translate(0, -20)">
+    <!-- Aura mágica expansiva -->
+    <ellipse cx="200" cy="250" rx="130" ry="40" fill="url(#glow-cyan)" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="rx" values="130;150;130" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="40;50;40" dur="2s" repeatCount="indefinite"/>
     </ellipse>
     
-    <!-- Base de la impresora -->
-    <rect x="120" y="240" width="160" height="60" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="3" filter="url(#shadow-strong)"/>
+    <!-- Base de la impresora - más grande y cyberpunk -->
+    <rect x="120" y="240" width="160" height="60" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="4" filter="url(#shadow-strong)">
+      <animate attributeName="stroke-width" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+    </rect>
     
     <!-- Pantalla holográfica -->
     <rect x="135" y="250" width="50" height="35" rx="4" fill="#06B6D4" opacity="0.2" stroke="#06B6D4" stroke-width="2">
@@ -118,12 +123,12 @@
       </circle>
     </g>
     
-    <!-- Torres verticales (Eje Z) con energía arcana -->
-    <rect x="110" y="180" width="12" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="2" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
+    <!-- Torres verticales (Eje Z) CYBERPUNK con energía intensa -->
+    <rect x="110" y="180" width="14" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95" filter="url(#glow-effect)">
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
     </rect>
-    <rect x="278" y="180" width="12" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="2" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
+    <rect x="276" y="180" width="14" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95" filter="url(#glow-effect)">
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
     </rect>
     
     <!-- Rayos de energía en las torres -->
@@ -134,15 +139,17 @@
       <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </line>
     
-    <!-- Eje horizontal (X) con energía -->
-    <rect x="110" y="175" width="180" height="12" rx="4" fill="url(#magic-cyan)" stroke="#06B6D4" stroke-width="2.5" opacity="0.95">
+    <!-- Eje horizontal (X) CYBERPUNK con energía brillante -->
+    <rect x="110" y="175" width="180" height="14" rx="5" fill="url(#magic-cyan)" stroke="#06B6D4" stroke-width="3.5" opacity="0.98" filter="url(#glow-effect)">
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,10; 0,0" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="3.5;4.5;3.5" dur="2s" repeatCount="indefinite"/>
     </rect>
     
-    <!-- Extrusor mágico -->
+    <!-- Extrusor mágico CYBERPUNK - más prominente -->
     <g class="extrusor-magic" filter="url(#glow-effect)">
-      <rect x="180" y="168" width="40" height="40" rx="6" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95">
+      <rect x="175" y="165" width="50" height="45" rx="7" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="4" opacity="0.98">
         <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="4;5;4" dur="1.5s" repeatCount="indefinite"/>
       </rect>
       
       <!-- Ojo mágico del extrusor -->
