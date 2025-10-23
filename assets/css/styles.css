@@ -2489,27 +2489,153 @@ button {
   }
 }
 
-/* ===== Promos ===== */
-.promos-grid {
+/* ===== Carrusel de Promos ===== */
+.carousel-container {
+  position: relative;
+  max-width: 100%;
+  margin: 2rem auto 0;
+  padding: 0 60px;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    padding: 0 50px;
+  }
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 1.5rem;
+}
+
+.carousel-track.promos-grid {
+  grid-template-columns: unset;
+  display: flex;
+}
+
+.carousel-track > * {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .carousel-track > * {
+    flex: 0 0 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-track > * {
+    flex: 0 0 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 19, 28, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 50%;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all var(--motion-duration-fast) var(--motion-ease);
+  opacity: 0.8;
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.carousel-btn-prev {
+  left: 0;
+}
+
+.carousel-btn-next {
+  right: 0;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--motion-duration-fast) var(--motion-ease);
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: rgba(6, 182, 212, 0.4);
+  border-color: var(--accent);
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* ===== Promos Grid (sin carrusel - fallback) ===== */
+.promos-grid:not(.carousel-track) {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 640px) {
-  .promos-grid {
+  .promos-grid:not(.carousel-track) {
     gap: 1.5rem;
   }
 }
  
 @media (min-width: 768px) {
-  .promos-grid {
+  .promos-grid:not(.carousel-track) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .promos-grid {
+  .promos-grid:not(.carousel-track) {
     grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -330,12 +330,27 @@
           </div>
           <p class="section-intro">Descuentos temporales 🔥, bundles temáticos y lanzamientos exclusivos para fans y <span class="accent-text">micro-marcas</span> amigas.</p>
         </div>
-        <div id="promos-container" class="promos-grid">
-          <div class="card glass placeholder-card" data-animate="fade-up">
-            <img src="assets/img/placeholder-promos.svg" alt="Promociones en camino" class="placeholder-illustration" width="320" height="240" decoding="async">
-            <p>Estamos ensamblando nuevas promos. Déjanos tu mensaje y serás la primera persona en enterarse 🎉.</p>
+        <div class="carousel-container">
+          <button class="carousel-btn carousel-btn-prev" aria-label="Anterior promo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div class="carousel-wrapper">
+            <div id="promos-container" class="carousel-track promos-grid">
+              <div class="card glass placeholder-card" data-animate="fade-up">
+                <img src="assets/img/placeholder-promos.svg" alt="Promociones en camino" class="placeholder-illustration" width="320" height="240" decoding="async">
+                <p>Estamos ensamblando nuevas promos. Déjanos tu mensaje y serás la primera persona en enterarse 🎉.</p>
+              </div>
+            </div>
           </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Siguiente promo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
+        <div class="carousel-dots" id="promos-dots"></div>
       </div>
     </section>
 

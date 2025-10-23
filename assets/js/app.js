@@ -586,6 +586,9 @@ async function loadPromos() {
   }).join('');
 
   registerAnimatedElements(container);
+  
+  // Inicializar carrusel
+  initPromosCarousel(activePromos.length);
 
   // Analytics para CTAs externas
   container.addEventListener('click', (ev) => {
@@ -609,6 +612,142 @@ async function loadPromos() {
       promotion_name: promoName
     });
   });
+}
+
+// ===== Carrusel de Promos =====
+function initPromosCarousel(totalPromos) {
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
+  const dotsContainer = document.getElementById('promos-dots');
+  
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+  
+  let currentIndex = 0;
+  let itemsPerView = 1;
+  
+  // Calcular items por vista según viewport
+  function updateItemsPerView() {
+    if (window.innerWidth >= 1024) {
+      itemsPerView = 3;
+    } else if (window.innerWidth >= 768) {
+      itemsPerView = 2;
+    } else {
+      itemsPerView = 1;
+    }
+  }
+  
+  // Calcular total de páginas
+  function getTotalPages() {
+    return Math.ceil(totalPromos / itemsPerView);
+  }
+  
+  // Actualizar posición del track
+  function updateTrack() {
+    const offset = -currentIndex * (100 / itemsPerView);
+    track.style.transform = `translateX(${offset}%)`;
+    updateButtons();
+    updateDots();
+  }
+  
+  // Actualizar estado de botones
+  function updateButtons() {
+    const totalPages = getTotalPages();
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= totalPages - 1;
+  }
+  
+  // Crear y actualizar dots
+  function createDots() {
+    const totalPages = getTotalPages();
+    dotsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+      if (i === currentIndex) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateTrack();
+      });
+      
+      dotsContainer.appendChild(dot);
+    }
+  }
+  
+  function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+  
+  // Event listeners para botones
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateTrack();
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    const totalPages = getTotalPages();
+    if (currentIndex < totalPages - 1) {
+      currentIndex++;
+      updateTrack();
+    }
+  });
+  
+  // Soporte táctil para swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next
+        nextBtn.click();
+      } else {
+        // Swipe right - prev
+        prevBtn.click();
+      }
+    }
+  }
+  
+  // Actualizar en resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const oldItemsPerView = itemsPerView;
+      updateItemsPerView();
+      
+      if (oldItemsPerView !== itemsPerView) {
+        currentIndex = 0;
+        createDots();
+        updateTrack();
+      }
+    }, 250);
+  });
+  
+  // Inicializar
+  updateItemsPerView();
+  createDots();
+  updateTrack();
 }
 
 function formatDate(dateString) {
