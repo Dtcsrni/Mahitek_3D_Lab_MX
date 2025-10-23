@@ -1,3 +1,22 @@
+/* ===== OPTIMIZACIÓN DE RENDIMIENTO ===== */
+/* Habilitar aceleración GPU para animaciones */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --enable-animations: 1;
+  }
+}
+
+/* Reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ===== Variables ===== */
 :root {
   --bg-dark: #0B0F14;
@@ -786,6 +805,13 @@ button {
   /* Mezcla natural con el fondo */
   mix-blend-mode: screen;
   opacity: 0.95;
+  /* Optimización de rendimiento */
+  will-change: transform, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 @keyframes heroFloat {
