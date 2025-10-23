@@ -47,15 +47,27 @@
   </defs>
   
   <!-- FONDO: LABORATORIO CYBERPUNK INTEGRADO (sin cuadro negro) -->
-  <!-- Pared del laboratorio con gradiente sutil -->
-  <rect x="0" y="0" width="400" height="400" fill="url(#bg-dark)"/>
+  <!-- Fondo base con gradiente radial suave (sin bordes duros) -->
+  <ellipse cx="200" cy="200" rx="280" ry="280" fill="url(#bg-dark)" opacity="0.7"/>
   
-  <!-- Efecto de iluminación ambiental -->
-  <ellipse cx="200" cy="200" rx="250" ry="250" fill="#1a2332" opacity="0.3"/>
+  <!-- Capa adicional de profundidad -->
+  <ellipse cx="200" cy="200" rx="250" ry="250" fill="#0f1823" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.6;0.5" dur="8s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Iluminación ambiental central -->
+  <ellipse cx="200" cy="200" rx="220" ry="220" fill="#1a2d3f" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.5;0.4" dur="6s" repeatCount="indefinite"/>
+  </ellipse>
   
   <!-- Luz ambiental desde arriba -->
-  <ellipse cx="200" cy="0" rx="150" ry="100" fill="#06B6D4" opacity="0.05">
-    <animate attributeName="opacity" values="0.05;0.08;0.05" dur="5s" repeatCount="indefinite"/>
+  <ellipse cx="200" cy="0" rx="150" ry="100" fill="#06B6D4" opacity="0.08">
+    <animate attributeName="opacity" values="0.08;0.12;0.08" dur="5s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Luz ambiental desde abajo -->
+  <ellipse cx="200" cy="400" rx="180" ry="80" fill="#8b5cf6" opacity="0.06">
+    <animate attributeName="opacity" values="0.06;0.1;0.06" dur="6s" repeatCount="indefinite"/>
   </ellipse>
   
   <!-- Partículas de polvo en el ambiente -->
@@ -805,8 +817,8 @@
 
   <!-- BRUJO TECH MEXICANO (integrado al fondo) -->
   <g class="tech-wizard" opacity="0.85" filter="url(#shadow-strong)" transform="scale(0.95)">
-    <!-- Movimiento del mago recorriendo todas las máquinas -->
-    <animateMotion dur="40s" repeatCount="indefinite" path="M 0,0 L -80,60 L -80,-50 L 0,-10 L 80,80 L 120,-30 L 0,0" />
+    <!-- Movimiento del mago recorriendo TODA la escena - Ruta ampliada -->
+    <animateMotion dur="60s" repeatCount="indefinite" path="M 0,0 L -120,80 L -140,20 L -100,-60 L -40,-80 L 40,-70 L 100,-40 L 140,0 L 150,60 L 120,100 L 60,110 L -20,100 L -80,60 L -80,-50 L 0,-10 L 80,80 L 120,-30 L 0,0" />
     
     <!-- Respiración y movimiento sutil -->
     <g class="wizard-body">
