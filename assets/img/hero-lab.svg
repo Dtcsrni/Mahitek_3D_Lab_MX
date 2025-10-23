@@ -914,9 +914,9 @@
   </g>
 
   <!-- BRUJO TECH MEXICANO (SIEMPRE VISIBLE - CENTRADO) -->
-  <g class="tech-wizard" opacity="1" filter="url(#shadow-strong)" transform="translate(200, 200) scale(0.75)">
-    <!-- Movimiento del mago visitando las máquinas -->
-    <animateMotion dur="90s" repeatCount="indefinite" path="M 0,0 L -80,30 L -100,10 L -80,-40 L -40,-60 L 20,-65 L 70,-50 L 90,-20 L 95,30 L 75,60 L 30,70 L -20,65 L -60,40 L -70,-30 L -30,-10 L 40,50 L 80,-15 L 50,10 L 0,0" />
+  <g class="tech-wizard" opacity="1" filter="url(#shadow-strong)" transform="translate(200, 200) scale(0.7)">
+    <!-- Movimiento del mago visitando las máquinas - PATH REDUCIDO -->
+    <animateMotion dur="90s" repeatCount="indefinite" path="M 0,0 L -50,20 L -60,5 L -50,-25 L -25,-35 L 15,-38 L 45,-30 L 55,-12 L 58,18 L 48,35 L 20,42 L -12,38 L -35,25 L -42,-18 L -18,-6 L 25,30 L 50,-10 L 30,8 L 0,0" />
     
     <!-- Respiración y movimiento sutil -->
     <g class="wizard-body">
