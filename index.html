@@ -110,9 +110,20 @@
   <main id="main">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="container hero-grid">
+        <!-- Hero Visual - Prioridad máxima -->
+        <div class="hero-visual" data-animate="zoom-in">
+          <figure class="hero-illustration-main">
+            <img src="assets/img/hero-lab.svg" alt="Laboratorio Mahitek 3D con impresoras en marcha" class="hero-illustration-img-main" width="512" height="512" loading="eager" decoding="async" fetchpriority="high">
+          </figure>
+        </div>
+        
         <div class="hero-content" data-animate="fade-up">
           <span class="hero-badge">🛰️ Laboratorio operativo en <span class="accent-text">Pachuca, Hidalgo</span></span>
-         <h1 class="hero-title" id="hero-title">Transforma tus ideas en piezas 3D únicas que <span class="accent-text--gradient">sorprenden y perduran</span> <span class="hero-title-emoji" aria-hidden="true">✨</span></h1>
+         <h1 class="hero-title" id="hero-title">
+           <span class="hero-title-line">Transforma tus ideas en</span>
+           <span class="hero-title-line hero-title-line--emphasis">piezas 3D únicas</span>
+           <span class="hero-title-line">que <span class="accent-text--gradient hero-title-animated">sorprenden y perduran</span> <span class="hero-title-emoji" aria-hidden="true">✨</span></span>
+         </h1>
          <p class="hero-subtitle">Impresión 3D en PETG de alta calidad desde Pachuca. Convertimos tus bocetos, referencias y sueños creativos en regalos memorables, decoración con estilo y proyectos que marcan diferencia. Sin pedidos mínimos, con acompañamiento en cada paso.</p>
           <ul class="hero-highlights" aria-label="Diferenciadores de Mahitek 3D Lab">
           <li>🎁 <strong>Personalización sin límites:</strong> Nombres, fechas, colores y empaques listos para regalar. Tu visión, nuestra tecnología.</li>
@@ -143,9 +154,6 @@
           </div>
         </div>
         <aside class="hero-aside" aria-label="Resumen operativo">
-          <figure class="hero-illustration animate-delay-1" data-animate="fade-up">
-            <img src="assets/img/hero-lab.svg" alt="Laboratorio Mahitek 3D con impresoras en marcha" class="hero-illustration-img" width="512" height="512" loading="lazy" decoding="async">
-          </figure>
           <article class="card glass hero-aside-card animate-delay-2" data-animate="fade-up">
             <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="hero-card-logo" width="96" height="96" loading="lazy" decoding="async">
             <h2 class="hero-aside-title">Perfil de entrega 📦</h2>
