@@ -46,37 +46,214 @@
     </filter>
   </defs>
   
-  <!-- Círculos mágicos de fondo (ambiente integrado) -->
-  <circle cx="320" cy="120" r="90" fill="url(#glow-purple)" opacity="0.2">
-    <animate attributeName="r" values="90;105;90" dur="4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="4s" repeatCount="indefinite"/>
-  </circle>
+  <!-- FONDO: LABORATORIO CYBERPUNK DESORDENADO -->
+  <!-- Pared del laboratorio -->
+  <rect x="0" y="0" width="400" height="400" fill="#0f1419"/>
   
-  <circle cx="80" cy="180" r="80" fill="url(#glow-cyan)" opacity="0.2">
-    <animate attributeName="r" values="80;95;80" dur="3.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3.5s" repeatCount="indefinite"/>
-  </circle>
+  <!-- VENTANA AL FONDO con paisaje mexicano animado -->
+  <g class="window-background">
+    <!-- Marco de ventana -->
+    <rect x="250" y="40" width="130" height="90" rx="8" fill="#1e293b" stroke="#06B6D4" stroke-width="3" opacity="0.9"/>
+    
+    <!-- Vista a través de la ventana: Ciudad de México futurista -->
+    <rect x="255" y="45" width="120" height="80" rx="5" fill="#2a1810" opacity="0.6"/>
+    
+    <!-- Cielo atardecer -->
+    <rect x="255" y="45" width="120" height="30" rx="5" fill="#FF6B35" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Silueta Torre Latinoamericana -->
+    <rect x="280" y="70" width="8" height="35" fill="#1a1614" opacity="0.8"/>
+    <rect x="278" y="68" width="12" height="4" fill="#1a1614" opacity="0.8"/>
+    
+    <!-- Silueta edificio CDMX -->
+    <rect x="300" y="75" width="12" height="30" fill="#1a1614" opacity="0.7"/>
+    <rect x="320" y="80" width="10" height="25" fill="#1a1614" opacity="0.7"/>
+    
+    <!-- Luces de la ciudad parpadeando -->
+    <circle cx="285" cy="85" r="1" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="305" cy="90" r="1" fill="#06B6D4" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="325" cy="95" r="1" fill="#10B981" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Reflejo de luz en la ventana -->
+    <path d="M260 50 L270 50 L265 60 Z" fill="#06B6D4" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
   
-  <circle cx="200" cy="200" r="120" fill="url(#glow-cyan)" opacity="0.12">
-    <animate attributeName="r" values="120;140;120" dur="5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.12;0.25;0.12" dur="5s" repeatCount="indefinite"/>
-  </circle>
+  <!-- ESTANTERÍA DESORDENADA izquierda con estructura completa -->
+  <g class="shelves-left">
+    <!-- Postes verticales de estantería -->
+    <rect x="8" y="90" width="4" height="110" fill="#1e293b" opacity="0.8"/>
+    <rect x="66" y="90" width="4" height="110" fill="#1e293b" opacity="0.8"/>
+    
+    <!-- Estantes -->
+    <rect x="10" y="100" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    <rect x="10" y="140" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    <rect x="10" y="180" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    
+    <!-- Objetos desordenados con sombras -->
+    <ellipse cx="19" cy="105" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <rect x="15" y="92" width="8" height="12" fill="#8b5cf6" opacity="0.8"/>
+    
+    <ellipse cx="33" cy="105" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="28" y="88" width="10" height="16" fill="#06B6D4" opacity="0.8"/>
+    
+    <ellipse cx="55" cy="104" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <circle cx="55" cy="96" r="4" fill="#FEDA77" opacity="0.8"/>
+    
+    <ellipse cx="24" cy="145" rx="6" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="18" y="132" width="12" height="10" fill="#10B981" opacity="0.8"/>
+    
+    <ellipse cx="42" cy="145" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <rect x="38" y="130" width="8" height="12" fill="#C41E3A" opacity="0.8"/>
+    
+    <ellipse cx="60" cy="146" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <circle cx="60" cy="136" r="5" fill="#D4AF37" opacity="0.8"/>
+    
+    <ellipse cx="16" cy="185" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="12" y="172" width="10" height="10" fill="#3b82f6" opacity="0.8"/>
+    
+    <ellipse cx="37" cy="185" rx="7" ry="2" fill="#000000" opacity="0.3"/>
+    <rect x="30" y="170" width="14" height="12" fill="#8b5cf6" opacity="0.8"/>
+    
+    <!-- Etiquetas pequeñas -->
+    <rect x="50" y="108" width="15" height="3" rx="0.5" fill="#FEDA77" opacity="0.4"/>
+    <rect x="45" y="148" width="18" height="3" rx="0.5" fill="#06B6D4" opacity="0.4"/>
+  </g>
   
-  <!-- Resplandor ambiental detrás de la impresora 3D -->
+  <!-- MESA DESORDENADA derecha con más detalles -->
+  <g class="messy-desk-right">
+    <!-- Patas de mesa -->
+    <rect x="332" y="208" width="3" height="112" fill="#1e293b" opacity="0.7"/>
+    <rect x="390" y="208" width="3" height="112" fill="#1e293b" opacity="0.7"/>
+    
+    <!-- Superficie de mesa -->
+    <rect x="330" y="200" width="65" height="8" rx="3" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    
+    <!-- Herramientas desordenadas -->
+    <rect x="335" y="190" width="6" height="12" fill="#FEDA77" opacity="0.8" transform="rotate(15 338 196)"/>
+    <rect x="350" y="188" width="4" height="15" fill="#06B6D4" opacity="0.8" transform="rotate(-10 352 195)"/>
+    <circle cx="370" cy="195" r="4" fill="#10B981" opacity="0.8"/>
+    <rect x="380" y="192" width="8" height="10" fill="#C41E3A" opacity="0.7"/>
+    
+    <!-- Monitor pequeño en la mesa -->
+    <rect x="345" y="185" width="20" height="15" rx="2" fill="#1e293b" stroke="#8b5cf6" stroke-width="1" opacity="0.9"/>
+    <rect x="347" y="187" width="16" height="11" rx="1" fill="#8b5cf6" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- POSTERS Y DECORACIÓN en paredes -->
+  <g class="wall-decor" opacity="0.4">
+    <!-- Poster técnico izquierdo -->
+    <rect x="15" y="50" width="40" height="30" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1"/>
+    <line x1="20" y1="58" x2="50" y2="58" stroke="#06B6D4" stroke-width="0.5"/>
+    <line x1="20" y1="63" x2="48" y2="63" stroke="#06B6D4" stroke-width="0.5"/>
+    <line x1="20" y1="68" x2="45" y2="68" stroke="#06B6D4" stroke-width="0.5"/>
+    
+    <!-- Reloj digital -->
+    <rect x="180" y="20" width="40" height="18" rx="3" fill="#1e293b" stroke="#10B981" stroke-width="1.5" opacity="0.8"/>
+    <text x="185" y="33" font-family="monospace" font-size="10" fill="#10B981" opacity="0.9">23:47</text>
+  </g>
+  
+  <!-- SEÑALES DE SEGURIDAD -->
+  <g class="safety-signs" opacity="0.5">
+    <!-- Señal de alto voltaje -->
+    <circle cx="370" cy="160" r="8" fill="#FEDA77" opacity="0.3" stroke="#FEDA77" stroke-width="1.5"/>
+    <text x="366" y="165" font-family="sans-serif" font-size="12" fill="#1a1614" font-weight="bold">⚡</text>
+  </g>
+  
+  <!-- CABLES Y CONEXIONES en el laboratorio -->
+  <g class="cables-lab" opacity="0.6">
+    <!-- Cable de impresora a pared -->
+    <path d="M120 270 Q100 280 80 290 L80 320" stroke="#06B6D4" stroke-width="2" fill="none" opacity="0.5" stroke-dasharray="5,3">
+      <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cables de datos en el piso -->
+    <path d="M150 320 Q180 310 220 315 Q250 318 280 320" stroke="#8b5cf6" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <path d="M200 320 Q210 305 230 310" stroke="#10B981" stroke-width="1.5" fill="none" opacity="0.4"/>
+  </g>
+  
+  <!-- SOMBRAS DE OBJETOS proyectadas en el piso -->
+  <g class="shadows" opacity="0.3">
+    <!-- Sombra de impresora 3D -->
+    <ellipse cx="200" cy="325" rx="80" ry="15" fill="#000000" opacity="0.4"/>
+    
+    <!-- Sombra de laminadora -->
+    <ellipse cx="70" cy="328" rx="30" ry="8" fill="#000000" opacity="0.3"/>
+    
+    <!-- Sombra de mago -->
+    <ellipse cx="80" cy="330" rx="25" ry="6" fill="#000000" opacity="0.35">
+      <animate attributeName="cx" values="80;50;80;120;170;180;80" dur="40s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+  
+  <!-- Iluminación DIRECCIONAL desde la ventana -->
+  <g class="window-light">
+    <path d="M315 130 L250 200 L280 200 Z" fill="#FF6B35" opacity="0.05">
+      <animate attributeName="opacity" values="0.05;0.1;0.05" dur="8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M340 130 L280 220 L310 220 Z" fill="#FF6B35" opacity="0.04">
+      <animate attributeName="opacity" values="0.04;0.08;0.04" dur="8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Iluminación ambiental de máquinas -->
   <ellipse cx="200" cy="240" rx="140" ry="60" fill="url(#glow-cyan)" opacity="0.15">
-    <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.15;0.25;0.15" dur="4s" repeatCount="indefinite"/>
   </ellipse>
   
-  <!-- Mesa de trabajo tech-mágica -->
-  <rect x="50" y="320" width="300" height="15" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2" opacity="0.7"/>
+  <!-- Reflejo de luces en el piso -->
+  <ellipse cx="200" cy="330" rx="90" ry="12" fill="#06B6D4" opacity="0.08">
+    <animate attributeName="opacity" values="0.08;0.15;0.08" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
   
-  <!-- Runas arcanas en la mesa -->
-  <g class="runes" opacity="0.6">
-    <text x="100" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">⟨ ◊ ⟩</text>
-    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
-    <text x="180" y="330" font-family="serif" font-size="10" fill="#06B6D4" opacity="0.8">⬡ ✦ ⬡</text>
-    <text x="260" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">⟨ ◊ ⟩</text>
+  <!-- PISO DEL LABORATORIO con textura -->
+  <rect x="0" y="320" width="400" height="80" fill="#0B0F14" opacity="0.7"/>
+  
+  <!-- Líneas de perspectiva en el piso -->
+  <line x1="0" y1="320" x2="400" y2="320" stroke="#06B6D4" stroke-width="2" opacity="0.5"/>
+  <line x1="50" y1="320" x2="150" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  <line x1="200" y1="320" x2="200" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  <line x1="350" y1="320" x2="250" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Rejillas de ventilación en piso -->
+  <rect x="100" y="335" width="30" height="4" rx="1" fill="#1e293b" opacity="0.6"/>
+  <rect x="270" y="340" width="25" height="4" rx="1" fill="#1e293b" opacity="0.6"/>
+  
+  <!-- Partículas de polvo flotantes en el aire -->
+  <g class="dust-particles" opacity="0.3">
+    <circle cx="120" cy="180" r="1" fill="#ffffff" opacity="0.5">
+      <animate attributeName="cy" values="180;120;180" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="200" r="0.8" fill="#ffffff" opacity="0.4">
+      <animate attributeName="cy" values="200;140;200" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="160" r="1.2" fill="#ffffff" opacity="0.6">
+      <animate attributeName="cy" values="160;100;160" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="330" cy="150" r="0.9" fill="#ffffff" opacity="0.45">
+      <animate attributeName="cy" values="150;90;150" dur="11s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.45;0.1;0.45" dur="11s" repeatCount="indefinite"/>
+    </circle>
   </g>
+  
+  <!-- Haz de luz desde lámpara superior (fuera de vista) -->
+  <path d="M200 0 L160 200 L240 200 Z" fill="url(#glow-cyan)" opacity="0.06">
+    <animate attributeName="opacity" values="0.06;0.12;0.06" dur="5s" repeatCount="indefinite"/>
+  </path>
   
   <!-- IMPRESORA 3D CENTRAL - CYBERPUNK (elemento principal) -->
   <g class="printer-magic" transform="scale(1.15) translate(0, -15)">
@@ -117,13 +294,22 @@
     <!-- Cama de impresión con runas -->
     <rect x="130" y="250" width="140" height="40" rx="4" fill="#1e293b" opacity="0.6"/>
     
-    <!-- PRODUCCIÓN EN SERIE DE LOGOS - múltiples piezas -->
+    <!-- PRODUCCIÓN EN SERIE CLARA: Termina → Sale → Nuevo empieza -->
     <g class="print-object-logo" filter="url(#glow-effect)" transform="translate(168, 247) scale(0.48)">
       
-      <!-- Logo 1 (Completado - saliendo de la cama) - PRODUCCIÓN CONTINUA -->
-      <g class="logo-complete" opacity="0.9">
-        <animate attributeName="transform" values="translate(0,0) scale(1); translate(0,0) scale(1); translate(-60,-30) scale(0.9); translate(-110,-55) scale(0.7); translate(-150,-80) scale(0.5)" dur="18s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0;0.9;0.9;0.6;0" dur="18s" repeatCount="indefinite"/>
+      <!-- Objeto completándose y saliendo -->
+      <g class="logo-complete" opacity="0">
+        <!-- Fase 1: Imprimiendo (0-6s) -->
+        <!-- Fase 2: Terminado (6-8s) -->
+        <!-- Fase 3: Saliendo (8-12s) -->
+        <!-- Fase 4: Desaparece (12s+) -->
+        <animate attributeName="transform" values="
+          translate(0,0) scale(0.5);
+          translate(0,0) scale(1);
+          translate(0,0) scale(1);
+          translate(-80,-40) scale(0.8);
+          translate(-140,-70) scale(0.5)" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0.95;0.95;0.7;0" dur="12s" repeatCount="indefinite"/>
         
         <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="#06B6D4" stroke-width="3"/>
         <path d="M40 20L64 34V56L40 70L16 56V34L40 20Z" fill="#010E10" stroke="#06B6D4" stroke-width="2.5"/>
@@ -136,9 +322,15 @@
         <rect x="15" y="59" width="50" height="1.5" fill="#10B981" opacity="0.7"/>
       </g>
       
-      <!-- Logo 2 (Imprimiéndose actualmente) -->
-      <g class="logo-printing" opacity="0.95">
-        <animate attributeName="opacity" values="0.5;0.95;0.5" dur="3s" repeatCount="indefinite"/>
+      <!-- Segundo objeto (ciclo desfasado 12s) -->
+      <g class="logo-printing" opacity="0">
+        <animate attributeName="transform" values="
+          translate(0,0) scale(0.5);
+          translate(0,0) scale(1);
+          translate(0,0) scale(1);
+          translate(-80,-40) scale(0.8);
+          translate(-140,-70) scale(0.5)" dur="12s" begin="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0.95;0.95;0.7;0" dur="12s" begin="12s" repeatCount="indefinite"/>
         
         <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="url(#magic-cyan)" stroke-width="3">
           <animate attributeName="stroke-width" values="3;4;3" dur="2s" repeatCount="indefinite"/>
@@ -151,40 +343,19 @@
         <circle cx="30" cy="44" r="4" fill="#FF5C9B"/>
         <circle cx="48" cy="47" r="3" fill="#00E5FF"/>
         
-        <!-- Capas apareciendo progresivamente -->
-        <rect x="15" y="65" width="50" height="1.5" fill="#FEDA77" opacity="0">
-          <animate attributeName="width" values="0;50;50;50" dur="16s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0;0.95;0.95;0.95" dur="16s" repeatCount="indefinite"/>
+        <!-- Capas apareciendo progresivamente durante impresión -->
+        <rect x="15" y="65" width="0" height="1.5" fill="#FEDA77" opacity="0">
+          <animate attributeName="width" values="0;50;50;50;50" dur="12s" begin="12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.95;0.95;0.95;0.95" dur="12s" begin="12s" repeatCount="indefinite"/>
         </rect>
-        <rect x="15" y="62" width="50" height="1.5" fill="#06B6D4" opacity="0">
-          <animate attributeName="width" values="0;0;50;50" dur="16s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0;0;0.8;0.8" dur="16s" repeatCount="indefinite"/>
+        <rect x="15" y="62" width="0" height="1.5" fill="#06B6D4" opacity="0">
+          <animate attributeName="width" values="0;0;50;50;50" dur="12s" begin="12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0.8;0.8;0.8" dur="12s" begin="12s" repeatCount="indefinite"/>
         </rect>
-        <rect x="15" y="59" width="50" height="1.5" fill="#10B981" opacity="0">
-          <animate attributeName="width" values="0;0;0;50" dur="16s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0;0;0;0.7" dur="16s" repeatCount="indefinite"/>
+        <rect x="15" y="59" width="0" height="1.5" fill="#10B981" opacity="0">
+          <animate attributeName="width" values="0;0;0;50;50" dur="12s" begin="12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0;0.7;0.7" dur="12s" begin="12s" repeatCount="indefinite"/>
         </rect>
-      </g>
-      
-      <!-- Logo 3 (Próximo - esperando en cola) -->
-      <g class="logo-next" opacity="0">
-        <animate attributeName="opacity" values="0;0;0;0.4;0.5" dur="18s" begin="10s" repeatCount="indefinite"/>
-        <animate attributeName="transform" values="translate(50,10) scale(0.8); translate(50,10) scale(0.8); translate(40,5) scale(0.85); translate(20,0) scale(0.95); translate(0,0) scale(1)" dur="18s" repeatCount="indefinite"/>
-        <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="none" stroke="#06B6D4" stroke-width="2" stroke-dasharray="4,4">
-          <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="2s" repeatCount="indefinite"/>
-        </path>
-        <path d="M40 20L64 34V56L40 70L16 56V34L40 20Z" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6">
-          <animate attributeName="stroke-dashoffset" values="0;-6;0" dur="1.8s" repeatCount="indefinite"/>
-        </path>
-      </g>
-      
-      <!-- Logo 4 (En cola más atrás) -->
-      <g class="logo-queue" opacity="0">
-        <animate attributeName="opacity" values="0;0;0;0;0.3" dur="18s" begin="14s" repeatCount="indefinite"/>
-        <animate attributeName="transform" values="translate(80,15) scale(0.7); translate(80,15) scale(0.7); translate(70,12) scale(0.75); translate(50,10) scale(0.8); translate(50,10) scale(0.8)" dur="18s" repeatCount="indefinite"/>
-        <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5">
-          <animate attributeName="stroke-dashoffset" values="0;-6;0" dur="2.2s" repeatCount="indefinite"/>
-        </path>
       </g>
       
       <!-- Partículas mágicas durante impresión -->
@@ -952,6 +1123,20 @@
       <animate attributeName="x" values="10;10;70" dur="6s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.85;0.85;0" dur="6s" repeatCount="indefinite"/>
     </rect>
+    
+    <!-- VAPOR DE CALOR saliendo de laminadora -->
+    <g class="heat-steam" opacity="0.4">
+      <ellipse cx="35" cy="22" rx="8" ry="4" fill="#FEDA77" opacity="0.6">
+        <animate attributeName="cy" values="22;10;22" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="40" cy="25" rx="6" ry="3" fill="#FEDA77" opacity="0.5">
+        <animate attributeName="cy" values="25;12;25" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="6;10;6" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="3.5s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
     
     <!-- Partículas de calor -->
     <circle cx="35" cy="28" r="1.5" fill="#FEDA77" opacity="0.9">
