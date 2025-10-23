@@ -659,8 +659,8 @@
       </circle>
     </g>
     
-    <!-- CARRETE ACTIVO consumiéndose conforme imprime -->
-    <g class="active-spool" transform="translate(120, 150)">
+    <!-- CARRETE ACTIVO consumiéndose conforme imprime - PEGADO A LA IMPRESORA -->
+    <g class="active-spool" transform="translate(95, 175)">
       <text x="-20" y="-8" font-family="sans-serif" font-size="6" fill="#06B6D4" opacity="0.9" font-weight="bold">SPOOL</text>
       
       <!-- Estructura del carrete -->
@@ -687,8 +687,8 @@
         </path>
       </g>
       
-      <!-- Filamento saliendo hacia extrusor animado -->
-      <path d="M0 38 Q15 45 35 52" stroke="#06B6D4" stroke-width="2.8" fill="none" opacity="0.9" stroke-dasharray="5,3">
+      <!-- Filamento saliendo hacia extrusor animado - CONECTADO A IMPRESORA -->
+      <path d="M0 38 Q25 50 60 65" stroke="#06B6D4" stroke-width="2.8" fill="none" opacity="0.9" stroke-dasharray="5,3">
         <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="1.2s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="38;22;38" dur="20s" repeatCount="indefinite" additive="sum"/>
       </path>
@@ -913,10 +913,10 @@
     </g>
   </g>
 
-  <!-- BRUJO TECH MEXICANO (SIEMPRE VISIBLE) -->
-  <g class="tech-wizard" opacity="1" filter="url(#shadow-strong)" transform="translate(80, 260) scale(0.8)">
-    <!-- Movimiento del mago DENTRO de la escena - Ruta optimizada con márgenes seguros -->
-    <animateMotion dur="70s" repeatCount="indefinite" path="M 0,0 L 40,25 L 55,15 L 50,-15 L 25,-25 L -15,-20 L -35,-10 L -40,5 L -35,25 L -25,35 L -10,38 L 10,32 L 30,18 L 35,-15 L 10,-8 L -25,28 L -40,-8 L -15,0 L 0,0" />
+  <!-- BRUJO TECH MEXICANO (SIEMPRE VISIBLE - CENTRADO) -->
+  <g class="tech-wizard" opacity="1" filter="url(#shadow-strong)" transform="translate(200, 200) scale(0.75)">
+    <!-- Movimiento del mago visitando las máquinas -->
+    <animateMotion dur="90s" repeatCount="indefinite" path="M 0,0 L -80,30 L -100,10 L -80,-40 L -40,-60 L 20,-65 L 70,-50 L 90,-20 L 95,30 L 75,60 L 30,70 L -20,65 L -60,40 L -70,-30 L -30,-10 L 40,50 L 80,-15 L 50,10 L 0,0" />
     
     <!-- Respiración y movimiento sutil -->
     <g class="wizard-body">
