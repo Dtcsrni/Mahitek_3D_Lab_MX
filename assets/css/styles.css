@@ -290,7 +290,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: all var(--transition);
-  z-index: 110;
+  z-index: 120;
   position: relative;
 }
 
@@ -580,7 +580,7 @@ button {
   border: 0;
 }
 
-/* ===== Hero Section ===== */
+/* Hero Section responsividad mejorada */
 .hero {
   padding: 4rem 0;
   text-align: center;
@@ -1199,7 +1199,7 @@ button {
   margin: 1.5rem auto;
   width: 100%;
   max-width: 100%;
-  padding: 0 56px; /* espacio para flechas a los lados */
+  padding: 0 60px;
 }
 
 /* Barra superior del carrusel (buscador integrado) */
@@ -1362,12 +1362,19 @@ button {
 }
 
 @media (max-width: 768px) {
-  .carousel-container { padding: 0 48px; }
+  .carousel-container { padding: 0 52px; }
   .carousel-btn { width: 44px; height: 44px; }
   
   .carousel-btn svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container { padding: 0 50px; }
+  .product-card {
+    min-width: calc(100vw - 130px);
   }
 }
 
@@ -1405,8 +1412,8 @@ button {
   scroll-snap-align: start;
   flex: 0 0 auto;
   width: 100%;
-  min-width: min(320px, calc(100vw - 120px));
-  max-width: 420px;
+  min-width: calc(100vw - 140px);
+  max-width: 340px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -1427,15 +1434,15 @@ button {
 
 @media (min-width: 640px) {
   .product-card {
-    min-width: min(360px, calc(100vw - 140px));
-    max-width: 450px;
+    min-width: 360px;
+    max-width: 420px;
     padding: 1.125rem;
   }
 }
 
 @media (min-width: 1024px) {
   .product-card {
-    min-width: min(400px, calc(100vw - 160px));
+    min-width: 400px;
     max-width: 480px;
     padding: 1.25rem;
   }
@@ -2100,10 +2107,22 @@ button {
 /* Barra de herramientas de FAQ */
 .faq-toolbar {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
   max-width: 800px;
   margin: 0 auto 1rem auto;
+}
+
+@media (min-width: 640px) {
+  .faq-toolbar {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .faq-toolbar {
+    grid-template-columns: 1fr auto auto auto;
+  }
 }
 
 .faq-toolbar .input {
@@ -2119,10 +2138,18 @@ button {
 .faq-toolbar .faq-actions {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .faq-toolbar .btn {
   white-space: nowrap;
+  flex: 1 1 auto;
+}
+
+@media (min-width: 1024px) {
+  .faq-toolbar .btn {
+    flex: 0 1 auto;
+  }
 }
 
 .faq-count {
