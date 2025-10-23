@@ -472,32 +472,19 @@
       <!-- Cuerpo con hoodie tech - estructura más humana -->
       <path d="M64 190 Q58 200 58 220 L58 245 Q58 250 62 250 L98 250 Q102 250 102 245 L102 220 Q102 200 96 190" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
       
-      <!-- Hoodie con patrón geométrico mexicano mejorado -->
+      <!-- Hoodie con patrón geométrico mexicano simplificado -->
       <path d="M64 190 Q70 185 80 183 Q90 185 96 190 Q98 195 98 200 L98 210 L62 210 L62 200 Q62 195 64 190" fill="#0f172a" stroke="#8b5cf6" stroke-width="2.5"/>
       
-      <!-- Diseño tenango/otomí en el hoodie -->
+      <!-- Diseño tenango/otomí en el hoodie - SIMPLIFICADO -->
       <g opacity="0.75">
         <path d="M70 196 L72 198 L70 200 L68 198 Z" fill="#D4AF37"/>
         <path d="M80 194 L82 196 L80 198 L78 196 Z" fill="#C41E3A"/>
         <path d="M90 196 L92 198 L90 200 L88 198 Z" fill="#10B981"/>
-        <rect x="72" y="202" width="16" height="2" fill="#D4AF37" opacity="0.8"/>
-        <rect x="74" y="205" width="12" height="2" fill="#C41E3A" opacity="0.8"/>
-        <rect x="76" y="208" width="8" height="2" fill="#10B981" opacity="0.8"/>
-        <!-- Patrón geométrico adicional -->
-        <circle cx="70" cy="215" r="2" fill="none" stroke="#D4AF37" stroke-width="1"/>
-        <circle cx="90" cy="215" r="2" fill="none" stroke="#10B981" stroke-width="1"/>
+        <rect x="72" y="204" width="16" height="2" fill="#06B6D4" opacity="0.8"/>
       </g>
       
-      <!-- Capucha con bordado de calavera tech -->
+      <!-- Capucha simplificada -->
       <path d="M62 185 Q65 172 70 165 Q75 160 80 158 Q85 160 90 165 Q95 172 98 185 Q98 192 96 195 L94 190 L66 190 L64 195 Q62 192 62 185" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.8"/>
-      <circle cx="80" cy="175" r="5" fill="#D4AF37" opacity="0.8"/>
-      <circle cx="77" cy="176" r="1.8" fill="#06B6D4" opacity="0.95">
-        <animate attributeName="opacity" values="0.95;0.3;0.95" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="83" cy="176" r="1.8" fill="#06B6D4" opacity="0.95">
-        <animate attributeName="opacity" values="0.95;0.3;0.95" dur="2s" begin="0.2s" repeatCount="indefinite"/>
-      </circle>
-      <path d="M77 178 L80 180 L83 178" stroke="#06B6D4" stroke-width="1.5" fill="none"/>
       
       <!-- ROSTRO HUMANO REALISTA - Piel morena mexicana prominente -->
       <!-- Base del rostro con estructura ósea -->
@@ -511,119 +498,153 @@
       <!-- Frente -->
       <path d="M66 162 Q80 160 94 162 Q92 168 80 168 Q68 168 66 162" fill="#9d7854"/>
       
-      <!-- Cabello negro abundante mexicano con volumen -->
-      <ellipse cx="80" cy="158" rx="17" ry="11" fill="#0d0c0b"/>
-      <path d="M64 158 Q66 152 68 155 Q70 150 72 154 Q74 149 76 153 Q78 148 80 152" fill="#0d0c0b"/>
-      <path d="M80 152 Q82 148 84 153 Q86 149 88 154 Q90 150 92 155 Q94 152 96 158" fill="#0d0c0b"/>
-      <!-- Volumen lateral del cabello -->
-      <ellipse cx="68" cy="162" rx="10" ry="9" fill="#0d0c0b" opacity="0.95"/>
-      <ellipse cx="92" cy="162" rx="10" ry="9" fill="#0d0c0b" opacity="0.95"/>
-      <!-- Copete -->
-      <path d="M75 155 Q78 150 80 149 Q82 150 85 155" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="2"/>
+      <!-- CABELLO ESTILO PUNK - Picos altos y dramáticos -->
+      <!-- Base del cabello -->
+      <ellipse cx="80" cy="160" rx="17" ry="8" fill="#0d0c0b"/>
       
-      <!-- Cejas GRUESAS mexicanas muy expresivas - ligeramente arqueadas con satisfacción -->
-      <path d="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" stroke="#0d0c0b" stroke-width="3" stroke-linecap="round">
-        <animate attributeName="d" values="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5; M68 167.2 Q71 165.7 75 166 Q77 166.2 78 166.7; M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" dur="4s" repeatCount="indefinite"/>
+      <!-- PICO CENTRAL GRANDE (mohawk style) -->
+      <path d="M75 156 L78 145 L80 140 L82 145 L85 156 Z" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="1.5">
+        <animate attributeName="d" values="
+          M75 156 L78 145 L80 140 L82 145 L85 156 Z;
+          M75 156 L78 143 L80 138 L82 143 L85 156 Z;
+          M75 156 L78 145 L80 140 L82 145 L85 156 Z" dur="3s" repeatCount="indefinite"/>
       </path>
-      <path d="M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" stroke="#0d0c0b" stroke-width="3" stroke-linecap="round">
-        <animate attributeName="d" values="M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167; M82 166.7 Q83 166.2 85 166 Q89 165.7 92 167.2; M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" dur="4s" repeatCount="indefinite"/>
-      </path>
-      <!-- Pelo de cejas adicional para más realismo -->
-      <path d="M69 167.5 L71 166.5 M73 166 L75 166.5 M76 167 L77 167" stroke="#0d0c0b" stroke-width="0.8" opacity="0.7"/>
-      <path d="M83 167 L84 167 M85 166.5 L87 166 M89 166.5 L91 167.5" stroke="#0d0c0b" stroke-width="0.8" opacity="0.7"/>
       
-      <!-- Ojos expresivos con SATISFACCIÓN Y MISTERIO - entrecerrados ligeramente -->
+      <!-- Pico lateral izquierdo -->
+      <path d="M66 160 L68 150 L70 155 Z" fill="#0d0c0b">
+        <animate attributeName="d" values="
+          M66 160 L68 150 L70 155 Z;
+          M66 160 L68 148 L70 155 Z;
+          M66 160 L68 150 L70 155 Z" dur="2.8s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Pico lateral derecho -->
+      <path d="M94 160 L92 150 L90 155 Z" fill="#0d0c0b">
+        <animate attributeName="d" values="
+          M94 160 L92 150 L90 155 Z;
+          M94 160 L92 148 L90 155 Z;
+          M94 160 L92 150 L90 155 Z" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Picos medianos -->
+      <path d="M72 157 L74 148 L76 157 Z" fill="#0d0c0b"/>
+      <path d="M84 157 L86 148 L88 157 Z" fill="#0d0c0b"/>
+      
+      <!-- Volumen lateral punk -->
+      <ellipse cx="68" cy="162" rx="8" ry="7" fill="#0d0c0b" opacity="0.9"/>
+      <ellipse cx="92" cy="162" rx="8" ry="7" fill="#0d0c0b" opacity="0.9"/>
+      
+      <!-- Efecto brillante en el pico central (gel punk) -->
+      <path d="M79 142 L80 140 L81 142" stroke="#3b82f6" stroke-width="1" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Cejas expresivas mejoradas -->
+      <path d="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" stroke="#0d0c0b" stroke-width="2.5" stroke-linecap="round">
+        <animate attributeName="d" values="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5; M68 167.5 Q71 165.8 75 166.1 Q77 166.3 78 166.8; M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" dur="4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" stroke="#0d0c0b" stroke-width="2.5" stroke-linecap="round">
+        <animate attributeName="d" values="M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167; M82 166.8 Q83 166.3 85 166.1 Q89 165.8 92 167.5; M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" dur="4s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- OJOS SUPER ANIMADOS - Expresivos y dinámicos -->
       <ellipse cx="73" cy="171" rx="4" ry="4" fill="#ffffff">
-        <animate attributeName="ry" values="4;3.5;4" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="4;3.5;4;4;0.8;4" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="4;4.2;4;3.8;4;4" dur="6s" repeatCount="indefinite"/>
       </ellipse>
       <ellipse cx="87" cy="171" rx="4" ry="4" fill="#ffffff">
-        <animate attributeName="ry" values="4;3.5;4" dur="5s" begin="0.2s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="4;3.5;4;4;0.8;4" dur="6s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="4;4.2;4;3.8;4;4" dur="6s" begin="0.1s" repeatCount="indefinite"/>
       </ellipse>
-      <!-- Iris café oscuro con mirada penetrante -->
+      
+      <!-- Iris café oscuro con movimiento expresivo -->
       <circle cx="73" cy="171.8" r="2.8" fill="#2a1810">
-        <animate attributeName="cy" values="171.8;171.5;171.8" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171.8;171.5;171.8;172;171.8" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73;73.3;73;72.7;73" dur="8s" repeatCount="indefinite"/>
       </circle>
       <circle cx="87" cy="171.8" r="2.8" fill="#2a1810">
-        <animate attributeName="cy" values="171.8;171.5;171.8" dur="5s" begin="0.2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171.8;171.5;171.8;172;171.8" dur="6s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87;87.3;87;86.7;87" dur="8s" begin="0.1s" repeatCount="indefinite"/>
       </circle>
-      <!-- Pupilas -->
+      
+      <!-- Pupilas animadas -->
       <circle cx="73" cy="171.3" r="1.8" fill="#000000">
-        <animate attributeName="cy" values="171.3;171;171.3" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171.3;171;171.3;171.6;171.3" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73;73.3;73;72.7;73" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.8;1.5;1.8;2;1.8" dur="4s" repeatCount="indefinite"/>
       </circle>
       <circle cx="87" cy="171.3" r="1.8" fill="#000000">
-        <animate attributeName="cy" values="171.3;171;171.3" dur="5s" begin="0.2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171.3;171;171.3;171.6;171.3" dur="6s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87;87.3;87;86.7;87" dur="8s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.8;1.5;1.8;2;1.8" dur="4s" repeatCount="indefinite"/>
       </circle>
-      <!-- Brillo tech-mágico en los ojos con intensidad variable -->
+      
+      <!-- Brillo tech-mágico intenso -->
       <circle cx="73.5" cy="170.2" r="1.2" fill="#06B6D4" opacity="0.95">
-        <animate attributeName="opacity" values="0.95;0.5;0.95;0.7;0.95" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="r" values="1.2;1.4;1.2" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.95;0.5;0.95;0.3;0.95" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.2;1.5;1.2;0.8;1.2" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73.5;73.8;73.5;73.2;73.5" dur="8s" repeatCount="indefinite"/>
       </circle>
       <circle cx="87.5" cy="170.2" r="1.2" fill="#06B6D4" opacity="0.95">
-        <animate attributeName="opacity" values="0.95;0.5;0.95;0.7;0.95" dur="3s" begin="0.3s" repeatCount="indefinite"/>
-        <animate attributeName="r" values="1.2;1.4;1.2" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.95;0.5;0.95;0.3;0.95" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.2;1.5;1.2;0.8;1.2" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87.5;87.8;87.5;87.2;87.5" dur="8s" begin="0.1s" repeatCount="indefinite"/>
       </circle>
-      <!-- Párpados superiores con expresión satisfecha -->
-      <path d="M69 169.5 Q73 168.5 77 169.5" stroke="#8b6f5f" stroke-width="1.2" fill="none" opacity="0.6">
-        <animate attributeName="d" values="M69 169.5 Q73 168.5 77 169.5; M69 170 Q73 169 77 170; M69 169.5 Q73 168.5 77 169.5" dur="5s" repeatCount="indefinite"/>
-      </path>
-      <path d="M83 169.5 Q87 168.5 91 169.5" stroke="#8b6f5f" stroke-width="1.2" fill="none" opacity="0.6">
-        <animate attributeName="d" values="M83 169.5 Q87 168.5 91 169.5; M83 170 Q87 169 91 170; M83 169.5 Q87 168.5 91 169.5" dur="5s" begin="0.2s" repeatCount="indefinite"/>
-      </path>
       
-      <!-- Nariz mexicana prominente y ancha -->
+      <!-- Nariz mexicana prominente -->
       <path d="M80 168 L80 178" stroke="#8b6f5f" stroke-width="2.5" stroke-linecap="round"/>
       <path d="M78 177 Q80 179 82 177" stroke="#8b6f5f" stroke-width="2" fill="none"/>
       <ellipse cx="77" cy="178" rx="2" ry="2.5" fill="#8b6f5f" opacity="0.7"/>
       <ellipse cx="83" cy="178" rx="2" ry="2.5" fill="#8b6f5f" opacity="0.7"/>
-      <!-- Puente de la nariz con sombra -->
-      <path d="M78 170 L78 176" stroke="#8b6f5f" stroke-width="1" opacity="0.3"/>
-      <path d="M82 170 L82 176" stroke="#8b6f5f" stroke-width="1" opacity="0.3"/>
       
-      <!-- BIGOTE MEXICANO AUTÉNTICO - estilo revolucionario con caída natural -->
-      <!-- Base del bigote ANCHO Y CAÍDO (no hacia arriba) -->
-      <ellipse cx="71" cy="180.5" rx="7" ry="4" fill="#0d0c0b" opacity="0.98"/>
-      <ellipse cx="89" cy="180.5" rx="7" ry="4" fill="#0d0c0b" opacity="0.98"/>
-      
-      <!-- Forma principal del bigote - CAÍDO NATURALMENTE como en la foto -->
-      <path d="M64 179 Q68 180 72 181 Q76 181.5 80 181 Q84 181.5 88 181 Q92 180 96 179" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="4" opacity="0.98">
-        <animate attributeName="d" values="M64 179 Q68 180 72 181 Q76 181.5 80 181 Q84 181.5 88 181 Q92 180 96 179; M64 179 Q68 180.2 72 181.2 Q76 181.7 80 181.2 Q84 181.7 88 181.2 Q92 180.2 96 179; M64 179 Q68 180 72 181 Q76 181.5 80 181 Q84 181.5 88 181 Q92 180 96 179" dur="4s" repeatCount="indefinite"/>
+      <!-- BIGOTE MEXICANO CLÁSICO - Delgado y RESPINGADO hacia arriba (estilo charro/Dalí) -->
+      <!-- Centro del bigote fino -->
+      <path d="M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="2" opacity="0.95">
+        <animate attributeName="d" values="
+          M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180;
+          M75 180 Q78 179.3 80 179.3 Q82 179.3 85 180;
+          M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180" dur="3s" repeatCount="indefinite"/>
       </path>
       
-      <!-- Volumen adicional en el centro del bigote -->
-      <ellipse cx="80" cy="180" rx="8" ry="3" fill="#0d0c0b" opacity="0.9"/>
+      <!-- Puntas RESPINGADAS hacia arriba (característica clave) -->
+      <path d="M75 180 Q70 179 67 178 Q65 176 64 173" stroke="#0d0c0b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.95">
+        <animate attributeName="d" values="
+          M75 180 Q70 179 67 178 Q65 176 64 173;
+          M75 180 Q70 178.5 67 177 Q65 175 64 172;
+          M75 180 Q70 179 67 178 Q65 176 64 173" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M85 180 Q90 179 93 178 Q95 176 96 173" stroke="#0d0c0b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.95">
+        <animate attributeName="d" values="
+          M85 180 Q90 179 93 178 Q95 176 96 173;
+          M85 180 Q90 178.5 93 177 Q95 175 96 172;
+          M85 180 Q90 179 93 178 Q95 176 96 173" dur="3s" repeatCount="indefinite"/>
+      </path>
       
-      <!-- Bigote cayendo hacia abajo en las puntas (auténtico mexicano) -->
-      <path d="M64 179 Q63 181 62 183" stroke="#0d0c0b" stroke-width="3.5" stroke-linecap="round" opacity="0.95"/>
-      <path d="M96 179 Q97 181 98 183" stroke="#0d0c0b" stroke-width="3.5" stroke-linecap="round" opacity="0.95"/>
+      <!-- Volumen sutil en las bases laterales -->
+      <ellipse cx="70" cy="179.5" rx="3.5" ry="1.8" fill="#0d0c0b" opacity="0.85"/>
+      <ellipse cx="90" cy="179.5" rx="3.5" ry="1.8" fill="#0d0c0b" opacity="0.85"/>
       
-      <!-- Textura del bigote con pelos individuales -->
-      <path d="M66 180 Q68 179 70 180.5" stroke="#0d0c0b" stroke-width="1.2" opacity="0.85"/>
-      <path d="M72 180.5 Q74 179.5 76 181" stroke="#0d0c0b" stroke-width="1.2" opacity="0.85"/>
-      <path d="M78 181 Q80 180 82 181" stroke="#0d0c0b" stroke-width="1.2" opacity="0.85"/>
-      <path d="M84 181 Q86 179.5 88 180.5" stroke="#0d0c0b" stroke-width="1.2" opacity="0.85"/>
-      <path d="M90 180.5 Q92 179 94 180" stroke="#0d0c0b" stroke-width="1.2" opacity="0.85"/>
-      
-      <!-- Volumen superior del bigote MÁS GRUESO -->
-      <ellipse cx="71" cy="179" rx="6" ry="2.5" fill="#0d0c0b" opacity="0.88"/>
-      <ellipse cx="89" cy="179" rx="6" ry="2.5" fill="#0d0c0b" opacity="0.88"/>
-      
-      <!-- Sombra debajo del bigote -->
-      <ellipse cx="80" cy="181.5" rx="10" ry="1.5" fill="#000000" opacity="0.3"/>
+      <!-- Puntas afiladas y enrolladas (detalle charro) -->
+      <path d="M64 173 Q63 171 63.5 170" stroke="#0d0c0b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9">
+        <animate attributeName="d" values="
+          M64 173 Q63 171 63.5 170;
+          M64 172 Q63 170 63.5 169;
+          M64 173 Q63 171 63.5 170" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M96 173 Q97 171 96.5 170" stroke="#0d0c0b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9">
+        <animate attributeName="d" values="
+          M96 173 Q97 171 96.5 170;
+          M96 172 Q97 170 96.5 169;
+          M96 173 Q97 171 96.5 170" dur="3s" repeatCount="indefinite"/>
+      </path>
       
       <!-- Boca con SONRISA LEVE Y MISTERIOSA -->
       <path d="M74 183 Q80 184.5 86 183" stroke="#8b6f5f" stroke-width="1.8" fill="none">
         <animate attributeName="d" values="M74 183 Q80 184.5 86 183; M74 183.2 Q80 185 86 183.2; M74 183 Q80 184.5 86 183" dur="6s" repeatCount="indefinite"/>
       </path>
-      <!-- Comisuras de la boca levemente levantadas (satisfacción) -->
-      <path d="M74 183 L73 182.5" stroke="#8b6f5f" stroke-width="0.8" opacity="0.6"/>
-      <path d="M86 183 L87 182.5" stroke="#8b6f5f" stroke-width="0.8" opacity="0.6"/>
       
-      <!-- Barba abundante mexicana -->
-      <ellipse cx="80" cy="186" rx="11" ry="7" fill="#1a1614" opacity="0.95"/>
-      <path d="M72 184 Q76 186 80 186.5 Q84 186 88 184" fill="#1a1614" stroke="#1a1614" stroke-width="2"/>
-      <!-- Textura de la barba -->
-      <path d="M74 185 Q76 187 78 185" stroke="#1a1614" stroke-width="1" opacity="0.8"/>
-      <path d="M82 185 Q84 187 86 185" stroke="#1a1614" stroke-width="1" opacity="0.8"/>
+      <!-- Barba sutil (perilla pequeña) -->
+      <ellipse cx="80" cy="186" rx="5" ry="4" fill="#1a1614" opacity="0.9"/>
       
       <!-- Orejas -->
       <ellipse cx="64" cy="172" rx="3" ry="5" fill="#9d7854"/>
@@ -698,7 +719,7 @@
         </g>
       </g>
       
-      <!-- Auriculares tech con LEDs -->
+      <!-- Auriculares tech simplificados -->
       <rect x="61" y="169" width="5" height="10" rx="2.5" fill="#06B6D4" opacity="0.9">
         <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
       </rect>
@@ -706,23 +727,11 @@
         <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" begin="0.3s" repeatCount="indefinite"/>
       </rect>
       <path d="M66 174 Q80 171 94 174" stroke="#06B6D4" stroke-width="2.5" fill="none" opacity="0.8"/>
-      <!-- LEDs en los auriculares -->
-      <circle cx="63" cy="174" r="1.5" fill="#8b5cf6">
-        <animate attributeName="fill" values="#8b5cf6;#06B6D4;#8b5cf6" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="97" cy="174" r="1.5" fill="#8b5cf6">
-        <animate attributeName="fill" values="#8b5cf6;#06B6D4;#8b5cf6" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-      </circle>
       
-      <!-- Collar con dije azteca tech -->
-      <path d="M72 188 Q80 189 88 188" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+      <!-- Collar simplificado -->
       <circle cx="80" cy="192" r="4" fill="#D4AF37" stroke="#06B6D4" stroke-width="1.5">
         <animate attributeName="fill" values="#D4AF37;#FEDA77;#D4AF37" dur="3s" repeatCount="indefinite"/>
       </circle>
-      <path d="M77 192 L80 189 L83 192 L80 195 Z" fill="#06B6D4" opacity="0.9">
-        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
-      </path>
-      <circle cx="80" cy="192" r="1.5" fill="#8b5cf6" opacity="0.8"/>
     </g>
     
     <!-- Energía mágica emanando de las manos con movimiento -->
