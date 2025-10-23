@@ -654,11 +654,37 @@ async function loadFAQ() {
 
   registerAnimatedElements(container);
 
+  // Render de destacadas como chips
+  const top = document.getElementById('faq-top');
+  if (top) {
+    const featured = faqData.filter(i => i.destacada);
+    if (featured.length > 0) {
+      top.innerHTML = featured.map(it => {
+        const id = `faq-${slugify(it.q)}`;
+        return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${it.q}">⭐ ${it.q}</a>`;
+      }).join('');
+
+      top.addEventListener('click', (e) => {
+        const a = e.target.closest('a.faq-chip');
+        if (!a) return;
+        const sel = a.getAttribute('data-faq-target');
+        if (!sel) return;
+        const target = document.querySelector(sel);
+        if (target && target.classList.contains('faq-item')) {
+          target.open = true;
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        e.preventDefault();
+      });
+    }
+  }
+
   // Interacciones: búsqueda y expandir/contraer
   const search = document.getElementById('faq-search');
   const categorySelect = document.getElementById('faq-category');
   const btnExpand = document.getElementById('faq-expand');
   const btnCollapse = document.getElementById('faq-collapse');
+  const countEl = document.getElementById('faq-count');
   const items = Array.from(container.querySelectorAll('.faq-item'));
 
   // Poblar categorías desde data
@@ -675,13 +701,20 @@ async function loadFAQ() {
   function applyFilter(query) {
     const q = (query || '').trim().toLowerCase();
     const cat = (categorySelect && categorySelect.value) ? categorySelect.value : '';
+    let visible = 0;
     items.forEach(el => {
       const text = el.textContent.toLowerCase();
       const matchText = q.length === 0 || text.includes(q);
       const matchCat = !cat || (text.includes(cat) || (el.querySelector('summary span')?.textContent.toLowerCase().includes(cat)));
       const match = matchText && matchCat;
       el.style.display = match ? '' : 'none';
+      if (match) visible++;
     });
+
+    if (countEl) {
+      const total = items.length;
+      countEl.textContent = `Mostrando ${visible} de ${total} preguntas`;
+    }
   }
 
   if (search) {
@@ -695,6 +728,11 @@ async function loadFAQ() {
   }
   if (btnCollapse) {
     btnCollapse.addEventListener('click', () => items.forEach(el => el.open = false));
+  }
+
+  // Inicializa contador con el total al cargar
+  if (countEl) {
+    countEl.textContent = `Mostrando ${items.length} de ${items.length} preguntas`;
   }
 
   // Abre item si URL tiene hash a su ID

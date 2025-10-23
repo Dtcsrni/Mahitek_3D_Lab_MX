@@ -374,12 +374,14 @@
           <select id="faq-category" class="input" aria-label="Filtrar por categoría">
             <option value="">Todas las categorías</option>
           </select>
+          <span id="faq-count" class="faq-count" aria-live="polite">Mostrando…</span>
           <div class="faq-actions">
             <button id="faq-expand" class="btn btn-ghost" type="button" aria-controls="faq-list">Expandir todo</button>
             <button id="faq-collapse" class="btn btn-ghost" type="button" aria-controls="faq-list">Contraer todo</button>
           </div>
         </div>
-        <div id="faq-list" class="faq-list" aria-live="polite">
+  <div id="faq-top" class="faq-top" aria-label="Preguntas destacadas" data-animate="fade-up" style="--animate-delay: 110ms"></div>
+  <div id="faq-list" class="faq-list" aria-live="polite">
           <div class="card glass placeholder-card" aria-hidden="true" data-animate="fade-up">
             <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
             <p>Estamos redactando respuestas útiles. Mientras tanto, contáctanos y resolvemos tu caso directo 🤗.</p>
