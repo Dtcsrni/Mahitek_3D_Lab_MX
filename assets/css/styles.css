@@ -681,8 +681,7 @@ button {
   gap: 2rem;
   grid-template-areas: 
     "visual"
-    "content"
-    "aside";
+    "content";
 }
 
 .hero-visual {
@@ -1257,15 +1256,15 @@ button {
   
   .hero-grid {
     grid-template-areas: 
-      "visual visual visual"
-      "content content aside";
-    grid-template-columns: 1fr 1fr 0.8fr;
+      "visual visual"
+      "content content";
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -1416,8 +1415,8 @@ button {
   .hero-grid {
     grid-template-areas: 
       "visual visual"
-      "content aside";
-    grid-template-columns: 1.2fr 1fr;
+      "content content";
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
   
