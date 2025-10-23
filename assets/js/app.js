@@ -131,7 +131,7 @@ function renderProducts() {
       </div>
     `;
     registerAnimatedElements(carousel);
-    initCarousel();
+    // No inicializar carrusel si no hay productos
     return;
   }
 
