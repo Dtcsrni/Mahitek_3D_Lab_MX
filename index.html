@@ -291,20 +291,26 @@
                 <input type="search" id="search-input" placeholder="Nombre, ocasión o etiqueta" aria-label="Buscar en el catálogo" />
               </div>
               <div class="carousel-container">
-                <button class="carousel-btn carousel-btn--prev" aria-label="Producto anterior" type="button">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <button class="carousel-btn carousel-btn-prev" aria-label="Producto anterior" type="button">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
                 </button>
-                <div id="product-carousel" class="product-carousel" role="list">
-              <div class="card glass placeholder-card" data-animate="fade-up">
-                <img src="assets/img/placeholder-catalog.svg" alt="Catálogo en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
-                  <p>Cargando productos disponibles...</p>
-              </div>
-            </div>
-                <button class="carousel-btn carousel-btn--next" aria-label="Siguiente producto" type="button">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <div class="carousel-wrapper">
+                  <div id="product-carousel" class="carousel-track product-grid" role="list">
+                    <div class="card glass placeholder-card" data-animate="fade-up">
+                      <img src="assets/img/placeholder-catalog.svg" alt="Catálogo en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
+                      <p>Cargando productos disponibles...</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Siguiente producto" type="button">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
                 </button>
               </div>
-              <div class="carousel-indicators" role="tablist" aria-label="Indicadores de posición del carrusel"></div>
+              <div class="carousel-dots" id="catalog-dots"></div>
               <p class="catalog-note" data-animate="fade-up">💎 Catálogo extendido con <span class="accent-text">precios en rangos (MXN)</span>. El rango puede variar por personalización (no incluida por defecto), tamaño/grosor, acabados manuales, herrajes/adhesivos extra, urgencia 24–48 h y tirada. Piso por pieza: $40; excepción "Llavero Nombre Plano" desde $35.</p>
           </div>
         </div>

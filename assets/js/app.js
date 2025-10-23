@@ -213,7 +213,7 @@ function renderProducts() {
   }).join('');
 
   registerAnimatedElements(carousel);
-  initCarousel();
+  initCatalogCarousel(displayedProducts.length);
 
   // Log de interacción: add_to_cart en CTA
   carousel.addEventListener('click', (ev) => {
@@ -226,203 +226,145 @@ function renderProducts() {
   }, { once: true });
 }
 
-// ===== Carousel Controls =====
-function initCarousel() {
-  const carousel = document.getElementById('product-carousel');
-  const prevBtn = document.querySelector('.carousel-btn--prev');
-  const nextBtn = document.querySelector('.carousel-btn--next');
-  const indicatorsContainer = document.querySelector('.carousel-indicators');
-  const container = carousel?.closest('.carousel-container');
+// ===== Carrusel de Catálogo =====
+function initCatalogCarousel(totalProducts) {
+  const track = document.getElementById('product-carousel');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
+  const dotsContainer = document.getElementById('catalog-dots');
   
-  if (!carousel || !prevBtn || !nextBtn) return;
-
-  const cards = carousel.querySelectorAll('.product-card');
-  if (cards.length === 0) return;
-
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+  
   let currentIndex = 0;
-  let autoplayTimer = null;
-  let interactionTimeout = null;
-
-  // Accesibilidad básica
-  carousel.setAttribute('tabindex', '0');
-  carousel.setAttribute('aria-roledescription', 'Carrusel de productos');
-  carousel.setAttribute('aria-label', 'Catálogo de productos');
-
-  // Crear indicadores
-  if (indicatorsContainer) {
-    indicatorsContainer.innerHTML = Array.from(cards).map((_, i) => 
-      `<button class="carousel-indicator ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Ir a producto ${i + 1}"></button>`
-    ).join('');
-
-    indicatorsContainer.addEventListener('click', (e) => {
-      const indicator = e.target.closest('.carousel-indicator');
-      if (!indicator) return;
-      const index = parseInt(indicator.dataset.index, 10);
-      scrollToCard(index);
-      log('carousel_navigation', { method: 'indicator', index });
-      pauseAutoplayTemporarily();
-    });
-  }
-
-  function scrollToCard(index) {
-    if (index < 0 || index >= cards.length) return;
-    
-    currentIndex = index;
-    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    
-    updateControls();
-  }
-
-  function updateControls() {
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === cards.length - 1;
-
-    // Actualizar indicadores
-    if (indicatorsContainer) {
-      indicatorsContainer.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === currentIndex);
-      });
+  let itemsPerView = 1;
+  
+  // Calcular items por vista según viewport
+  function updateItemsPerView() {
+    if (window.innerWidth >= 1024) {
+      itemsPerView = 3;
+    } else if (window.innerWidth >= 768) {
+      itemsPerView = 2;
+    } else {
+      itemsPerView = 1;
     }
   }
-
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) scrollToCard(currentIndex - 1);
-    log('carousel_navigation', { method: 'button', direction: 'prev', index: currentIndex });
-    pauseAutoplayTemporarily();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < cards.length - 1) scrollToCard(currentIndex + 1);
-    log('carousel_navigation', { method: 'button', direction: 'next', index: currentIndex });
-    pauseAutoplayTemporarily();
-  });
-
-  // Detectar scroll manual y actualizar índice
-  let scrollTimeout;
-  carousel.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      const scrollLeft = carousel.scrollLeft;
-      // Encontrar la tarjeta más cercana a la posición actual de scroll
-      let nearestIndex = 0;
-      let minDelta = Infinity;
-      cards.forEach((card, i) => {
-        const delta = Math.abs(card.offsetLeft - scrollLeft);
-        if (delta < minDelta) {
-          minDelta = delta;
-          nearestIndex = i;
-        }
+  
+  // Calcular total de páginas
+  function getTotalPages() {
+    return Math.ceil(totalProducts / itemsPerView);
+  }
+  
+  // Actualizar posición del track
+  function updateTrack() {
+    const offset = -currentIndex * (100 / itemsPerView);
+    track.style.transform = `translateX(${offset}%)`;
+    updateButtons();
+    updateDots();
+  }
+  
+  // Actualizar estado de botones
+  function updateButtons() {
+    const totalPages = getTotalPages();
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= totalPages - 1;
+  }
+  
+  // Crear y actualizar dots
+  function createDots() {
+    const totalPages = getTotalPages();
+    dotsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+      if (i === currentIndex) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateTrack();
+        log('catalog_carousel_navigation', { method: 'dot', index: currentIndex });
       });
-      currentIndex = nearestIndex;
-      updateControls();
-    }, 80);
-  }, { passive: true });
-
-  // Soporte táctil mejorado
+      
+      dotsContainer.appendChild(dot);
+    }
+  }
+  
+  function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+  
+  // Event listeners para botones
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateTrack();
+      log('catalog_carousel_navigation', { method: 'button', direction: 'prev', index: currentIndex });
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    const totalPages = getTotalPages();
+    if (currentIndex < totalPages - 1) {
+      currentIndex++;
+      updateTrack();
+      log('catalog_carousel_navigation', { method: 'button', direction: 'next', index: currentIndex });
+    }
+  });
+  
+  // Soporte táctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
-
-  carousel.addEventListener('touchstart', (e) => {
+  
+  track.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
-
-  carousel.addEventListener('touchend', (e) => {
+  
+  track.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
   }, { passive: true });
-
+  
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
     
     if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0 && currentIndex < cards.length - 1) {
-        scrollToCard(currentIndex + 1);
-        log('carousel_navigation', { method: 'swipe', direction: 'next', index: currentIndex });
-      } else if (diff < 0 && currentIndex > 0) {
-        scrollToCard(currentIndex - 1);
-        log('carousel_navigation', { method: 'swipe', direction: 'prev', index: currentIndex });
-      }
-      pauseAutoplayTemporarily();
-    }
-  }
-
-  // Controles de teclado
-  carousel.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      if (currentIndex < cards.length - 1) {
-        scrollToCard(currentIndex + 1);
-        log('carousel_navigation', { method: 'keyboard', direction: 'next', index: currentIndex });
-        pauseAutoplayTemporarily();
-      }
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      if (currentIndex > 0) {
-        scrollToCard(currentIndex - 1);
-        log('carousel_navigation', { method: 'keyboard', direction: 'prev', index: currentIndex });
-        pauseAutoplayTemporarily();
-      }
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      scrollToCard(0);
-      pauseAutoplayTemporarily();
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      scrollToCard(cards.length - 1);
-      pauseAutoplayTemporarily();
-    }
-  });
-
-  // Autoplay deshabilitado para no mover el scroll automáticamente
-  function startAutoplay() {
-    // Autoplay disabled - users prefer manual control
-    return;
-    /* 
-    if (prefersReducedMotion.matches) return;
-    stopAutoplay();
-    autoplayTimer = setInterval(() => {
-      if (document.hidden) return; // pausa si tab no es visible
-      if (currentIndex < cards.length - 1) {
-        scrollToCard(currentIndex + 1);
+      if (diff > 0) {
+        // Swipe left - next
+        nextBtn.click();
       } else {
-        scrollToCard(0);
+        // Swipe right - prev
+        prevBtn.click();
       }
-      log('carousel_navigation', { method: 'autoplay', index: currentIndex });
-    }, 5000);
-    */
+      log('catalog_carousel_navigation', { method: 'swipe', direction: diff > 0 ? 'next' : 'prev' });
+    }
   }
-
-  function stopAutoplay() {
-    if (autoplayTimer) clearInterval(autoplayTimer);
-    autoplayTimer = null;
-  }
-
-  function pauseAutoplayTemporarily() {
-    // Autoplay disabled - no need to pause/resume
-    return;
-    /*
-    stopAutoplay();
-    if (interactionTimeout) clearTimeout(interactionTimeout);
-    interactionTimeout = setTimeout(() => {
-      startAutoplay();
-    }, 8000);
-    */
-  }
-
-  // Eventos de hover/focus deshabilitados (autoplay inactivo)
-  /*
-  if (container) {
-    container.addEventListener('mouseenter', stopAutoplay, { passive: true });
-    container.addEventListener('mouseleave', startAutoplay, { passive: true });
-    container.addEventListener('focusin', stopAutoplay);
-    container.addEventListener('focusout', startAutoplay);
-  }
-  */
-
-  // startAutoplay(); // Comentado - autoplay deshabilitado
-  log('carousel_init', { items: cards.length });
-  updateControls();
+  
+  // Actualizar en resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const oldItemsPerView = itemsPerView;
+      updateItemsPerView();
+      
+      if (oldItemsPerView !== itemsPerView) {
+        currentIndex = 0;
+        createDots();
+        updateTrack();
+      }
+    }, 250);
+  });
+  
+  // Inicializar
+  updateItemsPerView();
+  createDots();
+  updateTrack();
+  log('catalog_carousel_init', { items: totalProducts, itemsPerView });
 }
 
 function populateCategoryFilter() {
