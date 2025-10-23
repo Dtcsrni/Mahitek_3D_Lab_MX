@@ -273,56 +273,166 @@
       </div>
     </section>
 
+    <!-- ===== CATÁLOGO ===== -->
     <section id="catalogo" class="section section-alt" aria-labelledby="catalogo-title">
       <div class="container">
+        
+        <!-- Header -->
         <div class="section-header" data-animate="fade-up">
           <div class="section-heading">
             <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="section-heading-logo" width="64" height="64" loading="lazy" decoding="async">
-              <h2 class="section-title" id="catalogo-title">📦 Catálogo en tiempo real</h2>
+            <h2 class="section-title" id="catalogo-title">📦 Catálogo Interactivo</h2>
           </div>
-              <p class="section-intro">Explora nuestro inventario actualizado con <span class="accent-text">precios transparentes en MXN</span>. Filtra por categoría, busca por nombre o SKU. ¿Viste algo en redes? Pregúntanos y te enviamos fotos recientes.</p>
+          <p class="section-intro">
+            Explora nuestro inventario actualizado con <span class="accent-text">precios transparentes en MXN</span>. 
+            Todos los productos incluyen material PETG de alta calidad y empaque profesional.
+          </p>
         </div>
-        <div class="catalog-layout">
-          <div class="catalog-results" role="region" aria-live="polite" aria-label="Resultados del catálogo">
-              <div class="carousel-toolbar" role="search" aria-label="Buscar en el catálogo">
-                <select id="category-filter" aria-label="Filtrar por categoría">
-                  <option value="todas">Todas</option>
-                </select>
-                <input type="search" id="search-input" placeholder="Nombre, ocasión o etiqueta" aria-label="Buscar en el catálogo" />
-              </div>
-              <div class="carousel-container">
-                <button class="carousel-btn carousel-btn-prev" aria-label="Producto anterior" type="button">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <div class="carousel-wrapper">
-                  <div id="product-carousel" class="carousel-track product-grid" role="list">
-                    <div class="card glass placeholder-card" data-animate="fade-up">
-                      <img src="assets/img/placeholder-catalog.svg" alt="Catálogo en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
-                      <p>Cargando productos disponibles...</p>
-                    </div>
+
+        <!-- Filtros y Búsqueda -->
+        <div class="catalog-filters" data-animate="fade-up">
+          <div class="filter-group">
+            <label for="category-filter" class="filter-label">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h7l2 2h9a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+              </svg>
+              Categoría
+            </label>
+            <select id="category-filter" class="filter-select" aria-label="Filtrar por categoría">
+              <option value="todas">📂 Todas las categorías</option>
+            </select>
+          </div>
+          
+          <div class="filter-group filter-group--search">
+            <label for="search-input" class="filter-label">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              Buscar
+            </label>
+            <input 
+              type="search" 
+              id="search-input" 
+              class="filter-search" 
+              placeholder="Nombre, ocasión, tag..." 
+              aria-label="Buscar productos"
+            />
+          </div>
+        </div>
+
+        <!-- Carrusel de Productos -->
+        <div class="catalog-carousel" data-animate="fade-up">
+          <div class="carousel-container">
+            <button class="carousel-btn carousel-btn-prev" aria-label="Productos anteriores">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            
+            <div class="carousel-wrapper">
+              <div id="product-carousel" class="carousel-track product-grid" role="list" aria-label="Productos disponibles">
+                <!-- Placeholder inicial -->
+                <div class="card glass placeholder-card">
+                  <div class="placeholder-content">
+                    <img src="assets/img/placeholder-catalog.svg" alt="Cargando catálogo" class="placeholder-illustration" width="280" height="200" decoding="async">
+                    <p class="placeholder-text">⏳ Cargando productos disponibles...</p>
                   </div>
                 </div>
-                <button class="carousel-btn carousel-btn-next" aria-label="Siguiente producto" type="button">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
               </div>
-              <div class="carousel-dots" id="catalog-dots"></div>
-              <p class="catalog-note" data-animate="fade-up">💎 Catálogo extendido con <span class="accent-text">precios en rangos (MXN)</span>. El rango puede variar por personalización (no incluida por defecto), tamaño/grosor, acabados manuales, herrajes/adhesivos extra, urgencia 24–48 h y tirada. Piso por pieza: $40; excepción "Llavero Nombre Plano" desde $35.</p>
+            </div>
+            
+            <button class="carousel-btn carousel-btn-next" aria-label="Siguientes productos">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Indicadores de paginación -->
+          <div class="carousel-dots" id="catalog-dots" role="tablist" aria-label="Navegación del catálogo"></div>
+          
+          <!-- Nota de precios -->
+          <div class="catalog-price-note">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <p>
+              💎 Los rangos de precio varían según: personalización, tamaño/grosor, acabados especiales, 
+              herrajes/adhesivos extra, urgencia (24-48h) y cantidad. 
+              <strong>Precio base: $40 MXN</strong> (excepto "Llavero Nombre Plano" desde $35).
+            </p>
           </div>
         </div>
-        <div class="catalog-notes card glass" data-animate="fade-up">
-            <h3>💳 Información de compra</h3>
-          <ul>
-              <li>✨ <strong>Personalización incluida:</strong> Nombres, fechas o iniciales sin costo en piezas seleccionadas. Diseños custom se cotizan aparte.</li>
-              <li>🎨 <strong>Colores:</strong> Sujetos a disponibilidad de filamento. Consultanos opciones actuales.</li>
-              <li>📦 <strong>Empaque:</strong> Bolsa holográfica resellable, tarjeta personalizada y guía de cuidados en cada pedido.</li>
-              <li>🚚 <strong>Envíos:</strong> Pickups en Pachuca sin costo. Envíos nacionales con paquetería de tu preferencia.</li>
-              <li>🛡️ <strong>Garantía:</strong> 30 días contra defectos de fabricación. Soporte post-venta real por Messenger.</li>
-          </ul>
+
+        <!-- Información de Compra -->
+        <div class="catalog-info" data-animate="fade-up">
+          <div class="info-card card glass">
+            <div class="info-header">
+              <h3 class="info-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                Información de Compra
+              </h3>
+            </div>
+            
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-icon">✨</div>
+                <div class="info-content">
+                  <h4>Personalización Incluida</h4>
+                  <p>Nombres, fechas o iniciales sin costo en piezas seleccionadas. Diseños custom se cotizan aparte.</p>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon">🎨</div>
+                <div class="info-content">
+                  <h4>Colores Disponibles</h4>
+                  <p>Sujetos a disponibilidad de filamento. Consúltanos las opciones actuales antes de ordenar.</p>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon">📦</div>
+                <div class="info-content">
+                  <h4>Empaque Premium</h4>
+                  <p>Bolsa holográfica resellable, tarjeta personalizada y guía de cuidados en cada pedido.</p>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon">🚚</div>
+                <div class="info-content">
+                  <h4>Envíos Flexibles</h4>
+                  <p>Pickups gratuitos en Pachuca. Envíos nacionales con paquetería de tu preferencia.</p>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon">🛡️</div>
+                <div class="info-content">
+                  <h4>Garantía y Soporte</h4>
+                  <p>30 días contra defectos de fabricación. Soporte real post-venta por Messenger.</p>
+                </div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-icon">⚡</div>
+                <div class="info-content">
+                  <h4>Producción Rápida</h4>
+                  <p>Entregas estándar en 3-5 días. Servicio express disponible para urgencias de 24-48h.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
         </div>
       </div>
     </section>

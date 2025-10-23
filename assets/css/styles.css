@@ -1802,46 +1802,223 @@ button {
 
 /* ===== Catalog ===== */
 .catalog-filters {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  grid-template-columns: 1fr;
 }
 
-.catalog-filters label {
+@media (min-width: 640px) {
+  .catalog-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog-filters {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+  }
+}
+
+.filter-group {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
-  flex: 1;
-  min-width: 160px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  gap: 0.625rem;
 }
 
-.catalog-filters select,
-.catalog-filters input {
-  padding: 0.625rem 0.875rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filter-label svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.filter-select,
+.filter-search {
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: calc(var(--radius) - 2px);
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
   transition: all var(--transition);
 }
 
-.catalog-filters select:focus,
-.catalog-filters input:focus {
+.filter-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgb(6, 182, 212)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 20px;
+  padding-right: 2.5rem;
+}
+
+.filter-search::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.filter-select:hover,
+.filter-search:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-select:focus,
+.filter-search:focus {
   outline: none;
   border-color: var(--accent-cyan);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
-.catalog-filters select:hover,
-.catalog-filters input:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  background: rgba(255, 255, 255, 0.07);
+/* Catalog Carousel */
+.catalog-carousel {
+  margin: 2rem 0;
+}
+
+.catalog-carousel .carousel-wrapper {
+  min-height: 450px;
+}
+
+/* Catalog Price Note */
+.catalog-price-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: var(--radius);
+  margin: 1.5rem 0 2.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.catalog-price-note svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.catalog-price-note p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.catalog-price-note strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Catalog Info */
+.catalog-info {
+  margin-top: 3rem;
+}
+
+.info-card {
+  padding: 0;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.info-header svg {
+  width: 28px;
+  height: 28px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.info-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.info-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--radius) - 2px);
+  transition: all var(--transition);
+}
+
+.info-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+.info-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.info-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ===== Carousel Container ===== */
@@ -2406,39 +2583,6 @@ button {
   font-size: 0.9rem;
   color: var(--text-secondary);
 }
-.catalog-layout {
-  display: grid;
-  gap: 1.25rem;
-  width: 100%;
-}
-
-.catalog-results {
-  display: grid;
-  width: 100%;
-}
-
-.catalog-results .carousel-container {
-  margin-top: 1rem;
-}
-
-.catalog-results .carousel-wrapper {
-  min-height: 400px;
-}
-
-.catalog-note {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-top: 1rem;
-}
-
-/* En desktop, el layout se mantiene a una columna para que el carrusel
-   ocupe todo el ancho del contenedor */
-@media (min-width: 1024px) {
-  .catalog-layout {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ===== Carrusel de Promos ===== */
 .carousel-container {
@@ -2493,29 +2637,25 @@ button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-  width: 48px;
-  height: 48px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: var(--accent-cyan);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(11, 19, 28, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  border-radius: 50%;
-  color: var(--accent);
   cursor: pointer;
-  transition: all var(--motion-duration-fast) var(--motion-ease);
-  opacity: 0.8;
+  transition: all var(--transition);
+  z-index: 10;
 }
 
 .carousel-btn:hover {
-  opacity: 1;
-  background: rgba(6, 182, 212, 0.15);
-  border-color: var(--accent);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--accent-cyan);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .carousel-btn:active {
