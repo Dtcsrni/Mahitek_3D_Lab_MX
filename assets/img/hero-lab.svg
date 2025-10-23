@@ -46,9 +46,31 @@
     </filter>
   </defs>
   
-  <!-- FONDO: LABORATORIO CYBERPUNK DESORDENADO -->
-  <!-- Pared del laboratorio -->
-  <rect x="0" y="0" width="400" height="400" fill="#0f1419"/>
+  <!-- FONDO: LABORATORIO CYBERPUNK INTEGRADO (sin cuadro negro) -->
+  <!-- Pared del laboratorio con gradiente sutil -->
+  <rect x="0" y="0" width="400" height="400" fill="url(#bg-dark)"/>
+  
+  <!-- Efecto de iluminación ambiental -->
+  <ellipse cx="200" cy="200" rx="250" ry="250" fill="#1a2332" opacity="0.3"/>
+  
+  <!-- Luz ambiental desde arriba -->
+  <ellipse cx="200" cy="0" rx="150" ry="100" fill="#06B6D4" opacity="0.05">
+    <animate attributeName="opacity" values="0.05;0.08;0.05" dur="5s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Partículas de polvo en el ambiente -->
+  <circle cx="50" cy="80" r="1" fill="#06B6D4" opacity="0.3">
+    <animate attributeName="cy" values="80;60;80" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="100" r="1.2" fill="#8b5cf6" opacity="0.3">
+    <animate attributeName="cy" values="100;80;100" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="50" r="0.8" fill="#10B981" opacity="0.3">
+    <animate attributeName="cy" values="50;30;50" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="7s" repeatCount="indefinite"/>
+  </circle>
   
   <!-- VENTANA AL FONDO con paisaje mexicano animado -->
   <g class="window-background">
@@ -823,63 +845,51 @@
       <!-- Frente -->
       <path d="M66 162 Q80 160 94 162 Q92 168 80 168 Q68 168 66 162" fill="#9d7854"/>
       
-      <!-- CABEZA COMPLETAMENTE CALVA - Base brillante -->
-      <ellipse cx="80" cy="158" rx="17" ry="12" fill="#9d7854"/>
-      <!-- Brillo de cabeza calva (reflejo de luz) -->
-      <ellipse cx="75" cy="155" rx="8" ry="4" fill="#b89968" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
-      </ellipse>
-      <ellipse cx="85" cy="156" rx="5" ry="3" fill="#b89968" opacity="0.4">
-        <animate attributeName="opacity" values="0.4;0.6;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-      </ellipse>
+      <!-- CABELLO ABUNDANTE ESTILO DESARROLLADOR - Similar a la imagen -->
+      <!-- Base del cabello (corona completa) -->
+      <ellipse cx="80" cy="160" rx="18" ry="10" fill="#2d2520"/>
       
-      <!-- MOHAWK SOBRE LA CALVA - Base estrecha -->
-      <ellipse cx="80" cy="159" rx="9" ry="5" fill="#0d0c0b" opacity="0.95"/>
+      <!-- Cabello lateral izquierdo (abundante) -->
+      <path d="M64 162 Q62 158 62 154 Q62 150 64 148 L64 165" fill="#2d2520"/>
+      <ellipse cx="64" cy="158" rx="6" ry="10" fill="#2d2520"/>
       
-      <!-- MOHAWK ANIMADO - Moviéndose con el viento/energía -->
-      <g class="mohawk-animated">
-        <!-- Cresta principal con movimiento lateral -->
-        <path d="M73 157 L75 145 L78 135 L80 128 L82 135 L85 145 L87 157 Z" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="1.5">
+      <!-- Cabello lateral derecho (abundante) -->
+      <path d="M96 162 Q98 158 98 154 Q98 150 96 148 L96 165" fill="#2d2520"/>
+      <ellipse cx="96" cy="158" rx="6" ry="10" fill="#2d2520"/>
+      
+      <!-- Cabello superior con volumen -->
+      <path d="M68 155 Q72 148 76 147 Q80 146 84 147 Q88 148 92 155" fill="#2d2520"/>
+      
+      <!-- Mechones superiores con movimiento sutil -->
+      <g class="hair-strands">
+        <path d="M72 152 Q74 147 76 146" stroke="#2d2520" stroke-width="2" fill="none">
           <animate attributeName="d" values="
-            M73 157 L75 145 L78 135 L80 128 L82 135 L85 145 L87 157 Z;
-            M73 157 L76 143 L79 132 L81 125 L83 132 L86 143 L87 157 Z;
-            M73 157 L74 146 L77 136 L79 130 L81 136 L84 146 L87 157 Z;
-            M73 157 L76 144 L79 133 L82 126 L84 133 L87 144 L87 157 Z;
-            M73 157 L75 145 L78 135 L80 128 L82 135 L85 145 L87 157 Z" dur="4s" repeatCount="indefinite"/>
-          <animateTransform attributeName="transform" type="skewX" values="0;-3;0;3;0" dur="4s" repeatCount="indefinite"/>
+            M72 152 Q74 147 76 146;
+            M72 152 Q74 146 76 145;
+            M72 152 Q74 147 76 146" dur="3s" repeatCount="indefinite"/>
         </path>
-        
-        <!-- Capa media del mohawk -->
-        <path d="M74 159 L77 148 L80 140 L83 148 L86 159 Z" fill="#1a1614" opacity="0.75">
+        <path d="M80 150 Q80 145 80 143" stroke="#1a1614" stroke-width="2" fill="none">
           <animate attributeName="d" values="
-            M74 159 L77 148 L80 140 L83 148 L86 159 Z;
-            M74 159 L78 146 L81 138 L84 146 L86 159 Z;
-            M74 159 L76 149 L79 141 L82 149 L86 159 Z;
-            M74 159 L78 147 L81 139 L85 147 L86 159 Z;
-            M74 159 L77 148 L80 140 L83 148 L86 159 Z" dur="4s" repeatCount="indefinite"/>
-          <animateTransform attributeName="transform" type="skewX" values="0;-2;0;2;0" dur="4s" repeatCount="indefinite"/>
+            M80 150 Q80 145 80 143;
+            M80 150 Q80 144 80 142;
+            M80 150 Q80 145 80 143" dur="3.2s" repeatCount="indefinite"/>
         </path>
-        
-        <!-- Puntas del mohawk moviéndose independientemente -->
-        <path d="M78 135 L80 128 L82 135" fill="#2a2624" stroke="none">
+        <path d="M88 152 Q86 147 84 146" stroke="#2d2520" stroke-width="2" fill="none">
           <animate attributeName="d" values="
-            M78 135 L80 128 L82 135;
-            M78 135 L79 125 L82 135;
-            M78 135 L80 129 L82 135;
-            M78 135 L81 125 L82 135;
-            M78 135 L80 128 L82 135" dur="4s" repeatCount="indefinite"/>
+            M88 152 Q86 147 84 146;
+            M88 152 Q86 146 84 145;
+            M88 152 Q86 147 84 146" dur="3s" begin="0.5s" repeatCount="indefinite"/>
         </path>
-        
-        <!-- Efecto de gel brillante animado -->
-        <ellipse cx="79" cy="132" rx="2" ry="3" fill="#3b82f6" opacity="0.5">
-          <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="cy" values="132;130;132" dur="4s" repeatCount="indefinite"/>
-        </ellipse>
-        <ellipse cx="81" cy="133" rx="1.5" ry="2.5" fill="#06B6D4" opacity="0.4">
-          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
-          <animate attributeName="cy" values="133;131;133" dur="4s" begin="0.5s" repeatCount="indefinite"/>
-        </ellipse>
       </g>
+      
+      <!-- Textura del cabello -->
+      <path d="M70 158 Q73 156 76 158" stroke="#1a1614" stroke-width="0.8" opacity="0.4" fill="none"/>
+      <path d="M84 158 Q87 156 90 158" stroke="#1a1614" stroke-width="0.8" opacity="0.4" fill="none"/>
+      
+      <!-- Brillo sutil en el cabello -->
+      <ellipse cx="75" cy="152" rx="4" ry="2" fill="#3d3530" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
       
       <!-- Cejas SUPER EXPRESIVAS Y GRACIOSAS - Movimientos exagerados y divertidos -->
       <path d="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" stroke="#0d0c0b" stroke-width="2.8" stroke-linecap="round">
@@ -964,7 +974,31 @@
         <animate attributeName="cx" values="87.5;87.8;87.5;87.2;87.5" dur="8s" begin="0.1s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Nariz mexicana prominente -->
+      <!-- LENTES GRANDES ESTILO DESARROLLADOR (como en la imagen) -->
+      <!-- Marco izquierdo -->
+      <rect x="66" y="167" width="13" height="11" rx="2" fill="none" stroke="#1a1614" stroke-width="3" opacity="0.95"/>
+      <rect x="67" y="168" width="11" height="9" rx="1.5" fill="#e8f4f8" opacity="0.15"/>
+      
+      <!-- Marco derecho -->
+      <rect x="81" y="167" width="13" height="11" rx="2" fill="none" stroke="#1a1614" stroke-width="3" opacity="0.95"/>
+      <rect x="82" y="168" width="11" height="9" rx="1.5" fill="#e8f4f8" opacity="0.15"/>
+      
+      <!-- Puente de los lentes -->
+      <line x1="79" y1="172" x2="81" y2="172" stroke="#1a1614" stroke-width="2.5" opacity="0.95"/>
+      
+      <!-- Patillas de los lentes -->
+      <path d="M66 172 L60 172 Q58 172 58 174" stroke="#1a1614" stroke-width="2" fill="none" opacity="0.9"/>
+      <path d="M94 172 L100 172 Q102 172 102 174" stroke="#1a1614" stroke-width="2" fill="none" opacity="0.9"/>
+      
+      <!-- Reflejo de luz en los lentes -->
+      <ellipse cx="71" cy="170" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="86" cy="170" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </ellipse>
+      
+      <!-- Nariz mexicana prominente (detrás de los lentes) -->
       <path d="M80 168 L80 178" stroke="#8b6f5f" stroke-width="2.5" stroke-linecap="round"/>
       <path d="M78 177 Q80 179 82 177" stroke="#8b6f5f" stroke-width="2" fill="none"/>
       <ellipse cx="77" cy="178" rx="2" ry="2.5" fill="#8b6f5f" opacity="0.7"/>
@@ -1045,8 +1079,25 @@
         <animate attributeName="cy" values="183;183.2;183;182.8;182.7;183.2;183" dur="12s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Barba sutil (perilla pequeña) -->
-      <ellipse cx="80" cy="186" rx="5" ry="4" fill="#1a1614" opacity="0.9"/>
+      <!-- BARBA COMPLETA ESTILO DESARROLLADOR (como en la imagen) -->
+      <!-- Barba lateral izquierda -->
+      <path d="M64 172 Q62 176 62 180 Q62 184 64 186" fill="#2d2520" opacity="0.9"/>
+      <ellipse cx="64" cy="179" rx="3" ry="8" fill="#2d2520" opacity="0.9"/>
+      
+      <!-- Barba lateral derecha -->
+      <path d="M96 172 Q98 176 98 180 Q98 184 96 186" fill="#2d2520" opacity="0.9"/>
+      <ellipse cx="96" cy="179" rx="3" ry="8" fill="#2d2520" opacity="0.9"/>
+      
+      <!-- Barba inferior (mentón) - Abundante -->
+      <ellipse cx="80" cy="186" rx="10" ry="6" fill="#2d2520" opacity="0.95"/>
+      <ellipse cx="80" cy="189" rx="8" ry="4" fill="#1a1614" opacity="0.9"/>
+      
+      <!-- Perilla central definida -->
+      <ellipse cx="80" cy="191" rx="4" ry="3" fill="#2d2520" opacity="0.95"/>
+      
+      <!-- Textura de la barba -->
+      <path d="M75 186 Q78 187 81 186" stroke="#1a1614" stroke-width="0.6" opacity="0.3" fill="none"/>
+      <path d="M77 188 Q80 189 83 188" stroke="#1a1614" stroke-width="0.6" opacity="0.3" fill="none"/>
       
       <!-- Orejas -->
       <ellipse cx="64" cy="172" rx="3" ry="5" fill="#9d7854"/>
