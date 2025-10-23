@@ -99,27 +99,60 @@
     <!-- Cama de impresión con runas -->
     <rect x="130" y="250" width="140" height="40" rx="4" fill="#1e293b" opacity="0.6"/>
     
-    <!-- Objeto siendo impreso - con magia -->
-    <g class="print-object-magic" filter="url(#glow-effect)">
-      <!-- Base del objeto -->
-      <path d="M180 270 L180 285 L200 285 L200 275 L220 275 L220 270 Z" fill="url(#magic-cyan)" stroke="#06B6D4" stroke-width="2" opacity="0.95">
-        <animate attributeName="opacity" values="0.95;0.7;0.95" dur="2s" repeatCount="indefinite"/>
-      </path>
+    <!-- LOGO SIENDO IMPRESO EN 3D - con magia -->
+    <g class="print-object-logo" filter="url(#glow-effect)" transform="translate(165, 245) scale(0.5)">
+      <!-- Hexágono del logo apareciendo capa por capa -->
+      <g opacity="0.95">
+        <animate attributeName="opacity" values="0.5;0.95;0.5" dur="3s" repeatCount="indefinite"/>
+        
+        <!-- Hexágono exterior -->
+        <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="url(#magic-cyan)" stroke-width="3">
+          <animate attributeName="stroke-width" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Hexágono interior -->
+        <path d="M40 20L64 34V56L40 70L16 56V34L40 20Z" fill="#010E10" stroke="#06B6D4" stroke-width="2.5"/>
+        
+        <!-- Símbolo "3" del logo -->
+        <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" 
+              fill="#0EF6E3" opacity="0.9">
+          <animate attributeName="opacity" values="0.7;0.95;0.7" dur="2.5s" repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Detalles del logo -->
+        <path d="M48 28H58V38H48V28Z" fill="#F04F63"/>
+        <circle cx="30" cy="44" r="4" fill="#FF5C9B"/>
+        <circle cx="48" cy="47" r="3" fill="#00E5FF"/>
+      </g>
       
-      <!-- Capa mágica siendo impresa -->
-      <rect x="180" y="268" width="40" height="2" fill="#FEDA77" opacity="0.9">
-        <animate attributeName="width" values="0;40;0" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
-      </rect>
+      <!-- Capas siendo impresas con efecto de construcción -->
+      <g class="printing-layers">
+        <rect x="15" y="65" width="50" height="1.5" fill="#FEDA77" opacity="0.95">
+          <animate attributeName="width" values="0;50;50" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.95;0.95" dur="4s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="62" width="50" height="1.5" fill="#06B6D4" opacity="0.8">
+          <animate attributeName="width" values="0;50;50" dur="4s" begin="0.3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.8;0.8" dur="4s" begin="0.3s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="59" width="50" height="1.5" fill="#10B981" opacity="0.7">
+          <animate attributeName="width" values="0;50;50" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.7;0.7" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+        </rect>
+      </g>
       
-      <!-- Partículas mágicas -->
-      <circle cx="185" cy="272" r="1.5" fill="#06B6D4">
-        <animate attributeName="cy" values="272;260;272" dur="2s" repeatCount="indefinite"/>
+      <!-- Partículas mágicas alrededor del logo -->
+      <circle cx="12" cy="35" r="1.5" fill="#06B6D4">
+        <animate attributeName="cy" values="35;25;35" dur="2s" repeatCount="indefinite"/>
         <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="215" cy="272" r="1.5" fill="#10B981">
-        <animate attributeName="cy" values="272;260;272" dur="2.5s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="1;0;1" dur="2.5s" repeatCount="indefinite"/>
+      <circle cx="68" cy="35" r="1.5" fill="#10B981">
+        <animate attributeName="cy" values="35;25;35" dur="2.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0;1" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40" cy="10" r="1.5" fill="#8b5cf6">
+        <animate attributeName="r" values="1.5;2.5;1.5" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
       </circle>
     </g>
     
@@ -166,6 +199,63 @@
     </g>
   </g>
   
+  <!-- IMPRESORA DE STICKERS (lado derecho) -->
+  <g class="sticker-printer" transform="translate(300, 140)">
+    <!-- Cuerpo de la impresora de stickers -->
+    <rect x="0" y="0" width="70" height="45" rx="5" fill="url(#magic-dark)" stroke="#10B981" stroke-width="2.5" opacity="0.95"/>
+    
+    <!-- Pantalla LED -->
+    <rect x="8" y="6" width="25" height="18" rx="2" fill="#10B981" opacity="0.2" stroke="#10B981" stroke-width="1.5">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    <text x="12" y="17" font-family="monospace" font-size="6" fill="#10B981" opacity="0.95">PRINT</text>
+    
+    <!-- Botones de control -->
+    <circle cx="48" cy="10" r="3" fill="#8b5cf6" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="58" cy="10" r="3" fill="#06B6D4" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Ranura de salida de stickers -->
+    <rect x="5" y="42" width="60" height="8" rx="2" fill="#0f172a" stroke="#10B981" stroke-width="1.5"/>
+    
+    <!-- Sticker siendo impreso -->
+    <g class="sticker-output">
+      <rect x="20" y="48" width="30" height="25" rx="3" fill="#FEDA77" opacity="0.9" stroke="#10B981" stroke-width="2">
+        <animate attributeName="y" values="35;48;48" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.9;0.9" dur="5s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Logo en el sticker -->
+      <g opacity="0.8">
+        <animate attributeName="opacity" values="0;0.8;0.8" dur="5s" repeatCount="indefinite"/>
+        <path d="M30 53L40 58V66L30 71L20 66V58L30 53Z" fill="#06B6D4" stroke="#10B981" stroke-width="1">
+          <animate attributeName="d" values="M30 48L40 53V61L30 66L20 61V53L30 48Z; M30 53L40 58V66L30 71L20 66V58L30 53Z; M30 53L40 58V66L30 71L20 66V58L30 53Z" dur="5s" repeatCount="indefinite"/>
+        </path>
+        <circle cx="30" cy="62" r="2" fill="#FEDA77">
+          <animate attributeName="cy" values="57;62;62" dur="5s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+    
+    <!-- Rodillo interno visible -->
+    <ellipse cx="35" cy="32" rx="15" ry="3" fill="#8b5cf6" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" values="0 35 32; 360 35 32" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Partículas de tinta/adhesivo -->
+    <circle cx="25" cy="38" r="1" fill="#10B981" opacity="0.8">
+      <animate attributeName="cy" values="38;50;38" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="45" cy="38" r="1" fill="#06B6D4" opacity="0.8">
+      <animate attributeName="cy" values="38;50;38" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0;0.8" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
   <!-- CARRETES DE FILAMENTO ANIMADOS -->
   <g class="filament-spools">
     <!-- Carrete izquierdo (cyan) -->
