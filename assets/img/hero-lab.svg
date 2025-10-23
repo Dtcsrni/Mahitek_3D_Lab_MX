@@ -424,14 +424,14 @@
   
   
   <!-- Líneas de perspectiva en el piso -->
-  <line x1="0" y1="320" x2="400" y2="320" stroke="#06B6D4" stroke-width="2" opacity="0.5"/>
+  <line x1="0" y1="320" x2="400" y2="320" stroke="#06B6D4" stroke-width="2" opacity="0.25"/>
   <line x1="50" y1="320" x2="150" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
   <line x1="200" y1="320" x2="200" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
   <line x1="350" y1="320" x2="250" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
   
   <!-- Rejillas de ventilación en piso -->
-  <rect x="100" y="335" width="30" height="4" rx="1" fill="#1e293b" opacity="0.6"/>
-  <rect x="270" y="340" width="25" height="4" rx="1" fill="#1e293b" opacity="0.6"/>
+  <rect x="100" y="335" width="30" height="2" rx="1" fill="#1e293b" opacity="0.18"/>
+  <rect x="270" y="340" width="25" height="2" rx="1" fill="#1e293b" opacity="0.18"/>
   
   <!-- Partículas de polvo flotantes en el aire -->
   <g class="dust-particles" opacity="0.3">
