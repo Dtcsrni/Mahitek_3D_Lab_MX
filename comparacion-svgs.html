@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparación SVGs - Antes vs Después</title>
+  <style>
+    body {
+      background: #0F172A;
+      color: #F1F5F9;
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #06B6D4;
+      margin-bottom: 3rem;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .version {
+      background: #1E293B;
+      border: 2px solid #334155;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .version:hover {
+      transform: translateY(-4px);
+      border-color: #06B6D4;
+    }
+    
+    .version h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #94A3B8;
+      text-align: center;
+    }
+    
+    .version.new h2 {
+      color: #FB923C;
+    }
+    
+    .svg-container {
+      background: #0B0F14;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      margin-bottom: 1rem;
+    }
+    
+    .svg-container img {
+      max-width: 100%;
+      height: auto;
+      max-height: 250px;
+    }
+    
+    .description {
+      color: #94A3B8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    
+    .badge.old {
+      background: #334155;
+      color: #94A3B8;
+    }
+    
+    .badge.new {
+      background: #10B981;
+      color: #F1F5F9;
+    }
+    
+    .section-title {
+      color: #22D3EE;
+      font-size: 2rem;
+      margin: 3rem 0 2rem;
+      text-align: center;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 1rem;
+    }
+    
+    .improvements {
+      background: #1E293B;
+      border-left: 4px solid #FB923C;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+    
+    .improvements h3 {
+      color: #FB923C;
+      margin-top: 0;
+    }
+    
+    .improvements ul {
+      color: #E0F2FE;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Comparación: SVGs Mejorados - Sección "Cómo Trabajamos"</h1>
+    
+    <div class="improvements">
+      <h3>✨ Mejoras Implementadas</h3>
+      <ul>
+        <li><strong>Diseño más técnico y profesional:</strong> Grid técnico, dimensiones anotadas, wireframes 3D</li>
+        <li><strong>Paleta de colores coherente:</strong> Cyan (#06B6D4), Naranja (#FB923C), gradientes suaves</li>
+        <li><strong>Efectos visuales mejorados:</strong> Filtros de brillo, gradientes holográficos, sombras suaves</li>
+        <li><strong>Detalles realistas:</strong> Chat de Messenger con conversación real, empaque con elementos premium</li>
+        <li><strong>Accesibilidad:</strong> Títulos y descripciones detalladas en cada SVG</li>
+        <li><strong>Sin animaciones complejas:</strong> Renderizado más rápido y compatible</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">1️⃣ Modelado Técnico</h2>
+    <div class="comparison">
+      <div class="version">
+        <h2>Versión Anterior</h2>
+        <span class="badge old">Original</span>
+        <div class="svg-container">
+          <img src="assets/img/service-design.svg" alt="Diseño original">
+        </div>
+        <p class="description">
+          Diseño genérico con equipo colaborando en pantalla compartida.
+        </p>
+      </div>
+      
+      <div class="version new">
+        <h2>Versión Mejorada v2</h2>
+        <span class="badge new">✓ Mejorado</span>
+        <div class="svg-container">
+          <img src="assets/img/service-design-v2.svg" alt="Diseño mejorado">
+        </div>
+        <p class="description">
+          <strong>Monitor con vista 3D técnica:</strong> cubo en wireframe isométrico, grid de fondo, dimensiones anotadas (120mm x 80mm), herramientas de medición (regla y calibrador), indicador de validación. Transmite precisión y profesionalismo.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="section-title">2️⃣ Empaque Premium</h2>
+    <div class="comparison">
+      <div class="version">
+        <h2>Versión Anterior</h2>
+        <span class="badge old">Original</span>
+        <div class="svg-container">
+          <img src="assets/img/service-packaging.svg" alt="Empaque original">
+        </div>
+        <p class="description">
+          Caja simple con lazo y tarjeta.
+        </p>
+      </div>
+      
+      <div class="version new">
+        <h2>Versión Mejorada v2</h2>
+        <span class="badge new">✓ Mejorado</span>
+        <div class="svg-container">
+          <img src="assets/img/service-packaging-v2.svg" alt="Empaque mejorado">
+        </div>
+        <p class="description">
+          <strong>Presentación premium completa:</strong> caja en vista isométrica 3D, lazo holográfico con gradiente multicolor, tarjeta personalizada con líneas de texto, bolsa resellable translúcida, sticker holográfico M3D, efectos de brillo y detalles flotantes. Comunica calidad y cuidado.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="section-title">3️⃣ Soporte Continuo</h2>
+    <div class="comparison">
+      <div class="version">
+        <h2>Versión Anterior</h2>
+        <span class="badge old">Original</span>
+        <div class="svg-container">
+          <img src="assets/img/service-support.svg" alt="Soporte original">
+        </div>
+        <p class="description">
+          Concepto abstracto de soporte con piezas.
+        </p>
+      </div>
+      
+      <div class="version new">
+        <h2>Versión Mejorada v2</h2>
+        <span class="badge new">✓ Mejorado</span>
+        <div class="svg-container">
+          <img src="assets/img/service-support-v2.svg" alt="Soporte mejorado">
+        </div>
+        <p class="description">
+          <strong>Interfaz de Messenger realista:</strong> smartphone con pantalla detallada, barra de estado (hora, batería), header con avatar y estado "En línea", conversación real entre usuario y negocio, miniatura de imagen enviada (logo.png), indicador de escritura con puntos animados, barra de entrada de texto, badges de notificación, checks dobles de lectura. Demuestra atención personalizada inmediata.
+        </p>
+      </div>
+    </div>
+
+    <div class="improvements" style="border-left-color: #10B981;">
+      <h3>📊 Resultados de las Mejoras</h3>
+      <ul>
+        <li><strong>Identidad visual más fuerte:</strong> Los SVGs ahora reflejan el enfoque técnico y profesional de Mahitek</li>
+        <li><strong>Comunicación más clara:</strong> Cada ilustración cuenta una historia específica del proceso</li>
+        <li><strong>Confianza mejorada:</strong> Detalles técnicos transmiten expertise y transparencia</li>
+        <li><strong>Coherencia de marca:</strong> Paleta de colores alineada con el sistema de diseño del sitio</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
