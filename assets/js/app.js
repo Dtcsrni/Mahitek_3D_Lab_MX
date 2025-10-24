@@ -627,13 +627,25 @@ async function loadPromos() {
         </button>
       `;
 
+    // Icono (SVG o emoji)
+    let iconoHTML = '';
+    if (promo.icono) {
+      if (promo.icono.endsWith('.svg')) {
+        iconoHTML = `<img src="${escapeHTML(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+      } else {
+        iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
+      }
+    } else {
+      iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
+    }
+
     return `
   <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index,5)}" 
        data-animate="fade-up" 
        data-promo-tipo="${promo.tipo}">
-      <div class="promo-header">
-        <span class="promo-icono" aria-hidden="true">${escapeHTML(promo.icono || '🎁')}</span>
-        ${badgeHTML}
+      ${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}
+      <div class="promo-icono-container">
+        ${iconoHTML}
       </div>
       <h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3>
       <p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>
