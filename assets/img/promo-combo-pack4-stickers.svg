@@ -20,8 +20,6 @@
     </filter>
   </defs>
   
-  <rect width="200" height="200" fill="url(#bg-pack4)"/>
-  
   <!-- Grid de 4 llaveros (2×2) -->
   <g id="grid-keys" transform="translate(45, 25)">
     <!-- Fila 1 -->

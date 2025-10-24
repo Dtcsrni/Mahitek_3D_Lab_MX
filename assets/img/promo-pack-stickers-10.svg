@@ -19,8 +19,6 @@
     </filter>
   </defs>
   
-  <rect width="200" height="200" fill="url(#bg-st10)"/>
-  
   <!-- Stack de stickers -->
   <g transform="translate(100, 100)">
     <!-- Capas apiladas -->

@@ -21,9 +21,6 @@
     </filter>
   </defs>
   
-  <!-- Fondo -->
-  <rect width="200" height="200" fill="url(#bg-combo-trio)"/>
-  
   <!-- Llaveros (3 piezas) -->
   <g id="keychains" transform="translate(30, 40)">
     <!-- Llavero 1 -->

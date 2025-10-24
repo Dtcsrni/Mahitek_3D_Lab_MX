@@ -20,8 +20,6 @@
     </filter>
   </defs>
   
-  <rect width="200" height="200" fill="url(#bg-st25)"/>
-  
   <!-- Stack voluminoso -->
   <g transform="translate(100, 100)">
     <rect x="-56" y="-34" width="112" height="68" rx="7" fill="#AAA" opacity="0.2" filter="url(#shadow-st25)"/>
