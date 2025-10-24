@@ -18,42 +18,68 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    
+    <style>
+      @keyframes gridFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes stackWave {
+        0%, 100% { transform: translateX(0px); }
+        50% { transform: translateX(5px); }
+      }
+      @keyframes badgePulse {
+        0%, 100% { opacity: 0.85; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.08); }
+      }
+      @keyframes lineGlow {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      .key-row-1 { animation: gridFloat 2.8s ease-in-out infinite; }
+      .key-row-2 { animation: gridFloat 2.8s ease-in-out 0.4s infinite; }
+      .key-item-1 { animation-delay: 0s; }
+      .key-item-2 { animation-delay: 0.15s; }
+      .stack-anim { animation: stackWave 3s ease-in-out infinite; }
+      .badge-anim { animation: badgePulse 2.5s ease-in-out infinite; }
+      .glow-line { animation: lineGlow 1.8s ease-in-out infinite; }
+    </style>
   </defs>
   
   <!-- Grid de 4 llaveros (2×2) -->
   <g id="grid-keys" transform="translate(45, 25)">
     <!-- Fila 1 -->
-    <g transform="translate(0, 0)">
+    <g transform="translate(0, 0)" class="key-row-1 key-item-1">
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-cyan)" stroke-width="2"/>
       <rect x="10" y="12" width="22" height="16" rx="2" fill="url(#key-cyan)" filter="url(#glow-pack4)"/>
-      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" class="glow-line"/>
     </g>
-    <g transform="translate(50, 0)">
+    <g transform="translate(50, 0)" class="key-row-1 key-item-2">
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-cyan)" stroke-width="2"/>
       <rect x="10" y="12" width="22" height="16" rx="2" fill="url(#key-cyan)" filter="url(#glow-pack4)"/>
-      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" class="glow-line"/>
     </g>
     
     <!-- Fila 2 -->
-    <g transform="translate(0, 35)">
+    <g transform="translate(0, 35)" class="key-row-2 key-item-1">
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-cyan)" stroke-width="2"/>
       <rect x="10" y="12" width="22" height="16" rx="2" fill="url(#key-cyan)" filter="url(#glow-pack4)"/>
-      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" class="glow-line"/>
     </g>
-    <g transform="translate(50, 35)">
+    <g transform="translate(50, 35)" class="key-row-2 key-item-2">
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-cyan)" stroke-width="2"/>
       <rect x="10" y="12" width="22" height="16" rx="2" fill="url(#key-cyan)" filter="url(#glow-pack4)"/>
-      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="21" y1="17" x2="21" y2="23" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" class="glow-line"/>
     </g>
   </g>
   
-  <circle cx="145" cy="55" r="14" fill="#7EC8E3" filter="url(#glow-pack4)"/>
+  <circle cx="145" cy="55" r="14" fill="#7EC8E3" filter="url(#glow-pack4)" class="badge-anim"/>
   <text x="145" y="60" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFF" text-anchor="middle">×4</text>
   
   <text x="100" y="105" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#06B6D4" text-anchor="middle">+</text>
   
   <!-- Stack grande de stickers -->
-  <g id="stickers-large" transform="translate(50, 115)">
+  <g id="stickers-large" transform="translate(50, 115)" class="stack-anim">
     <rect x="0" y="10" width="100" height="55" rx="4" fill="#DDD" opacity="0.3"/>
     <rect x="-2" y="7" width="100" height="55" rx="4" fill="#EEE" opacity="0.4"/>
     <rect x="-4" y="4" width="100" height="55" rx="4" fill="#F8F8F8" opacity="0.6"/>
@@ -68,7 +94,7 @@
     <rect x="25" y="48" width="50" height="2" rx="1" fill="#999" opacity="0.3"/>
   </g>
   
-  <circle cx="165" cy="150" r="16" fill="#FB923C" filter="url(#glow-pack4)"/>
+  <circle cx="165" cy="150" r="16" fill="#FB923C" filter="url(#glow-pack4)" class="badge-anim"/>
   <text x="165" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">×25</text>
   
   <g transform="translate(100, 188)">

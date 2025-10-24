@@ -3,6 +3,35 @@
   <desc>Pegote sabroso - 15 stickers laminados 5×5cm</desc>
   
   <defs>
+    <style>
+      @keyframes stackWobble {
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(4px) rotate(1deg); }
+        75% { transform: translateX(-4px) rotate(-1deg); }
+      }
+      @keyframes layerWave {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+        50% { transform: translateY(-6px) translateX(2px); opacity: 0.4; }
+      }
+      @keyframes badgeRotate {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(20deg) scale(1.12); }
+      }
+      @keyframes priceShine {
+        0%, 100% { opacity: 1; filter: brightness(1); }
+        50% { opacity: 0.9; filter: brightness(1.2); }
+      }
+      .stack-main { animation: stackWobble 6s ease-in-out infinite; will-change: transform; }
+      .layer-1 { animation: layerWave 5s ease-in-out infinite 0s; will-change: transform, opacity; }
+      .layer-2 { animation: layerWave 5s ease-in-out infinite 0.15s; will-change: transform, opacity; }
+      .layer-3 { animation: layerWave 5s ease-in-out infinite 0.3s; will-change: transform, opacity; }
+      .layer-4 { animation: layerWave 5s ease-in-out infinite 0.45s; will-change: transform, opacity; }
+      .badge-qty { animation: badgeRotate 3.5s ease-in-out infinite; will-change: transform; }
+      .price-tag { animation: priceShine 2.2s ease-in-out infinite; will-change: opacity, filter; }
+      @media (prefers-reduced-motion: reduce) {
+        .stack-main, .layer-1, .layer-2, .layer-3, .layer-4, .badge-qty, .price-tag { animation: none !important; }
+      }
+    </style>
     <linearGradient id="bg-st15" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#FB923C;stop-opacity:0.12"/>
       <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0.12"/>
@@ -19,11 +48,11 @@
   </defs>
   
   <!-- Stack más grueso -->
-  <g transform="translate(100, 100)">
-    <rect x="-52" y="-36" width="104" height="72" rx="6" fill="#CCC" opacity="0.2" filter="url(#shadow-st15)"/>
-    <rect x="-50" y="-38" width="104" height="72" rx="6" fill="#D5D5D5" opacity="0.3"/>
-    <rect x="-48" y="-40" width="104" height="72" rx="6" fill="#DDD" opacity="0.4"/>
-    <rect x="-46" y="-42" width="104" height="72" rx="6" fill="#E8E8E8" opacity="0.5"/>
+  <g transform="translate(100, 100)" class="stack-main">
+    <rect x="-52" y="-36" width="104" height="72" rx="6" fill="#CCC" opacity="0.2" filter="url(#shadow-st15)" class="layer-1"/>
+    <rect x="-50" y="-38" width="104" height="72" rx="6" fill="#D5D5D5" opacity="0.3" class="layer-2"/>
+    <rect x="-48" y="-40" width="104" height="72" rx="6" fill="#DDD" opacity="0.4" class="layer-3"/>
+    <rect x="-46" y="-42" width="104" height="72" rx="6" fill="#E8E8E8" opacity="0.5" class="layer-4"/>
     <rect x="-44" y="-44" width="104" height="72" rx="6" fill="#F0F0F0" opacity="0.6"/>
     <rect x="-42" y="-46" width="104" height="72" rx="6" fill="#FFF" stroke="url(#hologram-15)" stroke-width="3"/>
     
@@ -45,14 +74,14 @@
     </g>
     
     <!-- Badge cantidad -->
-    <g transform="translate(56, -52)">
+    <g transform="translate(56, -52)" class="badge-qty">
       <circle cx="0" cy="0" r="20" fill="#FB923C"/>
       <text x="0" y="7" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFF" text-anchor="middle">15</text>
     </g>
   </g>
   
   <!-- Precio -->
-  <g transform="translate(100, 175)">
+  <g transform="translate(100, 175)" class="price-tag">
     <rect x="-30" y="-12" width="60" height="24" rx="12" fill="#F59E0B"/>
     <text x="0" y="4" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFF" text-anchor="middle">$30</text>
   </g>
