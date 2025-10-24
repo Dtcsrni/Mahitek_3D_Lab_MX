@@ -970,22 +970,43 @@ function setupNav() {
   toggle.setAttribute('aria-expanded', String(initialState));
   toggle.setAttribute('aria-label', initialState ? 'Cerrar menú' : 'Abrir menú');
 
+  // Prevención de doble-click/doble-tap
+  let isAnimating = false;
+
   const closeMenu = () => {
+    if (isAnimating) return;
+    isAnimating = true;
+    
     menu.classList.remove('active');
+    toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Abrir menú');
     document.body.classList.remove('nav-open');
+    
+    // Reset flag después de la animación
+    setTimeout(() => { isAnimating = false; }, 350);
   };
 
   const openMenu = () => {
+    if (isAnimating) return;
+    isAnimating = true;
+    
     menu.classList.add('active');
+    toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.classList.add('nav-open');
+    
+    // Reset flag después de la animación
+    setTimeout(() => { isAnimating = false; }, 350);
   };
 
   toggle.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
+    
+    if (isAnimating) return; // Prevenir clicks durante animación
+    
     const isOpen = menu.classList.contains('active');
     
     if (isOpen) {
@@ -1023,6 +1044,18 @@ function setupNav() {
       toggle.focus();
       log('nav_menu_close', { method: 'escape_key' });
     }
+  });
+
+  // Cerrar menú en resize (si pasamos a desktop)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth >= 768 && menu.classList.contains('active')) {
+        closeMenu();
+        log('nav_menu_close', { method: 'resize_to_desktop' });
+      }
+    }, 150);
   });
 
   // Smooth scroll behavior for anchor links
