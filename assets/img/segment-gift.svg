@@ -7,20 +7,98 @@
     <linearGradient id="neon-gift" x1="0%" x2="100%">
       <stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#EC4899"/>
     </linearGradient>
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
     <filter id="glow-g">
       <feGaussianBlur stdDeviation="3"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
+  
   <rect width="140" height="140" rx="24" fill="url(#bg-gift)"/>
   <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-gift)" stroke-width="2" opacity="0.6"/>
-  <rect x="45" y="60" width="50" height="45" rx="4" fill="url(#neon-gift)" opacity="0.4" stroke="#F97316" stroke-width="2" filter="url(#glow-g)"/>
-  <line x1="70" y1="60" x2="70" y2="105" stroke="#FF00FF" stroke-width="3" filter="url(#glow-g)"/>
-  <line x1="45" y1="82" x2="95" y2="82" stroke="#FF00FF" stroke-width="3" filter="url(#glow-g)"/>
-  <path d="M70,35 Q70,50 60,55 L80,55 Q70,50 70,35" fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)">
-    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-  </path>
-  <line x1="70" y1="55" x2="70" y2="60" stroke="#F97316" stroke-width="2"/>
-  <circle cx="70" cy="82" r="6" fill="#FFFFFF" opacity="0.9">
-    <animate attributeName="r" values="6;7;6" dur="1.5s" repeatCount="indefinite"/>
+  
+  <!-- Escena: Mesa con caja de regalo -->
+  
+  <!-- Mesa/superficie -->
+  <rect x="20" y="105" width="100" height="8" rx="2" fill="url(#neon-gift)" opacity="0.3"/>
+  <line x1="20" y1="105" x2="120" y2="105" stroke="#F97316" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Caja de regalo principal -->
+  <g class="gift-box">
+    <rect x="45" y="70" width="50" height="35" rx="4" fill="url(#box-grad)" opacity="0.5" stroke="#F97316" stroke-width="2" filter="url(#glow-g)">
+      <animate attributeName="y" values="70;68;70" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Cinta vertical -->
+    <rect x="67" y="70" width="6" height="35" fill="#FFFFFF" opacity="0.8" filter="url(#glow-g)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Cinta horizontal -->
+    <rect x="45" y="85" width="50" height="6" fill="#FFFFFF" opacity="0.8" filter="url(#glow-g)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Centro del moño -->
+    <circle cx="70" cy="88" r="6" fill="#FFFFFF" opacity="0.9">
+      <animate attributeName="r" values="6;7;6" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Moño/lazo animado en la parte superior -->
+  <g class="bow">
+    <path d="M70,45 Q65,55 60,58 L60,65 Q65,62 70,60" fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
+      <animateTransform attributeName="transform" type="scale" values="1,1; 1.05,1.05; 1,1" dur="2s" additive="sum" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="3s" additive="sum" repeatCount="indefinite"/>
+    </path>
+    <path d="M70,45 Q75,55 80,58 L80,65 Q75,62 70,60" fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
+      <animateTransform attributeName="transform" type="scale" values="1,1; 1.05,1.05; 1,1" dur="2s" additive="sum" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="3s" additive="sum" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cintas del moño -->
+    <line x1="70" y1="60" x2="70" y2="70" stroke="#F97316" stroke-width="2" filter="url(#glow-g)"/>
+    
+    <!-- Nudo central del moño -->
+    <circle cx="70" cy="58" r="5" fill="#F97316" filter="url(#glow-g)">
+      <animate attributeName="r" values="5;6;5" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Tarjeta de regalo flotando -->
+  <g class="gift-tag">
+    <rect x="95" y="75" width="20" height="15" rx="2" fill="#FFFFFF" opacity="0.9" stroke="#F97316" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate" values="0 105 82.5; 5 105 82.5; 0 105 82.5; -5 105 82.5; 0 105 82.5" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <line x1="98" y1="80" x2="112" y2="80" stroke="#F97316" stroke-width="1.5"/>
+    <line x1="98" y1="85" x2="110" y2="85" stroke="#EC4899" stroke-width="1"/>
+    
+    <!-- Cordón de la tarjeta -->
+    <line x1="95" y1="77" x2="90" y2="85" stroke="#F97316" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Confetti/brillos cayendo -->
+  <g class="confetti">
+    <rect x="30" y="45" width="3" height="6" rx="1" fill="#F97316" opacity="0.7">
+      <animate attributeName="y" values="45;110" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0" dur="3s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" values="0 31.5 48; 180 31.5 48" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <circle cx="110" cy="50" r="2" fill="#EC4899" opacity="0.7">
+      <animate attributeName="cy" values="50;110" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <polygon points="50,30 52,32 50,34 48,32" fill="#FFFFFF" opacity="0.6">
+      <animate attributeName="transform" values="translate(0,0); translate(0,80)" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  
+  <!-- Resplandor festivo -->
+  <circle cx="70" cy="70" r="45" fill="url(#neon-gift)" opacity="0.05">
+    <animate attributeName="r" values="45;50;45" dur="3s" repeatCount="indefinite"/>
   </circle>
 </svg>
