@@ -11,6 +11,15 @@ Thumbs.db
 # Node/npm (por si a futuro)
 node_modules/
 npm-debug.log*
+package-lock.json
+
+# Archivos de desarrollo (no desplegar a producción)
+.dev/
+convert-*.js
+convert-*.ps1
+*-generator.html
+create-og-*.html
+generate-og-*.html
 
 # Logs
 *.log
