@@ -4210,6 +4210,19 @@ button {
   display: none;
 }
 
+/* Spacing utilities */
+.mt-2 { margin-top: 0.5rem; }
+
+/* Noscript email styling */
+.noscript-email {
+  display: block;
+  color: #9CA3AF;
+}
+.noscript-email--spaced { margin-top: 0.5rem; }
+
+/* Grid helpers */
+.span-full { grid-column: 1 / -1; }
+
 /* ===== Accessibility ===== */
 @media (prefers-reduced-motion: reduce) {
   *,

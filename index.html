@@ -29,17 +29,15 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
   <link rel="canonical" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" type="image/png" href="assets/img/favicon_512.png" sizes="512x512">
-  <!-- Favicons (añade archivos en raíz si los tienes disponibles) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/img/favicon_512.png" sizes="any">
+  <!-- Favicons: usamos ruta relativa para evitar 404 en proyecto Pages -->
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <!-- OG/Twitter image opcional en raíz: /og-image.png (1200x630) -->
   <!-- <meta property="og:image" content="/og-image.png"> -->
   <meta name="theme-color" content="#0B0F14">
   <!-- Política de referencia y CSP básica para sitio estático (GitHub Pages) -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://dtcsrni.github.io https://cdn.simpleicons.org https://www.google-analytics.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://m.me https://wa.me; upgrade-insecure-requests;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://dtcsrni.github.io https://cdn.simpleicons.org https://www.google-analytics.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://m.me https://wa.me; upgrade-insecure-requests;">
   
   <!-- JSON-LD de Organization se inyecta vía JS para evitar inline scripts bajo CSP -->
 </head>
@@ -522,7 +520,7 @@
           </div>
             <p class="section-intro">Todo lo que necesitas saber sobre <span class="accent-text">personalización, tiempos, materiales y costos</span>. ¿No encuentras tu respuesta? Escríbenos directamente.</p>
         </div>
-        <div class="faq-toolbar" data-animate="fade-up" style="--animate-delay: 70ms">
+  <div class="faq-toolbar animate-delay-1" data-animate="fade-up">
           <label for="faq-search" class="sr-only">Buscar en las preguntas</label>
           <input id="faq-search" class="input" type="search" placeholder="Buscar en preguntas…" aria-label="Buscar en preguntas frecuentes">
           <label for="faq-category" class="sr-only">Filtrar por categoría</label>
@@ -535,7 +533,7 @@
             <button id="faq-collapse" class="btn btn-ghost" type="button" aria-controls="faq-list">Contraer todo</button>
           </div>
         </div>
-  <div id="faq-top" class="faq-top" aria-label="Preguntas destacadas" data-animate="fade-up" style="--animate-delay: 110ms"></div>
+  <div id="faq-top" class="faq-top animate-delay-2" aria-label="Preguntas destacadas" data-animate="fade-up"></div>
   <div id="faq-list" class="faq-list" aria-live="polite">
           <div class="card glass placeholder-card" aria-hidden="true" data-animate="fade-up">
             <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" decoding="async">
@@ -553,7 +551,7 @@
          <p>Platícanos qué quieres. En 1–2 días hábiles te mandamos <span class="accent-text">vistas 3D, precio claro y fecha realista</span>. Cero letra chica.</p>
           <div class="cta-actions">
           <a class="btn btn-primary email-link" data-email-user="armsystechno" data-email-domain="gmail.com" data-email-label="Enviar correo ✉️" href="#" rel="nofollow">Enviar correo ✉️</a>
-            <noscript><span style="display:block;margin-top:0.5rem;color:#9CA3AF;">Escríbenos: armsystechno [at] gmail [dot] com</span></noscript>
+            <noscript><span class="noscript-email noscript-email--spaced">Escríbenos: armsystechno [at] gmail [dot] com</span></noscript>
           <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">💬 Messenger (más rápido)</a>
           </div>
          <p class="cta-note">🕒 Respondemos en horario laboral (L-V 10:00–18:00, GMT-6). Fines de semana con cita previa.</p>
@@ -571,8 +569,8 @@
           <p>📍 Pachuca, México</p>
           <address class="footer-contact">
             <a class="email-link" data-email-user="armsystechno" data-email-domain="gmail.com">armsystechno@gmail.com</a>
-            <noscript><span style="display:block;color:#9CA3AF;">armsystechno [at] gmail [dot] com</span></noscript>
-            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost footer-messenger" target="_blank" rel="noopener noreferrer" style="margin-top:0.5rem;">💬 Mensaje en Messenger</a>
+            <noscript><span class="noscript-email">armsystechno [at] gmail [dot] com</span></noscript>
+            <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost footer-messenger mt-2" target="_blank" rel="noopener noreferrer">💬 Mensaje en Messenger</a>
           </address>
           <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="brand-mark brand-mark--footer" width="160" height="160" loading="lazy" decoding="async">
         </div>
@@ -600,7 +598,7 @@
             <a class="btn btn-ghost" href="https://maps.google.com/?q=Pachuca%2C%20Hidalgo%2C%20Mexico" target="_blank" rel="noopener noreferrer" aria-label="Abrir ubicación en Google Maps">🗺️ Ver mapa</a>
           </div>
         </div>
-        <div class="footer-extras animate-delay-4" data-animate="fade-up" style="grid-column: 1 / -1;">
+  <div class="footer-extras animate-delay-4 span-full" data-animate="fade-up">
           <div class="footer-payments">
             <span class="label">Métodos de pago:</span>
             <span class="icons" aria-label="Tarjeta, efectivo, contraentrega">💳 💵 📦</span>

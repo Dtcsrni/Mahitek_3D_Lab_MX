@@ -207,7 +207,7 @@ function renderProducts() {
     });
 
     return `
-    <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
+  <article class="card glass product-card animate-delay-${Math.min(index,5)}" role="listitem" data-animate="fade-up">
       <div class="product-media">
         ${mediaMarkup}
       </div>
@@ -501,7 +501,7 @@ async function loadPromos() {
 
     // Badge
     const badgeHTML = promo.badge 
-      ? `<span class="promo-badge" style="--badge-color: ${escapeHTML(accentColor)}">${escapeHTML(promo.badge)}</span>` 
+      ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>` 
       : '';
 
     // Beneficios
@@ -529,25 +529,22 @@ async function loadPromos() {
            target="_blank" 
            rel="noopener noreferrer" 
            data-promo-id="${escapeHTML(promo.id)}" 
-           data-promo-name="${escapeHTML(promo.titulo)}"
-           style="--btn-accent: ${escapeHTML(accentColor)}">
+           data-promo-name="${escapeHTML(promo.titulo)}">
           ${escapeHTML(promo.cta_text || 'Más info')}
         </a>
       `
       : `
         <button class="btn btn-primary promo-cta-contact" 
                 data-promo-id="${escapeHTML(promo.id)}" 
-                data-promo-name="${escapeHTML(promo.titulo)}"
-                style="--btn-accent: ${escapeHTML(accentColor)}">
+                data-promo-name="${escapeHTML(promo.titulo)}">
           ${escapeHTML('Consultar por WhatsApp')}
         </button>
       `;
 
     return `
-    <article class="card glass promo-card ${destacadoClass} ${animClass}" 
-             data-animate="fade-up" 
-             data-promo-tipo="${promo.tipo}"
-             style="--animate-delay: ${delay}ms; --promo-accent: ${accentColor};">
+  <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index,5)}" 
+       data-animate="fade-up" 
+       data-promo-tipo="${promo.tipo}">
       <div class="promo-header">
         <span class="promo-icono" aria-hidden="true">${escapeHTML(promo.icono || '🎁')}</span>
         ${badgeHTML}
@@ -761,7 +758,7 @@ async function loadFAQ() {
     const delay = Math.min(index, 5) * 70;
     const id = `faq-${slugify(item.q)}`;
     return `
-    <details class="faq-item" id="${id}" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
+  <details class="faq-item animate-delay-${Math.min(index,5)}" id="${id}" data-animate="fade-up">
       <summary><span>${escapeHTML(item.q)}</span></summary>
       <p>${escapeHTML(item.a)}</p>
     </details>
