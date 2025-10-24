@@ -195,7 +195,7 @@ function renderProducts() {
       </div>
   <h3 class="product-name">${product.nombre}</h3>
   <p class="product-price">${product.precio_rango_mxn ? `$${product.precio_rango_mxn} MXN` : `$${product.precio_mxn} MXN`}</p>
-  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, urgencia y tirada.</p>
+  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
       <p class="product-description">${product.descripcion || ''}</p>
       ${detailMarkup}
       ${tagsMarkup}

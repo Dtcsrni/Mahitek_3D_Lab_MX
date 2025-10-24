@@ -478,8 +478,8 @@
     </rect>
     
     <!-- Símbolos en la pantalla -->
-    <text x="138" y="260" font-family="monospace" font-size="7" fill="#06B6D4" opacity="0.9">PRODUCCIÓN</text>
-    <text x="138" y="268" font-family="monospace" font-size="7" fill="#10B981" opacity="0.9">EN SERIE</text>
+  <text x="138" y="260" font-family="monospace" font-size="7" fill="#06B6D4" opacity="0.9">BAJO</text>
+  <text x="138" y="268" font-family="monospace" font-size="7" fill="#10B981" opacity="0.9">PEDIDO</text>
     
     <!-- Contador de piezas producidas -->
     <text x="138" y="276" font-family="monospace" font-size="6" fill="#FEDA77" opacity="0.95">PIEZAS: </text>
