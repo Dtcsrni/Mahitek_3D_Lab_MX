@@ -2980,8 +2980,198 @@ button {
   line-height: 1;
   flex-shrink: 0;
   margin-top: 2px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(155, 89, 182, 0.1));
+  border: 1px solid rgba(6, 182, 212, 0.2);
   transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+.info-icon svg {
+  color: var(--primary-cyan);
+  filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.3));
+}
+
+.info-item:hover .info-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(155, 89, 182, 0.15));
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.info-item:hover .info-icon svg {
+  color: #22D3EE;
+  filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.5));
+}
+
+.info-tag {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-tag--teal {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #22D3EE;
+}
+
+.info-tag--purple {
+  background: rgba(155, 89, 182, 0.1);
+  border-color: rgba(155, 89, 182, 0.3);
+  color: #C084FC;
+}
+
+.info-tag--orange {
+  background: rgba(251, 146, 60, 0.1);
+  border-color: rgba(251, 146, 60, 0.3);
+  color: #FBBF24;
+}
+
+.info-tag--green {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34D399;
+}
+
+.info-tag--red {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.3);
+  color: #F87171;
+}
+
+.info-cta {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(155, 89, 182, 0.05));
+  border: 2px dashed rgba(6, 182, 212, 0.3);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.info-cta h4 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--text-primary);
+}
+
+.info-cta p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+}
+
+.info-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info-cta-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-cta-actions .btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Animaciones optimizadas para iconos SVG */
+.info-grid .info-item:nth-child(1) .info-icon { animation: iconPulse 3s ease-in-out infinite; }
+.info-grid .info-item:nth-child(2) .info-icon { animation: iconSpin 4s ease-in-out infinite; }
+.info-grid .info-item:nth-child(3) .info-icon { animation: iconBounce 2.5s ease-in-out infinite; }
+.info-grid .info-item:nth-child(4) .info-icon { animation: iconFloat 3.5s ease-in-out infinite; }
+.info-grid .info-item:nth-child(5) .info-icon { animation: iconScale 2.8s ease-in-out infinite; }
+.info-grid .info-item:nth-child(6) .info-icon { animation: iconShake 3.2s ease-in-out infinite; }
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes iconSpin {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+@keyframes iconScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes iconShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Animaciones SVG optimizadas */
+@keyframes svgFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes svgPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes svgShimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes svgSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animaciones para carousel promos */
+.promo-icon img,
+.promo-icon svg {
+  animation: svgFloat 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.carousel-item:hover .promo-icon img,
+.carousel-item:hover .promo-icon svg {
+  animation-play-state: paused;
+  transform: scale(1.05);
+}
+
+/* Reduce movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .info-icon,
+  .promo-icon img,
+  .promo-icon svg,
+  .info-grid .info-item .info-icon {
+    animation: none !important;
+  }
 }
 
 /* Animaciones por tarjeta (según orden en el grid) */

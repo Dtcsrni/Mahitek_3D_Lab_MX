@@ -19,12 +19,34 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    
+    <!-- Animaciones CSS -->
+    <style>
+      @keyframes floatKey {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes shimmer {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .key-animate { animation: floatKey 3s ease-in-out infinite; }
+      .key-animate-1 { animation-delay: 0s; }
+      .key-animate-2 { animation-delay: 0.3s; }
+      .key-animate-3 { animation-delay: 0.6s; }
+      .shimmer { animation: shimmer 2s ease-in-out infinite; }
+      .badge-rotate { transform-origin: center; animation: rotate 20s linear infinite; }
+    </style>
   </defs>
   
   <!-- Llaveros (3 piezas) -->
   <g id="keychains" transform="translate(30, 40)">
     <!-- Llavero 1 -->
-    <g transform="translate(0, 0)">
+    <g transform="translate(0, 0)" class="key-animate key-animate-1">
       <ellipse cx="12" cy="8" rx="6" ry="6" fill="#333" opacity="0.3"/>
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-shine-trio)" stroke-width="2"/>
       <rect x="10" y="12" width="24" height="18" rx="2" fill="url(#key-shine-trio)" filter="url(#glow-trio)"/>
@@ -33,7 +55,7 @@
     </g>
     
     <!-- Llavero 2 -->
-    <g transform="translate(40, 5)">
+    <g transform="translate(40, 5)" class="key-animate key-animate-2">
       <ellipse cx="12" cy="8" rx="6" ry="6" fill="#333" opacity="0.3"/>
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-shine-trio)" stroke-width="2"/>
       <rect x="10" y="12" width="24" height="18" rx="2" fill="url(#key-shine-trio)" filter="url(#glow-trio)"/>
@@ -42,7 +64,7 @@
     </g>
     
     <!-- Llavero 3 -->
-    <g transform="translate(80, 0)">
+    <g transform="translate(80, 0)" class="key-animate key-animate-3">
       <ellipse cx="12" cy="8" rx="6" ry="6" fill="#333" opacity="0.3"/>
       <circle cx="12" cy="8" r="5" fill="none" stroke="url(#key-shine-trio)" stroke-width="2"/>
       <rect x="10" y="12" width="24" height="18" rx="2" fill="url(#key-shine-trio)" filter="url(#glow-trio)"/>
@@ -52,7 +74,7 @@
   </g>
   
   <!-- Badge "×3" -->
-  <circle cx="140" cy="50" r="14" fill="#FFB347" filter="url(#glow-trio)"/>
+  <circle cx="140" cy="50" r="14" fill="#FFB347" filter="url(#glow-trio)" class="shimmer badge-rotate"/>
   <text x="140" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFF" text-anchor="middle">×3</text>
   
   <!-- Separador -->
