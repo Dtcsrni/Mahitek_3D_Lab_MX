@@ -156,14 +156,21 @@ function setupScrollReveal() {
     return;
   }
 
+  // Configuración mejorada del Intersection Observer
   scrollObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+        // Agregar pequeño delay para efecto más natural
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, 50);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+  }, { 
+    threshold: 0.15, // Detectar más temprano
+    rootMargin: '0px 0px -8% 0px' // Trigger antes de que entre completamente
+  });
 
   animatedNodes.forEach(node => scrollObserver.observe(node));
 }
