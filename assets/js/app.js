@@ -74,16 +74,31 @@ function escapeHTML(str) {
 // ===== Analytics bootstrap (evita scripts inline) =====
 function setupAnalytics() {
   try {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    // Verificar si gtag.js se cargó (puede estar bloqueado por ad-blockers)
+    if (typeof window.gtag === 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ 
+        // Stub silencioso si GA está bloqueado
+        if (window.dataLayer) {
+          window.dataLayer.push(arguments);
+        }
+      };
+    }
     gtag('js', new Date());
-    gtag('config', 'G-Y46M6J1EWS');
-  } catch (_) { /* no-op */ }
+    gtag('config', 'G-Y46M6J1EWS', {
+      'send_page_view': true,
+      'anonymize_ip': true // Privacy-friendly
+    });
+  } catch (_) { /* no-op: GA bloqueado o error de red */ }
 }
 
 // ===== Analytics =====
 function log(ev, params = {}) {
-  try { gtag('event', ev, params); } catch (e) { /* no-op */ }
+  try { 
+    if (typeof gtag === 'function') {
+      gtag('event', ev, params);
+    }
+  } catch (e) { /* no-op: GA bloqueado */ }
 }
 
 // ===== Price Calculation =====
