@@ -1122,7 +1122,7 @@ button {
   border: 0;
 }
 
-/* Hero Section responsividad mejorada */
+/* Hero Section optimizado para performance */
 .hero {
   padding: 4rem 0 2rem;
   text-align: center;
@@ -1131,8 +1131,12 @@ button {
   overflow-x: hidden;
   box-sizing: border-box;
   position: relative;
+  
+  /* Performance: Crear stacking context independiente */
+  contain: layout style paint;
 }
 
+/* Glow effect optimizado - usa will-change solo cuando es necesario */
 .hero::before {
   content: "";
   position: absolute;
@@ -1144,11 +1148,21 @@ button {
   background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
   pointer-events: none;
   animation: heroGlow 8s ease-in-out infinite alternate;
+  
+  /* Performance: GPU layer pero solo para animación */
+  will-change: opacity, transform;
 }
 
+/* Animación simplificada - solo opacity y scale suave */
 @keyframes heroGlow {
-  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: translateX(-50%) scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateX(-50%) scale(1.05); /* Reducido de 1.1 a 1.05 */
+  }
 }
 
 .hero-grid {
@@ -1174,33 +1188,24 @@ button {
 .hero-illustration-main {
   position: relative;
   display: inline-block;
-  animation: heroMainFloat 5s ease-in-out infinite, heroTilt 10s ease-in-out infinite;
-  transform-style: preserve-3d;
+  /* Simplificado: solo float, sin tilt 3D pesado */
+  animation: heroMainFloat 6s ease-in-out infinite;
+  
+  /* Performance: preparar GPU para animación */
+  will-change: transform;
 }
 
+/* Animación simplificada - solo translateY y rotateZ ligero */
 @keyframes heroMainFloat {
   0%, 100% { 
     transform: translateY(0) rotateZ(0deg);
   }
-  25% { 
-    transform: translateY(-15px) rotateZ(1deg);
-  }
   50% { 
-    transform: translateY(-25px) rotateZ(-1deg);
-  }
-  75% { 
-    transform: translateY(-15px) rotateZ(1deg);
+    transform: translateY(-20px) rotateZ(-1deg);
   }
 }
 
-@keyframes heroTilt {
-  0%, 100% { 
-    transform: perspective(1000px) rotateY(0deg);
-  }
-  50% { 
-    transform: perspective(1000px) rotateY(5deg);
-  }
-}
+/* Eliminada animación heroTilt - causaba reflow pesado */
 
 .hero-illustration-main::before {
   content: "";
@@ -1215,23 +1220,19 @@ button {
     rgba(6, 182, 212, 0.7) 100%
   );
   border-radius: 50%;
-  animation: heroSpin 8s linear infinite, heroPulseBg 4s ease-in-out infinite;
+  /* Simplificado: solo spin, sin pulse */
+  animation: heroSpin 12s linear infinite; /* Más lento: 8s → 12s */
   filter: blur(50px);
   opacity: 0.8;
   z-index: -1;
+  
+  /* Performance: GPU layer para blur y rotate */
+  will-change: transform;
 }
 
-@keyframes heroPulseBg {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-}
+/* Animación heroPulseBg eliminada - no se usa más */
 
+/* Sombra proyectada optimizada */
 .hero-illustration-main::after {
   content: "";
   position: absolute;
@@ -1243,17 +1244,21 @@ button {
   background: radial-gradient(ellipse, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
   filter: blur(20px);
   z-index: -2;
-  animation: shadowPulse 4s ease-in-out infinite;
+  animation: shadowPulse 5s ease-in-out infinite; /* Más lento: 4s → 5s */
+  
+  /* Performance: GPU layer para transform */
+  will-change: transform, opacity;
 }
 
+/* Animación simplificada - menos cambios */
 @keyframes shadowPulse {
   0%, 100% { 
     opacity: 0.4;
     transform: translateX(-50%) scaleX(1);
   }
   50% { 
-    opacity: 0.7;
-    transform: translateX(-50%) scaleX(1.2);
+    opacity: 0.6; /* Reducido de 0.7 */
+    transform: translateX(-50%) scaleX(1.15); /* Reducido de 1.2 */
   }
 }
 
