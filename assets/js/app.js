@@ -17,6 +17,26 @@ const CONFIG = {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let scrollObserver = null;
 
+// ===== Security helpers =====
+function escapeHTML(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// ===== Analytics bootstrap (evita scripts inline) =====
+function setupAnalytics() {
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-Y46M6J1EWS');
+  } catch (_) { /* no-op */ }
+}
+
 // ===== Analytics =====
 function log(ev, params = {}) {
   try { gtag('event', ev, params); } catch (e) { /* no-op */ }
@@ -139,9 +159,11 @@ function renderProducts() {
     const delay = Math.min(index, 5) * 80;
     
     // Usar emoji como imagen animada
-    const emojiDisplay = product.imagen && !product.imagen.startsWith('/') && !product.imagen.includes('.') 
-      ? `<div class="product-emoji">${product.imagen}</div>`
-      : `<img src="${product.imagen}" alt="${product.nombre}" onerror="this.onerror=null;this.src='${CONFIG.PLACEHOLDER_IMAGE}';" />`;
+    const isEmojiLike = product.imagen && !product.imagen.startsWith('/') && !String(product.imagen).includes('.');
+    const safeName = escapeHTML(product.nombre || '');
+    const mediaMarkup = isEmojiLike
+      ? `<div class="product-emoji">${escapeHTML(product.imagen)}</div>`
+      : `<img class="product-image" src="${escapeHTML(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
 
     // Construir detalles del producto
     const detailsData = [
@@ -155,8 +177,8 @@ function renderProducts() {
         <dl class="product-details">
           ${detailsData.map(detail => `
             <div>
-              <dt>${detail.label}</dt>
-              <dd>${detail.value}</dd>
+              <dt>${escapeHTML(detail.label)}</dt>
+              <dd>${escapeHTML(detail.value)}</dd>
             </div>
           `).join('')}
         </dl>
@@ -166,14 +188,14 @@ function renderProducts() {
     const tagsMarkup = product.tags && product.tags.length
       ? `
         <div class="product-tags">
-          ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          ${product.tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join('')}
         </div>
       `
       : '';
 
     // Sugerencias de negocio
     const sugerenciasMarkup = product.sugerencias
-      ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${product.sugerencias}</p>`
+      ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${escapeHTML(product.sugerencias)}</p>`
       : '';
 
     // Analytics: vista de item al render
@@ -187,25 +209,25 @@ function renderProducts() {
     return `
     <article class="card glass product-card" role="listitem" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
       <div class="product-media">
-        ${emojiDisplay}
+        ${mediaMarkup}
       </div>
       <div class="product-meta">
-        <span class="product-sku">${product.id}</span>
-        ${product.categoria ? `<span class="product-line">${product.categoria}</span>` : ''}
+        <span class="product-sku">${escapeHTML(product.id || '')}</span>
+        ${product.categoria ? `<span class="product-line">${escapeHTML(product.categoria)}</span>` : ''}
       </div>
-  <h3 class="product-name">${product.nombre}</h3>
-  <p class="product-price">${product.precio_rango_mxn ? `$${product.precio_rango_mxn} MXN` : `$${product.precio_mxn} MXN`}</p>
+  <h3 class="product-name">${safeName}</h3>
+  <p class="product-price">${product.precio_rango_mxn ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN` : `$${escapeHTML(String(product.precio_mxn))} MXN`}</p>
   <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
-      <p class="product-description">${product.descripcion || ''}</p>
+      <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
       ${detailMarkup}
       ${tagsMarkup}
       ${sugerenciasMarkup}
       <a href="${buildMessengerURL(`product:${encodeURIComponent(product.id || '')}|${encodeURIComponent(product.nombre)}`)}" 
          class="btn btn-primary product-cta" 
          target="_blank" 
-         rel="noopener" 
+         rel="noopener noreferrer" 
          data-sku="${product.id}" 
-         data-name="${product.nombre}">
+         data-name="${escapeHTML(product.nombre)}">
         Consultar disponibilidad en Messenger
       </a>
     </article>
@@ -213,6 +235,7 @@ function renderProducts() {
   }).join('');
 
   registerAnimatedElements(carousel);
+  setupImageErrorFallbacks(carousel);
   initCatalogCarousel(displayedProducts.length);
 
   // Log de interacción: add_to_cart en CTA
@@ -224,6 +247,18 @@ function renderProducts() {
       item_name: btn.getAttribute('data-name') || ''
     });
   }, { once: true });
+}
+
+function setupImageErrorFallbacks(root) {
+  if (!root) return;
+  root.querySelectorAll('img.product-image').forEach(img => {
+    img.addEventListener('error', function() {
+      const ph = this.getAttribute('data-placeholder') || CONFIG.PLACEHOLDER_IMAGE;
+      if (this.src !== ph) {
+        this.src = ph;
+      }
+    }, { once: true });
+  });
 }
 
 // ===== Carrusel de Catálogo =====
@@ -466,14 +501,14 @@ async function loadPromos() {
 
     // Badge
     const badgeHTML = promo.badge 
-      ? `<span class="promo-badge" style="--badge-color: ${accentColor}">${promo.badge}</span>` 
+      ? `<span class="promo-badge" style="--badge-color: ${escapeHTML(accentColor)}">${escapeHTML(promo.badge)}</span>` 
       : '';
 
     // Beneficios
     const beneficiosHTML = promo.beneficios && promo.beneficios.length > 0
       ? `
         <ul class="promo-beneficios">
-          ${promo.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}
+          ${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}
         </ul>
       `
       : '';
@@ -483,7 +518,7 @@ async function loadPromos() {
     if (promo.tipo === 'permanente') {
       validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
     } else if (promo.desde && promo.hasta) {
-      validezHTML = `<p class="promo-validez">📅 Válido ${formatDate(promo.desde)} – ${formatDate(promo.hasta)}</p>`;
+      validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
     }
 
     // CTA
@@ -492,19 +527,19 @@ async function loadPromos() {
         <a href="${promo.cta_url}" 
            class="btn btn-primary promo-cta" 
            target="_blank" 
-           rel="noopener" 
-           data-promo-id="${promo.id}" 
-           data-promo-name="${promo.titulo}"
-           style="--btn-accent: ${accentColor}">
-          ${promo.cta_text || 'Más info'}
+           rel="noopener noreferrer" 
+           data-promo-id="${escapeHTML(promo.id)}" 
+           data-promo-name="${escapeHTML(promo.titulo)}"
+           style="--btn-accent: ${escapeHTML(accentColor)}">
+          ${escapeHTML(promo.cta_text || 'Más info')}
         </a>
       `
       : `
         <button class="btn btn-primary promo-cta-contact" 
-                data-promo-id="${promo.id}" 
-                data-promo-name="${promo.titulo}"
-                style="--btn-accent: ${accentColor}">
-          Consultar por WhatsApp
+                data-promo-id="${escapeHTML(promo.id)}" 
+                data-promo-name="${escapeHTML(promo.titulo)}"
+                style="--btn-accent: ${escapeHTML(accentColor)}">
+          ${escapeHTML('Consultar por WhatsApp')}
         </button>
       `;
 
@@ -514,11 +549,11 @@ async function loadPromos() {
              data-promo-tipo="${promo.tipo}"
              style="--animate-delay: ${delay}ms; --promo-accent: ${accentColor};">
       <div class="promo-header">
-        <span class="promo-icono" aria-hidden="true">${promo.icono || '🎁'}</span>
+        <span class="promo-icono" aria-hidden="true">${escapeHTML(promo.icono || '🎁')}</span>
         ${badgeHTML}
       </div>
-      <h3 class="promo-titulo">${promo.titulo}</h3>
-      <p class="promo-subtitulo">${promo.subtitulo || promo.descripcion || ''}</p>
+      <h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3>
+      <p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>
       ${precioHTML}
       ${beneficiosHTML}
       ${validezHTML}
@@ -727,8 +762,8 @@ async function loadFAQ() {
     const id = `faq-${slugify(item.q)}`;
     return `
     <details class="faq-item" id="${id}" data-animate="fade-up" style="--animate-delay: ${delay}ms;">
-      <summary><span>${item.q}</span></summary>
-      <p>${item.a}</p>
+      <summary><span>${escapeHTML(item.q)}</span></summary>
+      <p>${escapeHTML(item.a)}</p>
     </details>
   `;
   }).join('');
@@ -742,7 +777,7 @@ async function loadFAQ() {
     if (featured.length > 0) {
       top.innerHTML = featured.map(it => {
         const id = `faq-${slugify(it.q)}`;
-        return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${it.q}">⭐ ${it.q}</a>`;
+        return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(it.q)}">⭐ ${escapeHTML(it.q)}</a>`;
       }).join('');
 
       top.addEventListener('click', (e) => {
@@ -888,9 +923,9 @@ async function loadSocialLinks() {
     if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok });
 
     container.innerHTML = links.map(link => `
-      <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
+      <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}" title="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
-        <span class="sr-only">${link.label}</span>
+        <span class="sr-only">${escapeHTML(link.label)}</span>
       </a>
     `).join('');
   }
@@ -904,9 +939,9 @@ async function loadSocialLinks() {
     if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok, icon: 'tiktok' });
 
     heroContainer.innerHTML = links.map(link => `
-      <a class="community-link" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}">
+      <a class="community-link" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
-        <span>${link.label}</span>
+        <span>${escapeHTML(link.label)}</span>
       </a>
     `).join('');
   }
@@ -1032,11 +1067,13 @@ function setupFilters() {
 
 // ===== Initialization =====
 async function init() {
+  setupAnalytics();
   setupNav();
   setupFilters();
   setupHeaderScroll();
   setupScrollReveal();
   hydrateEmails();
+  injectOrganizationSchema();
   
   // Load all data
   await Promise.all([
@@ -1077,7 +1114,7 @@ function hydrateEmails() {
       link.textContent = label || email;
     }
     // Reduce scraping signals
-    link.setAttribute('rel', `${link.getAttribute('rel') || ''} nofollow noopener`);
+    link.setAttribute('rel', `${link.getAttribute('rel') || ''} nofollow noopener noreferrer`);
   });
 }
 
@@ -1128,4 +1165,39 @@ function applyURLState() {
 
   if (catSel) catSel.addEventListener('change', updateURL);
   if (search) search.addEventListener('input', updateURL);
+}
+
+// Inyecta Organization JSON-LD en head (evita inline para cumplir CSP)
+function injectOrganizationSchema() {
+  try {
+    const data = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Mahitek 3D Lab',
+      url: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/',
+      logo: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/mark-icon.svg',
+      sameAs: [
+        'https://www.instagram.com/mahitek3dlab',
+        'https://www.facebook.com/mahitek3dlab'
+      ],
+      description: 'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, decoración y proyectos creativos.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Pachuca',
+        addressRegion: 'Hidalgo',
+        addressCountry: 'MX'
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Support',
+        email: 'armsystechno@gmail.com',
+        url: 'https://m.me/mahitek3dlabmx'
+      }
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'org-schema';
+    script.textContent = JSON.stringify(data);
+    document.head.appendChild(script);
+  } catch (_) { /* no-op */ }
 }
