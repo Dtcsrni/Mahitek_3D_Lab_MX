@@ -17,6 +17,50 @@ const CONFIG = {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let scrollObserver = null;
 
+// ===== Performance Optimization: Centralized Resize Handler =====
+const ResizeManager = {
+  callbacks: new Set(),
+  timeout: null,
+  ticking: false,
+  DEBOUNCE_MS: 150,
+
+  register(callback) {
+    this.callbacks.add(callback);
+    // Ejecutar inmediatamente para inicialización
+    callback();
+  },
+
+  unregister(callback) {
+    this.callbacks.delete(callback);
+  },
+
+  handleResize() {
+    if (this.ticking) return;
+    
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.callbacks.forEach(callback => {
+          try {
+            callback();
+          } catch (error) {
+            console.error('Resize callback error:', error);
+          }
+        });
+        this.ticking = false;
+      }, this.DEBOUNCE_MS);
+    });
+  },
+
+  init() {
+    window.addEventListener('resize', () => this.handleResize(), { passive: true });
+  }
+};
+
+// Inicializar al cargar
+ResizeManager.init();
+
 // ===== Security helpers =====
 function escapeHTML(str) {
   return String(str ?? '')
@@ -65,12 +109,25 @@ function setupHeaderScroll() {
   const header = document.querySelector('.header');
   if (!header) return;
 
+  let ticking = false;
+
   const toggleState = () => {
     header.classList.toggle('is-scrolled', window.scrollY > 24);
+    ticking = false;
   };
 
+  const requestToggle = () => {
+    if (!ticking) {
+      requestAnimationFrame(toggleState);
+      ticking = true;
+    }
+  };
+
+  // Estado inicial
   toggleState();
-  window.addEventListener('scroll', toggleState, { passive: true });
+  
+  // Throttled scroll con RAF
+  window.addEventListener('scroll', requestToggle, { passive: true });
 }
 
 function setupScrollReveal() {
@@ -379,21 +436,19 @@ function initCatalogCarousel(totalProducts) {
     }
   }
   
-  // Actualizar en resize
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const oldItemsPerView = itemsPerView;
-      updateItemsPerView();
-      
-      if (oldItemsPerView !== itemsPerView) {
-        currentIndex = 0;
-        createDots();
-        updateTrack();
-      }
-    }, 250);
-  });
+  // Registrar callback de resize optimizado
+  const handleCatalogResize = () => {
+    const oldItemsPerView = itemsPerView;
+    updateItemsPerView();
+    
+    if (oldItemsPerView !== itemsPerView) {
+      currentIndex = 0;
+      createDots();
+      updateTrack();
+    }
+  };
+  
+  ResizeManager.register(handleCatalogResize);
   
   // Inicializar
   updateItemsPerView();
@@ -702,21 +757,19 @@ function initPromosCarousel(totalPromos) {
     }
   }
   
-  // Actualizar en resize
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const oldItemsPerView = itemsPerView;
-      updateItemsPerView();
-      
-      if (oldItemsPerView !== itemsPerView) {
-        currentIndex = 0;
-        createDots();
-        updateTrack();
-      }
-    }, 250);
-  });
+  // Registrar callback de resize optimizado
+  const handlePromosResize = () => {
+    const oldItemsPerView = itemsPerView;
+    updateItemsPerView();
+    
+    if (oldItemsPerView !== itemsPerView) {
+      currentIndex = 0;
+      createDots();
+      updateTrack();
+    }
+  };
+  
+  ResizeManager.register(handlePromosResize);
   
   // Inicializar
   updateItemsPerView();
@@ -1046,17 +1099,15 @@ function setupNav() {
     }
   });
 
-  // Cerrar menú en resize (si pasamos a desktop)
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth >= 768 && menu.classList.contains('active')) {
-        closeMenu();
-        log('nav_menu_close', { method: 'resize_to_desktop' });
-      }
-    }, 150);
-  });
+  // Cerrar menú en resize (si pasamos a desktop) - usando ResizeManager
+  const handleNavResize = () => {
+    if (window.innerWidth >= 768 && menu.classList.contains('active')) {
+      closeMenu();
+      log('nav_menu_close', { method: 'resize_to_desktop' });
+    }
+  };
+  
+  ResizeManager.register(handleNavResize);
 
   // Smooth scroll behavior for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
