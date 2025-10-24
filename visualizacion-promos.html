@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevas Promos Mahitek 3D Lab MX</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #F1F5F9;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #06B6D4, #FB923C, #9B59B6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #94A3B8;
+      margin-bottom: 50px;
+      font-size: 1.1rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      padding-left: 15px;
+      border-left: 5px solid #06B6D4;
+    }
+    
+    .promos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .promo-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(6, 182, 212, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .promo-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(6, 182, 212, 0.5);
+      box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+    }
+    
+    .promo-card.destacado {
+      border-color: rgba(251, 146, 60, 0.5);
+      background: rgba(251, 146, 60, 0.05);
+    }
+    
+    .promo-card.destacado:hover {
+      border-color: rgba(251, 146, 60, 0.8);
+      box-shadow: 0 10px 40px rgba(251, 146, 60, 0.3);
+    }
+    
+    .badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #06B6D4;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .promo-icon {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .promo-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    .promo-icon.emoji {
+      font-size: 100px;
+    }
+    
+    .promo-title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #06B6D4;
+    }
+    
+    .promo-subtitle {
+      font-size: 0.95rem;
+      color: #94A3B8;
+      margin-bottom: 15px;
+    }
+    
+    .promo-precio {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #FB923C;
+      margin: 15px 0;
+    }
+    
+    .promo-contenido {
+      font-size: 0.9rem;
+      color: #CBD5E1;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .promo-descripcion {
+      font-size: 0.85rem;
+      color: #94A3B8;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .beneficios {
+      list-style: none;
+      margin-top: 15px;
+    }
+    
+    .beneficios li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 0.85rem;
+      color: #CBD5E1;
+    }
+    
+    .beneficios li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10B981;
+      font-weight: bold;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+      padding: 30px;
+      background: rgba(6, 182, 212, 0.1);
+      border-radius: 12px;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #06B6D4;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #94A3B8;
+      margin-top: 5px;
+    }
+    
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎁 Nuevas Promos Mahitek 3D Lab MX</h1>
+    <p class="subtitle">Combos inteligentes con SVG optimizados - Octubre 2025</p>
+    
+    <!-- COMBOS -->
+    <h2 class="section-title">📦 Combos Llaveros + Stickers</h2>
+    <div class="promos-grid">
+      <!-- Sin miedo al éxito -->
+      <div class="promo-card destacado">
+        <div class="badge">🔥 Compra inteligente</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-combo-trio-stickers.svg" alt="Combo Trío">
+        </div>
+        <h3 class="promo-title">Sin miedo al éxito</h3>
+        <p class="promo-subtitle">Trío + Pack 10 stickers</p>
+        <div class="promo-precio">$120</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 3 llaveros PETG + 10 stickers laminados</p>
+        <p class="promo-descripcion">Diario aguantador y laptop con barrio.</p>
+        <ul class="beneficios">
+          <li>Llaveros resistentes para uso diario</li>
+          <li>Stickers laminados premium</li>
+          <li>Ideal para personalizar mochila + equipo</li>
+        </ul>
+      </div>
+      
+      <!-- Pa' la banda -->
+      <div class="promo-card destacado">
+        <div class="badge" style="background: #7EC8E3;">💰 Valor</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-combo-pack4-stickers.svg" alt="Combo Pack 4">
+        </div>
+        <h3 class="promo-title">Pa' la banda</h3>
+        <p class="promo-subtitle">Pack 4 + Pack 25 stickers</p>
+        <div class="promo-precio">$180</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 4 llaveros PETG + 25 stickers laminados</p>
+        <p class="promo-descripcion">Regalas, pegas y presumes sin llorar en caja.</p>
+        <ul class="beneficios">
+          <li>Volumen ideal para compartir</li>
+          <li>Stickers para toda la banda</li>
+          <li>Regalo corporativo económico</li>
+        </ul>
+      </div>
+      
+      <!-- Con todo y salsa -->
+      <div class="promo-card destacado">
+        <div class="badge" style="background: #9B59B6;">⭐ Premium</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-combo-quinteto-premium.svg" alt="Combo Premium">
+        </div>
+        <h3 class="promo-title">Con todo y salsa</h3>
+        <p class="promo-subtitle">Quinteto + Stickers + Personalización</p>
+        <div class="promo-precio">$210</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 5 llaveros PETG + 15 stickers + nombre en 1 pieza</p>
+        <p class="promo-descripcion">Llega con estilo y quedas como tipazo.</p>
+        <ul class="beneficios">
+          <li>Personalización incluida (1 llavero con nombre)</li>
+          <li>Balance perfecto precio/cantidad</li>
+          <li>Presentación premium</li>
+        </ul>
+      </div>
+      
+      <!-- Se arma, se arma -->
+      <div class="promo-card">
+        <div class="badge" style="background: #E74C3C;">📦 Envío gratis</div>
+        <div class="promo-icon emoji">🚚</div>
+        <h3 class="promo-title">Se arma, se arma</h3>
+        <p class="promo-subtitle">Pack 6 + Pack 10 + Envío gratis</p>
+        <div class="promo-precio">$220</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 6 llaveros PETG + 10 stickers + envío gratis</p>
+        <p class="promo-descripcion">Lote listo para equipo o intercambio.</p>
+        <ul class="beneficios">
+          <li>Envío gratis asegurado</li>
+          <li>Volumen para equipos</li>
+          <li>Ideal para intercambio/sorteo</li>
+        </ul>
+      </div>
+      
+      <!-- Orgullo mexa -->
+      <div class="promo-card">
+        <div class="badge" style="background: #10B981;">🇲🇽 Cultural</div>
+        <div class="promo-icon emoji">🐉</div>
+        <h3 class="promo-title">Orgullo mexa</h3>
+        <p class="promo-subtitle">Quetzalcóatl mini 3 + 1 colgante + Pack 25</p>
+        <div class="promo-precio">$180</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 4 piezas colección + 25 stickers</p>
+        <p class="promo-descripcion">Historia que se presume. Upgrade translúcido +$10.</p>
+        <ul class="beneficios">
+          <li>Diseño cultural exclusivo</li>
+          <li>Colección completa mini</li>
+          <li>Opción brillo disponible</li>
+        </ul>
+      </div>
+      
+      <!-- Levántate y anda -->
+      <div class="promo-card">
+        <div class="badge" style="background: #6366F1;">🎨 Textura marcada</div>
+        <div class="promo-icon emoji">🧟</div>
+        <h3 class="promo-title">Levántate y anda</h3>
+        <p class="promo-subtitle">Zombies 4 pzas + Pack 10</p>
+        <div class="promo-precio">$150</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 4 llaveros Zombies + 10 stickers</p>
+        <p class="promo-descripcion">Conversación garantizada en mochila y libreta.</p>
+        <ul class="beneficios">
+          <li>Relieve antideslizante</li>
+          <li>Diseño de conversación</li>
+          <li>Pack temático completo</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- STICKERS SOLOS -->
+    <h2 class="section-title">🏷️ Packs de Stickers</h2>
+    <div class="promos-grid">
+      <!-- Pack 10 -->
+      <div class="promo-card">
+        <div class="badge">🏷️ Remata carrito</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-pack-stickers-10.svg" alt="Pack 10 Stickers">
+        </div>
+        <h3 class="promo-title">Ando bien pegado</h3>
+        <p class="promo-subtitle">Pack 10 Stickers</p>
+        <div class="promo-precio">$20</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 10 stickers laminados 5×5 cm</p>
+        <p class="promo-descripcion">Pack básico para personalizar laptop, termo o mochila.</p>
+        <ul class="beneficios">
+          <li>Laminado premium resistente</li>
+          <li>Mix de diseños disponibles</li>
+          <li>Ideal para rematar compra</li>
+        </ul>
+      </div>
+      
+      <!-- Pack 15 -->
+      <div class="promo-card">
+        <div class="badge" style="background: #FB923C;">🔥 Equilibrio</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-pack-stickers-15.svg" alt="Pack 15 Stickers">
+        </div>
+        <h3 class="promo-title">Pegote sabroso</h3>
+        <p class="promo-subtitle">Pack 15 Stickers</p>
+        <div class="promo-precio">$30</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 15 stickers laminados 5×5 cm</p>
+        <p class="promo-descripcion">Cantidad perfecta para surtir y compartir.</p>
+        <ul class="beneficios">
+          <li>Balance cantidad/precio</li>
+          <li>Mayor variedad de diseños</li>
+          <li>Durabilidad garantizada</li>
+        </ul>
+      </div>
+      
+      <!-- Pack 25 -->
+      <div class="promo-card destacado">
+        <div class="badge" style="background: #E74C3C;">💥 Volumen</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-pack-stickers-25.svg" alt="Pack 25 Stickers">
+        </div>
+        <h3 class="promo-title">Pa' la banda</h3>
+        <p class="promo-subtitle">Pack 25 Stickers</p>
+        <div class="promo-precio">$50</div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 25 stickers laminados 5×5 cm</p>
+        <p class="promo-descripcion">Pack grande para compartir con toda la banda.</p>
+        <ul class="beneficios">
+          <li>Mejor precio por unidad</li>
+          <li>Volumen para compartir</li>
+          <li>Perfecto para eventos</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- ADD-ON -->
+    <h2 class="section-title">➕ Complementos</h2>
+    <div class="promos-grid">
+      <div class="promo-card">
+        <div class="badge" style="background: #10B981;">➕ Add-on</div>
+        <div class="promo-icon">
+          <img src="assets/img/promo-addon-sticker.svg" alt="Add-on Sticker">
+        </div>
+        <h3 class="promo-title">Pegue oficial</h3>
+        <p class="promo-subtitle">Add-on sticker individual</p>
+        <div class="promo-precio">$5<span style="font-size: 1rem; color: #94A3B8;"> c/u</span></div>
+        <p class="promo-contenido"><strong>Incluye:</strong> 1 sticker adicional 5×5 cm</p>
+        <p class="promo-descripcion">Al llevar cualquier llavero. Remata tu carrito con pegote extra.</p>
+        <ul class="beneficios">
+          <li>Solo $5 por unidad</li>
+          <li>Requiere compra de llavero</li>
+          <li>Personalizable</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- ESTADÍSTICAS -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Nuevas Promos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">SVG Optimizados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$120-$220</div>
+        <div class="stat-label">Rango de Precios</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
