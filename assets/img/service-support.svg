@@ -1,69 +1,29 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img">
+  <title>Soporte</title>
   <defs>
-    <linearGradient id="grad-support" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#515BD4;stop-opacity:1" />
+    <linearGradient id="bg-sup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/><stop offset="100%" stop-color="#1a1f2e"/>
     </linearGradient>
+    <linearGradient id="neon-sup" x1="0%" x2="100%">
+      <stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+    <filter id="glow-s">
+      <feGaussianBlur stdDeviation="3"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  
-  <!-- Smartphone -->
-  <g class="phone">
-    <rect x="65" y="40" width="70" height="120" rx="8" fill="url(#grad-support)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
-      <animate attributeName="y" values="40;38;40" dur="3s" repeatCount="indefinite"/>
-    </rect>
-    
-    <!-- Pantalla -->
-    <rect x="70" y="50" width="60" height="100" rx="4" fill="#0B0F14" opacity="0.6"/>
-    
-    <!-- Burbujas de chat -->
-    <g class="messages">
-      <!-- Mensaje entrante -->
-      <rect x="75" y="60" width="35" height="14" rx="7" fill="#E8EDF4" opacity="0.9"/>
-      <circle cx="78" cy="67" r="1.5" fill="#06B6D4"/>
-      <circle cx="83" cy="67" r="1.5" fill="#06B6D4"/>
-      <circle cx="88" cy="67" r="1.5" fill="#06B6D4"/>
-      
-      <!-- Mensaje saliente -->
-      <rect x="90" y="82" width="35" height="14" rx="7" fill="#06B6D4" opacity="0.9">
-        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2s" repeatCount="indefinite"/>
-      </rect>
-      
-      <!-- Nuevo mensaje entrando -->
-      <rect x="75" y="104" width="40" height="14" rx="7" fill="#E8EDF4" opacity="0.9">
-        <animate attributeName="y" values="110;104" dur="1s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0;0.9" dur="1s" repeatCount="indefinite"/>
-      </rect>
-    </g>
-    
-    <!-- Icono Messenger -->
-    <g transform="translate(80, 125)">
-      <circle cx="0" cy="0" r="10" fill="#E8EDF4" opacity="0.9"/>
-      <path d="M-4 -2 L-4 4 L0 1 L4 4 L4 -4 L-4 -4 Z" fill="#06B6D4"/>
-      <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
-    </g>
-    
-    <!-- Botón inferior -->
-    <circle cx="100" cy="152" r="3" fill="#E8EDF4" opacity="0.6"/>
-  </g>
-  
-  <!-- Indicador de notificación -->
-  <circle cx="125" cy="50" r="6" fill="#DD2A7B" stroke="#FEDA77" stroke-width="2">
-    <animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite"/>
+  <rect width="140" height="140" rx="24" fill="url(#bg-sup)"/>
+  <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-sup)" stroke-width="2" opacity="0.6"/>
+  <circle cx="70" cy="50" r="20" fill="url(#neon-sup)" opacity="0.3" stroke="#10B981" stroke-width="2" filter="url(#glow-s)">
+    <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite"/>
   </circle>
-  <text x="125" y="53" font-size="8" fill="#FEDA77" text-anchor="middle" font-weight="bold">1</text>
-  
-  <!-- Mano sosteniendo -->
-  <path d="M50 120 Q45 130 50 140 L55 145 L60 140 Q65 130 60 120" fill="#E8EDF4" stroke="#9CA3AF" stroke-width="1.5" opacity="0.7"/>
-  <path d="M140 120 Q145 130 140 140 L135 145 L130 140 Q125 130 130 120" fill="#E8EDF4" stroke="#9CA3AF" stroke-width="1.5" opacity="0.7"/>
-  
-  <!-- Partículas de conexión -->
-  <circle cx="40" cy="80" r="2" fill="#06B6D4" opacity="0.6">
-    <animate attributeName="cy" values="80;60;80" dur="3s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="160" cy="100" r="2" fill="#515BD4" opacity="0.6">
-    <animate attributeName="cy" values="100;80;100" dur="3.5s" repeatCount="indefinite"/>
-  </circle>
-  
-  <!-- Sombra -->
-  <ellipse cx="100" cy="180" rx="35" ry="6" fill="#0B0F14" opacity="0.25"/>
+  <circle cx="70" cy="50" r="12" fill="none" stroke="#00FFFF" stroke-width="2" filter="url(#glow-s)"/>
+  <circle cx="70" cy="50" r="6" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M55,75 Q70,85 85,75" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" filter="url(#glow-s)">
+    <animate attributeName="d" values="M55,75 Q70,85 85,75; M55,75 Q70,80 85,75; M55,75 Q70,85 85,75" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <circle cx="55" cy="75" r="4" fill="#00FFFF" filter="url(#glow-s)"/>
+  <circle cx="85" cy="75" r="4" fill="#00FFFF" filter="url(#glow-s)"/>
+  <rect x="50" y="95" width="40" height="3" rx="1.5" fill="#10B981" filter="url(#glow-s)">
+    <animate attributeName="width" values="40;45;40" dur="1.5s" repeatCount="indefinite"/>
+  </rect>
 </svg>

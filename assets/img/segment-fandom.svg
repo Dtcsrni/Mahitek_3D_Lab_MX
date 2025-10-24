@@ -1,78 +1,69 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img" aria-labelledby="title-fandom desc-fandom">
+  <title id="title-fandom">Fandom & Coleccionables</title>
+  <desc id="desc-fandom">Figuras y accesorios para fans de anime, videojuegos y cultura pop</desc>
+  
   <defs>
-    <linearGradient id="grad-fandom" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#515BD4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DD2A7B;stop-opacity:1" />
+    <linearGradient id="bg-fandom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/>
+      <stop offset="100%" stop-color="#1a1f2e"/>
     </linearGradient>
+    
+    <linearGradient id="neon-fandom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00FF"/>
+      <stop offset="50%" stop-color="#00FFFF"/>
+      <stop offset="100%" stop-color="#FF00FF"/>
+    </linearGradient>
+    
+    <filter id="glow-neon">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <pattern id="pixel-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="none"/>
+      <circle cx="4" cy="4" r="0.5" fill="#FF00FF" opacity="0.2"/>
+    </pattern>
   </defs>
   
-  <!-- Display base -->
-  <rect x="40" y="140" width="120" height="15" rx="4" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2" opacity="0.95"/>
+  <rect width="140" height="140" rx="24" fill="url(#bg-fandom)"/>
+  <rect width="140" height="140" rx="24" fill="url(#pixel-grid)"/>
   
-  <!-- Figura coleccionable en display -->
-  <g class="collectible">
-    <!-- Cuerpo heroico -->
-    <path d="M85 100 Q85 80 100 75 Q115 80 115 100 L115 125 Q115 135 100 135 Q85 135 85 125 Z" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2.5s" repeatCount="indefinite"/>
-    </path>
+  <!-- Marco neon -->
+  <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-fandom)" stroke-width="2" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Estrella gamer/fandom central -->
+  <g transform="translate(70, 70)">
+    <polygon points="0,-30 7,-10 27,-10 12,2 18,22 0,10 -18,22 -12,2 -27,-10 -7,-10" 
+             fill="url(#neon-fandom)" stroke="#00FFFF" stroke-width="2" filter="url(#glow-neon)" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+    </polygon>
     
-    <!-- Cabeza -->
-    <circle cx="100" cy="65" r="15" fill="url(#grad-fandom)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2.5s" repeatCount="indefinite"/>
+    <circle r="15" fill="none" stroke="#FF00FF" stroke-width="2" filter="url(#glow-neon)">
+      <animate attributeName="r" values="15;17;15" dur="2s" repeatCount="indefinite"/>
     </circle>
     
-    <!-- Capa -->
-    <path d="M85 90 Q70 100 75 120 L75 130 Q80 125 85 120" fill="#DD2A7B" opacity="0.7">
-      <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="3s" repeatCount="indefinite"/>
-    </path>
-    <path d="M115 90 Q130 100 125 120 L125 130 Q120 125 115 120" fill="#DD2A7B" opacity="0.7">
-      <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="3s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Detalles brillantes -->
-    <circle cx="95" cy="63" r="2" fill="#FEDA77" opacity="0.9">
+    <circle r="8" fill="#FFFFFF" opacity="0.9">
       <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="105" cy="63" r="2" fill="#FEDA77" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
-    </circle>
     
-    <!-- Insignia en pecho -->
-    <circle cx="100" cy="100" r="6" fill="#FEDA77" stroke="#E8EDF4" stroke-width="1.5" opacity="0.9">
-      <animate attributeName="r" values="6;7;6" dur="2s" repeatCount="indefinite"/>
+    <!-- Partículas orbitales -->
+    <circle cx="25" cy="0" r="3" fill="#00FFFF" filter="url(#glow-neon)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="-25" cy="0" r="3" fill="#FF00FF" filter="url(#glow-neon)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
     </circle>
   </g>
   
-  <!-- Iluminación de vitrina -->
-  <g class="lighting">
-    <circle cx="100" cy="100" r="60" fill="url(#grad-fandom)" opacity="0.05">
-      <animate attributeName="r" values="60;65;60" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    
-    <!-- Spotlight -->
-    <path d="M80 40 L70 80 L130 80 L120 40 Z" fill="#FEDA77" opacity="0.08">
-      <animate attributeName="opacity" values="0.08;0.03;0.08" dur="2s" repeatCount="indefinite"/>
-    </path>
-  </g>
-  
-  <!-- Props secundarios -->
-  <g opacity="0.7">
-    <!-- Escudo pequeño -->
-    <path d="M40 110 L35 115 L40 125 L45 115 Z" fill="#06B6D4" stroke="#E8EDF4" stroke-width="1.5"/>
-    
-    <!-- Espada pequeña -->
-    <rect x="155" y="115" width="4" height="20" rx="1" fill="#9CA3AF"/>
-    <path d="M153 115 L161 115 L157 110 Z" fill="#9CA3AF"/>
-  </g>
-  
-  <!-- Partículas mágicas -->
-  <circle cx="60" cy="70" r="1.5" fill="#515BD4" opacity="0.6">
-    <animate attributeName="cy" values="70;50;70" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="140" cy="80" r="1.5" fill="#DD2A7B" opacity="0.6">
-    <animate attributeName="cy" values="80;60;80" dur="3.5s" repeatCount="indefinite"/>
-  </circle>
-  
-  <!-- Sombra -->
-  <ellipse cx="100" cy="175" rx="60" ry="8" fill="#0B0F14" opacity="0.25"/>
+  <!-- Detalles tech en esquinas -->
+  <path d="M15 15 L15 25 L25 25" stroke="#00FFFF" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M125 15 L125 25 L115 25" stroke="#FF00FF" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M15 125 L15 115 L25 115" stroke="#FF00FF" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M125 125 L125 115 L115 115" stroke="#00FFFF" stroke-width="2" fill="none" opacity="0.7"/>
 </svg>

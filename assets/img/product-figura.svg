@@ -1,70 +1,195 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-figura desc-figura">
-  <title id="title-figura">Figura Coleccionable</title>
-  <desc id="desc-figura">Figura coleccionable impresa en 3D con acabado de alta calidad</desc>
-  
-  <defs>
-    <linearGradient id="bg-figura" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#eef3ff"/>
-      <stop offset="100%" stop-color="#f7faff"/>
-    </linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-figura desc-figura"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-figura desc-figura">
+
+  <title id="title-figura">Figura Coleccionable</title>  <title id="title-figura">Figura Coleccionable</title>
+
+  <desc id="desc-figura">Figura coleccionable impresa en 3D con acabado de alta calidad</desc>  <desc id="desc-figura">Figura coleccionable impresa en 3D con acabado de alta calidad</desc>
+
     
-    <linearGradient id="grad-figura" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
-    </linearGradient>
+
+  <defs>  <defs>
+
+    <!-- Gradientes cyberpunk -->    <linearGradient id="bg-figura" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <linearGradient id="bg-cyber-figura" x1="0%" y1="0%" x2="100%" y2="100%">      <stop offset="0%" stop-color="#eef3ff"/>
+
+      <stop offset="0%" stop-color="#0B0F14"/>      <stop offset="100%" stop-color="#f7faff"/>
+
+      <stop offset="100%" stop-color="#1a1f2e"/>    </linearGradient>
+
+    </linearGradient>    
+
+        <linearGradient id="grad-figura" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <linearGradient id="accent-figura" x1="0%" y1="0%" x2="100%" y2="100%">      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+
+      <stop offset="0%" stop-color="#06B6D4"/>      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+
+      <stop offset="50%" stop-color="#A855F7"/>    </linearGradient>
+
+      <stop offset="100%" stop-color="#EC4899"/>    
+
+    </linearGradient>    <filter id="glow-figura">
+
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+
+    <linearGradient id="neon-figura" x1="0%" y1="0%" x2="0%" y2="100%">      <feMerge>
+
+      <stop offset="0%" stop-color="#00FFFF" stop-opacity="0.8"/>        <feMergeNode in="coloredBlur"/>
+
+      <stop offset="100%" stop-color="#FF00FF" stop-opacity="0.6"/>        <feMergeNode in="SourceGraphic"/>
+
+    </linearGradient>      </feMerge>
+
+        </filter>
+
+    <!-- Filtros de resplandor neon -->  </defs>
+
+    <filter id="glow-cyan">  
+
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>  <!-- Background -->
+
+      <feMerge>  <rect width="200" height="200" rx="32" fill="url(#bg-figura)"/>
+
+        <feMergeNode in="coloredBlur"/>  
+
+        <feMergeNode in="coloredBlur"/>  <!-- Sombra -->
+
+        <feMergeNode in="SourceGraphic"/>  <ellipse cx="100" cy="170" rx="45" ry="8" fill="#0B0F14" opacity="0.3">
+
+      </feMerge>    <animate attributeName="rx" values="45;48;45" dur="3s" repeatCount="indefinite"/>
+
+    </filter>  </ellipse>
+
+      
+
+    <filter id="glow-pink">  <!-- Figura coleccionable -->
+
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>  <g class="figura-main">
+
+      <feMerge>    <!-- Cuerpo -->
+
+        <feMergeNode in="coloredBlur"/>    <path d="M70 120 Q70 80 100 80 Q130 80 130 120 L130 150 Q130 160 100 160 Q70 160 70 150 Z" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95">
+
+        <feMergeNode in="SourceGraphic"/>      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
+
+      </feMerge>    </path>
+
+    </filter>    
+
+        <!-- Cabeza -->
+
+    <!-- Grid cyberpunk -->    <circle cx="100" cy="65" r="18" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95">
+
+    <pattern id="grid-figura" width="20" height="20" patternUnits="userSpaceOnUse">      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2s" repeatCount="indefinite"/>
+
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#06B6D4" stroke-width="0.5" opacity="0.15"/>    </circle>
+
+    </pattern>    
+
+  </defs>    <!-- Detalles brillantes -->
+
+      <circle cx="95" cy="62" r="3" fill="#FEDA77" filter="url(#glow-figura)">
+
+  <!-- Background oscuro con grid -->      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+
+  <rect width="200" height="200" rx="32" fill="url(#bg-cyber-figura)"/>    </circle>
+
+  <rect width="200" height="200" rx="32" fill="url(#grid-figura)"/>    <circle cx="105" cy="62" r="3" fill="#FEDA77" filter="url(#glow-figura)">
+
+        <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+
+  <!-- Marco con resplandor -->    </circle>
+
+  <rect x="4" y="4" width="192" height="192" rx="28" fill="none" stroke="url(#accent-figura)" stroke-width="2" opacity="0.6">    
+
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite"/>    <!-- Brazos -->
+
+  </rect>    <path d="M65 100 Q60 110 65 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
+
+      <path d="M135 100 Q140 110 135 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Sombra base -->    
+
+  <ellipse cx="100" cy="175" rx="50" ry="10" fill="#000" opacity="0.4">    <!-- Base soporte -->
+
+    <animate attributeName="opacity" values="0.4;0.6;0.4" dur="2s" repeatCount="indefinite"/>    <rect x="85" y="160" width="30" height="8" rx="2" fill="#0B0F14" opacity="0.5"/>
+
+  </ellipse>  </g>
+
     
-    <filter id="glow-figura">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  
-  <!-- Background -->
-  <rect width="200" height="200" rx="32" fill="url(#bg-figura)"/>
-  
-  <!-- Sombra -->
-  <ellipse cx="100" cy="170" rx="45" ry="8" fill="#0B0F14" opacity="0.3">
-    <animate attributeName="rx" values="45;48;45" dur="3s" repeatCount="indefinite"/>
-  </ellipse>
-  
-  <!-- Figura coleccionable -->
-  <g class="figura-main">
-    <!-- Cuerpo -->
-    <path d="M70 120 Q70 80 100 80 Q130 80 130 120 L130 150 Q130 160 100 160 Q70 160 70 150 Z" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
-    </path>
+
+  <!-- Figura principal - estilo robot/mecha -->  <!-- Partículas flotantes -->
+
+  <g class="figura-cyber">  <circle cx="50" cy="90" r="2" fill="#06B6D4" opacity="0.6">
+
+    <!-- Cuerpo angular -->    <animate attributeName="cy" values="90;70;90" dur="4s" repeatCount="indefinite"/>
+
+    <path d="M75 115 L75 85 L85 75 L115 75 L125 85 L125 115 L130 140 L130 160 L115 165 L85 165 L70 160 L70 140 Z"     <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+
+          fill="url(#neon-figura)" stroke="#00FFFF" stroke-width="2.5" filter="url(#glow-cyan)" opacity="0.95">  </circle>
+
+      <animate attributeName="stroke-opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>  <circle cx="150" cy="100" r="2" fill="#10B981" opacity="0.6">
+
+    </path>    <animate attributeName="cy" values="100;80;100" dur="3.5s" repeatCount="indefinite"/>
+
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite"/>
+
+    <!-- Panel de energía central -->  </circle>
+
+    <rect x="90" y="100" width="20" height="40" rx="3" fill="#00FFFF" filter="url(#glow-cyan)"></svg>
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite"/>
+    </rect>
     
-    <!-- Cabeza -->
-    <circle cx="100" cy="65" r="18" fill="url(#grad-figura)" stroke="#E8EDF4" stroke-width="2" opacity="0.95">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2s" repeatCount="indefinite"/>
+    <!-- Líneas de energía -->
+    <line x1="85" y1="110" x2="75" y2="110" stroke="#00FFFF" stroke-width="2" opacity="0.8"/>
+    <line x1="115" y1="110" x2="125" y2="110" stroke="#00FFFF" stroke-width="2" opacity="0.8"/>
+    <line x1="85" y1="130" x2="75" y2="130" stroke="#FF00FF" stroke-width="2" opacity="0.8" filter="url(#glow-pink)"/>
+    <line x1="115" y1="130" x2="125" y2="130" stroke="#FF00FF" stroke-width="2" opacity="0.8" filter="url(#glow-pink)"/>
+    
+    <!-- Cabeza angular con visor -->
+    <path d="M85 70 L85 50 L115 50 L115 70 L110 75 L90 75 Z" 
+          fill="url(#neon-figura)" stroke="#FF00FF" stroke-width="2.5" filter="url(#glow-pink)" opacity="0.95"/>
+    
+    <!-- Visor neon -->
+    <rect x="88" y="56" width="24" height="8" rx="2" fill="#00FFFF" filter="url(#glow-cyan)">
+      <animate attributeName="fill" values="#00FFFF;#FF00FF;#00FFFF" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Antena -->
+    <line x1="100" y1="50" x2="100" y2="42" stroke="#00FFFF" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="100" cy="40" r="3" fill="#FF00FF" filter="url(#glow-pink)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite"/>
     </circle>
     
-    <!-- Detalles brillantes -->
-    <circle cx="95" cy="62" r="3" fill="#FEDA77" filter="url(#glow-figura)">
-      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="105" cy="62" r="3" fill="#FEDA77" filter="url(#glow-figura)">
-      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
-    </circle>
+    <!-- Brazos mecánicos -->
+    <rect x="65" y="90" width="8" height="35" rx="2" fill="url(#neon-figura)" stroke="#00FFFF" stroke-width="1.5" opacity="0.9"/>
+    <rect x="127" y="90" width="8" height="35" rx="2" fill="url(#neon-figura)" stroke="#00FFFF" stroke-width="1.5" opacity="0.9"/>
     
-    <!-- Brazos -->
-    <path d="M65 100 Q60 110 65 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
-    <path d="M135 100 Q140 110 135 120" stroke="url(#grad-figura)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Articulaciones brillantes -->
+    <circle cx="69" cy="90" r="4" fill="#00FFFF" filter="url(#glow-cyan)"/>
+    <circle cx="131" cy="90" r="4" fill="#00FFFF" filter="url(#glow-cyan)"/>
+    <circle cx="69" cy="125" r="4" fill="#FF00FF" filter="url(#glow-pink)"/>
+    <circle cx="131" cy="125" r="4" fill="#FF00FF" filter="url(#glow-pink)"/>
     
-    <!-- Base soporte -->
-    <rect x="85" y="160" width="30" height="8" rx="2" fill="#0B0F14" opacity="0.5"/>
+    <!-- Piernas -->
+    <rect x="80" y="165" width="15" height="10" rx="2" fill="url(#neon-figura)" stroke="#00FFFF" stroke-width="1.5" opacity="0.9"/>
+    <rect x="105" y="165" width="15" height="10" rx="2" fill="url(#neon-figura)" stroke="#00FFFF" stroke-width="1.5" opacity="0.9"/>
+    
+    <!-- Detalles hexagonales -->
+    <polygon points="100,95 103,97 103,101 100,103 97,101 97,97" fill="none" stroke="#00FFFF" stroke-width="1.5" opacity="0.7"/>
+    <polygon points="100,110 103,112 103,116 100,118 97,116 97,112" fill="none" stroke="#FF00FF" stroke-width="1.5" opacity="0.7"/>
   </g>
   
   <!-- Partículas flotantes -->
-  <circle cx="50" cy="90" r="2" fill="#06B6D4" opacity="0.6">
-    <animate attributeName="cy" values="90;70;90" dur="4s" repeatCount="indefinite"/>
+  <circle cx="40" cy="60" r="2" fill="#00FFFF" opacity="0.6">
+    <animate attributeName="cy" values="60;40;60" dur="4s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="150" cy="100" r="2" fill="#10B981" opacity="0.6">
-    <animate attributeName="cy" values="100;80;100" dur="3.5s" repeatCount="indefinite"/>
+  <circle cx="160" cy="80" r="2" fill="#FF00FF" opacity="0.6">
+    <animate attributeName="cy" values="80;60;80" dur="3.5s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="140" r="1.5" fill="#00FFFF" opacity="0.5">
+    <animate attributeName="cy" values="140;120;140" dur="3s" repeatCount="indefinite"/>
   </circle>
 </svg>

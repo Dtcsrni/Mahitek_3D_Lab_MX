@@ -1,56 +1,26 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img">
+  <title>Empaquetado</title>
   <defs>
-    <linearGradient id="grad-pack" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#DD2A7B;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#FEDA77;stop-opacity:1" />
+    <linearGradient id="bg-pack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/><stop offset="100%" stop-color="#1a1f2e"/>
     </linearGradient>
+    <linearGradient id="neon-pack" x1="0%" x2="100%">
+      <stop offset="0%" stop-color="#A855F7"/><stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="glow-p">
+      <feGaussianBlur stdDeviation="3"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  
-  <!-- Caja de regalo -->
-  <g class="box">
-    <!-- Cuerpo de la caja -->
-    <rect x="60" y="90" width="80" height="70" rx="4" fill="url(#grad-pack)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
-      <animate attributeName="y" values="90;87;90" dur="3s" repeatCount="indefinite"/>
-    </rect>
-    
-    <!-- Tapa -->
-    <path d="M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90" fill="url(#grad-pack)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">
-      <animate attributeName="d" values="M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90; M55 87 L55 72 Q55 67 60 67 L140 67 Q145 67 145 72 L145 87; M55 90 L55 75 Q55 70 60 70 L140 70 Q145 70 145 75 L145 90" dur="3s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Lazo holográfico -->
-    <g class="bow">
-      <ellipse cx="100" cy="70" rx="20" ry="8" fill="#FEDA77" opacity="0.9">
-        <animate attributeName="rx" values="20;22;20" dur="2s" repeatCount="indefinite"/>
-      </ellipse>
-      <ellipse cx="100" cy="70" rx="8" ry="4" fill="#E8EDF4" opacity="0.8"/>
-      
-      <path d="M80 70 Q75 55 85 50" stroke="#FEDA77" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
-      <path d="M120 70 Q125 55 115 50" stroke="#FEDA77" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
-      
-      <!-- Cinta vertical -->
-      <rect x="95" y="70" width="10" height="90" fill="#FEDA77" opacity="0.3"/>
-    </g>
-    
-    <!-- Tarjeta personalizada -->
-    <rect x="110" y="105" width="22" height="18" rx="2" fill="#E8EDF4" stroke="#06B6D4" stroke-width="1.5" opacity="0.95">
-      <animateTransform attributeName="transform" type="rotate" values="0 121 114; 5 121 114; 0 121 114" dur="3s" repeatCount="indefinite"/>
-    </rect>
-    <line x1="113" y1="110" x2="129" y2="110" stroke="#06B6D4" stroke-width="1.5"/>
-    <line x1="113" y1="115" x2="125" y2="115" stroke="#06B6D4" stroke-width="1"/>
-    <line x1="113" y1="119" x2="127" y2="119" stroke="#06B6D4" stroke-width="1"/>
-  </g>
-  
-  <!-- Estrellas de calidad -->
-  <g class="stars" opacity="0.8">
-    <path d="M40 100 L42 106 L48 106 L43 110 L45 116 L40 112 L35 116 L37 110 L32 106 L38 106 Z" fill="#FEDA77">
-      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
-    </path>
-    <path d="M160 110 L162 116 L168 116 L163 120 L165 126 L160 122 L155 126 L157 120 L152 116 L158 116 Z" fill="#FEDA77">
-      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.5s" repeatCount="indefinite"/>
-    </path>
-  </g>
-  
-  <!-- Sombra -->
-  <ellipse cx="100" cy="175" rx="50" ry="7" fill="#0B0F14" opacity="0.25"/>
+  <rect width="140" height="140" rx="24" fill="url(#bg-pack)"/>
+  <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-pack)" stroke-width="2" opacity="0.6"/>
+  <rect x="40" y="50" width="60" height="50" rx="4" fill="url(#neon-pack)" opacity="0.3" stroke="#A855F7" stroke-width="2" filter="url(#glow-p)"/>
+  <line x1="70" y1="50" x2="70" y2="100" stroke="#FF00FF" stroke-width="2" filter="url(#glow-p)"/>
+  <line x1="40" y1="75" x2="100" y2="75" stroke="#EC4899" stroke-width="2" filter="url(#glow-p)"/>
+  <path d="M40,50 L55,40 L100,40 L100,90 L85,100 L40,100 Z" fill="none" stroke="#A855F7" stroke-width="2" opacity="0.6"/>
+  <line x1="55" y1="40" x2="55" y2="50" stroke="#A855F7" stroke-width="2"/>
+  <line x1="100" y1="40" x2="100" y2="50" stroke="#EC4899" stroke-width="2"/>
+  <circle cx="70" cy="75" r="8" fill="#FFFFFF" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <text x="70" y="80" fill="#A855F7" font-size="12" text-anchor="middle" font-weight="bold">PKG</text>
 </svg>

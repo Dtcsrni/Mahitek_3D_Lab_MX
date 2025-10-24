@@ -1,80 +1,220 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-colgante desc-colgante"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
 
-  <defs>  <title id="title">Colgante Claridad</title>
+  <title id="title-colgante">Colgante Personalizado</title>
 
-    <linearGradient id="grad-colgante" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Colgante translúcido suspendido sobre un soporte suave con destellos de luz.</desc>
+  <desc id="desc-colgante">Colgante o accesorio impreso en 3D con diseño personalizado</desc>  <defs>  <title id="title">Colgante Claridad</title>
 
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />  <defs>
+  
 
-      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+  <defs>    <linearGradient id="grad-colgante" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Colgante translúcido suspendido sobre un soporte suave con destellos de luz.</desc>
 
-    </linearGradient>      <stop offset="0%" stop-color="#dff9ff"/>
+    <!-- Gradientes cyberpunk -->
 
-    <filter id="shadow">      <stop offset="100%" stop-color="#effdff"/>
+    <linearGradient id="bg-cyber-colgante" x1="0%" y1="0%" x2="100%" y2="100%">      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />  <defs>
 
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>    </linearGradient>
+      <stop offset="0%" stop-color="#0B0F14"/>
 
-    </filter>    <radialGradient id="halo" cx="50%" cy="45%" r="60%">
+      <stop offset="100%" stop-color="#1a1f2e"/>      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
 
-  </defs>      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
 
-        <stop offset="80%" stop-color="#ffffff" stop-opacity="0.35"/>
+        </linearGradient>      <stop offset="0%" stop-color="#dff9ff"/>
 
-  <!-- Cadena -->      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    <linearGradient id="accent-colgante" x1="0%" y1="0%" x2="100%" y2="100%">
 
-  <g class="chain">    </radialGradient>
+      <stop offset="0%" stop-color="#A855F7"/>    <filter id="shadow">      <stop offset="100%" stop-color="#effdff"/>
 
-    <line x1="100" y1="20" x2="100" y2="80" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="3,3">    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="50%" stop-color="#EC4899"/>
 
-      <animateTransform attributeName="transform" type="rotate" values="0 100 20; 5 100 20; 0 100 20; -5 100 20; 0 100 20" dur="4s" repeatCount="indefinite"/>      <stop offset="0%" stop-color="#2f80ff"/>
+      <stop offset="100%" stop-color="#F97316"/>      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>    </linearGradient>
 
-    </line>      <stop offset="100%" stop-color="#00a6a8"/>
+    </linearGradient>
 
-    <circle cx="100" cy="20" r="4" fill="#9CA3AF"/>    </linearGradient>
+        </filter>    <radialGradient id="halo" cx="50%" cy="45%" r="60%">
 
-  </g>  </defs>
+    <radialGradient id="glow-center" cx="50%" cy="50%">
 
-    <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+      <stop offset="0%" stop-color="#EC4899" stop-opacity="1"/>  </defs>      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
 
-  <!-- Colgante hexagonal -->  <ellipse cx="100" cy="150" rx="48" ry="18" fill="#0f172a" opacity="0.1"/>
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="0.6"/>
 
-  <g class="pendant" filter="url(#shadow)">  <circle cx="100" cy="88" r="70" fill="url(#halo)"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>        <stop offset="80%" stop-color="#ffffff" stop-opacity="0.35"/>
 
-    <path d="M100 80 L130 95 L130 125 L100 140 L70 125 L70 95 Z" fill="url(#grad-colgante)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">  <path d="M100 26v26" stroke="#2f80ff" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+    </radialGradient>
 
-      <animateTransform attributeName="transform" type="rotate" values="0 100 110; 5 100 110; 0 100 110; -5 100 110; 0 100 110" dur="4s" repeatCount="indefinite"/>  <circle cx="100" cy="26" r="8" fill="#eb3b5a"/>
+      <!-- Cadena -->      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
 
-    </path>  <path d="M70 88a30 30 0 0 1 60 0l-6 42H76z" fill="#ffffff" opacity="0.6"/>
+    <!-- Filtros -->
 
-      <path d="M78 90a22 22 0 0 1 44 0l-4 30H82z" fill="#ffffff" opacity="0.9"/>
+    <filter id="neon-glow">  <g class="chain">    </radialGradient>
 
-    <!-- Detalle interior -->  <circle cx="100" cy="84" r="26" fill="url(#glass)" opacity="0.45"/>
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
 
-    <path d="M100 95 L115 103 L115 117 L100 125 L85 117 L85 103 Z" fill="none" stroke="#FEDA77" stroke-width="2" opacity="0.8">  <circle cx="100" cy="84" r="18" fill="#ffffff" opacity="0.65"/>
+      <feMerge>    <line x1="100" y1="20" x2="100" y2="80" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="3,3">    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
 
-      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>  <path d="M78 132c8 8 22 12 22 12s14-4 22-12" stroke="#00a6a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+        <feMergeNode in="coloredBlur"/>
 
-    </path>  <path d="M88 44c6-4 16-6 24-2" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+        <feMergeNode in="coloredBlur"/>      <animateTransform attributeName="transform" type="rotate" values="0 100 20; 5 100 20; 0 100 20; -5 100 20; 0 100 20" dur="4s" repeatCount="indefinite"/>      <stop offset="0%" stop-color="#2f80ff"/>
 
-      <path d="M118 44c3 4 6 10 4 14" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+        <feMergeNode in="SourceGraphic"/>
 
-    <!-- Punto central brillante --></svg>
+      </feMerge>    </line>      <stop offset="100%" stop-color="#00a6a8"/>
 
-    <circle cx="100" cy="110" r="4" fill="#FEDA77">
-      <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+    </filter>
+
+        <circle cx="100" cy="20" r="4" fill="#9CA3AF"/>    </linearGradient>
+
+    <!-- Grid -->
+
+    <pattern id="grid-colgante" width="15" height="15" patternUnits="userSpaceOnUse">  </g>  </defs>
+
+      <path d="M 15 0 L 0 0 0 15" fill="none" stroke="#A855F7" stroke-width="0.5" opacity="0.12"/>
+
+    </pattern>    <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+
+  </defs>
+
+    <!-- Colgante hexagonal -->  <ellipse cx="100" cy="150" rx="48" ry="18" fill="#0f172a" opacity="0.1"/>
+
+  <!-- Background -->
+
+  <rect width="200" height="200" rx="32" fill="url(#bg-cyber-colgante)"/>  <g class="pendant" filter="url(#shadow)">  <circle cx="100" cy="88" r="70" fill="url(#halo)"/>
+
+  <rect width="200" height="200" rx="32" fill="url(#grid-colgante)"/>
+
+      <path d="M100 80 L130 95 L130 125 L100 140 L70 125 L70 95 Z" fill="url(#grad-colgante)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">  <path d="M100 26v26" stroke="#2f80ff" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Marco exterior -->
+
+  <rect x="4" y="4" width="192" height="192" rx="28" fill="none" stroke="url(#accent-colgante)" stroke-width="2" opacity="0.5">      <animateTransform attributeName="transform" type="rotate" values="0 100 110; 5 100 110; 0 100 110; -5 100 110; 0 100 110" dur="4s" repeatCount="indefinite"/>  <circle cx="100" cy="26" r="8" fill="#eb3b5a"/>
+
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+
+  </rect>    </path>  <path d="M70 88a30 30 0 0 1 60 0l-6 42H76z" fill="#ffffff" opacity="0.6"/>
+
+  
+
+  <!-- Cadena cyberpunk -->      <path d="M78 90a22 22 0 0 1 44 0l-4 30H82z" fill="#ffffff" opacity="0.9"/>
+
+  <g class="chain" stroke="#EC4899" stroke-width="2.5" fill="none" opacity="0.8" filter="url(#neon-glow)">
+
+    <line x1="100" y1="30" x2="100" y2="50">    <!-- Detalle interior -->  <circle cx="100" cy="84" r="26" fill="url(#glass)" opacity="0.45"/>
+
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2s" repeatCount="indefinite"/>
+
+    </line>    <path d="M100 95 L115 103 L115 117 L100 125 L85 117 L85 103 Z" fill="none" stroke="#FEDA77" stroke-width="2" opacity="0.8">  <circle cx="100" cy="84" r="18" fill="#ffffff" opacity="0.65"/>
+
+    <circle cx="100" cy="32" r="4" fill="#EC4899" stroke="none"/>
+
+    <circle cx="100" cy="42" r="3" fill="#A855F7" stroke="none">      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>  <path d="M78 132c8 8 22 12 22 12s14-4 22-12" stroke="#00a6a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+
+      <animate attributeName="fill" values="#A855F7;#EC4899;#A855F7" dur="2s" repeatCount="indefinite"/>
+
+    </circle>    </path>  <path d="M88 44c6-4 16-6 24-2" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+  </g>
+
+        <path d="M118 44c3 4 6 10 4 14" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Colgante principal - forma hexagonal tech -->
+
+  <g class="pendant-main">    <!-- Punto central brillante --></svg>
+
+    <!-- Hexágono exterior con resplandor -->
+
+    <polygon points="100,60 130,77 130,110 100,127 70,110 70,77"     <circle cx="100" cy="110" r="4" fill="#FEDA77">
+
+             fill="url(#glow-center)" opacity="0.3"/>      <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+
+          <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+
+    <polygon points="100,60 130,77 130,110 100,127 70,110 70,77"     </circle>
+
+             fill="none" stroke="#EC4899" stroke-width="3" filter="url(#neon-glow)">    
+
+      <animate attributeName="stroke" values="#EC4899;#A855F7;#06B6D4;#EC4899" dur="4s" repeatCount="indefinite"/>    <!-- Detalles geométricos -->
+
+      <animateTransform attributeName="transform" type="rotate" from="0 100 93.5" to="360 100 93.5" dur="20s" repeatCount="indefinite"/>    <line x1="100" y1="95" x2="100" y2="80" stroke="#E8EDF4" stroke-width="1.5"/>
+
+    </polygon>    <line x1="100" y1="125" x2="100" y2="140" stroke="#E8EDF4" stroke-width="1.5"/>
+
+      </g>
+
+    <!-- Hexágono medio -->  
+
+    <polygon points="100,70 120,82 120,105 100,117 80,105 80,82"   <!-- Brillo ambiental -->
+
+             fill="url(#accent-colgante)" opacity="0.4" stroke="#06B6D4" stroke-width="2">  <circle cx="100" cy="110" r="50" fill="url(#grad-colgante)" opacity="0.1">
+
+      <animateTransform attributeName="transform" type="rotate" from="360 100 93.5" to="0 100 93.5" dur="15s" repeatCount="indefinite"/>    <animate attributeName="r" values="50;55;50" dur="3s" repeatCount="indefinite"/>
+
+    </polygon>  </circle>
+
+      
+
+    <!-- Núcleo central -->  <!-- Sombra base -->
+
+    <circle cx="100" cy="93.5" r="15" fill="url(#accent-colgante)" filter="url(#neon-glow)">  <ellipse cx="100" cy="175" rx="25" ry="5" fill="#0B0F14" opacity="0.3"/>
+
+      <animate attributeName="r" values="15;17;15" dur="2s" repeatCount="indefinite"/></svg>
     </circle>
     
-    <!-- Detalles geométricos -->
-    <line x1="100" y1="95" x2="100" y2="80" stroke="#E8EDF4" stroke-width="1.5"/>
-    <line x1="100" y1="125" x2="100" y2="140" stroke="#E8EDF4" stroke-width="1.5"/>
+    <!-- Cristal central -->
+    <circle cx="100" cy="93.5" r="8" fill="#FFFFFF" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Líneas de energía radiantes -->
+    <g stroke-width="2" opacity="0.7">
+      <line x1="100" y1="78.5" x2="100" y2="65" stroke="#00FFFF">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="113" y1="85" x2="123" y2="75" stroke="#00FFFF">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </line>
+      <line x1="113" y1="102" x2="123" y2="112" stroke="#FF00FF">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </line>
+      <line x1="100" y1="108.5" x2="100" y2="122" stroke="#FF00FF">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" begin="0.6s" repeatCount="indefinite"/>
+      </line>
+      <line x1="87" y1="102" x2="77" y2="112" stroke="#A855F7">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" begin="0.8s" repeatCount="indefinite"/>
+      </line>
+      <line x1="87" y1="85" x2="77" y2="75" stroke="#A855F7">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" begin="1s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Puntos de conexión -->
+    <circle cx="100" cy="60" r="3" fill="#00FFFF" filter="url(#neon-glow)"/>
+    <circle cx="130" cy="77" r="3" fill="#EC4899" filter="url(#neon-glow)"/>
+    <circle cx="130" cy="110" r="3" fill="#A855F7" filter="url(#neon-glow)"/>
+    <circle cx="100" cy="127" r="3" fill="#FF00FF" filter="url(#neon-glow)"/>
+    <circle cx="70" cy="110" r="3" fill="#06B6D4" filter="url(#neon-glow)"/>
+    <circle cx="70" cy="77" r="3" fill="#10B981" filter="url(#neon-glow)"/>
+    
+    <!-- Detalles geométricos internos -->
+    <polygon points="100,85 105,88 105,95 100,98 95,95 95,88" fill="none" stroke="#00FFFF" stroke-width="1.5" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 93.5" to="360 100 93.5" dur="10s" repeatCount="indefinite"/>
+    </polygon>
   </g>
   
-  <!-- Brillo ambiental -->
-  <circle cx="100" cy="110" r="50" fill="url(#grad-colgante)" opacity="0.1">
-    <animate attributeName="r" values="50;55;50" dur="3s" repeatCount="indefinite"/>
-  </circle>
+  <!-- Reflejo inferior -->
+  <ellipse cx="100" cy="175" rx="40" ry="8" fill="url(#accent-colgante)" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
   
-  <!-- Sombra base -->
-  <ellipse cx="100" cy="175" rx="25" ry="5" fill="#0B0F14" opacity="0.3"/>
+  <!-- Partículas -->
+  <circle cx="50" cy="100" r="2" fill="#EC4899" opacity="0.6">
+    <animate attributeName="cy" values="100;80;100" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="120" r="2" fill="#06B6D4" opacity="0.6">
+    <animate attributeName="cy" values="120;100;120" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="70" r="1.5" fill="#A855F7" opacity="0.5">
+    <animate attributeName="cy" values="70;50;70" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
 </svg>

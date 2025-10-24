@@ -1,72 +1,27 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img">
+  <title>Decoración</title>
   <defs>
-    <linearGradient id="grad-deco" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#FEDA77;stop-opacity:1" />
+    <linearGradient id="bg-deco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/><stop offset="100%" stop-color="#1a1f2e"/>
     </linearGradient>
+    <linearGradient id="neon-deco" x1="0%" x2="100%">
+      <stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  
-  <!-- Maceta -->
-  <g class="planter">
-    <path d="M70 120 L65 160 L135 160 L130 120 Z" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95"/>
-    <ellipse cx="100" cy="120" rx="30" ry="8" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95"/>
-    
-    <!-- Tierra -->
-    <ellipse cx="100" cy="120" rx="28" ry="6" fill="#0B0F14" opacity="0.4"/>
-  </g>
-  
-  <!-- Planta -->
-  <g class="plant">
-    <!-- Tallo -->
-    <path d="M100 120 Q95 100 90 80" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none">
-      <animateTransform attributeName="transform" type="rotate" values="0 100 120; -3 100 120; 0 100 120; 3 100 120; 0 100 120" dur="4s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Hojas -->
-    <ellipse cx="88" cy="95" rx="12" ry="8" fill="#10B981" opacity="0.9" transform="rotate(-30 88 95)">
-      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="3s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="92" cy="85" rx="14" ry="9" fill="#10B981" opacity="0.9" transform="rotate(20 92 85)">
-      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="3.2s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="87" cy="75" rx="10" ry="7" fill="#10B981" opacity="0.9" transform="rotate(-40 87 75)">
-      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="2.8s" repeatCount="indefinite"/>
-    </ellipse>
-    
-    <!-- Flor -->
-    <circle cx="90" cy="70" r="8" fill="#FEDA77" opacity="0.95">
-      <animate attributeName="r" values="8;9;8" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="90" cy="70" r="3" fill="#DD2A7B" opacity="0.9"/>
-  </g>
-  
-  <!-- Lámpara decorativa -->
-  <g transform="translate(130, 50)">
-    <!-- Base/cord -->
-    <line x1="0" y1="0" x2="0" y2="30" stroke="#9CA3AF" stroke-width="2"/>
-    
-    <!-- Pantalla -->
-    <path d="M-15 30 L-10 45 L10 45 L15 30 Z" fill="url(#grad-deco)" stroke="#E8EDF4" stroke-width="2" opacity="0.95"/>
-    
-    <!-- Luz -->
-    <ellipse cx="0" cy="42" rx="8" ry="4" fill="#FEDA77" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
-    </ellipse>
-    
-    <!-- Brillo -->
-    <circle cx="0" cy="45" r="20" fill="#FEDA77" opacity="0.1">
-      <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
-    </circle>
-  </g>
-  
-  <!-- Partículas de ambiente -->
-  <circle cx="50" cy="80" r="1.5" fill="#10B981" opacity="0.5">
-    <animate attributeName="cy" values="80;60;80" dur="5s" repeatCount="indefinite"/>
+  <rect width="140" height="140" rx="24" fill="url(#bg-deco)"/>
+  <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-deco)" stroke-width="2" opacity="0.6"/>
+  <path d="M70,30 L90,60 L70,90 L50,60 Z" fill="url(#neon-deco)" opacity="0.3" stroke="#EC4899" stroke-width="2" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 70 60" to="360 70 60" dur="20s" repeatCount="indefinite"/>
+  </path>
+  <circle cx="70" cy="60" r="20" fill="none" stroke="#A855F7" stroke-width="2" filter="url(#glow)">
+    <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="160" cy="100" r="1.5" fill="#FEDA77" opacity="0.5">
-    <animate attributeName="cy" values="100;80;100" dur="4.5s" repeatCount="indefinite"/>
-  </circle>
-  
-  <!-- Sombra -->
-  <ellipse cx="100" cy="175" rx="55" ry="7" fill="#0B0F14" opacity="0.2"/>
+  <circle cx="70" cy="60" r="10" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="70" cy="30" r="4" fill="#EC4899" filter="url(#glow)"/>
+  <circle cx="90" cy="60" r="4" fill="#A855F7" filter="url(#glow)"/>
+  <circle cx="70" cy="90" r="4" fill="#EC4899" filter="url(#glow)"/>
+  <circle cx="50" cy="60" r="4" fill="#A855F7" filter="url(#glow)"/>
 </svg>

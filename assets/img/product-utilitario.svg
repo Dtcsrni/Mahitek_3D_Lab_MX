@@ -1,116 +1,273 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-utilitario desc-utilitario"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
 
-  <defs>  <title id="title">Hub Utilitario Flux</title>
+  <title id="title-utilitario">Objeto Utilitario</title>
 
-    <linearGradient id="grad-util" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Módulos intercambiables con bandejas magnéticas, especiero y charola inteligente.</desc>
+  <desc id="desc-utilitario">Pieza funcional impresa en 3D para uso práctico</desc>  <defs>  <title id="title">Hub Utilitario Flux</title>
 
-      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />  <defs>
+  
 
-      <stop offset="50%" style="stop-color:#0F766E;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+  <defs>    <linearGradient id="grad-util" x1="0%" y1="0%" x2="100%" y2="100%">  <desc id="desc">Módulos intercambiables con bandejas magnéticas, especiero y charola inteligente.</desc>
 
-      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />      <stop offset="0%" stop-color="#fff2e6"/>
+    <!-- Gradientes tech -->
 
-    </linearGradient>      <stop offset="60%" stop-color="#ffe9d7"/>
+    <linearGradient id="bg-cyber-util" x1="0%" y1="0%" x2="100%" y2="100%">      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />  <defs>
 
-  </defs>      <stop offset="100%" stop-color="#ffe0cc"/>
+      <stop offset="0%" stop-color="#0B0F14"/>
 
-      </linearGradient>
+      <stop offset="100%" stop-color="#1a1f2e"/>      <stop offset="50%" style="stop-color:#0F766E;stop-opacity:1" />    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
 
-  <!-- Organizador tipo grid -->    <linearGradient id="module" x1="0%" y1="0%" x2="100%" y2="0%">
+    </linearGradient>
 
-  <g class="organizer">      <stop offset="0%" stop-color="#2f80ff"/>
+          <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />      <stop offset="0%" stop-color="#fff2e6"/>
 
-    <!-- Base principal -->      <stop offset="100%" stop-color="#00a6a8"/>
+    <linearGradient id="accent-util" x1="0%" y1="0%" x2="100%" y2="100%">
 
-    <rect x="50" y="70" width="100" height="90" rx="8" fill="url(#grad-util)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">    </linearGradient>
+      <stop offset="0%" stop-color="#10B981"/>    </linearGradient>      <stop offset="60%" stop-color="#ffe9d7"/>
 
-      <animate attributeName="y" values="70;68;70" dur="3s" repeatCount="indefinite"/>    <linearGradient id="tray" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="50%" stop-color="#06B6D4"/>
 
-    </rect>      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#14B8A6"/>  </defs>      <stop offset="100%" stop-color="#ffe0cc"/>
 
-          <stop offset="100%" stop-color="#f5f0ff"/>
+    </linearGradient>
 
-    <!-- Divisiones internas -->    </linearGradient>
+          </linearGradient>
 
-    <line x1="100" y1="75" x2="100" y2="155" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>    <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
+    <linearGradient id="tool-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
 
-    <line x1="55" y1="112" x2="145" y2="112" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>      <path d="M12 0H0V12" fill="none" stroke="#00a6a8" stroke-width="0.6" opacity="0.18"/>
+      <stop offset="0%" stop-color="#00FFFF" stop-opacity="1"/>  <!-- Organizador tipo grid -->    <linearGradient id="module" x1="0%" y1="0%" x2="100%" y2="0%">
 
-        </pattern>
+      <stop offset="100%" stop-color="#00FF88" stop-opacity="0.8"/>
 
-    <!-- Compartimentos con items -->  </defs>
+    </linearGradient>  <g class="organizer">      <stop offset="0%" stop-color="#2f80ff"/>
 
-    <g class="items">  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
-
-      <!-- Item 1: lápiz -->  <rect x="24" y="36" width="152" height="128" rx="28" fill="url(#grid)" opacity="0.35"/>
-
-      <rect x="60" y="85" width="4" height="20" rx="2" fill="#FEDA77" opacity="0.9">  <ellipse cx="100" cy="160" rx="60" ry="18" fill="#0f172a" opacity="0.12"/>
-
-        <animate attributeName="height" values="20;22;20" dur="2s" repeatCount="indefinite"/>  <g transform="translate(44 78)">
-
-      </rect>    <rect width="112" height="68" rx="22" fill="#0f172a" opacity="0.08"/>
-
-      <rect x="68" y="88" width="4" height="17" rx="2" fill="#DD2A7B" opacity="0.9">    <rect x="8" y="-18" width="64" height="44" rx="14" fill="#ffffff"/>
-
-        <animate attributeName="height" values="17;19;17" dur="2.3s" repeatCount="indefinite"/>    <rect x="14" y="-10" width="52" height="28" rx="12" fill="#0f172a" opacity="0.08"/>
-
-      </rect>    <rect x="18" y="-6" width="44" height="18" rx="9" fill="url(#module)" opacity="0.65"/>
-
-          <rect x="76" y="-12" width="28" height="56" rx="12" fill="#ffffff"/>
-
-      <!-- Item 2: clips -->    <rect x="82" y="-6" width="16" height="26" rx="8" fill="#2f80ff" opacity="0.5"/>
-
-      <circle cx="120" cy="95" r="3" fill="#06B6D4" opacity="0.9">    <rect x="6" y="28" width="100" height="30" rx="14" fill="url(#tray)"/>
-
-        <animate attributeName="cy" values="95;93;95" dur="2.5s" repeatCount="indefinite"/>    <rect x="16" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.16"/>
-
-      </circle>    <rect x="60" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.18"/>
-
-      <circle cx="128" cy="98" r="3" fill="#06B6D4" opacity="0.9">    <path d="M24 12h64" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-
-        <animate attributeName="cy" values="98;96;98" dur="2.7s" repeatCount="indefinite"/>    <g fill="none" stroke-linecap="round" stroke-width="2">
-
-      </circle>      <path d="M20 44h12" stroke="#2f80ff" opacity="0.5"/>
-
-      <circle cx="135" cy="95" r="3" fill="#06B6D4" opacity="0.9">      <path d="M68 44h12" stroke="#eb3b5a" opacity="0.6"/>
-
-        <animate attributeName="cy" values="95;93;95" dur="2.9s" repeatCount="indefinite"/>      <path d="M92 16v12" stroke="#eb3b5a" opacity="0.5"/>
-
-      </circle>    </g>
-
-          <circle cx="40" cy="12" r="8" fill="#eb3b5a" opacity="0.75"/>
-
-      <!-- Item 3: USB -->    <circle cx="96" cy="12" r="8" fill="#2f80ff" opacity="0.55"/>
-
-      <rect x="65" y="125" width="20" height="8" rx="2" fill="#9CA3AF" opacity="0.9"/>  </g>
-
-      <rect x="67" y="127" width="4" height="4" rx="1" fill="#FEDA77" opacity="0.9">  <path d="M60 60h80" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
-
-        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>  <path d="M60 60l-10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-
-      </rect>  <path d="M140 60l10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-
-      </svg>
-
-      <!-- Item 4: llaves -->
-      <circle cx="120" cy="135" r="5" fill="none" stroke="#E8EDF4" stroke-width="2" opacity="0.8"/>
-      <rect x="125" y="133" width="12" height="4" rx="1" fill="#E8EDF4" opacity="0.8"/>
-    </g>
     
-    <!-- Detalle superior -->
-    <rect x="70" y="60" width="60" height="6" rx="3" fill="#0B0F14" opacity="0.3"/>
+
+    <!-- Filtros -->    <!-- Base principal -->      <stop offset="100%" stop-color="#00a6a8"/>
+
+    <filter id="tech-glow">
+
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>    <rect x="50" y="70" width="100" height="90" rx="8" fill="url(#grad-util)" stroke="#E8EDF4" stroke-width="2.5" opacity="0.95">    </linearGradient>
+
+      <feMerge>
+
+        <feMergeNode in="coloredBlur"/>      <animate attributeName="y" values="70;68;70" dur="3s" repeatCount="indefinite"/>    <linearGradient id="tray" x1="0%" y1="0%" x2="0%" y2="100%">
+
+        <feMergeNode in="SourceGraphic"/>
+
+      </feMerge>    </rect>      <stop offset="0%" stop-color="#ffffff"/>
+
+    </filter>
+
+              <stop offset="100%" stop-color="#f5f0ff"/>
+
+    <!-- Patterns -->
+
+    <pattern id="circuit-pattern" width="30" height="30" patternUnits="userSpaceOnUse">    <!-- Divisiones internas -->    </linearGradient>
+
+      <circle cx="5" cy="5" r="1" fill="#10B981" opacity="0.4"/>
+
+      <circle cx="25" cy="25" r="1" fill="#06B6D4" opacity="0.4"/>    <line x1="100" y1="75" x2="100" y2="155" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>    <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
+
+      <line x1="5" y1="5" x2="25" y2="5" stroke="#10B981" stroke-width="0.5" opacity="0.2"/>
+
+      <line x1="25" y1="5" x2="25" y2="25" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>    <line x1="55" y1="112" x2="145" y2="112" stroke="#E8EDF4" stroke-width="2" opacity="0.7"/>      <path d="M12 0H0V12" fill="none" stroke="#00a6a8" stroke-width="0.6" opacity="0.18"/>
+
+    </pattern>
+
+            </pattern>
+
+    <pattern id="hex-grid" width="20" height="17.32" patternUnits="userSpaceOnUse">
+
+      <polygon points="10,0 20,5 20,12 10,17 0,12 0,5" fill="none" stroke="#10B981" stroke-width="0.5" opacity="0.15"/>    <!-- Compartimentos con items -->  </defs>
+
+    </pattern>
+
+  </defs>    <g class="items">  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+
+  
+
+  <!-- Background -->      <!-- Item 1: lápiz -->  <rect x="24" y="36" width="152" height="128" rx="28" fill="url(#grid)" opacity="0.35"/>
+
+  <rect width="200" height="200" rx="32" fill="url(#bg-cyber-util)"/>
+
+  <rect width="200" height="200" rx="32" fill="url(#hex-grid)"/>      <rect x="60" y="85" width="4" height="20" rx="2" fill="#FEDA77" opacity="0.9">  <ellipse cx="100" cy="160" rx="60" ry="18" fill="#0f172a" opacity="0.12"/>
+
+  
+
+  <!-- Marco -->        <animate attributeName="height" values="20;22;20" dur="2s" repeatCount="indefinite"/>  <g transform="translate(44 78)">
+
+  <rect x="4" y="4" width="192" height="192" rx="28" fill="none" stroke="url(#accent-util)" stroke-width="2" opacity="0.6">
+
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite"/>      </rect>    <rect width="112" height="68" rx="22" fill="#0f172a" opacity="0.08"/>
+
+  </rect>
+
+        <rect x="68" y="88" width="4" height="17" rx="2" fill="#DD2A7B" opacity="0.9">    <rect x="8" y="-18" width="64" height="44" rx="14" fill="#ffffff"/>
+
+  <!-- Herramienta / Soporte modular -->
+
+  <g class="tool-main">        <animate attributeName="height" values="17;19;17" dur="2.3s" repeatCount="indefinite"/>    <rect x="14" y="-10" width="52" height="28" rx="12" fill="#0f172a" opacity="0.08"/>
+
+    <!-- Base plataforma -->
+
+    <rect x="60" y="140" width="80" height="30" rx="4" fill="url(#tool-gradient)" stroke="#00FFFF" stroke-width="2.5" opacity="0.9" filter="url(#tech-glow)">      </rect>    <rect x="18" y="-6" width="44" height="18" rx="9" fill="url(#module)" opacity="0.65"/>
+
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+
+    </rect>          <rect x="76" y="-12" width="28" height="56" rx="12" fill="#ffffff"/>
+
+    
+
+    <!-- Líneas de diseño técnico -->      <!-- Item 2: clips -->    <rect x="82" y="-6" width="16" height="26" rx="8" fill="#2f80ff" opacity="0.5"/>
+
+    <line x1="65" y1="145" x2="135" y2="145" stroke="#00FFFF" stroke-width="1" opacity="0.6"/>
+
+    <line x1="65" y1="155" x2="135" y2="155" stroke="#00FF88" stroke-width="1" opacity="0.6"/>      <circle cx="120" cy="95" r="3" fill="#06B6D4" opacity="0.9">    <rect x="6" y="28" width="100" height="30" rx="14" fill="url(#tray)"/>
+
+    <line x1="65" y1="165" x2="135" y2="165" stroke="#00FFFF" stroke-width="1" opacity="0.6"/>
+
+            <animate attributeName="cy" values="95;93;95" dur="2.5s" repeatCount="indefinite"/>    <rect x="16" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.16"/>
+
+    <!-- Soporte vertical con detalles angulares -->
+
+    <path d="M80 140 L80 80 L85 75 L115 75 L120 80 L120 140"       </circle>    <rect x="60" y="36" width="34" height="14" rx="7" fill="#0f172a" opacity="0.18"/>
+
+          fill="url(#tool-gradient)" stroke="#00FFFF" stroke-width="2.5" opacity="0.95" filter="url(#tech-glow)"/>
+
+          <circle cx="128" cy="98" r="3" fill="#06B6D4" opacity="0.9">    <path d="M24 12h64" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Panel superior -->
+
+    <path d="M75 80 L75 60 L80 55 L120 55 L125 60 L125 80 Z"         <animate attributeName="cy" values="98;96;98" dur="2.7s" repeatCount="indefinite"/>    <g fill="none" stroke-linecap="round" stroke-width="2">
+
+          fill="url(#accent-util)" stroke="#10B981" stroke-width="2" opacity="0.9"/>
+
+          </circle>      <path d="M20 44h12" stroke="#2f80ff" opacity="0.5"/>
+
+    <!-- Display/interfaz -->
+
+    <rect x="85" y="65" width="30" height="10" rx="2" fill="#00FFFF" filter="url(#tech-glow)">      <circle cx="135" cy="95" r="3" fill="#06B6D4" opacity="0.9">      <path d="M68 44h12" stroke="#eb3b5a" opacity="0.6"/>
+
+      <animate attributeName="fill" values="#00FFFF;#00FF88;#00FFFF" dur="2s" repeatCount="indefinite"/>
+
+    </rect>        <animate attributeName="cy" values="95;93;95" dur="2.9s" repeatCount="indefinite"/>      <path d="M92 16v12" stroke="#eb3b5a" opacity="0.5"/>
+
+    
+
+    <!-- Indicadores LED -->      </circle>    </g>
+
+    <circle cx="90" cy="70" r="2" fill="#00FF88">
+
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>          <circle cx="40" cy="12" r="8" fill="#eb3b5a" opacity="0.75"/>
+
+    </circle>
+
+    <circle cx="100" cy="70" r="2" fill="#00FFFF">      <!-- Item 3: USB -->    <circle cx="96" cy="12" r="8" fill="#2f80ff" opacity="0.55"/>
+
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.3s" repeatCount="indefinite"/>
+
+    </circle>      <rect x="65" y="125" width="20" height="8" rx="2" fill="#9CA3AF" opacity="0.9"/>  </g>
+
+    <circle cx="110" cy="70" r="2" fill="#10B981">
+
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.6s" repeatCount="indefinite"/>      <rect x="67" y="127" width="4" height="4" rx="1" fill="#FEDA77" opacity="0.9">  <path d="M60 60h80" stroke="#00a6a8" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+    </circle>
+
+            <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>  <path d="M60 60l-10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Articulación/bisagra tech -->
+
+    <circle cx="100" cy="107" r="12" fill="none" stroke="#00FFFF" stroke-width="2.5" filter="url(#tech-glow)"/>      </rect>  <path d="M140 60l10-10" stroke="#2f80ff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+
+    <circle cx="100" cy="107" r="8" fill="url(#accent-util)" opacity="0.8"/>
+
+    <circle cx="100" cy="107" r="4" fill="#00FFFF">      </svg>
+
+      <animate attributeName="r" values="4;5;4" dur="1.5s" repeatCount="indefinite"/>
+
+    </circle>      <!-- Item 4: llaves -->
+
+          <circle cx="120" cy="135" r="5" fill="none" stroke="#E8EDF4" stroke-width="2" opacity="0.8"/>
+
+    <!-- Conexiones modulares -->      <rect x="125" y="133" width="12" height="4" rx="1" fill="#E8EDF4" opacity="0.8"/>
+
+    <g stroke="#00FFFF" stroke-width="2" opacity="0.8">    </g>
+
+      <line x1="80" y1="100" x2="70" y2="100"/>    
+
+      <line x1="120" y1="100" x2="130" y2="100"/>    <!-- Detalle superior -->
+
+      <circle cx="70" cy="100" r="3" fill="#00FFFF" filter="url(#tech-glow)"/>    <rect x="70" y="60" width="60" height="6" rx="3" fill="#0B0F14" opacity="0.3"/>
+
+      <circle cx="130" cy="100" r="3" fill="#00FFFF" filter="url(#tech-glow)"/>  </g>
+
+    </g>  
+
+      <!-- Sombra -->
+
+    <!-- Detalles geométricos -->  <ellipse cx="100" cy="170" rx="50" ry="6" fill="#0B0F14" opacity="0.25">
+
+    <polygon points="100,90 105,93 105,100 100,103 95,100 95,93" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.7">    <animate attributeName="opacity" values="0.25;0.15;0.25" dur="3s" repeatCount="indefinite"/>
+
+      <animateTransform attributeName="transform" type="rotate" from="0 100 96.5" to="360 100 96.5" dur="8s" repeatCount="indefinite"/>  </ellipse>
+
+    </polygon>  
+
+      <!-- Partículas de orden -->
+
+    <!-- Esquinas reforzadas -->  <circle cx="40" cy="100" r="1.5" fill="#10B981" opacity="0.5">
+
+    <path d="M80 85 L75 85 L75 90" fill="none" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" opacity="0.7"/>    <animate attributeName="cy" values="100;80;100" dur="4s" repeatCount="indefinite"/>
+
+    <path d="M120 85 L125 85 L125 90" fill="none" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" opacity="0.7"/>  </circle>
+
+    <path d="M80 130 L75 130 L75 125" fill="none" stroke="#00FF88" stroke-width="2" stroke-linecap="round" opacity="0.7"/>  <circle cx="160" cy="120" r="1.5" fill="#06B6D4" opacity="0.5">
+
+    <path d="M120 130 L125 130 L125 125" fill="none" stroke="#00FF88" stroke-width="2" stroke-linecap="round" opacity="0.7"/>    <animate attributeName="cy" values="120;100;120" dur="3.5s" repeatCount="indefinite"/>
+
+      </circle>
+
+    <!-- Patrón de circuitos en la superficie --></svg>
+    <rect x="85" y="85" width="30" height="15" fill="url(#circuit-pattern)" opacity="0.5"/>
+    <rect x="85" y="120" width="30" height="15" fill="url(#circuit-pattern)" opacity="0.5"/>
+    
+    <!-- Tornillos/detalles funcionales -->
+    <circle cx="85" cy="60" r="2" fill="none" stroke="#10B981" stroke-width="1"/>
+    <circle cx="115" cy="60" r="2" fill="none" stroke="#10B981" stroke-width="1"/>
+    <line x1="83" y1="60" x2="87" y2="60" stroke="#10B981" stroke-width="0.5"/>
+    <line x1="85" y1="58" x2="85" y2="62" stroke="#10B981" stroke-width="0.5"/>
+    <line x1="113" y1="60" x2="117" y2="60" stroke="#10B981" stroke-width="0.5"/>
+    <line x1="115" y1="58" x2="115" y2="62" stroke="#10B981" stroke-width="0.5"/>
   </g>
   
-  <!-- Sombra -->
-  <ellipse cx="100" cy="170" rx="50" ry="6" fill="#0B0F14" opacity="0.25">
-    <animate attributeName="opacity" values="0.25;0.15;0.25" dur="3s" repeatCount="indefinite"/>
+  <!-- Sombra proyectada -->
+  <ellipse cx="100" cy="175" rx="50" ry="8" fill="#000" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2s" repeatCount="indefinite"/>
   </ellipse>
   
-  <!-- Partículas de orden -->
-  <circle cx="40" cy="100" r="1.5" fill="#10B981" opacity="0.5">
-    <animate attributeName="cy" values="100;80;100" dur="4s" repeatCount="indefinite"/>
+  <!-- Partículas de trabajo/procesamiento -->
+  <circle cx="45" cy="90" r="2" fill="#00FFFF" opacity="0.6">
+    <animate attributeName="cy" values="90;70;90" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="160" cy="120" r="1.5" fill="#06B6D4" opacity="0.5">
-    <animate attributeName="cy" values="120;100;120" dur="3.5s" repeatCount="indefinite"/>
+  <circle cx="155" cy="110" r="2" fill="#10B981" opacity="0.6">
+    <animate attributeName="cy" values="110;90;110" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite"/>
   </circle>
+  <circle cx="145" cy="65" r="1.5" fill="#00FF88" opacity="0.5">
+    <animate attributeName="cy" values="65;45;65" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Indicadores de función -->
+  <g transform="translate(140, 30)" opacity="0.7">
+    <rect width="30" height="15" rx="2" fill="url(#accent-util)" opacity="0.3"/>
+    <line x1="5" y1="5" x2="5" y2="10" stroke="#00FFFF" stroke-width="1.5"/>
+    <line x1="10" y1="4" x2="10" y2="11" stroke="#00FFFF" stroke-width="1.5"/>
+    <line x1="15" y1="6" x2="15" y2="9" stroke="#00FFFF" stroke-width="1.5"/>
+    <line x1="20" y1="4" x2="20" y2="11" stroke="#00FF88" stroke-width="1.5"/>
+    <line x1="25" y1="5" x2="25" y2="10" stroke="#00FF88" stroke-width="1.5">
+      <animate attributeName="y2" values="10;6;10" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+  </g>
 </svg>
