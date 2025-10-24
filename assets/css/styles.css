@@ -282,6 +282,132 @@ button {
   .theme-animated .btn-primary { animation: none; background-size: initial; }
 }
 
+/* ===== Acentos temáticos por sección (opt-in por clases) ===== */
+/* Sección cyan (por defecto/hero) */
+.section-accent--cyan .accent-text,
+.section-accent--cyan .accent-chip,
+.section-accent--cyan .btn-primary {
+  --section-accent: var(--accent-cyan);
+  --section-accent-rgb: 6, 182, 212;
+}
+
+/* Sección teal (servicios/proceso) */
+.section-accent--teal {
+  --section-accent: #14B8A6;
+  --section-accent-rgb: 20, 184, 166;
+}
+
+.section-accent--teal .accent-text {
+  color: var(--section-accent);
+  background: linear-gradient(120deg, var(--section-accent), var(--accent-cyan), var(--section-accent));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentFlow 8s ease-in-out infinite;
+}
+
+.section-accent--teal .accent-chip {
+  background: rgba(var(--section-accent-rgb), 0.12);
+  border-color: rgba(var(--section-accent-rgb), 0.32);
+}
+
+.section-accent--teal .accent-chip::before {
+  background: linear-gradient(90deg, transparent, rgba(var(--section-accent-rgb), 0.3), transparent);
+}
+
+.section-accent--teal .btn-primary {
+  background: linear-gradient(135deg, var(--section-accent), var(--accent-cyan));
+  background-size: 200% 200%;
+  animation: accentFlow 8s ease-in-out infinite, btnPulseGlow 3s ease-in-out infinite;
+}
+
+/* Sección red (aplicaciones/sectores) */
+.section-accent--red {
+  --section-accent: var(--accent-red);
+  --section-accent-rgb: 210, 38, 35;
+}
+
+.section-accent--red .accent-text,
+.section-accent--red .accent-text--green {
+  color: #F59E0B;
+  background: linear-gradient(120deg, #F59E0B, var(--accent-red), #F59E0B);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentFlow 8s ease-in-out infinite;
+}
+
+.section-accent--red .accent-chip {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.32);
+}
+
+.section-accent--red .accent-chip::before {
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+}
+
+/* Sección purple (catálogo) */
+.section-accent--purple {
+  --section-accent: #A855F7;
+  --section-accent-rgb: 168, 85, 247;
+}
+
+.section-accent--purple .accent-text {
+  color: var(--section-accent);
+  background: linear-gradient(120deg, var(--section-accent), #EC4899, var(--section-accent));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentFlow 8s ease-in-out infinite;
+}
+
+.section-accent--purple .accent-chip {
+  background: rgba(var(--section-accent-rgb), 0.12);
+  border-color: rgba(var(--section-accent-rgb), 0.32);
+}
+
+.section-accent--purple .btn-primary {
+  background: linear-gradient(135deg, var(--section-accent), #EC4899);
+  background-size: 200% 200%;
+  animation: accentFlow 8s ease-in-out infinite, btnPulseGlow 3s ease-in-out infinite;
+}
+
+/* Sección green (promociones/FAQ) */
+.section-accent--green {
+  --section-accent: var(--accent-green);
+  --section-accent-rgb: 16, 185, 129;
+}
+
+.section-accent--green .accent-text {
+  color: var(--section-accent);
+  background: linear-gradient(120deg, var(--section-accent), #14B8A6, var(--section-accent));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentFlow 8s ease-in-out infinite;
+}
+
+.section-accent--green .accent-chip {
+  background: rgba(var(--section-accent-rgb), 0.12);
+  border-color: rgba(var(--section-accent-rgb), 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-accent--teal .accent-text,
+  .section-accent--red .accent-text,
+  .section-accent--purple .accent-text,
+  .section-accent--green .accent-text,
+  .section-accent--teal .btn-primary,
+  .section-accent--purple .btn-primary { 
+    animation: none; 
+    background-size: initial; 
+  }
+}
+
 .accent-chip {
   display: inline-flex;
   align-items: center;
@@ -1987,11 +2113,12 @@ button {
   transform: translateY(0);
 }
 
-.animate-delay-1 { --animate-delay: 0.12s; }
-.animate-delay-2 { --animate-delay: 0.24s; }
-.animate-delay-3 { --animate-delay: 0.36s; }
-.animate-delay-4 { --animate-delay: 0.48s; }
-.animate-delay-5 { --animate-delay: 0.6s; }
+/* Delays optimizados (reducidos para mejor percepción de rapidez) */
+.animate-delay-1 { --animate-delay: 0.08s; }
+.animate-delay-2 { --animate-delay: 0.16s; }
+.animate-delay-3 { --animate-delay: 0.24s; }
+.animate-delay-4 { --animate-delay: 0.32s; }
+.animate-delay-5 { --animate-delay: 0.4s; }
 
 @keyframes auroraShift {
   0% {
