@@ -974,16 +974,14 @@ function setupNav() {
     menu.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Abrir menú');
-    document.body.style.overflow = '';
-    document.body.style.touchAction = '';
+    document.body.classList.remove('nav-open');
   };
 
   const openMenu = () => {
     menu.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Cerrar menú');
-    document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
+    document.body.classList.add('nav-open');
   };
 
   toggle.addEventListener('click', (e) => {
