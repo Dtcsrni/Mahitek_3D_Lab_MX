@@ -96,6 +96,10 @@ body {
   font-size: var(--font-size-base);
   -webkit-tap-highlight-color: rgba(6, 182, 212, 0.2);
   touch-action: manipulation; /* Mejora respuesta táctil */
+  
+  /* Performance: renderizado optimizado */
+  text-rendering: optimizeSpeed;
+  font-display: swap; /* Evitar FOIT */
 }
 
 /* Mobile: Prevenir scroll cuando el menú está abierto */
@@ -1617,6 +1621,7 @@ button {
   animation-delay: 1.5s;
 }
 
+/* Animación float reutilizable - usado en múltiples secciones */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -3952,10 +3957,7 @@ button {
   75% { transform: translateX(2px) rotate(1deg); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
+/* Animación float ya definida en línea 1620 - reutilizada aquí */
 
 @keyframes swing {
   0%, 100% { transform: rotate(0deg); }
@@ -4672,17 +4674,10 @@ button {
 }
 
 .promo-anim-bounce .promo-icono {
-  animation: bounce 2s ease-in-out infinite;
+  animation: bounce-icon 2s ease-in-out infinite; /* Reutilizando bounce-icon definido en línea 971 */
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+/* Animación bounce consolidada - ver bounce-icon línea 971 */
 
 .promo-anim-rotate-3d .promo-icono {
   animation: rotate-3d 4s ease-in-out infinite;

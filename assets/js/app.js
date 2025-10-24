@@ -11,7 +11,9 @@ const CONFIG = {
     promos: 'data/promos.json',
     social: 'data/social.json',
     faq: 'data/faq.json'
-  }
+  },
+  // Control de logs en producción (cambiar a false en producción)
+  DEBUG_MODE: false
 };
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -1180,10 +1182,13 @@ async function init() {
   // Aplicar estado desde la URL y sincronizar cambios
   applyURLState();
 
-  console.log('✅ Mahitek 3D Lab loaded successfully');
-  console.log(`📊 Products loaded: ${allProducts.length}`);
-  console.log(`💰 Price markup: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`);
-  console.log(`🔄 Rounding step: $${CONFIG.PRICE_STEP} MXN`);
+  // Logs solo en modo debug
+  if (CONFIG.DEBUG_MODE) {
+    console.log('✅ Mahitek 3D Lab loaded successfully');
+    console.log(`📊 Products loaded: ${allProducts.length}`);
+    console.log(`💰 Price markup: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`);
+    console.log(`🔄 Rounding step: $${CONFIG.PRICE_STEP} MXN`);
+  }
 }
 
 // Start when DOM is ready
