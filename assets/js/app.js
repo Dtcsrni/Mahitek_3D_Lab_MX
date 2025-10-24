@@ -879,21 +879,37 @@ async function loadSocialLinks() {
   }
   if (!social) return;
 
+  // Footer social links (iconos)
   const container = document.getElementById('social-links');
-  if (!container) return;
+  if (container) {
+    const links = [];
+    if (social.instagram) links.push({ key: 'instagram', label: 'Instagram', url: social.instagram });
+    if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook });
+    if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok });
 
-  // Build icon-only, accessible links with larger clickable area
-  const links = [];
-  if (social.instagram) links.push({ key: 'instagram', label: 'Instagram', url: social.instagram });
-  if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook });
-  if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok });
+    container.innerHTML = links.map(link => `
+      <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
+        ${getSocialIconMarkup(link.key)}
+        <span class="sr-only">${link.label}</span>
+      </a>
+    `).join('');
+  }
 
-  container.innerHTML = links.map(link => `
-    <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
-      ${getSocialIconMarkup(link.key)}
-      <span class="sr-only">${link.label}</span>
-    </a>
-  `).join('');
+  // Hero social links (con texto)
+  const heroContainer = document.getElementById('hero-social-links');
+  if (heroContainer) {
+    const links = [];
+    if (social.instagram) links.push({ key: 'instagram', label: 'Instagram', url: social.instagram, icon: 'instagram' });
+    if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook, icon: 'facebook' });
+    if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok, icon: 'tiktok' });
+
+    heroContainer.innerHTML = links.map(link => `
+      <a class="community-link" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}">
+        ${getSocialIconMarkup(link.key)}
+        <span>${link.label}</span>
+      </a>
+    `).join('');
+  }
 }
 
 // Oficial logos via Simple Icons CDN (CC0) — single-color SVGs
