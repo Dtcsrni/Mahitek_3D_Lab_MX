@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-support desc-support">
+  <title id="title-support">Soporte Continuo</title>
+  <desc id="desc-support">Atención personalizada por Messenger con historial y seguimiento</desc>
+  
+  <defs>
+    <linearGradient id="bg-support" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/>
+      <stop offset="100%" stop-color="#1a2332"/>
+    </linearGradient>
+    
+    <linearGradient id="phone-screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    
+    <linearGradient id="msg-gradient-user" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+    
+    <linearGradient id="msg-gradient-bot" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    
+    <filter id="phone-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="200" height="200" fill="url(#bg-support)"/>
+  
+  <!-- Sombra del teléfono -->
+  <ellipse cx="100" cy="180" rx="35" ry="8" fill="#000000" opacity="0.4"/>
+  
+  <!-- Smartphone -->
+  <g class="phone">
+    <!-- Cuerpo del teléfono -->
+    <rect x="60" y="30" width="80" height="145" rx="10" fill="#1E293B" stroke="#06B6D4" stroke-width="2" filter="url(#phone-glow)"/>
+    
+    <!-- Pantalla -->
+    <rect x="65" y="40" width="70" height="125" rx="4" fill="url(#phone-screen)"/>
+    
+    <!-- Notch/Cámara -->
+    <rect x="90" y="35" width="20" height="3" rx="1.5" fill="#0F172A"/>
+    <circle cx="95" cy="36.5" r="1.5" fill="#0891B2" opacity="0.5"/>
+    
+    <!-- Barra de estado -->
+    <g class="status-bar" opacity="0.6">
+      <text x="70" y="50" fill="#94A3B8" font-size="4" font-family="sans-serif">9:41</text>
+      <circle cx="125" cy="48" r="1.5" fill="#10B981"/>
+      <rect x="127" y="46.5" width="5" height="3" rx="0.5" fill="none" stroke="#94A3B8" stroke-width="0.5"/>
+      <rect x="128" y="47" width="3" height="2" fill="#10B981"/>
+    </g>
+    
+    <!-- Header de Messenger -->
+    <g class="messenger-header">
+      <rect x="65" y="52" width="70" height="12" fill="#06B6D4" opacity="0.2"/>
+      
+      <!-- Avatar del negocio -->
+      <circle cx="72" cy="58" r="4" fill="#06B6D4" stroke="#22D3EE" stroke-width="1"/>
+      <text x="72" y="60" fill="#F1F5F9" font-size="5" text-anchor="middle" font-weight="bold">M</text>
+      
+      <!-- Nombre del chat -->
+      <text x="78" y="58" fill="#F1F5F9" font-size="5" font-family="sans-serif" font-weight="bold">Mahitek 3D Lab</text>
+      <circle cx="110" cy="58" r="2" fill="#10B981"/>
+      <text x="78" y="62" fill="#94A3B8" font-size="3.5" font-family="sans-serif">En línea</text>
+    </g>
+    
+    <!-- Área de mensajes -->
+    <g class="messages">
+      <!-- Mensaje del usuario (derecha) -->
+      <g class="msg-user" transform="translate(0, 0)">
+        <rect x="85" y="70" width="45" height="16" rx="8" fill="url(#msg-gradient-user)"/>
+        <text x="90" y="77" fill="#F1F5F9" font-size="4" font-family="sans-serif">¿Pueden hacer un</text>
+        <text x="90" y="82" fill="#F1F5F9" font-size="4" font-family="sans-serif">llavero con mi logo?</text>
+        <text x="125" y="85" fill="#E0F2FE" font-size="3" font-family="sans-serif">14:23</text>
+      </g>
+      
+      <!-- Mensaje del negocio (izquierda) -->
+      <g class="msg-business" transform="translate(0, 0)">
+        <rect x="70" y="90" width="52" height="24" rx="8" fill="url(#msg-gradient-bot)" stroke="#06B6D4" stroke-width="0.5"/>
+        <text x="75" y="97" fill="#F1F5F9" font-size="4" font-family="sans-serif">¡Claro! 😊 Envíame una</text>
+        <text x="75" y="102" fill="#F1F5F9" font-size="4" font-family="sans-serif">foto del logo y te paso</text>
+        <text x="75" y="107" fill="#F1F5F9" font-size="4" font-family="sans-serif">vista 3D + precio en</text>
+        <text x="75" y="112" fill="#F1F5F9" font-size="4" font-family="sans-serif">1-2 días 📐</text>
+        <circle cx="115" cy="112" r="2" fill="#06B6D4"/>
+        <path d="M114,112 L115.5,113.5 L117,111" fill="none" stroke="#F1F5F9" stroke-width="0.5"/>
+      </g>
+      
+      <!-- Imagen enviada (thumbnail) -->
+      <g class="msg-image">
+        <rect x="85" y="118" width="40" height="30" rx="6" fill="#334155" stroke="#06B6D4" stroke-width="1"/>
+        <circle cx="95" cy="128" r="4" fill="#FB923C" opacity="0.3"/>
+        <path d="M85,140 L95,130 L105,135 L115,125 L125,148" fill="none" stroke="#06B6D4" stroke-width="1.5" opacity="0.5"/>
+        <text x="105" y="145" fill="#94A3B8" font-size="3" text-anchor="middle">logo.png</text>
+      </g>
+    </g>
+    
+    <!-- Indicador de escritura -->
+    <g class="typing-indicator" transform="translate(70, 153)">
+      <rect width="20" height="8" rx="4" fill="#334155"/>
+      <circle cx="5" cy="4" r="1.5" fill="#06B6D4" opacity="0.6"/>
+      <circle cx="10" cy="4" r="1.5" fill="#06B6D4" opacity="0.8"/>
+      <circle cx="15" cy="4" r="1.5" fill="#06B6D4" opacity="0.6"/>
+    </g>
+    
+    <!-- Barra de entrada de texto -->
+    <rect x="68" y="162" width="64" height="8" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="72" y="167.5" fill="#64748B" font-size="4" font-family="sans-serif">Escribe un mensaje...</text>
+    
+    <!-- Botón enviar -->
+    <circle cx="127" cy="166" r="3" fill="#06B6D4"/>
+    <path d="M125,166 L129,166 L127,164" fill="none" stroke="#F1F5F9" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Botón home -->
+    <rect x="95" y="172" width="10" height="2" rx="1" fill="#334155"/>
+  </g>
+  
+  <!-- Iconos de notificación flotantes -->
+  <g class="notifications">
+    <!-- Badge de notificaciones -->
+    <circle cx="145" cy="25" r="10" fill="#FB923C" filter="url(#phone-glow)"/>
+    <text x="145" y="28" fill="#F1F5F9" font-size="8" text-anchor="middle" font-weight="bold">3</text>
+    
+    <!-- Icono de check doble -->
+    <g transform="translate(148, 115)">
+      <circle cx="0" cy="0" r="8" fill="#10B981" opacity="0.2"/>
+      <path d="M-3,-1 L-1,1 L3,-3" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M0,-1 L2,1 L6,-3" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- Elementos decorativos -->
+  <g class="deco" opacity="0.5">
+    <circle cx="30" cy="50" r="3" fill="#06B6D4"/>
+    <circle cx="170" cy="100" r="2.5" fill="#FB923C"/>
+    <circle cx="40" cy="160" r="2" fill="#22D3EE"/>
+    
+    <path d="M165,170 L167,173 L170,171 L168,168 Z" fill="#A78BFA"/>
+  </g>
+</svg>
