@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-pack-stickers-15">
+  <title id="title-pack-stickers-15">Pack 15 Stickers</title>
+  <desc>Pegote sabroso - 15 stickers laminados 5×5cm</desc>
+  
+  <defs>
+    <linearGradient id="bg-st15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0.12"/>
+    </linearGradient>
+    <linearGradient id="hologram-15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:0.9"/>
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:0.9"/>
+    </linearGradient>
+    <filter id="shadow-st15">
+      <feGaussianBlur stdDeviation="2.5"/>
+      <feOffset dx="0" dy="3"/>
+    </filter>
+  </defs>
+  
+  <rect width="200" height="200" fill="url(#bg-st15)"/>
+  
+  <!-- Stack más grueso -->
+  <g transform="translate(100, 100)">
+    <rect x="-52" y="-36" width="104" height="72" rx="6" fill="#CCC" opacity="0.2" filter="url(#shadow-st15)"/>
+    <rect x="-50" y="-38" width="104" height="72" rx="6" fill="#D5D5D5" opacity="0.3"/>
+    <rect x="-48" y="-40" width="104" height="72" rx="6" fill="#DDD" opacity="0.4"/>
+    <rect x="-46" y="-42" width="104" height="72" rx="6" fill="#E8E8E8" opacity="0.5"/>
+    <rect x="-44" y="-44" width="104" height="72" rx="6" fill="#F0F0F0" opacity="0.6"/>
+    <rect x="-42" y="-46" width="104" height="72" rx="6" fill="#FFF" stroke="url(#hologram-15)" stroke-width="3"/>
+    
+    <!-- Diseños variados -->
+    <g opacity="0.85">
+      <circle cx="-30" cy="-28" r="9" fill="#FB923C" opacity="0.7"/>
+      <circle cx="-8" cy="-25" r="7" fill="#F59E0B" opacity="0.7"/>
+      <circle cx="15" cy="-30" r="10" fill="#FFA500" opacity="0.6"/>
+      <circle cx="35" cy="-26" r="8" fill="#FF6B00" opacity="0.7"/>
+      
+      <rect x="-35" y="-8" width="70" height="5" rx="2.5" fill="#333" opacity="0.7"/>
+      <rect x="-28" y="2" width="56" height="4" rx="2" fill="#555" opacity="0.6"/>
+      <rect x="-20" y="11" width="40" height="3" rx="1.5" fill="#777" opacity="0.5"/>
+      
+      <circle cx="-30" cy="26" r="8" fill="#FF8C00" opacity="0.7"/>
+      <circle cx="-5" cy="28" r="6" fill="#FFA500" opacity="0.7"/>
+      <circle cx="15" cy="30" r="7" fill="#FB923C" opacity="0.6"/>
+      <circle cx="35" cy="25" r="9" fill="#F59E0B" opacity="0.7"/>
+    </g>
+    
+    <!-- Badge cantidad -->
+    <g transform="translate(56, -52)">
+      <circle cx="0" cy="0" r="20" fill="#FB923C"/>
+      <text x="0" y="7" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFF" text-anchor="middle">15</text>
+    </g>
+  </g>
+  
+  <!-- Precio -->
+  <g transform="translate(100, 175)">
+    <rect x="-30" y="-12" width="60" height="24" rx="12" fill="#F59E0B"/>
+    <text x="0" y="4" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFF" text-anchor="middle">$30</text>
+  </g>
+  
+  <!-- Título -->
+  <text x="100" y="30" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FB923C" text-anchor="middle" opacity="0.8">Pegote sabroso</text>
+</svg>

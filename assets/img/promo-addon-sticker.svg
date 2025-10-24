@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-addon">
+  <title id="title-addon">Add-on Sticker Individual</title>
+  <desc>Pegue oficial $5 - Complemento para llaveros</desc>
+  
+  <defs>
+    <linearGradient id="bg-addon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="sticker-holo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.8"/>
+      <stop offset="25%" style="stop-color:#9B59B6;stop-opacity:0.8"/>
+      <stop offset="50%" style="stop-color:#FB923C;stop-opacity:0.8"/>
+      <stop offset="75%" style="stop-color:#10B981;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:0.8"/>
+    </linearGradient>
+    <filter id="glow-addon">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="200" height="200" fill="url(#bg-addon)"/>
+  
+  <!-- Sticker grande individual -->
+  <g transform="translate(100, 100)">
+    <!-- Sombra -->
+    <rect x="-42" y="-38" width="84" height="76" rx="8" fill="#000" opacity="0.15"/>
+    
+    <!-- Sticker principal -->
+    <rect x="-40" y="-40" width="80" height="72" rx="8" fill="#FFF" stroke="url(#sticker-holo)" stroke-width="3" filter="url(#glow-addon)"/>
+    
+    <!-- Diseño holográfico interno -->
+    <g opacity="0.7">
+      <path d="M -20,-20 L 0,0 L 20,-20 L 0,-10 Z" fill="#06B6D4"/>
+      <path d="M -15,5 L 5,25 L 25,5 L 5,15 Z" fill="#9B59B6"/>
+      <circle cx="-20" cy="15" r="8" fill="#FB923C" opacity="0.7"/>
+      <circle cx="15" cy="-15" r="6" fill="#10B981" opacity="0.7"/>
+    </g>
+    
+    <!-- Logo M3D simulado -->
+    <text x="0" y="-5" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">M3D</text>
+    <rect x="-25" y="5" width="50" height="2" rx="1" fill="#666" opacity="0.6"/>
+    <rect x="-18" y="12" width="36" height="1.5" rx="0.75" fill="#999" opacity="0.5"/>
+    
+    <!-- Borde de corte -->
+    <rect x="-40" y="-40" width="80" height="72" rx="8" fill="none" stroke="#DDD" stroke-width="0.5" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Badge precio -->
+  <g transform="translate(160, 40)">
+    <circle cx="0" cy="0" r="20" fill="#10B981" filter="url(#glow-addon)"/>
+    <text x="0" y="-3" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFF" text-anchor="middle">$5</text>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="7" fill="#FFF" text-anchor="middle" opacity="0.9">c/u</text>
+  </g>
+  
+  <!-- Icono "+" -->
+  <g transform="translate(40, 40)">
+    <circle cx="0" cy="0" r="15" fill="#06B6D4" opacity="0.3"/>
+    <text x="0" y="6" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#06B6D4" text-anchor="middle">+</text>
+  </g>
+  
+  <!-- Texto complementario -->
+  <g transform="translate(100, 175)">
+    <rect x="-50" y="-8" width="100" height="16" rx="8" fill="#333" opacity="0.8"/>
+    <text x="0" y="3" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#FFF" text-anchor="middle">Al llevar llavero</text>
+  </g>
+</svg>
