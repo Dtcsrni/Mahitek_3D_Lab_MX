@@ -1,75 +1,1927 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="hero-bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0b0f14" />
-      <stop offset="1" stop-color="#111827" />
+    <!-- Gradientes principales -->
+    <linearGradient id="bg-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F14"/>
+      <stop offset="50%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#0f1419"/>
     </linearGradient>
-    <linearGradient id="printer-body" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1f2937" />
-      <stop offset="1" stop-color="#111827" />
+    
+    <linearGradient id="magic-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="1"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#06b6d4" />
-      <stop offset="1" stop-color="#8b5cf6" />
+    
+    <linearGradient id="magic-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="1"/>
     </linearGradient>
+    
+    <linearGradient id="magic-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="1"/>
+    </linearGradient>
+    
+    <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Filtros de efectos -->
+    <filter id="glow-effect">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow-strong">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.6"/>
+    </filter>
   </defs>
-  <rect width="400" height="400" fill="url(#hero-bg)" />
-  <ellipse cx="200" cy="300" rx="160" ry="40" fill="#0f172a" />
-  <ellipse cx="200" cy="300" rx="140" ry="30" fill="#0f172a" opacity="0.6" />
-  <g transform="translate(60 80)">
-    <rect x="0" y="220" width="280" height="32" rx="6" fill="#0f172a" />
-    <rect x="18" y="60" width="244" height="160" rx="16" fill="url(#printer-body)" stroke="#1f2a3c" stroke-width="2" />
-    <rect x="42" y="88" width="196" height="104" rx="8" fill="#0b1220" stroke="#1e293b" stroke-width="1.5" />
-    <rect x="42" y="88" width="196" height="16" rx="8" fill="#111c2a" />
-    <circle cx="64" cy="96" r="4" fill="#06b6d4" />
-    <circle cx="80" cy="96" r="4" fill="#8b5cf6" />
-    <circle cx="96" cy="96" r="4" fill="#10b981" />
-    <rect x="112" y="140" width="56" height="60" rx="6" fill="#111c2a" stroke="#233040" stroke-width="1.2" />
-    <rect x="130" y="140" width="20" height="60" fill="url(#accent)" />
-    <rect x="122" y="200" width="32" height="6" rx="3" fill="#111c2a" stroke="#2b3b54" stroke-width="0.8" />
-    <rect x="70" y="120" width="140" height="12" rx="4" fill="#1f2937" />
-    <rect x="58" y="180" width="164" height="10" rx="4" fill="#1f2937" />
-    <rect x="210" y="105" width="14" height="70" rx="4" fill="#1f2937" />
-    <rect x="206" y="170" width="22" height="26" rx="6" fill="#0b1220" stroke="#233040" stroke-width="1" />
-    <rect x="100" y="62" width="80" height="12" rx="6" fill="#0b1220" />
-    <rect x="102" y="64" width="36" height="8" rx="4" fill="#06b6d4" />
-    <rect x="142" y="64" width="36" height="8" rx="4" fill="#8b5cf6" />
-    <rect x="234" y="100" width="30" height="100" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.2" />
-    <circle cx="249" cy="100" r="14" fill="#0b1220" stroke="#1f2a3c" stroke-width="2" />
-    <path d="M249 90c6 0 10 4 10 10s-4 10-10 10-10-4-10-10 4-10 10-10z" fill="url(#accent)" />
-    <rect x="20" y="220" width="60" height="18" rx="6" fill="#111c2a" />
-    <rect x="36" y="223" width="28" height="4" rx="2" fill="#06b6d4" />
-    <rect x="36" y="230" width="20" height="4" rx="2" fill="#8b5cf6" />
-    <g transform="translate(210 224)">
-      <rect x="0" y="0" width="52" height="16" rx="6" fill="#111c2a" stroke="#1e293b" stroke-width="1" />
-      <circle cx="12" cy="8" r="3" fill="#06b6d4" />
-      <circle cx="24" cy="8" r="3" fill="#8b5cf6" />
-      <rect x="32" y="6" width="16" height="4" rx="2" fill="#10b981" />
+  
+  <!-- SIN FONDO - Elementos flotantes en transparencia -->
+  
+  <!-- Partículas de polvo en el ambiente -->
+  <circle cx="50" cy="80" r="1" fill="#06B6D4" opacity="0.3">
+    <animate attributeName="cy" values="80;60;80" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="100" r="1.2" fill="#8b5cf6" opacity="0.3">
+    <animate attributeName="cy" values="100;80;100" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="50" r="0.8" fill="#10B981" opacity="0.3">
+    <animate attributeName="cy" values="50;30;50" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- VENTANA AL FONDO con paisaje mexicano animado -->
+  <g class="window-background">
+    <!-- Marco de ventana -->
+    <rect x="250" y="40" width="130" height="90" rx="8" fill="#1e293b" stroke="#06B6D4" stroke-width="3" opacity="0.9"/>
+    
+    <!-- Vista a través de la ventana: ESCENA DE PLANTAS MEXICANAS ANIMADAS -->
+    <defs>
+      <clipPath id="window-clip">
+        <rect x="255" y="45" width="120" height="80" rx="5"/>
+      </clipPath>
+    </defs>
+    
+    <g clip-path="url(#window-clip)">
+      <!-- Cielo/fondo dorado -->
+      <rect x="255" y="45" width="120" height="80" fill="#B8860B" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.95;0.8" dur="6s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Suelo -->
+      <ellipse cx="315" cy="125" rx="60" ry="8" fill="#8B7355" opacity="0.7"/>
+      
+      <!-- PLANTAS Y CACTUS ANIMADOS -->
+      
+      <!-- Agave izquierdo -->
+      <g class="agave-left" transform="translate(265, 95)">
+        <ellipse cx="0" cy="25" rx="8" ry="2" fill="#000000" opacity="0.2"/>
+        <!-- Hojas -->
+        <path d="M0 20 Q-6 15 -8 8 Q-9 5 -8 3" fill="#228B22" stroke="#0d4d0d" stroke-width="1.5">
+          <animate attributeName="d" values="
+            M0 20 Q-6 15 -8 8 Q-9 5 -8 3;
+            M0 20 Q-6.5 14 -9 7 Q-10 4 -9 2;
+            M0 20 Q-6 15 -8 8 Q-9 5 -8 3" dur="4s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0 20 Q6 15 8 8 Q9 5 8 3" fill="#32CD32" stroke="#0d4d0d" stroke-width="1.5">
+          <animate attributeName="d" values="
+            M0 20 Q6 15 8 8 Q9 5 8 3;
+            M0 20 Q6.5 14 9 7 Q10 4 9 2;
+            M0 20 Q6 15 8 8 Q9 5 8 3" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0 20 Q-2 10 -1 0" fill="#2E8B57" stroke="#0d4d0d" stroke-width="1.5"/>
+        <path d="M0 20 Q2 10 1 0" fill="#3CB371" stroke="#0d4d0d" stroke-width="1.5"/>
+      </g>
+      
+      <!-- Nopal central con textura -->
+      <g class="nopal-center" transform="translate(315, 85)">
+        <ellipse cx="0" cy="35" rx="12" ry="3" fill="#000000" opacity="0.2"/>
+        <!-- Penca base -->
+        <ellipse cx="0" cy="22" rx="10" ry="14" fill="#228B22" stroke="#0d4d0d" stroke-width="2"/>
+        <!-- Textura de nopal -->
+        <circle cx="-3" cy="18" r="1" fill="#0d4d0d" opacity="0.4"/>
+        <circle cx="3" cy="20" r="1" fill="#0d4d0d" opacity="0.4"/>
+        <circle cx="-2" cy="25" r="1" fill="#0d4d0d" opacity="0.4"/>
+        <circle cx="4" cy="26" r="1" fill="#0d4d0d" opacity="0.4"/>
+        
+        <!-- Penca superior izquierda -->
+        <ellipse cx="-8" cy="15" rx="7" ry="10" fill="#2E8B57" stroke="#0d4d0d" stroke-width="2">
+          <animateTransform attributeName="transform" type="rotate" values="0 -8 15; -3 -8 15; 0 -8 15" dur="5s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle cx="-10" cy="13" r="0.8" fill="#0d4d0d" opacity="0.4"/>
+        <circle cx="-6" cy="16" r="0.8" fill="#0d4d0d" opacity="0.4"/>
+        
+        <!-- Penca superior derecha -->
+        <ellipse cx="8" cy="15" rx="7" ry="10" fill="#32CD32" stroke="#0d4d0d" stroke-width="2">
+          <animateTransform attributeName="transform" type="rotate" values="0 8 15; 3 8 15; 0 8 15" dur="5s" begin="0.8s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle cx="10" cy="13" r="0.8" fill="#0d4d0d" opacity="0.4"/>
+        <circle cx="6" cy="16" r="0.8" fill="#0d4d0d" opacity="0.4"/>
+        
+        <!-- Tunas (frutos) moradas -->
+        <ellipse cx="-5" cy="10" rx="2" ry="3" fill="#8B008B">
+          <animate attributeName="ry" values="3;3.5;3" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="5" cy="10" rx="2" ry="3" fill="#9932CC">
+          <animate attributeName="ry" values="3;3.5;3" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="0" cy="8" rx="2" ry="3" fill="#BA55D3">
+          <animate attributeName="ry" values="3;3.5;3" dur="3s" begin="1s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+      
+      <!-- Cactus derecho -->
+      <g class="cactus-right" transform="translate(355, 95)">
+        <ellipse cx="0" cy="28" rx="6" ry="2" fill="#000000" opacity="0.2"/>
+        <!-- Tronco principal -->
+        <rect x="-4" y="10" width="8" height="18" rx="4" fill="#228B22" stroke="#0d4d0d" stroke-width="1.5"/>
+        <!-- Textura -->
+        <line x1="-2" y1="12" x2="-2" y2="26" stroke="#0d4d0d" stroke-width="0.5" opacity="0.3"/>
+        <line x1="2" y1="12" x2="2" y2="26" stroke="#0d4d0d" stroke-width="0.5" opacity="0.3"/>
+        
+        <!-- Brazo izquierdo -->
+        <ellipse cx="-7" cy="18" rx="3.5" ry="8" fill="#2E8B57" stroke="#0d4d0d" stroke-width="1.5">
+          <animate attributeName="ry" values="8;8.5;8" dur="4.5s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- Brazo derecho -->
+        <ellipse cx="7" cy="16" rx="3.5" ry="8" fill="#32CD32" stroke="#0d4d0d" stroke-width="1.5">
+          <animate attributeName="ry" values="8;8.5;8" dur="4.5s" begin="0.7s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- Espinas pequeñas -->
+        <circle cx="-1" cy="14" r="0.8" fill="#0d4d0d" opacity="0.5"/>
+        <circle cx="1" cy="16" r="0.8" fill="#0d4d0d" opacity="0.5"/>
+        <circle cx="0" cy="22" r="0.8" fill="#0d4d0d" opacity="0.5"/>
+      </g>
+      
+      <!-- Agave trasero izquierdo -->
+      <g class="agave-back" transform="translate(275, 75)" opacity="0.7">
+        <path d="M0 15 Q-4 10 -5 5" fill="#1a5d1a" stroke="#0a2f0a" stroke-width="1">
+          <animate attributeName="d" values="
+            M0 15 Q-4 10 -5 5;
+            M0 15 Q-4.5 9 -6 4;
+            M0 15 Q-4 10 -5 5" dur="5s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0 15 Q4 10 5 5" fill="#1a6d1a" stroke="#0a2f0a" stroke-width="1">
+          <animate attributeName="d" values="
+            M0 15 Q4 10 5 5;
+            M0 15 Q4.5 9 6 4;
+            M0 15 Q4 10 5 5" dur="5s" begin="0.3s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Planta baja frontal derecha -->
+      <g class="plant-front" transform="translate(340, 110)">
+        <ellipse cx="0" cy="12" rx="8" ry="2" fill="#000000" opacity="0.2"/>
+        <path d="M0 10 Q-3 8 -4 4 Q-4 2 -3 0" fill="#32CD32" stroke="#0d4d0d" stroke-width="1">
+          <animate attributeName="d" values="
+            M0 10 Q-3 8 -4 4 Q-4 2 -3 0;
+            M0 10 Q-3.5 7 -5 3 Q-5 1 -4 -1;
+            M0 10 Q-3 8 -4 4 Q-4 2 -3 0" dur="3.5s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0 10 Q3 8 4 4 Q4 2 3 0" fill="#3CB371" stroke="#0d4d0d" stroke-width="1">
+          <animate attributeName="d" values="
+            M0 10 Q3 8 4 4 Q4 2 3 0;
+            M0 10 Q3.5 7 5 3 Q5 1 4 -1;
+            M0 10 Q3 8 4 4 Q4 2 3 0" dur="3.5s" begin="0.4s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0 10 Q0 6 0 2" fill="#228B22" stroke="#0d4d0d" stroke-width="1.2"/>
+      </g>
+      
+      <!-- Nubes animadas en el fondo -->
+      <g class="clouds">
+        <ellipse cx="270" cy="60" rx="8" ry="4" fill="#FFFFFF" opacity="0.3">
+          <animate attributeName="cx" values="270;275;270" dur="8s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="275" cy="58" rx="6" ry="3" fill="#FFFFFF" opacity="0.3">
+          <animate attributeName="cx" values="275;280;275" dur="8s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <ellipse cx="350" cy="55" rx="10" ry="5" fill="#FFFFFF" opacity="0.25">
+          <animate attributeName="cx" values="350;355;350" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="356" cy="53" rx="7" ry="4" fill="#FFFFFF" opacity="0.25">
+          <animate attributeName="cx" values="356;361;356" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+      
+      <!-- Sol mexicano brillante -->
+      <g class="mexican-sun">
+        <circle cx="295" cy="58" r="8" fill="#FFD700" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;0.9;0.7" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="295" cy="58" r="10" fill="#FFD700" opacity="0.2">
+          <animate attributeName="r" values="10;12;10" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.2;0.4;0.2" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Rayos -->
+        <g opacity="0.5">
+          <line x1="295" y1="50" x2="295" y2="46" stroke="#FFD700" stroke-width="1.5"/>
+          <line x1="295" y1="66" x2="295" y2="70" stroke="#FFD700" stroke-width="1.5"/>
+          <line x1="287" y1="58" x2="283" y2="58" stroke="#FFD700" stroke-width="1.5"/>
+          <line x1="303" y1="58" x2="307" y2="58" stroke="#FFD700" stroke-width="1.5"/>
+          <line x1="289" y1="52" x2="286" y2="49" stroke="#FFD700" stroke-width="1"/>
+          <line x1="301" y1="64" x2="304" y2="67" stroke="#FFD700" stroke-width="1"/>
+          <line x1="301" y1="52" x2="304" y2="49" stroke="#FFD700" stroke-width="1"/>
+          <line x1="289" y1="64" x2="286" y2="67" stroke="#FFD700" stroke-width="1"/>
+        </g>
+      </g>
+      
+      <!-- Pájaros volando -->
+      <g class="birds">
+        <path d="M260 70 Q263 68 266 70" stroke="#1a1614" stroke-width="1.2" fill="none" opacity="0.4">
+          <animate attributeName="d" values="
+            M260 70 Q263 68 266 70;
+            M260 70 Q263 69 266 70;
+            M260 70 Q263 68 266 70" dur="1.5s" repeatCount="indefinite"/>
+          <animateMotion path="M 0,0 L 20,-5 L 40,-8 L 60,-10 L 80,-8 L 100,-5 L 120,0" dur="15s" repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M330 65 Q333 63 336 65" stroke="#1a1614" stroke-width="1.2" fill="none" opacity="0.4">
+          <animate attributeName="d" values="
+            M330 65 Q333 63 336 65;
+            M330 65 Q333 64 336 65;
+            M330 65 Q333 63 336 65" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+          <animateMotion path="M 0,0 L -15,3 L -30,5 L -45,6 L -60,5 L -75,3 L -90,0" dur="18s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Más plantas decorativas en el suelo -->
+      <g class="ground-plants">
+        <!-- Pasto bajo -->
+        <path d="M260 118 L262 115 L264 118" fill="#228B22" opacity="0.5"/>
+        <path d="M265 119 L267 116 L269 119" fill="#2E8B57" opacity="0.5"/>
+        <path d="M270 118 L272 115 L274 118" fill="#32CD32" opacity="0.5"/>
+        
+        <path d="M345 120 L347 117 L349 120" fill="#228B22" opacity="0.5"/>
+        <path d="M350 119 L352 116 L354 119" fill="#2E8B57" opacity="0.5"/>
+        <path d="M355 120 L357 117 L359 120" fill="#32CD32" opacity="0.5"/>
+      </g>
+      
+      <!-- Mariposa monarca animada -->
+      <g class="monarch-butterfly" opacity="0.7">
+        <ellipse cx="285" cy="90" rx="3" ry="5" fill="#FF6B35" transform="rotate(-20 285 90)">
+          <animate attributeName="ry" values="5;6;5" dur="0.3s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="291" cy="90" rx="3" ry="5" fill="#FF8C42" transform="rotate(20 291 90)">
+          <animate attributeName="ry" values="5;6;5" dur="0.3s" begin="0.15s" repeatCount="indefinite"/>
+        </ellipse>
+        <path d="M288 89 L288 92" stroke="#1a1614" stroke-width="0.8"/>
+        
+        <animateMotion path="M 0,0 Q 10,-8 20,-10 Q 30,-8 40,0 Q 30,8 20,10 Q 10,8 0,0" dur="8s" repeatCount="indefinite"/>
+      </g>
+      
+      <!-- Reflejo de luz en el vidrio -->
+      <path d="M260 50 L270 50 L265 60 Z" fill="#FFFFFF" opacity="0.2">
+        <animate attributeName="opacity" values="0.2;0.4;0.2" dur="4s" repeatCount="indefinite"/>
+      </path>
     </g>
   </g>
-  <g transform="translate(260 70)">
-    <rect x="0" y="0" width="110" height="54" rx="10" fill="#101826" stroke="#1e2837" stroke-width="1.5" />
-    <rect x="16" y="16" width="78" height="22" rx="10" fill="#0b1220" />
-    <path d="M24 27h62" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" />
-    <path d="M24 33h44" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" />
-    <circle cx="24" cy="16" r="4" fill="#06b6d4" />
-    <circle cx="36" cy="16" r="4" fill="#8b5cf6" />
-    <circle cx="48" cy="16" r="4" fill="#10b981" />
+  
+  <!-- ESTANTERÍA DESORDENADA izquierda con estructura completa -->
+  <g class="shelves-left">
+    <!-- Postes verticales de estantería -->
+    <rect x="8" y="90" width="4" height="110" fill="#1e293b" opacity="0.8"/>
+    <rect x="66" y="90" width="4" height="110" fill="#1e293b" opacity="0.8"/>
+    
+    <!-- Estantes -->
+    <rect x="10" y="100" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    <rect x="10" y="140" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    <rect x="10" y="180" width="60" height="6" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    
+    <!-- Objetos desordenados con sombras -->
+    <ellipse cx="19" cy="105" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <rect x="15" y="92" width="8" height="12" fill="#8b5cf6" opacity="0.8"/>
+    
+    <ellipse cx="33" cy="105" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="28" y="88" width="10" height="16" fill="#06B6D4" opacity="0.8"/>
+    
+    <ellipse cx="55" cy="104" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <circle cx="55" cy="96" r="4" fill="#FEDA77" opacity="0.8"/>
+    
+    <ellipse cx="24" cy="145" rx="6" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="18" y="132" width="12" height="10" fill="#10B981" opacity="0.8"/>
+    
+    <ellipse cx="42" cy="145" rx="4" ry="1" fill="#000000" opacity="0.3"/>
+    <rect x="38" y="130" width="8" height="12" fill="#C41E3A" opacity="0.8"/>
+    
+    <ellipse cx="60" cy="146" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <circle cx="60" cy="136" r="5" fill="#D4AF37" opacity="0.8"/>
+    
+    <ellipse cx="16" cy="185" rx="5" ry="1.5" fill="#000000" opacity="0.3"/>
+    <rect x="12" y="172" width="10" height="10" fill="#3b82f6" opacity="0.8"/>
+    
+    <ellipse cx="37" cy="185" rx="7" ry="2" fill="#000000" opacity="0.3"/>
+    <rect x="30" y="170" width="14" height="12" fill="#8b5cf6" opacity="0.8"/>
+    
+    <!-- Etiquetas pequeñas -->
+    <rect x="50" y="108" width="15" height="3" rx="0.5" fill="#FEDA77" opacity="0.4"/>
+    <rect x="45" y="148" width="18" height="3" rx="0.5" fill="#06B6D4" opacity="0.4"/>
   </g>
-  <g transform="translate(80 108)">
-    <rect x="0" y="0" width="64" height="36" rx="8" fill="#101826" stroke="#1e2837" stroke-width="1" />
-    <rect x="12" y="12" width="40" height="12" rx="6" fill="#0b1220" />
-    <rect x="14" y="14" width="18" height="8" rx="4" fill="#06b6d4" />
-    <rect x="34" y="14" width="16" height="8" rx="4" fill="#8b5cf6" />
+  
+  <!-- MESA DESORDENADA derecha con más detalles -->
+  <g class="messy-desk-right">
+    <!-- Patas de mesa -->
+    <rect x="332" y="208" width="3" height="112" fill="#1e293b" opacity="0.7"/>
+    <rect x="390" y="208" width="3" height="112" fill="#1e293b" opacity="0.7"/>
+    
+    <!-- Superficie de mesa -->
+    <rect x="330" y="200" width="65" height="8" rx="3" fill="#1e293b" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+    
+    <!-- Herramientas desordenadas -->
+    <rect x="335" y="190" width="6" height="12" fill="#FEDA77" opacity="0.8" transform="rotate(15 338 196)"/>
+    <rect x="350" y="188" width="4" height="15" fill="#06B6D4" opacity="0.8" transform="rotate(-10 352 195)"/>
+    <circle cx="370" cy="195" r="4" fill="#10B981" opacity="0.8"/>
+    <rect x="380" y="192" width="8" height="10" fill="#C41E3A" opacity="0.7"/>
+    
+    <!-- Monitor pequeño en la mesa -->
+    <rect x="345" y="185" width="20" height="15" rx="2" fill="#1e293b" stroke="#8b5cf6" stroke-width="1" opacity="0.9"/>
+    <rect x="347" y="187" width="16" height="11" rx="1" fill="#8b5cf6" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+    </rect>
   </g>
-  <g fill="#06b6d4" opacity="0.6">
-    <circle cx="96" cy="72" r="3" />
-    <circle cx="130" cy="48" r="2" />
-    <circle cx="300" cy="66" r="3" />
-    <circle cx="320" cy="96" r="2" />
+  
+  <!-- POSTERS Y DECORACIÓN en paredes -->
+  <g class="wall-decor" opacity="0.4">
+    <!-- Poster técnico izquierdo -->
+    <rect x="15" y="50" width="40" height="30" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="1"/>
+    <line x1="20" y1="58" x2="50" y2="58" stroke="#06B6D4" stroke-width="0.5"/>
+    <line x1="20" y1="63" x2="48" y2="63" stroke="#06B6D4" stroke-width="0.5"/>
+    <line x1="20" y1="68" x2="45" y2="68" stroke="#06B6D4" stroke-width="0.5"/>
+    
+    <!-- Reloj digital -->
+    <rect x="180" y="20" width="40" height="18" rx="3" fill="#1e293b" stroke="#10B981" stroke-width="1.5" opacity="0.8"/>
+    <text x="185" y="33" font-family="monospace" font-size="10" fill="#10B981" opacity="0.9">23:47</text>
   </g>
-  <g stroke="#8b5cf6" stroke-width="2" stroke-linecap="round">
-    <path d="M210 40l6 10 10-6" />
-    <path d="M232 58l4 8 8-4" />
+  
+  <!-- SEÑALES DE SEGURIDAD -->
+  <g class="safety-signs" opacity="0.5">
+    <!-- Señal de alto voltaje -->
+    <circle cx="370" cy="160" r="8" fill="#FEDA77" opacity="0.3" stroke="#FEDA77" stroke-width="1.5"/>
+    <text x="366" y="165" font-family="sans-serif" font-size="12" fill="#1a1614" font-weight="bold">⚡</text>
+  </g>
+  
+  <!-- CABLES Y CONEXIONES en el laboratorio -->
+  <g class="cables-lab" opacity="0.6">
+    <!-- Cable de impresora a pared -->
+    <path d="M120 270 Q100 280 80 290 L80 320" stroke="#06B6D4" stroke-width="2" fill="none" opacity="0.5" stroke-dasharray="5,3">
+      <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cables de datos en el piso -->
+    <path d="M150 320 Q180 310 220 315 Q250 318 280 320" stroke="#8b5cf6" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <path d="M200 320 Q210 305 230 310" stroke="#10B981" stroke-width="1.5" fill="none" opacity="0.4"/>
+  </g>
+  
+  <!-- SOMBRAS DE OBJETOS proyectadas en el piso -->
+  <g class="shadows" opacity="0.3">
+    <!-- Sombra de impresora 3D -->
+    <ellipse cx="200" cy="325" rx="80" ry="15" fill="#000000" opacity="0.4"/>
+    
+    <!-- Sombra de laminadora -->
+    <ellipse cx="70" cy="328" rx="30" ry="8" fill="#000000" opacity="0.3"/>
+    
+    <!-- Sombra de mago -->
+    <ellipse cx="80" cy="330" rx="25" ry="6" fill="#000000" opacity="0.35">
+      <animate attributeName="cx" values="80;50;80;120;170;180;80" dur="40s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+  
+  <!-- Iluminación DIRECCIONAL desde la ventana -->
+  <g class="window-light">
+    <path d="M315 130 L250 200 L280 200 Z" fill="#FF6B35" opacity="0.05">
+      <animate attributeName="opacity" values="0.05;0.1;0.05" dur="8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M340 130 L280 220 L310 220 Z" fill="#FF6B35" opacity="0.04">
+      <animate attributeName="opacity" values="0.04;0.08;0.04" dur="8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Iluminación ambiental de máquinas -->
+  <ellipse cx="200" cy="240" rx="140" ry="60" fill="url(#glow-cyan)" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.25;0.15" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Reflejo de luces en el piso -->
+  <ellipse cx="200" cy="330" rx="90" ry="12" fill="#06B6D4" opacity="0.08">
+    <animate attributeName="opacity" values="0.08;0.15;0.08" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- PISO DEL LABORATORIO con textura -->
+  
+  
+  <!-- Líneas de perspectiva en el piso -->
+  <line x1="0" y1="320" x2="400" y2="320" stroke="#06B6D4" stroke-width="2" opacity="0.25"/>
+  <line x1="50" y1="320" x2="150" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  <line x1="200" y1="320" x2="200" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  <line x1="350" y1="320" x2="250" y2="400" stroke="#06B6D4" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Rejillas de ventilación en piso -->
+  <rect x="100" y="335" width="30" height="2" rx="1" fill="#1e293b" opacity="0.18"/>
+  <rect x="270" y="340" width="25" height="2" rx="1" fill="#1e293b" opacity="0.18"/>
+  
+  <!-- Partículas de polvo flotantes en el aire -->
+  <g class="dust-particles" opacity="0.3">
+    <circle cx="120" cy="180" r="1" fill="#ffffff" opacity="0.5">
+      <animate attributeName="cy" values="180;120;180" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="200" r="0.8" fill="#ffffff" opacity="0.4">
+      <animate attributeName="cy" values="200;140;200" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="160" r="1.2" fill="#ffffff" opacity="0.6">
+      <animate attributeName="cy" values="160;100;160" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="330" cy="150" r="0.9" fill="#ffffff" opacity="0.45">
+      <animate attributeName="cy" values="150;90;150" dur="11s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.45;0.1;0.45" dur="11s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Haz de luz desde lámpara superior (fuera de vista) -->
+  <path d="M200 0 L160 200 L240 200 Z" fill="url(#glow-cyan)" opacity="0.06">
+    <animate attributeName="opacity" values="0.06;0.12;0.06" dur="5s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- IMPRESORA 3D CENTRAL - CYBERPUNK (elemento principal) -->
+  <g class="printer-magic" transform="scale(1.15) translate(0, -15)">
+    <!-- Aura mágica expansiva -->
+    <ellipse cx="200" cy="250" rx="135" ry="42" fill="url(#glow-cyan)" opacity="0.45">
+      <animate attributeName="opacity" values="0.45;0.75;0.45" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="rx" values="135;155;135" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="42;52;42" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Base de la impresora - más grande y cyberpunk -->
+    <rect x="120" y="240" width="160" height="60" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="4" filter="url(#shadow-strong)">
+      <animate attributeName="stroke-width" values="4;4.5;4" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Pantalla holográfica con INDICADORES DE PRODUCCIÓN EN SERIE -->
+    <rect x="135" y="250" width="50" height="35" rx="4" fill="#06B6D4" opacity="0.2" stroke="#06B6D4" stroke-width="2">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Símbolos en la pantalla -->
+    <text x="138" y="260" font-family="monospace" font-size="7" fill="#06B6D4" opacity="0.9">PRODUCCIÓN</text>
+    <text x="138" y="268" font-family="monospace" font-size="7" fill="#10B981" opacity="0.9">EN SERIE</text>
+    
+    <!-- Contador de piezas producidas -->
+    <text x="138" y="276" font-family="monospace" font-size="6" fill="#FEDA77" opacity="0.95">PIEZAS: </text>
+    <text x="166" y="276" font-family="monospace" font-size="6" fill="#FEDA77" opacity="0.95">
+      <animate attributeName="opacity" values="0.95;0.5;0.95" dur="1s" repeatCount="indefinite"/>
+      127
+    </text>
+    
+    <!-- Indicador de velocidad -->
+    <rect x="138" y="279" width="40" height="3" rx="1.5" fill="#0f172a" opacity="0.8"/>
+    <rect x="138" y="279" width="0" height="3" rx="1.5" fill="#10B981" opacity="0.9">
+      <animate attributeName="width" values="0;40;0" dur="18s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Cama de impresión con runas -->
+    <rect x="130" y="250" width="140" height="40" rx="4" fill="#1e293b" opacity="0.6"/>
+    
+    <!-- PRODUCCIÓN EN SERIE CLARA: Imprime → Termina → Salta a stack → Nueva pieza -->
+    <g class="print-object-logo" filter="url(#glow-effect)" transform="translate(168, 247) scale(0.48)">
+      
+      <!-- STACK DE PIEZAS TERMINADAS (izquierda, acumulándose) -->
+      <g class="completed-stack" transform="translate(-140, -35)">
+        <!-- Pieza del stack 1 (más antigua) -->
+        <g transform="translate(0, 20) scale(0.45)" opacity="0.65">
+          <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="#06B6D4" stroke-width="2"/>
+          <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" fill="#0EF6E3" opacity="0.7"/>
+          <path d="M48 28H58V38H48V28Z" fill="#F04F63"/>
+        </g>
+        <!-- Pieza del stack 2 -->
+        <g transform="translate(0, 8) scale(0.45)" opacity="0.7">
+          <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="#8b5cf6" stroke-width="2"/>
+          <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" fill="#0EF6E3" opacity="0.7"/>
+          <path d="M48 28H58V38H48V28Z" fill="#F04F63"/>
+        </g>
+        <!-- Pieza del stack 3 (más reciente) -->
+        <g transform="translate(0, -4) scale(0.45)" opacity="0.75">
+          <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="#10B981" stroke-width="2"/>
+          <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" fill="#0EF6E3" opacity="0.7"/>
+          <path d="M48 28H58V38H48V28Z" fill="#F04F63"/>
+        </g>
+        <!-- Texto indicador -->
+        <text x="-10" y="35" font-family="monospace" font-size="5" fill="#06B6D4" opacity="0.8">COMPLETADAS</text>
+      </g>
+      
+      <!-- Objeto 1: Imprimiéndose capa por capa → Termina → Salta al stack -->
+      <g class="logo-printing-1" opacity="0">
+        <!-- Ciclo: 0-6s imprimiendo, 6-7s terminado, 7-9s saltando, 9-10s en stack, 10-20s invisible -->
+        <animateTransform attributeName="transform" values="
+          translate(0,25) scale(0.2);
+          translate(0,15) scale(0.5);
+          translate(0,5) scale(0.8);
+          translate(0,0) scale(1);
+          translate(0,0) scale(1);
+          translate(-50,-10) scale(0.9);
+          translate(-110,-25) scale(0.7);
+          translate(-140,-30) scale(0.5);
+          translate(-140,-30) scale(0.5)" dur="20s" repeatCount="indefinite" additive="sum"/>
+        <animate attributeName="opacity" values="0;0.4;0.7;0.95;0.95;0.9;0.85;0.75;0" dur="20s" repeatCount="indefinite"/>
+        
+        <!-- Logo de Mahitek 3D Lab -->
+        <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="#06B6D4" stroke-width="3"/>
+        <path d="M40 20L64 34V56L40 70L16 56V34L40 20Z" fill="#010E10" stroke="#06B6D4" stroke-width="2.5"/>
+        <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" fill="#0EF6E3" opacity="0">
+          <!-- Logo aparece gradualmente -->
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M48 28H58V38H48V28Z" fill="#F04F63">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <circle cx="30" cy="44" r="4" fill="#FF5C9B">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="48" cy="47" r="3" fill="#00E5FF">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Capas imprimiéndose progresivamente (bottom-up) -->
+        <rect x="15" y="68" width="0" height="2" fill="#FEDA77" opacity="0">
+          <animate attributeName="width" values="0;8;20;50;50;50;50;50;50" dur="20s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.4;0.7;0.95;0.95;0.95;0.95;0.95;0" dur="20s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="65" width="0" height="2" fill="#06B6D4" opacity="0">
+          <animate attributeName="width" values="0;0;10;25;50;50;50;50;50" dur="20s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.85;0.85;0.85;0.85;0" dur="20s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="62" width="0" height="2" fill="#10B981" opacity="0">
+          <animate attributeName="width" values="0;0;0;15;35;50;50;50;50" dur="20s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0;0.3;0.7;0.8;0.8;0.8;0" dur="20s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="59" width="0" height="2" fill="#8b5cf6" opacity="0">
+          <animate attributeName="width" values="0;0;0;0;20;40;50;50;50" dur="20s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0;0;0.5;0.75;0.75;0.75;0" dur="20s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      
+      <!-- Objeto 2: Ciclo desfasado 10s (mitad del ciclo) -->
+      <g class="logo-printing-2" opacity="0">
+        <animateTransform attributeName="transform" values="
+          translate(0,25) scale(0.2);
+          translate(0,15) scale(0.5);
+          translate(0,5) scale(0.8);
+          translate(0,0) scale(1);
+          translate(0,0) scale(1);
+          translate(-50,-10) scale(0.9);
+          translate(-110,-25) scale(0.7);
+          translate(-140,-30) scale(0.5);
+          translate(-140,-30) scale(0.5)" dur="20s" begin="10s" repeatCount="indefinite" additive="sum"/>
+        <animate attributeName="opacity" values="0;0.4;0.7;0.95;0.95;0.9;0.85;0.75;0" dur="20s" begin="10s" repeatCount="indefinite"/>
+        
+        <path d="M40 10L70 26V58L40 74L10 58V26L40 10Z" fill="#0B1C1F" stroke="url(#magic-purple)" stroke-width="3">
+          <animate attributeName="stroke-width" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <path d="M40 20L64 34V56L40 70L16 56V34L40 20Z" fill="#010E10" stroke="#8b5cf6" stroke-width="2.5"/>
+        <path d="M21 38C21 32 24 28 29 28H40V22L48 28V42H58V52H48V58C48 64 44 68 40 68H34V58H41C43 58 45 56 45 54V52H29C24 52 21 48 21 44V38Z" fill="#0EF6E3" opacity="0">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </path>
+        <path d="M48 28H58V38H48V28Z" fill="#F04F63">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </path>
+        <circle cx="30" cy="44" r="4" fill="#FF5C9B">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="48" cy="47" r="3" fill="#00E5FF">
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.9;0.9;0.9;0.9;0.9" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Capas progresivas -->
+        <rect x="15" y="68" width="0" height="2" fill="#FEDA77" opacity="0">
+          <animate attributeName="width" values="0;8;20;50;50;50;50;50;50" dur="20s" begin="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.4;0.7;0.95;0.95;0.95;0.95;0.95;0" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="65" width="0" height="2" fill="#8b5cf6" opacity="0">
+          <animate attributeName="width" values="0;0;10;25;50;50;50;50;50" dur="20s" begin="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0.3;0.6;0.85;0.85;0.85;0.85;0" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="62" width="0" height="2" fill="#10B981" opacity="0">
+          <animate attributeName="width" values="0;0;0;15;35;50;50;50;50" dur="20s" begin="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0;0.3;0.7;0.8;0.8;0.8;0" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="15" y="59" width="0" height="2" fill="#06B6D4" opacity="0">
+          <animate attributeName="width" values="0;0;0;0;20;40;50;50;50" dur="20s" begin="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0;0;0.5;0.75;0.75;0.75;0" dur="20s" begin="10s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      
+      <!-- Indicador visual: "IMPRIMIENDO..." -->
+      <g class="print-status-indicator" opacity="0">
+        <animate attributeName="opacity" values="0;0.9;0.9;0.9;0.9;0;0;0;0" dur="20s" repeatCount="indefinite"/>
+        <text x="-20" y="-10" font-family="monospace" font-size="5" fill="#06B6D4" font-weight="bold">IMPRIMIENDO...</text>
+        <rect x="-20" y="-8" width="0" height="1" fill="#10B981">
+          <animate attributeName="width" values="0;15;35;50;50;50;0;0;0" dur="20s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      
+      <!-- Partículas mágicas durante impresión más intensas -->
+      <circle cx="12" cy="35" r="2" fill="#06B6D4" opacity="0">
+        <animate attributeName="cy" values="35;20;35" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.9;0" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="2;1;2" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="68" cy="35" r="2" fill="#10B981" opacity="0">
+        <animate attributeName="cy" values="35;20;35" dur="2.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.9;0" dur="2.3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="2;1;2" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40" cy="10" r="2.5" fill="#8b5cf6" opacity="0">
+        <animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="25" r="1.5" fill="#FEDA77" opacity="0">
+        <animate attributeName="cy" values="25;15;25" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="55" cy="25" r="1.5" fill="#F04F63" opacity="0">
+        <animate attributeName="cy" values="25;15;25" dur="2.7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.8;0" dur="2.7s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- CARRETE ACTIVO consumiéndose conforme imprime - PEGADO A LA IMPRESORA -->
+    <g class="active-spool" transform="translate(95, 175)">
+      <text x="-20" y="-8" font-family="sans-serif" font-size="6" fill="#06B6D4" opacity="0.9" font-weight="bold">SPOOL</text>
+      
+      <!-- Estructura del carrete -->
+      <ellipse cx="0" cy="0" rx="18" ry="6" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2.5"/>
+      <rect x="-18" y="0" width="36" height="38" fill="url(#magic-cyan)" opacity="0.8">
+        <!-- El alto disminuye conforme se consume -->
+        <animate attributeName="height" values="38;22;38" dur="20s" repeatCount="indefinite"/>
+      </rect>
+      <ellipse cx="0" cy="38" rx="18" ry="6" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2.5">
+        <!-- La tapa baja conforme se consume -->
+        <animate attributeName="cy" values="38;22;38" dur="20s" repeatCount="indefinite"/>
+      </ellipse>
+      
+      <!-- Filamento enrollado (disminuyendo visualmente) -->
+      <g class="wound-filament">
+        <path d="M-15 5 Q-10 8 -5 5 Q0 2 5 5 Q10 8 15 5" stroke="#06B6D4" stroke-width="2.2" fill="none" opacity="0.75">
+          <animate attributeName="opacity" values="0.75;0.3;0.75" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M-15 11 Q-10 14 -5 11 Q0 8 5 11 Q10 14 15 11" stroke="#06B6D4" stroke-width="2" fill="none" opacity="0.65">
+          <animate attributeName="opacity" values="0.65;0.2;0.65" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M-15 17 Q-10 20 -5 17 Q0 14 5 17 Q10 20 15 17" stroke="#06B6D4" stroke-width="1.8" fill="none" opacity="0.55">
+          <animate attributeName="opacity" values="0.55;0;0.55" dur="20s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Filamento saliendo hacia extrusor animado - CONECTADO A IMPRESORA -->
+      <path d="M0 38 Q25 50 60 65" stroke="#06B6D4" stroke-width="2.8" fill="none" opacity="0.9" stroke-dasharray="5,3">
+        <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="1.2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="38;22;38" dur="20s" repeatCount="indefinite" additive="sum"/>
+      </path>
+      
+      <!-- Indicador de nivel de filamento -->
+      <rect x="-24" y="5" width="5" height="33" rx="2.5" fill="#0f172a" stroke="#06B6D4" stroke-width="1.2" opacity="0.7"/>
+      <rect x="-24" y="5" width="5" height="33" rx="2.5" fill="#06B6D4" opacity="0.85">
+        <!-- Barra de nivel bajando -->
+        <animate attributeName="height" values="33;15;33" dur="20s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="5;23;5" dur="20s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Texto de porcentaje -->
+      <text x="-24" y="44" font-family="monospace" font-size="5" fill="#06B6D4" opacity="0.9">85%</text>
+      
+      <!-- Rotación continua del carrete -->
+      <animateTransform attributeName="transform" type="rotate" values="0 120 167; 360 120 167" dur="5s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Torres verticales (Eje Z) CYBERPUNK con energía intensa -->
+    <rect x="110" y="180" width="14" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95" filter="url(#glow-effect)">
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="276" y="180" width="14" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95" filter="url(#glow-effect)">
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Rayos de energía en las torres -->
+    <line x1="116" y1="185" x2="116" y2="235" stroke="#8b5cf6" stroke-width="1" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="284" y1="185" x2="284" y2="235" stroke="#8b5cf6" stroke-width="1" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- Eje horizontal (X) CYBERPUNK con energía brillante -->
+    <rect x="110" y="175" width="180" height="14" rx="5" fill="url(#magic-cyan)" stroke="#06B6D4" stroke-width="3.5" opacity="0.98" filter="url(#glow-effect)">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,10; 0,0" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="3.5;4.5;3.5" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Extrusor mágico CYBERPUNK - más prominente -->
+    <g class="extrusor-magic" filter="url(#glow-effect)">
+      <rect x="175" y="165" width="50" height="45" rx="7" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="4" opacity="0.98">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="4;5;4" dur="1.5s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Ojo mágico del extrusor -->
+      <circle cx="200" cy="185" r="6" fill="#06B6D4" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Rayo láser del extrusor -->
+      <line x1="200" y1="193" x2="200" y2="268" stroke="#FEDA77" stroke-width="2" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
+      </line>
+    </g>
+  </g>
+  
+  <!-- IMPRESORA DE STICKERS 2D (lado derecho - integrada) -->
+  <g class="sticker-printer" transform="translate(285, 110) scale(0.95)" filter="url(#shadow-strong)" opacity="0.95">
+    <!-- Cuerpo principal de la impresora de stickers -->
+    <rect x="0" y="0" width="90" height="60" rx="6" fill="url(#magic-dark)" stroke="#10B981" stroke-width="3" opacity="0.98">
+      <animate attributeName="stroke-width" values="3;3.5;3" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Etiqueta "STICKER PRINTER" -->
+    <text x="10" y="10" font-family="sans-serif" font-size="5" fill="#10B981" font-weight="bold" opacity="0.9">STICKER PRINTER</text>
+    
+    <!-- Pantalla LED más grande -->
+    <rect x="10" y="15" width="35" height="25" rx="3" fill="#10B981" opacity="0.25" stroke="#10B981" stroke-width="2">
+      <animate attributeName="opacity" values="0.25;0.45;0.25" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="15" y="25" font-family="monospace" font-size="7" fill="#10B981" opacity="0.95">PRINT</text>
+    <text x="15" y="33" font-family="monospace" font-size="5" fill="#06B6D4" opacity="0.9">100%</text>
+    
+    <!-- Barra de progreso -->
+    <rect x="12" y="35" width="30" height="3" rx="1.5" fill="#0f172a" stroke="#10B981" stroke-width="0.5"/>
+    <rect x="12" y="35" width="30" height="3" rx="1.5" fill="#10B981" opacity="0.8">
+      <animate attributeName="width" values="0;30;30;0" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Botones de control más grandes -->
+    <circle cx="58" cy="18" r="4" fill="#8b5cf6" opacity="0.9" stroke="#FEDA77" stroke-width="1">
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="70" cy="18" r="4" fill="#06B6D4" opacity="0.9" stroke="#FEDA77" stroke-width="1">
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="82" cy="18" r="4" fill="#10B981" opacity="0.9" stroke="#FEDA77" stroke-width="1">
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.2s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Indicador de estado -->
+    <text x="55" y="28" font-family="monospace" font-size="4" fill="#10B981" opacity="0.8">READY</text>
+    
+    <!-- Cabezal de impresión visible -->
+    <rect x="15" y="45" width="60" height="8" rx="2" fill="#1e293b" stroke="#06B6D4" stroke-width="2">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 10,0; 0,0; -10,0; 0,0" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Ranura de salida de stickers más notoria -->
+    <rect x="5" y="58" width="80" height="12" rx="3" fill="#0f172a" stroke="#10B981" stroke-width="2" opacity="0.9"/>
+    <text x="25" y="66" font-family="sans-serif" font-size="5" fill="#10B981" opacity="0.7">OUTPUT</text>
+    
+    <!-- PRODUCCIÓN EN SERIE DE STICKERS -->
+    <g class="sticker-output-multiple">
+      <!-- Sticker 1 (saliendo completamente) -->
+      <g class="sticker-1">
+        <rect x="25" y="68" width="40" height="35" rx="4" fill="#FEDA77" opacity="0.95" stroke="#10B981" stroke-width="2.5">
+          <animate attributeName="y" values="45;68;92;110" dur="12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.95;0.95;0.7;0" dur="12s" repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Logo completo en sticker 1 -->
+        <g transform="translate(45, 78)">
+          <animate attributeName="transform" values="translate(45, 78); translate(45, 101); translate(45, 125)" dur="12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.9;0.9;0.7;0" dur="12s" repeatCount="indefinite"/>
+          <path d="M0 0L8 4V12L0 16L-8 12V4L0 0Z" fill="#06B6D4" stroke="#1e293b" stroke-width="1" opacity="0.9"/>
+          <circle cx="0" cy="8" r="2.5" fill="#8b5cf6"/>
+          <circle cx="-3" cy="8" r="1" fill="#FEDA77"/>
+          <circle cx="3" cy="8" r="1" fill="#10B981"/>
+          <text x="-6" y="20" font-family="sans-serif" font-size="4" fill="#1e293b" font-weight="bold">MAHITEK</text>
+        </g>
+      </g>
+      
+      <!-- Sticker 2 (imprimiéndose actualmente) -->
+      <g class="sticker-2">
+        <rect x="28" y="52" width="34" height="25" rx="2" fill="#FEDA77" opacity="0.8" stroke="#10B981" stroke-width="2">
+          <animate attributeName="opacity" values="0;0.8;0.8;0.8" dur="12s" begin="6s" repeatCount="indefinite"/>
+        </rect>
+        <g transform="translate(45, 60)">
+          <animate attributeName="opacity" values="0;0;0.6;0.6" dur="12s" begin="6s" repeatCount="indefinite"/>
+          <path d="M0 0L5 3V9L0 12L-5 9V3L0 0Z" fill="#06B6D4" stroke="#1e293b" stroke-width="0.8" opacity="0.8"/>
+          <text x="-4" y="16" font-family="sans-serif" font-size="3" fill="#1e293b" font-weight="bold">MAHITEK</text>
+        </g>
+      </g>
+      
+      <!-- Sticker 3 (próximo en línea) -->
+      <g class="sticker-3" opacity="0">
+        <animate attributeName="opacity" values="0;0;0.3" dur="12s" begin="10s" repeatCount="indefinite"/>
+        <rect x="30" y="48" width="30" height="8" rx="1.5" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="2,2"/>
+      </g>
+    </g>
+    
+    <!-- Rodillo interno más visible -->
+    <g class="internal-roller">
+      <ellipse cx="45" cy="40" rx="20" ry="4" fill="#8b5cf6" opacity="0.7" stroke="#06B6D4" stroke-width="1">
+        <animateTransform attributeName="transform" type="rotate" values="0 45 40; 360 45 40" dur="2.5s" repeatCount="indefinite"/>
+      </ellipse>
+      <line x1="25" y1="40" x2="65" y2="40" stroke="#06B6D4" stroke-width="0.5" opacity="0.5">
+        <animateTransform attributeName="transform" type="rotate" values="0 45 40; 360 45 40" dur="2.5s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Partículas de tinta/adhesivo más notorias -->
+    <circle cx="30" cy="48" r="1.5" fill="#10B981" opacity="0.9">
+      <animate attributeName="cy" values="48;70;48" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0;0.9" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="48" r="1.5" fill="#06B6D4" opacity="0.9">
+      <animate attributeName="cy" values="48;70;48" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0;0.9" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="60" cy="48" r="1.5" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="cy" values="48;70;48" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0;0.9" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Luz LED de status parpadeante -->
+    <circle cx="8" cy="8" r="2" fill="#10B981" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.2;0.9" dur="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- CARRETES DE FILAMENTO ANIMADOS (integrados) -->
+  <g class="filament-spools" opacity="0.9">
+    <!-- Carrete izquierdo (cyan) -->
+    <g class="spool-left" transform="translate(45, 210)">
+      <ellipse cx="0" cy="0" rx="16" ry="5" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2"/>
+      <rect x="-16" y="0" width="32" height="30" fill="url(#magic-cyan)" opacity="0.75"/>
+      <ellipse cx="0" cy="30" rx="16" ry="5" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="16" ry="5" fill="#06B6D4" opacity="0.3"/>
+      
+      <!-- Filamento enrollándose -->
+      <path d="M-13 4 Q-8 7 -4 4 Q0 1 4 4 Q8 7 13 4" stroke="#06B6D4" stroke-width="1.8" fill="none" opacity="0.65">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,4; 0,8; 0,12; 0,16" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;0;0.65" dur="4s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Rotación del carrete -->
+      <animateTransform attributeName="transform" type="rotate" values="0 45 210; 360 45 210" dur="8s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Carrete derecho (purple) - más cercano -->
+    <g class="spool-right" transform="translate(340, 230)">
+      <ellipse cx="0" cy="0" rx="16" ry="5" fill="url(#magic-dark)" stroke="#8b5cf6" stroke-width="2"/>
+      <rect x="-16" y="0" width="32" height="30" fill="url(#magic-purple)" opacity="0.75"/>
+      <ellipse cx="0" cy="30" rx="16" ry="5" fill="url(#magic-dark)" stroke="#8b5cf6" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="16" ry="5" fill="#8b5cf6" opacity="0.3"/>
+      
+      <!-- Filamento enrollándose -->
+      <path d="M-13 4 Q-8 7 -4 4 Q0 1 4 4 Q8 7 13 4" stroke="#8b5cf6" stroke-width="1.8" fill="none" opacity="0.65">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,4; 0,8; 0,12; 0,16" dur="4.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;0;0.65" dur="4.5s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Rotación del carrete -->
+      <animateTransform attributeName="transform" type="rotate" values="0 340 230; 360 340 230" dur="7s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Carrete pequeño superior (verde tech) -->
+    <g class="spool-small" transform="translate(95, 115)">
+      <ellipse cx="0" cy="0" rx="11" ry="3.5" fill="url(#magic-dark)" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="-11" y="0" width="22" height="18" fill="#10B981" opacity="0.65"/>
+      <ellipse cx="0" cy="18" rx="11" ry="3.5" fill="url(#magic-dark)" stroke="#10B981" stroke-width="1.5"/>
+      
+      <animateTransform attributeName="transform" type="rotate" values="0 95 115; -360 95 115" dur="6s" repeatCount="indefinite" additive="sum"/>
+    </g>
+  </g>
+
+  <!-- BRUJO TECH MEXICANO (SIEMPRE VISIBLE - CENTRADO) -->
+  <g class="tech-wizard" opacity="1" filter="url(#shadow-strong)" transform="translate(200, 200) scale(0.7)">
+    <!-- Movimiento del mago visitando las máquinas - PATH REDUCIDO -->
+    <animateMotion dur="90s" repeatCount="indefinite" path="M 0,0 L -50,20 L -60,5 L -50,-25 L -25,-35 L 15,-38 L 45,-30 L 55,-12 L 58,18 L 48,35 L 20,42 L -12,38 L -35,25 L -42,-18 L -18,-6 L 25,30 L 50,-10 L 30,8 L 0,0" />
+    
+    <!-- Respiración y movimiento sutil -->
+    <g class="wizard-body">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0; 0,-1.5; 0,-0.5; 0,0" dur="4s" repeatCount="indefinite"/>
+      
+      <!-- Cuello y hombros anatómicos -->
+      <ellipse cx="80" cy="188" rx="8" ry="6" fill="#9d7854"/>
+      <path d="M64 190 L64 200 Q64 210 70 218 L90 218 Q96 210 96 200 L96 190 Z" fill="#1e293b" stroke="#06B6D4" stroke-width="2.5"/>
+      
+      <!-- Cuerpo con hoodie tech - estructura más humana -->
+      <path d="M64 190 Q58 200 58 220 L58 245 Q58 250 62 250 L98 250 Q102 250 102 245 L102 220 Q102 200 96 190" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
+      
+      <!-- Hoodie con patrón geométrico mexicano simplificado -->
+      <path d="M64 190 Q70 185 80 183 Q90 185 96 190 Q98 195 98 200 L98 210 L62 210 L62 200 Q62 195 64 190" fill="#0f172a" stroke="#8b5cf6" stroke-width="2.5"/>
+      
+      <!-- Diseño tenango/otomí en el hoodie - SIMPLIFICADO -->
+      <g opacity="0.75">
+        <path d="M70 196 L72 198 L70 200 L68 198 Z" fill="#D4AF37"/>
+        <path d="M80 194 L82 196 L80 198 L78 196 Z" fill="#C41E3A"/>
+        <path d="M90 196 L92 198 L90 200 L88 198 Z" fill="#10B981"/>
+        <rect x="72" y="204" width="16" height="2" fill="#06B6D4" opacity="0.8"/>
+      </g>
+      
+      <!-- Capucha simplificada -->
+      <path d="M62 185 Q65 172 70 165 Q75 160 80 158 Q85 160 90 165 Q95 172 98 185 Q98 192 96 195 L94 190 L66 190 L64 195 Q62 192 62 185" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.8"/>
+      
+      <!-- ROSTRO HUMANO REALISTA - Piel morena mexicana prominente -->
+      <!-- Base del rostro con estructura ósea -->
+      <ellipse cx="80" cy="172" rx="16" ry="19" fill="#9d7854"/>
+      <!-- Sombras faciales para profundidad -->
+      <ellipse cx="80" cy="176" rx="14" ry="16" fill="#8b6f5f" opacity="0.25"/>
+      <!-- Mejillas -->
+      <ellipse cx="70" cy="175" rx="5" ry="6" fill="#b89968" opacity="0.6"/>
+      <ellipse cx="90" cy="175" rx="5" ry="6" fill="#b89968" opacity="0.6"/>
+      
+      <!-- Frente -->
+      <path d="M66 162 Q80 160 94 162 Q92 168 80 168 Q68 168 66 162" fill="#9d7854"/>
+      
+      <!-- CABELLO ABUNDANTE ESTILO DESARROLLADOR - Similar a la imagen -->
+      <!-- Base del cabello (corona completa) -->
+      <ellipse cx="80" cy="160" rx="18" ry="10" fill="#2d2520"/>
+      
+      <!-- Cabello lateral izquierdo (abundante) -->
+      <path d="M64 162 Q62 158 62 154 Q62 150 64 148 L64 165" fill="#2d2520"/>
+      <ellipse cx="64" cy="158" rx="6" ry="10" fill="#2d2520"/>
+      
+      <!-- Cabello lateral derecho (abundante) -->
+      <path d="M96 162 Q98 158 98 154 Q98 150 96 148 L96 165" fill="#2d2520"/>
+      <ellipse cx="96" cy="158" rx="6" ry="10" fill="#2d2520"/>
+      
+      <!-- Cabello superior con volumen -->
+      <path d="M68 155 Q72 148 76 147 Q80 146 84 147 Q88 148 92 155" fill="#2d2520"/>
+      
+      <!-- Mechones superiores con movimiento sutil -->
+      <g class="hair-strands">
+        <path d="M72 152 Q74 147 76 146" stroke="#2d2520" stroke-width="2" fill="none">
+          <animate attributeName="d" values="
+            M72 152 Q74 147 76 146;
+            M72 152 Q74 146 76 145;
+            M72 152 Q74 147 76 146" dur="3s" repeatCount="indefinite"/>
+        </path>
+        <path d="M80 150 Q80 145 80 143" stroke="#1a1614" stroke-width="2" fill="none">
+          <animate attributeName="d" values="
+            M80 150 Q80 145 80 143;
+            M80 150 Q80 144 80 142;
+            M80 150 Q80 145 80 143" dur="3.2s" repeatCount="indefinite"/>
+        </path>
+        <path d="M88 152 Q86 147 84 146" stroke="#2d2520" stroke-width="2" fill="none">
+          <animate attributeName="d" values="
+            M88 152 Q86 147 84 146;
+            M88 152 Q86 146 84 145;
+            M88 152 Q86 147 84 146" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Textura del cabello -->
+      <path d="M70 158 Q73 156 76 158" stroke="#1a1614" stroke-width="0.8" opacity="0.4" fill="none"/>
+      <path d="M84 158 Q87 156 90 158" stroke="#1a1614" stroke-width="0.8" opacity="0.4" fill="none"/>
+      
+      <!-- Brillo sutil en el cabello -->
+      <ellipse cx="75" cy="152" rx="4" ry="2" fill="#3d3530" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      
+      <!-- Cejas SUPER EXPRESIVAS Y GRACIOSAS - Movimientos exagerados y divertidos -->
+      <path d="M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" stroke="#0d0c0b" stroke-width="2.8" stroke-linecap="round">
+        <!-- Animación más graciosa: sorpresa, duda, picardía, satisfacción -->
+        <animate attributeName="d" values="
+          M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5;
+          M68 163 Q71 162 75 162 Q77 162 78 162.5;
+          M68 167.5 Q71 166 75 166.2 Q77 166.5 78 167;
+          M68 165 Q71 163.5 75 163.5 Q77 163.8 78 164.5;
+          M68 168 Q71 167 75 167 Q77 167.2 78 167.5;
+          M68 167 Q71 165.5 75 165.8 Q77 166 78 166.5" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="2.8;3.2;2.8;3;2.6;2.8" dur="8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" stroke="#0d0c0b" stroke-width="2.8" stroke-linecap="round">
+        <animate attributeName="d" values="
+          M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167;
+          M82 162.5 Q83 162 85 162 Q89 162 92 163;
+          M82 167 Q83 166.5 85 166.2 Q89 166 92 167.5;
+          M82 164.5 Q83 163.8 85 163.5 Q89 163.5 92 165;
+          M82 167.5 Q83 167.2 85 167 Q89 167 92 168;
+          M82 166.5 Q83 166 85 165.8 Q89 165.5 92 167" dur="8s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="2.8;3.2;2.8;3;2.6;2.8" dur="8s" begin="0.1s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- OJOS ULTRA EXPRESIVOS - Movimientos muy dinámicos y graciosos -->
+      <ellipse cx="73" cy="171" rx="4" ry="4" fill="#ffffff">
+        <!-- Secuencia: normal, entusiasmo, parpadeo, sorpresa, guiño, concentración, parpadeo, alegría -->
+        <animate attributeName="ry" values="4;5;0.5;5.5;4;4.2;0.6;5;4" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="4;4.8;4;5.2;4;3.8;4;5;4" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171;170.5;171;170;171;171.3;171;170.5;171" dur="12s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="87" cy="171" rx="4" ry="4" fill="#ffffff">
+        <animate attributeName="ry" values="4;5;0.5;5.5;0.6;4.2;0.5;5;4" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="4;4.8;4;5.2;4;3.8;4;5;4" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="171;170.5;171;170;171;171.3;171;170.5;171" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+      </ellipse>
+      
+      <!-- Iris café oscuro - Mira impresoras, máquinas, producción, pensando -->
+      <circle cx="73" cy="171.8" r="2.8" fill="#2a1810">
+        <animate attributeName="cy" values="171.8;170.8;171.8;170.5;172;171.5;172.5;171;171.8" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73;74.5;73;75;72;73.5;71.5;74;73" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="2.8;3.2;2.8;3.5;2.5;3;2.4;3.3;2.8" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="87" cy="171.8" r="2.8" fill="#2a1810">
+        <animate attributeName="cy" values="171.8;170.8;171.8;170.5;172;171.5;172.5;171;171.8" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87;88.5;87;89;86;87.5;85.5;88;87" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="2.8;3.2;2.8;3.5;2.5;3;2.4;3.3;2.8" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Pupilas con dilatación emocional extrema -->
+      <circle cx="73" cy="171.3" r="1.8" fill="#000000">
+        <animate attributeName="cy" values="171.3;170.3;171.3;170;171.5;171;172;170.5;171.3" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73;74.5;73;75;72;73.5;71.5;74;73" dur="12s" repeatCount="indefinite"/>
+        <!-- Dilata (sorpresa/interés) y contrae (concentración) -->
+        <animate attributeName="r" values="1.8;2.8;1.8;3;1.2;2.5;1;2.9;1.8" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="87" cy="171.3" r="1.8" fill="#000000">
+        <animate attributeName="cy" values="171.3;170.3;171.3;170;171.5;171;172;170.5;171.3" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87;88.5;87;89;86;87.5;85.5;88;87" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.8;2.8;1.8;3;1.2;2.5;1;2.9;1.8" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Reflejos en los ojos (emoción viva) -->
+      <circle cx="74" cy="170" r="1.2" fill="#ffffff" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.9;0.8;0.95;0.7;0.85;0.8" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="74;75;74;75.5;72.5;74;74" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="88" cy="170" r="1.2" fill="#ffffff" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.9;0.8;0.95;0.7;0.85;0.8" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="88;89;88;89.5;86.5;88;88" dur="12s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Brillo tech-mágico intenso -->
+      <circle cx="73.5" cy="170.2" r="1.2" fill="#06B6D4" opacity="0.95">
+        <animate attributeName="opacity" values="0.95;0.5;0.95;0.3;0.95" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.2;1.5;1.2;0.8;1.2" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="73.5;73.8;73.5;73.2;73.5" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="87.5" cy="170.2" r="1.2" fill="#06B6D4" opacity="0.95">
+        <animate attributeName="opacity" values="0.95;0.5;0.95;0.3;0.95" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1.2;1.5;1.2;0.8;1.2" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="87.5;87.8;87.5;87.2;87.5" dur="8s" begin="0.1s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- LENTES GRANDES ESTILO DESARROLLADOR (como en la imagen) -->
+      <!-- Marco izquierdo -->
+      <rect x="66" y="167" width="13" height="11" rx="2" fill="none" stroke="#1a1614" stroke-width="3" opacity="0.95"/>
+      <rect x="67" y="168" width="11" height="9" rx="1.5" fill="#e8f4f8" opacity="0.15"/>
+      
+      <!-- Marco derecho -->
+      <rect x="81" y="167" width="13" height="11" rx="2" fill="none" stroke="#1a1614" stroke-width="3" opacity="0.95"/>
+      <rect x="82" y="168" width="11" height="9" rx="1.5" fill="#e8f4f8" opacity="0.15"/>
+      
+      <!-- Puente de los lentes -->
+      <line x1="79" y1="172" x2="81" y2="172" stroke="#1a1614" stroke-width="2.5" opacity="0.95"/>
+      
+      <!-- Patillas de los lentes -->
+      <path d="M66 172 L60 172 Q58 172 58 174" stroke="#1a1614" stroke-width="2" fill="none" opacity="0.9"/>
+      <path d="M94 172 L100 172 Q102 172 102 174" stroke="#1a1614" stroke-width="2" fill="none" opacity="0.9"/>
+      
+      <!-- Reflejo de luz en los lentes -->
+      <ellipse cx="71" cy="170" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="86" cy="170" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </ellipse>
+      
+      <!-- Nariz mexicana prominente (detrás de los lentes) -->
+      <path d="M80 168 L80 178" stroke="#8b6f5f" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M78 177 Q80 179 82 177" stroke="#8b6f5f" stroke-width="2" fill="none"/>
+      <ellipse cx="77" cy="178" rx="2" ry="2.5" fill="#8b6f5f" opacity="0.7"/>
+      <ellipse cx="83" cy="178" rx="2" ry="2.5" fill="#8b6f5f" opacity="0.7"/>
+      
+      <!-- BIGOTE MEXICANO CLÁSICO - Delgado y RESPINGADO hacia arriba (estilo charro/Dalí) -->
+      <!-- Centro del bigote fino -->
+      <path d="M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180" fill="#0d0c0b" stroke="#0d0c0b" stroke-width="2" opacity="0.95">
+        <animate attributeName="d" values="
+          M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180;
+          M75 180 Q78 179.3 80 179.3 Q82 179.3 85 180;
+          M75 180 Q78 179.5 80 179.5 Q82 179.5 85 180" dur="3s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Puntas RESPINGADAS hacia arriba (característica clave) -->
+      <path d="M75 180 Q70 179 67 178 Q65 176 64 173" stroke="#0d0c0b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.95">
+        <animate attributeName="d" values="
+          M75 180 Q70 179 67 178 Q65 176 64 173;
+          M75 180 Q70 178.5 67 177 Q65 175 64 172;
+          M75 180 Q70 179 67 178 Q65 176 64 173" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M85 180 Q90 179 93 178 Q95 176 96 173" stroke="#0d0c0b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.95">
+        <animate attributeName="d" values="
+          M85 180 Q90 179 93 178 Q95 176 96 173;
+          M85 180 Q90 178.5 93 177 Q95 175 96 172;
+          M85 180 Q90 179 93 178 Q95 176 96 173" dur="3s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Volumen sutil en las bases laterales -->
+      <ellipse cx="70" cy="179.5" rx="3.5" ry="1.8" fill="#0d0c0b" opacity="0.85"/>
+      <ellipse cx="90" cy="179.5" rx="3.5" ry="1.8" fill="#0d0c0b" opacity="0.85"/>
+      
+      <!-- Puntas afiladas y enrolladas (detalle charro) -->
+      <path d="M64 173 Q63 171 63.5 170" stroke="#0d0c0b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9">
+        <animate attributeName="d" values="
+          M64 173 Q63 171 63.5 170;
+          M64 172 Q63 170 63.5 169;
+          M64 173 Q63 171 63.5 170" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M96 173 Q97 171 96.5 170" stroke="#0d0c0b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9">
+        <animate attributeName="d" values="
+          M96 173 Q97 171 96.5 170;
+          M96 172 Q97 170 96.5 169;
+          M96 173 Q97 171 96.5 170" dur="3s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Boca CERRADA con expresiones sutiles pero graciosas -->
+      <path d="M74 183 Q80 183.8 86 183" stroke="#8b6f5f" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <!-- Sonrisa cerrada, neutral, satisfacción, picardía -->
+        <animate attributeName="d" values="
+          M74 183 Q80 183.8 86 183;
+          M74 183.5 Q80 184.2 86 183.5;
+          M74 183.2 Q80 183.2 86 183.2;
+          M74 182.8 Q80 184.5 86 182.8;
+          M73.5 183 Q80 184.8 86.5 183;
+          M74 183.5 Q80 184 86 183.5;
+          M74 183 Q80 183.8 86 183" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="2.2;2.5;2;2.6;2.8;2.3;2.2" dur="12s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Labio inferior sutil -->
+      <path d="M76 184 Q80 184.5 84 184" stroke="#7a5f4f" stroke-width="1.5" fill="none" opacity="0.6">
+        <animate attributeName="d" values="
+          M76 184 Q80 184.5 84 184;
+          M76 184.2 Q80 184.8 84 184.2;
+          M76 184 Q80 184.2 84 184;
+          M76 183.8 Q80 185 84 183.8;
+          M75.5 184 Q80 185.2 84.5 184;
+          M76 184.2 Q80 184.6 84 184.2;
+          M76 184 Q80 184.5 84 184" dur="12s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Comisuras de la boca (mejora expresividad) -->
+      <circle cx="73.5" cy="183" r="1" fill="#7a5f4f" opacity="0.4">
+        <animate attributeName="cy" values="183;183.2;183;182.8;182.7;183.2;183" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="86.5" cy="183" r="1" fill="#7a5f4f" opacity="0.4">
+        <animate attributeName="cy" values="183;183.2;183;182.8;182.7;183.2;183" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- BARBA COMPLETA ESTILO DESARROLLADOR (como en la imagen) -->
+      <!-- Barba lateral izquierda -->
+      <path d="M64 172 Q62 176 62 180 Q62 184 64 186" fill="#2d2520" opacity="0.9"/>
+      <ellipse cx="64" cy="179" rx="3" ry="8" fill="#2d2520" opacity="0.9"/>
+      
+      <!-- Barba lateral derecha -->
+      <path d="M96 172 Q98 176 98 180 Q98 184 96 186" fill="#2d2520" opacity="0.9"/>
+      <ellipse cx="96" cy="179" rx="3" ry="8" fill="#2d2520" opacity="0.9"/>
+      
+      <!-- Barba inferior (mentón) - Abundante -->
+      <ellipse cx="80" cy="186" rx="10" ry="6" fill="#2d2520" opacity="0.95"/>
+      <ellipse cx="80" cy="189" rx="8" ry="4" fill="#1a1614" opacity="0.9"/>
+      
+      <!-- Perilla central definida -->
+      <ellipse cx="80" cy="191" rx="4" ry="3" fill="#2d2520" opacity="0.95"/>
+      
+      <!-- Textura de la barba -->
+      <path d="M75 186 Q78 187 81 186" stroke="#1a1614" stroke-width="0.6" opacity="0.3" fill="none"/>
+      <path d="M77 188 Q80 189 83 188" stroke="#1a1614" stroke-width="0.6" opacity="0.3" fill="none"/>
+      
+      <!-- Orejas -->
+      <ellipse cx="64" cy="172" rx="3" ry="5" fill="#9d7854"/>
+      <ellipse cx="96" cy="172" rx="3" ry="5" fill="#9d7854"/>
+      
+      <!-- SILLA GAMER TECH MÁGICA CON RUEDAS PROMINENTES -->
+      <g class="magic-gaming-chair">
+        <!-- Base con 5 patas estilo gamer (estrella reforzada) -->
+        <g class="chair-base" transform="translate(80, 305)">
+          <!-- Pistón central hidráulico -->
+          <rect x="-3" y="-18" width="6" height="18" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" rx="2"/>
+          <rect x="-2.5" y="-16" width="5" height="3" fill="#06B6D4" opacity="0.8"/>
+          <rect x="-2.5" y="-10" width="5" height="3" fill="#8b5cf6" opacity="0.8"/>
+          
+          <!-- 5 rayos de la base reforzados estilo gamer -->
+          <g class="star-base-gamer">
+            <path d="M0 0 L0 14" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+            <path d="M0 0 L-12 10" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+            <path d="M0 0 L12 10" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+            <path d="M0 0 L-10 -7" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+            <path d="M0 0 L10 -7" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+            
+            <!-- Acentos tech en las patas -->
+            <path d="M0 0 L0 14" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 0 L-12 10" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 0 L12 10" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 0 L-10 -7" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 0 L10 -7" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+            
+            <!-- RUEDAS GAMER PROMINENTES CON ANIMACIÓN -->
+            <!-- Rueda frontal -->
+            <g class="wheel-front">
+              <circle cx="0" cy="14" r="5" fill="#0f172a" stroke="#06B6D4" stroke-width="2">
+                <animate attributeName="stroke" values="#06B6D4;#8b5cf6;#06B6D4" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="0" cy="14" r="3" fill="#1e293b"/>
+              <path d="M-3 14 L3 14 M0 11 L0 17" stroke="#06B6D4" stroke-width="1.5">
+                <animateTransform attributeName="transform" type="rotate" values="0 0 14; 360 0 14" dur="4s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            <!-- Rueda izquierda -->
+            <g class="wheel-left">
+              <circle cx="-12" cy="10" r="5" fill="#0f172a" stroke="#8b5cf6" stroke-width="2">
+                <animate attributeName="stroke" values="#8b5cf6;#06B6D4;#8b5cf6" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="-12" cy="10" r="3" fill="#1e293b"/>
+              <path d="M-15 10 L-9 10 M-12 7 L-12 13" stroke="#8b5cf6" stroke-width="1.5">
+                <animateTransform attributeName="transform" type="rotate" values="0 -12 10; 360 -12 10" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            <!-- Rueda derecha -->
+            <g class="wheel-right">
+              <circle cx="12" cy="10" r="5" fill="#0f172a" stroke="#06B6D4" stroke-width="2">
+                <animate attributeName="stroke" values="#06B6D4;#8b5cf6;#06B6D4" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="12" cy="10" r="3" fill="#1e293b"/>
+              <path d="M9 10 L15 10 M12 7 L12 13" stroke="#06B6D4" stroke-width="1.5">
+                <animateTransform attributeName="transform" type="rotate" values="0 12 10; 360 12 10" dur="4s" begin="1s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            <!-- Rueda trasera izquierda -->
+            <g class="wheel-back-left">
+              <circle cx="-10" cy="-7" r="5" fill="#0f172a" stroke="#8b5cf6" stroke-width="2">
+                <animate attributeName="stroke" values="#8b5cf6;#06B6D4;#8b5cf6" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="-10" cy="-7" r="3" fill="#1e293b"/>
+              <path d="M-13 -7 L-7 -7 M-10 -10 L-10 -4" stroke="#8b5cf6" stroke-width="1.5">
+                <animateTransform attributeName="transform" type="rotate" values="0 -10 -7; 360 -10 -7" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            <!-- Rueda trasera derecha -->
+            <g class="wheel-back-right">
+              <circle cx="10" cy="-7" r="5" fill="#0f172a" stroke="#06B6D4" stroke-width="2">
+                <animate attributeName="stroke" values="#06B6D4;#8b5cf6;#06B6D4" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="10" cy="-7" r="3" fill="#1e293b"/>
+              <path d="M7 -7 L13 -7 M10 -10 L10 -4" stroke="#06B6D4" stroke-width="1.5">
+                <animateTransform attributeName="transform" type="rotate" values="0 10 -7; 360 10 -7" dur="4s" begin="2s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            <!-- Auras mágicas RGB en las ruedas -->
+            <circle cx="0" cy="14" r="6" fill="#06B6D4" opacity="0">
+              <animate attributeName="opacity" values="0;0.5;0" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="-12" cy="10" r="6" fill="#8b5cf6" opacity="0">
+              <animate attributeName="opacity" values="0;0.5;0" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="6;9;6" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="12" cy="10" r="6" fill="#06B6D4" opacity="0">
+              <animate attributeName="opacity" values="0;0.5;0" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="6;9;6" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          
+          <!-- Rotación sutil de la base al moverse -->
+          <animateTransform attributeName="transform" type="rotate" values="0 80 305; 5 80 305; 0 80 305; -5 80 305; 0 80 305" dur="8s" repeatCount="indefinite"/>
+        </g>
+        
+        <!-- Asiento estilo gamer (más ancho y contorneado) -->
+        <ellipse cx="80" cy="258" rx="26" ry="10" fill="#0f172a" stroke="#06B6D4" stroke-width="2.5">
+          <animate attributeName="ry" values="10;11;10" dur="4s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Acolchado del asiento con detalles -->
+        <ellipse cx="80" cy="256" rx="24" ry="8" fill="#1e293b" opacity="0.9"/>
+        <ellipse cx="80" cy="255" rx="18" ry="5" fill="#8b5cf6" opacity="0.4">
+          <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Líneas de diseño gamer en el asiento -->
+        <path d="M60 258 L70 258 M90 258 L100 258" stroke="#06B6D4" stroke-width="1.5" opacity="0.8"/>
+        
+        <!-- Reposabrazos gamer -->
+        <rect x="52" y="248" width="8" height="20" rx="3" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+        <rect x="100" y="248" width="8" height="20" rx="3" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
+        <!-- Acolchado de reposabrazos -->
+        <ellipse cx="56" cy="255" rx="3" ry="5" fill="#8b5cf6" opacity="0.5"/>
+        <ellipse cx="104" cy="255" rx="3" ry="5" fill="#06B6D4" opacity="0.5"/>
+        
+        <!-- Respaldo alto estilo gamer con soporte lumbar -->
+        <path d="M60 255 Q54 240 54 220 Q54 205 56 200 L64 200 Q62 205 62 220 Q62 238 66 252 Z" fill="#0f172a" stroke="#8b5cf6" stroke-width="2.5"/>
+        <path d="M100 255 Q106 240 106 220 Q106 205 104 200 L96 200 Q98 205 98 220 Q98 238 94 252 Z" fill="#0f172a" stroke="#06B6D4" stroke-width="2.5"/>
+        
+        <!-- Respaldo central alto con patrón RGB gamer -->
+        <rect x="60" y="200" width="40" height="55" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="3"/>
+        <!-- Soporte lumbar -->
+        <ellipse cx="80" cy="240" rx="15" ry="8" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
+        <ellipse cx="80" cy="239" rx="12" ry="6" fill="#8b5cf6" opacity="0.4">
+          <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- Diseño RGB gamer en el respaldo -->
+        <circle cx="80" cy="215" r="4" fill="#06B6D4" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="fill" values="#06B6D4;#8b5cf6;#06B6D4" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="70" cy="228" r="3" fill="#8b5cf6" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+          <animate attributeName="fill" values="#8b5cf6;#06B6D4;#8b5cf6" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="90" cy="228" r="3" fill="#06B6D4" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="fill" values="#06B6D4;#8b5cf6;#06B6D4" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Líneas aerodinámicas gamer -->
+        <path d="M65 210 Q80 208 95 210" stroke="#06B6D4" stroke-width="2" opacity="0.7" fill="none"/>
+        <path d="M65 222 Q80 220 95 222" stroke="#8b5cf6" stroke-width="2" opacity="0.7" fill="none"/>
+        
+        <!-- Reposacabezas gamer -->
+        <ellipse cx="80" cy="198" rx="12" ry="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.5"/>
+        <ellipse cx="80" cy="197" rx="10" ry="4" fill="#8b5cf6" opacity="0.5">
+          <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+      
+      <!-- PIERNAS SENTADAS (posición relajada) -->
+      <!-- Pierna izquierda sentada -->
+      <g class="left-leg-sitting">
+        <!-- Muslo -->
+        <path d="M68 250 Q64 260 62 268" stroke="#1e293b" stroke-width="9" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M68 250 Q64 260 62 268;
+            M68 250 Q64 259 62 267;
+            M68 250 Q64 260 62 268" dur="6s" repeatCount="indefinite"/>
+        </path>
+        <!-- Pantorrilla -->
+        <path d="M62 268 Q62 280 62 292" stroke="#06B6D4" stroke-width="8" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M62 268 Q62 280 62 292;
+            M62 267 Q62 279 62 291;
+            M62 268 Q62 280 62 292" dur="6s" repeatCount="indefinite"/>
+        </path>
+        <!-- Pie apoyado -->
+        <ellipse cx="62" cy="295" rx="7" ry="4" fill="#0f172a" stroke="#06B6D4" stroke-width="1.5">
+          <animate attributeName="ry" values="4;4.5;4" dur="6s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle cx="65" cy="295" r="1.5" fill="#06B6D4" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      
+      <!-- Pierna derecha sentada -->
+      <g class="right-leg-sitting">
+        <!-- Muslo -->
+        <path d="M92 250 Q96 260 98 268" stroke="#1e293b" stroke-width="9" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M92 250 Q96 260 98 268;
+            M92 250 Q96 259 98 267;
+            M92 250 Q96 260 98 268" dur="6s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+        <!-- Pantorrilla -->
+        <path d="M98 268 Q98 280 98 292" stroke="#06B6D4" stroke-width="8" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M98 268 Q98 280 98 292;
+            M98 267 Q98 279 98 291;
+            M98 268 Q98 280 98 292" dur="6s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+        <!-- Pie apoyado -->
+        <ellipse cx="98" cy="295" rx="7" ry="4" fill="#0f172a" stroke="#06B6D4" stroke-width="1.5">
+          <animate attributeName="ry" values="4;4.5;4" dur="6s" begin="0.5s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle cx="95" cy="295" r="1.5" fill="#06B6D4" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      
+      <!-- Brazos más anatómicos con MOVIMIENTOS MÁGICOS AMPLIOS Y EXPRESIVOS -->
+      <!-- Brazo izquierdo con gestos mágicos -->
+      <g class="left-arm-magic">
+        <path d="M64 200 Q58 205 52 210 Q48 218 48 226" stroke="#1e293b" stroke-width="8" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M64 200 Q58 205 52 210 Q48 218 48 226;
+            M64 200 Q52 195 45 200 Q38 210 35 220;
+            M64 200 Q58 190 55 185 Q52 180 50 175;
+            M64 200 Q50 205 42 215 Q38 225 36 235;
+            M64 200 Q58 205 52 210 Q48 218 48 226" dur="10s" repeatCount="indefinite"/>
+        </path>
+        <ellipse cx="48" cy="228" rx="6" ry="7" fill="#9d7854">
+          <animate attributeName="cx" values="48;35;50;36;48" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="228;220;175;235;228" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Dedos de la mano izquierda con gestos -->
+        <g class="left-fingers">
+          <ellipse cx="45" cy="226" rx="2" ry="4" fill="#9d7854" transform="rotate(-20 45 226)">
+            <animateTransform attributeName="transform" type="rotate" values="-20 45 226; -35 32 218; -10 47 173; -40 33 233; -20 45 226" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="45;32;47;33;45" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="226;218;173;233;226" dur="10s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="48" cy="224" rx="2" ry="5" fill="#9d7854" transform="rotate(-5 48 224)">
+            <animateTransform attributeName="transform" type="rotate" values="-5 48 224; -15 35 216; 5 50 171; -25 36 231; -5 48 224" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="48;35;50;36;48" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="224;216;171;231;224" dur="10s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="51" cy="226" rx="2" ry="4" fill="#9d7854" transform="rotate(20 51 226)">
+            <animateTransform attributeName="transform" type="rotate" values="20 51 226; 10 38 218; 30 53 173; 5 39 233; 20 51 226" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="51;38;53;39;51" dur="10s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="226;218;173;233;226" dur="10s" repeatCount="indefinite"/>
+          </ellipse>
+        </g>
+      </g>
+      
+      <!-- Brazo derecho con gestos mágicos -->
+      <g class="right-arm-magic">
+        <path d="M96 200 Q102 205 108 210 Q112 218 112 226" stroke="#1e293b" stroke-width="8" stroke-linecap="round" fill="none">
+          <animate attributeName="d" values="
+            M96 200 Q102 205 108 210 Q112 218 112 226;
+            M96 200 Q110 190 118 185 Q122 180 125 175;
+            M96 200 Q108 205 115 215 Q120 225 122 235;
+            M96 200 Q105 195 112 200 Q118 208 120 218;
+            M96 200 Q102 205 108 210 Q112 218 112 226" dur="10s" begin="1s" repeatCount="indefinite"/>
+        </path>
+        <ellipse cx="112" cy="228" rx="6" ry="7" fill="#9d7854">
+          <animate attributeName="cx" values="112;125;122;120;112" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="228;175;235;218;228" dur="10s" begin="1s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Dedos de la mano derecha con gestos -->
+        <g class="right-fingers">
+          <ellipse cx="109" cy="226" rx="2" ry="4" fill="#9d7854" transform="rotate(-20 109 226)">
+            <animateTransform attributeName="transform" type="rotate" values="-20 109 226; -10 122 173; -40 119 233; -25 117 216; -20 109 226" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="109;122;119;117;109" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="226;173;233;216;226" dur="10s" begin="1s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="112" cy="224" rx="2" ry="5" fill="#9d7854" transform="rotate(5 112 224)">
+            <animateTransform attributeName="transform" type="rotate" values="5 112 224; 15 125 171; -15 122 231; 10 120 214; 5 112 224" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="112;125;122;120;112" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="224;171;231;214;224" dur="10s" begin="1s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="115" cy="226" rx="2" ry="4" fill="#9d7854" transform="rotate(20 115 226)">
+            <animateTransform attributeName="transform" type="rotate" values="20 115 226; 30 128 173; 5 125 233; 25 123 216; 20 115 226" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="115;128;125;123;115" dur="10s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="cy" values="226;173;233;216;226" dur="10s" begin="1s" repeatCount="indefinite"/>
+          </ellipse>
+        </g>
+      </g>
+      
+      <!-- Auriculares tech simplificados -->
+      <rect x="61" y="169" width="5" height="10" rx="2.5" fill="#06B6D4" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="94" y="169" width="5" height="10" rx="2.5" fill="#06B6D4" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      </rect>
+      <path d="M66 174 Q80 171 94 174" stroke="#06B6D4" stroke-width="2.5" fill="none" opacity="0.8"/>
+      
+      <!-- Collar simplificado -->
+      <circle cx="80" cy="192" r="4" fill="#D4AF37" stroke="#06B6D4" stroke-width="1.5">
+        <animate attributeName="fill" values="#D4AF37;#FEDA77;#D4AF37" dur="3s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Energía mágica emanando de las manos con movimiento -->
+    <g class="magic-energy">
+      <circle cx="48" cy="228" r="16" fill="url(#glow-purple)" opacity="0.65">
+        <animate attributeName="cx" values="48;35;50;36;48" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="228;220;175;235;228" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="16;22;16;20;16" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;0.95;0.65;0.8;0.65" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      
+      <circle cx="112" cy="228" r="16" fill="url(#glow-cyan)" opacity="0.65">
+        <animate attributeName="cx" values="112;125;122;120;112" dur="10s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="228;175;235;218;228" dur="10s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="16;22;16;20;16" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;0.95;0.65;0.8;0.65" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Partículas mágicas flotando de las manos con movimiento dinámico -->
+      <circle cx="45" cy="220" r="2" fill="#8b5cf6" opacity="0.8">
+        <animate attributeName="cx" values="45;32;47;33;45" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="220;210;170;225;220" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="52" cy="222" r="2" fill="#8b5cf6" opacity="0.8">
+        <animate attributeName="cx" values="52;35;50;36;52" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="222;212;172;227;222" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="108" cy="220" r="2" fill="#06B6D4" opacity="0.8">
+        <animate attributeName="cx" values="108;125;122;120;108" dur="10s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="220;170;225;210;220" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="115" cy="222" r="2" fill="#06B6D4" opacity="0.8">
+        <animate attributeName="cx" values="115;128;125;123;115" dur="10s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="222;172;227;212;222" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- RAYOS MÁGICOS tipo TESLA conectando manos con TODAS las máquinas -->
+      <!-- Rayo izquierdo hacia impresora 3D (purple) -->
+      <g class="tesla-bolt-left">
+        <path d="M48 228 L52 232 L48 235 L54 238 L50 242 L56 245 L52 248 L120 255" stroke="#8b5cf6" stroke-width="3.5" opacity="0" fill="none" filter="url(#glow-effect)">
+          <animate attributeName="d" values="
+            M48 228 L52 232 L48 235 L54 238 L50 242 L56 245 L52 248 L120 255;
+            M35 220 L38 225 L34 228 L40 232 L36 236 L42 240 L38 244 L120 255;
+            M50 175 L54 180 L50 184 L56 188 L52 192 L58 196 L54 200 L120 255;
+            M36 235 L40 238 L36 242 L42 246 L38 250 L44 254 L40 258 L120 255;
+            M48 228 L52 232 L48 235 L54 238 L50 242 L56 245 L52 248 L120 255" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.95;0.95;0" dur="0.8s" repeatCount="indefinite"/>
+        </path>
+        <path d="M48 228 L50 231 L46 234 L52 237 L48 240 L54 243 L118 252" stroke="#8b5cf6" stroke-width="2" opacity="0" fill="none">
+          <animate attributeName="d" values="
+            M48 228 L50 231 L46 234 L52 237 L48 240 L54 243 L118 252;
+            M35 220 L37 224 L33 227 L39 231 L35 235 L41 239 L118 252;
+            M50 175 L53 179 L49 183 L55 187 L51 191 L57 195 L118 252;
+            M36 235 L39 237 L35 241 L41 245 L37 249 L43 253 L118 252;
+            M48 228 L50 231 L46 234 L52 237 L48 240 L54 243 L118 252" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.8;0.8;0" dur="0.8s" begin="0.1s" repeatCount="indefinite"/>
+        </path>
+        <!-- Chispas secundarias dinámicas -->
+        <circle cx="52" cy="235" r="3" fill="#8b5cf6" opacity="0">
+          <animate attributeName="cx" values="52;38;54;40;52" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="235;228;184;246;235" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;0" dur="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="56" cy="245" r="2.5" fill="#FEDA77" opacity="0">
+          <animate attributeName="cx" values="56;42;58;44;56" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="245;240;196;254;245" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.9;0" dur="0.8s" begin="0.2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      
+      <!-- Rayo derecho hacia impresora 3D (cyan) -->
+      <g class="tesla-bolt-right">
+        <path d="M112 228 L116 232 L112 236 L118 239 L114 243 L120 246 L116 249 L180 258" stroke="#06B6D4" stroke-width="3.5" opacity="0" fill="none" filter="url(#glow-effect)">
+          <animate attributeName="d" values="
+            M112 228 L116 232 L112 236 L118 239 L114 243 L120 246 L116 249 L180 258;
+            M125 175 L129 180 L125 184 L131 188 L127 192 L133 196 L129 200 L180 258;
+            M122 235 L126 238 L122 242 L128 246 L124 250 L130 254 L126 258 L180 258;
+            M120 218 L124 222 L120 226 L126 230 L122 234 L128 238 L124 242 L180 258;
+            M112 228 L116 232 L112 236 L118 239 L114 243 L120 246 L116 249 L180 258" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.95;0.95;0" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+        </path>
+        <path d="M112 228 L114 231 L110 235 L116 238 L112 241 L118 244 L178 256" stroke="#06B6D4" stroke-width="2" opacity="0" fill="none">
+          <animate attributeName="d" values="
+            M112 228 L114 231 L110 235 L116 238 L112 241 L118 244 L178 256;
+            M125 175 L128 179 L124 183 L130 187 L126 191 L132 195 L178 256;
+            M122 235 L125 237 L121 241 L127 245 L123 249 L129 253 L178 256;
+            M120 218 L123 221 L119 225 L125 229 L121 233 L127 237 L178 256;
+            M112 228 L114 231 L110 235 L116 238 L112 241 L118 244 L178 256" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.8;0.8;0" dur="0.8s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+        <!-- Chispas secundarias dinámicas -->
+        <circle cx="116" cy="236" r="3" fill="#06B6D4" opacity="0">
+          <animate attributeName="cx" values="116;129;126;124;116" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="236;184;242;226;236" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="120" cy="246" r="2.5" fill="#FEDA77" opacity="0">
+          <animate attributeName="cx" values="120;133;130;128;120" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="246;196;254;238;246" dur="10s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.9;0" dur="0.8s" begin="0.6s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      
+      <!-- Rayos hacia LAMINATOR (mano izquierda - amarillo) -->
+      <g class="tesla-bolt-laminator">
+        <path d="M48 228 L50 235 L46 240 L52 245 L48 250 L54 255 L50 260 L70 295" stroke="#FEDA77" stroke-width="3" opacity="0" fill="none" filter="url(#glow-effect)">
+          <animate attributeName="d" values="
+            M48 228 L50 235 L46 240 L52 245 L48 250 L54 255 L50 260 L70 295;
+            M35 220 L38 228 L34 233 L40 238 L36 243 L42 248 L38 253 L70 295;
+            M50 175 L53 182 L49 187 L55 192 L51 197 L57 202 L53 207 L70 295;
+            M36 235 L39 242 L35 247 L41 252 L37 257 L43 262 L39 267 L70 295;
+            M48 228 L50 235 L46 240 L52 245 L48 250 L54 255 L50 260 L70 295" dur="10s" begin="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.85;0" dur="1s" begin="2s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Rayos hacia LASER CUTTER (mano derecha - verde) -->
+      <g class="tesla-bolt-laser">
+        <path d="M112 228 L114 220 L110 215 L116 210 L112 205 L118 200 L114 195 L80 165" stroke="#10B981" stroke-width="3" opacity="0" fill="none" filter="url(#glow-effect)">
+          <animate attributeName="d" values="
+            M112 228 L114 220 L110 215 L116 210 L112 205 L118 200 L114 195 L80 165;
+            M125 175 L127 168 L123 163 L129 158 L125 153 L131 148 L127 143 L80 165;
+            M122 235 L124 228 L120 223 L126 218 L122 213 L128 208 L124 203 L80 165;
+            M120 218 L122 211 L118 206 L124 201 L120 196 L126 191 L122 186 L80 165;
+            M112 228 L114 220 L110 215 L116 210 L112 205 L118 200 L114 195 L80 165" dur="10s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.85;0" dur="1s" begin="3s" repeatCount="indefinite"/>
+        </path>
+      </g>
+      
+      <!-- Rayos cruzados adicionales hacia monitor -->
+      <path d="M48 228 L54 233 L50 237 L56 241 L330 130" stroke="#8b5cf6" stroke-width="1.8" opacity="0" fill="none">
+        <animate attributeName="d" values="
+          M48 228 L54 233 L50 237 L56 241 L330 130;
+          M35 220 L40 225 L36 229 L42 233 L330 130;
+          M50 175 L55 180 L51 184 L57 188 L330 130;
+          M36 235 L41 240 L37 244 L43 248 L330 130;
+          M48 228 L54 233 L50 237 L56 241 L330 130" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.6;0" dur="0.8s" begin="0.2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M112 228 L108 233 L112 238 L106 242 L330 130" stroke="#06B6D4" stroke-width="1.8" opacity="0" fill="none">
+        <animate attributeName="d" values="
+          M112 228 L108 233 L112 238 L106 242 L330 130;
+          M125 175 L121 180 L125 184 L119 188 L330 130;
+          M122 235 L118 240 L122 244 L116 248 L330 130;
+          M120 218 L116 223 L120 227 L114 231 L330 130;
+          M112 228 L108 233 L112 238 L106 242 L330 130" dur="10s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.6;0" dur="0.8s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- MONITOR HOLOGRÁFICO -->
+  <g class="holographic-monitor" transform="translate(320, 80)">
+    <rect x="0" y="0" width="55" height="40" rx="4" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2" opacity="0.8"/>
+    <rect x="3" y="3" width="49" height="30" rx="2" fill="#06B6D4" opacity="0.15">
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Datos en el monitor -->
+    <text x="8" y="12" font-family="monospace" font-size="6" fill="#06B6D4" opacity="0.9">TEMP: 210°C</text>
+    <text x="8" y="20" font-family="monospace" font-size="6" fill="#10B981" opacity="0.9">Z: 45.2mm</text>
+    <text x="8" y="28" font-family="monospace" font-size="6" fill="#8b5cf6" opacity="0.9">SPEED: 60mm/s</text>
+    
+    <!-- Parpadeo de datos -->
+    <rect x="40" y="9" width="8" height="3" fill="#10B981" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Base del monitor -->
+    <rect x="22" y="40" width="11" height="8" rx="2" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="1.5"/>
+    <rect x="20" y="48" width="15" height="3" rx="1.5" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="1"/>
+  </g>
+  
+  <!-- LAMINADORA TÉRMICA (producción en serie) -->
+  <g class="laminator" transform="translate(20, 240) scale(0.85)" opacity="0.9" filter="url(#shadow-strong)">
+    <text x="0" y="-5" font-family="sans-serif" font-size="6" fill="#FEDA77" font-weight="bold" opacity="0.9">LAMINATOR</text>
+    
+    <!-- Cuerpo principal -->
+    <rect x="0" y="0" width="70" height="45" rx="5" fill="url(#magic-dark)" stroke="#FEDA77" stroke-width="2.8" opacity="0.95"/>
+    
+    <!-- Panel de control -->
+    <rect x="5" y="5" width="25" height="20" rx="2" fill="#FEDA77" opacity="0.2" stroke="#FEDA77" stroke-width="1.5">
+      <animate attributeName="opacity" values="0.2;0.35;0.2" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="8" y="14" font-family="monospace" font-size="5" fill="#FEDA77" opacity="0.95">HEAT</text>
+    <text x="8" y="21" font-family="monospace" font-size="4" fill="#06B6D4">150°C</text>
+    
+    <!-- Rodillos calientes -->
+    <ellipse cx="15" cy="32" rx="25" ry="5" fill="#D4AF37" opacity="0.8" stroke="#FEDA77" stroke-width="1.8">
+      <animate attributeName="opacity" values="0.8;0.95;0.8" dur="1.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" values="0 15 32; 360 15 32" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="55" cy="32" rx="25" ry="5" fill="#D4AF37" opacity="0.8" stroke="#FEDA77" stroke-width="1.8">
+      <animate attributeName="opacity" values="0.8;0.95;0.8" dur="1.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" values="0 55 32; -360 55 32" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Ranura de entrada -->
+    <rect x="5" y="-3" width="60" height="8" rx="2" fill="#0f172a" opacity="0.7"/>
+    <text x="15" y="3" font-family="sans-serif" font-size="4" fill="#FEDA77" opacity="0.6">INPUT</text>
+    
+    <!-- Material entrando (producción continua) -->
+    <rect x="10" y="-1" width="50" height="4" rx="1" fill="#ffffff" opacity="0.6">
+      <animate attributeName="x" values="-30;10;10" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0.6" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Ranura de salida -->
+    <rect x="5" y="45" width="60" height="8" rx="2" fill="#0f172a" opacity="0.7"/>
+    <text x="15" y="51" font-family="sans-serif" font-size="4" fill="#FEDA77" opacity="0.6">OUTPUT</text>
+    
+    <!-- Material laminado saliendo -->
+    <rect x="10" y="47" width="50" height="4" rx="1" fill="#FEDA77" opacity="0.85" stroke="#D4AF37" stroke-width="0.8">
+      <animate attributeName="x" values="10;10;70" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.85;0.85;0" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- VAPOR DE CALOR saliendo de laminadora -->
+    <g class="heat-steam" opacity="0.4">
+      <ellipse cx="35" cy="22" rx="8" ry="4" fill="#FEDA77" opacity="0.6">
+        <animate attributeName="cy" values="22;10;22" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="40" cy="25" rx="6" ry="3" fill="#FEDA77" opacity="0.5">
+        <animate attributeName="cy" values="25;12;25" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="6;10;6" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="3.5s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+    
+    <!-- Partículas de calor -->
+    <circle cx="35" cy="28" r="1.5" fill="#FEDA77" opacity="0.9">
+      <animate attributeName="cy" values="28;18;28" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="45" cy="30" r="1.5" fill="#D4AF37" opacity="0.9">
+      <animate attributeName="cy" values="30;20;30" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0;0.9" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- LED de estado -->
+    <circle cx="35" cy="10" r="2" fill="#FEDA77" opacity="0.95">
+      <animate attributeName="opacity" values="0.95;0.3;0.95" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Botones de control -->
+    <circle cx="45" cy="10" r="3" fill="#8b5cf6" opacity="0.85" stroke="#FEDA77" stroke-width="1"/>
+    <circle cx="55" cy="10" r="3" fill="#06B6D4" opacity="0.85" stroke="#FEDA77" stroke-width="1"/>
+  </g>
+  
+  <!-- CORTADORA LÁSER (producción en serie) -->
+  <g class="laser-cutter" transform="translate(20, 90) scale(0.8)" opacity="0.88" filter="url(#shadow-strong)">
+    <text x="0" y="-5" font-family="sans-serif" font-size="6" fill="#10B981" font-weight="bold" opacity="0.9">LASER CUTTER</text>
+    
+    <!-- Cuerpo principal -->
+    <rect x="0" y="0" width="75" height="50" rx="5" fill="url(#magic-dark)" stroke="#10B981" stroke-width="2.8" opacity="0.95"/>
+    
+    <!-- Ventana de visualización -->
+    <rect x="5" y="5" width="65" height="30" rx="3" fill="#10B981" opacity="0.12" stroke="#10B981" stroke-width="2">
+      <animate attributeName="opacity" values="0.12;0.25;0.12" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Cabezal láser moviéndose -->
+    <g class="laser-head">
+      <rect x="15" y="10" width="12" height="8" rx="2" fill="#06B6D4" opacity="0.9" stroke="#10B981" stroke-width="1.5">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 30,0; 30,15; 0,15; 0,0" dur="8s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="21" cy="14" r="2.5" fill="#10B981" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="0.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 30,0; 30,15; 0,15; 0,0" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Rayo láser -->
+      <line x1="21" y1="18" x2="21" y2="32" stroke="#10B981" stroke-width="2.5" opacity="0.95" filter="url(#glow-effect)">
+        <animate attributeName="opacity" values="0.95;0.5;0.95" dur="0.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 30,0; 30,15; 0,15; 0,0" dur="8s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Material siendo cortado -->
+    <rect x="10" y="30" width="55" height="3" rx="1" fill="#8b5cf6" opacity="0.7"/>
+    
+    <!-- Líneas de corte apareciendo progresivamente -->
+    <g class="cut-lines">
+      <line x1="15" y1="30" x2="15" y2="33" stroke="#10B981" stroke-width="1" opacity="0">
+        <animate attributeName="opacity" values="0;0.95;0.95;0.95" dur="8s" repeatCount="indefinite"/>
+      </line>
+      <line x1="25" y1="30" x2="25" y2="33" stroke="#10B981" stroke-width="1" opacity="0">
+        <animate attributeName="opacity" values="0;0;0.95;0.95" dur="8s" repeatCount="indefinite"/>
+      </line>
+      <line x1="35" y1="30" x2="35" y2="33" stroke="#10B981" stroke-width="1" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;0.95" dur="8s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Piezas cortadas cayendo -->
+    <rect x="18" y="35" width="8" height="8" rx="1" fill="#8b5cf6" opacity="0">
+      <animate attributeName="y" values="35;35;48;55" dur="8s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0.8;0" dur="8s" begin="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="38" y="35" width="8" height="8" rx="1" fill="#8b5cf6" opacity="0">
+      <animate attributeName="y" values="35;35;48;55" dur="8s" begin="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0.8;0" dur="8s" begin="5s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Panel de control -->
+    <rect x="5" y="40" width="65" height="8" rx="2" fill="#0f172a" opacity="0.8"/>
+    <text x="10" y="46" font-family="monospace" font-size="5" fill="#10B981" opacity="0.9">CUTTING...</text>
+    
+    <!-- Barra de progreso -->
+    <rect x="8" y="42" width="50" height="2" rx="1" fill="#0f172a" stroke="#10B981" stroke-width="0.5"/>
+    <rect x="8" y="42" width="0" height="2" rx="1" fill="#10B981" opacity="0.9">
+      <animate attributeName="width" values="0;50;0" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- LED indicador -->
+    <circle cx="62" cy="43" r="2" fill="#10B981" opacity="0.95">
+      <animate attributeName="opacity" values="0.95;0.3;0.95" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Chispas láser -->
+    <circle cx="20" cy="30" r="1.5" fill="#10B981" opacity="0">
+      <animate attributeName="opacity" values="0;0.95;0" dur="0.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 30,0; 30,15; 0,15; 0,0" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- HERRAMIENTAS FLOTANTES -->
+  <g class="floating-tools">
+    <!-- Espátula tech -->
+    <g transform="translate(300, 280)">
+      <rect x="0" y="0" width="4" height="25" rx="1" fill="#D4AF37" stroke="#FEDA77" stroke-width="1"/>
+      <path d="M0 0 L4 0 L6 -8 L-2 -8 Z" fill="#8b5cf6" stroke="#06B6D4" stroke-width="1" opacity="0.9"/>
+      <animateTransform attributeName="transform" type="rotate" values="0 302 280; 15 302 280; 0 302 280; -15 302 280; 0 302 280" dur="6s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="3s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    
+    <!-- Pinzas tech -->
+    <g transform="translate(280, 120)">
+      <path d="M0 0 L2 0 L3 12 L1 12 Z" fill="#06B6D4" stroke="#3b82f6" stroke-width="1"/>
+      <path d="M4 0 L6 0 L5 12 L3 12 Z" fill="#06B6D4" stroke="#3b82f6" stroke-width="1"/>
+      <circle cx="3" cy="14" r="2" fill="#8b5cf6" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,5; 0,0" dur="4s" repeatCount="indefinite" additive="sum"/>
+    </g>
+  </g>
+  
+  <!-- EFECTOS DE MAGIA NEGRA -->
+  <g class="dark-magic" opacity="0.7">
+    <!-- Círculo de invocación en el suelo -->
+    <circle cx="200" cy="330" r="40" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,5" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" values="0 200 330; 360 200 330" dur="20s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Símbolos arcanos girando -->
+    <g opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" values="0 200 330; 360 200 330" dur="15s" repeatCount="indefinite"/>
+      <text x="190" y="315" font-family="serif" font-size="12" fill="#8b5cf6">◬</text>
+      <text x="210" y="315" font-family="serif" font-size="12" fill="#8b5cf6">◭</text>
+      <text x="190" y="345" font-family="serif" font-size="12" fill="#8b5cf6">◮</text>
+      <text x="210" y="345" font-family="serif" font-size="12" fill="#8b5cf6">◯</text>
+    </g>
+  </g>
+  
+  <!-- PARTÍCULAS MÁGICAS FLOTANTES -->
+  <g class="magic-particles">
+    <!-- Partículas cyan -->
+    <circle cx="150" cy="200" r="2" fill="#06B6D4" opacity="0.8">
+      <animate attributeName="cy" values="200;150;200" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="180" r="2" fill="#06B6D4" opacity="0.8">
+      <animate attributeName="cy" values="180;130;180" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Partículas purple -->
+    <circle cx="180" cy="190" r="2" fill="#8b5cf6" opacity="0.8">
+      <animate attributeName="cy" values="190;140;190" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="220" cy="210" r="2" fill="#8b5cf6" opacity="0.8">
+      <animate attributeName="cy" values="210;160;210" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Partículas green -->
+    <circle cx="160" cy="220" r="2" fill="#10B981" opacity="0.8">
+      <animate attributeName="cy" values="220;170;220" dur="5.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="200" r="2" fill="#10B981" opacity="0.8">
+      <animate attributeName="cy" values="200;150;200" dur="4.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="4.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- CÓDIGO BINARIO FLOTANTE (Matrix style) -->
+  <g class="binary-code" opacity="0.4">
+    <text x="60" y="150" font-family="monospace" font-size="10" fill="#10B981">01</text>
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+    <text x="340" y="170" font-family="monospace" font-size="10" fill="#06B6D4">10</text>
+    <text x="80" y="120" font-family="monospace" font-size="8" fill="#8b5cf6">11</text>
+  </g>
+  
+  <!-- RELÁMPAGOS DE ENERGÍA -->
+  <g class="energy-bolts" opacity="0.5">
+    <path d="M200 150 L205 160 L198 160 L203 170" stroke="#FEDA77" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite" begin="0s"/>
+    </path>
+    <path d="M180 140 L185 150 L178 150 L183 160" stroke="#06B6D4" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+    <path d="M220 145 L225 155 L218 155 L223 165" stroke="#8b5cf6" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite" begin="1s"/>
+    </path>
   </g>
 </svg>
