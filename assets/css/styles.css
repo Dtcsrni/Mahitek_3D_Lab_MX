@@ -2293,7 +2293,26 @@ button {
 
 .info-card {
   padding: 0;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Orbes ambientales suaves para dar vida a la tarjeta */
+.info-card::before,
+.info-card::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(6,182,212,0.12), transparent 70%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbDrift 22s linear infinite;
+}
+.info-card::before { top: -60px; left: -80px; }
+.info-card::after  { bottom: -80px; right: -100px; animation-duration: 28s; background: radial-gradient(closest-side, rgba(16,185,129,0.12), transparent 70%); }
 
 .info-header {
   display: flex;
@@ -2316,6 +2335,13 @@ button {
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
+}
+
+.info-subtitle {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .info-grid {
@@ -2342,16 +2368,19 @@ button {
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: calc(var(--radius) - 2px);
   transition: all var(--transition);
+  position: relative;
+  z-index: 1;
 }
 
 .info-item:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   border-color: rgba(6, 182, 212, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05) inset;
 }
 
 .info-icon {
@@ -2359,7 +2388,34 @@ button {
   line-height: 1;
   flex-shrink: 0;
   margin-top: 2px;
+  display: inline-block;
+  transform-origin: center;
 }
+
+/* Animaciones por tarjeta (según orden en el grid) */
+.info-grid .info-item:nth-child(1) .info-icon { animation: twinkle 3.2s ease-in-out infinite; }
+.info-grid .info-item:nth-child(2) .info-icon { animation: hueWave 4.2s ease-in-out infinite; }
+.info-grid .info-item:nth-child(3) .info-icon { animation: bob 2.8s ease-in-out infinite; }
+.info-grid .info-item:nth-child(4) .info-icon { animation: drive 2.6s ease-in-out infinite; }
+.info-grid .info-item:nth-child(5) .info-icon { animation: pulseShield 2.4s ease-in-out infinite; }
+.info-grid .info-item:nth-child(6) .info-icon { animation: flicker 1.4s ease-in-out infinite; }
+
+@keyframes orbDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(20px,-12px) scale(1.06); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: rotate(0) scale(1); filter: drop-shadow(0 0 0 rgba(253,224,71,0)); }
+  50% { transform: rotate(-6deg) scale(1.1); filter: drop-shadow(0 0 10px rgba(253,224,71,0.35)); }
+}
+
+@keyframes hueWave { 0%{ filter: hue-rotate(0deg); } 50%{ filter: hue-rotate(18deg); } 100%{ filter: hue-rotate(0deg); } }
+@keyframes bob { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-4px); } }
+@keyframes drive { 0%,100%{ transform: translateX(0); } 50%{ transform: translateX(6px); } }
+@keyframes pulseShield { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.08); } }
+@keyframes flicker { 0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; transform: rotate(0deg); } 20%, 24%, 55% { opacity: .5; transform: rotate(-4deg); } }
 
 .info-content {
   flex: 1;
