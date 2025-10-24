@@ -502,11 +502,18 @@ function filterProducts() {
   renderProducts();
 }
 
-// ===== Promos =====
+// ===== Promos (Lazy Load cuando sea visible) =====
+let promosLoaded = false;
+
 async function loadPromos() {
+  // Si ya se cargó, no hacer nada
+  if (promosLoaded) return;
+  
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
   const container = document.getElementById('promos-container');
   if (!container) return;
+  
+  promosLoaded = true;
 
   if (!promos || promos.length === 0) {
     container.innerHTML = `
@@ -806,11 +813,18 @@ function buildMessengerURL(ref) {
   return `${base}?ref=${encodeURIComponent(ref)}`;
 }
 
-// ===== FAQ =====
+// ===== FAQ (Lazy Load cuando sea visible) =====
+let faqLoaded = false;
+
 async function loadFAQ() {
+  // Si ya se cargó, no hacer nada
+  if (faqLoaded) return;
+  
   const faqData = await loadJSON(CONFIG.DATA_PATHS.faq);
   const container = document.getElementById('faq-list');
   if (!container) return;
+  
+  faqLoaded = true;
 
   if (!faqData || faqData.length === 0) {
     container.innerHTML = `
@@ -1161,6 +1175,36 @@ function setupFilters() {
   }
 }
 
+// ===== Lazy Loading de Secciones No-Críticas =====
+function setupLazyLoading() {
+  const lazyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        const sectionId = section.id;
+        
+        // Cargar datos según la sección
+        if (sectionId === 'promociones' && !promosLoaded) {
+          loadPromos();
+          lazyObserver.unobserve(section);
+        } else if (sectionId === 'faq' && !faqLoaded) {
+          loadFAQ();
+          lazyObserver.unobserve(section);
+        }
+      }
+    });
+  }, {
+    rootMargin: '200px' // Precargar 200px antes de que sea visible
+  });
+  
+  // Observar secciones no-críticas
+  const promosSection = document.getElementById('promociones');
+  const faqSection = document.getElementById('faq');
+  
+  if (promosSection) lazyObserver.observe(promosSection);
+  if (faqSection) lazyObserver.observe(faqSection);
+}
+
 // ===== Initialization =====
 async function init() {
   setupAnalytics();
@@ -1171,13 +1215,14 @@ async function init() {
   hydrateEmails();
   injectOrganizationSchema();
   
-  // Load all data
+  // Cargar solo datos críticos inmediatamente
   await Promise.all([
     loadProducts(),
-    loadPromos(),
-    loadFAQ(),
     loadSocialLinks()
   ]);
+  
+  // Configurar lazy loading para secciones no-críticas
+  setupLazyLoading();
 
   // Aplicar estado desde la URL y sincronizar cambios
   applyURLState();
