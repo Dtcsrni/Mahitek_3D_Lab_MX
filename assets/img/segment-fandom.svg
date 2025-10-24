@@ -42,53 +42,85 @@
     <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
   </rect>
   
-  <!-- Escena: Display/Vitrina con figura coleccionable -->
+  <!-- Escena: Display/Vitrina con figura coleccionable tipo videojuego -->
   
-  <!-- Base/Plataforma de exhibición -->
+  <!-- Base/Plataforma de exhibición 3D -->
   <g class="display-platform">
-    <ellipse cx="70" cy="110" rx="35" ry="8" fill="url(#neon-fandom)" opacity="0.3" filter="url(#glow-neon)">
-      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
-    </ellipse>
-    <rect x="35" y="108" width="70" height="4" rx="2" fill="url(#neon-fandom)" opacity="0.6" stroke="#FF00FF" stroke-width="1"/>
-  </g>
-  
-  <!-- Figura coleccionable animada (estilo chibi/anime) -->
-  <g class="collectible-figure">
-    <!-- Cuerpo de la figura -->
-    <path d="M60,75 Q60,65 70,65 Q80,65 80,75 L80,90 Q80,95 70,95 Q60,95 60,90 Z" 
-          fill="url(#figure-grad)" stroke="#00FFFF" stroke-width="2" filter="url(#glow-neon)" opacity="0.9">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
+    <!-- Sombra de la plataforma -->
+    <ellipse cx="70" cy="115" rx="40" ry="6" fill="#000000" opacity="0.4"/>
+    
+    <!-- Plataforma principal (vista isométrica) -->
+    <path d="M35,108 L70,95 L105,108 L105,113 L70,126 L35,113 Z" 
+          fill="url(#neon-fandom)" opacity="0.4" stroke="#FF00FF" stroke-width="2">
+      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="3s" repeatCount="indefinite"/>
     </path>
     
-    <!-- Cabeza -->
-    <circle cx="70" cy="55" r="12" fill="url(#figure-grad)" stroke="#00FFFF" stroke-width="2" filter="url(#glow-neon)" opacity="0.95">
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
-    </circle>
+    <!-- Panel superior de la plataforma -->
+    <ellipse cx="70" cy="108" rx="35" ry="12" fill="url(#neon-fandom)" opacity="0.5" stroke="#00FFFF" stroke-width="2"/>
     
-    <!-- Ojos brillantes -->
-    <circle cx="66" cy="54" r="2" fill="#FFFFFF">
-      <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="74" cy="54" r="2" fill="#FFFFFF">
-      <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    
-    <!-- Detalle de poder/energía -->
-    <circle cx="70" cy="80" r="4" fill="#FF00FF" filter="url(#glow-neon)">
-      <animate attributeName="r" values="4;5;4" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
-    
-    <!-- Brazos -->
-    <line x1="60" y1="75" x2="55" y2="85" stroke="#00FFFF" stroke-width="3" stroke-linecap="round">
-      <animateTransform attributeName="transform" type="rotate" values="0 60 75; -10 60 75; 0 60 75" dur="2s" repeatCount="indefinite"/>
+    <!-- Líneas de energía en la plataforma -->
+    <line x1="50" y1="108" x2="90" y2="108" stroke="#00FFFF" stroke-width="1" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </line>
-    <line x1="80" y1="75" x2="85" y2="85" stroke="#00FFFF" stroke-width="3" stroke-linecap="round">
-      <animateTransform attributeName="transform" type="rotate" values="0 80 75; 10 80 75; 0 80 75" dur="2s" repeatCount="indefinite"/>
+    <line x1="45" y1="110" x2="95" y2="110" stroke="#FF00FF" stroke-width="1" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
     </line>
+  </g>
+  
+  <!-- Figura coleccionable tipo personaje de videojuego -->
+  <g class="collectible-figure">
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="2.5s" repeatCount="indefinite"/>
     
-    <!-- Piernas -->
-    <rect x="63" y="95" width="5" height="12" rx="2" fill="url(#figure-grad)" opacity="0.9"/>
-    <rect x="72" y="95" width="5" height="12" rx="2" fill="url(#figure-grad)" opacity="0.9"/>
+    <!-- Piernas con botas -->
+    <rect x="62" y="88" width="6" height="16" rx="3" fill="#A855F7" stroke="#FF00FF" stroke-width="1.5"/>
+    <rect x="72" y="88" width="6" height="16" rx="3" fill="#A855F7" stroke="#FF00FF" stroke-width="1.5"/>
+    <rect x="62" y="98" width="6" height="6" rx="2" fill="#00FFFF"/>
+    <rect x="72" y="98" width="6" height="6" rx="2" fill="#00FFFF"/>
+    
+    <!-- Cuerpo del personaje (armadura/traje) -->
+    <path d="M58,70 L58,88 L62,90 L78,90 L82,88 L82,70 L78,68 L62,68 Z" 
+          fill="url(#figure-grad)" stroke="#00FFFF" stroke-width="2" opacity="0.9"/>
+    
+    <!-- Detalles del traje -->
+    <rect x="65" y="73" width="10" height="8" rx="1" fill="#FF00FF" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+    <circle cx="70" cy="77" r="3" fill="#00FFFF" filter="url(#glow-neon)">
+      <animate attributeName="r" values="3;4;3" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Brazos articulados -->
+    <g class="left-arm">
+      <rect x="52" y="72" width="6" height="12" rx="3" fill="#A855F7" stroke="#00FFFF" stroke-width="1.5">
+        <animateTransform attributeName="transform" type="rotate" values="0 55 72; 15 55 72; 0 55 72" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="55" cy="84" r="3" fill="#00FFFF"/>
+    </g>
+    
+    <g class="right-arm">
+      <rect x="82" y="72" width="6" height="12" rx="3" fill="#A855F7" stroke="#00FFFF" stroke-width="1.5">
+        <animateTransform attributeName="transform" type="rotate" values="0 85 72; -15 85 72; 0 85 72" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="85" cy="84" r="3" fill="#00FFFF"/>
+    </g>
+    
+    <!-- Cabeza/casco -->
+    <rect x="60" y="52" width="20" height="20" rx="4" fill="url(#figure-grad)" stroke="#00FFFF" stroke-width="2" opacity="0.95"/>
+    
+    <!-- Visor del casco -->
+    <rect x="63" y="58" width="14" height="6" rx="2" fill="#00FFFF" filter="url(#glow-neon)">
+      <animate attributeName="fill" values="#00FFFF;#FF00FF;#00FFFF" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Antena/detalle superior -->
+    <line x1="70" y1="52" x2="70" y2="46" stroke="#FF00FF" stroke-width="2"/>
+    <circle cx="70" cy="44" r="3" fill="#FF00FF" filter="url(#glow-neon)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Detalles de armadura en hombros -->
+    <rect x="58" y="68" width="4" height="4" rx="1" fill="#FF00FF" opacity="0.8"/>
+    <rect x="78" y="68" width="4" height="4" rx="1" fill="#FF00FF" opacity="0.8"/>
   </g>
   
   <!-- Efectos de luz del display -->

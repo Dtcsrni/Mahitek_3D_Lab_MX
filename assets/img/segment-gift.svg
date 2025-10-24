@@ -18,52 +18,90 @@
   <rect width="140" height="140" rx="24" fill="url(#bg-gift)"/>
   <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-gift)" stroke-width="2" opacity="0.6"/>
   
-  <!-- Escena: Mesa con caja de regalo -->
+  <!-- Escena: Mesa con caja de regalo estilo videojuego isométrico -->
   
-  <!-- Mesa/superficie -->
-  <rect x="20" y="105" width="100" height="8" rx="2" fill="url(#neon-gift)" opacity="0.3"/>
-  <line x1="20" y1="105" x2="120" y2="105" stroke="#F97316" stroke-width="2" opacity="0.6"/>
+  <!-- Mesa/superficie con perspectiva isométrica -->
+  <path d="M20,108 L25,105 L115,105 L120,108 Z" fill="url(#neon-gift)" opacity="0.4"/>
+  <rect x="20" y="108" width="100" height="6" fill="#1a1f2e" opacity="0.6"/>
+  <line x1="20" y1="108" x2="120" y2="108" stroke="#F97316" stroke-width="2" opacity="0.7"/>
   
-  <!-- Caja de regalo principal -->
+  <!-- Sombra de la caja -->
+  <ellipse cx="70" cy="107" rx="28" ry="6" fill="#000000" opacity="0.5"/>
+  
+  <!-- Caja de regalo estilo isométrico -->
   <g class="gift-box">
-    <rect x="45" y="70" width="50" height="35" rx="4" fill="url(#box-grad)" opacity="0.5" stroke="#F97316" stroke-width="2" filter="url(#glow-g)">
-      <animate attributeName="y" values="70;68;70" dur="3s" repeatCount="indefinite"/>
-    </rect>
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="3s" repeatCount="indefinite"/>
     
-    <!-- Cinta vertical -->
-    <rect x="67" y="70" width="6" height="35" fill="#FFFFFF" opacity="0.8" filter="url(#glow-g)">
-      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-    </rect>
+    <!-- Cara frontal de la caja -->
+    <path d="M45,80 L45,105 L70,115 L70,90 Z" 
+          fill="#EC4899" opacity="0.7" stroke="#F97316" stroke-width="2"/>
     
-    <!-- Cinta horizontal -->
-    <rect x="45" y="85" width="50" height="6" fill="#FFFFFF" opacity="0.8" filter="url(#glow-g)">
-      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
-    </rect>
+    <!-- Cara derecha de la caja -->
+    <path d="M70,90 L70,115 L95,105 L95,80 Z" 
+          fill="#F97316" opacity="0.8" stroke="#FF6B00" stroke-width="2"/>
     
-    <!-- Centro del moño -->
-    <circle cx="70" cy="88" r="6" fill="#FFFFFF" opacity="0.9">
-      <animate attributeName="r" values="6;7;6" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
+    <!-- Cara superior de la caja -->
+    <path d="M45,80 L70,70 L95,80 L70,90 Z" 
+          fill="url(#box-grad)" opacity="0.9" stroke="#F97316" stroke-width="2" filter="url(#glow-g)">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cinta vertical (cara frontal) -->
+    <path d="M67,80 L67,105 L73,108 L73,83 Z" fill="#FFFFFF" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cinta vertical (cara derecha) -->
+    <path d="M73,83 L73,108 L79,105 L79,80 Z" fill="#F0F0F0" opacity="0.85">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Cinta horizontal superior -->
+    <path d="M45,80 L50,77 L90,77 L95,80 L90,83 L50,83 Z" fill="#FFFFFF" opacity="0.95" filter="url(#glow-g)"/>
+    
+    <!-- Detalles de patrón en la caja -->
+    <circle cx="57" cy="92" r="3" fill="#FFFFFF" opacity="0.3"/>
+    <circle cx="83" cy="92" r="3" fill="#FFFFFF" opacity="0.3"/>
+    <circle cx="57" cy="100" r="3" fill="#FFFFFF" opacity="0.3"/>
+    <circle cx="83" cy="100" r="3" fill="#FFFFFF" opacity="0.3"/>
   </g>
   
-  <!-- Moño/lazo animado en la parte superior -->
+  <!-- Moño isométrico 3D estilo videojuego -->
   <g class="bow">
-    <path d="M70,45 Q65,55 60,58 L60,65 Q65,62 70,60" fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
-      <animateTransform attributeName="transform" type="scale" values="1,1; 1.05,1.05; 1,1" dur="2s" additive="sum" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="3s" additive="sum" repeatCount="indefinite"/>
-    </path>
-    <path d="M70,45 Q75,55 80,58 L80,65 Q75,62 70,60" fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
-      <animateTransform attributeName="transform" type="scale" values="1,1; 1.05,1.05; 1,1" dur="2s" additive="sum" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="3s" additive="sum" repeatCount="indefinite"/>
-    </path>
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2.5s" repeatCount="indefinite"/>
     
-    <!-- Cintas del moño -->
-    <line x1="70" y1="60" x2="70" y2="70" stroke="#F97316" stroke-width="2" filter="url(#glow-g)"/>
+    <!-- Lazo izquierdo (vista isométrica) -->
+    <path d="M50,60 L45,55 L48,48 L58,50 L60,58 Z" 
+          fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M48,48 L53,45 L60,48 L58,50 Z" 
+          fill="#F97316" opacity="0.95" stroke="#FF6B00" stroke-width="1.5"/>
     
-    <!-- Nudo central del moño -->
-    <circle cx="70" cy="58" r="5" fill="#F97316" filter="url(#glow-g)">
-      <animate attributeName="r" values="5;6;5" dur="1.5s" repeatCount="indefinite"/>
+    <!-- Lazo derecho (vista isométrica) -->
+    <path d="M90,60 L95,55 L92,48 L82,50 L80,58 Z" 
+          fill="url(#neon-gift)" stroke="#EC4899" stroke-width="2" filter="url(#glow-g)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M92,48 L87,45 L80,48 L82,50 Z" 
+          fill="#F97316" opacity="0.95" stroke="#FF6B00" stroke-width="1.5"/>
+    
+    <!-- Nudo central (cubo isométrico) -->
+    <path d="M65,58 L70,55 L75,58 L75,65 L70,68 L65,65 Z" 
+          fill="#F97316" stroke="#FF6B00" stroke-width="2" filter="url(#glow-g)"/>
+    <path d="M70,55 L75,58 L75,65 L70,62 Z" 
+          fill="#FF6B00" opacity="0.8"/>
+    <path d="M65,58 L70,55 L70,62 L65,65 Z" 
+          fill="#EC4899" opacity="0.7"/>
+    
+    <!-- Brillos en el nudo -->
+    <circle cx="71" cy="60" r="2" fill="#FFFFFF" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1s" repeatCount="indefinite"/>
     </circle>
+    
+    <!-- Cintas colgantes isométricas -->
+    <path d="M68,65 L66,75 L68,76 L70,66 Z" fill="#FFFFFF" opacity="0.8"/>
+    <path d="M72,65 L74,75 L72,76 L70,66 Z" fill="#F0F0F0" opacity="0.75"/>
   </g>
   
   <!-- Tarjeta de regalo flotando -->

@@ -18,66 +18,108 @@
   <rect width="140" height="140" rx="24" fill="url(#bg-deco)"/>
   <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-deco)" stroke-width="2" opacity="0.6"/>
   
-  <!-- Escena: Florero decorativo con flor geométrica -->
+  <!-- Escena: Florero decorativo estilo videojuego isométrico -->
   
-  <!-- Superficie/mesa -->
-  <ellipse cx="70" cy="115" rx="45" ry="8" fill="url(#neon-deco)" opacity="0.2"/>
-  <line x1="25" y1="115" x2="115" y2="115" stroke="#EC4899" stroke-width="2" opacity="0.4"/>
+  <!-- Superficie/mesa con perspectiva -->
+  <ellipse cx="70" cy="115" rx="45" ry="8" fill="#1a1f2e" opacity="0.6"/>
+  <path d="M25,115 L30,113 L110,113 L115,115 Z" fill="url(#neon-deco)" opacity="0.3"/>
   
-  <!-- Florero/vaso -->
+  <!-- Sombra del florero -->
+  <ellipse cx="70" cy="114" rx="18" ry="4" fill="#000000" opacity="0.5"/>
+  
+  <!-- Florero estilo videojuego (forma más definida) -->
   <g class="vase">
-    <path d="M55,95 L50,115 L90,115 L85,95 Z" fill="url(#vase-grad)" opacity="0.4" stroke="#A855F7" stroke-width="2" filter="url(#glow)">
-      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="3s" repeatCount="indefinite"/>
+    <!-- Cuerpo del florero con facetas -->
+    <path d="M60,95 L55,105 L53,115 L87,115 L85,105 L80,95 Z" 
+          fill="url(#vase-grad)" opacity="0.5" stroke="#A855F7" stroke-width="2" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
     </path>
-    <ellipse cx="70" cy="95" rx="15" ry="5" fill="url(#vase-grad)" opacity="0.6" stroke="#A855F7" stroke-width="2"/>
     
-    <!-- Detalles del florero -->
-    <line x1="55" y1="100" x2="85" y2="100" stroke="#EC4899" stroke-width="1" opacity="0.5"/>
-    <line x1="53" y1="107" x2="87" y2="107" stroke="#A855F7" stroke-width="1" opacity="0.5"/>
+    <!-- Borde superior del florero -->
+    <ellipse cx="70" cy="95" rx="10" ry="4" fill="#A855F7" opacity="0.8" stroke="#EC4899" stroke-width="2"/>
+    
+    <!-- Detalles hexagonales en el florero -->
+    <polygon points="65,100 68,98 71,100 68,102" fill="#EC4899" opacity="0.6"/>
+    <polygon points="72,100 75,98 78,100 75,102" fill="#EC4899" opacity="0.6"/>
+    <polygon points="64,107 67,105 70,107 67,109" fill="#A855F7" opacity="0.5"/>
+    <polygon points="73,107 76,105 79,107 76,109" fill="#A855F7" opacity="0.5"/>
+    
+    <!-- Borde inferior -->
+    <ellipse cx="70" cy="115" rx="17" ry="5" fill="url(#vase-grad)" opacity="0.7" stroke="#A855F7" stroke-width="1.5"/>
   </g>
   
-  <!-- Tallo de la flor -->
+  <!-- Tallo con segmentos definidos (estilo videojuego) -->
   <g class="stem">
-    <path d="M70,95 Q68,70 70,50" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
-      <animateTransform attributeName="transform" type="rotate" values="0 70 95; -3 70 95; 0 70 95; 3 70 95; 0 70 95" dur="4s" repeatCount="indefinite"/>
-    </path>
+    <!-- Tallo principal segmentado -->
+    <rect x="68" y="50" width="4" height="12" rx="1" fill="#10B981" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" values="0 70 95; -2 70 95; 0 70 95; 2 70 95; 0 70 95" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="68" y="63" width="4" height="12" rx="1" fill="#10B981" opacity="0.85">
+      <animateTransform attributeName="transform" type="rotate" values="0 70 95; -2 70 95; 0 70 95; 2 70 95; 0 70 95" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="68" y="76" width="4" height="12" rx="1" fill="#10B981" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" values="0 70 95; -2 70 95; 0 70 95; 2 70 95; 0 70 95" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="68" y="89" width="4" height="6" rx="1" fill="#10B981" opacity="0.75"/>
     
-    <!-- Hoja izquierda -->
-    <ellipse cx="65" cy="75" rx="8" ry="5" fill="#10B981" opacity="0.7" transform="rotate(-30 65 75)">
-      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="3s" repeatCount="indefinite"/>
-    </ellipse>
+    <!-- Hojas estilo videojuego (más angulares) -->
+    <g class="left-leaf">
+      <path d="M68,75 L58,73 L56,78 L64,80 Z" fill="#10B981" opacity="0.8" stroke="#14B8A6" stroke-width="1">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <line x1="68" y1="75" x2="58" y2="75" stroke="#14B8A6" stroke-width="1" opacity="0.6"/>
+    </g>
     
-    <!-- Hoja derecha -->
-    <ellipse cx="75" cy="65" rx="8" ry="5" fill="#10B981" opacity="0.7" transform="rotate(25 75 65)">
-      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="3.2s" repeatCount="indefinite"/>
-    </ellipse>
+    <g class="right-leaf">
+      <path d="M72,65 L82,63 L84,68 L76,70 Z" fill="#10B981" opacity="0.8" stroke="#14B8A6" stroke-width="1">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="3.2s" repeatCount="indefinite"/>
+      </path>
+      <line x1="72" y1="65" x2="82" y2="65" stroke="#14B8A6" stroke-width="1" opacity="0.6"/>
+    </g>
   </g>
   
-  <!-- Flor geométrica (forma de diamante) -->
+  <!-- Flor estilo pixel art / videojuego -->
   <g class="flower">
-    <path d="M70,30 L85,45 L70,60 L55,45 Z" fill="url(#neon-deco)" opacity="0.4" stroke="#EC4899" stroke-width="2" filter="url(#glow)">
-      <animateTransform attributeName="transform" type="rotate" from="0 70 45" to="360 70 45" dur="20s" repeatCount="indefinite"/>
-    </path>
+    <!-- Centro hexagonal de la flor -->
+    <polygon points="70,38 77,42 77,50 70,54 63,50 63,42" 
+             fill="url(#neon-deco)" opacity="0.5" stroke="#EC4899" stroke-width="2" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" from="0 70 46" to="360 70 46" dur="20s" repeatCount="indefinite"/>
+    </polygon>
     
-    <!-- Pétalos exteriores -->
-    <circle cx="70" cy="30" r="5" fill="#EC4899" filter="url(#glow)">
-      <animate attributeName="r" values="5;6;5" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="85" cy="45" r="5" fill="#A855F7" filter="url(#glow)">
-      <animate attributeName="r" values="5;6;5" dur="2s" begin="0.5s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="70" cy="60" r="5" fill="#EC4899" filter="url(#glow)">
-      <animate attributeName="r" values="5;6;5" dur="2s" begin="1s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="55" cy="45" r="5" fill="#A855F7" filter="url(#glow)">
-      <animate attributeName="r" values="5;6;5" dur="2s" begin="1.5s" repeatCount="indefinite"/>
-    </circle>
+    <!-- Pétalos como bloques de videojuego -->
+    <g class="petals">
+      <!-- Pétalo superior -->
+      <rect x="65" y="28" width="10" height="10" rx="2" fill="#EC4899" stroke="#FFFFFF" stroke-width="1" filter="url(#glow)">
+        <animate attributeName="y" values="28;26;28" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Pétalo derecho -->
+      <rect x="80" y="41" width="10" height="10" rx="2" fill="#A855F7" stroke="#FFFFFF" stroke-width="1" filter="url(#glow)">
+        <animate attributeName="x" values="80;82;80" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Pétalo inferior -->
+      <rect x="65" y="54" width="10" height="10" rx="2" fill="#EC4899" stroke="#FFFFFF" stroke-width="1" filter="url(#glow)">
+        <animate attributeName="y" values="54;56;54" dur="2s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Pétalo izquierdo -->
+      <rect x="50" y="41" width="10" height="10" rx="2" fill="#A855F7" stroke="#FFFFFF" stroke-width="1" filter="url(#glow)">
+        <animate attributeName="x" values="50;48;50" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
     
-    <!-- Centro de la flor -->
-    <circle cx="70" cy="45" r="8" fill="#FFFFFF" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2s" repeatCount="indefinite"/>
+    <!-- Centro brillante -->
+    <circle cx="70" cy="46" r="6" fill="#FFFFFF" opacity="0.95">
+      <animate attributeName="opacity" values="0.95;0.7;0.95" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="70" cy="45" r="4" fill="#EC4899"/>
+    <circle cx="70" cy="46" r="3" fill="#EC4899">
+      <animate attributeName="r" values="3;4;3" dur="1s" repeatCount="indefinite"/>
+    </circle>
   </g>
   
   <!-- Partículas decorativas (polen/polvo mágico) -->

@@ -18,72 +18,126 @@
   <rect width="140" height="140" rx="24" fill="url(#bg-edu)"/>
   <rect x="3" y="3" width="134" height="134" rx="21" fill="none" stroke="url(#neon-edu)" stroke-width="2" opacity="0.6"/>
   
-  <!-- Escena: Impresora 3D imprimiendo objeto educativo -->
+  <!-- Escena: Impresora 3D estilo videojuego isométrico -->
   
-  <!-- Mesa/base de impresora -->
-  <rect x="25" y="95" width="90" height="5" rx="2" fill="url(#neon-edu)" opacity="0.3"/>
-  <line x1="25" y1="95" x2="115" y2="95" stroke="#10B981" stroke-width="2" opacity="0.5"/>
+  <!-- Mesa/base isométrica -->
+  <path d="M25,98 L30,95 L110,95 L115,98 Z" fill="url(#neon-edu)" opacity="0.4"/>
+  <rect x="25" y="98" width="90" height="4" fill="#1a1f2e" opacity="0.6"/>
+  <line x1="25" y1="98" x2="115" y2="98" stroke="#10B981" stroke-width="2" opacity="0.6"/>
   
-  <!-- Impresora 3D simplificada -->
+  <!-- Sombra de la impresora -->
+  <ellipse cx="70" cy="97" rx="35" ry="5" fill="#000000" opacity="0.4"/>
+  
+  <!-- Impresora 3D isométrica detallada -->
   <g class="printer">
-    <!-- Base de impresora -->
-    <rect x="35" y="70" width="70" height="25" rx="3" fill="url(#printer-grad)" opacity="0.4" stroke="#06B6D4" stroke-width="2"/>
-    
-    <!-- Panel frontal -->
-    <rect x="40" y="75" width="60" height="15" rx="2" fill="#0B0F14" opacity="0.6"/>
-    
-    <!-- Indicador LED -->
-    <circle cx="95" cy="78" r="2" fill="#10B981" filter="url(#glow-e)">
-      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-    </circle>
-    
-    <!-- Extrusor/cabezal -->
-    <g class="extruder">
-      <rect x="62" y="60" width="16" height="10" rx="2" fill="url(#printer-grad)" stroke="#00FFFF" stroke-width="2" filter="url(#glow-e)">
-        <animateTransform attributeName="transform" type="translate" values="0,0; 10,0; 10,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
-      </rect>
-      
-      <!-- Boquilla -->
-      <rect x="68" y="68" width="4" height="4" fill="#00FFFF" filter="url(#glow-e)">
-        <animateTransform attributeName="transform" type="translate" values="0,0; 10,0; 10,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
-      </rect>
-    </g>
-    
-    <!-- Riel/guías -->
-    <line x1="35" y1="65" x2="105" y2="65" stroke="#06B6D4" stroke-width="2" opacity="0.6"/>
-    <line x1="38" y1="65" x2="38" y2="70" stroke="#06B6D4" stroke-width="1.5" opacity="0.5"/>
-    <line x1="102" y1="65" x2="102" y2="70" stroke="#06B6D4" stroke-width="1.5" opacity="0.5"/>
-  </g>
-  
-  <!-- Objeto siendo impreso (cubo educativo con "3D") -->
-  <g class="printed-object">
-    <!-- Base del objeto (cama caliente) -->
-    <rect x="55" y="72" width="30" height="3" rx="1" fill="#00FFFF" opacity="0.3"/>
-    
-    <!-- Cubo en construcción -->
-    <path d="M60,60 L75,55 L90,60 L90,72 L75,77 L60,72 Z" 
-          fill="url(#neon-edu)" opacity="0.3" stroke="#10B981" stroke-width="2" filter="url(#glow-e)">
-      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+    <!-- Base/cuerpo principal (vista isométrica) -->
+    <path d="M35,75 L35,95 L70,105 L70,85 Z" 
+          fill="#06B6D4" opacity="0.3" stroke="#00FFFF" stroke-width="2"/>
+    <path d="M70,85 L70,105 L105,95 L105,75 Z" 
+          fill="#10B981" opacity="0.4" stroke="#14B8A6" stroke-width="2"/>
+    <path d="M35,75 L70,65 L105,75 L70,85 Z" 
+          fill="url(#printer-grad)" opacity="0.6" stroke="#06B6D4" stroke-width="2" filter="url(#glow-e)">
+      <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
     </path>
     
-    <!-- Texto "3D" en el cubo -->
-    <text x="75" y="68" fill="#00FFFF" font-size="14" text-anchor="middle" font-weight="bold" filter="url(#glow-e)">3D</text>
+    <!-- Panel de control frontal -->
+    <rect x="45" y="82" width="20" height="12" rx="2" fill="#0B0F14" opacity="0.8" stroke="#00FFFF" stroke-width="1.5"/>
     
-    <!-- Líneas de construcción (capas) -->
-    <line x1="60" y1="65" x2="90" y2="65" stroke="#00FFFF" stroke-width="1" opacity="0.5">
-      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-    </line>
-    <line x1="60" y1="68" x2="90" y2="68" stroke="#00FFFF" stroke-width="1" opacity="0.4">
-      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
-    </line>
+    <!-- Pantalla del panel -->
+    <rect x="48" y="85" width="14" height="6" rx="1" fill="#00FFFF" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Botones -->
+    <circle cx="52" cy="92" r="1.5" fill="#10B981" filter="url(#glow-e)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="58" cy="92" r="1.5" fill="#EC4899" opacity="0.8"/>
+    
+    <!-- Torre/guía vertical izquierda -->
+    <rect x="40" y="58" width="4" height="17" fill="#06B6D4" opacity="0.8" stroke="#00FFFF" stroke-width="1"/>
+    <rect x="40" y="58" width="4" height="4" fill="#00FFFF" opacity="0.9"/>
+    
+    <!-- Torre/guía vertical derecha -->
+    <rect x="96" y="58" width="4" height="17" fill="#06B6D4" opacity="0.8" stroke="#00FFFF" stroke-width="1"/>
+    <rect x="96" y="58" width="4" height="4" fill="#00FFFF" opacity="0.9"/>
+    
+    <!-- Riel horizontal superior -->
+    <rect x="44" y="58" width="52" height="3" fill="url(#neon-edu)" opacity="0.7" stroke="#10B981" stroke-width="1"/>
+    
+    <!-- Extrusor/cabezal (bloque isométrico) -->
+    <g class="extruder">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 15,0; 15,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
+      
+      <!-- Cuerpo del extrusor -->
+      <path d="M62,50 L62,58 L70,62 L70,54 Z" 
+            fill="#00FFFF" opacity="0.7" stroke="#06B6D4" stroke-width="2" filter="url(#glow-e)"/>
+      <path d="M70,54 L70,62 L78,58 L78,50 Z" 
+            fill="#14B8A6" opacity="0.8" stroke="#10B981" stroke-width="2"/>
+      <path d="M62,50 L70,46 L78,50 L70,54 Z" 
+            fill="#00FFFF" opacity="0.9" stroke="#00FFFF" stroke-width="2" filter="url(#glow-e)"/>
+      
+      <!-- Boquilla -->
+      <rect x="68" y="62" width="4" height="6" fill="#00FFFF" filter="url(#glow-e)">
+        <animate attributeName="opacity" values="1;0.5;1" dur="0.5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
   </g>
   
-  <!-- Filamento siendo depositado (gota de material) -->
-  <circle cx="70" cy="70" r="2" fill="#00FFFF" filter="url(#glow-e)">
-    <animate attributeName="cy" values="68;70" dur="1s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="1;0.3" dur="1s" repeatCount="indefinite"/>
-    <animateTransform attributeName="transform" type="translate" values="0,0; 10,0; 10,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
-  </circle>
+  <!-- Objeto siendo impreso (cubo estilo Minecraft/voxel) -->
+  <g class="printed-object">
+    <!-- Plataforma de impresión (cama caliente) isométrica -->
+    <ellipse cx="70" cy="75" rx="20" ry="8" fill="#00FFFF" opacity="0.2" stroke="#06B6D4" stroke-width="1"/>
+    <rect x="50" y="73" width="40" height="2" fill="#00FFFF" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Cubo siendo construido capa por capa (isométrico) -->
+    <g class="building-cube">
+      <!-- Capa inferior (completa) -->
+      <path d="M60,68 L70,63 L80,68 L80,73 L70,78 L60,73 Z" 
+            fill="#10B981" opacity="0.8" stroke="#14B8A6" stroke-width="2"/>
+      <path d="M70,63 L80,68 L80,73 L70,78 Z" 
+            fill="#14B8A6" opacity="0.7"/>
+      <path d="M60,68 L70,63 L70,78 L60,73 Z" 
+            fill="#06B6D4" opacity="0.6"/>
+      
+      <!-- Capa media (construyéndose) -->
+      <path d="M62,63 L70,59 L78,63 L78,66 L70,71 L62,66 Z" 
+            fill="#00FFFF" opacity="0.7" stroke="#06B6D4" stroke-width="2" filter="url(#glow-e)">
+        <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Capa superior (semi-transparente, apareciendo) -->
+      <path d="M64,58 L70,55 L76,58 L76,61 L70,64 L64,61 Z" 
+            fill="#00FFFF" opacity="0.4" stroke="#00FFFF" stroke-width="1.5">
+        <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Líneas de construcción visibles -->
+      <line x1="62" y1="66" x2="78" y2="66" stroke="#00FFFF" stroke-width="1" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Texto "3D" grabado en la cara frontal -->
+    <text x="65" y="72" fill="#FFFFFF" font-size="8" font-weight="bold" opacity="0.9">3D</text>
+  </g>
+  
+  <!-- Filamento siendo depositado (gotas animadas) -->
+  <g class="filament-drops">
+    <circle cx="70" cy="68" r="2" fill="#00FFFF" filter="url(#glow-e)">
+      <animate attributeName="cy" values="64;68" dur="1s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2;1" dur="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.3" dur="1s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 15,0; 15,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Línea de filamento desde boquilla -->
+    <line x1="70" y1="68" x2="70" y2="64" stroke="#00FFFF" stroke-width="1.5" opacity="0.6" filter="url(#glow-e)">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 15,0; 15,0; 0,0; 0,0" dur="6s" repeatCount="indefinite"/>
+    </line>
+  </g>
   
   <!-- Iconos educativos flotantes -->
   <g class="education-icons">
