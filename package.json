@@ -18,6 +18,9 @@
     "watch:css": "echo 'CSS directo - no requiere compilación'",
     "build": "npm run format",
     "deploy": "git add . && git commit -m 'chore: actualizar sitio' && git push origin main",
+    "version:patch": "npm version patch -m 'chore(release): v%s'",
+    "version:minor": "npm version minor -m 'feat(release): v%s'",
+    "version:major": "npm version major -m 'BREAKING CHANGE: v%s'",
     "preinstall": "echo '📦 Instalando dependencias de desarrollo...'",
     "postinstall": "echo '✅ Instalación completa. Ejecuta: npm run dev'"
   },

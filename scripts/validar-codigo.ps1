@@ -239,7 +239,7 @@ function Test-DataIntegrity {
             
             # Verificar que tengan campos requeridos
             foreach ($product in $activeProducts) {
-                if (-not $product.nombre -or -not $product.precio) {
+                if (-not $product.nombre -or (-not $product.precio -and -not $product.precio_mxn)) {
                     Write-Warning-Custom "Producto sin nombre o precio: $($product.id)"
                     $script:TotalAdvertencias++
                 }
