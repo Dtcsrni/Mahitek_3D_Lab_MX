@@ -1607,7 +1607,7 @@ function setupLazyLoading() {
           const sectionId = section.id;
 
           // Cargar datos según la sección
-          if (sectionId === 'promociones' && !promosLoaded) {
+          if (sectionId === 'promos' && !promosLoaded) {
             loadPromos();
             lazyObserver.unobserve(section);
           } else if (sectionId === 'faq' && !faqLoaded) {
@@ -1623,7 +1623,7 @@ function setupLazyLoading() {
   );
 
   // Observar secciones no-críticas
-  const promosSection = document.getElementById('promociones');
+  const promosSection = document.getElementById('promos');
   const faqSection = document.getElementById('faq');
 
   if (promosSection) lazyObserver.observe(promosSection);
