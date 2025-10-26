@@ -410,9 +410,46 @@ function setupHeaderScroll() {
   if (!header) return;
 
   let ticking = false;
+  let lastScrollY = 0;
+  let scrollDirection = 'up';
+  
+  const SCROLL_THRESHOLD = 24; // Umbral para activar is-scrolled
+  const HIDE_THRESHOLD = 100; // Umbral para ocultar navbar (scroll hacia abajo)
+  const COMPACT_THRESHOLD = 300; // Umbral para modo compacto
 
   const toggleState = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    const scrollY = window.scrollY;
+    const scrollDelta = scrollY - lastScrollY;
+    
+    // Determinar dirección de scroll
+    if (Math.abs(scrollDelta) > 5) { // Ignorar micro-scrolls
+      scrollDirection = scrollDelta > 0 ? 'down' : 'up';
+    }
+
+    // Clase is-scrolled: activa con poco scroll
+    header.classList.toggle('is-scrolled', scrollY > SCROLL_THRESHOLD);
+
+    // Clase is-compact: modo ultra-compacto para scroll profundo
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) {
+      header.classList.toggle('is-compact', scrollY > COMPACT_THRESHOLD);
+    } else {
+      header.classList.remove('is-compact'); // Desktop siempre full
+    }
+
+    // Clase is-hidden: ocultar al hacer scroll hacia abajo
+    const isMenuOpen = document.body.classList.contains('nav-open');
+    const isNearTop = scrollY < HIDE_THRESHOLD;
+    const shouldHide = scrollDirection === 'down' && scrollY > HIDE_THRESHOLD && !isMenuOpen;
+
+    if (shouldHide) {
+      header.classList.add('is-hidden');
+    } else if (scrollDirection === 'up' || isNearTop || isMenuOpen) {
+      header.classList.remove('is-hidden');
+    }
+
+    // Actualizar última posición
+    lastScrollY = scrollY;
     ticking = false;
   };
 
