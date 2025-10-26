@@ -1,20 +1,63 @@
 <!doctype html>
 <html lang="es-MX">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Mahitek 3D Lab — Impresión 3D en PETG | Pachuca</title>
-    <meta
-      name="description"
-      content="Mahitek 3D Lab: impresión 3D funcional en PETG para proyectos técnicos, decoración y regalos personalizados. Fabricación bajo pedido con envío nacional desde Pachuca."
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Newsletter Section - Destacada arriba -->
+          <div class="footer-newsletter span-full" data-animate="fade-up">
+            <div class="newsletter-header">
+              <h3 class="newsletter-title" data-copy="footer.newsletter.title">No Te Pierdas Nuestras Ofertas</h3>
+              <p class="newsletter-subtitle" data-copy="footer.newsletter.subtitle">
+                Recibe promociones exclusivas, nuevos diseños y consejos de impresión 3D
+              </p>
+              <p class="newsletter-frequency" data-copy="footer.newsletter.frequency">
+                Máximo 1 correo al mes, sin spam
+              </p>
+            </div>
+            <form
+              class="newsletter-form"
+              action="https://formspree.io/f/xayzlqny"
+              method="POST"
+              aria-label="Suscripción por correo"
+            >
+              <div class="newsletter-row">
+                <input 
+                  id="newsletter-email" 
+                  name="email" 
+                  type="email" 
+                  data-copy-attr="placeholder"
+                  data-copy-attr-name="placeholder"
+                  data-copy="footer.newsletter.placeholder"
+                  placeholder="tu@email.com" 
+                  required 
+                  aria-label="Email para newsletter"
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span data-copy="footer.newsletter.button">Suscribirme</span>
+                </button>
+              </div>
+              <p class="newsletter-privacy" data-copy="footer.newsletter.privacy">
+                No compartimos tu email. Puedes desuscribirte en cualquier momento.
+              </p>
+            </form>
+          </div>
+
+          <!-- Brand Info -->
+          <div class="footer-brand animate-delay-1" data-animate="fade-up">
+            <h3 data-copy="footer.brand.name">Mahitek 3D Lab</h3>
+            <p data-copy="footer.brand.tagline">🔁 Laboratorio abierto con impresión 3D en PETG</p>
+            <p data-copy="footer.brand.location">📍 Pachuca, Hidalgo, México</p>
+            <p class="footer-brand-desc" data-copy="footer.brand.description">
+              Fabricación 3D personalizada desde 2023. De la idea al objeto en 48 horas.
+            </p>
     />
     <meta name="author" content="Mahitek 3D Lab" />
 
     <!-- Localización y idioma -->
-    <meta property="og:locale" content="es_MX" />
+              <noscript><span class="noscript-email">armsystechno [at] gmail [dot] com</span></noscript>
     <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:locale:alternate" content="en_US" />
-    <link rel="alternate" hreflang="es-mx" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
+                class="btn btn-ghost footer-messenger mt-2"
     <link rel="alternate" hreflang="es" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
     <link rel="alternate" hreflang="en" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
     <link rel="alternate" hreflang="x-default" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
@@ -30,7 +73,9 @@
     <meta property="og:image" content="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
+
+          <!-- Links Navigation -->
+          <div class="footer-links animate-delay-2" data-animate="fade-up">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -39,11 +84,15 @@
       name="twitter:description"
       content="Fabricación 3D bajo pedido en Pachuca: piezas funcionales, decoración y proyectos técnicos con envío nacional."
     />
-    <meta name="twitter:image" content="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/og-image.png" />
+
+          <!-- Social Links -->
+          <div class="footer-social animate-delay-3" id="footer-social" data-animate="fade-up">
 
     <!-- Preconnect para optimizar carga de recursos externos -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+          <!-- Hours & Location -->
+          <div class="footer-hours animate-delay-4" data-animate="fade-up">
     <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
 
@@ -61,37 +110,35 @@
     <!-- Favicons: usamos ruta relativa para evitar 404 en proyecto Pages -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- OG/Twitter image opcional en raíz: /og-image.png (1200x630) -->
-    <!-- <meta property="og:image" content="/og-image.png"> -->
-    <meta name="theme-color" content="#0B0F14" />
-
-    <!-- Cache control para optimizar mobile-first -->
-    <meta http-equiv="Cache-Control" content="public, max-age=3600, must-revalidate" />
-
-    <!-- Política de referencia y CSP básica para sitio estático (GitHub Pages) -->
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: blob: https://dtcsrni.github.io https://cdn.simpleicons.org https://www.google-analytics.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; script-src-elem 'self' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self'; style-src-attr 'self'; style-src-elem 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://m.me https://wa.me; upgrade-insecure-requests;"
-    />
-
-    <!-- JSON-LD de Organization se inyecta vía JS para evitar inline scripts bajo CSP -->
-  </head>
-  <body class="theme-animated">
-    <!-- Cintillo cyberpunk en construcción -->
-    <div class="cintillo-cyberpunk" role="banner" aria-label="Sitio en desarrollo">
       <div class="cintillo-contenido">
-        <span class="cintillo-texto"
-          >⚡ SITIO EN DESARROLLO ⚡ PRÓXIMAMENTE FUNCIONALIDAD COMPLETA ⚡ SITIO EN DESARROLLO ⚡</span
-        >
-      </div>
-    </div>
 
+        <!-- Trust Badges & Payments -->
+        <div class="footer-trust-section" data-animate="fade-up">
+          <div class="footer-payments">
+            <span class="label" data-copy="footer.payments.label">Métodos de pago aceptados:</span>
+            <span class="icons" data-copy="footer.payments.icons" aria-label="Tarjeta, efectivo, contraentrega">💳 💵 📦</span>
+          </div>
+          >⚡ SITIO EN DESARROLLO ⚡ PRÓXIMAMENTE FUNCIONALIDAD COMPLETA ⚡ SITIO EN DESARROLLO ⚡</span
+            <li data-copy="footer.trust_badges.0.text">✅ Envío a toda la República</li>
+            <li data-copy="footer.trust_badges.1.text">✅ Pago Seguro</li>
+            <li data-copy="footer.trust_badges.2.text">✅ Garantía 30 Días</li>
+            <li data-copy="footer.trust_badges.3.text">✅ Hecho en México</li>
     <a href="#main" class="skip-link">Saltar al contenido</a>
 
-    <header class="header">
-      <!-- Decoraciones cyberpunk mexicanas -->
-      <div class="nav-decorations" aria-hidden="true">
-        <!-- Nopales esquina izquierda -->
+
+        <!-- Copyright -->
+        <div class="footer-copy">
+          <p>
+            © <span data-copy="footer.copyright.year">2025</span> <span data-copy="footer.copyright.brand">Mahitek 3D Lab</span>. 
+            <span data-copy="footer.copyright.rights">Todos los derechos reservados</span>.
+          </p>
+          <p class="footer-dev" data-copy="footer.copyright.developer">
+            Desarrollado con ❤️ y tecnología de vanguardia
+          </p>
+          <p class="footer-tagline" data-copy="footer.copyright.tagline">
+            Memoria en forma, uso que perdura
+          </p>
+        </div>
         <svg class="nav-deco nav-nopal nav-nopal-left" viewBox="0 0 40 60" fill="none">
           <path
             d="M20 5 Q15 15, 18 25 Q20 35, 15 45 Q12 55, 20 60"
