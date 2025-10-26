@@ -60,12 +60,24 @@ const title = /<title>\s*[^<]+<\/title>/i.test(html);
 if (!title) fail('Falta <title> con contenido');
 else ok('Title presente');
 
+// 4b) Meta description
+const metaDesc = /<meta\s+name=["']description["'][^>]*content=["'][^"']{50,}["']/i.test(html);
+if (!metaDesc) fail('Falta <meta name="description"> con contenido (mín 50 chars)');
+else ok('Meta description presente');
+
 // 5) apple-touch-icon dentro de head
 const headEndIdx = html.search(/<\/head>/i);
 const headHtml = headEndIdx > -1 ? html.slice(0, headEndIdx) : '';
 if (headHtml) {
   if (/rel=["']apple-touch-icon["']/i.test(headHtml)) ok('apple-touch-icon en <head>');
 }
+
+// 5b) Manifest.json link
+if (/<link[^>]+rel=["']manifest["']/i.test(headHtml)) ok('Manifest PWA presente');
+else fail('Falta <link rel="manifest"> para PWA');
+
+// 5c) Theme color
+if (/<meta[^>]+name=["']theme-color["']/i.test(headHtml)) ok('Theme color presente');
 
 // 6) <li> con padre UL/OL
 const tokens = [...html.matchAll(/<\/?(ul|ol|li)(\s|>)/gi)];
