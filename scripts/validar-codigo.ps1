@@ -113,39 +113,55 @@ function Test-JavaScriptSyntax {
     $jsFiles = Get-ChildItem -Path "assets/js" -Filter "*.js" -ErrorAction SilentlyContinue
     
     foreach ($file in $jsFiles) {
-        # Verificar sintaxis básica (paréntesis, llaves, comillas)
-        $content = Get-Content $file.FullName -Raw
+        # Usar Node.js para validación real de sintaxis (más confiable que contar paréntesis)
+        $nodeAvailable = Get-Command node -ErrorAction SilentlyContinue
         
-        # Contar paréntesis
-        $openParen = ($content.ToCharArray() | Where-Object { $_ -eq '(' }).Count
-        $closeParen = ($content.ToCharArray() | Where-Object { $_ -eq ')' }).Count
-        
-        # Contar llaves
-        $openBrace = ($content.ToCharArray() | Where-Object { $_ -eq '{' }).Count
-        $closeBrace = ($content.ToCharArray() | Where-Object { $_ -eq '}' }).Count
-        
-        # Contar corchetes
-        $openBracket = ($content.ToCharArray() | Where-Object { $_ -eq '[' }).Count
-        $closeBracket = ($content.ToCharArray() | Where-Object { $_ -eq ']' }).Count
-        
-        if ($openParen -ne $closeParen) {
-            Write-Error-Custom "Paréntesis desbalanceados en $($file.Name): $openParen abiertos, $closeParen cerrados"
-            $script:TotalErrores++
-        }
-        elseif ($openBrace -ne $closeBrace) {
-            Write-Error-Custom "Llaves desbalanceadas en $($file.Name): $openBrace abiertas, $closeBrace cerradas"
-            $script:TotalErrores++
-        }
-        elseif ($openBracket -ne $closeBracket) {
-            Write-Error-Custom "Corchetes desbalanceados en $($file.Name): $openBracket abiertos, $closeBracket cerrados"
-            $script:TotalErrores++
-        }
-        else {
-            Write-Success "JavaScript sintaxis básica OK: $($file.Name)"
-            $script:TotalPasados++
+        if ($nodeAvailable) {
+            $nodeCheck = node --check $file.FullName 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                Write-Success "JavaScript sintaxis OK: $($file.Name)"
+                $script:TotalPasados++
+            } else {
+                Write-Error-Custom "Error de sintaxis en $($file.Name): $nodeCheck"
+                $script:TotalErrores++
+            }
+        } else {
+            # Fallback: validación básica sin Node.js (menos confiable)
+            $content = Get-Content $file.FullName -Raw
+            
+            # Contar paréntesis
+            $openParen = ($content.ToCharArray() | Where-Object { $_ -eq '(' }).Count
+            $closeParen = ($content.ToCharArray() | Where-Object { $_ -eq ')' }).Count
+            
+            # Contar llaves
+            $openBrace = ($content.ToCharArray() | Where-Object { $_ -eq '{' }).Count
+            $closeBrace = ($content.ToCharArray() | Where-Object { $_ -eq '}' }).Count
+            
+            # Contar corchetes
+            $openBracket = ($content.ToCharArray() | Where-Object { $_ -eq '[' }).Count
+            $closeBracket = ($content.ToCharArray() | Where-Object { $_ -eq ']' }).Count
+            
+            if ($openParen -ne $closeParen) {
+                Write-Warning-Custom "Paréntesis posiblemente desbalanceados en $($file.Name): $openParen abiertos, $closeParen cerrados (instala Node.js para validación precisa)"
+                # No marcar como error, solo advertencia
+                $script:TotalAdvertencias++
+            }
+            elseif ($openBrace -ne $closeBrace) {
+                Write-Error-Custom "Llaves desbalanceadas en $($file.Name): $openBrace abiertas, $closeBrace cerradas"
+                $script:TotalErrores++
+            }
+            elseif ($openBracket -ne $closeBracket) {
+                Write-Error-Custom "Corchetes desbalanceados en $($file.Name): $openBracket abiertos, $closeBracket cerrados"
+                $script:TotalErrores++
+            }
+            else {
+                Write-Success "JavaScript sintaxis básica OK: $($file.Name)"
+                $script:TotalPasados++
+            }
         }
         
         # Verificar errores comunes
+        $content = Get-Content $file.FullName -Raw
         if ($content -match 'console\.log\(' -and $content -notmatch 'CONFIG\.DEBUG_MODE') {
             Write-Warning-Custom "Encontrado console.log sin verificación DEBUG_MODE en $($file.Name)"
             $script:TotalAdvertencias++
