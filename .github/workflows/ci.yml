@@ -12,53 +12,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Job 1: Validación básica del código
   validate:
-    name: Validar Código
+    name: 🔍 Validar Código
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout código
+    - name: 📥 Checkout código
       uses: actions/checkout@v4
       
-    - name: Configurar Node.js
+    - name: ⚙️ Configurar Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
         
-    - name: Instalar dependencias
+    - name: 📦 Instalar dependencias
       run: npm ci || npm install
       
-    - name: Verificar archivos JavaScript
+    - name: 📄 Verificar archivos principales
       run: |
-        if [ -f "assets/js/app.js" ]; then
-          echo "✅ app.js encontrado"
-          wc -l assets/js/app.js
-        else
-          echo "❌ app.js no encontrado"
-          exit 1
-        fi
+        echo "🔍 Verificando estructura del proyecto..."
+        test -f index.html && echo "✅ index.html existe" || exit 1
+        test -f assets/js/app.js && echo "✅ app.js existe" || exit 1
+        test -f assets/css/styles.css && echo "✅ styles.css existe" || exit 1
       
-    - name: Verificar formateo con Prettier
-      run: |
-        npx prettier --check "assets/js/app.js" "assets/css/styles.css" "index.html" || {
-          echo "⚠️ Algunos archivos necesitan formateo. Ejecuta: npm run format"
-          exit 0
-        }
+    - name: 💅 Verificar formateo con Prettier
+      run: npm run check:format
       continue-on-error: true
       
-    - name: Validar HTML
+    - name: ✅ Validar estructura HTML
       run: |
-        echo "🔍 Verificando estructura HTML..."
-        if grep -q "<!DOCTYPE html>" index.html; then
-          echo "✅ HTML válido"
-        else
-          echo "❌ HTML inválido"
-          exit 1
-        fi
+        echo "🔍 Validando HTML..."
+        grep -q "<!DOCTYPE html>" index.html && echo "✅ HTML válido" || exit 1
 
+  # Job 2: Deploy a GitHub Pages (solo en main)
   deploy:
-    name: Deploy a GitHub Pages
+    name: 🚀 Deploy a GitHub Pages
     runs-on: ubuntu-latest
     needs: validate
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -73,40 +63,43 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
-    - name: Checkout código
+    - name: 📥 Checkout código
       uses: actions/checkout@v4
       
-    - name: Configurar Pages
+    - name: ⚙️ Configurar GitHub Pages
       uses: actions/configure-pages@v4
       
-    - name: Upload artifact
+    - name: 📤 Subir artefacto de Pages
       uses: actions/upload-pages-artifact@v3
       with:
         path: '.'
         
-    - name: Deploy to GitHub Pages
+    - name: 🚀 Deploy a GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
       
-    - name: Notificar deploy exitoso
+    - name: ✅ Notificar deploy exitoso
       run: |
-        echo "🚀 Deploy exitoso!"
-        echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+        echo "🎉 Deploy completado exitosamente!"
+        echo "📍 URL del sitio: ${{ steps.deployment.outputs.page_url }}"
 
+  # Job 3: Auditoría Lighthouse (después del deploy)
   lighthouse:
-    name: Auditoría Lighthouse (Post-Deploy)
+    name: 📊 Auditoría Lighthouse
     runs-on: ubuntu-latest
     needs: deploy
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
-    - name: Checkout código
+    - name: 📥 Checkout código
       uses: actions/checkout@v4
       
-    - name: Esperar propagación de deploy
-      run: sleep 30
+    - name: ⏳ Esperar propagación del deploy
+      run: |
+        echo "⏳ Esperando 45 segundos para que el sitio se propague..."
+        sleep 45
       
-    - name: Lighthouse CI
+    - name: 📊 Ejecutar Lighthouse CI
       uses: treosh/lighthouse-ci-action@v10
       with:
         urls: |
@@ -114,3 +107,6 @@ jobs:
         uploadArtifacts: true
         temporaryPublicStorage: true
       continue-on-error: true
+      
+    - name: 📈 Resultados de Lighthouse
+      run: echo "✅ Auditoría Lighthouse completada. Revisa los artefactos para ver los resultados."
