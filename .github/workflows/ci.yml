@@ -50,6 +50,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
 
     permissions:
       contents: read
@@ -99,10 +101,23 @@ jobs:
         with:
           node-version: '20'
 
+      - name: 🧭 Instalar Google Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: ⏳ Esperar propagación del deploy
         run: |
-          echo "⏳ Esperando 20 segundos para que el sitio se propague..."
-          sleep 20
+          URL="${{ needs.deploy.outputs.page_url }}"
+          echo "⏳ Esperando a que el sitio esté disponible: $URL"
+          for i in {1..30}; do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL") || true
+            if [ "$CODE" = "200" ] || [ "$CODE" = "301" ] || [ "$CODE" = "302" ]; then
+              echo "✅ Sitio disponible (HTTP $CODE)"
+              break
+            fi
+            echo "⌛ Intento $i/30 - HTTP $CODE. Reintentando en 10s..."
+            sleep 10
+          done
 
       - name: 📊 Ejecutar Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
@@ -111,6 +126,10 @@ jobs:
           # Subimos los artefactos manualmente para controlar el nombre y evitar errores
           uploadArtifacts: false
           temporaryPublicStorage: true
+          urls: |
+            ${{ needs.deploy.outputs.page_url }}
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
 
       - name: 📦 Subir artefactos de Lighthouse
         if: always()

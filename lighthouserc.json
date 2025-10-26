@@ -5,7 +5,9 @@
       "numberOfRuns": 1,
       "settings": {
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
-        "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"]
+        "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"],
+        "emulatedFormFactor": "desktop",
+        "chromeFlags": ["--no-sandbox", "--disable-dev-shm-usage"]
       }
     },
     "assert": {

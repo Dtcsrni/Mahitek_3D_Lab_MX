@@ -15,6 +15,8 @@
     "check:format": "prettier --check \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"*.html\"",
     "validate:html": "node scripts/validate-html.js",
     "validate": "npm run check:format && npm run validate:html",
+    "lighthouse": "lhci autorun",
+    "lighthouse:badges": "npm run lighthouse && node scripts/generar-lighthouse-badges.js",
     "watch:css": "echo 'CSS directo - no requiere compilación'",
     "build": "npm run format",
     "deploy": "git add . && git commit -m 'chore: actualizar sitio' && git push origin main",
@@ -34,9 +36,10 @@
   "author": "Mahitek 3D Lab",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.3.0",
+    "@lhci/cli": "^0.13.0",
+    "jsdom": "^24.1.0",
     "live-server": "^1.2.2",
-    "jsdom": "^24.1.0"
+    "prettier": "^3.3.0"
   },
   "engines": {
     "node": ">=18.0.0",
