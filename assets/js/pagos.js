@@ -14,8 +14,15 @@ export function renderPayments() {
 
   const title = document.createElement('h2');
   title.className = 'section-title';
+  title.id = 'pagos-title';
   title.textContent = 'Métodos de pago';
   container.appendChild(title);
+
+  const note = document.createElement('p');
+  note.className = 'payments-note';
+  note.textContent =
+    'Pagas como prefieras: QR CoDi y transferencia sin comisiones; tarjeta (Clip) sin recargo.';
+  container.appendChild(note);
 
   const grid = document.createElement('div');
   grid.className = 'cards-grid';

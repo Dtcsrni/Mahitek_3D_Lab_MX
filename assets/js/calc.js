@@ -39,6 +39,7 @@ export function initCalc() {
 
   const title = document.createElement('h2');
   title.className = 'section-title';
+  title.id = 'calc-title';
   title.textContent = 'Calculadora de pedido';
   container.appendChild(title);
 
@@ -62,6 +63,8 @@ export function initCalc() {
         <button id="btn-download" class="btn">Descargar .txt</button>
       </div>
 
+      <p class="calc-help">Copia en 1 clic, abre tu correo con el pedido listo o descarga un .txt ligero.</p>
+
       <div id="calc-admin" class="calc-admin" hidden></div>
     </div>
   `;
@@ -81,6 +84,10 @@ export function initCalc() {
   const qtyInput = panel.querySelector('#calc-qty');
   const suggestionEl = panel.querySelector('#calc-suggestion');
   const missingEl = panel.querySelector('#calc-missing');
+  suggestionEl.setAttribute('role', 'status');
+  suggestionEl.setAttribute('aria-live', 'polite');
+  missingEl.setAttribute('role', 'status');
+  missingEl.setAttribute('aria-live', 'polite');
   const adminEl = panel.querySelector('#calc-admin');
 
   function recalc() {
@@ -92,12 +99,13 @@ export function initCalc() {
     let usePack = packPrice < soloPrice;
     const chosenSubtotal = usePack ? packPrice : soloPrice;
 
+    const save = Math.max(0, soloPrice - packPrice);
     suggestionEl.innerHTML = usePack
       ? `<div class="calc-suggest"><strong>Pack sugerido:</strong> ${packOpt.units} uds por ${currency(
           packOpt.price
-        )} <span class="badge">$${(packOpt.price / packOpt.units).toFixed(2)}/ud</span> <span class="hint">(suelto: ${currency(
-          soloPrice
-        )})</span></div>`
+        )} <span class="badge">$${(packOpt.price / packOpt.units).toFixed(2)}/ud</span> ${
+          save > 0 ? `<span class=\"badge badge-save\">Ahorra ${currency(save)}</span>` : ''
+        } <span class="hint">(suelto: ${currency(soloPrice)})</span></div>`
       : `<div class="calc-suggest"><strong>Compra suelta:</strong> ${qty} uds por ${currency(
           soloPrice
         )} <span class="badge">$${UNIT_PRICE.toFixed(2)}/ud</span></div>`;
