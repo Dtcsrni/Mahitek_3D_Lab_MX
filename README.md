@@ -4,11 +4,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Live](https://img.shields.io/badge/live-dtcsrni.github.io-success)](https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
 
+<!-- Badges dinámicos de Lighthouse (se actualizan en cada pipeline) -->
+
+[![LH Performance](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-performance.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Accessibility](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-accessibility.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Best Practices](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-best-practices.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH SEO](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-seo.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+
 Landing page moderna con diseño cyberpunk mexicano, sistema de precios automático y optimización completa para dispositivos móviles. Impresión 3D funcional en PETG desde Pachuca, Hidalgo.
 
 ## ✨ Características Principales
 
 ### 🎨 Diseño y UX
+
 - **Diseño cyberpunk mexicano**: Navbar con nopales, águilas y efectos glitch
 - **Glassmorphism dark**: Fondo oscuro (#0B0F14) con efectos de cristal
 - **Tipografía fluida**: Escala responsive desde móvil (320px) hasta 4K (1440+)
@@ -17,6 +25,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Animaciones GPU**: Optimizadas con `will-change` y `transform`
 
 ### 📱 Responsive y Accesibilidad
+
 - **Mobile-first**: Diseñado desde 320px hasta pantallas 2XL (1536+)
 - **Safe-area support**: Compatible con iPhone notch y Android punch-hole
 - **Navbar inteligente**: 4 estados (normal, scrolled, compact, hidden)
@@ -25,6 +34,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Detección de capacidades**: Degrada efectos en dispositivos limitados
 
 ### 🛠️ Sistema de Datos
+
 - **Catálogo dinámico**: Filtros por categoría y búsqueda en tiempo real
 - **Sistema de precios automático**: Cálculo con markup y redondeo configurable
 - **Promociones activas**: Con fechas de validez y animaciones personalizadas
@@ -32,6 +42,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Multiidioma**: Soporte para es-MX, es-ES y en-US
 
 ### ⚡ Performance
+
 - **Zero dependencias**: Solo vanilla JS moderno
 - **Lazy loading**: Secciones no críticas cargan on-demand
 - **Content-visibility**: Defer de pintura en elementos fuera de pantalla
@@ -216,6 +227,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
 ```
 
 **Campos obligatorios:**
+
 - `id`: Identificador único
 - `nombre`: Nombre del producto
 - `categoria`: Categoría para filtros
@@ -225,6 +237,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
 - `estado`: `"activo"` para mostrar, `"inactivo"` para ocultar
 
 **Campos opcionales:**
+
 - `coda`: Frase poética corta
 - `historia`: Descripción detallada
 - `tags`: Array de etiquetas para búsqueda
@@ -308,22 +321,22 @@ Edita variables CSS en `/assets/css/styles.css`:
 ```css
 :root {
   /* Colores base */
-  --bg-dark: #0B0F14;           /* Fondo principal */
+  --bg-dark: #0b0f14; /* Fondo principal */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
-  
+
   /* Colores de texto */
-  --text-primary: #E8EDF4;
-  --text-secondary: #9CA3AF;
-  
+  --text-primary: #e8edf4;
+  --text-secondary: #9ca3af;
+
   /* Acentos principales */
-  --accent-cyan: #06B6D4;
-  --accent-green: #10B981;
-  --accent-red: #D22623;
-  
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-red: #d22623;
+
   /* Tipografía fluida */
   --font-size-base: clamp(1rem, 0.94rem + 0.4vw, 1.125rem);
-  
+
   /* Espaciado */
   --space-md: 1rem;
   --radius: 12px;
@@ -334,13 +347,27 @@ Edita variables CSS en `/assets/css/styles.css`:
 
 ```css
 /* Puntos de quiebre actuales */
-@media (min-width: 400px)  { /* Móviles pequeños */ }
-@media (min-width: 640px)  { /* Móviles grandes */ }
-@media (min-width: 768px)  { /* Tablets */ }
-@media (min-width: 1024px) { /* Desktop */ }
-@media (min-width: 1280px) { /* Desktop grande */ }
-@media (min-width: 1440px) { /* QHD */ }
-@media (min-width: 1536px) { /* 2XL */ }
+@media (min-width: 400px) {
+  /* Móviles pequeños */
+}
+@media (min-width: 640px) {
+  /* Móviles grandes */
+}
+@media (min-width: 768px) {
+  /* Tablets */
+}
+@media (min-width: 1024px) {
+  /* Desktop */
+}
+@media (min-width: 1280px) {
+  /* Desktop grande */
+}
+@media (min-width: 1440px) {
+  /* QHD */
+}
+@media (min-width: 1536px) {
+  /* 2XL */
+}
 ```
 
 ### Modificar Estados del Navbar
@@ -355,9 +382,9 @@ El navbar tiene 4 estados inteligentes documentados en `NAVBAR_INTELIGENTE.md`:
 Configurar en `/assets/js/app.js`:
 
 ```javascript
-const SCROLL_THRESHOLD = 24;    // Activar is-scrolled
-const HIDE_THRESHOLD = 100;     // Ocultar navbar
-const COMPACT_THRESHOLD = 300;  // Modo compacto
+const SCROLL_THRESHOLD = 24; // Activar is-scrolled
+const HIDE_THRESHOLD = 100; // Ocultar navbar
+const COMPACT_THRESHOLD = 300; // Modo compacto
 ```
 
 ### Agregar Nueva Sección
@@ -365,18 +392,29 @@ const COMPACT_THRESHOLD = 300;  // Modo compacto
 Usa el snippet `mhk-section-full` o copia el patrón:
 
 ```html
-<section id="mi-seccion" class="section section--full section-alt" aria-labelledby="mi-seccion-title">
+<section
+  id="mi-seccion"
+  class="section section--full section-alt"
+  aria-labelledby="mi-seccion-title"
+>
   <div class="container">
     <div class="section-header" data-animate="fade-up">
       <div class="section-heading">
-        <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="section-heading-logo" width="64" height="64" loading="lazy" decoding="async">
+        <img
+          src="assets/img/logo-color.svg"
+          alt="Mahitek 3D Lab"
+          class="section-heading-logo"
+          width="64"
+          height="64"
+          loading="lazy"
+          decoding="async"
+        />
         <h2 class="section-title" id="mi-seccion-title">Mi Nueva Sección</h2>
       </div>
       <p class="section-intro">Descripción de la sección.</p>
     </div>
-    
+
     <!-- Contenido aquí -->
-    
   </div>
 </section>
 ```
@@ -401,7 +439,7 @@ Usa el snippet `mhk-section-full` o copia el patrón:
 ✅ **Debounce/Throttle**: Eventos resize y scroll optimizados  
 ✅ **ResizeManager**: Manejo centralizado de resize  
 ✅ **IntersectionObserver**: Animaciones activadas por scroll  
-✅ **Device Detection**: Degradación de efectos en dispositivos limitados  
+✅ **Device Detection**: Degradación de efectos en dispositivos limitados
 
 ### Auditoría Lighthouse
 
@@ -438,9 +476,9 @@ npm run format           # Verificar formateo
 
 ```javascript
 // Consola del navegador
-window.MahitekLab.products()    // Ver productos cargados
-window.MahitekLab.config        // Ver configuración
-window.MahitekLab.filterProducts() // Aplicar filtros
+window.MahitekLab.products(); // Ver productos cargados
+window.MahitekLab.config; // Ver configuración
+window.MahitekLab.filterProducts(); // Aplicar filtros
 ```
 
 ## 📚 Documentación Adicional
@@ -491,11 +529,12 @@ MIT License - Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
-**Mahitek 3D Lab** — *Memoria en forma, uso que perdura* ✨
-  --glass-bg: rgba(255, 255, 255, 0.06);  /* Fondo glass */
-  ...
+**Mahitek 3D Lab** — _Memoria en forma, uso que perdura_ ✨
+--glass-bg: rgba(255, 255, 255, 0.06); /_ Fondo glass _/
+...
 }
-```
+
+````
 
 ### Cambiar markup de precios
 
@@ -507,7 +546,7 @@ const CONFIG = {
   PRICE_STEP: 5,       // Redondear a múltiplos de 5
   ...
 };
-```
+````
 
 ### Cambiar número de WhatsApp
 

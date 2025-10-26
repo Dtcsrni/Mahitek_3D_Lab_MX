@@ -88,10 +88,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
 
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: ⏳ Esperar propagación del deploy
         run: |
@@ -101,12 +108,10 @@ jobs:
       - name: 📊 Ejecutar Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
-          urls: |
-            https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
+          configPath: ./lighthouserc.json
           # Subimos los artefactos manualmente para controlar el nombre y evitar errores
           uploadArtifacts: false
           temporaryPublicStorage: true
-        continue-on-error: true
 
       - name: 📦 Subir artefactos de Lighthouse
         if: always()
@@ -117,6 +122,18 @@ jobs:
             .lighthouseci/**
           if-no-files-found: warn
           retention-days: 7
+
+      - name: 🧩 Generar badges Lighthouse (Node script)
+        if: always()
+        run: |
+          node scripts/generar-lighthouse-badges.js
+
+      - name: 💾 Commit de badges
+        if: always()
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'docs/badges/*.json'
+          message: 'chore(ci): actualizar badges de Lighthouse'
 
       - name: 📈 Resultados de Lighthouse
         run: echo "✅ Auditoría Lighthouse completada. Revisa los artefactos para ver los resultados."
