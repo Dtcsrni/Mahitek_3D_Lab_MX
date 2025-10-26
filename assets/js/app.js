@@ -1,7 +1,7 @@
 // ===== Configuration =====
 const CONFIG = {
-  PRICE_MARKUP: 1.0,   // Ajusta si requieres recargo adicional
-  PRICE_STEP: 10,      // Redondea al múltiplo de 10 MXN más cercano
+  PRICE_MARKUP: 1.0, // Ajusta si requieres recargo adicional
+  PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
   // Página de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
@@ -20,7 +20,7 @@ const CONFIG = {
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
   IDIOMA_PREDETERMINADO: 'es-MX',
-  
+
   /**
    * Obtiene el idioma preferido del usuario
    * Orden de prioridad: 1) localStorage 2) navigator.language 3) default
@@ -32,25 +32,25 @@ const GestorIdioma = {
       if (guardado && this.IDIOMAS_SOPORTADOS.includes(guardado)) {
         return guardado;
       }
-      
+
       // 2. Detectar idioma del navegador
       const navegador = navigator.language || navigator.userLanguage || '';
-      
+
       // Si es español mexicano explícito
       if (navegador.toLowerCase().startsWith('es-mx')) {
         return 'es-MX';
       }
-      
+
       // Si es cualquier variante de español
       if (navegador.toLowerCase().startsWith('es')) {
         return 'es';
       }
-      
+
       // Si es inglés
       if (navegador.toLowerCase().startsWith('en')) {
         return 'en';
       }
-      
+
       // 3. Fallback a español mexicano
       return this.IDIOMA_PREDETERMINADO;
     } catch (error) {
@@ -58,7 +58,7 @@ const GestorIdioma = {
       return this.IDIOMA_PREDETERMINADO;
     }
   },
-  
+
   /**
    * Guarda la preferencia de idioma
    */
@@ -74,7 +74,7 @@ const GestorIdioma = {
       return false;
     }
   },
-  
+
   /**
    * Verifica si el idioma es español (cualquier variante)
    */
@@ -82,27 +82,27 @@ const GestorIdioma = {
     const idioma = this.obtenerIdioma();
     return idioma.startsWith('es');
   },
-  
+
   /**
    * Verifica si el idioma es español mexicano específico
    */
   esMexicano() {
     return this.obtenerIdioma() === 'es-MX';
   },
-  
+
   /**
    * Actualiza el contenido del cintillo según el idioma
    */
   actualizarCintillo() {
     const cintillo = document.querySelector('.cintillo-texto');
     if (!cintillo) return;
-    
+
     // Usar el sistema de textos centralizado
     const texto = TextosSistema.obtener('cintillo.construccion');
     cintillo.textContent = texto;
     cintillo.setAttribute('data-idioma', this.obtenerIdioma());
   },
-  
+
   /**
    * Inicializa el sistema de idioma
    */
@@ -110,7 +110,7 @@ const GestorIdioma = {
     const idioma = this.obtenerIdioma();
     document.documentElement.setAttribute('lang', idioma);
     this.actualizarCintillo();
-    
+
     if (CONFIG.DEBUG_MODE) {
       console.log('🌐 Idioma detectado:', idioma);
       console.log('🇲🇽 Es mexicano:', this.esMexicano());
@@ -126,173 +126,171 @@ const TextosSistema = {
   obtener(clave) {
     const idioma = GestorIdioma.obtenerIdioma();
     const textos = this.textos[clave];
-    
+
     if (!textos) {
       console.warn(`Texto no encontrado: ${clave}`);
       return clave;
     }
-    
+
     // Prioridad: idioma exacto > idioma base (es-MX -> es) > español > inglés
-    return textos[idioma] || 
-           textos[idioma.split('-')[0]] || 
-           textos['es-MX'] || 
-           textos['en'] || 
-           clave;
+    return (
+      textos[idioma] || textos[idioma.split('-')[0]] || textos['es-MX'] || textos['en'] || clave
+    );
   },
-  
+
   // Catálogo de textos del sistema
   textos: {
     // Cintillo de construcción
     'cintillo.construccion': {
       'es-MX': '⚡ SITIO EN DESARROLLO ⚡ PRÓXIMAMENTE FUNCIONALIDAD COMPLETA ⚡',
-      'es': '⚡ EN CONSTRUCCIÓN ⚡ PRÓXIMAMENTE DISPONIBLE ⚡',
-      'en': '⚡ UNDER DEVELOPMENT ⚡ COMING SOON ⚡'
+      es: '⚡ EN CONSTRUCCIÓN ⚡ PRÓXIMAMENTE DISPONIBLE ⚡',
+      en: '⚡ UNDER DEVELOPMENT ⚡ COMING SOON ⚡'
     },
-    
+
     // Mensajes del sistema
     'sistema.cargando': {
       'es-MX': 'Cargando...',
-      'es': 'Cargando...',
-      'en': 'Loading...'
+      es: 'Cargando...',
+      en: 'Loading...'
     },
     'sistema.error': {
       'es-MX': 'Error al cargar',
-      'es': 'Error al cargar',
-      'en': 'Loading error'
+      es: 'Error al cargar',
+      en: 'Loading error'
     },
     'sistema.sinResultados': {
       'es-MX': 'No se encontraron resultados',
-      'es': 'No se encontraron resultados',
-      'en': 'No results found'
+      es: 'No se encontraron resultados',
+      en: 'No results found'
     },
-    
+
     // Productos
     'productos.desde': {
       'es-MX': 'Desde',
-      'es': 'Desde',
-      'en': 'From'
+      es: 'Desde',
+      en: 'From'
     },
     'productos.verMas': {
       'es-MX': 'Ver más detalles',
-      'es': 'Ver más detalles',
-      'en': 'View more details'
+      es: 'Ver más detalles',
+      en: 'View more details'
     },
     'productos.disponible': {
       'es-MX': 'Disponible',
-      'es': 'Disponible',
-      'en': 'Available'
+      es: 'Disponible',
+      en: 'Available'
     },
     'productos.agotado': {
       'es-MX': 'Agotado',
-      'es': 'Agotado',
-      'en': 'Out of stock'
+      es: 'Agotado',
+      en: 'Out of stock'
     },
-    
+
     // Promociones
     'promos.titulo': {
       'es-MX': 'Promociones Especiales',
-      'es': 'Promociones Especiales',
-      'en': 'Special Offers'
+      es: 'Promociones Especiales',
+      en: 'Special Offers'
     },
     'promos.ahorra': {
       'es-MX': 'Ahorra',
-      'es': 'Ahorra',
-      'en': 'Save'
+      es: 'Ahorra',
+      en: 'Save'
     },
     'promos.valido': {
       'es-MX': 'Válido hasta',
-      'es': 'Válido hasta',
-      'en': 'Valid until'
+      es: 'Válido hasta',
+      en: 'Valid until'
     },
-    
+
     // Filtros
     'filtros.todos': {
       'es-MX': 'Todos',
-      'es': 'Todos',
-      'en': 'All'
+      es: 'Todos',
+      en: 'All'
     },
     'filtros.categoria': {
       'es-MX': 'Categoría',
-      'es': 'Categoría',
-      'en': 'Category'
+      es: 'Categoría',
+      en: 'Category'
     },
     'filtros.limpiar': {
       'es-MX': 'Limpiar filtros',
-      'es': 'Limpiar filtros',
-      'en': 'Clear filters'
+      es: 'Limpiar filtros',
+      en: 'Clear filters'
     },
-    
+
     // Contacto
     'contacto.whatsapp': {
       'es-MX': 'Contactar por WhatsApp',
-      'es': 'Contactar por WhatsApp',
-      'en': 'Contact via WhatsApp'
+      es: 'Contactar por WhatsApp',
+      en: 'Contact via WhatsApp'
     },
     'contacto.messenger': {
       'es-MX': 'Enviar mensaje',
-      'es': 'Enviar mensaje',
-      'en': 'Send message'
+      es: 'Enviar mensaje',
+      en: 'Send message'
     },
     'contacto.cotizar': {
       'es-MX': 'Solicitar cotización',
-      'es': 'Solicitar cotización',
-      'en': 'Request quote'
+      es: 'Solicitar cotización',
+      en: 'Request quote'
     },
-    
+
     // FAQ
     'faq.titulo': {
       'es-MX': 'Preguntas Frecuentes',
-      'es': 'Preguntas Frecuentes',
-      'en': 'Frequently Asked Questions'
+      es: 'Preguntas Frecuentes',
+      en: 'Frequently Asked Questions'
     },
     'faq.ver': {
       'es-MX': 'Ver respuesta',
-      'es': 'Ver respuesta',
-      'en': 'View answer'
+      es: 'Ver respuesta',
+      en: 'View answer'
     },
-    
+
     // Errores de carga
     'error.productos': {
       'es-MX': 'Error al cargar productos. Por favor, intente nuevamente.',
-      'es': 'Error al cargar productos. Por favor, intente nuevamente.',
-      'en': 'Error loading products. Please try again.'
+      es: 'Error al cargar productos. Por favor, intente nuevamente.',
+      en: 'Error loading products. Please try again.'
     },
     'error.promos': {
       'es-MX': 'Error al cargar promociones. Por favor, intente nuevamente.',
-      'es': 'Error al cargar promociones. Por favor, intente nuevamente.',
-      'en': 'Error loading promotions. Please try again.'
+      es: 'Error al cargar promociones. Por favor, intente nuevamente.',
+      en: 'Error loading promotions. Please try again.'
     },
     'error.faq': {
       'es-MX': 'Error al cargar preguntas frecuentes. Por favor, intente nuevamente.',
-      'es': 'Error al cargar preguntas frecuentes. Por favor, intente nuevamente.',
-      'en': 'Error loading FAQs. Please try again.'
+      es: 'Error al cargar preguntas frecuentes. Por favor, intente nuevamente.',
+      en: 'Error loading FAQs. Please try again.'
     },
     'error.red': {
       'es-MX': 'Error de conexión. Verifique su conexión a internet.',
-      'es': 'Error de conexión. Verifique su conexión a internet.',
-      'en': 'Connection error. Please check your internet connection.'
+      es: 'Error de conexión. Verifique su conexión a internet.',
+      en: 'Connection error. Please check your internet connection.'
     },
-    
+
     // Consola (debug)
     'debug.iniciado': {
       'es-MX': 'Sistema iniciado correctamente',
-      'es': 'Sistema iniciado correctamente',
-      'en': 'System started successfully'
+      es: 'Sistema iniciado correctamente',
+      en: 'System started successfully'
     },
     'debug.productosOK': {
       'es-MX': 'Productos cargados',
-      'es': 'Productos cargados',
-      'en': 'Products loaded'
+      es: 'Productos cargados',
+      en: 'Products loaded'
     },
     'debug.promosOK': {
       'es-MX': 'Promociones cargadas',
-      'es': 'Promociones cargadas',
-      'en': 'Promotions loaded'
+      es: 'Promociones cargadas',
+      en: 'Promotions loaded'
     },
     'debug.faqOK': {
       'es-MX': 'Preguntas frecuentes cargadas',
-      'es': 'Preguntas frecuentes cargadas',
-      'en': 'FAQs loaded'
+      es: 'Preguntas frecuentes cargadas',
+      en: 'FAQs loaded'
     }
   }
 };
@@ -319,7 +317,7 @@ const ResizeManager = {
 
   handleResize() {
     if (this.ticking) return;
-    
+
     this.ticking = true;
     requestAnimationFrame(() => {
       clearTimeout(this.timeout);
@@ -360,7 +358,7 @@ function setupAnalytics() {
     // Verificar si gtag.js se cargó (puede estar bloqueado por ad-blockers)
     if (typeof window.gtag === 'undefined') {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function(){ 
+      window.gtag = function () {
         // Stub silencioso si GA está bloqueado
         if (window.dataLayer) {
           window.dataLayer.push(arguments);
@@ -369,19 +367,23 @@ function setupAnalytics() {
     }
     gtag('js', new Date());
     gtag('config', 'G-Y46M6J1EWS', {
-      'send_page_view': true,
-      'anonymize_ip': true // Privacy-friendly
+      send_page_view: true,
+      anonymize_ip: true // Privacy-friendly
     });
-  } catch (_) { /* no-op: GA bloqueado o error de red */ }
+  } catch (_) {
+    /* no-op: GA bloqueado o error de red */
+  }
 }
 
 // ===== Analytics =====
 function log(ev, params = {}) {
-  try { 
+  try {
     if (typeof gtag === 'function') {
       gtag('event', ev, params);
     }
-  } catch (e) { /* no-op: GA bloqueado */ }
+  } catch (e) {
+    /* no-op: GA bloqueado */
+  }
 }
 
 // ===== Price Calculation =====
@@ -412,7 +414,7 @@ function setupHeaderScroll() {
   let ticking = false;
   let lastScrollY = 0;
   let scrollDirection = 'up';
-  
+
   const SCROLL_THRESHOLD = 24; // Umbral para activar is-scrolled
   const HIDE_THRESHOLD = 100; // Umbral para ocultar navbar (scroll hacia abajo)
   const COMPACT_THRESHOLD = 300; // Umbral para modo compacto
@@ -420,9 +422,10 @@ function setupHeaderScroll() {
   const toggleState = () => {
     const scrollY = window.scrollY;
     const scrollDelta = scrollY - lastScrollY;
-    
+
     // Determinar dirección de scroll
-    if (Math.abs(scrollDelta) > 5) { // Ignorar micro-scrolls
+    if (Math.abs(scrollDelta) > 5) {
+      // Ignorar micro-scrolls
       scrollDirection = scrollDelta > 0 ? 'down' : 'up';
     }
 
@@ -462,7 +465,7 @@ function setupHeaderScroll() {
 
   // Estado inicial
   toggleState();
-  
+
   // Throttled scroll con RAF
   window.addEventListener('scroll', requestToggle, { passive: true });
 }
@@ -477,20 +480,23 @@ function setupScrollReveal() {
   }
 
   // Configuración mejorada del Intersection Observer
-  scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Agregar pequeño delay para efecto más natural
-        setTimeout(() => {
-          entry.target.classList.add('is-visible');
-        }, 50);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { 
-    threshold: 0.15, // Detectar más temprano
-    rootMargin: '0px 0px -8% 0px' // Trigger antes de que entre completamente
-  });
+  scrollObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Agregar pequeño delay para efecto más natural
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, 50);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15, // Detectar más temprano
+      rootMargin: '0px 0px -8% 0px' // Trigger antes de que entre completamente
+    }
+  );
 
   animatedNodes.forEach(node => scrollObserver.observe(node));
 }
@@ -532,8 +538,7 @@ async function loadProducts() {
   if (!productsBase) return;
 
   // Filter active products (no price calculation needed, prices are final)
-  allProducts = productsBase
-    .filter(p => p.estado === 'activo');
+  allProducts = productsBase.filter(p => p.estado === 'activo');
 
   displayedProducts = [...allProducts];
   renderProducts();
@@ -556,59 +561,66 @@ function renderProducts() {
     return;
   }
 
-  carousel.innerHTML = displayedProducts.map((product, index) => {
-    const delay = Math.min(index, 5) * 80;
-    
-    // Usar emoji como imagen animada
-    const isEmojiLike = product.imagen && !product.imagen.startsWith('/') && !String(product.imagen).includes('.');
-    const safeName = escapeHTML(product.nombre || '');
-    const mediaMarkup = isEmojiLike
-      ? `<div class="product-emoji">${escapeHTML(product.imagen)}</div>`
-      : `<img class="product-image" src="${escapeHTML(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
+  carousel.innerHTML = displayedProducts
+    .map((product, index) => {
+      const delay = Math.min(index, 5) * 80;
 
-    // Construir detalles del producto
-    const detailsData = [
-      { label: 'Material', value: product.material },
-      { label: 'Incluye', value: product.incluye },
-      { label: 'Variantes', value: product.variantes }
-    ].filter(item => item.value);
+      // Usar emoji como imagen animada
+      const isEmojiLike =
+        product.imagen && !product.imagen.startsWith('/') && !String(product.imagen).includes('.');
+      const safeName = escapeHTML(product.nombre || '');
+      const mediaMarkup = isEmojiLike
+        ? `<div class="product-emoji">${escapeHTML(product.imagen)}</div>`
+        : `<img class="product-image" src="${escapeHTML(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
 
-    const detailMarkup = detailsData.length
-      ? `
+      // Construir detalles del producto
+      const detailsData = [
+        { label: 'Material', value: product.material },
+        { label: 'Incluye', value: product.incluye },
+        { label: 'Variantes', value: product.variantes }
+      ].filter(item => item.value);
+
+      const detailMarkup = detailsData.length
+        ? `
         <dl class="product-details">
-          ${detailsData.map(detail => `
+          ${detailsData
+            .map(
+              detail => `
             <div>
               <dt>${escapeHTML(detail.label)}</dt>
               <dd>${escapeHTML(detail.value)}</dd>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </dl>
       `
-      : '';
+        : '';
 
-    const tagsMarkup = product.tags && product.tags.length
-      ? `
+      const tagsMarkup =
+        product.tags && product.tags.length
+          ? `
         <div class="product-tags">
           ${product.tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join('')}
         </div>
       `
-      : '';
+          : '';
 
-    // Sugerencias de negocio
-    const sugerenciasMarkup = product.sugerencias
-      ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${escapeHTML(product.sugerencias)}</p>`
-      : '';
+      // Sugerencias de negocio
+      const sugerenciasMarkup = product.sugerencias
+        ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${escapeHTML(product.sugerencias)}</p>`
+        : '';
 
-    // Analytics: vista de item al render
-    log('view_item', {
-      item_id: product.id,
-      item_name: product.nombre,
-      price: product.precio_mxn,
-      item_category: product.categoria
-    });
+      // Analytics: vista de item al render
+      log('view_item', {
+        item_id: product.id,
+        item_name: product.nombre,
+        price: product.precio_mxn,
+        item_category: product.categoria
+      });
 
-    return `
-  <article class="card glass product-card animate-delay-${Math.min(index,5)}" role="listitem" data-animate="fade-up">
+      return `
+  <article class="card glass product-card animate-delay-${Math.min(index, 5)}" role="listitem" data-animate="fade-up">
       <div class="product-media">
         ${mediaMarkup}
       </div>
@@ -633,32 +645,41 @@ function renderProducts() {
       </a>
     </article>
   `;
-  }).join('');
+    })
+    .join('');
 
   registerAnimatedElements(carousel);
   setupImageErrorFallbacks(carousel);
   initCatalogCarousel(displayedProducts.length);
 
   // Log de interacción: add_to_cart en CTA
-  carousel.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('.product-cta');
-    if (!btn) return;
-    log('add_to_cart', {
-      item_id: btn.getAttribute('data-sku') || '',
-      item_name: btn.getAttribute('data-name') || ''
-    });
-  }, { once: true });
+  carousel.addEventListener(
+    'click',
+    ev => {
+      const btn = ev.target.closest('.product-cta');
+      if (!btn) return;
+      log('add_to_cart', {
+        item_id: btn.getAttribute('data-sku') || '',
+        item_name: btn.getAttribute('data-name') || ''
+      });
+    },
+    { once: true }
+  );
 }
 
 function setupImageErrorFallbacks(root) {
   if (!root) return;
   root.querySelectorAll('img.product-image').forEach(img => {
-    img.addEventListener('error', function() {
-      const ph = this.getAttribute('data-placeholder') || CONFIG.PLACEHOLDER_IMAGE;
-      if (this.src !== ph) {
-        this.src = ph;
-      }
-    }, { once: true });
+    img.addEventListener(
+      'error',
+      function () {
+        const ph = this.getAttribute('data-placeholder') || CONFIG.PLACEHOLDER_IMAGE;
+        if (this.src !== ph) {
+          this.src = ph;
+        }
+      },
+      { once: true }
+    );
   });
 }
 
@@ -668,12 +689,12 @@ function initCatalogCarousel(totalProducts) {
   const prevBtn = document.querySelector('.carousel-btn-prev');
   const nextBtn = document.querySelector('.carousel-btn-next');
   const dotsContainer = document.getElementById('catalog-dots');
-  
+
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
-  
+
   let currentIndex = 0;
   let itemsPerView = 1;
-  
+
   // Calcular items por vista según viewport
   function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
@@ -684,12 +705,12 @@ function initCatalogCarousel(totalProducts) {
       itemsPerView = 1;
     }
   }
-  
+
   // Calcular total de páginas
   function getTotalPages() {
     return Math.ceil(totalProducts / itemsPerView);
   }
-  
+
   // Actualizar posición del track
   function updateTrack() {
     const offset = -currentIndex * (100 / itemsPerView);
@@ -697,77 +718,93 @@ function initCatalogCarousel(totalProducts) {
     updateButtons();
     updateDots();
   }
-  
+
   // Actualizar estado de botones
   function updateButtons() {
     const totalPages = getTotalPages();
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= totalPages - 1;
   }
-  
+
   // Crear y actualizar dots
   function createDots() {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
-    
+
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
       if (i === currentIndex) dot.classList.add('active');
-      
+
       dot.addEventListener('click', () => {
         currentIndex = i;
         updateTrack();
         log('catalog_carousel_navigation', { method: 'dot', index: currentIndex });
       });
-      
+
       dotsContainer.appendChild(dot);
     }
   }
-  
+
   function updateDots() {
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
   }
-  
+
   // Event listeners para botones
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
       currentIndex--;
       updateTrack();
-      log('catalog_carousel_navigation', { method: 'button', direction: 'prev', index: currentIndex });
+      log('catalog_carousel_navigation', {
+        method: 'button',
+        direction: 'prev',
+        index: currentIndex
+      });
     }
   });
-  
+
   nextBtn.addEventListener('click', () => {
     const totalPages = getTotalPages();
     if (currentIndex < totalPages - 1) {
       currentIndex++;
       updateTrack();
-      log('catalog_carousel_navigation', { method: 'button', direction: 'next', index: currentIndex });
+      log('catalog_carousel_navigation', {
+        method: 'button',
+        direction: 'next',
+        index: currentIndex
+      });
     }
   });
-  
+
   // Soporte táctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
-  
-  track.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  
-  track.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-  
+
+  track.addEventListener(
+    'touchstart',
+    e => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  track.addEventListener(
+    'touchend',
+    e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
         // Swipe left - next
@@ -776,24 +813,27 @@ function initCatalogCarousel(totalProducts) {
         // Swipe right - prev
         prevBtn.click();
       }
-      log('catalog_carousel_navigation', { method: 'swipe', direction: diff > 0 ? 'next' : 'prev' });
+      log('catalog_carousel_navigation', {
+        method: 'swipe',
+        direction: diff > 0 ? 'next' : 'prev'
+      });
     }
   }
-  
+
   // Registrar callback de resize optimizado
   const handleCatalogResize = () => {
     const oldItemsPerView = itemsPerView;
     updateItemsPerView();
-    
+
     if (oldItemsPerView !== itemsPerView) {
       currentIndex = 0;
       createDots();
       updateTrack();
     }
   };
-  
+
   ResizeManager.register(handleCatalogResize);
-  
+
   // Inicializar
   updateItemsPerView();
   createDots();
@@ -806,8 +846,9 @@ function populateCategoryFilter() {
   if (!select) return;
 
   const categories = [...new Set(allProducts.map(p => p.categoria))];
-  
-  select.innerHTML = '<option value="todas">Todas</option>' + 
+
+  select.innerHTML =
+    '<option value="todas">Todas</option>' +
     categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
 }
 
@@ -817,12 +858,13 @@ function filterProducts() {
 
   displayedProducts = allProducts.filter(product => {
     const matchesCategory = categoryFilter === 'todas' || product.categoria === categoryFilter;
-    const matchesSearch = !searchTerm || 
+    const matchesSearch =
+      !searchTerm ||
       product.nombre.toLowerCase().includes(searchTerm) ||
-  (product.descripcion || '').toLowerCase().includes(searchTerm) ||
-  (product.id || '').toLowerCase().includes(searchTerm) ||
+      (product.descripcion || '').toLowerCase().includes(searchTerm) ||
+      (product.id || '').toLowerCase().includes(searchTerm) ||
       product.tags?.some(tag => tag.toLowerCase().includes(searchTerm));
-    
+
     return matchesCategory && matchesSearch;
   });
 
@@ -835,11 +877,11 @@ let promosLoaded = false;
 async function loadPromos() {
   // Si ya se cargó, no hacer nada
   if (promosLoaded) return;
-  
+
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
   const container = document.getElementById('promos-container');
   if (!container) return;
-  
+
   promosLoaded = true;
 
   if (!promos || promos.length === 0) {
@@ -873,63 +915,65 @@ async function loadPromos() {
     return;
   }
 
-  container.innerHTML = activePromos.map((promo, index) => {
-    const delay = Math.min(index, 5) * 70;
-    const destacadoClass = promo.destacado ? 'promo-destacado' : '';
-    const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
-    const accentColor = promo.color_acento || '#6366F1';
-    
-    // Construir precio visual
-    let precioHTML = '';
-    if (promo.precio_regular) {
-      const unitario = promo.precio_unitario 
-        ? `<span class="promo-unitario">$${promo.precio_unitario.toFixed(2)} c/u</span>` 
-        : '';
-      precioHTML = `
+  container.innerHTML = activePromos
+    .map((promo, index) => {
+      const delay = Math.min(index, 5) * 70;
+      const destacadoClass = promo.destacado ? 'promo-destacado' : '';
+      const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
+      const accentColor = promo.color_acento || '#6366F1';
+
+      // Construir precio visual
+      let precioHTML = '';
+      if (promo.precio_regular) {
+        const unitario = promo.precio_unitario
+          ? `<span class="promo-unitario">$${promo.precio_unitario.toFixed(2)} c/u</span>`
+          : '';
+        precioHTML = `
         <div class="promo-precio">
           <span class="promo-precio-total">$${promo.precio_regular}</span>
           ${unitario}
         </div>
       `;
-    } else if (promo.precio_especial) {
-      precioHTML = `
+      } else if (promo.precio_especial) {
+        precioHTML = `
         <div class="promo-precio">
           <span class="promo-precio-especial">$${promo.precio_especial}</span>
         </div>
       `;
-    } else if (promo.monto_minimo) {
-      precioHTML = `
+      } else if (promo.monto_minimo) {
+        precioHTML = `
         <div class="promo-minimo">
           <span>Mínimo: $${promo.monto_minimo}</span>
         </div>
       `;
-    }
+      }
 
-    // Badge
-    const badgeHTML = promo.badge 
-      ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>` 
-      : '';
+      // Badge
+      const badgeHTML = promo.badge
+        ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
+        : '';
 
-    // Beneficios
-    const beneficiosHTML = promo.beneficios && promo.beneficios.length > 0
-      ? `
+      // Beneficios
+      const beneficiosHTML =
+        promo.beneficios && promo.beneficios.length > 0
+          ? `
         <ul class="promo-beneficios">
           ${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}
         </ul>
       `
-      : '';
+          : '';
 
-    // Fechas o permanente
-    let validezHTML = '';
-    if (promo.tipo === 'permanente') {
-      validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
-    } else if (promo.desde && promo.hasta) {
-      validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
-    }
+      // Fechas o permanente
+      let validezHTML = '';
+      if (promo.tipo === 'permanente') {
+        validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
+      } else if (promo.desde && promo.hasta) {
+        validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
+      }
 
-    // CTA
-    const ctaHTML = promo.cta_url 
-      ? `
+      // CTA
+      const ctaHTML = promo.cta_url
+        ? `
         <a href="${promo.cta_url}" 
            class="btn btn-primary promo-cta" 
            target="_blank" 
@@ -939,7 +983,7 @@ async function loadPromos() {
           ${escapeHTML(promo.cta_text || 'Más info')}
         </a>
       `
-      : `
+        : `
         <button class="btn btn-primary promo-cta-contact" 
                 data-promo-id="${escapeHTML(promo.id)}" 
                 data-promo-name="${escapeHTML(promo.titulo)}">
@@ -947,20 +991,20 @@ async function loadPromos() {
         </button>
       `;
 
-    // Icono (SVG o emoji)
-    let iconoHTML = '';
-    if (promo.icono) {
-      if (promo.icono.endsWith('.svg')) {
-        iconoHTML = `<img src="${escapeHTML(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+      // Icono (SVG o emoji)
+      let iconoHTML = '';
+      if (promo.icono) {
+        if (promo.icono.endsWith('.svg')) {
+          iconoHTML = `<img src="${escapeHTML(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+        } else {
+          iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
+        }
       } else {
-        iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
+        iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
       }
-    } else {
-      iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
-    }
 
-    return `
-  <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index,5)}" 
+      return `
+  <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index, 5)}" 
        data-animate="fade-up" 
        data-promo-tipo="${promo.tipo}">
       ${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}
@@ -975,15 +1019,16 @@ async function loadPromos() {
       ${ctaHTML}
     </article>
   `;
-  }).join('');
+    })
+    .join('');
 
   registerAnimatedElements(container);
-  
+
   // Inicializar carrusel
   initPromosCarousel(activePromos.length);
 
   // Analytics para CTAs externas
-  container.addEventListener('click', (ev) => {
+  container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
     if (!a) return;
     log('select_promotion', {
@@ -993,7 +1038,7 @@ async function loadPromos() {
   });
 
   // CTAs de contacto interno
-  container.addEventListener('click', (ev) => {
+  container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
     const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
@@ -1012,12 +1057,12 @@ function initPromosCarousel(totalPromos) {
   const prevBtn = document.querySelector('.carousel-btn-prev');
   const nextBtn = document.querySelector('.carousel-btn-next');
   const dotsContainer = document.getElementById('promos-dots');
-  
+
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
-  
+
   let currentIndex = 0;
   let itemsPerView = 1;
-  
+
   // Calcular items por vista según viewport
   function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
@@ -1028,12 +1073,12 @@ function initPromosCarousel(totalPromos) {
       itemsPerView = 1;
     }
   }
-  
+
   // Calcular total de páginas
   function getTotalPages() {
     return Math.ceil(totalPromos / itemsPerView);
   }
-  
+
   // Actualizar posición del track
   function updateTrack() {
     const offset = -currentIndex * (100 / itemsPerView);
@@ -1041,41 +1086,41 @@ function initPromosCarousel(totalPromos) {
     updateButtons();
     updateDots();
   }
-  
+
   // Actualizar estado de botones
   function updateButtons() {
     const totalPages = getTotalPages();
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= totalPages - 1;
   }
-  
+
   // Crear y actualizar dots
   function createDots() {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
-    
+
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
       if (i === currentIndex) dot.classList.add('active');
-      
+
       dot.addEventListener('click', () => {
         currentIndex = i;
         updateTrack();
       });
-      
+
       dotsContainer.appendChild(dot);
     }
   }
-  
+
   function updateDots() {
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
   }
-  
+
   // Event listeners para botones
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
@@ -1083,7 +1128,7 @@ function initPromosCarousel(totalPromos) {
       updateTrack();
     }
   });
-  
+
   nextBtn.addEventListener('click', () => {
     const totalPages = getTotalPages();
     if (currentIndex < totalPages - 1) {
@@ -1091,24 +1136,32 @@ function initPromosCarousel(totalPromos) {
       updateTrack();
     }
   });
-  
+
   // Soporte táctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
-  
-  track.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  
-  track.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-  
+
+  track.addEventListener(
+    'touchstart',
+    e => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  track.addEventListener(
+    'touchend',
+    e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
         // Swipe left - next
@@ -1119,21 +1172,21 @@ function initPromosCarousel(totalPromos) {
       }
     }
   }
-  
+
   // Registrar callback de resize optimizado
   const handlePromosResize = () => {
     const oldItemsPerView = itemsPerView;
     updateItemsPerView();
-    
+
     if (oldItemsPerView !== itemsPerView) {
       currentIndex = 0;
       createDots();
       updateTrack();
     }
   };
-  
+
   ResizeManager.register(handlePromosResize);
-  
+
   // Inicializar
   updateItemsPerView();
   createDots();
@@ -1158,11 +1211,11 @@ let faqLoaded = false;
 async function loadFAQ() {
   // Si ya se cargó, no hacer nada
   if (faqLoaded) return;
-  
+
   const faqData = await loadJSON(CONFIG.DATA_PATHS.faq);
   const container = document.getElementById('faq-list');
   if (!container) return;
-  
+
   faqLoaded = true;
 
   if (!faqData || faqData.length === 0) {
@@ -1177,16 +1230,18 @@ async function loadFAQ() {
   }
 
   // Render de items con IDs linkeables
-  container.innerHTML = faqData.map((item, index) => {
-    const delay = Math.min(index, 5) * 70;
-    const id = `faq-${slugify(item.q)}`;
-    return `
-  <details class="faq-item animate-delay-${Math.min(index,5)}" id="${id}" data-animate="fade-up">
+  container.innerHTML = faqData
+    .map((item, index) => {
+      const delay = Math.min(index, 5) * 70;
+      const id = `faq-${slugify(item.q)}`;
+      return `
+  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up">
       <summary><span>${escapeHTML(item.q)}</span></summary>
       <p>${escapeHTML(item.a)}</p>
     </details>
   `;
-  }).join('');
+    })
+    .join('');
 
   registerAnimatedElements(container);
 
@@ -1195,12 +1250,14 @@ async function loadFAQ() {
   if (top) {
     const featured = faqData.filter(i => i.destacada);
     if (featured.length > 0) {
-      top.innerHTML = featured.map(it => {
-        const id = `faq-${slugify(it.q)}`;
-        return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(it.q)}">⭐ ${escapeHTML(it.q)}</a>`;
-      }).join('');
+      top.innerHTML = featured
+        .map(it => {
+          const id = `faq-${slugify(it.q)}`;
+          return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(it.q)}">⭐ ${escapeHTML(it.q)}</a>`;
+        })
+        .join('');
 
-      top.addEventListener('click', (e) => {
+      top.addEventListener('click', e => {
         const a = e.target.closest('a.faq-chip');
         if (!a) return;
         const sel = a.getAttribute('data-faq-target');
@@ -1236,12 +1293,15 @@ async function loadFAQ() {
 
   function applyFilter(query) {
     const q = (query || '').trim().toLowerCase();
-    const cat = (categorySelect && categorySelect.value) ? categorySelect.value : '';
+    const cat = categorySelect && categorySelect.value ? categorySelect.value : '';
     let visible = 0;
     items.forEach(el => {
       const text = el.textContent.toLowerCase();
       const matchText = q.length === 0 || text.includes(q);
-      const matchCat = !cat || (text.includes(cat) || (el.querySelector('summary span')?.textContent.toLowerCase().includes(cat)));
+      const matchCat =
+        !cat ||
+        text.includes(cat) ||
+        el.querySelector('summary span')?.textContent.toLowerCase().includes(cat);
       const match = matchText && matchCat;
       el.style.display = match ? '' : 'none';
       if (match) visible++;
@@ -1254,16 +1314,16 @@ async function loadFAQ() {
   }
 
   if (search) {
-    search.addEventListener('input', (e) => applyFilter(e.target.value));
+    search.addEventListener('input', e => applyFilter(e.target.value));
   }
   if (categorySelect) {
     categorySelect.addEventListener('change', () => applyFilter(search ? search.value : ''));
   }
   if (btnExpand) {
-    btnExpand.addEventListener('click', () => items.forEach(el => el.open = true));
+    btnExpand.addEventListener('click', () => items.forEach(el => (el.open = true)));
   }
   if (btnCollapse) {
-    btnCollapse.addEventListener('click', () => items.forEach(el => el.open = false));
+    btnCollapse.addEventListener('click', () => items.forEach(el => (el.open = false)));
   }
 
   // Inicializa contador con el total al cargar
@@ -1338,32 +1398,49 @@ async function loadSocialLinks() {
   const container = document.getElementById('social-links');
   if (container) {
     const links = [];
-    if (social.instagram) links.push({ key: 'instagram', label: 'Instagram', url: social.instagram });
+    if (social.instagram)
+      links.push({ key: 'instagram', label: 'Instagram', url: social.instagram });
     if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook });
     if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok });
 
-    container.innerHTML = links.map(link => `
+    container.innerHTML = links
+      .map(
+        link => `
       <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}" title="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
         <span class="sr-only">${escapeHTML(link.label)}</span>
       </a>
-    `).join('');
+    `
+      )
+      .join('');
   }
 
   // Hero social links (con texto)
   const heroContainer = document.getElementById('hero-social-links');
   if (heroContainer) {
     const links = [];
-    if (social.instagram) links.push({ key: 'instagram', label: 'Instagram', url: social.instagram, icon: 'instagram' });
-    if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook, icon: 'facebook' });
-    if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok, icon: 'tiktok' });
+    if (social.instagram)
+      links.push({
+        key: 'instagram',
+        label: 'Instagram',
+        url: social.instagram,
+        icon: 'instagram'
+      });
+    if (social.facebook)
+      links.push({ key: 'facebook', label: 'Facebook', url: social.facebook, icon: 'facebook' });
+    if (social.tiktok)
+      links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok, icon: 'tiktok' });
 
-    heroContainer.innerHTML = links.map(link => `
+    heroContainer.innerHTML = links
+      .map(
+        link => `
       <a class="community-link" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
         <span>${escapeHTML(link.label)}</span>
       </a>
-    `).join('');
+    `
+      )
+      .join('');
   }
 }
 
@@ -1386,7 +1463,7 @@ function setupNav() {
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('.nav-menu');
   const header = document.querySelector('.header');
-  
+
   if (!toggle || !menu) return;
 
   const initialState = menu.classList.contains('active');
@@ -1399,45 +1476,49 @@ function setupNav() {
   const closeMenu = () => {
     if (isAnimating) return;
     isAnimating = true;
-    
+
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Abrir menú');
     document.body.classList.remove('nav-open');
-    
+
     // Reset flag después de la animación
-    setTimeout(() => { isAnimating = false; }, 350);
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
   };
 
   const openMenu = () => {
     if (isAnimating) return;
     isAnimating = true;
-    
+
     menu.classList.add('active');
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.classList.add('nav-open');
-    
+
     // Reset flag después de la animación
-    setTimeout(() => { isAnimating = false; }, 350);
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
   };
 
-  toggle.addEventListener('click', (e) => {
+  toggle.addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (isAnimating) return; // Prevenir clicks durante animación
-    
+
     const isOpen = menu.classList.contains('active');
-    
+
     if (isOpen) {
       closeMenu();
     } else {
       openMenu();
     }
-    
+
     // Log menu interaction
     log('nav_menu_toggle', { state: isOpen ? 'closed' : 'open' });
   });
@@ -1451,17 +1532,19 @@ function setupNav() {
   });
 
   // Close menu when clicking outside (on overlay area)
-  document.addEventListener('click', (e) => {
-    if (menu.classList.contains('active') && 
-        !menu.contains(e.target) && 
-        !toggle.contains(e.target)) {
+  document.addEventListener('click', e => {
+    if (
+      menu.classList.contains('active') &&
+      !menu.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
       closeMenu();
       log('nav_menu_close', { method: 'outside_click' });
     }
   });
 
   // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && menu.classList.contains('active')) {
       closeMenu();
       toggle.focus();
@@ -1476,21 +1559,21 @@ function setupNav() {
       log('nav_menu_close', { method: 'resize_to_desktop' });
     }
   };
-  
+
   ResizeManager.register(handleNavResize);
 
   // Smooth scroll behavior for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#' || !href) return;
-      
+
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
         const headerHeight = header ? header.offsetHeight : 80;
         const targetPosition = target.offsetTop - headerHeight;
-        
+
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
@@ -1516,30 +1599,33 @@ function setupFilters() {
 
 // ===== Lazy Loading de Secciones No-Críticas =====
 function setupLazyLoading() {
-  const lazyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const section = entry.target;
-        const sectionId = section.id;
-        
-        // Cargar datos según la sección
-        if (sectionId === 'promociones' && !promosLoaded) {
-          loadPromos();
-          lazyObserver.unobserve(section);
-        } else if (sectionId === 'faq' && !faqLoaded) {
-          loadFAQ();
-          lazyObserver.unobserve(section);
+  const lazyObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const section = entry.target;
+          const sectionId = section.id;
+
+          // Cargar datos según la sección
+          if (sectionId === 'promociones' && !promosLoaded) {
+            loadPromos();
+            lazyObserver.unobserve(section);
+          } else if (sectionId === 'faq' && !faqLoaded) {
+            loadFAQ();
+            lazyObserver.unobserve(section);
+          }
         }
-      }
-    });
-  }, {
-    rootMargin: '200px' // Precargar 200px antes de que sea visible
-  });
-  
+      });
+    },
+    {
+      rootMargin: '200px' // Precargar 200px antes de que sea visible
+    }
+  );
+
   // Observar secciones no-críticas
   const promosSection = document.getElementById('promociones');
   const faqSection = document.getElementById('faq');
-  
+
   if (promosSection) lazyObserver.observe(promosSection);
   if (faqSection) lazyObserver.observe(faqSection);
 }
@@ -1551,7 +1637,7 @@ async function init() {
 
   // Ajuste de viewport y recursos según dispositivo
   setupViewportAndDevice();
-  
+
   setupAnalytics();
   setupNav();
   setupFilters();
@@ -1559,13 +1645,10 @@ async function init() {
   setupScrollReveal();
   hydrateEmails();
   injectOrganizationSchema();
-  
+
   // Cargar solo datos críticos inmediatamente
-  await Promise.all([
-    loadProducts(),
-    loadSocialLinks()
-  ]);
-  
+  await Promise.all([loadProducts(), loadSocialLinks()]);
+
   // Configurar lazy loading para secciones no-críticas
   setupLazyLoading();
 
@@ -1576,7 +1659,9 @@ async function init() {
   if (CONFIG.DEBUG_MODE) {
     console.log(`✅ ${TextosSistema.obtener('debug.iniciado')}`);
     console.log(`📊 ${TextosSistema.obtener('debug.productosOK')}: ${allProducts.length}`);
-    console.log(`💰 Margen de precio: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`);
+    console.log(
+      `💰 Margen de precio: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`
+    );
     console.log(`🔄 Redondeo: $${CONFIG.PRICE_STEP} MXN`);
   }
 }
@@ -1649,11 +1734,15 @@ function setupViewportAndDevice() {
   setVW();
   setDeviceClass();
 
-  window.addEventListener('resize', () => {
-    setVH();
-    setHeaderHeight();
-    setVW();
-  }, { passive: true });
+  window.addEventListener(
+    'resize',
+    () => {
+      setVH();
+      setHeaderHeight();
+      setVW();
+    },
+    { passive: true }
+  );
 
   window.addEventListener('orientationchange', () => {
     setVH();
@@ -1681,20 +1770,29 @@ function applyURLState() {
   const search = document.getElementById('search-input');
   let changed = false;
 
-  if (mat && catSel) { catSel.value = mat; changed = true; }
-  if (q && search) { search.value = q; changed = true; }
+  if (mat && catSel) {
+    catSel.value = mat;
+    changed = true;
+  }
+  if (q && search) {
+    search.value = q;
+    changed = true;
+  }
 
   if (changed) {
     filterProducts();
   }
 
   if (p) {
-    const card = [...document.querySelectorAll('.product-card')]
-      .find(c => c.querySelector('.product-sku')?.textContent.includes(p));
+    const card = [...document.querySelectorAll('.product-card')].find(c =>
+      c.querySelector('.product-sku')?.textContent.includes(p)
+    );
     if (card) {
       card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       card.style.outline = '2px solid rgba(6, 182, 212, 0.7)';
-      setTimeout(() => { card.style.outline = 'none'; }, 2000);
+      setTimeout(() => {
+        card.style.outline = 'none';
+      }, 2000);
     }
   }
 
@@ -1702,8 +1800,10 @@ function applyURLState() {
     const params = new URLSearchParams(location.search);
     const mVal = catSel?.value && catSel.value !== 'todas' ? catSel.value : '';
     const qVal = search?.value?.trim() || '';
-    if (mVal) params.set('m', mVal); else params.delete('m');
-    if (qVal) params.set('q', qVal); else params.delete('q');
+    if (mVal) params.set('m', mVal);
+    else params.delete('m');
+    if (qVal) params.set('q', qVal);
+    else params.delete('q');
     history.replaceState(null, '', `${location.pathname}${params.toString() ? `?${params}` : ''}`);
   };
 
@@ -1720,11 +1820,9 @@ function injectOrganizationSchema() {
       name: 'Mahitek 3D Lab',
       url: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/',
       logo: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/mark-icon.svg',
-      sameAs: [
-        'https://www.instagram.com/mahitek3dlab',
-        'https://www.facebook.com/mahitek3dlab'
-      ],
-      description: 'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, decoración y proyectos creativos.',
+      sameAs: ['https://www.instagram.com/mahitek3dlab', 'https://www.facebook.com/mahitek3dlab'],
+      description:
+        'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, decoración y proyectos creativos.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Pachuca',
@@ -1743,5 +1841,7 @@ function injectOrganizationSchema() {
     script.id = 'org-schema';
     script.textContent = JSON.stringify(data);
     document.head.appendChild(script);
-  } catch (_) { /* no-op */ }
+  } catch (_) {
+    /* no-op */
+  }
 }
