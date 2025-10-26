@@ -27,6 +27,13 @@
   --accent-cyan: #06b6d4;
   --accent-green: #10b981;
   --accent-red: #d22623;
+  
+  /* Alias para compatibilidad con código legacy */
+  --primary-cyan: var(--accent-cyan);
+  --background-dark: var(--bg-dark);
+  --text-light: var(--text-primary);
+  --secondary-magenta: #9b59b6;
+  
   --gradient-accent: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
   --gradient-accent-animated: linear-gradient(
     120deg,
@@ -1235,15 +1242,26 @@ button {
   }
 }
 
-/* Ocultar decoraciones en mobile compacto */
+/* Reducir opacidad y escala en mobile compacto pero mantenerlos visibles */
 @media (max-width: 768px) {
   .header.is-compact .nav-decorations {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   .nav-nopal,
   .nav-aguila {
-    display: none;
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  
+  .nav-nopal {
+    width: 30px;
+    height: 45px;
+  }
+  
+  .nav-aguila {
+    width: 60px;
+    height: 60px;
   }
 }
 
