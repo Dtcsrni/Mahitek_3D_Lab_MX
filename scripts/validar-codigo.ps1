@@ -4,13 +4,31 @@
 
 param(
     [switch]$Verbose,
-    [switch]$FixAutomatic
+    [switch]$FixAutomatic,
+    [switch]$SinSonidos
 )
 
 $ErrorActionPreference = "Continue"
 $script:TotalErrores = 0
 $script:TotalAdvertencias = 0
 $script:TotalPasados = 0
+
+# Cargar libreria de sonidos
+$sonidosPath = Join-Path $PSScriptRoot "lib\sonidos.ps1"
+if (Test-Path $sonidosPath) {
+    . $sonidosPath
+    if ($SinSonidos) {
+        Set-SonidosHabilitados -Habilitado $false
+    }
+} else {
+    # Funciones vacias si no existe la libreria
+    function Play-ProcesoIniciado { }
+    function Play-ValidacionOK { }
+    function Play-Advertencia { }
+    function Play-ErrorCritico { }
+    function Play-TareaCompletada { }
+    function Play-TestsFallidos { }
+}
 
 # Funciones de output
 function Write-Success { Write-Host "[OK] $args" -ForegroundColor Green }
@@ -262,6 +280,8 @@ Write-Host "`n================================================" -ForegroundColor
 Write-Host "  Sistema de Validacion - Mahitek 3D Lab" -ForegroundColor Cyan
 Write-Host "================================================`n" -ForegroundColor Cyan
 
+Play-ProcesoIniciado  # Sonido suave al iniciar
+
 Test-JSONFiles
 Test-FileReferences
 Test-JavaScriptSyntax
@@ -281,11 +301,23 @@ if ($script:TotalErrores -eq 0) {
     Write-Host "================================================" -ForegroundColor Green
     Write-Host "  VALIDACION EXITOSA - OK PARA COMMIT" -ForegroundColor Green
     Write-Host "================================================`n" -ForegroundColor Green
+    
+    # Sonido de exito solo si todo paso (sin advertencias molestas)
+    if ($script:TotalAdvertencias -eq 0) {
+        Play-ValidacionOK  # Sonido muy sutil
+    } else {
+        Play-TareaCompletada  # Sonido suave (hay warnings)
+    }
+    
     exit 0
 }
 else {
     Write-Host "================================================" -ForegroundColor Red
     Write-Host "  VALIDACION FALLIDA - CORREGIR ERRORES" -ForegroundColor Red
     Write-Host "================================================`n" -ForegroundColor Red
+    
+    # Sonido de error SOLO si hay errores criticos
+    Play-TestsFallidos  # Sonido claro pero no molesto
+    
     exit 1
 }

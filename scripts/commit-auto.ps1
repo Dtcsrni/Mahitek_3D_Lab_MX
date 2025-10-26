@@ -12,10 +12,29 @@ param(
     
     [switch]$NoPush,
     [switch]$SkipTests,
-    [switch]$Verbose
+    [switch]$Verbose,
+    [switch]$SinSonidos
 )
 
 $ErrorActionPreference = "Stop"
+
+# Cargar libreria de sonidos
+$sonidosPath = Join-Path $PSScriptRoot "lib\sonidos.ps1"
+if (Test-Path $sonidosPath) {
+    . $sonidosPath
+    if ($SinSonidos) {
+        Set-SonidosHabilitados -Habilitado $false
+    }
+} else {
+    # Funciones vacias si no existe la libreria
+    function Play-ProcesoIniciado { }
+    function Play-SolicitarConfirmacion { }
+    function Play-Advertencia { }
+    function Play-ErrorCritico { }
+    function Play-CommitExitoso { }
+    function Play-PushExitoso { }
+    function Play-TestsFallidos { }
+}
 
 # Funciones de output
 function Write-Success { Write-Host "[OK] $args" -ForegroundColor Green }
@@ -28,6 +47,8 @@ function Write-Header { Write-Host "`n=== $args ===" -ForegroundColor Magenta }
 Write-Host "`n================================================" -ForegroundColor Cyan
 Write-Host "  Sistema de Commit Auto - Mahitek 3D Lab" -ForegroundColor Cyan
 Write-Host "================================================`n" -ForegroundColor Cyan
+
+Play-ProcesoIniciado  # Sonido suave al iniciar
 
 # ===== 1. Verificar cambios =====
 Write-Header "Verificando cambios en Git"
@@ -141,6 +162,7 @@ Write-Host $commitMsgCompleto -ForegroundColor Yellow
 
 # Confirmar con usuario
 Write-Host ""
+Play-SolicitarConfirmacion  # Sonido suave para solicitar input
 $confirmacion = Read-Host "Continuar con el commit? (S/n)"
 
 if ($confirmacion -and $confirmacion.ToLower() -ne 's' -and $confirmacion.ToLower() -ne 'y') {
@@ -166,6 +188,7 @@ Write-Header "Creando commit"
 try {
     git commit -m $commitMsgCompleto
     Write-Success "Commit creado exitosamente"
+    Play-CommitExitoso  # Sonido armonioso de exito
     
     # Obtener hash del commit
     $commitHash = git rev-parse --short HEAD
@@ -173,6 +196,7 @@ try {
 }
 catch {
     Write-Error-Custom "Error al crear commit: $($_.Exception.Message)"
+    Play-ErrorCritico  # Sonido de error critico
     exit 1
 }
 
@@ -180,6 +204,7 @@ catch {
 if (-not $NoPush) {
     Write-Header "Subiendo cambios a GitHub"
     
+    Play-SolicitarConfirmacion  # Sonido antes de preguntar
     $confirmPush = Read-Host "Hacer push a origin main? (S/n)"
     
     if ($confirmPush -and $confirmPush.ToLower() -ne 's' -and $confirmPush.ToLower() -ne 'y') {
@@ -189,10 +214,12 @@ if (-not $NoPush) {
         try {
             git push origin main
             Write-Success "Cambios subidos a GitHub exitosamente"
+            Play-PushExitoso  # Sonido gratificante de exito completo
         }
         catch {
             Write-Error-Custom "Error al hacer push: $($_.Exception.Message)"
             Write-Warning-Custom "El commit se creo localmente pero no se subio"
+            Play-ErrorCritico  # Sonido de error en push
             exit 1
         }
     }
