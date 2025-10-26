@@ -47,12 +47,29 @@
   border: 1px solid rgba(6, 182, 212, 0.35);
   font-size: 0.85rem;
 }
-.badge-save { background: rgba(22, 163, 74, 0.15); border-color: rgba(22, 163, 74, 0.35); }
-.badge--value { background: rgba(147, 51, 234, 0.15); border-color: rgba(147, 51, 234, 0.35); }
-.badge--bestseller { background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.35); }
-.badge--entry { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); }
+.badge-save {
+  background: rgba(22, 163, 74, 0.15);
+  border-color: rgba(22, 163, 74, 0.35);
+}
+.badge--value {
+  background: rgba(147, 51, 234, 0.15);
+  border-color: rgba(147, 51, 234, 0.35);
+}
+.badge--bestseller {
+  background: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.35);
+}
+.badge--entry {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
+}
 
-.promo-badges { display:flex; gap:6px; align-items:center; flex-wrap: wrap; }
+.promo-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .promo-note {
   margin-top: 8px;
@@ -68,7 +85,10 @@
   margin: 0;
   opacity: 0.9;
 }
-.payments-note { margin: 6px 0 10px; opacity: 0.9; }
+.payments-note {
+  margin: 6px 0 10px;
+  opacity: 0.9;
+}
 
 .calc-card .calc-label {
   display: block;
@@ -98,7 +118,11 @@
 .calc-missing.ok {
   color: #16a34a;
 }
-.calc-help { margin-top: 6px; font-size: .9rem; opacity: .85; }
+.calc-help {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
 
 .calc-admin {
   margin-top: 12px;
