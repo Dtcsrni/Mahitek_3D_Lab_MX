@@ -1548,6 +1548,9 @@ function setupLazyLoading() {
 async function init() {
   // Inicializar sistema de idioma PRIMERO
   GestorIdioma.inicializar();
+
+  // Ajuste de viewport y recursos según dispositivo
+  setupViewportAndDevice();
   
   setupAnalytics();
   setupNav();
@@ -1601,6 +1604,61 @@ function hydrateEmails() {
     }
     // Reduce scraping signals
     link.setAttribute('rel', `${link.getAttribute('rel') || ''} nofollow noopener noreferrer`);
+  });
+}
+
+// ===== Viewport and Device Capability Setup =====
+function setupViewportAndDevice() {
+  const docEl = document.documentElement;
+
+  const setVH = () => {
+    const vh = window.innerHeight * 0.01;
+    docEl.style.setProperty('--vh', `${vh}px`);
+  };
+
+  const setVW = () => {
+    const vw = window.innerWidth * 0.01;
+    docEl.style.setProperty('--vw', `${vw}px`);
+  };
+
+  const setHeaderHeight = () => {
+    const header = document.querySelector('.header');
+    if (header) {
+      docEl.style.setProperty('--header-h', `${header.offsetHeight}px`);
+    }
+  };
+
+  const setDeviceClass = () => {
+    try {
+      const mem = navigator.deviceMemory || 2; // GB
+      const cores = navigator.hardwareConcurrency || 2;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+      const isHigh = mem >= 4 && cores >= 6 && !reduceMotion && finePointer;
+      docEl.classList.toggle('device-high', isHigh);
+      docEl.classList.toggle('device-low', !isHigh);
+    } catch (e) {
+      // Fallback: marcar como bajo
+      docEl.classList.add('device-low');
+    }
+  };
+
+  setVH();
+  setHeaderHeight();
+  setVW();
+  setDeviceClass();
+
+  window.addEventListener('resize', () => {
+    setVH();
+    setHeaderHeight();
+    setVW();
+  }, { passive: true });
+
+  window.addEventListener('orientationchange', () => {
+    setVH();
+    setHeaderHeight();
+    setVW();
   });
 }
 
