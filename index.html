@@ -54,9 +54,9 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
     <link rel="canonical" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
-  <!-- Módulo de animaciones optimizadas -->
-  <link rel="stylesheet" href="assets/css/modules/animations.css?v=20251026" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
+    <!-- Módulo de animaciones optimizadas -->
+    <link rel="stylesheet" href="assets/css/modules/animations.css?v=20251026" />
     <link rel="icon" type="image/png" href="assets/img/favicon_512.png" sizes="any" />
     <!-- Favicons: usamos ruta relativa para evitar 404 en proyecto Pages -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -457,6 +457,96 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECCIÓN: PROBLEMA (Pain Points) ===== -->
+      <section id="problema" class="section section--full section-accent--red" aria-labelledby="problema-title">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <div class="section-heading">
+              <img
+                src="assets/img/logo-color.svg"
+                alt="Mahitek 3D Lab"
+                class="section-heading-logo"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <h2 class="section-title" id="problema-title">¿Te suena familiar?</h2>
+            </div>
+            <p class="section-intro">
+              Problemas comunes que resolvemos a diario: piezas imposibles de encontrar, prototipos caros y semanas de espera.
+            </p>
+          </div>
+
+          <div class="features-grid features-grid--3">
+            <article class="feature-card lift-on-hover" data-animate="fade-up">
+              <div class="feature-icon" data-svg="model-3d-rotate" aria-hidden="true"></div>
+              <h3 class="feature-title">Repuestos imposibles de encontrar</h3>
+              <p class="feature-text">Fabricamos bajo demanda esa pieza descontinuada con medidas exactas y material resistente.</p>
+            </article>
+
+            <article class="feature-card lift-on-hover animate-delay-1" data-animate="fade-up">
+              <div class="feature-icon" data-svg="gears-synced" aria-hidden="true"></div>
+              <h3 class="feature-title">Prototipos carísimos</h3>
+              <p class="feature-text">Sin mínimos de producción ni moldes. Paga solo por lo que necesitas, desde 1 pieza.</p>
+            </article>
+
+            <article class="feature-card lift-on-hover animate-delay-2" data-animate="fade-up">
+              <div class="feature-icon" data-svg="shipping-box" aria-hidden="true"></div>
+              <h3 class="feature-title">Semanas de espera</h3>
+              <p class="feature-text">Producción local en 24–72 horas y envíos a todo México con rastreo.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECCIÓN: SOLUCIÓN (Beneficios) ===== -->
+      <section id="solucion" class="section section--full section-accent--teal" aria-labelledby="solucion-title">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <div class="section-heading">
+              <img
+                src="assets/img/logo-color.svg"
+                alt="Mahitek 3D Lab"
+                class="section-heading-logo"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <h2 class="section-title" id="solucion-title">Creamos exactamente lo que necesitas</h2>
+            </div>
+            <p class="section-intro">Fabricación 3D personalizada en PETG de grado industrial. Rápido, resistente y accesible.</p>
+          </div>
+
+          <div class="features-grid features-grid--4">
+            <article class="feature-card" data-animate="scale-up">
+              <div class="feature-icon" data-svg="printer-3d" aria-hidden="true"></div>
+              <h3 class="feature-title">Rápido</h3>
+              <p class="feature-text">De archivo 3D a pieza física en 24–72 horas. Sin trámites complicados.</p>
+            </article>
+
+            <article class="feature-card animate-delay-1" data-animate="scale-up">
+              <div class="feature-icon" data-svg="quality-badge" aria-hidden="true"></div>
+              <h3 class="feature-title">Resistente</h3>
+              <p class="feature-text">PETG de alto desempeño: soporta uso real, impactos y temperatura.</p>
+            </article>
+
+            <article class="feature-card animate-delay-2" data-animate="scale-up">
+              <div class="feature-icon" data-svg="gears-synced" aria-hidden="true"></div>
+              <h3 class="feature-title">Accesible</h3>
+              <p class="feature-text">Sin mínimos ni moldes. Mejores costos desde 1 pieza.</p>
+            </article>
+
+            <article class="feature-card animate-delay-3" data-animate="scale-up">
+              <div class="feature-icon" data-svg="shipping-box" aria-hidden="true"></div>
+              <h3 class="feature-title">Envío nacional</h3>
+              <p class="feature-text">Empaque protegido y entrega con rastreo a toda la República.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -1125,6 +1215,8 @@
               <p>Estamos redactando respuestas útiles. Mientras tanto, contáctanos y resolvemos tu caso directo 🤗.</p>
             </div>
           </div>
+          <!-- Contenedor reservado para JSON-LD (sin inline script por CSP) -->
+          <div id="faq-schema" hidden aria-hidden="true"></div>
         </div>
       </section>
 
@@ -1253,8 +1345,17 @@
             </form>
           </div>
         </div>
+        <div class="footer-trust animate-delay-4" data-animate="fade-up" aria-label="Confianza y garantías">
+          <ul class="trust-badges">
+            <li>✅ Envío a toda la República</li>
+            <li>✅ Pago seguro</li>
+            <li>✅ Garantía 30 días</li>
+            <li>✅ Hecho en México</li>
+          </ul>
+        </div>
         <p class="footer-copy">
-          © 2025 Mahitek 3D Lab — Coda: <span class="accent-text">memoria en forma</span>, uso que perdura ✨
+          © 2025 Mahitek 3D Lab. Todos los derechos reservados.
+          <span class="footer-dev">Desarrollado con ingeniería certificada y tecnología de vanguardia.</span>
         </p>
       </div>
     </footer>
