@@ -83,3 +83,20 @@ env/
 *.ntvs*
 *.njsproj
 *.sln
+
+# Windows desktop thumbnails
+desktop.ini
+**/desktop.ini
+Thumbs.db
+
+# Mac OS
+.DS_Store
+
+# Editor directories
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# NPM extraneous files
+@*/desktop.ini

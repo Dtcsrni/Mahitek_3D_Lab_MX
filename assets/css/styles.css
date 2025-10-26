@@ -6322,3 +6322,49 @@ html[lang="es-MX"] .show-when-mx {
     animation: none !important;
   }
 }
+
+/* ===== CLASES DE BADGES PARA PROMOCIONES ===== */
+/* Agregado automáticamente por script de mejoras */
+
+.badge--valor {
+  background: #7ec8e3 !important;
+}
+
+.badge--premium {
+  background: #9b59b6 !important;
+}
+
+.badge--envio {
+  background: #e74c3c !important;
+}
+
+.badge--cultural {
+  background: #10b981 !important;
+}
+
+.badge--textura {
+  background: #6366f1 !important;
+}
+
+.badge--equilibrio {
+  background: #fb923c !important;
+}
+
+.badge--volumen {
+  background: #e74c3c !important;
+}
+
+.badge--addon {
+  background: #10b981 !important;
+}
+
+.precio-unidad {
+  font-size: 1rem;
+  color: #94a3b8;
+}
+
+.improvements--green {
+  border-left-color: #10b981 !important;
+}
+
+/* ===== FIN DE CLASES DE BADGES ===== */
