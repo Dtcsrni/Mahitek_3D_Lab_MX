@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "🚀 Iniciar Live Server",
+      "label": "🚀 Iniciar Servidor de Desarrollo",
       "type": "shell",
       "command": "npm",
       "args": ["run", "dev"],
@@ -10,89 +10,94 @@
       "presentation": {
         "reveal": "always",
         "panel": "new",
-        "focus": false
+        "focus": false,
+        "showReuseMessage": false
       },
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
       }
     },
     {
-      "label": "🎨 Compilar SASS (watch)",
+      "label": "� Iniciar Servidor (con navegador)",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "watch:sass"],
+      "args": ["run", "dev:open"],
       "problemMatcher": [],
-      "isBackground": true,
       "presentation": {
-        "reveal": "silent",
-        "panel": "shared"
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
       },
       "group": "build"
     },
     {
-      "label": "✅ Validar Todo",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "validate"],
-      "problemMatcher": ["$eslint-stylish"],
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      },
-      "group": "test"
-    },
-    {
-      "label": "🔍 Lint JavaScript",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "lint:js"],
-      "problemMatcher": ["$eslint-stylish"],
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      },
-      "group": "test"
-    },
-    {
-      "label": "💅 Formatear Todo",
+      "label": "💅 Formatear Todo el Código",
       "type": "shell",
       "command": "npm",
       "args": ["run", "format"],
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "silent",
-        "panel": "shared"
-      },
-      "group": "none"
-    },
-    {
-      "label": "🏗️ Build CSS Optimizado",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "build:css"],
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      },
-      "group": "build"
-    },
-    {
-      "label": "⚡ Optimizar Proyecto",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "optimize"],
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
         "panel": "shared",
         "focus": true
       },
+      "group": "none"
+    },
+    {
+      "label": "✅ Validar Código",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "validate"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test"
+    },
+    {
+      "label": "� Verificar Formateo",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "check:format"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test"
+    },
+    {
+      "label": "🏗️ Build (Formatear)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "group": "build"
     },
     {
-      "label": "📦 Git: Add, Commit & Push",
+      "label": "🚀 Deploy a GitHub",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "deploy"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "group": "none"
+    },
+    {
+      "label": "📦 Git: Commit Rápido",
       "type": "shell",
       "command": "git",
       "args": [
@@ -112,6 +117,18 @@
         "reveal": "always",
         "panel": "shared",
         "focus": true
+      },
+      "group": "none"
+    },
+    {
+      "label": "🔄 Reinstalar Dependencias",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install", "--force"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
       },
       "group": "none"
     }

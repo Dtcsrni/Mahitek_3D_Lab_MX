@@ -1,0 +1,32 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "task.autoDetect": "on",
+    "task.quickOpen.detail": true,
+    "task.quickOpen.showCommands": true,
+    "terminal.integrated.automationProfile.windows": {
+      "path": "pwsh.exe"
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": []
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "chrome",
+        "request": "launch",
+        "name": "🚀 Launch Chrome",
+        "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}",
+        "preLaunchTask": "🚀 Iniciar Servidor de Desarrollo"
+      }
+    ]
+  }
+}

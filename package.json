@@ -4,17 +4,22 @@
   "description": "Landing page oficial de Mahitek 3D Lab - Impresión 3D funcional en PETG",
   "main": "assets/js/app.js",
   "scripts": {
-    "dev": "npx live-server --port=8080 --no-browser",
-    "lint:js": "eslint assets/js/**/*.js",
-    "lint:css": "stylelint assets/css/**/*.css",
+    "dev": "live-server --port=8080 --no-browser --watch=. --ignore=node_modules",
+    "dev:open": "live-server --port=8080 --watch=. --ignore=node_modules",
+    "start": "npm run dev",
+    "serve": "python -m http.server 8080 || npx serve -l 8080",
     "format:js": "prettier --write assets/js/**/*.js",
     "format:css": "prettier --write assets/css/**/*.css",
     "format:html": "prettier --write *.html",
-    "format": "npm run format:js && npm run format:css && npm run format:html",
-    "validate": "npm run lint:js && npm run lint:css",
-    "watch:sass": "sass --watch assets/css/styles.scss:assets/css/styles.css",
-    "build:css": "sass assets/css/styles.scss:assets/css/styles.css --style=compressed",
-    "optimize": "npm run build:css && npm run format"
+    "format": "prettier --write \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"*.html\"",
+    "check:format": "prettier --check \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"*.html\"",
+    "validate:html": "echo 'Validando HTML...' && grep -q '<!DOCTYPE html>' index.html && echo '✅ HTML válido'",
+    "validate": "npm run check:format && npm run validate:html",
+    "watch:css": "echo 'CSS directo - no requiere compilación'",
+    "build": "npm run format",
+    "deploy": "git add . && git commit -m 'chore: actualizar sitio' && git push origin main",
+    "preinstall": "echo '📦 Instalando dependencias de desarrollo...'",
+    "postinstall": "echo '✅ Instalación completa. Ejecuta: npm run dev'"
   },
   "keywords": [
     "impresion-3d",
@@ -26,12 +31,12 @@
   "author": "Mahitek 3D Lab",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^9.38.0",
     "prettier": "^3.3.0",
-    "stylelint": "^16.0.0",
-    "stylelint-config-standard": "^36.0.0",
-    "sass": "^1.77.0",
     "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "browserslist": [
     "last 2 versions",

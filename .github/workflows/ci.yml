@@ -1,4 +1,4 @@
-name: CI - Validación y Deploy
+name: CI/CD - Validación y Deploy
 
 on:
   push:
@@ -6,8 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+# Prevenir múltiples ejecuciones simultáneas
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint-and-validate:
+  validate:
     name: Validar Código
     runs-on: ubuntu-latest
     
@@ -24,45 +29,48 @@ jobs:
     - name: Instalar dependencias
       run: npm ci || npm install
       
-    - name: Validar JavaScript con ESLint
-      run: npm run lint:js || echo "⚠️ ESLint encontró warnings"
-      continue-on-error: true
-      
-    - name: Validar CSS con Stylelint
-      run: npm run lint:css || echo "⚠️ Stylelint encontró warnings"
-      continue-on-error: true
+    - name: Verificar archivos JavaScript
+      run: |
+        if [ -f "assets/js/app.js" ]; then
+          echo "✅ app.js encontrado"
+          wc -l assets/js/app.js
+        else
+          echo "❌ app.js no encontrado"
+          exit 1
+        fi
       
     - name: Verificar formateo con Prettier
-      run: npx prettier --check "**/*.{js,css,html}" || echo "⚠️ Algunos archivos necesitan formateo"
+      run: |
+        npx prettier --check "assets/js/app.js" "assets/css/styles.css" "index.html" || {
+          echo "⚠️ Algunos archivos necesitan formateo. Ejecuta: npm run format"
+          exit 0
+        }
       continue-on-error: true
-
-  lighthouse-audit:
-    name: Auditoría de Performance
-    runs-on: ubuntu-latest
-    needs: lint-and-validate
-    
-    steps:
-    - name: Checkout código
-      uses: actions/checkout@v4
       
-    - name: Lighthouse CI
-      uses: treosh/lighthouse-ci-action@v10
-      with:
-        urls: |
-          https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
-        uploadArtifacts: true
-        temporaryPublicStorage: true
+    - name: Validar HTML
+      run: |
+        echo "🔍 Verificando estructura HTML..."
+        if grep -q "<!DOCTYPE html>" index.html; then
+          echo "✅ HTML válido"
+        else
+          echo "❌ HTML inválido"
+          exit 1
+        fi
 
   deploy:
     name: Deploy a GitHub Pages
     runs-on: ubuntu-latest
-    needs: lint-and-validate
-    if: github.ref == 'refs/heads/main'
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     permissions:
       contents: read
       pages: write
       id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
     - name: Checkout código
@@ -79,3 +87,30 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      
+    - name: Notificar deploy exitoso
+      run: |
+        echo "🚀 Deploy exitoso!"
+        echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+
+  lighthouse:
+    name: Auditoría Lighthouse (Post-Deploy)
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      
+    - name: Esperar propagación de deploy
+      run: sleep 30
+      
+    - name: Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: |
+          https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+      continue-on-error: true

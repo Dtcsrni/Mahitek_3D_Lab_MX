@@ -1,26 +1,36 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll": "explicit"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on"
   },
   "css.validate": true,
-  "scss.validate": true,
   "html.autoClosingTags": true,
   "html.format.wrapLineLength": 120,
   "emmet.includeLanguages": {
@@ -30,9 +40,15 @@
   "liveServer.settings.root": "/",
   "liveServer.settings.CustomBrowser": "chrome",
   "liveServer.settings.NoBrowser": false,
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "node_modules/**",
+    "**/*.md"
+  ],
   "files.associations": {
     "*.css": "css",
-    "*.html": "html"
+    "*.html": "html",
+    "*.js": "javascript"
   },
   "files.exclude": {
     "**/.git": true,
@@ -44,7 +60,12 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
-    "**/build": true
+    "**/build": true,
+    "**/.git": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true
   },
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
@@ -56,6 +77,13 @@
     "markdown": true,
     "javascript": true,
     "html": true,
-    "css": true
-  }
+    "css": true,
+    "json": true
+  },
+  "javascript.validate.enable": true,
+  "javascript.format.enable": false,
+  "html.validate.scripts": true,
+  "css.lint.unknownAtRules": "ignore",
+  "prettier.requireConfig": false,
+  "prettier.useEditorConfig": false
 }
