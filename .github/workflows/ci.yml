@@ -103,9 +103,20 @@ jobs:
         with:
           urls: |
             https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
-          uploadArtifacts: true
+          # Subimos los artefactos manualmente para controlar el nombre y evitar errores
+          uploadArtifacts: false
           temporaryPublicStorage: true
         continue-on-error: true
+
+      - name: 📦 Subir artefactos de Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse_report
+          path: |
+            .lighthouseci/**
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: 📈 Resultados de Lighthouse
         run: echo "✅ Auditoría Lighthouse completada. Revisa los artefactos para ver los resultados."
