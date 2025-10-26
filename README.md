@@ -1,30 +1,107 @@
-# Mahitek 3D Lab — Landing Moderna
+# 🔮 Mahitek 3D Lab MX — Landing Page Oficial
 
-Landing estática moderna con diseño oscuro + glassmorphism, sistema de precios y optimizada para tráfico QR, redes sociales y búsqueda directa.
+[![CI/CD](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions/workflows/ci.yml/badge.svg)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live](https://img.shields.io/badge/live-dtcsrni.github.io-success)](https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
 
-## 🚀 Características
+Landing page moderna con diseño cyberpunk mexicano, sistema de precios automático y optimización completa para dispositivos móviles. Impresión 3D funcional en PETG desde Pachuca, Hidalgo.
 
-- **Diseño dark + glass**: Fondo oscuro (#0B0F14) con efectos glassmorphism
-- **Sistema de precios automático**: Calcula precio venta = base con redondeo configurable
+## ✨ Características Principales
+
+### 🎨 Diseño y UX
+- **Diseño cyberpunk mexicano**: Navbar con nopales, águilas y efectos glitch
+- **Glassmorphism dark**: Fondo oscuro (#0B0F14) con efectos de cristal
+- **Tipografía fluida**: Escala responsive desde móvil (320px) hasta 4K (1440+)
+- **Full viewport**: Aprovecha toda la pantalla con safe-area para notches
+- **Hero prioritario**: Primera vista siempre visible a pantalla completa
+- **Animaciones GPU**: Optimizadas con `will-change` y `transform`
+
+### 📱 Responsive y Accesibilidad
+- **Mobile-first**: Diseñado desde 320px hasta pantallas 2XL (1536+)
+- **Safe-area support**: Compatible con iPhone notch y Android punch-hole
+- **Navbar inteligente**: 4 estados (normal, scrolled, compact, hidden)
+- **Touch-friendly**: Targets mínimos de 44px (Apple HIG)
+- **Reduced motion**: Respeta preferencias de accesibilidad
+- **Detección de capacidades**: Degrada efectos en dispositivos limitados
+
+### 🛠️ Sistema de Datos
 - **Catálogo dinámico**: Filtros por categoría y búsqueda en tiempo real
-- **Emojis sobrios**: Iconografía visual sin sobrecarga
-- **Performance optimizado**: Sin dependencias pesadas, solo vanilla JS
+- **Sistema de precios automático**: Cálculo con markup y redondeo configurable
+- **Promociones activas**: Con fechas de validez y animaciones personalizadas
+- **FAQ interactivas**: Expandibles, buscables y con JSON-LD para SEO
+- **Multiidioma**: Soporte para es-MX, es-ES y en-US
 
-## 📁 Estructura
+### ⚡ Performance
+- **Zero dependencias**: Solo vanilla JS moderno
+- **Lazy loading**: Secciones no críticas cargan on-demand
+- **Content-visibility**: Defer de pintura en elementos fuera de pantalla
+- **Optimización de imágenes**: Lazy, decoding async, dimensiones explícitas
+- **GPU acceleration**: Animaciones con `transform` y `opacity`
+- **ResizeManager**: Manejo centralizado de eventos resize
+
+## 📁 Estructura del Proyecto
 
 ```
-/index.html                  → Landing principal
-/assets/css/styles.css       → Estilos modernos dark + glass
-/assets/js/app.js           → Lógica, cálculo precios, carga datos
-/assets/img/                → Imágenes, logos, productos
-/data/products_base.json    → Catálogo con precios base
-/data/products.json         → [DEPRECADO] Migrar a products_base.json
-/data/promos.json          → Promociones activas
-/data/social.json          → Enlaces redes sociales
-/data/faq.json             → Preguntas frecuentes
+Mahitek_3D_Lab_MX/
+├── 📄 index.html                    # Landing principal
+├── 📁 assets/
+│   ├── 📁 css/
+│   │   └── styles.css               # ~6000 líneas de CSS optimizado
+│   ├── 📁 js/
+│   │   └── app.js                   # ~1600 líneas de lógica vanilla JS
+│   ├── 📁 img/                      # Imágenes, logos, ilustraciones
+│   └── 📁 data/
+│       └── brand.json               # Info de marca y social
+├── 📁 data/
+│   ├── products.json                # Catálogo con precios base
+│   ├── promos.json                  # Promociones activas
+│   ├── faq.json                     # Preguntas frecuentes
+│   └── social.json                  # Enlaces redes sociales
+├── 📁 .github/
+│   └── workflows/
+│       └── ci.yml                   # GitHub Actions CI/CD
+├── 📁 .vscode/                      # Configuración VS Code
+│   ├── settings.json                # Formateo automático
+│   ├── tasks.json                   # Tareas automatizadas
+│   ├── extensions.json              # Extensiones recomendadas
+│   └── *.code-snippets              # Snippets personalizados
+├── 📄 package.json                  # Scripts NPM y dependencias dev
+├── 📄 .eslintrc.json               # Configuración ESLint
+├── 📄 .prettierrc                  # Configuración Prettier
+├── 📄 .stylelintrc.json            # Configuración Stylelint
+├── 📄 DESARROLLO.md                 # Guía de desarrollo
+├── 📄 NAVBAR_INTELIGENTE.md        # Documentación navbar
+├── 📄 NAVBAR_CYBERPUNK.md          # Diseño cyberpunk
+└── 📄 README.md                     # Este archivo
 ```
 
-## ⚙️ Sistema de Precios
+## 🚀 Inicio Rápido
+
+### Opción 1: Servidor de Desarrollo NPM
+
+```bash
+# 1. Instalar dependencias de desarrollo
+npm install
+
+# 2. Iniciar servidor
+npm run dev
+
+# El sitio estará en http://localhost:8080
+```
+
+### Opción 2: Live Server de VS Code
+
+1. Instalar extensión **Live Server** (si no la tienes)
+2. Clic derecho en `index.html`
+3. Seleccionar **"Open with Live Server"**
+
+### Opción 3: Python Simple Server
+
+```bash
+python -m http.server 8080
+```
+
+## ⚙️ Sistema de Precios Automático
 
 El sistema calcula automáticamente precios de venta basándose en:
 
@@ -54,7 +131,70 @@ Cálculo: $185 × 1.10 = $203.5
 Redondeo: step=10 → $200 MXN
 ```
 
-## 📝 Editar Contenido
+## �️ Scripts de Desarrollo
+
+El proyecto incluye scripts NPM para automatizar tareas comunes:
+
+```bash
+# 🚀 Desarrollo
+npm run dev              # Iniciar servidor local (puerto 8080)
+
+# ✅ Validación
+npm run lint:js          # Validar JavaScript con ESLint
+npm run lint:css         # Validar CSS con Stylelint
+npm run validate         # Ejecutar todos los linters
+
+# 💅 Formateo
+npm run format:js        # Formatear archivos JavaScript
+npm run format:css       # Formatear archivos CSS
+npm run format:html      # Formatear archivos HTML
+npm run format           # Formatear todo el proyecto
+
+# 🎨 SASS (opcional)
+npm run watch:sass       # Compilar SASS en tiempo real
+npm run build:css        # Construir CSS optimizado
+
+# ⚡ Optimización
+npm run optimize         # Build + Format completo
+```
+
+## 🔧 Extensiones de VS Code Recomendadas
+
+El proyecto está configurado para aprovechar estas extensiones:
+
+- **ESLint** - Linting de JavaScript
+- **Prettier** - Formateo automático
+- **Live Server** - Servidor de desarrollo
+- **Live Sass Compiler** - Compilación SASS
+- **HTML CSS Support** - Autocompletado CSS
+- **IntelliSense for CSS** - Autocompletado inteligente
+- **GitHub Copilot** - Asistente IA (opcional)
+- **Edge DevTools** - Depuración integrada
+
+> 💡 Al abrir el proyecto en VS Code, se te sugerirá instalar las extensiones recomendadas.
+
+## 🎨 Snippets Personalizados
+
+El proyecto incluye snippets para acelerar el desarrollo:
+
+### HTML
+
+- `mhk-card` - Tarjeta glass con animación
+- `mhk-section-full` - Sección full-screen completa
+- `mhk-product` - Tarjeta de producto
+- `mhk-accent` - Texto con acento de color
+
+### CSS
+
+- `mhk-glass` - Efecto glassmorphism
+- `mhk-anim-fadeup` - Animación fade-up
+- `mhk-gradient` - Gradiente de acentos
+- `mhk-container` - Container responsive
+- `mhk-fluid-text` - Tipografía fluida
+
+Escribe el prefijo y presiona `Tab` para expandir el snippet.
+
+## �📝 Editar Contenido
 
 ### Catálogo (`/data/products_base.json`)
 
@@ -124,56 +264,234 @@ Solo se muestran las promociones cuya fecha actual esté entre `desde` y `hasta`
 [
   {
     "q": "¿Pregunta?",
-    "a": "Respuesta clara y concisa."
+    "a": "Respuesta clara y concisa.",
+    "categoria": "general",
+    "destacado": true
   }
 ]
 ```
 
-## 🛠️ Desarrollo Local
+## 🌐 Deploy y CI/CD
 
-No requiere build ni dependencias:
+### GitHub Pages (Automático)
 
-```bash
-# Opción 1: Servidor simple con Python
-python -m http.server 8000
+El proyecto está configurado con GitHub Actions para deploy automático:
 
-# Opción 2: Con Node.js
-npx serve .
+1. **Commit y push** a la rama `main`
+2. GitHub Actions ejecuta automáticamente:
+   - ✅ Validación de JavaScript (ESLint)
+   - ✅ Validación de CSS (Stylelint)
+   - ✅ Verificación de formateo (Prettier)
+   - 🔍 Auditoría Lighthouse de performance
+   - 🚀 Deploy a GitHub Pages
+3. El sitio se actualiza en ~2 minutos
 
-# Opción 3: Live Server (VS Code extension)
-```
+Ver estado del CI/CD: [Actions](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
 
-Luego abre `http://localhost:8000` en tu navegador.
+### Configuración Manual de GitHub Pages
 
-## 🌐 Despliegue en GitHub Pages
+Si no se ha configurado:
 
-1. Haz commit de tus cambios:
-   ```bash
-   git add .
-   git commit -m "Actualizar catálogo"
-   git push origin main
-   ```
+1. Ve a **Settings** → **Pages**
+2. Source: **GitHub Actions** (recomendado) o **Deploy from branch**
+3. Si usas branch: selecciona `main` / `root`
+4. Guarda cambios
 
-2. Activa GitHub Pages:
-   - Ve a **Settings** → **Pages**
-   - Source: Deploy from branch
-   - Branch: `main` / `root`
-   - Guarda cambios
+Sitio disponible en: `https://dtcsrni.github.io/Mahitek_3D_Lab_MX/`
 
-3. Espera 1-2 minutos y visita tu sitio en:
-   `https://[usuario].github.io/[repositorio]/`
+## 🎨 Personalización Avanzada
 
-## 🎨 Personalización
+### Cambiar Colores del Tema
 
-### Cambiar colores
-
-Edita variables en `/assets/css/styles.css`:
+Edita variables CSS en `/assets/css/styles.css`:
 
 ```css
 :root {
+  /* Colores base */
   --bg-dark: #0B0F14;           /* Fondo principal */
-  --accent-cyan: #06B6D4;       /* Color acento 1 */
-  --accent-green: #10B981;      /* Color acento 2 */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  
+  /* Colores de texto */
+  --text-primary: #E8EDF4;
+  --text-secondary: #9CA3AF;
+  
+  /* Acentos principales */
+  --accent-cyan: #06B6D4;
+  --accent-green: #10B981;
+  --accent-red: #D22623;
+  
+  /* Tipografía fluida */
+  --font-size-base: clamp(1rem, 0.94rem + 0.4vw, 1.125rem);
+  
+  /* Espaciado */
+  --space-md: 1rem;
+  --radius: 12px;
+}
+```
+
+### Ajustar Breakpoints Responsive
+
+```css
+/* Puntos de quiebre actuales */
+@media (min-width: 400px)  { /* Móviles pequeños */ }
+@media (min-width: 640px)  { /* Móviles grandes */ }
+@media (min-width: 768px)  { /* Tablets */ }
+@media (min-width: 1024px) { /* Desktop */ }
+@media (min-width: 1280px) { /* Desktop grande */ }
+@media (min-width: 1440px) { /* QHD */ }
+@media (min-width: 1536px) { /* 2XL */ }
+```
+
+### Modificar Estados del Navbar
+
+El navbar tiene 4 estados inteligentes documentados en `NAVBAR_INTELIGENTE.md`:
+
+- **Normal**: Scroll en top (0-24px)
+- **Scrolled**: Con scroll (24-100px) - fondo más opaco
+- **Compact**: Scroll profundo (300+) - logo mini
+- **Hidden**: Scroll hacia abajo (100+) - se oculta con peek
+
+Configurar en `/assets/js/app.js`:
+
+```javascript
+const SCROLL_THRESHOLD = 24;    // Activar is-scrolled
+const HIDE_THRESHOLD = 100;     // Ocultar navbar
+const COMPACT_THRESHOLD = 300;  // Modo compacto
+```
+
+### Agregar Nueva Sección
+
+Usa el snippet `mhk-section-full` o copia el patrón:
+
+```html
+<section id="mi-seccion" class="section section--full section-alt" aria-labelledby="mi-seccion-title">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <div class="section-heading">
+        <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="section-heading-logo" width="64" height="64" loading="lazy" decoding="async">
+        <h2 class="section-title" id="mi-seccion-title">Mi Nueva Sección</h2>
+      </div>
+      <p class="section-intro">Descripción de la sección.</p>
+    </div>
+    
+    <!-- Contenido aquí -->
+    
+  </div>
+</section>
+```
+
+## 📊 Performance y Optimización
+
+### Métricas Actuales
+
+- **First Contentful Paint**: < 1.5s
+- **Largest Contentful Paint**: < 2.5s
+- **Time to Interactive**: < 3.5s
+- **Cumulative Layout Shift**: < 0.1
+- **Lighthouse Score**: 90+ (Performance, Accessibility, Best Practices, SEO)
+
+### Optimizaciones Implementadas
+
+✅ **Carga Lazy**: Imágenes y secciones no críticas  
+✅ **GPU Acceleration**: Animaciones con `transform` y `will-change`  
+✅ **Content Visibility**: Defer de pintura en elementos fuera de pantalla  
+✅ **Preconnect**: DNS prefetch para recursos externos  
+✅ **Responsive Images**: Dimensiones explícitas y decoding async  
+✅ **Debounce/Throttle**: Eventos resize y scroll optimizados  
+✅ **ResizeManager**: Manejo centralizado de resize  
+✅ **IntersectionObserver**: Animaciones activadas por scroll  
+✅ **Device Detection**: Degradación de efectos en dispositivos limitados  
+
+### Auditoría Lighthouse
+
+```bash
+# Con GitHub Actions (automático en cada push)
+# Ver resultados en: Actions → CI - Validación y Deploy
+
+# Local con Chrome DevTools
+# 1. Abrir DevTools (F12)
+# 2. Tab "Lighthouse"
+# 3. Generate report
+```
+
+## 🧪 Testing y Validación
+
+### Validación Automática (CI)
+
+El proyecto valida automáticamente en cada push:
+
+```bash
+# Ejecutar localmente las mismas validaciones del CI
+npm run validate         # ESLint + Stylelint
+npm run format           # Verificar formateo
+```
+
+### Testing Manual
+
+1. **Responsive**: Probar en Chrome DevTools (F12 → Toggle Device Toolbar)
+2. **Navegadores**: Chrome, Firefox, Safari, Edge
+3. **Dispositivos reales**: iOS Safari, Android Chrome
+4. **Accesibilidad**: Usar lector de pantalla (NVDA/JAWS)
+
+### Herramientas de Debug
+
+```javascript
+// Consola del navegador
+window.MahitekLab.products()    // Ver productos cargados
+window.MahitekLab.config        // Ver configuración
+window.MahitekLab.filterProducts() // Aplicar filtros
+```
+
+## 📚 Documentación Adicional
+
+- **[DESARROLLO.md](DESARROLLO.md)** - Guía completa de desarrollo
+- **[NAVBAR_INTELIGENTE.md](NAVBAR_INTELIGENTE.md)** - Documentación del navbar
+- **[NAVBAR_CYBERPUNK.md](NAVBAR_CYBERPUNK.md)** - Diseño cyberpunk
+- **[PERFORMANCE_AUDIT.md](PERFORMANCE_AUDIT.md)** - Auditoría de performance
+- **[COMPRESSION.md](COMPRESSION.md)** - Optimización de recursos
+
+## 🤝 Contribuir
+
+1. Fork el repositorio
+2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
+3. Commit: `git commit -m 'feat: agregar nueva funcionalidad'`
+4. Push: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request
+
+### Convenciones de Commits
+
+Usamos [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` Nueva funcionalidad
+- `fix:` Corrección de bugs
+- `docs:` Cambios en documentación
+- `style:` Cambios de formato (sin afectar código)
+- `refactor:` Refactorización de código
+- `perf:` Mejoras de performance
+- `test:` Agregar o modificar tests
+- `chore:` Tareas de mantenimiento
+
+## 📄 Licencia
+
+MIT License - Ver [LICENSE](LICENSE) para más detalles.
+
+## 🙏 Agradecimientos
+
+- **Simple Icons** - Iconos de redes sociales (CC0)
+- **Google Fonts** - Tipografía web
+- **GitHub Pages** - Hosting gratuito
+- **VS Code** - Editor y herramientas de desarrollo
+
+## 📞 Contacto
+
+- **Email**: armsystechno@gmail.com
+- **Messenger**: [m.me/mahitek3dlabmx](https://m.me/mahitek3dlabmx)
+- **Sitio Web**: [dtcsrni.github.io/Mahitek_3D_Lab_MX](https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
+
+---
+
+**Mahitek 3D Lab** — *Memoria en forma, uso que perdura* ✨
   --glass-bg: rgba(255, 255, 255, 0.06);  /* Fondo glass */
   ...
 }
