@@ -1,25 +1,85 @@
-# Windows noise
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.cache/
+*.min.js
+*.min.css
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+log/
+logs/
+
+# OS Files - Windows
 desktop.ini
 **/desktop.ini
 Thumbs.db
 **/Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
 
-# macOS
+# OS Files - macOS
 .DS_Store
 **/.DS_Store
 
-# Node/npm (por si a futuro)
-node_modules/
-npm-debug.log*
-package-lock.json
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
+.idea/
+*.sublime-workspace
+*.sublime-project
 
-# Logs
-*.log
-log/
-logs/
+# Environment
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
 
-# Editor/OS swaps
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
 *.swp
 *.swo
-*.tmp
 ~$*
+
+# Python (servidor local)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Editor history
+.history/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

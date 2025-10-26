@@ -1,0 +1,59 @@
+{
+  "Mahitek Card Glass": {
+    "prefix": "mhk-card",
+    "body": [
+      "<article class=\"card glass\" data-animate=\"fade-up\">",
+      "  <figure class=\"card-figure\">",
+      "    <img src=\"${1:assets/img/placeholder.svg}\" alt=\"${2:Descripción}\" class=\"card-illustration\" width=\"200\" height=\"200\" loading=\"lazy\" decoding=\"async\">",
+      "  </figure>",
+      "  <h3>${3:Título}</h3>",
+      "  <p>${4:Descripción del contenido}</p>",
+      "</article>"
+    ],
+    "description": "Tarjeta glass con animación Mahitek"
+  },
+  "Mahitek Section Full": {
+    "prefix": "mhk-section-full",
+    "body": [
+      "<section id=\"${1:id}\" class=\"section section--full section-${2|alt,accent--cyan,accent--teal,accent--red,accent--purple,accent--green|}\" aria-labelledby=\"${1:id}-title\">",
+      "  <div class=\"container\">",
+      "    <div class=\"section-header\" data-animate=\"fade-up\">",
+      "      <div class=\"section-heading\">",
+      "        <img src=\"assets/img/logo-color.svg\" alt=\"Mahitek 3D Lab\" class=\"section-heading-logo\" width=\"64\" height=\"64\" loading=\"lazy\" decoding=\"async\">",
+      "        <h2 class=\"section-title\" id=\"${1:id}-title\">${3:Título de Sección}</h2>",
+      "      </div>",
+      "      <p class=\"section-intro\">${4:Introducción de la sección}</p>",
+      "    </div>",
+      "    $0",
+      "  </div>",
+      "</section>"
+    ],
+    "description": "Sección full-screen de Mahitek"
+  },
+  "Mahitek Accent Text": {
+    "prefix": "mhk-accent",
+    "body": "<span class=\"accent-text${1|--gradient,--green,|}\">$2</span>$0",
+    "description": "Texto con acento de color Mahitek"
+  },
+  "Mahitek Product Card": {
+    "prefix": "mhk-product",
+    "body": [
+      "<article class=\"card glass product-card\" role=\"listitem\" data-animate=\"fade-up\">",
+      "  <div class=\"product-media\">",
+      "    <div class=\"product-emoji\">${1:🎁}</div>",
+      "  </div>",
+      "  <div class=\"product-meta\">",
+      "    <span class=\"product-sku\">${2:SKU-001}</span>",
+      "    <span class=\"product-line\">${3:Categoría}</span>",
+      "  </div>",
+      "  <h3 class=\"product-name\">${4:Nombre del Producto}</h3>",
+      "  <p class=\"product-price\">$$${5:100} MXN</p>",
+      "  <p class=\"product-description\">${6:Descripción breve}</p>",
+      "  <a href=\"https://m.me/mahitek3dlabmx\" class=\"btn btn-primary product-cta\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "    Consultar disponibilidad",
+      "  </a>",
+      "</article>"
+    ],
+    "description": "Tarjeta de producto Mahitek"
+  }
+}

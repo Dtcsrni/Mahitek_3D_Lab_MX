@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "glenn2223.live-sass",
+    "ritwickdey.liveserver",
+    "ecmel.vscode-html-css",
+    "zignd.html-css-class-completion",
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-edgedevtools.vscode-edge-devtools",
+    "shd101wyy.markdown-preview-enhanced"
+  ]
+}

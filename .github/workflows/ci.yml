@@ -1,0 +1,81 @@
+name: CI - Validación y Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-validate:
+    name: Validar Código
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Instalar dependencias
+      run: npm ci || npm install
+      
+    - name: Validar JavaScript con ESLint
+      run: npm run lint:js || echo "⚠️ ESLint encontró warnings"
+      continue-on-error: true
+      
+    - name: Validar CSS con Stylelint
+      run: npm run lint:css || echo "⚠️ Stylelint encontró warnings"
+      continue-on-error: true
+      
+    - name: Verificar formateo con Prettier
+      run: npx prettier --check "**/*.{js,css,html}" || echo "⚠️ Algunos archivos necesitan formateo"
+      continue-on-error: true
+
+  lighthouse-audit:
+    name: Auditoría de Performance
+    runs-on: ubuntu-latest
+    needs: lint-and-validate
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      
+    - name: Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: |
+          https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+
+  deploy:
+    name: Deploy a GitHub Pages
+    runs-on: ubuntu-latest
+    needs: lint-and-validate
+    if: github.ref == 'refs/heads/main'
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      
+    - name: Configurar Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

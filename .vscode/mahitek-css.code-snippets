@@ -1,0 +1,64 @@
+{
+  "Mahitek Glass Effect": {
+    "prefix": "mhk-glass",
+    "body": [
+      "background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));",
+      "-webkit-backdrop-filter: var(--blur);",
+      "backdrop-filter: var(--blur);",
+      "border: 1px solid var(--glass-border);",
+      "border-radius: var(--radius);"
+    ],
+    "description": "Efecto glass morphism Mahitek"
+  },
+  "Mahitek Animation Fade Up": {
+    "prefix": "mhk-anim-fadeup",
+    "body": [
+      "opacity: 0;",
+      "transform: translateY(var(--motion-distance));",
+      "transition: opacity var(--motion-duration) var(--motion-ease),",
+      "            transform var(--motion-duration) var(--motion-ease);",
+      "",
+      "&.is-visible {",
+      "  opacity: 1;",
+      "  transform: translateY(0);",
+      "}"
+    ],
+    "description": "Animación fade-up Mahitek"
+  },
+  "Mahitek Gradient": {
+    "prefix": "mhk-gradient",
+    "body": [
+      "background: ${1|linear-gradient,radial-gradient|}(${2:135deg}, var(--accent-${3|cyan,green,red|}), var(--accent-${4|green,cyan,red|}));"
+    ],
+    "description": "Gradiente de acentos Mahitek"
+  },
+  "Mahitek Container Responsive": {
+    "prefix": "mhk-container",
+    "body": [
+      "max-width: var(--container-xl);",
+      "margin: 0 auto;",
+      "padding: 0 var(--space-md);",
+      "",
+      "@media (min-width: 640px) {",
+      "  padding: 0 var(--space-lg);",
+      "}",
+      "",
+      "@media (min-width: 1280px) {",
+      "  padding: 0 var(--space-2xl);",
+      "}",
+      "",
+      "@media (min-width: 1536px) {",
+      "  max-width: var(--container-2xl);",
+      "  padding: 0 5rem;",
+      "}"
+    ],
+    "description": "Container responsive Mahitek"
+  },
+  "Mahitek Fluid Typography": {
+    "prefix": "mhk-fluid-text",
+    "body": [
+      "font-size: clamp(${1:1rem}, ${2:0.94rem} + ${3:0.4vw}, ${4:1.125rem});"
+    ],
+    "description": "Tipografía fluida con clamp()"
+  }
+}
