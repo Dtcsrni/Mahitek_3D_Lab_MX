@@ -16,6 +16,113 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
+// ===== Detección y Gestión de Idioma =====
+const GestorIdioma = {
+  IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
+  IDIOMA_PREDETERMINADO: 'es-MX',
+  
+  /**
+   * Obtiene el idioma preferido del usuario
+   * Orden de prioridad: 1) localStorage 2) navigator.language 3) default
+   */
+  obtenerIdioma() {
+    try {
+      // 1. Revisar preferencia guardada
+      const guardado = localStorage.getItem('idioma-preferido');
+      if (guardado && this.IDIOMAS_SOPORTADOS.includes(guardado)) {
+        return guardado;
+      }
+      
+      // 2. Detectar idioma del navegador
+      const navegador = navigator.language || navigator.userLanguage || '';
+      
+      // Si es español mexicano explícito
+      if (navegador.toLowerCase().startsWith('es-mx')) {
+        return 'es-MX';
+      }
+      
+      // Si es cualquier variante de español
+      if (navegador.toLowerCase().startsWith('es')) {
+        return 'es';
+      }
+      
+      // Si es inglés
+      if (navegador.toLowerCase().startsWith('en')) {
+        return 'en';
+      }
+      
+      // 3. Fallback a español mexicano
+      return this.IDIOMA_PREDETERMINADO;
+    } catch (error) {
+      console.warn('Error detectando idioma:', error);
+      return this.IDIOMA_PREDETERMINADO;
+    }
+  },
+  
+  /**
+   * Guarda la preferencia de idioma
+   */
+  guardarIdioma(idioma) {
+    try {
+      if (this.IDIOMAS_SOPORTADOS.includes(idioma)) {
+        localStorage.setItem('idioma-preferido', idioma);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.warn('Error guardando idioma:', error);
+      return false;
+    }
+  },
+  
+  /**
+   * Verifica si el idioma es español (cualquier variante)
+   */
+  esEspañol() {
+    const idioma = this.obtenerIdioma();
+    return idioma.startsWith('es');
+  },
+  
+  /**
+   * Verifica si el idioma es español mexicano específico
+   */
+  esMexicano() {
+    return this.obtenerIdioma() === 'es-MX';
+  },
+  
+  /**
+   * Actualiza el contenido del cintillo según el idioma
+   */
+  actualizarCintillo() {
+    const cintillo = document.querySelector('.cintillo-texto');
+    if (!cintillo) return;
+    
+    const idioma = this.obtenerIdioma();
+    const textos = {
+      'es-MX': '⚡ EN_CONSTRUCCIÓN ⚡ ARMANDO_EL_JALE ⚡ ÉCHALE_PACIENCIA ⚡',
+      'es': '⚡ EN_CONSTRUCCIÓN ⚡ MODO_DESARROLLO ⚡ PACIENCIA ⚡',
+      'en': '⚡ UNDER_CONSTRUCTION ⚡ BUILDING_MODE ⚡ STAY_TUNED ⚡'
+    };
+    
+    cintillo.textContent = textos[idioma] || textos['es-MX'];
+    cintillo.setAttribute('data-idioma', idioma);
+  },
+  
+  /**
+   * Inicializa el sistema de idioma
+   */
+  inicializar() {
+    const idioma = this.obtenerIdioma();
+    document.documentElement.setAttribute('lang', idioma);
+    this.actualizarCintillo();
+    
+    if (CONFIG.DEBUG_MODE) {
+      console.log('🌐 Idioma detectado:', idioma);
+      console.log('🇲🇽 Es mexicano:', this.esMexicano());
+    }
+  }
+};
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let scrollObserver = null;
 
@@ -1226,6 +1333,9 @@ function setupLazyLoading() {
 
 // ===== Initialization =====
 async function init() {
+  // Inicializar sistema de idioma PRIMERO
+  GestorIdioma.inicializar();
+  
   setupAnalytics();
   setupNav();
   setupFilters();
