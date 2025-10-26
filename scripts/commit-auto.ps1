@@ -12,7 +12,7 @@ param(
     
     [switch]$NoPush,
     [switch]$SkipTests,
-    [switch]$Verbose,
+    [switch]$MostrarDetalle,
     [switch]$SinSonidos
 )
 
@@ -70,7 +70,7 @@ if (-not $SkipTests) {
     
     if (Test-Path $validateScript) {
         $params = @{}
-        if ($Verbose) { $params.Verbose = $true }
+        if ($MostrarDetalle) { $params.Verbose = $true }
         
         & $validateScript @params
         
