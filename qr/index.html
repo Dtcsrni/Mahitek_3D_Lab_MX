@@ -1,307 +1,306 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahitek 3D Lab — Redirigiendo...</title>
-  <meta name="robots" content="noindex, nofollow">
-  
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Y46M6J1EWS', {
-      transport_type: 'beacon'
-      // No anonymize_ip para rastreo completo
-    });
-  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahitek 3D Lab — Redirigiendo...</title>
+    <meta name="robots" content="noindex, nofollow" />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
-      background: #0b0b0f;
-      color: #E8EDF4;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Orbes flotantes de fondo */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      animation: float 8s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .orb-1 {
-      width: 400px;
-      height: 400px;
-      background: #06B6D4;
-      top: -100px;
-      left: -100px;
-      animation-delay: 0s;
-    }
-
-    .orb-2 {
-      width: 350px;
-      height: 350px;
-      background: #10B981;
-      bottom: -80px;
-      right: -80px;
-      animation-delay: 2s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-      25% {
-        transform: translate(20px, -20px) scale(1.05);
+      gtag('js', new Date());
+      gtag('config', 'G-Y46M6J1EWS', {
+        transport_type: 'beacon'
+        // No anonymize_ip para rastreo completo
+      });
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      50% {
-        transform: translate(-15px, 15px) scale(0.95);
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+        background: #0b0b0f;
+        color: #e8edf4;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        overflow: hidden;
+        position: relative;
       }
-      75% {
-        transform: translate(15px, 10px) scale(1.02);
+
+      /* Orbes flotantes de fondo */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: float 8s ease-in-out infinite;
+        pointer-events: none;
       }
-    }
 
-    /* Contenedor principal */
-    .container {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      max-width: 480px;
-      width: 100%;
-    }
-
-    /* Logo/Título */
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #06B6D4 0%, #10B981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.02em;
-    }
-
-    /* Tarjeta con glassmorphism */
-    .card {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        0 2px 8px rgba(6, 182, 212, 0.1);
-    }
-
-    .message {
-      font-size: 1.125rem;
-      color: #9CA3AF;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    /* Spinner circular */
-    .spinner-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .spinner {
-      width: 56px;
-      height: 56px;
-      border: 4px solid rgba(6, 182, 212, 0.2);
-      border-top-color: #06B6D4;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+      .orb-1 {
+        width: 400px;
+        height: 400px;
+        background: #06b6d4;
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
       }
-    }
 
-    /* Enlace manual */
-    .manual-link {
-      display: inline-block;
-      color: #06B6D4;
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      background: rgba(6, 182, 212, 0.08);
-    }
+      .orb-2 {
+        width: 350px;
+        height: 350px;
+        background: #10b981;
+        bottom: -80px;
+        right: -80px;
+        animation-delay: 2s;
+      }
 
-    .manual-link:hover {
-      background: rgba(6, 182, 212, 0.16);
-      border-color: #06B6D4;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
-    }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(20px, -20px) scale(1.05);
+        }
+        50% {
+          transform: translate(-15px, 15px) scale(0.95);
+        }
+        75% {
+          transform: translate(15px, 10px) scale(1.02);
+        }
+      }
 
-    .manual-link:active {
-      transform: translateY(0);
-    }
+      /* Contenedor principal */
+      .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 480px;
+        width: 100%;
+      }
 
-    /* Info adicional */
-    .info {
-      margin-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #6B7280;
-      line-height: 1.5;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
+      /* Logo/Título */
       .logo {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
       }
 
+      /* Tarjeta con glassmorphism */
       .card {
-        padding: 2rem 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.3),
+          0 2px 8px rgba(6, 182, 212, 0.1);
       }
 
       .message {
-        font-size: 1rem;
+        font-size: 1.125rem;
+        color: #9ca3af;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      /* Spinner circular */
+      .spinner-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
       }
 
       .spinner {
-        width: 48px;
-        height: 48px;
+        width: 56px;
+        height: 56px;
+        border: 4px solid rgba(6, 182, 212, 0.2);
+        border-top-color: #06b6d4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- Orbes flotantes -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
 
-  <!-- Contenedor principal -->
-  <div class="container">
-    <div class="logo">Mahitek 3D Lab</div>
-    
-    <div class="card">
-      <div class="message">
-        Redirigiendo a la experiencia 3D…
-      </div>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-      <div class="spinner-container">
-        <div class="spinner"></div>
-      </div>
+      /* Enlace manual */
+      .manual-link {
+        display: inline-block;
+        color: #06b6d4;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid rgba(6, 182, 212, 0.4);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: rgba(6, 182, 212, 0.08);
+      }
 
-      <a href="#" id="manualLink" class="manual-link">
-        Ir ahora →
-      </a>
+      .manual-link:hover {
+        background: rgba(6, 182, 212, 0.16);
+        border-color: #06b6d4;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+      }
 
-      <div class="info">
-        Si no se redirige automáticamente en 2 segundos,<br>
-        haz clic en el enlace de arriba.
+      .manual-link:active {
+        transform: translateY(0);
+      }
+
+      /* Info adicional */
+      .info {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        color: #6b7280;
+        line-height: 1.5;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .logo {
+          font-size: 1.5rem;
+        }
+
+        .card {
+          padding: 2rem 1.5rem;
+        }
+
+        .message {
+          font-size: 1rem;
+        }
+
+        .spinner {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Orbes flotantes -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+      <div class="logo">Mahitek 3D Lab</div>
+
+      <div class="card">
+        <div class="message">Redirigiendo a la experiencia 3D…</div>
+
+        <div class="spinner-container">
+          <div class="spinner"></div>
+        </div>
+
+        <a href="#" id="manualLink" class="manual-link"> Ir ahora → </a>
+
+        <div class="info">
+          Si no se redirige automáticamente en 2 segundos,<br />
+          haz clic en el enlace de arriba.
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    // Configuración
-    const BASE_URL = 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/';
-    const REDIRECT_DELAY = 1500; // 1.5 segundos
+    <script>
+      // Configuración
+      const BASE_URL = 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/';
+      const REDIRECT_DELAY = 1500; // 1.5 segundos
 
-    // Leer parámetros del QR
-    const urlParams = new URLSearchParams(window.location.search);
-    const utm_campaign = urlParams.get('c') || 'default';
-    const utm_medium = urlParams.get('m') || 'print';
-    const utm_source = urlParams.get('s') || 'qr';
+      // Leer parámetros del QR
+      const urlParams = new URLSearchParams(window.location.search);
+      const utm_campaign = urlParams.get('c') || 'default';
+      const utm_medium = urlParams.get('m') || 'print';
+      const utm_source = urlParams.get('s') || 'qr';
 
-    // Construir URL final con UTM
-    function buildFinalURL() {
-      const url = new URL(BASE_URL);
-      url.searchParams.set('utm_source', utm_source);
-      url.searchParams.set('utm_medium', utm_medium);
-      url.searchParams.set('utm_campaign', utm_campaign);
-      return url.toString();
-    }
-
-    const FINAL_URL = buildFinalURL();
-
-    // Actualizar enlace manual
-    document.getElementById('manualLink').href = FINAL_URL;
-
-    // Función de redirección
-    function performRedirect() {
-      try {
-        // Enviar evento a GA4
-        gtag('event', 'qr_redirect', {
-          qr_source: utm_source,
-          qr_medium: utm_medium,
-          qr_campaign: utm_campaign,
-          destination: FINAL_URL
-        });
-
-        console.log('✓ Evento GA4 enviado:', {
-          qr_source: utm_source,
-          qr_medium: utm_medium,
-          qr_campaign: utm_campaign,
-          destination: FINAL_URL
-        });
-      } catch (error) {
-        console.warn('⚠ Error al enviar evento GA4:', error);
+      // Construir URL final con UTM
+      function buildFinalURL() {
+        const url = new URL(BASE_URL);
+        url.searchParams.set('utm_source', utm_source);
+        url.searchParams.set('utm_medium', utm_medium);
+        url.searchParams.set('utm_campaign', utm_campaign);
+        return url.toString();
       }
 
-      // Redirigir después del delay
-      setTimeout(() => {
+      const FINAL_URL = buildFinalURL();
+
+      // Actualizar enlace manual
+      document.getElementById('manualLink').href = FINAL_URL;
+
+      // Función de redirección
+      function performRedirect() {
+        try {
+          // Enviar evento a GA4
+          gtag('event', 'qr_redirect', {
+            qr_source: utm_source,
+            qr_medium: utm_medium,
+            qr_campaign: utm_campaign,
+            destination: FINAL_URL
+          });
+
+          console.log('✓ Evento GA4 enviado:', {
+            qr_source: utm_source,
+            qr_medium: utm_medium,
+            qr_campaign: utm_campaign,
+            destination: FINAL_URL
+          });
+        } catch (error) {
+          console.warn('⚠ Error al enviar evento GA4:', error);
+        }
+
+        // Redirigir después del delay
+        setTimeout(() => {
+          location.replace(FINAL_URL);
+        }, REDIRECT_DELAY);
+      }
+
+      // Ejecutar al cargar el DOM
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', performRedirect);
+      } else {
+        performRedirect();
+      }
+
+      // Permitir redirección manual inmediata
+      document.getElementById('manualLink').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        try {
+          gtag('event', 'qr_manual_click', {
+            qr_source: utm_source,
+            qr_medium: utm_medium,
+            qr_campaign: utm_campaign
+          });
+        } catch (error) {
+          console.warn('⚠ Error al enviar evento manual:', error);
+        }
+
         location.replace(FINAL_URL);
-      }, REDIRECT_DELAY);
-    }
-
-    // Ejecutar al cargar el DOM
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', performRedirect);
-    } else {
-      performRedirect();
-    }
-
-    // Permitir redirección manual inmediata
-    document.getElementById('manualLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      try {
-        gtag('event', 'qr_manual_click', {
-          qr_source: utm_source,
-          qr_medium: utm_medium,
-          qr_campaign: utm_campaign
-        });
-      } catch (error) {
-        console.warn('⚠ Error al enviar evento manual:', error);
-      }
-
-      location.replace(FINAL_URL);
-    });
-  </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
