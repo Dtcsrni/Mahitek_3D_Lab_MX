@@ -27,13 +27,13 @@
   --accent-cyan: #06b6d4;
   --accent-green: #10b981;
   --accent-red: #d22623;
-  
+
   /* Alias para compatibilidad con código legacy */
   --primary-cyan: var(--accent-cyan);
   --background-dark: var(--bg-dark);
   --text-light: var(--text-primary);
   --secondary-magenta: #9b59b6;
-  
+
   --gradient-accent: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
   --gradient-accent-animated: linear-gradient(
     120deg,
@@ -371,11 +371,7 @@ body.nav-open {
 .footer-newsletter {
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba(6, 182, 212, 0.08) 0%,
-    rgba(16, 185, 129, 0.08) 100%
-  );
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(6, 182, 212, 0.2);
   margin-bottom: 2rem;
@@ -492,11 +488,6 @@ body.nav-open {
   font-weight: 600;
 }
 
-
-/* ===== Body Background ===== */
-body::before {
-  content: "";
-  position: fixed;
 a:hover {
   color: var(--accent-cyan);
 }
@@ -1253,12 +1244,12 @@ button {
     opacity: 0.2;
     transform: scale(0.8);
   }
-  
+
   .nav-nopal {
     width: 30px;
     height: 45px;
   }
-  
+
   .nav-aguila {
     width: 60px;
     height: 60px;
@@ -1709,6 +1700,8 @@ html[lang="es-MX"] .show-when-mx {
   position: relative;
   font-weight: 500;
   font-size: 0.95rem;
+  color: var(--text-primary);
+  text-decoration: none;
   border-radius: 8px;
   transition: all var(--motion-duration-fast) var(--motion-ease);
   overflow: hidden;
@@ -2508,51 +2501,131 @@ html[lang="es-MX"] .show-when-mx {
 /* Síguenos / Comunidad */
 .hero-community {
   margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, rgba(16, 185, 129, 0.03) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-community::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green), var(--accent-cyan));
+  background-size: 200% 100%;
+  animation: gradientSlide 3s ease infinite;
+}
+
+@keyframes gradientSlide {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .community-intro {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  font-weight: 500;
+  text-align: center;
 }
 
 .community-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: center;
+  justify-content: center;
 }
 
 .community-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background: rgba(8, 12, 18, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-primary);
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.community-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.community-link:hover::before {
+  left: 100%;
 }
 
 .community-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(6, 182, 212, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: var(--accent-cyan);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Colores específicos por red social */
+.community-link[href*="instagram"]:hover {
+  background: linear-gradient(135deg, #833ab4 0%, #e1306c 50%, #f77737 100%);
+  border-color: #e1306c;
+  color: #fff;
+}
+
+.community-link[href*="facebook"]:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #fff;
+}
+
+.community-link[href*="tiktok"]:hover {
+  background: linear-gradient(135deg, #00f2ea 0%, #ff0050 100%);
+  border-color: #00f2ea;
+  color: #fff;
+}
+
+.community-link[href*="youtube"]:hover {
+  background: #ff0000;
+  border-color: #ff0000;
+  color: #fff;
+}
+
+.community-link[href*="twitter"]:hover,
+.community-link[href*="x.com"]:hover {
+  background: #000000;
+  border-color: #1da1f2;
+  color: #fff;
 }
 
 .community-link svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.community-link:hover svg {
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Tipos de Productos */
@@ -3179,6 +3252,7 @@ html[lang="es-MX"] .show-when-mx {
 .hero-stat-value {
   font-size: 2.5rem;
   font-weight: 900;
+  color: var(--accent-cyan);
   background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-green) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;

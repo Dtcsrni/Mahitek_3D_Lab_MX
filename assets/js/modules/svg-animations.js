@@ -187,144 +187,255 @@ export class SVGAnimations {
   }
 
   /**
-   * Crea SVG de modelo 3D rotando
+   * Crea SVG de modelo 3D rotando - MEJORADO
    */
   createModel3DRotate() {
     return `
-      <svg viewBox="0 0 100 100" class="svg-3d svg-model" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 120 120" class="svg-3d svg-model" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="model-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:var(--accent-cyan);stop-opacity:1" />
-            <stop offset="50%" style="stop-color:var(--accent-green);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:var(--accent-cyan);stop-opacity:1" />
+            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
           </linearGradient>
-        </defs>
-        
-        <!-- Cubo 3D isométrico -->
-        <g transform="translate(50, 50)">
-          <!-- Cara frontal -->
-          <polygon points="-15,-10 15,-10 15,20 -15,20" 
-                   fill="url(#model-gradient)" opacity="0.9"/>
-          
-          <!-- Cara derecha -->
-          <polygon points="15,-10 25,0 25,30 15,20" 
-                   fill="var(--accent-cyan)" opacity="0.6"/>
-          
-          <!-- Cara superior -->
-          <polygon points="-15,-10 15,-10 25,0 -5,0" 
-                   fill="var(--accent-green)" opacity="0.7"/>
-          
-          <!-- Líneas de malla 3D -->
-          <line x1="-15" y1="-10" x2="15" y2="20" stroke="var(--text-primary)" stroke-width="0.5" opacity="0.3"/>
-          <line x1="15" y1="-10" x2="-15" y2="20" stroke="var(--text-primary)" stroke-width="0.5" opacity="0.3"/>
-          
-          <!-- Animación de rotación -->
-          <animateTransform attributeName="transform" type="rotate"
-                           from="0 50 50" to="360 50 50" dur="8s" repeatCount="indefinite"/>
-        </g>
-        
-        <!-- Sombra -->
-        <ellipse cx="50" cy="85" rx="20" ry="5" fill="var(--bg-dark)" opacity="0.3">
-          <animate attributeName="opacity" values="0.3;0.2;0.3" dur="8s" repeatCount="indefinite"/>
-        </ellipse>
-      </svg>
-    `;
-  }
-
-  /**
-   * Crea SVG de engranajes sincronizados
-   */
-  createGearsSynced() {
-    return `
-      <svg viewBox="0 0 200 100" class="svg-3d svg-gears" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="gear-shadow">
-            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+          <filter id="model-glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
           </filter>
         </defs>
         
-        <!-- Engranaje izquierdo -->
-        <g transform="translate(50, 50)" filter="url(#gear-shadow)">
-          <!-- Dientes del engranaje -->
-          <path d="M 0,-25 L 5,-30 L 5,-20 L 10,-25 L 10,-15 L 15,-20 L 15,-10 
-                   L 20,-15 L 20,-5 L 25,-10 L 25,0 L 25,10 L 20,5 L 20,15 
-                   L 15,10 L 15,20 L 10,15 L 10,25 L 5,20 L 5,30 L 0,25 
-                   L -5,30 L -5,20 L -10,25 L -10,15 L -15,20 L -15,10 
-                   L -20,15 L -20,5 L -25,10 L -25,0 L -25,-10 L -20,-5 
-                   L -20,-15 L -15,-10 L -15,-20 L -10,-15 L -10,-25 L -5,-20 L -5,-30 Z"
-                fill="var(--accent-cyan)" opacity="0.8"/>
+        <!-- Cubo 3D isométrico mejorado -->
+        <g transform="translate(60, 60)" filter="url(#model-glow)">
+          <!-- Cara frontal -->
+          <polygon points="-20,-12 20,-12 20,28 -20,28" 
+                   fill="url(#model-gradient)" stroke="#00d4ff" stroke-width="1.5" opacity="0.95"/>
           
-          <!-- Centro del engranaje -->
-          <circle r="10" fill="var(--glass-bg)" stroke="var(--accent-cyan)" stroke-width="2"/>
+          <!-- Cara derecha -->
+          <polygon points="20,-12 32,0 32,40 20,28" 
+                   fill="#00d4ff" stroke="#00d4ff" stroke-width="1" opacity="0.7"/>
           
-          <!-- Animación de rotación -->
+          <!-- Cara superior -->
+          <polygon points="-20,-12 20,-12 32,0 -8,0" 
+                   fill="#10b981" stroke="#10b981" stroke-width="1" opacity="0.8"/>
+          
+          <!-- Detalles de grilla -->
+          <line x1="-20" y1="-12" x2="20" y2="28" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <line x1="20" y1="-12" x2="-20" y2="28" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <line x1="0" y1="-12" x2="0" y2="28" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <line x1="-20" y1="8" x2="20" y2="8" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          
+          <!-- Puntos de vértice brillantes -->
+          <circle cx="-20" cy="-12" r="2" fill="#00d4ff" opacity="0.9">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="20" cy="-12" r="2" fill="#00d4ff" opacity="0.9">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="20" cy="28" r="2" fill="#10b981" opacity="0.9">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+          </circle>
+          
+          <!-- Animación de rotación suave -->
           <animateTransform attributeName="transform" type="rotate"
-                           from="0 50 50" to="360 50 50" dur="4s" repeatCount="indefinite"/>
+                           from="0 60 60" to="360 60 60" dur="12s" repeatCount="indefinite"/>
         </g>
         
-        <!-- Engranaje derecho (rota en dirección opuesta) -->
-        <g transform="translate(150, 50)" filter="url(#gear-shadow)">
-          <path d="M 0,-20 L 4,-24 L 4,-16 L 8,-20 L 8,-12 L 12,-16 L 12,-8 
-                   L 16,-12 L 16,-4 L 20,-8 L 20,0 L 20,8 L 16,4 L 16,12 
-                   L 12,8 L 12,16 L 8,12 L 8,20 L 4,16 L 4,24 L 0,20 
-                   L -4,24 L -4,16 L -8,20 L -8,12 L -12,16 L -12,8 
-                   L -16,12 L -16,4 L -20,8 L -20,0 L -20,-8 L -16,-4 
-                   L -16,-12 L -12,-8 L -12,-16 L -8,-12 L -8,-20 L -4,-16 L -4,-24 Z"
-                fill="var(--accent-green)" opacity="0.8"/>
-          
-          <circle r="8" fill="var(--glass-bg)" stroke="var(--accent-green)" stroke-width="2"/>
-          
-          <!-- Rotación inversa -->
-          <animateTransform attributeName="transform" type="rotate"
-                           from="0 150 50" to="-360 150 50" dur="4s" repeatCount="indefinite"/>
-        </g>
+        <!-- Sombra dinámica -->
+        <ellipse cx="60" cy="100" rx="25" ry="6" fill="#000" opacity="0.15">
+          <animate attributeName="rx" values="25;28;25" dur="12s" repeatCount="indefinite"/>
+        </ellipse>
         
-        <!-- Línea de conexión -->
-        <line x1="70" y1="50" x2="130" y2="50" 
-              stroke="var(--glass-border)" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+        <!-- Partículas orbitales -->
+        <circle cx="90" cy="60" r="1.5" fill="#00d4ff" opacity="0.6">
+          <animateTransform attributeName="transform" type="rotate"
+                           from="0 60 60" to="360 60 60" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="30" cy="60" r="1.5" fill="#10b981" opacity="0.6">
+          <animateTransform attributeName="transform" type="rotate"
+                           from="0 60 60" to="-360 60 60" dur="5s" repeatCount="indefinite"/>
+        </circle>
       </svg>
     `;
   }
 
   /**
-   * Crea SVG de caja de envío
+   * Crea SVG de engranajes sincronizados - MEJORADO
    */
-  createShippingBox() {
+  createGearsSynced() {
     return `
-      <svg viewBox="0 0 100 100" class="svg-icon svg-shipping" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 240 120" class="svg-3d svg-gears" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="box-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:var(--accent-cyan);stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:var(--accent-green);stop-opacity:0.8" />
+          <filter id="gear-shadow">
+            <feDropShadow dx="3" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+          </filter>
+          <linearGradient id="gear-grad-1">
+            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="gear-grad-2">
+            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
           </linearGradient>
         </defs>
         
-        <!-- Caja 3D -->
-        <g transform="translate(50, 40)">
-          <!-- Cara frontal -->
-          <polygon points="-20,0 20,0 20,30 -20,30" fill="url(#box-gradient)" opacity="0.9"/>
+        <!-- Engranaje izquierdo (grande) -->
+        <g transform="translate(70, 60)" filter="url(#gear-shadow)">
+          <!-- Dientes externos -->
+          <circle r="38" fill="url(#gear-grad-1)" opacity="0"/>
+          <path d="M 0,-38 L 6,-44 L 6,-32 A 38 38 0 0 1 32,-19 L 38,-25 L 26,-13
+                   A 38 38 0 0 1 19,32 L 25,38 L 13,26
+                   A 38 38 0 0 1 -32,19 L -38,25 L -26,13
+                   A 38 38 0 0 1 -19,-32 L -25,-38 L -13,-26
+                   A 38 38 0 0 1 6,-44 Z"
+                fill="url(#gear-grad-1)" stroke="#00d4ff" stroke-width="1" opacity="0.95"/>
           
-          <!-- Cara superior -->
-          <polygon points="-20,0 0,-10 40,0 20,0" fill="var(--accent-green)" opacity="0.7"/>
+          <!-- Círculo central -->
+          <circle r="15" fill="#0c1117" stroke="#00d4ff" stroke-width="2.5"/>
+          <circle r="8" fill="url(#gear-grad-1)" opacity="0.8"/>
           
-          <!-- Cara derecha -->
-          <polygon points="20,0 40,0 40,20 20,30" fill="var(--accent-cyan)" opacity="0.6"/>
+          <!-- Detalles mecánicos -->
+          <circle r="20" fill="none" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+          <circle r="28" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="0.5"/>
           
-          <!-- Cinta de embalaje -->
-          <rect x="-20" y="10" width="40" height="3" fill="var(--accent-red)" opacity="0.6"/>
-          <rect x="-2" y="0" width="4" height="30" fill="var(--accent-red)" opacity="0.6"/>
+          <!-- Líneas radiales -->
+          <line x1="0" y1="-10" x2="0" y2="-28" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="0" y1="10" x2="0" y2="28" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="-10" y1="0" x2="-28" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="0" x2="28" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
           
-          <!-- Checkmark animado -->
-          <g opacity="0">
-            <path d="M -5,15 L 0,20 L 10,5" stroke="var(--accent-green)" 
-                  stroke-width="3" stroke-linecap="round" fill="none"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
-          </g>
+          <!-- Animación de rotación horaria -->
+          <animateTransform attributeName="transform" type="rotate"
+                           from="0 70 60" to="360 70 60" dur="6s" repeatCount="indefinite"/>
         </g>
         
-        <!-- Animación de envío (movimiento) -->
+        <!-- Engranaje derecho (mediano) -->
+        <g transform="translate(170, 60)" filter="url(#gear-shadow)">
+          <!-- Dientes externos -->
+          <path d="M 0,-28 L 4,-32 L 4,-24 A 28 28 0 0 1 24,-14 L 28,-18 L 20,-10
+                   A 28 28 0 0 1 14,24 L 18,28 L 10,20
+                   A 28 28 0 0 1 -24,14 L -28,18 L -20,10
+                   A 28 28 0 0 1 -14,-24 L -18,-28 L -10,-20
+                   A 28 28 0 0 1 4,-32 Z"
+                fill="url(#gear-grad-2)" stroke="#10b981" stroke-width="1" opacity="0.95"/>
+          
+          <!-- Círculo central -->
+          <circle r="12" fill="#0c1117" stroke="#10b981" stroke-width="2"/>
+          <circle r="6" fill="url(#gear-grad-2)" opacity="0.8"/>
+          
+          <!-- Detalles mecánicos -->
+          <circle r="16" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+          <circle r="22" fill="none" stroke="rgba(16,185,129,0.2)" stroke-width="0.5"/>
+          
+          <!-- Líneas radiales -->
+          <line x1="0" y1="-8" x2="0" y2="-20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="0" y1="8" x2="0" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          
+          <!-- Rotación antihoraria (sincronizada) -->
+          <animateTransform attributeName="transform" type="rotate"
+                           from="0 170 60" to="-360 170 60" dur="6s" repeatCount="indefinite"/>
+        </g>
+        
+        <!-- Línea de conexión animada -->
+        <line x1="95" y1="60" x2="145" y2="60" 
+              stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5">
+          <animate attributeName="stroke-dashoffset" values="0;8" dur="1s" repeatCount="indefinite"/>
+        </line>
+        
+        <!-- Partículas de energía -->
+        <circle cx="120" cy="60" r="2" fill="#00d4ff" opacity="0.8">
+          <animate attributeName="cx" values="95;145" dur="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    `;
+  }
+
+  /**
+   * Crea SVG de caja de envío - MEJORADO
+   */
+  createShippingBox() {
+    return `
+      <svg viewBox="0 0 140 140" class="svg-icon svg-shipping" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="box-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:#10b981;stop-opacity:0.9" />
+          </linearGradient>
+          <filter id="box-shadow">
+            <feDropShadow dx="4" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+          </filter>
+        </defs>
+        
+        <!-- Caja 3D -->
+        <g transform="translate(70, 50)" filter="url(#box-shadow)">
+          <!-- Cara frontal -->
+          <polygon points="-28,5 28,5 28,50 -28,50" 
+                   fill="url(#box-gradient)" stroke="#00d4ff" stroke-width="1.5" opacity="0.95"/>
+          
+          <!-- Cara superior -->
+          <polygon points="-28,5 0,-10 56,5 28,5" 
+                   fill="#10b981" stroke="#10b981" stroke-width="1" opacity="0.85"/>
+          
+          <!-- Cara derecha -->
+          <polygon points="28,5 56,5 56,35 28,50" 
+                   fill="#00d4ff" stroke="#00d4ff" stroke-width="1" opacity="0.7"/>
+          
+          <!-- Cinta de embalaje horizontal -->
+          <rect x="-28" y="20" width="56" height="4" fill="#ff6b6b" opacity="0.85"/>
+          <rect x="28" y="20" width="28" height="4" 
+                transform="skewY(-25)" transform-origin="28 22" fill="#ff6b6b" opacity="0.7"/>
+          
+          <!-- Cinta vertical -->
+          <rect x="-3" y="5" width="6" height="45" fill="#ff6b6b" opacity="0.85"/>
+          <polygon points="-3,5 3,5 17,-3 11,-3" fill="#ff6b6b" opacity="0.7"/>
+          
+          <!-- Símbolo de envío -->
+          <g transform="translate(0, 28)">
+            <!-- Flecha de envío -->
+            <path d="M -10,0 L 10,0 L 10,-6 L 18,2 L 10,10 L 10,4 L -10,4 Z" 
+                  fill="rgba(255,255,255,0.5)" opacity="0">
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+            </path>
+          </g>
+          
+          <!-- Checkmark de confirmación -->
+          <g transform="translate(0, 28)" opacity="0">
+            <circle r="12" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="2"/>
+            <path d="M -6,0 L -2,5 L 8,-5" stroke="#10b981" 
+                  stroke-width="3" stroke-linecap="round" fill="none"/>
+            <animate attributeName="opacity" values="0;0;0;1;1;0" dur="3s" repeatCount="indefinite"/>
+          </g>
+          
+          <!-- Detalles de textura -->
+          <line x1="-28" y1="35" x2="28" y2="35" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <line x1="-15" y1="5" x2="-15" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+          <line x1="15" y1="5" x2="15" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        </g>
+        
+        <!-- Líneas de movimiento -->
+        <g opacity="0.4">
+          <line x1="20" y1="60" x2="30" y2="60" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round">
+            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+          </line>
+          <line x1="15" y1="70" x2="25" y2="70" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round">
+            <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+          </line>
+          <line x1="20" y1="80" x2="30" y2="80" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round">
+            <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+          </line>
+        </g>
+        
+        <!-- Sombra del paquete -->
+        <ellipse cx="70" cy="110" rx="35" ry="8" fill="#000" opacity="0.15">
+          <animate attributeName="opacity" values="0.15;0.1;0.15" dur="2s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- Animación de envío (movimiento horizontal) -->
         <animateTransform attributeName="transform" type="translate"
-                         values="0,0; 5,-2; 0,0" dur="2s" repeatCount="indefinite"/>
+                         values="0,0; 8,-3; 0,0" dur="2s" repeatCount="indefinite"/>
       </svg>
     `;
   }

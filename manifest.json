@@ -2,8 +2,8 @@
   "name": "Mahitek 3D Lab - Impresión 3D Profesional",
   "short_name": "Mahitek 3D",
   "description": "Fabricación 3D bajo pedido en PETG: piezas funcionales, decoración y proyectos técnicos desde Pachuca con envío nacional",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#00d4ff",
@@ -39,11 +39,12 @@
       "name": "Ver Catálogo",
       "short_name": "Catálogo",
       "description": "Explorar productos disponibles",
-      "url": "/#catalogo",
+      "url": "./#catalogo",
       "icons": [
         {
           "src": "assets/img/favicon_512.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     },
@@ -55,7 +56,8 @@
       "icons": [
         {
           "src": "assets/img/favicon_512.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     }
@@ -63,7 +65,7 @@
   "related_applications": [],
   "prefer_related_applications": false,
   "share_target": {
-    "action": "/share",
+    "action": "./share",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {

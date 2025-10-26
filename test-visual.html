@@ -55,6 +55,32 @@
         background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
       }
+      .colors-flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .color-cyan {
+        background: #00d4ff;
+      }
+      .color-accent {
+        background: #06b6d4;
+      }
+      .color-dark {
+        background: #0a0e27;
+      }
+      .color-green {
+        background: #10b981;
+      }
+      .color-magenta {
+        background: #9b59b6;
+      }
+      .svg-filter-cyan {
+        color: #10b981;
+        filter: drop-shadow(0 0 8px #10b981);
+      }
+      .svg-filter-blue {
+        filter: drop-shadow(0 0 12px #00d4ff);
+      }
     </style>
   </head>
   <body>
@@ -62,20 +88,20 @@
 
     <div class="section">
       <h2>1️⃣ Paleta de Colores</h2>
-      <div style="display: flex; flex-wrap: wrap">
-        <div class="color-box" style="background: #00d4ff">
+      <div class="colors-flex">
+        <div class="color-box color-cyan">
           <div class="color-label">#00d4ff<br />Theme PWA</div>
         </div>
-        <div class="color-box" style="background: #06b6d4">
+        <div class="color-box color-accent">
           <div class="color-label">#06b6d4<br />accent-cyan</div>
         </div>
-        <div class="color-box" style="background: #0a0e27">
+        <div class="color-box color-dark">
           <div class="color-label">#0a0e27<br />background</div>
         </div>
-        <div class="color-box" style="background: #10b981">
+        <div class="color-box color-green">
           <div class="color-label">#10b981<br />accent-green</div>
         </div>
-        <div class="color-box" style="background: #9b59b6">
+        <div class="color-box color-magenta">
           <div class="color-label">#9b59b6<br />magenta</div>
         </div>
       </div>
@@ -89,12 +115,12 @@
           <h3>Nopal</h3>
           <svg viewBox="0 0 40 60" width="40" height="60" fill="none">
             <path
+              class="svg-filter-cyan"
               d="M15 55 Q10 45 12 35 T15 20 Q12 15 15 10 Q18 5 20 10 Q22 5 25 10 Q28 15 25 20 T28 35 Q30 45 25 55 Q20 60 15 55Z"
               fill="currentColor"
               stroke="#10b981"
               stroke-width="1.5"
               opacity="0.6"
-              style="color: #10b981; filter: drop-shadow(0 0 8px #10b981)"
             />
           </svg>
         </div>
@@ -104,12 +130,12 @@
           <h3>Águila</h3>
           <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
             <path
+              class="svg-filter-blue"
               d="M40 20 L30 35 Q28 38 30 40 L35 45 L40 50 L45 45 L50 40 Q52 38 50 35 Z M25 30 Q20 32 22 36 M55 30 Q60 32 58 36"
               stroke="#00d4ff"
               stroke-width="2"
               fill="none"
               opacity="0.4"
-              style="filter: drop-shadow(0 0 12px #00d4ff)"
             />
           </svg>
         </div>

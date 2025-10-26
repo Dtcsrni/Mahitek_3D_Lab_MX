@@ -735,6 +735,16 @@ if ($QuickCheck) {
     Test-FileReferences
     Test-HTMLJavaScriptIntegrity
     Test-SecurityVulnerabilities
+    
+    # Validación de Manifest y Recursos Externos
+    Write-TestHeader "9. Manifest.json y Recursos Externos"
+    $manifestValidationScript = Join-Path $PSScriptRoot "validar-manifest-y-recursos.ps1"
+    if (Test-Path $manifestValidationScript) {
+        & $manifestValidationScript
+    } else {
+        Test-Warn "Script de validación de manifest no encontrado" -Details $manifestValidationScript
+    }
+    
     Test-DataIntegrity
     Test-DocumentationBadges
     Test-GitStatus
