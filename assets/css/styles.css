@@ -688,17 +688,31 @@ button {
   height: 2px;
   background: linear-gradient(90deg,
     transparent 0%,
-    var(--accent-cyan) 20%,
-    var(--accent-primary) 50%,
-    var(--accent-cyan) 80%,
+    hsl(var(--tone-hue) 85% 60%) 20%,
+    hsl(calc(var(--tone-hue) - 25) 85% 55%) 50%,
+    hsl(var(--tone-hue) 85% 60%) 80%,
     transparent 100%);
   opacity: 0.3;
-  animation: scan-line 4s linear infinite;
+  animation: scan-line 4s linear infinite, tone-cycle 12s linear infinite;
 }
 
 @keyframes scan-line {
   0%, 100% { transform: translateX(-100%); opacity: 0; }
   50% { opacity: 0.6; }
+}
+
+/* Register custom property for smooth hue animation (fallback-safe) */
+@property --tone-hue {
+  syntax: '<number>';
+  initial-value: 185;
+  inherits: false;
+}
+
+@keyframes tone-cycle {
+  0%   { --tone-hue: 185; } /* cyan */
+  33%  { --tone-hue: 150; } /* green-cyan (mecha) */
+  66%  { --tone-hue: 45;  } /* amber */
+  100% { --tone-hue: 185; }
 }
 
 .header.is-scrolled {
@@ -715,7 +729,8 @@ button {
 
 /* Navbar oculto al hacer scroll hacia abajo */
 .header.is-hidden {
-  transform: translateY(-100%);
+  /* Mantener visible una franja superior (peek) para indicar presencia */
+  transform: translateY(calc(-100% + var(--peek-height)));
   box-shadow: none;
 }
 
@@ -829,12 +844,12 @@ button {
   bottom: 0;
   background: repeating-linear-gradient(
     0deg,
-    rgba(6, 182, 212, 0.03) 0px,
-    rgba(6, 182, 212, 0.03) 1px,
+    hsla(var(--tone-hue), 85%, 60%, 0.06) 0px,
+    hsla(var(--tone-hue), 85%, 60%, 0.06) 1px,
     transparent 1px,
     transparent 4px
   );
-  animation: scan-move 8s linear infinite;
+  animation: scan-move 8s linear infinite, tone-cycle 12s linear infinite;
   opacity: 0.5;
 }
 
@@ -917,10 +932,10 @@ button {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    var(--accent-primary) 50%,
+    hsl(var(--tone-hue) 85% 60%) 50%,
     transparent 100%);
   opacity: 0;
-  animation: border-glitch 5s ease-in-out infinite;
+  animation: border-glitch 5s ease-in-out infinite, tone-cycle 12s linear infinite;
 }
 
 .nav-border-top {
@@ -1175,6 +1190,19 @@ button {
   75% {
     transform: skewX(-2deg);
   }
+}
+
+/* Badge Hecho en México */
+.badge-made-mx {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.25));
+}
+
+.badge-made-mx-svg {
+  height: 28px;
+  width: auto;
 }
 
 .nav-tagline span:first-child {
