@@ -1,0 +1,589 @@
+/**
+ * Sistema de Animaciones Optimizadas
+ * Módulo CSS para animaciones de scroll, SVG y transiciones
+ * @version 2.0.0
+ */
+
+/* ====================================================================
+   CONFIGURACIÓN BASE
+   ==================================================================== */
+
+:root {
+  /* Duraciones */
+  --anim-fast: 200ms;
+  --anim-normal: 300ms;
+  --anim-slow: 600ms;
+  --anim-slower: 1000ms;
+
+  /* Easing functions */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Distancias de animación */
+  --anim-distance-sm: 15px;
+  --anim-distance-md: 30px;
+  --anim-distance-lg: 60px;
+}
+
+/* Respeto a preferencias de usuario */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ====================================================================
+   BARRA DE PROGRESO DE LECTURA
+   ==================================================================== */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.reading-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ====================================================================
+   ANIMACIONES DE SCROLL (data-animate)
+   ==================================================================== */
+
+/* Estados iniciales (antes de animar) */
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity var(--anim-slow) var(--ease-out-expo),
+    transform var(--anim-slow) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+/* Fade Up */
+[data-animate="fade-up"] {
+  transform: translateY(var(--anim-distance-md));
+}
+
+[data-animate="fade-up"].animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Down */
+[data-animate="fade-down"] {
+  transform: translateY(calc(var(--anim-distance-md) * -1));
+}
+
+[data-animate="fade-down"].animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Left */
+[data-animate="fade-left"] {
+  transform: translateX(var(--anim-distance-md));
+}
+
+[data-animate="fade-left"].animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade Right */
+[data-animate="fade-right"] {
+  transform: translateX(calc(var(--anim-distance-md) * -1));
+}
+
+[data-animate="fade-right"].animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale Up */
+[data-animate="scale-up"] {
+  transform: scale(0.85);
+}
+
+[data-animate="scale-up"].animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Scale Down */
+[data-animate="scale-down"] {
+  transform: scale(1.15);
+}
+
+[data-animate="scale-down"].animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Flip In */
+[data-animate="flip-in"] {
+  transform: perspective(1000px) rotateY(90deg);
+}
+
+[data-animate="flip-in"].animated {
+  opacity: 1;
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Fade In (solo opacidad) */
+[data-animate="fade-in"] {
+  opacity: 0;
+}
+
+[data-animate="fade-in"].animated {
+  opacity: 1;
+}
+
+/* ====================================================================
+   DELAYS EN CASCADA
+   ==================================================================== */
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.animate-delay-2 {
+  animation-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.animate-delay-3 {
+  animation-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+.animate-delay-4 {
+  animation-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+.animate-delay-5 {
+  animation-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+/* ====================================================================
+   ANIMACIONES HERO
+   ==================================================================== */
+
+.hero-element--visible {
+  animation: heroEnter var(--anim-slow) var(--ease-out-expo) forwards;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll indicator bounce */
+.scroll-indicator__icon {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* ====================================================================
+   ANIMACIONES DE BADGES
+   ==================================================================== */
+
+.badge--pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+  }
+}
+
+/* Badge de urgencia */
+.urgency-badge {
+  animation: urgencyShake 0.5s ease-in-out;
+  animation-iteration-count: 3;
+}
+
+@keyframes urgencyShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ====================================================================
+   ANIMACIONES SVG
+   ==================================================================== */
+
+/* SVG 3D con efecto de profundidad */
+.svg-3d {
+  transform-style: preserve-3d;
+  transition: transform var(--anim-normal) var(--ease-out-expo);
+}
+
+.svg-3d:hover {
+  transform: scale(1.1) rotateY(10deg);
+}
+
+/* SVG iconos hover */
+.svg-icon {
+  transition: all var(--anim-fast) var(--ease-out-expo);
+}
+
+.svg-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.3));
+}
+
+/* Animación de entrada para SVG */
+@keyframes svgDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Path animado (para líneas SVG) */
+.svg-path-animated {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: svgDraw 2s ease-in-out forwards;
+}
+
+/* ====================================================================
+   LOADING STATES
+   ==================================================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: spinnerRotate 0.8s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====================================================================
+   HOVER EFFECTS
+   ==================================================================== */
+
+/* Glow effect */
+.glow-on-hover {
+  position: relative;
+  transition: all var(--anim-normal) var(--ease-out-expo);
+}
+
+.glow-on-hover::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green), var(--accent-cyan));
+  background-size: 200% 200%;
+  border-radius: inherit;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--anim-normal) var(--ease-out-expo);
+  animation: glowRotate 3s linear infinite;
+}
+
+.glow-on-hover:hover::before {
+  opacity: 0.7;
+}
+
+@keyframes glowRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Lift effect */
+.lift-on-hover {
+  transition:
+    transform var(--anim-normal) var(--ease-out-expo),
+    box-shadow var(--anim-normal) var(--ease-out-expo);
+}
+
+.lift-on-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================================
+   TRANSICIONES DE SECCIONES
+   ==================================================================== */
+
+.section {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--anim-slower) var(--ease-out-expo),
+    transform var(--anim-slower) var(--ease-out-expo);
+}
+
+/* Estados narrativos - manejados por JavaScript */
+
+/* ====================================================================
+   MICRO-INTERACCIONES
+   ==================================================================== */
+
+/* Botón click feedback */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--anim-fast) var(--ease-out-expo);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.5s var(--ease-out-expo);
+}
+
+.btn:active::after {
+  transform: scale(2);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Input focus */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
+  transition: box-shadow var(--anim-fast) var(--ease-out-expo);
+}
+
+/* Card hover */
+.card {
+  transition: all var(--anim-normal) var(--ease-out-expo);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ====================================================================
+   PARALLAX SUTIL
+   ==================================================================== */
+
+.parallax-element {
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Efectos parallax aplicados dinámicamente con JS */
+
+/* ====================================================================
+   ESTADOS ESPECIALES
+   ==================================================================== */
+
+/* Elemento oculto (se muestra con JS) */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--anim-normal) var(--ease-out-expo);
+}
+
+.hidden.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fade in/out */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity var(--anim-normal) var(--ease-out-expo);
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity var(--anim-normal) var(--ease-out-expo);
+}
+
+/* ====================================================================
+   OPTIMIZACIONES DE PERFORMANCE
+   ==================================================================== */
+
+/* Forzar aceleración GPU */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Contenedor de animaciones */
+.animation-container {
+  contain: layout style paint;
+  content-visibility: auto;
+}
+
+/* Reducir repaints */
+.no-repaint {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ====================================================================
+   UTILIDADES
+   ==================================================================== */
+
+/* Animación deshabilitada */
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Delay custom */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+.delay-200 {
+  transition-delay: 0.2s;
+}
+.delay-300 {
+  transition-delay: 0.3s;
+}
+.delay-400 {
+  transition-delay: 0.4s;
+}
+.delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* Duración custom */
+.duration-fast {
+  transition-duration: var(--anim-fast);
+}
+.duration-normal {
+  transition-duration: var(--anim-normal);
+}
+.duration-slow {
+  transition-duration: var(--anim-slow);
+}
+.duration-slower {
+  transition-duration: var(--anim-slower);
+}
+
+/* Easing custom */
+.ease-expo {
+  transition-timing-function: var(--ease-out-expo);
+}
+.ease-back {
+  transition-timing-function: var(--ease-out-back);
+}
+.ease-circ {
+  transition-timing-function: var(--ease-in-out-circ);
+}
+.ease-spring {
+  transition-timing-function: var(--ease-spring);
+}
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  /* Reducir distancias en móvil */
+  :root {
+    --anim-distance-sm: 10px;
+    --anim-distance-md: 20px;
+    --anim-distance-lg: 40px;
+  }
+
+  /* Animaciones más rápidas en móvil */
+  [data-animate] {
+    transition-duration: var(--anim-normal);
+  }
+}
+
+/* Dark mode (si se implementa) */
+@media (prefers-color-scheme: dark) {
+  .reading-progress__fill {
+    opacity: 0.9;
+  }
+}

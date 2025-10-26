@@ -7,6 +7,7 @@ El sistema de validación avanzada detecta automáticamente errores de integraci
 ## 🎯 Scripts de Validación
 
 ### 1. `validar-codigo.ps1` - Validación Básica
+
 Valida sintaxis y estructura básica del código.
 
 ```powershell
@@ -16,6 +17,7 @@ Valida sintaxis y estructura básica del código.
 ```
 
 **Verifica:**
+
 - ✅ JSON válido (syntax)
 - ✅ Referencias de archivos (CSS, JS, imágenes)
 - ✅ Sintaxis JavaScript (con Node.js si está disponible)
@@ -24,6 +26,7 @@ Valida sintaxis y estructura básica del código.
 - ✅ Estado de Git
 
 ### 2. `validar-avanzado.ps1` - Validación de Seguridad e Integridad ⭐
+
 **NUEVO** - Detecta problemas que NO detectan otras herramientas.
 
 ```powershell
@@ -34,6 +37,7 @@ Valida sintaxis y estructura básica del código.
 **Verifica:**
 
 #### 🔗 Integridad HTML ↔ JavaScript
+
 - **IDs usados en JS existen en HTML**
   - Detecta: `getElementById('promos')` cuando HTML tiene `id="promociones"`
   - **Este bug causó que las promociones no se cargaran** ✓ DETECTADO
@@ -41,6 +45,7 @@ Valida sintaxis y estructura básica del código.
   - Detecta: `classList.add('active')` sin `.active {}` en CSS
 
 #### 🛡️ Seguridad XSS y Vulnerabilidades
+
 - **innerHTML sin sanitización** ⚠️ CRÍTICO
   - Detecta: `element.innerHTML = userInput` (riesgo XSS)
   - Requiere: `escapeHTML()` o `DOMPurify.sanitize()`
@@ -60,6 +65,7 @@ Valida sintaxis y estructura básica del código.
   - X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
 
 #### 📊 Integridad de Datos JSON
+
 - **Campos requeridos** (id, titulo, nombre, etc.)
 - **Validación de fechas** (desde < hasta)
 - **Formato de fechas válido**
@@ -88,6 +94,7 @@ ADVERTENCIAS:
 ## 🔧 Uso Recomendado
 
 ### Pre-commit Hook (Manual)
+
 ```powershell
 # Antes de cada commit
 .\scripts\validar-codigo.ps1
@@ -95,21 +102,23 @@ ADVERTENCIAS:
 ```
 
 ### En CI/CD (GitHub Actions)
+
 ```yaml
 - name: Validar código básico
   run: ./scripts/validar-codigo.ps1
-  
+
 - name: Validar seguridad avanzada
   run: ./scripts/validar-avanzado.ps1
-  continue-on-error: true  # Opcional: solo advertir
+  continue-on-error: true # Opcional: solo advertir
 ```
 
 ## 🎓 Ejemplos de Problemas Detectados
 
 ### Ejemplo 1: Mismatch de IDs (Bug Real Detectado ✓)
+
 ```html
 <!-- index.html -->
-<section id="promos">
+<section id="promos"></section>
 ```
 
 ```javascript
@@ -118,17 +127,20 @@ const section = document.getElementById('promociones'); // ❌ NO EXISTE
 ```
 
 **Detección:**
+
 ```
 [✗] ID 'promociones' usado en JS pero NO existe en HTML
 [ℹ]   Revisar getElementById('promociones') o querySelector('#promociones')
 ```
 
 **Solución:**
+
 ```javascript
 const section = document.getElementById('promos'); // ✅ CORRECTO
 ```
 
 ### Ejemplo 2: innerHTML sin Sanitización
+
 ```javascript
 // ❌ INSEGURO - Riesgo XSS
 element.innerHTML = userInput;
@@ -138,23 +150,26 @@ element.innerHTML = escapeHTML(userInput);
 ```
 
 **Detección:**
+
 ```
 [✗] innerHTML sin sanitizar: userInput
 [ℹ]   Riesgo XSS - usar escapeHTML
 ```
 
 ### Ejemplo 3: console.log en Producción
+
 ```javascript
 // ❌ EXPUESTO en producción
 console.log('Debug info:', data);
 
 // ✅ PROTEGIDO - Solo en development
 if (CONFIG.DEBUG_MODE) {
-    console.log('Debug info:', data);
+  console.log('Debug info:', data);
 }
 ```
 
 **Detección:**
+
 ```
 [⚠] 9 console.log sin protección DEBUG_MODE
 [ℹ]   Recomendación: Envolver en if CONFIG.DEBUG_MODE
@@ -162,12 +177,12 @@ if (CONFIG.DEBUG_MODE) {
 
 ## 📊 Niveles de Severidad
 
-| Icono | Nivel | Descripción |
-|-------|-------|-------------|
-| 🔴 | CRÍTICO | Vulnerabilidad de seguridad grave (eval, innerHTML sin sanitizar) |
-| ✗ | ERROR | Código roto o bug funcional (IDs faltantes, fechas inválidas) |
-| ⚠️ | ADVERTENCIA | Mala práctica o potencial problema (console.log, document.write) |
-| ✅ | OK | Verificación pasada correctamente |
+| Icono | Nivel       | Descripción                                                       |
+| ----- | ----------- | ----------------------------------------------------------------- |
+| 🔴    | CRÍTICO     | Vulnerabilidad de seguridad grave (eval, innerHTML sin sanitizar) |
+| ✗     | ERROR       | Código roto o bug funcional (IDs faltantes, fechas inválidas)     |
+| ⚠️    | ADVERTENCIA | Mala práctica o potencial problema (console.log, document.write)  |
+| ✅    | OK          | Verificación pasada correctamente                                 |
 
 ## 🚀 Próximas Mejoras
 
