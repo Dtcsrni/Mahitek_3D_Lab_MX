@@ -661,7 +661,7 @@ button {
 /* ===== Header & Navigation ===== */
 .header {
   position: sticky;
-  top: 40px; /* Mobile: Debajo del banner de construcción */
+  top: 0; /* Pegada al top siempre */
   z-index: 1000;
   background: linear-gradient(135deg, 
     rgba(11, 15, 20, 0.95) 0%, 
@@ -676,7 +676,6 @@ button {
   will-change: transform, background-color, box-shadow;
   transform: translateY(0);
   overflow: visible;
-  position: relative;
 }
 
 .header::before {
@@ -1204,6 +1203,10 @@ button {
   height: 28px;
   width: auto;
 }
+
+/* Mostrar contenido condicional solo en es-MX */
+.show-when-mx { display: none !important; }
+html[lang="es-MX"] .show-when-mx { display: inline-flex !important; }
 
 .nav-tagline span:first-child {
   font-weight: 600;

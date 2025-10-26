@@ -148,32 +148,7 @@
               <span class="nav-location-icon">📍</span>
               <span class="nav-location-text">Pachuca, México</span>
             </p>
-            <!-- Badge: Hecho en México (SVG original inspirado, incluye micro-franja tricolor) -->
-            <div class="badge-made-mx" role="img" aria-label="Hecho en México">
-              <svg class="badge-made-mx-svg" viewBox="0 0 160 32" width="160" height="32" aria-hidden="true">
-                <!-- Placa base -->
-                <rect x="0.5" y="0.5" width="159" height="31" rx="8" ry="8" fill="rgba(8,12,18,0.6)" stroke="rgba(6,182,212,0.35)" stroke-width="1"/>
-                <!-- Icono circular con dienteado (simulación de engrane) -->
-                <g transform="translate(8,4)">
-                  <circle cx="12" cy="12" r="11.5" fill="none" stroke="rgba(6,182,212,0.6)" stroke-width="1"/>
-                  <circle cx="12" cy="12" r="9" fill="none" stroke="rgba(6,182,212,0.35)" stroke-width="2" stroke-dasharray="2 3"/>
-                  <!-- Águila abstracta (geométrica) -->
-                  <path d="M7 15 L11 9 L16 11 L19 10 L17 13 L18 14 L14 15 L12 18 Z" fill="rgba(6,182,212,0.35)" stroke="rgba(6,182,212,0.75)" stroke-width="1"/>
-                </g>
-                <!-- Texto HECHO EN MÉXICO -->
-                <g transform="translate(40,9)" fill="rgba(224, 242, 254, 0.9)">
-                  <text x="0" y="8" font-size="8.5" font-weight="700" letter-spacing="1.2">HECHO EN</text>
-                  <text x="0" y="19" font-size="10" font-weight="800" letter-spacing="1.1">MÉXICO</text>
-                </g>
-                <!-- Micro franja tricolor (solo visible dentro del badge) -->
-                <g transform="translate(130,13)">
-                  <rect x="0" y="0" width="24" height="6" rx="2" ry="2" fill="rgba(255,255,255,0.06)"/>
-                  <rect x="1" y="1" width="7" height="4" fill="#006847"/>
-                  <rect x="9" y="1" width="7" height="4" fill="#FFFFFF" opacity="0.9"/>
-                  <rect x="17" y="1" width="6" height="4" fill="#CE1126"/>
-                </g>
-              </svg>
-            </div>
+            
           </div>
         </div>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menú">
@@ -264,6 +239,32 @@
           <div class="hero-note">
           <span class="accent-chip">✨ Imprimimos con PETG: <span class="accent-text">resistente, seguro y sin olor</span></span>
           <span class="accent-chip accent-chip--green">🚚 Envíos a todo México o pickup en Pachuca</span>
+          </div>
+          <!-- Insignia Hecho en México: visible solo en es-MX -->
+          <div class="badge-made-mx show-when-mx" role="img" aria-label="Hecho en México">
+            <svg class="badge-made-mx-svg" viewBox="0 0 160 32" width="160" height="32" aria-hidden="true">
+              <!-- Placa base -->
+              <rect x="0.5" y="0.5" width="159" height="31" rx="8" ry="8" fill="rgba(8,12,18,0.6)" stroke="rgba(6,182,212,0.35)" stroke-width="1"/>
+              <!-- Icono circular con dienteado (simulación de engrane) -->
+              <g transform="translate(8,4)">
+                <circle cx="12" cy="12" r="11.5" fill="none" stroke="rgba(6,182,212,0.6)" stroke-width="1"/>
+                <circle cx="12" cy="12" r="9" fill="none" stroke="rgba(6,182,212,0.35)" stroke-width="2" stroke-dasharray="2 3"/>
+                <!-- Águila abstracta (geométrica) -->
+                <path d="M7 15 L11 9 L16 11 L19 10 L17 13 L18 14 L14 15 L12 18 Z" fill="rgba(6,182,212,0.35)" stroke="rgba(6,182,212,0.75)" stroke-width="1"/>
+              </g>
+              <!-- Texto HECHO EN MÉXICO -->
+              <g transform="translate(40,9)" fill="rgba(224, 242, 254, 0.9)">
+                <text x="0" y="8" font-size="8.5" font-weight="700" letter-spacing="1.2">HECHO EN</text>
+                <text x="0" y="19" font-size="10" font-weight="800" letter-spacing="1.1">MÉXICO</text>
+              </g>
+              <!-- Micro franja tricolor (solo visible dentro del badge) -->
+              <g transform="translate(130,13)">
+                <rect x="0" y="0" width="24" height="6" rx="2" ry="2" fill="rgba(255,255,255,0.06)"/>
+                <rect x="1" y="1" width="7" height="4" fill="#006847"/>
+                <rect x="9" y="1" width="7" height="4" fill="#FFFFFF" opacity="0.9"/>
+                <rect x="17" y="1" width="6" height="4" fill="#CE1126"/>
+              </g>
+            </svg>
           </div>
           
           <!-- Síguenos: Construcción de Comunidad -->
