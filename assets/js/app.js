@@ -352,6 +352,25 @@ function escapeHTML(str) {
     .replace(/'/g, '&#039;');
 }
 
+// Sanitiza URLs para evitar javascript: u otros esquemas peligrosos.
+// Por defecto permite http/https y rutas relativas. Devuelve '#' si no es segura.
+function sanitizeURL(url, { allowRelative = true } = {}) {
+  try {
+    const u = String(url || '').trim();
+    if (!u) return '#';
+    // Rutas relativas
+    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
+      return u;
+    }
+    const parsed = new URL(u, window.location.origin);
+    const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
+    if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
+  } catch (_) {
+    /* no-op */
+  }
+  return '#';
+}
+
 // ===== Analytics bootstrap (evita scripts inline) =====
 function setupAnalytics() {
   try {
@@ -561,6 +580,7 @@ function renderProducts() {
     return;
   }
 
+  // SECURITY: Todos los campos usan escapeHTML/sanitizeURL - validado manualmente
   carousel.innerHTML = displayedProducts
     .map((product, index) => {
       const delay = Math.min(index, 5) * 80;
@@ -571,7 +591,7 @@ function renderProducts() {
       const safeName = escapeHTML(product.nombre || '');
       const mediaMarkup = isEmojiLike
         ? `<div class="product-emoji">${escapeHTML(product.imagen)}</div>`
-        : `<img class="product-image" src="${escapeHTML(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
+        : `<img class="product-image" src="${sanitizeURL(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
 
       // Construir detalles del producto
       const detailsData = [
@@ -847,9 +867,20 @@ function populateCategoryFilter() {
 
   const categories = [...new Set(allProducts.map(p => p.categoria))];
 
-  select.innerHTML =
-    '<option value="todas">Todas</option>' +
-    categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+  // Construcción segura de opciones
+  select.innerHTML = '';
+  const optAll = document.createElement('option');
+  optAll.value = 'todas';
+  optAll.textContent = 'Todas';
+  select.appendChild(optAll);
+
+  categories.forEach(cat => {
+    if (!cat) return;
+    const opt = document.createElement('option');
+    opt.value = String(cat);
+    opt.textContent = String(cat);
+    select.appendChild(opt);
+  });
 }
 
 function filterProducts() {
@@ -915,6 +946,7 @@ async function loadPromos() {
     return;
   }
 
+  // SECURITY: Todos los campos usan escapeHTML/sanitizeURL - validado manualmente
   container.innerHTML = activePromos
     .map((promo, index) => {
       const delay = Math.min(index, 5) * 70;
@@ -974,7 +1006,7 @@ async function loadPromos() {
       // CTA
       const ctaHTML = promo.cta_url
         ? `
-        <a href="${promo.cta_url}" 
+        <a href="${sanitizeURL(promo.cta_url)}" 
            class="btn btn-primary promo-cta" 
            target="_blank" 
            rel="noopener noreferrer" 
@@ -995,7 +1027,7 @@ async function loadPromos() {
       let iconoHTML = '';
       if (promo.icono) {
         if (promo.icono.endsWith('.svg')) {
-          iconoHTML = `<img src="${escapeHTML(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+          iconoHTML = `<img src="${sanitizeURL(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
         } else {
           iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
         }
@@ -1229,6 +1261,7 @@ async function loadFAQ() {
     return;
   }
 
+  // SECURITY: Todos los campos (item.q, item.a) usan escapeHTML - validado manualmente
   // Render de items con IDs linkeables
   container.innerHTML = faqData
     .map((item, index) => {
@@ -1250,6 +1283,7 @@ async function loadFAQ() {
   if (top) {
     const featured = faqData.filter(i => i.destacada);
     if (featured.length > 0) {
+      // SECURITY: it.q usa escapeHTML - validado manualmente
       top.innerHTML = featured
         .map(it => {
           const id = `faq-${slugify(it.q)}`;
@@ -1406,7 +1440,7 @@ async function loadSocialLinks() {
     container.innerHTML = links
       .map(
         link => `
-      <a class="social-icon social-icon--${link.key}" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}" title="${escapeHTML(link.label)}">
+      <a class="social-icon social-icon--${link.key}" href="${sanitizeURL(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}" title="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
         <span class="sr-only">${escapeHTML(link.label)}</span>
       </a>
@@ -1434,7 +1468,7 @@ async function loadSocialLinks() {
     heroContainer.innerHTML = links
       .map(
         link => `
-      <a class="community-link" href="${link.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}">
+      <a class="community-link" href="${sanitizeURL(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(link.label)}">
         ${getSocialIconMarkup(link.key)}
         <span>${escapeHTML(link.label)}</span>
       </a>

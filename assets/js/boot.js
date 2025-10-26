@@ -3,11 +3,26 @@
 
 import { initScrollNarrative } from './modules/scroll-narrative.js';
 import { initSVGAnimations } from './modules/svg-animations.js';
+import DataManager from './modules/data-manager.js';
+import CopyBinder from './modules/copywriting-binder.js';
 import CONFIG, { ConfigUtils } from './modules/config.js';
 
 // Inicialización segura tras carga del DOM
-const onReady = () => {
+const onReady = async () => {
   try {
+    // Inicializar DataManager
+    DataManager.init();
+
+    // Precarga de datos críticos (no bloqueante)
+    DataManager.preloadCritical().catch(err => {
+      console.warn('[Boot] Error en precarga:', err);
+    });
+
+    // Enlazar copywriting a elementos con data-copy (no bloqueante)
+    CopyBinder.bindCopywriting().catch(err => {
+      console.warn('[Boot] Error enlazando copywriting:', err);
+    });
+
     // Inicializar narrativa con scroll
     initScrollNarrative();
 

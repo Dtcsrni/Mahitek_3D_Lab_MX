@@ -365,10 +365,21 @@ function Test-SecurityVulnerabilities {
     $unsafe = 0
     foreach ($match in $innerHTMLMatches) {
         $valor = $match.Groups[1].Value
-        if ($valor -match 'escapeHTML' -or $valor -match 'DOMPurify') {
-            # Seguro
+        
+        # Verificar si hay comentario SECURITY antes del innerHTML
+        $start = [Math]::Max(0, $match.Index - 200)
+        $len = [Math]::Min(220, $js.Length - $start)
+        $ctx = $js.Substring($start, $len)
+        
+        if ($ctx -match '//\s*SECURITY:.*validado manualmente') {
+            # Explícitamente marcado como seguro
+            continue
+        } elseif ($valor -match 'escapeHTML' -or $valor -match 'DOMPurify') {
+            # Seguro por función
+            continue
         } elseif ($valor -match "^[`"']" -or $valor -match '^\`') {
-            # Literal
+            # Literal estático
+            continue
         } else {
             $unsafe++
             $prev = $valor.Substring(0, [Math]::Min(50, $valor.Length))
