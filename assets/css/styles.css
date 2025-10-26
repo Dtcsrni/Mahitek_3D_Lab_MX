@@ -117,8 +117,8 @@ body.nav-open {
 }
 
 /* ===== Banner de Construcción (Sticky) ===== */
-/* ===== Cyberpunk Ribbon (Top Right Corner) ===== */
-.cyberpunk-ribbon {
+/* ===== Cintillo Cyberpunk (Esquina Superior Derecha) ===== */
+.cintillo-cyberpunk {
   position: fixed;
   top: 15px;
   right: -40px;
@@ -138,10 +138,10 @@ body.nav-open {
     inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  animation: ribbonGlow 2s ease-in-out infinite alternate;
+  animation: brilloCintillo 2s ease-in-out infinite alternate;
 }
 
-.cyberpunk-ribbon::before {
+.cintillo-cyberpunk::before {
   content: '';
   position: absolute;
   top: 0;
@@ -152,10 +152,10 @@ body.nav-open {
     transparent, 
     rgba(255, 255, 255, 0.4), 
     transparent);
-  animation: ribbonShine 3s linear infinite;
+  animation: destinoCintillo 3s linear infinite;
 }
 
-.ribbon-content {
+.cintillo-contenido {
   position: relative;
   width: 100%;
   height: 100%;
@@ -164,7 +164,7 @@ body.nav-open {
   overflow: hidden;
 }
 
-.ribbon-text {
+.cintillo-texto {
   display: inline-block;
   white-space: nowrap;
   font-family: 'Courier New', 'Consolas', monospace;
@@ -176,12 +176,12 @@ body.nav-open {
     0 0 10px rgba(6, 182, 212, 0.8),
     0 0 20px rgba(6, 182, 212, 0.4),
     0 1px 2px rgba(0, 0, 0, 0.5);
-  animation: ribbonScroll 15s linear infinite;
+  animation: desplazarTexto 15s linear infinite;
   padding-right: 100%;
   will-change: transform;
 }
 
-@keyframes ribbonGlow {
+@keyframes brilloCintillo {
   0% {
     box-shadow: 
       0 0 20px rgba(6, 182, 212, 0.6),
@@ -199,7 +199,7 @@ body.nav-open {
   }
 }
 
-@keyframes ribbonShine {
+@keyframes destinoCintillo {
   0% {
     left: -100%;
   }
@@ -208,7 +208,7 @@ body.nav-open {
   }
 }
 
-@keyframes ribbonScroll {
+@keyframes desplazarTexto {
   0% {
     transform: translateX(0);
   }
@@ -217,50 +217,50 @@ body.nav-open {
   }
 }
 
-/* Responsive adjustments */
+/* Ajustes responsivos */
 @media (max-width: 640px) {
-  .cyberpunk-ribbon {
+  .cintillo-cyberpunk {
     top: 10px;
     right: -50px;
     width: 220px;
     height: 30px;
   }
   
-  .ribbon-text {
+  .cintillo-texto {
     font-size: 9px;
     letter-spacing: 0.5px;
   }
 }
 
 @media (max-width: 400px) {
-  .cyberpunk-ribbon {
+  .cintillo-cyberpunk {
     top: 8px;
     right: -55px;
     width: 200px;
     height: 28px;
   }
   
-  .ribbon-text {
+  .cintillo-texto {
     font-size: 8px;
     letter-spacing: 0.5px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cyberpunk-ribbon {
+  .cintillo-cyberpunk {
     animation: none;
   }
   
-  .cyberpunk-ribbon::before {
+  .cintillo-cyberpunk::before {
     animation: none;
     display: none;
   }
   
-  .ribbon-text {
-    animation: ribbonScrollSlow 25s linear infinite;
+  .cintillo-texto {
+    animation: desplazarTextoLento 25s linear infinite;
   }
   
-  @keyframes ribbonScrollSlow {
+  @keyframes desplazarTextoLento {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
