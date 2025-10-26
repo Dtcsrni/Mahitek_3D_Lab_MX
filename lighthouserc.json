@@ -2,7 +2,12 @@
   "ci": {
     "collect": {
       "staticDistDir": ".",
-      "url": ["https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"]
+      "url": ["https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"],
+      "numberOfRuns": 1,
+      "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"]
+      }
     },
     "assert": {
       "assertions": {

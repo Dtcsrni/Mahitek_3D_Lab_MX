@@ -102,8 +102,8 @@ jobs:
 
       - name: ⏳ Esperar propagación del deploy
         run: |
-          echo "⏳ Esperando 45 segundos para que el sitio se propague..."
-          sleep 45
+          echo "⏳ Esperando 20 segundos para que el sitio se propague..."
+          sleep 20
 
       - name: 📊 Ejecutar Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
