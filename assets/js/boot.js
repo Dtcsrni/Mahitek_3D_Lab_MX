@@ -8,6 +8,59 @@ import CopyBinder from './modules/copywriting-binder.js';
 import UIComponents from './modules/ui-components.js';
 import CONFIG, { ConfigUtils } from './modules/config.js';
 
+// ===== CONTADOR ANIMADO PARA STATS =====
+function animateCounter(element) {
+  const target = element.getAttribute('data-counter');
+  if (!target) return;
+
+  // Extraer número del target (ej: "500+" -> 500, "100%" -> 100, "24-72h" -> skip animation)
+  const numMatch = target.match(/(\d+)/);
+  if (!numMatch) {
+    // Si no hay número (ej: "24-72h"), solo mostrar el valor
+    element.textContent = target;
+    return;
+  }
+
+  const targetNum = parseInt(numMatch[1], 10);
+  const suffix = target.replace(numMatch[1], ''); // "+", "%", etc.
+  const duration = 2000; // 2 segundos
+  const steps = 60;
+  const increment = targetNum / steps;
+  let current = 0;
+  let step = 0;
+
+  const timer = setInterval(() => {
+    step++;
+    current = Math.min(current + increment, targetNum);
+    element.textContent = Math.floor(current) + suffix;
+
+    if (step >= steps) {
+      clearInterval(timer);
+      element.textContent = target; // Valor final exacto
+    }
+  }, duration / steps);
+}
+
+function initHeroCounters() {
+  const counters = document.querySelectorAll('[data-counter]');
+
+  // Intersection Observer para animar solo cuando son visibles
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach(counter => observer.observe(counter));
+}
+
 // Inicialización segura tras carga del DOM
 const onReady = async () => {
   try {
@@ -29,6 +82,9 @@ const onReady = async () => {
 
     // Inicializar biblioteca de SVG animados
     initSVGAnimations();
+
+    // Inicializar contadores animados del Hero
+    initHeroCounters();
 
     // Bandera visual en body para estilos condicionales si se requiere
     document.documentElement.classList.add('js-modules-ready');

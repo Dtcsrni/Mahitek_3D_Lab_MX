@@ -298,8 +298,7 @@
             </figure>
             <div class="hero-brand-name">
               <h2 class="hero-brand-title">
-                <span class="hero-brand-word hero-brand-word--1">Mahitek</span>
-                <span class="hero-brand-word hero-brand-word--2">3D Lab</span>
+                <span class="hero-brand-word hero-brand-word--1" data-copy="hero.brand">Mahitek 3D Lab</span>
               </h2>
               <p class="hero-brand-tagline">✨ Laboratorio de fabricación digital</p>
             </div>
@@ -310,17 +309,31 @@
               >🛰️ Micro‑lab operando desde <span class="accent-text">Pachuca, Hidalgo</span></span
             >
             <h1 class="hero-title" id="hero-title">
-              <span class="hero-title-line">Impresión 3D funcional</span>
-              <span class="hero-title-line hero-title-line--emphasis">para proyectos reales</span>
-              <span class="hero-title-line"
-                >con <span class="accent-text--gradient hero-title-animated">materiales duraderos</span>
-                <span class="hero-title-emoji" aria-hidden="true">✨</span></span
-              >
+              <span class="hero-title-line" data-copy="hero.title.line1">De la Idea al Objeto</span>
+              <span class="hero-title-line hero-title-line--emphasis" data-copy="hero.title.line2">en 48 Horas</span>
             </h1>
-            <p class="hero-subtitle">
-              Impresión 3D en PETG desde Pachuca. Entregamos piezas funcionales con medidas claras, acabados cuidados y
-              fechas realistas. Ideal para regalos personalizados, decoración útil y primeras tiradas de producto.
+            <p class="hero-subtitle" data-copy="hero.subtitle">
+              Fabricamos tus proyectos 3D con precisión industrial. Material PETG de alta resistencia. Desde Pachuca para todo México.
             </p>
+
+            <!-- Estadísticas Hero -->
+            <div class="hero-stats" data-animate="fade-up" role="region" aria-label="Estadísticas de Mahitek 3D Lab">
+              <div class="hero-stat" data-animate="scale-in">
+                <div class="hero-stat-value" data-counter="24-72h" data-copy="hero.stats.0.value">24-72h</div>
+                <div class="hero-stat-label" data-copy="hero.stats.0.label">Entrega promedio</div>
+                <div class="hero-stat-description" data-copy="hero.stats.0.description">Desde que apruebas el diseño hasta tu puerta</div>
+              </div>
+              <div class="hero-stat animate-delay-1" data-animate="scale-in">
+                <div class="hero-stat-value" data-counter="500" data-copy="hero.stats.1.value">500+</div>
+                <div class="hero-stat-label" data-copy="hero.stats.1.label">Piezas fabricadas</div>
+                <div class="hero-stat-description" data-copy="hero.stats.1.description">Proyectos técnicos, decorativos y funcionales</div>
+              </div>
+              <div class="hero-stat animate-delay-2" data-animate="scale-in">
+                <div class="hero-stat-value" data-counter="100" data-copy="hero.stats.2.value">100%</div>
+                <div class="hero-stat-label" data-copy="hero.stats.2.label">PETG industrial</div>
+                <div class="hero-stat-description" data-copy="hero.stats.2.description">Material resistente a impactos y temperaturas</div>
+              </div>
+            </div>
             <ul class="hero-highlights" aria-label="Diferenciadores de Mahitek 3D Lab">
               <li>
                 🧭 <strong>Diseño sin fricción:</strong> Aterrizamos tu idea en un modelo 3D viable y cerramos medidas
@@ -334,12 +347,15 @@
                 📦 <strong>Desde 1 pieza a lotes cortos:</strong> Sin mínimos. Perfecto para validar mercado o arrancar
                 tu línea sin grandes riesgos.
               </li>
-            </ul>
+            </div>
+            
             <div class="hero-ctas">
-              <a href="#catalogo" class="btn btn-primary">Explorar ideas y precios 🎯</a>
-              <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"
-                >Platícanos tu proyecto 💬</a
-              >
+              <a href="#catalogo" class="btn btn-primary">
+                <span data-copy="hero.cta_primary.text">Ver Catálogo</span> <span data-copy="hero.cta_primary.icon">→</span>
+              </a>
+              <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                <span>Platícanos tu proyecto</span> 💬
+              </a>
             </div>
             <div class="hero-note">
               <span class="accent-chip"
