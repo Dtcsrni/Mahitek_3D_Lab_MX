@@ -54,7 +54,9 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
     <link rel="canonical" href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
+  <!-- Módulo de animaciones optimizadas -->
+  <link rel="stylesheet" href="assets/css/modules/animations.css?v=20251026" />
     <link rel="icon" type="image/png" href="assets/img/favicon_512.png" sizes="any" />
     <!-- Favicons: usamos ruta relativa para evitar 404 en proyecto Pages -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -1258,5 +1260,7 @@
     </footer>
 
     <script src="assets/js/app.js?v=2024102410" defer></script>
+    <!-- Orquestador ES Modules (no rompe app.js legacy) -->
+    <script type="module" src="assets/js/boot.js?v=20251026"></script>
   </body>
 </html>
