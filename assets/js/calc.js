@@ -100,12 +100,33 @@ export function initCalc() {
     const chosenSubtotal = usePack ? packPrice : soloPrice;
 
     const save = Math.max(0, soloPrice - packPrice);
+    let breakdownHTML = '';
+    if (usePack && packOpt && Array.isArray(packOpt.breakdown)) {
+      const showBreak =
+        packOpt.breakdown.length > 1 || (packOpt.breakdown[0] && packOpt.breakdown[0].count > 1);
+      if (showBreak) {
+        const items = packOpt.breakdown
+          .map(
+            b => `
+            <li>${b.count}× (${b.units} uds · $${b.price})</li>
+          `
+          )
+          .join('');
+        breakdownHTML = `
+          <details class="calc-breakdown">
+            <summary>Ver desglose de packs</summary>
+            <ul>${items}</ul>
+          </details>
+        `;
+      }
+    }
+
     suggestionEl.innerHTML = usePack
       ? `<div class="calc-suggest"><strong>Pack sugerido:</strong> ${packOpt.units} uds por ${currency(
           packOpt.price
         )} <span class="badge">$${(packOpt.price / packOpt.units).toFixed(2)}/ud</span> ${
           save > 0 ? `<span class=\"badge badge-save\">Ahorra ${currency(save)}</span>` : ''
-        } <span class="hint">(suelto: ${currency(soloPrice)})</span></div>`
+        } <span class="hint">(suelto: ${currency(soloPrice)})</span>${breakdownHTML}</div>`
       : `<div class="calc-suggest"><strong>Compra suelta:</strong> ${qty} uds por ${currency(
           soloPrice
         )} <span class="badge">$${UNIT_PRICE.toFixed(2)}/ud</span></div>`;

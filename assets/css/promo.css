@@ -124,6 +124,34 @@
   opacity: 0.85;
 }
 
+/* Desglose de packs en calculadora */
+.calc-breakdown {
+  margin-top: 6px;
+}
+.calc-breakdown summary {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.calc-breakdown summary::-webkit-details-marker {
+  display: none;
+}
+.calc-breakdown summary::after {
+  content: " \25BC";
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+.calc-breakdown[open] summary::after {
+  content: " \25B2";
+}
+.calc-breakdown ul {
+  margin: 6px 0 0 14px;
+  padding: 0;
+}
+.calc-breakdown li {
+  margin: 2px 0;
+}
+
 .calc-admin {
   margin-top: 12px;
   padding-top: 10px;
