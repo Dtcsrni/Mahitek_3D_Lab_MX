@@ -326,11 +326,18 @@
         "address": "armsystechno@gmail.com"
       },
       {
-        "type": "whatsapp",
-        "title": "WhatsApp",
+        "type": "messenger",
+        "title": "Messenger",
         "description": "Envía fotos de tu idea directamente",
-        "icon": "whatsapp",
-        "note": "Disponible próximamente"
+        "icon": "messenger",
+        "url": "https://m.me/mahitek3dlabmx"
+      },
+      {
+        "type": "instagram",
+        "title": "Instagram",
+        "description": "Síguenos y envía DM",
+        "icon": "instagram",
+        "url": "https://instagram.com/mahitek3dlabmx"
       }
     ],
     "horario": {

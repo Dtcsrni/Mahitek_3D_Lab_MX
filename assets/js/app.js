@@ -221,10 +221,10 @@ const TextosSistema = {
     },
 
     // Contacto
-    'contacto.whatsapp': {
-      'es-MX': 'Contactar por WhatsApp',
-      es: 'Contactar por WhatsApp',
-      en: 'Contact via WhatsApp'
+    'contacto.messenger_main': {
+      'es-MX': 'Contactar por Messenger',
+      es: 'Contactar por Messenger',
+      en: 'Contact via Messenger'
     },
     'contacto.messenger': {
       'es-MX': 'Enviar mensaje',
@@ -1019,7 +1019,7 @@ async function loadPromos() {
         <button class="btn btn-primary promo-cta-contact" 
                 data-promo-id="${escapeHTML(promo.id)}" 
                 data-promo-name="${escapeHTML(promo.titulo)}">
-          ${escapeHTML('Consultar por WhatsApp')}
+          ${escapeHTML('Consultar por Messenger')}
         </button>
       `;
 
@@ -1069,16 +1069,17 @@ async function loadPromos() {
     });
   });
 
-  // CTAs de contacto interno
+  // CTAs de contacto interno - Redirigir a Messenger
   container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
     const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
-    const message = encodeURIComponent(`Hola, quiero consultar sobre: ${promoName}`);
-    window.open(`https://wa.me/52XXXXXXXXXX?text=${message}`, '_blank', 'noopener');
+    // Abrir Messenger con la página de Mahitek 3D Lab
+    window.open(`https://m.me/${CONFIG.MESSENGER_PAGE}`, '_blank', 'noopener');
     log('contact_promo', {
       promotion_id: btn.getAttribute('data-promo-id') || '',
-      promotion_name: promoName
+      promotion_name: promoName,
+      platform: 'messenger'
     });
   });
 }
