@@ -220,14 +220,29 @@ body.nav-open {
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .cyberpunk-ribbon {
-    top: 12px;
-    right: -45px;
-    width: 240px;
-    height: 32px;
+    top: 10px;
+    right: -50px;
+    width: 220px;
+    height: 30px;
   }
   
   .ribbon-text {
-    font-size: 10px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cyberpunk-ribbon {
+    top: 8px;
+    right: -55px;
+    width: 200px;
+    height: 28px;
+  }
+  
+  .ribbon-text {
+    font-size: 8px;
+    letter-spacing: 0.5px;
   }
 }
 
