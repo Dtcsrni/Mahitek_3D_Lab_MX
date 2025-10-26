@@ -232,6 +232,68 @@ function Test-HTMLStructure {
     Write-Host "  ✓ Estructura HTML validada" -ForegroundColor Green
 }
 
+# ═══════════════════════════════════════════════════════════════════════════
+# MÓDULO 1.1: VALIDACIÓN SEMÁNTICA HTML (JSDOM)
+# ═══════════════════════════════════════════════════════════════════════════
+function Test-HTMLSemantics {
+    Write-TestHeader "3b. Validación Semántica HTML (JSDOM)"
+
+    if (-not (Test-Path "scripts/validate-html.js")) {
+        Test-Warn "scripts/validate-html.js no encontrado"
+        return
+    }
+
+    $nodeAvailable = Get-Command node -ErrorAction SilentlyContinue
+    if (-not $nodeAvailable) {
+        Test-Warn "Node.js no está disponible para validar HTML semántico"
+        return
+    }
+
+    # Si jsdom no está instalado, usar verificación fallback basada en regex y pila simple
+    $jsdomInstalled = Test-Path "node_modules/jsdom"
+    if ($jsdomInstalled) {
+        $result = node scripts/validate-html.js 2>&1
+        if ($LASTEXITCODE -eq 0) {
+            Test-Pass "Validación HTML semántica OK" -Silent
+        } else {
+            Test-Fail "Errores en validación HTML semántica" -Details ($result -join "`n")
+        }
+        return
+    }
+
+    # Fallback ligero sin dependencias (heurístico)
+    if (-not (Test-Path 'index.html')) { Test-Warn 'index.html no encontrado'; return }
+    $html = Get-Content 'index.html' -Raw
+
+    # Meta y título
+    if ($html -match '<meta\s+charset="?UTF-8"?') { Test-Pass 'Charset UTF-8 correcto' -Silent } else { Test-Warn 'Falta <meta charset="UTF-8"> (heurístico)' }
+    if ($html -match '<meta\s+name="viewport"[^>]*width\s*=\s*device-width') { Test-Pass 'Viewport correcto' -Silent } else { Test-Warn 'Viewport faltante o incorrecto (heurístico)' }
+    if ($html -match '<title>\s*[^<]+</title>') { Test-Pass 'Title presente' -Silent } else { Test-Warn 'Falta <title> con contenido (heurístico)' }
+
+    # apple-touch-icon dentro de head
+    $headEnd = $html.IndexOf('</head>')
+    if ($headEnd -gt 0) {
+        $head = $html.Substring(0, $headEnd)
+        if ($head -match 'rel="apple-touch-icon"') { Test-Pass 'apple-touch-icon en <head>' -Silent } else { Test-Warn 'apple-touch-icon no encontrado en <head> (heurístico)' }
+    }
+
+    # Pila para UL/OL/LI
+    $pattern = '<\/?(ul|ol|li)(\s|>)'
+    $matches = [regex]::Matches($html, $pattern, 'IgnoreCase')
+    $stack = New-Object System.Collections.Generic.List[string]
+    $orphan = 0
+    foreach ($m in $matches) {
+        $tag = $m.Groups[1].Value.ToLower()
+        $closing = $m.Value.StartsWith('</')
+        if ($tag -in @('ul','ol')) {
+            if (-not $closing) { $stack.Add($tag) } else { if ($stack.Count -gt 0) { [void]$stack.RemoveAt($stack.Count-1) } }
+        } elseif ($tag -eq 'li') {
+            if ($stack.Count -eq 0 -or ($stack[$stack.Count-1] -notin @('ul','ol'))) { $orphan++ }
+        }
+    }
+    if ($orphan -gt 0) { Test-Warn "Se encontraron $orphan <li> posiblemente fuera de <ul>/<ol> (heurístico)" } else { Test-Pass 'Estructura de listas correcta' -Silent }
+}
+
 function Test-FileReferences {
     Write-TestHeader "4. Validación de Referencias de Archivos"
     
@@ -562,6 +624,51 @@ function Test-DataIntegrity {
 }
 
 # ═══════════════════════════════════════════════════════════════════════════
+# MÓDULO 6: DOCUMENTACIÓN (README y Badges)
+# ═══════════════════════════════════════════════════════════════════════════
+function Test-DocumentationBadges {
+    Write-TestHeader "9. Documentación y Badges"
+
+    $readmePath = "README.md"
+    if (-not (Test-Path $readmePath)) {
+        Test-Warn "README.md no encontrado"
+        return
+    }
+
+    $readme = Get-Content $readmePath -Raw
+
+    # Verificar endpoints de badges de Lighthouse
+    $expectedBadges = @(
+        "docs/badges/lh-performance.json",
+        "docs/badges/lh-accessibility.json",
+        "docs/badges/lh-best-practices.json",
+        "docs/badges/lh-seo.json"
+    )
+
+    $missing = 0
+    foreach ($badge in $expectedBadges) {
+        if (-not (Test-Path $badge)) {
+            Test-Warn "Badge faltante: $badge" -Details "Se mostrará 'resource not found' en Shields.io"
+            $missing++
+        } else {
+            Test-Pass "Badge presente: $badge" -Silent
+        }
+    }
+
+    # Verificar que README refiera a estos endpoints
+    $badgeRefsOk = 0
+    foreach ($badge in $expectedBadges) {
+        $fileName = [IO.Path]::GetFileName($badge)
+        if ($readme -match [regex]::Escape($fileName)) { $badgeRefsOk++ }
+    }
+    if ($badgeRefsOk -ge 3) {
+        Write-Host "  ✓ Referencias a badges en README: $badgeRefsOk" -ForegroundColor Green
+    } else {
+        Test-Warn "README podría no referenciar todos los badges de Lighthouse"
+    }
+}
+
+# ═══════════════════════════════════════════════════════════════════════════
 # MÓDULO 5: ESTADO DE GIT
 # ═══════════════════════════════════════════════════════════════════════════
 function Test-GitStatus {
@@ -612,7 +719,10 @@ if ($QuickCheck) {
     Write-Host "`n⚡ MODO RÁPIDO - Solo validaciones críticas`n" -ForegroundColor Yellow
     Test-JSONSyntax
     Test-JavaScriptSyntax
+    Test-HTMLStructure
+    Test-HTMLSemantics
     Test-HTMLJavaScriptIntegrity
+    Test-DocumentationBadges
 } elseif ($SecurityOnly) {
     Write-Host "`n🛡️  MODO SEGURIDAD - Solo validaciones de seguridad`n" -ForegroundColor Yellow
     Test-SecurityVulnerabilities
@@ -621,10 +731,12 @@ if ($QuickCheck) {
     Test-JSONSyntax
     Test-JavaScriptSyntax
     Test-HTMLStructure
+    Test-HTMLSemantics
     Test-FileReferences
     Test-HTMLJavaScriptIntegrity
     Test-SecurityVulnerabilities
     Test-DataIntegrity
+    Test-DocumentationBadges
     Test-GitStatus
 }
 

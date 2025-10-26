@@ -13,7 +13,7 @@
     "format:html": "prettier --write *.html",
     "format": "prettier --write \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"*.html\"",
     "check:format": "prettier --check \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"*.html\"",
-    "validate:html": "echo 'Validando HTML...' && grep -q '<!DOCTYPE html>' index.html && echo '✅ HTML válido'",
+    "validate:html": "node scripts/validate-html.js",
     "validate": "npm run check:format && npm run validate:html",
     "watch:css": "echo 'CSS directo - no requiere compilación'",
     "build": "npm run format",
@@ -35,7 +35,8 @@
   "license": "MIT",
   "devDependencies": {
     "prettier": "^3.3.0",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "jsdom": "^24.1.0"
   },
   "engines": {
     "node": ">=18.0.0",

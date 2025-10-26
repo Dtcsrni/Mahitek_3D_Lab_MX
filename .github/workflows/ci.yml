@@ -40,10 +40,9 @@ jobs:
         run: npm run check:format
         continue-on-error: true
 
-      - name: ✅ Validar estructura HTML
+      - name: ✅ Validar HTML con JSDOM
         run: |
-          echo "🔍 Validando HTML..."
-          grep -iq "<!doctype html>" index.html && echo "✅ HTML válido" || exit 1
+          npm run validate:html
 
   # Job 2: Deploy a GitHub Pages (solo en main)
   deploy:
