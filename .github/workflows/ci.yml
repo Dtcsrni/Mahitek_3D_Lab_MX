@@ -43,7 +43,7 @@ jobs:
       - name: ✅ Validar estructura HTML
         run: |
           echo "🔍 Validando HTML..."
-          grep -q "<!DOCTYPE html>" index.html && echo "✅ HTML válido" || exit 1
+          grep -iq "<!doctype html>" index.html && echo "✅ HTML válido" || exit 1
 
   # Job 2: Deploy a GitHub Pages (solo en main)
   deploy:
