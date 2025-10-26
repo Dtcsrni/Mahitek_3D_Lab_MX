@@ -97,15 +97,10 @@ const GestorIdioma = {
     const cintillo = document.querySelector('.cintillo-texto');
     if (!cintillo) return;
     
-    const idioma = this.obtenerIdioma();
-    const textos = {
-      'es-MX': '⚡ EN_CONSTRUCCIÓN ⚡ ARMANDO_EL_JALE ⚡ ÉCHALE_PACIENCIA ⚡',
-      'es': '⚡ EN_CONSTRUCCIÓN ⚡ MODO_DESARROLLO ⚡ PACIENCIA ⚡',
-      'en': '⚡ UNDER_CONSTRUCTION ⚡ BUILDING_MODE ⚡ STAY_TUNED ⚡'
-    };
-    
-    cintillo.textContent = textos[idioma] || textos['es-MX'];
-    cintillo.setAttribute('data-idioma', idioma);
+    // Usar el sistema de textos centralizado
+    const texto = TextosSistema.obtener('cintillo.construccion');
+    cintillo.textContent = texto;
+    cintillo.setAttribute('data-idioma', this.obtenerIdioma());
   },
   
   /**
@@ -119,6 +114,185 @@ const GestorIdioma = {
     if (CONFIG.DEBUG_MODE) {
       console.log('🌐 Idioma detectado:', idioma);
       console.log('🇲🇽 Es mexicano:', this.esMexicano());
+    }
+  }
+};
+
+// ===== Sistema de Textos Localizados =====
+const TextosSistema = {
+  /**
+   * Obtiene un texto en el idioma actual
+   */
+  obtener(clave) {
+    const idioma = GestorIdioma.obtenerIdioma();
+    const textos = this.textos[clave];
+    
+    if (!textos) {
+      console.warn(`Texto no encontrado: ${clave}`);
+      return clave;
+    }
+    
+    // Prioridad: idioma exacto > idioma base (es-MX -> es) > español > inglés
+    return textos[idioma] || 
+           textos[idioma.split('-')[0]] || 
+           textos['es-MX'] || 
+           textos['en'] || 
+           clave;
+  },
+  
+  // Catálogo de textos del sistema
+  textos: {
+    // Cintillo de construcción
+    'cintillo.construccion': {
+      'es-MX': '⚡ SITIO EN DESARROLLO ⚡ PRÓXIMAMENTE FUNCIONALIDAD COMPLETA ⚡',
+      'es': '⚡ EN CONSTRUCCIÓN ⚡ PRÓXIMAMENTE DISPONIBLE ⚡',
+      'en': '⚡ UNDER DEVELOPMENT ⚡ COMING SOON ⚡'
+    },
+    
+    // Mensajes del sistema
+    'sistema.cargando': {
+      'es-MX': 'Cargando...',
+      'es': 'Cargando...',
+      'en': 'Loading...'
+    },
+    'sistema.error': {
+      'es-MX': 'Error al cargar',
+      'es': 'Error al cargar',
+      'en': 'Loading error'
+    },
+    'sistema.sinResultados': {
+      'es-MX': 'No se encontraron resultados',
+      'es': 'No se encontraron resultados',
+      'en': 'No results found'
+    },
+    
+    // Productos
+    'productos.desde': {
+      'es-MX': 'Desde',
+      'es': 'Desde',
+      'en': 'From'
+    },
+    'productos.verMas': {
+      'es-MX': 'Ver más detalles',
+      'es': 'Ver más detalles',
+      'en': 'View more details'
+    },
+    'productos.disponible': {
+      'es-MX': 'Disponible',
+      'es': 'Disponible',
+      'en': 'Available'
+    },
+    'productos.agotado': {
+      'es-MX': 'Agotado',
+      'es': 'Agotado',
+      'en': 'Out of stock'
+    },
+    
+    // Promociones
+    'promos.titulo': {
+      'es-MX': 'Promociones Especiales',
+      'es': 'Promociones Especiales',
+      'en': 'Special Offers'
+    },
+    'promos.ahorra': {
+      'es-MX': 'Ahorra',
+      'es': 'Ahorra',
+      'en': 'Save'
+    },
+    'promos.valido': {
+      'es-MX': 'Válido hasta',
+      'es': 'Válido hasta',
+      'en': 'Valid until'
+    },
+    
+    // Filtros
+    'filtros.todos': {
+      'es-MX': 'Todos',
+      'es': 'Todos',
+      'en': 'All'
+    },
+    'filtros.categoria': {
+      'es-MX': 'Categoría',
+      'es': 'Categoría',
+      'en': 'Category'
+    },
+    'filtros.limpiar': {
+      'es-MX': 'Limpiar filtros',
+      'es': 'Limpiar filtros',
+      'en': 'Clear filters'
+    },
+    
+    // Contacto
+    'contacto.whatsapp': {
+      'es-MX': 'Contactar por WhatsApp',
+      'es': 'Contactar por WhatsApp',
+      'en': 'Contact via WhatsApp'
+    },
+    'contacto.messenger': {
+      'es-MX': 'Enviar mensaje',
+      'es': 'Enviar mensaje',
+      'en': 'Send message'
+    },
+    'contacto.cotizar': {
+      'es-MX': 'Solicitar cotización',
+      'es': 'Solicitar cotización',
+      'en': 'Request quote'
+    },
+    
+    // FAQ
+    'faq.titulo': {
+      'es-MX': 'Preguntas Frecuentes',
+      'es': 'Preguntas Frecuentes',
+      'en': 'Frequently Asked Questions'
+    },
+    'faq.ver': {
+      'es-MX': 'Ver respuesta',
+      'es': 'Ver respuesta',
+      'en': 'View answer'
+    },
+    
+    // Errores de carga
+    'error.productos': {
+      'es-MX': 'Error al cargar productos. Por favor, intente nuevamente.',
+      'es': 'Error al cargar productos. Por favor, intente nuevamente.',
+      'en': 'Error loading products. Please try again.'
+    },
+    'error.promos': {
+      'es-MX': 'Error al cargar promociones. Por favor, intente nuevamente.',
+      'es': 'Error al cargar promociones. Por favor, intente nuevamente.',
+      'en': 'Error loading promotions. Please try again.'
+    },
+    'error.faq': {
+      'es-MX': 'Error al cargar preguntas frecuentes. Por favor, intente nuevamente.',
+      'es': 'Error al cargar preguntas frecuentes. Por favor, intente nuevamente.',
+      'en': 'Error loading FAQs. Please try again.'
+    },
+    'error.red': {
+      'es-MX': 'Error de conexión. Verifique su conexión a internet.',
+      'es': 'Error de conexión. Verifique su conexión a internet.',
+      'en': 'Connection error. Please check your internet connection.'
+    },
+    
+    // Consola (debug)
+    'debug.iniciado': {
+      'es-MX': 'Sistema iniciado correctamente',
+      'es': 'Sistema iniciado correctamente',
+      'en': 'System started successfully'
+    },
+    'debug.productosOK': {
+      'es-MX': 'Productos cargados',
+      'es': 'Productos cargados',
+      'en': 'Products loaded'
+    },
+    'debug.promosOK': {
+      'es-MX': 'Promociones cargadas',
+      'es': 'Promociones cargadas',
+      'en': 'Promotions loaded'
+    },
+    'debug.faqOK': {
+      'es-MX': 'Preguntas frecuentes cargadas',
+      'es': 'Preguntas frecuentes cargadas',
+      'en': 'FAQs loaded'
     }
   }
 };
@@ -220,10 +394,12 @@ function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONF
 async function loadJSON(path) {
   try {
     const response = await fetch(path);
-    if (!response.ok) throw new Error(`Failed to load ${path}`);
+    if (!response.ok) {
+      throw new Error(`${TextosSistema.obtener('error.red')} (${path})`);
+    }
     return await response.json();
   } catch (error) {
-    console.error(`Error loading ${path}:`, error);
+    console.error(`❌ ${TextosSistema.obtener('sistema.error')}: ${path}`, error);
     return null;
   }
 }
@@ -1356,12 +1532,12 @@ async function init() {
   // Aplicar estado desde la URL y sincronizar cambios
   applyURLState();
 
-  // Logs solo en modo debug
+  // Logs solo en modo debug (en español profesional)
   if (CONFIG.DEBUG_MODE) {
-    console.log('✅ Mahitek 3D Lab loaded successfully');
-    console.log(`📊 Products loaded: ${allProducts.length}`);
-    console.log(`💰 Price markup: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`);
-    console.log(`🔄 Rounding step: $${CONFIG.PRICE_STEP} MXN`);
+    console.log(`✅ ${TextosSistema.obtener('debug.iniciado')}`);
+    console.log(`📊 ${TextosSistema.obtener('debug.productosOK')}: ${allProducts.length}`);
+    console.log(`💰 Margen de precio: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`);
+    console.log(`🔄 Redondeo: $${CONFIG.PRICE_STEP} MXN`);
   }
 }
 
