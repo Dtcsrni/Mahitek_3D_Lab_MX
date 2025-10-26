@@ -9,6 +9,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 ## ✨ Características Principales
 
 ### 🎨 Diseño y UX
+
 - **Diseño cyberpunk mexicano**: Navbar con nopales, águilas y efectos glitch
 - **Glassmorphism dark**: Fondo oscuro (#0B0F14) con efectos de cristal
 - **Tipografía fluida**: Escala responsive desde móvil (320px) hasta 4K (1440+)
@@ -17,6 +18,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Animaciones GPU**: Optimizadas con `will-change` y `transform`
 
 ### 📱 Responsive y Accesibilidad
+
 - **Mobile-first**: Diseñado desde 320px hasta pantallas 2XL (1536+)
 - **Safe-area support**: Compatible con iPhone notch y Android punch-hole
 - **Navbar inteligente**: 4 estados (normal, scrolled, compact, hidden)
@@ -25,6 +27,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Detección de capacidades**: Degrada efectos en dispositivos limitados
 
 ### 🛠️ Sistema de Datos
+
 - **Catálogo dinámico**: Filtros por categoría y búsqueda en tiempo real
 - **Sistema de precios automático**: Cálculo con markup y redondeo configurable
 - **Promociones activas**: Con fechas de validez y animaciones personalizadas
@@ -32,6 +35,7 @@ Landing page moderna con diseño cyberpunk mexicano, sistema de precios automát
 - **Multiidioma**: Soporte para es-MX, es-ES y en-US
 
 ### ⚡ Performance
+
 - **Zero dependencias**: Solo vanilla JS moderno
 - **Lazy loading**: Secciones no críticas cargan on-demand
 - **Content-visibility**: Defer de pintura en elementos fuera de pantalla
@@ -140,22 +144,54 @@ El proyecto incluye scripts NPM para automatizar tareas comunes:
 npm run dev              # Iniciar servidor local (puerto 8080)
 
 # ✅ Validación
-npm run lint:js          # Validar JavaScript con ESLint
-npm run lint:css         # Validar CSS con Stylelint
-npm run validate         # Ejecutar todos los linters
-
-# 💅 Formateo
-npm run format:js        # Formatear archivos JavaScript
-npm run format:css       # Formatear archivos CSS
-npm run format:html      # Formatear archivos HTML
+npm run check:format     # Verificar formateo con Prettier
+npm run validate:html    # Validar estructura HTML
 npm run format           # Formatear todo el proyecto
 
-# 🎨 SASS (opcional)
-npm run watch:sass       # Compilar SASS en tiempo real
-npm run build:css        # Construir CSS optimizado
+# � Verificación de CI/CD
+.\verificar-workflow.ps1 # Script completo de verificación del workflow
+                         # (Windows PowerShell - verifica estado, dependencias, enlaces)
+```
 
-# ⚡ Optimización
-npm run optimize         # Build + Format completo
+### 🛠️ Script de Verificación de Workflow
+
+El proyecto incluye un script PowerShell interactivo para verificar el estado completo del CI/CD:
+
+```powershell
+.\verificar-workflow.ps1
+```
+
+**Este script verifica:**
+
+- ✅ Estado del repositorio local (cambios sin commitear)
+- ✅ Sincronización con GitHub (local vs remoto)
+- ✅ Archivos de configuración (.github/workflows/ci.yml, package.json)
+- ✅ Dependencias instaladas (node_modules)
+- ✅ Enlaces directos a Actions, workflow, sitio publicado
+- ✅ Documentación de los 3 jobs del workflow con tiempos estimados
+- ✅ Comandos útiles para desarrollo
+- ✅ Opción interactiva para abrir GitHub Actions en navegador
+
+**Salida ejemplo:**
+
+```
+╔════════════════════════════════════════════════════════════╗
+║    VERIFICACIÓN DE WORKFLOW CI/CD - MAHITEK 3D LAB MX    ║
+╚════════════════════════════════════════════════════════════╝
+
+📁 ESTADO DEL REPOSITORIO LOCAL
+═══════════════════════════════════
+✅ Working tree limpio - Todo commiteado
+
+🔄 SINCRONIZACIÓN CON GITHUB
+═══════════════════════════════
+✅ Local y remoto sincronizados
+
+💡 JOBS DEL WORKFLOW CI/CD
+═══════════════════════════════
+🔍 Job 1: Validar Código (~2-3 min)
+🚀 Job 2: Deploy a GitHub Pages (~1-2 min)
+📊 Job 3: Auditoría Lighthouse (~2-3 min)
 ```
 
 ## 🔧 Extensiones de VS Code Recomendadas
@@ -216,6 +252,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
 ```
 
 **Campos obligatorios:**
+
 - `id`: Identificador único
 - `nombre`: Nombre del producto
 - `categoria`: Categoría para filtros
@@ -225,6 +262,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
 - `estado`: `"activo"` para mostrar, `"inactivo"` para ocultar
 
 **Campos opcionales:**
+
 - `coda`: Frase poética corta
 - `historia`: Descripción detallada
 - `tags`: Array de etiquetas para búsqueda
@@ -308,22 +346,22 @@ Edita variables CSS en `/assets/css/styles.css`:
 ```css
 :root {
   /* Colores base */
-  --bg-dark: #0B0F14;           /* Fondo principal */
+  --bg-dark: #0b0f14; /* Fondo principal */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
-  
+
   /* Colores de texto */
-  --text-primary: #E8EDF4;
-  --text-secondary: #9CA3AF;
-  
+  --text-primary: #e8edf4;
+  --text-secondary: #9ca3af;
+
   /* Acentos principales */
-  --accent-cyan: #06B6D4;
-  --accent-green: #10B981;
-  --accent-red: #D22623;
-  
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-red: #d22623;
+
   /* Tipografía fluida */
   --font-size-base: clamp(1rem, 0.94rem + 0.4vw, 1.125rem);
-  
+
   /* Espaciado */
   --space-md: 1rem;
   --radius: 12px;
@@ -334,13 +372,27 @@ Edita variables CSS en `/assets/css/styles.css`:
 
 ```css
 /* Puntos de quiebre actuales */
-@media (min-width: 400px)  { /* Móviles pequeños */ }
-@media (min-width: 640px)  { /* Móviles grandes */ }
-@media (min-width: 768px)  { /* Tablets */ }
-@media (min-width: 1024px) { /* Desktop */ }
-@media (min-width: 1280px) { /* Desktop grande */ }
-@media (min-width: 1440px) { /* QHD */ }
-@media (min-width: 1536px) { /* 2XL */ }
+@media (min-width: 400px) {
+  /* Móviles pequeños */
+}
+@media (min-width: 640px) {
+  /* Móviles grandes */
+}
+@media (min-width: 768px) {
+  /* Tablets */
+}
+@media (min-width: 1024px) {
+  /* Desktop */
+}
+@media (min-width: 1280px) {
+  /* Desktop grande */
+}
+@media (min-width: 1440px) {
+  /* QHD */
+}
+@media (min-width: 1536px) {
+  /* 2XL */
+}
 ```
 
 ### Modificar Estados del Navbar
@@ -355,9 +407,9 @@ El navbar tiene 4 estados inteligentes documentados en `NAVBAR_INTELIGENTE.md`:
 Configurar en `/assets/js/app.js`:
 
 ```javascript
-const SCROLL_THRESHOLD = 24;    // Activar is-scrolled
-const HIDE_THRESHOLD = 100;     // Ocultar navbar
-const COMPACT_THRESHOLD = 300;  // Modo compacto
+const SCROLL_THRESHOLD = 24; // Activar is-scrolled
+const HIDE_THRESHOLD = 100; // Ocultar navbar
+const COMPACT_THRESHOLD = 300; // Modo compacto
 ```
 
 ### Agregar Nueva Sección
@@ -365,18 +417,29 @@ const COMPACT_THRESHOLD = 300;  // Modo compacto
 Usa el snippet `mhk-section-full` o copia el patrón:
 
 ```html
-<section id="mi-seccion" class="section section--full section-alt" aria-labelledby="mi-seccion-title">
+<section
+  id="mi-seccion"
+  class="section section--full section-alt"
+  aria-labelledby="mi-seccion-title"
+>
   <div class="container">
     <div class="section-header" data-animate="fade-up">
       <div class="section-heading">
-        <img src="assets/img/logo-color.svg" alt="Mahitek 3D Lab" class="section-heading-logo" width="64" height="64" loading="lazy" decoding="async">
+        <img
+          src="assets/img/logo-color.svg"
+          alt="Mahitek 3D Lab"
+          class="section-heading-logo"
+          width="64"
+          height="64"
+          loading="lazy"
+          decoding="async"
+        />
         <h2 class="section-title" id="mi-seccion-title">Mi Nueva Sección</h2>
       </div>
       <p class="section-intro">Descripción de la sección.</p>
     </div>
-    
+
     <!-- Contenido aquí -->
-    
   </div>
 </section>
 ```
@@ -401,7 +464,7 @@ Usa el snippet `mhk-section-full` o copia el patrón:
 ✅ **Debounce/Throttle**: Eventos resize y scroll optimizados  
 ✅ **ResizeManager**: Manejo centralizado de resize  
 ✅ **IntersectionObserver**: Animaciones activadas por scroll  
-✅ **Device Detection**: Degradación de efectos en dispositivos limitados  
+✅ **Device Detection**: Degradación de efectos en dispositivos limitados
 
 ### Auditoría Lighthouse
 
@@ -438,9 +501,9 @@ npm run format           # Verificar formateo
 
 ```javascript
 // Consola del navegador
-window.MahitekLab.products()    // Ver productos cargados
-window.MahitekLab.config        // Ver configuración
-window.MahitekLab.filterProducts() // Aplicar filtros
+window.MahitekLab.products(); // Ver productos cargados
+window.MahitekLab.config; // Ver configuración
+window.MahitekLab.filterProducts(); // Aplicar filtros
 ```
 
 ## 📚 Documentación Adicional
@@ -491,11 +554,12 @@ MIT License - Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
-**Mahitek 3D Lab** — *Memoria en forma, uso que perdura* ✨
-  --glass-bg: rgba(255, 255, 255, 0.06);  /* Fondo glass */
-  ...
+**Mahitek 3D Lab** — _Memoria en forma, uso que perdura_ ✨
+--glass-bg: rgba(255, 255, 255, 0.06); /_ Fondo glass _/
+...
 }
-```
+
+````
 
 ### Cambiar markup de precios
 
@@ -507,7 +571,7 @@ const CONFIG = {
   PRICE_STEP: 5,       // Redondear a múltiplos de 5
   ...
 };
-```
+````
 
 ### Cambiar número de WhatsApp
 
