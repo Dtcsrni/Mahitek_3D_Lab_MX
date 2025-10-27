@@ -16,6 +16,29 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
+// ===== Path helpers =====
+const SITE_BASE_URL = (() => {
+  if (typeof import.meta !== 'undefined' && import.meta.url) {
+    try {
+      return new URL('../..', import.meta.url).href;
+    } catch (_) {
+      /* no-op */
+    }
+  }
+
+  if (typeof document !== 'undefined' && document.baseURI) {
+    const base = document.baseURI;
+    return base.endsWith('/') ? base : `${base}/`;
+  }
+
+  if (typeof window !== 'undefined' && window.location) {
+    const href = window.location.href;
+    return href.endsWith('/') ? href : href.replace(/[^/]*$/, '');
+  }
+
+  return 'https://example.invalid/';
+})();
+
 // ===== Detección y Gestión de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
@@ -358,11 +381,23 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
   try {
     const u = String(url || '').trim();
     if (!u) return '#';
-    // Rutas relativas
-    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
-      return u;
+
+    // Bloquear esquemas peligrosos explícitos
+    if (/^(javascript|data):/i.test(u)) return '#';
+
+    if (allowRelative) {
+      // Permitir rutas relativas comunes (incluyendo rutas sin prefijo ./)
+      if (
+        u.startsWith('/') ||
+        u.startsWith('./') ||
+        u.startsWith('../') ||
+        (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
+      ) {
+        return new URL(u, SITE_BASE_URL).href;
+      }
     }
-    const parsed = new URL(u, window.location.origin);
+
+    const parsed = new URL(u, SITE_BASE_URL);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -414,9 +449,14 @@ function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONF
 // ===== Data Loading =====
 async function loadJSON(path) {
   try {
-    const response = await fetch(path);
+    const safePath = sanitizeURL(path);
+    if (safePath === '#') {
+      throw new Error(`Ruta no segura: ${path}`);
+    }
+
+    const response = await fetch(safePath);
     if (!response.ok) {
-      throw new Error(`${TextosSistema.obtener('error.red')} (${path})`);
+      throw new Error(`${TextosSistema.obtener('error.red')} (${safePath})`);
     }
     return await response.json();
   } catch (error) {
