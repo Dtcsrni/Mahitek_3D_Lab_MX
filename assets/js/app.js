@@ -16,6 +16,29 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
+// ===== Path helpers =====
+const SITE_BASE_URL = (() => {
+  if (typeof import.meta !== 'undefined' && import.meta.url) {
+    try {
+      return new URL('../..', import.meta.url).href;
+    } catch (_) {
+      /* no-op */
+    }
+  }
+
+  if (typeof document !== 'undefined' && document.baseURI) {
+    const base = document.baseURI;
+    return base.endsWith('/') ? base : `${base}/`;
+  }
+
+  if (typeof window !== 'undefined' && window.location) {
+    const href = window.location.href;
+    return href.endsWith('/') ? href : href.replace(/[^/]*$/, '');
+  }
+
+  return 'https://example.invalid/';
+})();
+
 // ===== Detección y Gestión de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
@@ -429,9 +452,14 @@ function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONF
 // ===== Data Loading =====
 async function loadJSON(path) {
   try {
-    const response = await fetch(path);
+    const safePath = sanitizeURL(path);
+    if (safePath === '#') {
+      throw new Error(`Ruta no segura: ${path}`);
+    }
+
+    const response = await fetch(safePath);
     if (!response.ok) {
-      throw new Error(`${TextosSistema.obtener('error.red')} (${path})`);
+      throw new Error(`${TextosSistema.obtener('error.red')} (${safePath})`);
     }
     return await response.json();
   } catch (error) {
