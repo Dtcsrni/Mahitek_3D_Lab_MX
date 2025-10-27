@@ -95,57 +95,33 @@ export function bestValueFor(units) {
   return solo;
 }
 
-export function renderPromos() {
-  const root = document.getElementById('promos');
-  if (!root) return;
-  const container = document.createElement('div');
-  container.className = 'container promo-grid';
+const STICKER_PROMO_ICONS = [
+  'assets/img/promo-pack-stickers-10.svg',
+  'assets/img/promo-pack-stickers-15.svg',
+  'assets/img/promo-pack-stickers-25.svg'
+];
 
-  const title = document.createElement('h2');
-  title.className = 'section-title';
-  title.id = 'promos-title';
-  title.textContent = 'Promociones de Stickers 50×50';
-  container.appendChild(title);
+export function preloadStickerSvgs(baseHref) {
+  if (typeof window === 'undefined') return [];
 
-  const subtitle = document.createElement('p');
-  subtitle.className = 'section-subtitle';
-  subtitle.textContent = 'Ahorra más con packs: mejor precio por unidad que suelto ($3).';
-  container.appendChild(subtitle);
-
-  const grid = document.createElement('div');
-  grid.className = 'cards-grid';
-
-  PACKS.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'card promo-card';
-    const ppu = (p.price / p.units).toFixed(2);
-    const solo = p.units * UNIT_PRICE;
-    const savings = Math.max(0, solo - p.price);
-
-    let highlights = '';
-    if (p.units >= 25) highlights += '<span class="badge badge--value">Mejor valor</span> ';
-    else if (p.units === 10)
-      highlights += '<span class="badge badge--bestseller">Más vendido</span> ';
-    else if (p.units === 2) highlights += '<span class="badge badge--entry">Entrada</span> ';
-
-    const saveBadge = savings > 0 ? `<span class="badge badge-save">Ahorra $${savings}</span>` : '';
-
-    card.innerHTML = `
-      <div class="card-body">
-        <h3 class="promo-price">$${p.price} MXN</h3>
-        <p class="promo-units">${p.units} unidades</p>
-        <div class="promo-badges">${highlights}<span class="badge badge-ppu">$${ppu}/ud</span> ${saveBadge}</div>
-      </div>
-    `;
-    grid.appendChild(card);
+  const base = baseHref || (typeof document !== 'undefined' ? document.baseURI : window.location?.href);
+  const resolved = STICKER_PROMO_ICONS.map(path => {
+    try {
+      return new URL(path, base || window.location.href).href;
+    } catch (_) {
+      return path;
+    }
   });
 
-  // Ayuda visual del ticket mínimo
-  const note = document.createElement('p');
-  note.className = 'promo-note';
-  note.textContent = `Piso de ticket: $${TICKET_MIN} MXN · Precio suelto: $${UNIT_PRICE} MXN/ud`;
+  return resolved.map(src => {
+    const img = new Image();
+    img.decoding = 'async';
+    img.loading = 'eager';
+    img.src = src;
+    return img;
+  });
+}
 
-  container.appendChild(grid);
-  container.appendChild(note);
-  root.appendChild(container);
+export function getStickerPromoIcons() {
+  return STICKER_PROMO_ICONS.slice();
 }

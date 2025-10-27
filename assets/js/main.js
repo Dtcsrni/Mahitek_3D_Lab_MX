@@ -1,10 +1,10 @@
 import './config.js';
-import { renderPromos } from './promos.js';
+import { preloadStickerSvgs } from './promos.js';
 import { renderPayments } from './pagos.js';
 
 const onReady = () => {
   try {
-    renderPromos();
+    preloadStickerSvgs();
     renderPayments();
   } catch (e) {
     console.error('[Main] Error inicializando Promos+Pagos:', e);
