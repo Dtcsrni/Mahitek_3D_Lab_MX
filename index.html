@@ -570,12 +570,21 @@
             </p>
           </div>
 
-          <div class="features-grid features-grid--4">
+          <div class="features-grid features-grid--2x2">
             <article class="feature-card feature-card--modern" data-animate="scale-up">
               <div class="feature-icon-wrapper feature-icon-wrapper--purple">
-                <svg class="feature-icon-modern" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                  <!-- Fondo con forma redondeada -->
-                  <rect x="10" y="10" width="100" height="100" rx="24" fill="url(#grad-purple)" opacity="0.2" />
+                <svg class="feature-icon-modern svg-animated" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <!-- Capa de fondo decorativa -->
+                  <rect
+                    x="10"
+                    y="10"
+                    width="100"
+                    height="100"
+                    rx="24"
+                    fill="url(#grad-purple)"
+                    opacity="0.15"
+                    class="bg-shape"
+                  />
                   <rect
                     x="10"
                     y="10"
@@ -585,31 +594,153 @@
                     stroke="url(#grad-purple-stroke)"
                     stroke-width="2"
                     fill="none"
+                    class="border-shape"
                   />
 
-                  <!-- Icono: Reloj/Timer -->
+                  <!-- Círculos decorativos de fondo (animados) -->
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="8"
+                    fill="url(#grad-purple)"
+                    opacity="0.3"
+                    class="float-particle particle-1"
+                  />
+                  <circle
+                    cx="95"
+                    cy="30"
+                    r="6"
+                    fill="url(#grad-purple)"
+                    opacity="0.25"
+                    class="float-particle particle-2"
+                  />
+                  <circle
+                    cx="30"
+                    cy="95"
+                    r="7"
+                    fill="url(#grad-purple)"
+                    opacity="0.2"
+                    class="float-particle particle-3"
+                  />
+                  <circle
+                    cx="90"
+                    cy="90"
+                    r="5"
+                    fill="url(#grad-purple)"
+                    opacity="0.3"
+                    class="float-particle particle-4"
+                  />
+
+                  <!-- Reloj principal - Cara exterior -->
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="28"
+                    stroke="url(#grad-purple-stroke)"
+                    stroke-width="3"
+                    fill="rgba(168, 85, 247, 0.1)"
+                    class="clock-face-outer"
+                  />
                   <circle
                     cx="60"
                     cy="60"
                     r="25"
                     stroke="currentColor"
-                    stroke-width="3"
+                    stroke-width="2"
                     fill="none"
-                    class="icon-pulse"
+                    opacity="0.4"
+                    class="clock-face-mid"
                   />
-                  <path
-                    d="M60 40 L60 60 L75 70"
-                    stroke="currentColor"
+
+                  <!-- Marcadores de hora (12 posiciones) -->
+                  <g class="hour-markers">
+                    <circle cx="60" cy="35" r="2.5" fill="currentColor" class="marker marker-12" />
+                    <circle cx="73" cy="38" r="2" fill="currentColor" opacity="0.6" class="marker marker-1" />
+                    <circle cx="82" cy="47" r="2" fill="currentColor" opacity="0.6" class="marker marker-2" />
+                    <circle cx="85" cy="60" r="2.5" fill="currentColor" class="marker marker-3" />
+                    <circle cx="82" cy="73" r="2" fill="currentColor" opacity="0.6" class="marker marker-4" />
+                    <circle cx="73" cy="82" r="2" fill="currentColor" opacity="0.6" class="marker marker-5" />
+                    <circle cx="60" cy="85" r="2.5" fill="currentColor" class="marker marker-6" />
+                    <circle cx="47" cy="82" r="2" fill="currentColor" opacity="0.6" class="marker marker-7" />
+                    <circle cx="38" cy="73" r="2" fill="currentColor" opacity="0.6" class="marker marker-8" />
+                    <circle cx="35" cy="60" r="2.5" fill="currentColor" class="marker marker-9" />
+                    <circle cx="38" cy="47" r="2" fill="currentColor" opacity="0.6" class="marker marker-10" />
+                    <circle cx="47" cy="38" r="2" fill="currentColor" opacity="0.6" class="marker marker-11" />
+                  </g>
+
+                  <!-- Manecillas del reloj -->
+                  <line
+                    x1="60"
+                    y1="60"
+                    x2="60"
+                    y2="45"
+                    stroke="url(#grad-purple-stroke)"
                     stroke-width="3"
                     stroke-linecap="round"
-                    class="icon-hand"
+                    class="hour-hand"
                   />
-                  <circle cx="60" cy="35" r="3" fill="currentColor" />
-                  <circle cx="85" cy="60" r="3" fill="currentColor" />
-                  <circle cx="60" cy="85" r="3" fill="currentColor" />
-                  <circle cx="35" cy="60" r="3" fill="currentColor" />
+                  <line
+                    x1="60"
+                    y1="60"
+                    x2="72"
+                    y2="68"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    class="minute-hand"
+                  />
 
-                  <!-- Gradientes -->
+                  <!-- Centro del reloj -->
+                  <circle cx="60" cy="60" r="4" fill="url(#grad-purple-stroke)" class="clock-center" />
+                  <circle cx="60" cy="60" r="2" fill="#fff" opacity="0.8" />
+
+                  <!-- Rayos de velocidad (indicadores de rapidez) -->
+                  <g class="speed-lines" opacity="0.6">
+                    <path
+                      d="M15 55 L25 55"
+                      stroke="url(#grad-purple-stroke)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      class="speed-line speed-line-1"
+                    />
+                    <path
+                      d="M12 65 L22 65"
+                      stroke="url(#grad-purple-stroke)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      class="speed-line speed-line-2"
+                    />
+                    <path
+                      d="M18 48 L28 48"
+                      stroke="url(#grad-purple-stroke)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      class="speed-line speed-line-3"
+                    />
+                  </g>
+
+                  <!-- Efecto de brillo/resplandor -->
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="32"
+                    stroke="url(#grad-purple-stroke)"
+                    stroke-width="1"
+                    fill="none"
+                    opacity="0.2"
+                    class="glow-ring glow-ring-1"
+                  />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="35"
+                    stroke="url(#grad-purple-stroke)"
+                    stroke-width="0.5"
+                    fill="none"
+                    opacity="0.1"
+                    class="glow-ring glow-ring-2"
+                  />
+
                   <defs>
                     <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style="stop-color: #a855f7; stop-opacity: 1" />
@@ -640,9 +771,18 @@
 
             <article class="feature-card feature-card--modern animate-delay-1" data-animate="scale-up">
               <div class="feature-icon-wrapper feature-icon-wrapper--orange">
-                <svg class="feature-icon-modern" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                  <!-- Fondo con forma redondeada -->
-                  <rect x="10" y="10" width="100" height="100" rx="24" fill="url(#grad-orange)" opacity="0.2" />
+                <svg class="feature-icon-modern svg-animated" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <!-- Capa de fondo decorativa -->
+                  <rect
+                    x="10"
+                    y="10"
+                    width="100"
+                    height="100"
+                    rx="24"
+                    fill="url(#grad-orange)"
+                    opacity="0.15"
+                    class="bg-shape"
+                  />
                   <rect
                     x="10"
                     y="10"
@@ -652,29 +792,132 @@
                     stroke="url(#grad-orange-stroke)"
                     stroke-width="2"
                     fill="none"
+                    class="border-shape"
                   />
 
-                  <!-- Icono: Escudo/Resistencia -->
+                  <!-- Partículas flotantes -->
+                  <circle
+                    cx="20"
+                    cy="30"
+                    r="6"
+                    fill="url(#grad-orange)"
+                    opacity="0.25"
+                    class="float-particle particle-1"
+                  />
+                  <circle
+                    cx="95"
+                    cy="35"
+                    r="7"
+                    fill="url(#grad-orange)"
+                    opacity="0.3"
+                    class="float-particle particle-2"
+                  />
+                  <circle
+                    cx="25"
+                    cy="90"
+                    r="5"
+                    fill="url(#grad-orange)"
+                    opacity="0.2"
+                    class="float-particle particle-3"
+                  />
+                  <circle
+                    cx="92"
+                    cy="85"
+                    r="6"
+                    fill="url(#grad-orange)"
+                    opacity="0.25"
+                    class="float-particle particle-4"
+                  />
+
+                  <!-- Escudo principal - Capa externa con efecto metálico -->
                   <path
-                    d="M60 25 L85 35 L85 55 Q85 75, 60 90 Q35 75, 35 55 L35 35 Z"
-                    stroke="currentColor"
+                    d="M60 22 L88 34 L88 58 Q88 78, 60 95 Q32 78, 32 58 L32 34 Z"
+                    fill="rgba(249, 115, 22, 0.1)"
+                    stroke="url(#grad-orange-stroke)"
                     stroke-width="3"
-                    fill="none"
-                    class="icon-shield"
+                    class="shield-outer"
                   />
-                  <path
-                    d="M50 55 L57 62 L72 47"
-                    stroke="currentColor"
-                    stroke-width="3.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon-check"
-                  />
-                  <circle cx="60" cy="30" r="2" fill="currentColor" />
-                  <circle cx="80" cy="40" r="2" fill="currentColor" />
-                  <circle cx="40" cy="40" r="2" fill="currentColor" />
 
-                  <!-- Gradientes -->
+                  <!-- Escudo intermedio -->
+                  <path
+                    d="M60 27 L82 36 L82 56 Q82 73, 60 87 Q38 73, 38 56 L38 36 Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    opacity="0.5"
+                    class="shield-mid"
+                  />
+
+                  <!-- Líneas decorativas del escudo (patrón) -->
+                  <g class="shield-pattern" opacity="0.3">
+                    <line x1="60" y1="30" x2="60" y2="50" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="50" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="45" y1="52" x2="75" y2="52" stroke="currentColor" stroke-width="1.5" />
+                  </g>
+
+                  <!-- Check mark grande (símbolo de aprobación/resistencia) -->
+                  <g class="check-mark">
+                    <path
+                      d="M48 58 L56 66 L74 48"
+                      stroke="url(#grad-orange-stroke)"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      fill="none"
+                      class="check-path"
+                    />
+                    <circle cx="56" cy="66" r="3" fill="url(#grad-orange-stroke)" class="check-joint" />
+                  </g>
+
+                  <!-- Destellos/brillos en los vértices del escudo -->
+                  <g class="shield-sparkles">
+                    <circle cx="60" cy="24" r="2.5" fill="#fff" opacity="0.8" class="sparkle sparkle-1" />
+                    <circle cx="86" cy="36" r="2" fill="#fff" opacity="0.6" class="sparkle sparkle-2" />
+                    <circle cx="34" cy="36" r="2" fill="#fff" opacity="0.6" class="sparkle sparkle-3" />
+                  </g>
+
+                  <!-- Anillos de protección (aura de seguridad) -->
+                  <g class="protection-rings" opacity="0.3">
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="42"
+                      ry="50"
+                      stroke="url(#grad-orange-stroke)"
+                      stroke-width="1"
+                      fill="none"
+                      class="protection-ring ring-1"
+                    />
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="38"
+                      ry="46"
+                      stroke="url(#grad-orange-stroke)"
+                      stroke-width="0.5"
+                      fill="none"
+                      class="protection-ring ring-2"
+                    />
+                  </g>
+
+                  <!-- Elementos técnicos (hexágonos pequeños) -->
+                  <g class="tech-elements" opacity="0.4">
+                    <polygon
+                      points="42,45 45,43 48,45 48,49 45,51 42,49"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      fill="none"
+                      class="hex hex-1"
+                    />
+                    <polygon
+                      points="70,45 73,43 76,45 76,49 73,51 70,49"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      fill="none"
+                      class="hex hex-2"
+                    />
+                  </g>
+
                   <defs>
                     <linearGradient id="grad-orange" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style="stop-color: #f97316; stop-opacity: 1" />
@@ -705,9 +948,18 @@
 
             <article class="feature-card feature-card--modern animate-delay-2" data-animate="scale-up">
               <div class="feature-icon-wrapper feature-icon-wrapper--cyan">
-                <svg class="feature-icon-modern" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                  <!-- Fondo con forma redondeada -->
-                  <rect x="10" y="10" width="100" height="100" rx="24" fill="url(#grad-cyan)" opacity="0.2" />
+                <svg class="feature-icon-modern svg-animated" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <!-- Capa de fondo decorativa -->
+                  <rect
+                    x="10"
+                    y="10"
+                    width="100"
+                    height="100"
+                    rx="24"
+                    fill="url(#grad-cyan)"
+                    opacity="0.15"
+                    class="bg-shape"
+                  />
                   <rect
                     x="10"
                     y="10"
@@ -717,42 +969,219 @@
                     stroke="url(#grad-cyan-stroke)"
                     stroke-width="2"
                     fill="none"
+                    class="border-shape"
                   />
 
-                  <!-- Icono: Monedas/Precio accesible -->
+                  <!-- Partículas flotantes -->
                   <circle
-                    cx="50"
-                    cy="55"
-                    r="18"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    fill="none"
-                    class="icon-coin-1"
+                    cx="22"
+                    cy="28"
+                    r="7"
+                    fill="url(#grad-cyan)"
+                    opacity="0.3"
+                    class="float-particle particle-1"
                   />
-                  <text x="50" y="62" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">
-                    $
-                  </text>
                   <circle
-                    cx="70"
-                    cy="65"
-                    r="14"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    fill="none"
-                    class="icon-coin-2"
+                    cx="94"
+                    cy="32"
+                    r="5"
+                    fill="url(#grad-cyan)"
+                    opacity="0.25"
+                    class="float-particle particle-2"
                   />
-                  <text x="70" y="70" font-size="14" font-weight="bold" fill="currentColor" text-anchor="middle">
-                    $
-                  </text>
-                  <path
-                    d="M40 35 L45 40 L55 30"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                  <circle
+                    cx="28"
+                    cy="92"
+                    r="6"
+                    fill="url(#grad-cyan)"
+                    opacity="0.2"
+                    class="float-particle particle-3"
+                  />
+                  <circle
+                    cx="90"
+                    cy="88"
+                    r="7"
+                    fill="url(#grad-cyan)"
+                    opacity="0.3"
+                    class="float-particle particle-4"
                   />
 
-                  <!-- Gradientes -->
+                  <!-- Moneda principal (grande) -->
+                  <g class="coin-main">
+                    <circle
+                      cx="50"
+                      cy="55"
+                      r="22"
+                      fill="rgba(6, 182, 212, 0.15)"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="3"
+                      class="coin-outer"
+                    />
+                    <circle
+                      cx="50"
+                      cy="55"
+                      r="18"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      opacity="0.4"
+                      class="coin-inner"
+                    />
+                    <text
+                      x="50"
+                      y="63"
+                      font-size="22"
+                      font-weight="bold"
+                      fill="url(#grad-cyan-stroke)"
+                      text-anchor="middle"
+                      class="coin-symbol"
+                    >
+                      $
+                    </text>
+                    <!-- Detalles de la moneda -->
+                    <circle
+                      cx="50"
+                      cy="55"
+                      r="14"
+                      stroke="currentColor"
+                      stroke-width="0.5"
+                      fill="none"
+                      opacity="0.3"
+                      class="coin-detail"
+                    />
+                  </g>
+
+                  <!-- Moneda secundaria (mediana, superpuesta) -->
+                  <g class="coin-secondary">
+                    <circle
+                      cx="72"
+                      cy="68"
+                      r="16"
+                      fill="rgba(6, 182, 212, 0.1)"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="2.5"
+                      class="coin-outer-2"
+                    />
+                    <circle
+                      cx="72"
+                      cy="68"
+                      r="13"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      fill="none"
+                      opacity="0.3"
+                      class="coin-inner-2"
+                    />
+                    <text
+                      x="72"
+                      y="74"
+                      font-size="16"
+                      font-weight="bold"
+                      fill="currentColor"
+                      text-anchor="middle"
+                      class="coin-symbol-2"
+                    >
+                      $
+                    </text>
+                  </g>
+
+                  <!-- Moneda terciaria (pequeña) -->
+                  <g class="coin-tertiary">
+                    <circle
+                      cx="40"
+                      cy="80"
+                      r="10"
+                      fill="rgba(6, 182, 212, 0.08)"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      opacity="0.6"
+                      class="coin-outer-3"
+                    />
+                    <text
+                      x="40"
+                      y="84"
+                      font-size="10"
+                      font-weight="bold"
+                      fill="currentColor"
+                      text-anchor="middle"
+                      opacity="0.7"
+                    >
+                      $
+                    </text>
+                  </g>
+
+                  <!-- Check mark (símbolo de aprobación/accesibilidad) -->
+                  <g class="check-mark">
+                    <circle
+                      cx="48"
+                      cy="32"
+                      r="10"
+                      fill="rgba(6, 182, 212, 0.2)"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="2"
+                      class="check-circle"
+                    />
+                    <path
+                      d="M42 32 L46 36 L54 28"
+                      stroke="#fff"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      fill="none"
+                      class="check-path"
+                    />
+                  </g>
+
+                  <!-- Flechas de reducción de precio (indicador visual de ahorro) -->
+                  <g class="savings-arrows" opacity="0.5">
+                    <path
+                      d="M85 45 L85 55 L82 52"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="arrow arrow-1"
+                    />
+                    <path
+                      d="M78 50 L78 60 L75 57"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="arrow arrow-2"
+                    />
+                  </g>
+
+                  <!-- Ondas de valor/accesibilidad -->
+                  <g class="value-waves" opacity="0.2">
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="45"
+                      ry="40"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="1"
+                      fill="none"
+                      class="wave wave-1"
+                    />
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="40"
+                      ry="36"
+                      stroke="url(#grad-cyan-stroke)"
+                      stroke-width="0.5"
+                      fill="none"
+                      class="wave wave-2"
+                    />
+                  </g>
+
+                  <!-- Estrellas brillantes (detalles) -->
+                  <g class="sparkles">
+                    <path d="M30 40 L31 42 L30 44 L29 42 Z" fill="#fff" opacity="0.8" class="sparkle sparkle-1" />
+                    <path d="M88 62 L89 64 L88 66 L87 64 Z" fill="#fff" opacity="0.6" class="sparkle sparkle-2" />
+                  </g>
+
                   <defs>
                     <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style="stop-color: #06b6d4; stop-opacity: 1" />
@@ -782,9 +1211,18 @@
 
             <article class="feature-card feature-card--modern animate-delay-3" data-animate="scale-up">
               <div class="feature-icon-wrapper feature-icon-wrapper--teal">
-                <svg class="feature-icon-modern" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                  <!-- Fondo con forma redondeada -->
-                  <rect x="10" y="10" width="100" height="100" rx="24" fill="url(#grad-teal)" opacity="0.2" />
+                <svg class="feature-icon-modern svg-animated" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <!-- Capa de fondo decorativa -->
+                  <rect
+                    x="10"
+                    y="10"
+                    width="100"
+                    height="100"
+                    rx="24"
+                    fill="url(#grad-teal)"
+                    opacity="0.15"
+                    class="bg-shape"
+                  />
                   <rect
                     x="10"
                     y="10"
@@ -794,51 +1232,231 @@
                     stroke="url(#grad-teal-stroke)"
                     stroke-width="2"
                     fill="none"
+                    class="border-shape"
                   />
 
-                  <!-- Icono: Herramientas de diseño/Personalización -->
-                  <path
-                    d="M35 40 L50 55 L45 60 L30 45 Z"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    fill="none"
-                    class="icon-pencil"
-                  />
-                  <rect
-                    x="48"
-                    y="58"
-                    width="8"
-                    height="20"
-                    rx="1"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    transform="rotate(45 52 68)"
+                  <!-- Partículas flotantes -->
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="6"
+                    fill="url(#grad-teal)"
+                    opacity="0.3"
+                    class="float-particle particle-1"
                   />
                   <circle
-                    cx="70"
-                    cy="50"
-                    r="12"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    fill="none"
-                    class="icon-gear"
+                    cx="92"
+                    cy="28"
+                    r="7"
+                    fill="url(#grad-teal)"
+                    opacity="0.25"
+                    class="float-particle particle-2"
                   />
-                  <circle cx="70" cy="50" r="6" stroke="currentColor" stroke-width="2" fill="none" />
-                  <path
-                    d="M70 38 L70 42 M70 58 L70 62 M82 50 L78 50 M62 50 L58 50"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
+                  <circle
+                    cx="30"
+                    cy="95"
+                    r="5"
+                    fill="url(#grad-teal)"
+                    opacity="0.2"
+                    class="float-particle particle-3"
                   />
-                  <path
-                    d="M78 42 L75 45 M65 55 L62 58 M78 58 L75 55 M65 45 L62 42"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
+                  <circle
+                    cx="95"
+                    cy="90"
+                    r="6"
+                    fill="url(#grad-teal)"
+                    opacity="0.3"
+                    class="float-particle particle-4"
                   />
 
-                  <!-- Gradientes -->
+                  <!-- Lápiz/Pincel (herramienta de diseño) -->
+                  <g class="design-tool-pencil">
+                    <path
+                      d="M32 45 L48 61 L43 66 L27 50 Z"
+                      fill="rgba(20, 184, 166, 0.2)"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="2.5"
+                      class="pencil-body"
+                    />
+                    <rect
+                      x="46"
+                      y="64"
+                      width="8"
+                      height="22"
+                      rx="1"
+                      fill="rgba(20, 184, 166, 0.15)"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      transform="rotate(45 50 75)"
+                      class="pencil-tip"
+                    />
+                    <line x1="32" y1="45" x2="48" y2="61" stroke="currentColor" stroke-width="1" opacity="0.3" />
+                  </g>
+
+                  <!-- Engranaje principal (configuración/personalización) -->
+                  <g class="design-tool-gear">
+                    <circle
+                      cx="72"
+                      cy="50"
+                      r="14"
+                      fill="rgba(20, 184, 166, 0.15)"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="3"
+                      class="gear-outer"
+                    />
+                    <circle
+                      cx="72"
+                      cy="50"
+                      r="8"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      class="gear-inner"
+                    />
+                    <!-- Dientes del engranaje -->
+                    <g class="gear-teeth">
+                      <rect x="70" y="34" width="4" height="5" rx="1" fill="currentColor" />
+                      <rect x="83" y="48" width="5" height="4" rx="1" fill="currentColor" />
+                      <rect x="70" y="61" width="4" height="5" rx="1" fill="currentColor" />
+                      <rect x="57" y="48" width="5" height="4" rx="1" fill="currentColor" />
+                    </g>
+                    <!-- Detalles diagonales -->
+                    <g class="gear-diagonals" opacity="0.6">
+                      <rect
+                        x="79"
+                        y="40"
+                        width="3"
+                        height="4"
+                        rx="1"
+                        fill="currentColor"
+                        transform="rotate(45 80.5 42)"
+                      />
+                      <rect
+                        x="79"
+                        y="56"
+                        width="3"
+                        height="4"
+                        rx="1"
+                        fill="currentColor"
+                        transform="rotate(-45 80.5 58)"
+                      />
+                      <rect
+                        x="61"
+                        y="40"
+                        width="3"
+                        height="4"
+                        rx="1"
+                        fill="currentColor"
+                        transform="rotate(-45 62.5 42)"
+                      />
+                      <rect
+                        x="61"
+                        y="56"
+                        width="3"
+                        height="4"
+                        rx="1"
+                        fill="currentColor"
+                        transform="rotate(45 62.5 58)"
+                      />
+                    </g>
+                  </g>
+
+                  <!-- Paleta de colores (creatividad) -->
+                  <g class="color-palette">
+                    <ellipse
+                      cx="45"
+                      cy="75"
+                      rx="15"
+                      ry="10"
+                      fill="rgba(20, 184, 166, 0.1)"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="palette-shape"
+                    />
+                    <circle cx="40" cy="74" r="3" fill="#ec4899" opacity="0.7" class="color-dot dot-1" />
+                    <circle cx="45" cy="76" r="3" fill="#06b6d4" opacity="0.7" class="color-dot dot-2" />
+                    <circle cx="50" cy="74" r="3" fill="#fbbf24" opacity="0.7" class="color-dot dot-3" />
+                  </g>
+
+                  <!-- Regla/medición (precisión) -->
+                  <g class="ruler-tool" opacity="0.6">
+                    <rect
+                      x="78"
+                      y="70"
+                      width="25"
+                      height="6"
+                      rx="1"
+                      fill="rgba(20, 184, 166, 0.15)"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      class="ruler-body"
+                    />
+                    <line x1="82" y1="70" x2="82" y2="76" stroke="currentColor" stroke-width="1" />
+                    <line x1="86" y1="70" x2="86" y2="76" stroke="currentColor" stroke-width="1" />
+                    <line x1="90" y1="70" x2="90" y2="76" stroke="currentColor" stroke-width="1" />
+                    <line x1="94" y1="70" x2="94" y2="76" stroke="currentColor" stroke-width="1" />
+                    <line x1="98" y1="70" x2="98" y2="76" stroke="currentColor" stroke-width="1" />
+                  </g>
+
+                  <!-- Trazos de diseño/boceto (líneas creativas) -->
+                  <g class="sketch-lines" opacity="0.4">
+                    <path
+                      d="M25 35 Q30 30, 35 35"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="1.5"
+                      fill="none"
+                      class="sketch-curve curve-1"
+                    />
+                    <path
+                      d="M85 40 Q88 35, 92 38"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="1.5"
+                      fill="none"
+                      class="sketch-curve curve-2"
+                    />
+                  </g>
+
+                  <!-- Estrellas de inspiración -->
+                  <g class="inspiration-stars">
+                    <path
+                      d="M58 28 L59 30 L58 32 L57 30 Z"
+                      fill="url(#grad-teal-stroke)"
+                      opacity="0.8"
+                      class="star star-1"
+                    />
+                    <path
+                      d="M88 80 L89 82 L88 84 L87 82 Z"
+                      fill="url(#grad-teal-stroke)"
+                      opacity="0.7"
+                      class="star star-2"
+                    />
+                    <path d="M20 60 L21 62 L20 64 L19 62 Z" fill="#fff" opacity="0.6" class="star star-3" />
+                  </g>
+
+                  <!-- Ondas de creatividad -->
+                  <g class="creativity-waves" opacity="0.15">
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="48"
+                      ry="42"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="1"
+                      fill="none"
+                      class="wave wave-1"
+                    />
+                    <ellipse
+                      cx="60"
+                      cy="60"
+                      rx="43"
+                      ry="38"
+                      stroke="url(#grad-teal-stroke)"
+                      stroke-width="0.5"
+                      fill="none"
+                      class="wave wave-2"
+                    />
+                  </g>
+
                   <defs>
                     <linearGradient id="grad-teal" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style="stop-color: #14b8a6; stop-opacity: 1" />
