@@ -3,13 +3,13 @@
     "collect": {
       "url": ["http://localhost:8080"],
       "numberOfRuns": 1,
-      "startServerCommand": "npm run dev",
-      "startServerReadyPattern": "Serving",
+      "startServerCommand": "npm run build:assets && npm run serve:lighthouse",
+      "startServerReadyPattern": "Accepting connections",
       "settings": {
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
         "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"],
         "emulatedFormFactor": "desktop",
-        "chromeFlags": ["--no-sandbox", "--disable-dev-shm-usage", "--headless"]
+        "chromeFlags": "--no-sandbox --disable-dev-shm-usage"
       }
     },
     "assert": {

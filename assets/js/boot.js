@@ -61,42 +61,65 @@ function initHeroCounters() {
   counters.forEach(counter => observer.observe(counter));
 }
 
-// Inicialización segura tras carga del DOM
-const onReady = async () => {
+const onReady = () => {
   try {
-    // Inicializar DataManager
-    DataManager.init();
-
-    // Precarga de datos críticos (no bloqueante)
-    DataManager.preloadCritical().catch(err => {
-      console.warn('[Boot] Error en precarga:', err);
-    });
-
-    // Enlazar copywriting a elementos con data-copy (no bloqueante)
-    CopyBinder.bindCopywriting().catch(err => {
-      console.warn('[Boot] Error enlazando copywriting:', err);
-    });
-
-    // Inicializar narrativa con scroll
-    initScrollNarrative();
-
-    // Inicializar biblioteca de SVG animados
-    initSVGAnimations();
-
-    // Inicializar contadores animados del Hero
     initHeroCounters();
-
-    // Bandera visual en body para estilos condicionales si se requiere
-    document.documentElement.classList.add('js-modules-ready');
-
-    // Exportar componentes UI a window para acceso desde app.js legacy (opcional)
-    window.MahitekUI = UIComponents;
-    window.MahitekData = DataManager;
-
-    ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
   } catch (err) {
-    console.error('[Boot] Error inicializando módulos:', err);
+    console.error('[Boot] Error inicializando contadores:', err);
   }
+
+  const taskQueue = [
+    () => {
+      DataManager.init();
+    },
+    () =>
+      DataManager.preloadCritical().catch(err => {
+        console.warn('[Boot] Error en precarga:', err);
+      }),
+    () =>
+      CopyBinder.bindCopywriting().catch(err => {
+        console.warn('[Boot] Error enlazando copywriting:', err);
+      }),
+    () => initScrollNarrative(),
+    () => initSVGAnimations(),
+    () => {
+      window.MahitekUI = UIComponents;
+      window.MahitekData = DataManager;
+      ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
+    },
+  ];
+
+  const scheduleNext = () => {
+    if (taskQueue.length === 0) {
+      document.documentElement.classList.add('js-modules-ready');
+      return;
+    }
+
+    const runTask = () => {
+      const task = taskQueue.shift();
+      if (!task) return scheduleNext();
+
+      try {
+        const result = task();
+        if (result && typeof result.then === 'function') {
+          result.finally(scheduleNext);
+          return;
+        }
+      } catch (err) {
+        console.error('[Boot] Error en tarea diferida:', err);
+      }
+
+      scheduleNext();
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(runTask, { timeout: 800 });
+    } else {
+      window.setTimeout(runTask, 32);
+    }
+  };
+
+  window.setTimeout(scheduleNext, 150);
 };
 
 if (document.readyState === 'loading') {
