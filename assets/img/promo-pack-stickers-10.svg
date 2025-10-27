@@ -18,15 +18,15 @@
         50% { transform: rotate(15deg) scale(1.1); }
       }
       @keyframes priceGlow {
-        0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
-        50% { opacity: 0.85; box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+        0%, 100% { opacity: 1; filter: brightness(1); }
+        50% { opacity: 0.88; filter: brightness(1.25); }
       }
       .stack-main { animation: stackShift 5s ease-in-out infinite; will-change: transform; }
       .layer-1 { animation: layerFloat 4s ease-in-out infinite 0s; will-change: transform, opacity; }
       .layer-2 { animation: layerFloat 4s ease-in-out infinite 0.2s; will-change: transform, opacity; }
       .layer-3 { animation: layerFloat 4s ease-in-out infinite 0.4s; will-change: transform, opacity; }
       .badge-qty { animation: badgeSpin 3s ease-in-out infinite; will-change: transform; }
-      .price-tag { animation: priceGlow 2s ease-in-out infinite; will-change: opacity; }
+      .price-tag { animation: priceGlow 2s ease-in-out infinite; will-change: opacity, filter; }
       @media (prefers-reduced-motion: reduce) {
         .stack-main, .layer-1, .layer-2, .layer-3, .badge-qty, .price-tag { animation: none !important; }
       }

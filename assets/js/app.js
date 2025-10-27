@@ -358,11 +358,26 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
   try {
     const u = String(url || '').trim();
     if (!u) return '#';
-    // Rutas relativas
-    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
-      return u;
+
+    // Bloquear esquemas peligrosos explícitos
+    if (/^(javascript|data):/i.test(u)) return '#';
+
+    if (allowRelative) {
+      // Permitir rutas relativas comunes (incluyendo rutas sin prefijo ./)
+      if (
+        u.startsWith('/') ||
+        u.startsWith('./') ||
+        u.startsWith('../') ||
+        (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
+      ) {
+        return u;
+      }
     }
-    const parsed = new URL(u, window.location.origin);
+
+    const base =
+      (typeof document !== 'undefined' && document.baseURI) ||
+      (typeof window !== 'undefined' ? window.location.href : 'https://example.invalid/');
+    const parsed = new URL(u, base);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
