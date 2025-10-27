@@ -3891,6 +3891,205 @@ html[lang="es-MX"] .show-when-mx {
   color: var(--text-secondary);
 }
 
+/* ===== Modern Feature Cards (Beneficios mejorados) ===== */
+.feature-card--modern {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card--modern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.feature-card--modern:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow:
+    0 20px 60px rgba(6, 182, 212, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card--modern:hover::before {
+  opacity: 1;
+}
+
+.feature-icon-wrapper {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  color: var(--text-primary);
+}
+
+.feature-icon-modern {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card--modern:hover .feature-icon-modern {
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0 8px 24px rgba(6, 182, 212, 0.4));
+}
+
+/* Animaciones para elementos internos de los SVG */
+@keyframes icon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.feature-card--modern:hover .icon-pulse {
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+.feature-card--modern:hover .icon-hand,
+.feature-card--modern:hover .icon-check,
+.feature-card--modern:hover .icon-shield,
+.feature-card--modern:hover .icon-coin-1,
+.feature-card--modern:hover .icon-coin-2,
+.feature-card--modern:hover .icon-pencil,
+.feature-card--modern:hover .icon-gear {
+  animation: icon-float 2s ease-in-out infinite;
+}
+
+.feature-title--modern {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.feature-emoji {
+  font-size: 1.5rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.feature-card--modern:hover .feature-emoji {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.feature-subtitle--modern {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.feature-text--modern {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: left;
+  flex-grow: 1;
+}
+
+/* Colores específicos por tarjeta */
+.feature-icon-wrapper--purple {
+  color: #a855f7;
+}
+
+.feature-card--modern:has(.feature-icon-wrapper--purple):hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow:
+    0 20px 60px rgba(168, 85, 247, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon-wrapper--orange {
+  color: #f97316;
+}
+
+.feature-card--modern:has(.feature-icon-wrapper--orange):hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow:
+    0 20px 60px rgba(249, 115, 22, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon-wrapper--cyan {
+  color: #06b6d4;
+}
+
+.feature-card--modern:has(.feature-icon-wrapper--cyan):hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow:
+    0 20px 60px rgba(6, 182, 212, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon-wrapper--teal {
+  color: #14b8a6;
+}
+
+.feature-card--modern:has(.feature-icon-wrapper--teal):hover {
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow:
+    0 20px 60px rgba(20, 184, 166, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .feature-card--modern {
+    padding: 1.5rem;
+  }
+
+  .feature-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title--modern {
+    font-size: 1.15rem;
+  }
+
+  .feature-text--modern {
+    font-size: 0.95rem;
+  }
+}
+
 /* ===== Catalog ===== */
 .catalog-filters {
   display: grid;
