@@ -140,12 +140,15 @@ export function renderPromos() {
     grid.appendChild(card);
   });
 
-  // Ayuda visual del ticket mínimo
-  const note = document.createElement('p');
-  note.className = 'promo-note';
-  note.textContent = `Piso de ticket: $${TICKET_MIN} MXN · Precio suelto: $${UNIT_PRICE} MXN/ud`;
+  return resolved.map(src => {
+    const img = new Image();
+    img.decoding = 'async';
+    img.loading = 'eager';
+    img.src = src;
+    return img;
+  });
+}
 
-  container.appendChild(grid);
-  container.appendChild(note);
-  root.appendChild(container);
+export function getStickerPromoIcons() {
+  return STICKER_PROMO_ICONS.slice();
 }
