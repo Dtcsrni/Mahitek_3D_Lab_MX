@@ -393,11 +393,14 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
         u.startsWith('../') ||
         (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
       ) {
-        return new URL(u, SITE_BASE_URL).href;
+        return u;
       }
     }
 
-    const parsed = new URL(u, SITE_BASE_URL);
+    const base =
+      (typeof document !== 'undefined' && document.baseURI) ||
+      (typeof window !== 'undefined' ? window.location.href : 'https://example.invalid/');
+    const parsed = new URL(u, base);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
