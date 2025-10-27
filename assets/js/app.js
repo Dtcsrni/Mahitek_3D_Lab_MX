@@ -1219,8 +1219,17 @@ function initPromosCarousel(trackElement, totalPromos) {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
 
-    for (let i = 0; i < totalPages; i++) {
+    if (totalPages <= 1) {
+      dotsContainer.setAttribute('hidden', '');
+      updateDots();
+      return;
+    }
+
+    dotsContainer.removeAttribute('hidden');
+
+    for (let i = 0; i < totalPages; i += 1) {
       const dot = document.createElement('button');
+      dot.type = 'button';
       dot.classList.add('carousel-dot');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
       if (i === getActivePage()) dot.classList.add('active');
@@ -1228,6 +1237,11 @@ function initPromosCarousel(trackElement, totalPromos) {
       dot.addEventListener('click', () => {
         currentIndex = i * itemsPerView;
         updateTrack();
+        log('promo_carousel_navigation', {
+          method: 'dot',
+          page: pageIndex + 1,
+          total_pages: getTotalPages()
+        });
       });
 
       dotsContainer.appendChild(dot);
@@ -1292,7 +1306,67 @@ function initPromosCarousel(trackElement, totalPromos) {
 
   updateMetrics();
   createDots();
-  updateTrack();
+  updateTrack({ smooth: false });
+}
+
+function monitorPromoIcons(container) {
+  if (!container) return;
+
+  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
+  if (icons.length === 0) {
+    container.dataset.iconsReady = 'true';
+    return;
+  }
+
+  let pending = icons.length;
+  const markDone = () => {
+    pending -= 1;
+    if (pending <= 0) {
+      container.dataset.iconsReady = 'true';
+    }
+  };
+
+  icons.forEach(img => {
+    const handleFailure = () => {
+      if (!img.isConnected) {
+        markDone();
+        return;
+      }
+      const fallback = document.createElement('span');
+      fallback.className = 'promo-emoji';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = '🎁';
+      fallback.dataset.iconStatus = 'fallback';
+      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
+      const parent = img.parentElement;
+      if (parent) {
+        parent.replaceChild(fallback, img);
+      } else {
+        img.replaceWith(fallback);
+      }
+      log('promo_icon_missing', {
+        promotion_id: fallback.dataset.promoId || '',
+        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
+      });
+      markDone();
+    };
+
+    const markLoaded = () => {
+      img.dataset.iconStatus = 'loaded';
+      markDone();
+    };
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        handleFailure();
+      }
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', handleFailure, { once: true });
+    }
+  });
 }
 
 function monitorPromoIcons(container) {
