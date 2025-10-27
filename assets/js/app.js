@@ -393,11 +393,14 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
         u.startsWith('../') ||
         (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
       ) {
-        return new URL(u, SITE_BASE_URL).href;
+        return u;
       }
     }
 
-    const parsed = new URL(u, SITE_BASE_URL);
+    const base =
+      (typeof document !== 'undefined' && document.baseURI) ||
+      (typeof window !== 'undefined' ? window.location.href : 'https://example.invalid/');
+    const parsed = new URL(u, base);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -1116,7 +1119,7 @@ async function loadPromos() {
   container.innerHTML = promoCards.join('');
   monitorPromoIcons(container);
   registerAnimatedElements(container);
-  initPromosCarousel(container, totalPromos);
+  initPromosCarousel(container, allPromos.length);
 
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
@@ -1149,7 +1152,8 @@ function initPromosCarousel(trackElement, totalPromos) {
   const prevBtn = carousel?.querySelector('.carousel-btn-prev');
   const nextBtn = carousel?.querySelector('.carousel-btn-next');
   const dotsContainer = section?.querySelector('#promos-dots');
-  const wrapper = carousel?.querySelector('.carousel-wrapper');
+
+  if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
 
   if (!carousel || !prevBtn || !nextBtn || !dotsContainer || !wrapper) return;
 
