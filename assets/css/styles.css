@@ -3868,6 +3868,11 @@ html[lang="es-MX"] .show-when-mx {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
+
+  .features-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -3876,6 +3881,10 @@ html[lang="es-MX"] .show-when-mx {
   }
 
   .features-grid--2x2 {
+    gap: 3rem;
+  }
+
+  .features-grid--3col {
     gap: 3rem;
   }
 }
