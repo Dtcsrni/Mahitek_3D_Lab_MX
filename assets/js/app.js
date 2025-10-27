@@ -748,9 +748,10 @@ function setupImageErrorFallbacks(root) {
 
 // ===== Carrusel de Catálogo =====
 function initCatalogCarousel(totalProducts) {
-  const track = document.getElementById('product-carousel');
-  const prevBtn = document.querySelector('.carousel-btn-prev');
-  const nextBtn = document.querySelector('.carousel-btn-next');
+  const catalogSection = document.getElementById('catalogo');
+  const track = catalogSection?.querySelector('#product-carousel');
+  const prevBtn = catalogSection?.querySelector('.carousel-btn-prev');
+  const nextBtn = catalogSection?.querySelector('.carousel-btn-next');
   const dotsContainer = document.getElementById('catalog-dots');
 
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
@@ -1243,7 +1244,6 @@ function initPromosCarousel(trackElement, totalPromos) {
           total_pages: getTotalPages()
         });
       });
-
       dotsContainer.appendChild(dot);
     }
   };
@@ -1264,7 +1264,7 @@ function initPromosCarousel(trackElement, totalPromos) {
   let touchStartX = 0;
   let touchEndX = 0;
 
-  track.addEventListener(
+  trackElement.addEventListener(
     'touchstart',
     e => {
       touchStartX = e.changedTouches[0].screenX;
@@ -1272,7 +1272,7 @@ function initPromosCarousel(trackElement, totalPromos) {
     { passive: true }
   );
 
-  track.addEventListener(
+  trackElement.addEventListener(
     'touchend',
     e => {
       touchEndX = e.changedTouches[0].screenX;
@@ -1284,7 +1284,6 @@ function initPromosCarousel(trackElement, totalPromos) {
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
         nextBtn.click();
@@ -1307,6 +1306,66 @@ function initPromosCarousel(trackElement, totalPromos) {
   updateMetrics();
   createDots();
   updateTrack({ smooth: false });
+}
+
+function monitorPromoIcons(container) {
+  if (!container) return;
+
+  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
+  if (icons.length === 0) {
+    container.dataset.iconsReady = 'true';
+    return;
+  }
+
+  let pending = icons.length;
+  const markDone = () => {
+    pending -= 1;
+    if (pending <= 0) {
+      container.dataset.iconsReady = 'true';
+    }
+  };
+
+  icons.forEach(img => {
+    const handleFailure = () => {
+      if (!img.isConnected) {
+        markDone();
+        return;
+      }
+      const fallback = document.createElement('span');
+      fallback.className = 'promo-emoji';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = '🎁';
+      fallback.dataset.iconStatus = 'fallback';
+      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
+      const parent = img.parentElement;
+      if (parent) {
+        parent.replaceChild(fallback, img);
+      } else {
+        img.replaceWith(fallback);
+      }
+      log('promo_icon_missing', {
+        promotion_id: fallback.dataset.promoId || '',
+        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
+      });
+      markDone();
+    };
+
+    const markLoaded = () => {
+      img.dataset.iconStatus = 'loaded';
+      markDone();
+    };
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        handleFailure();
+      }
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', handleFailure, { once: true });
+    }
+  });
 }
 
 function monitorPromoIcons(container) {
@@ -1839,6 +1898,16 @@ function setupFilters() {
 
 // ===== Lazy Loading de Secciones No-Críticas =====
 function setupLazyLoading() {
+  if (typeof IntersectionObserver === 'undefined') {
+    if (!promosLoaded) {
+      loadPromos();
+    }
+    if (!faqLoaded) {
+      loadFAQ();
+    }
+    return;
+  }
+
   const lazyObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
