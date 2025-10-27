@@ -9,11 +9,11 @@
     <meta name="author" content="Mahitek 3D Lab" />
     <meta
       name="description"
-      content="Impresión 3D en PETG desde Pachuca. Fabricamos piezas funcionales, decorativas y técnicas. Diseño incluido, envío nacional. ¡Desde 1 pieza!"
+      content="Impresión 3D en PETG desde Pachuca. Fabricamos piezas funcionales, decorativas, artísticas y artesanales. Diseño creativo incluido, envío nacional. ¡Desde 1 pieza!"
     />
     <meta
       name="keywords"
-      content="impresión 3D, PETG, Pachuca, fabricación digital, piezas personalizadas, diseño 3D, manufactura aditiva, México, microempresa"
+      content="impresión 3D, PETG, Pachuca, fabricación digital, piezas personalizadas, diseño 3D, manufactura aditiva, México, microempresa, arte, artesanía, creativo, hecho a mano"
     />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
@@ -73,7 +73,7 @@
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- PRELOAD (Recursos críticos) -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
-    <link rel="preload" href="assets/css/styles.css?v=2024102410" as="style" />
+    <link rel="preload" href="assets/css/styles.min.css?v=2024102410" as="style" />
     <link rel="preload" href="assets/js/boot.js?v=20251026" as="script" />
     <link rel="preload" href="assets/img/hero-lab.svg" as="image" />
 
@@ -85,7 +85,7 @@
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- ESTILOS CSS -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
+    <link rel="stylesheet" href="assets/css/styles.min.css?v=2024102410" />
     <link rel="stylesheet" href="assets/css/promo.css?v=20251026" media="print" onload="this.media='all'" />
     <link
       rel="stylesheet"
@@ -349,8 +349,8 @@
               >
             </h1>
             <p class="hero-subtitle" data-copy="hero.subtitle">
-              Fabricamos tus proyectos 3D con precisión industrial. Material PETG de alta resistencia. Desde Pachuca
-              para todo México.
+              Creamos tus proyectos 3D con dedicación artesanal, creatividad artística y cuidado ingenieril. Material
+              PETG de alta resistencia. Somos una mipyme iniciando desde Pachuca para todo México.
             </p>
 
             <ul class="hero-highlights" aria-label="Diferenciadores de Mahitek 3D Lab">
@@ -384,7 +384,7 @@
               <span class="accent-chip accent-chip--green">🚚 Envíos a todo México o pickup en Pachuca</span>
             </div>
             <!-- Insignia Hecho en México: visible solo en es-MX -->
-            <div class="badge-made-mx show-when-mx" role="img" aria-label="Hecho en México">
+            <div class="badge-made-mx show-when-mx" aria-label="Hecho en México">
               <svg class="badge-made-mx-svg" viewBox="0 0 160 32" width="160" height="32" aria-hidden="true">
                 <!-- Placa base -->
                 <rect
@@ -750,7 +750,7 @@
                 <span data-copy="solucion.benefits.0.title">Material de Alta Resistencia</span>
               </h3>
               <p class="feature-subtitle feature-subtitle--modern" data-copy="solucion.benefits.0.subtitle">
-                PETG grado industrial
+                PETG resistente y versátil
               </p>
               <p class="feature-text feature-text--modern" data-copy="solucion.benefits.0.description">
                 Trabajamos con PETG, un material resistente ideal para coleccionistas que buscan props duraderos para
@@ -1192,7 +1192,7 @@
                     <circle cx="50" cy="74" r="3" fill="#fbbf24" opacity="0.7" class="color-dot dot-3" />
                   </g>
 
-                  <!-- Regla/medición (precisión) -->
+                  <!-- Regla/medición (ajuste de medidas) -->
                   <g class="ruler-tool" opacity="0.6">
                     <rect
                       x="78"
@@ -2225,9 +2225,6 @@
 
       <!-- Métodos de Pago -->
       <section id="pagos" class="section" aria-labelledby="pagos-title"></section>
-
-      <!-- Calculadora de Pedido -->
-      <section id="calc" class="section" aria-labelledby="calc-title"></section>
     </main>
 
     <footer class="footer">
@@ -2320,14 +2317,15 @@
         </div>
         <p class="footer-copy">
           © 2025 Mahitek 3D Lab. Todos los derechos reservados.
-          <span class="footer-dev">Desarrollado con ingeniería certificada y tecnología de vanguardia.</span>
+          <span class="footer-dev">Desarrollado con creatividad, arte y pasión artesanal, además de ingeniería.</span>
         </p>
       </div>
     </footer>
 
-    <script src="assets/js/app.js?v=2024102410" defer></script>
+    <script src="assets/js/app.min.js?v=2024102410" defer></script>
     <!-- Orquestadores ES Modules (no rompen app.js legacy) -->
-    <script type="module" src="assets/js/boot.js?v=20251026"></script>
-    <script type="module" src="assets/js/main.js?v=20251026"></script>
+    <script type="module" src="assets/js/boot.min.js?v=20251026"></script>
+    <script type="module" src="assets/js/modules/svg-animations.min.js?v=20251026"></script>
+    <script type="module" src="assets/js/main.min.js?v=20251026"></script>
   </body>
 </html>

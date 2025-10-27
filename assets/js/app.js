@@ -915,52 +915,49 @@ async function loadPromos() {
 
   promosLoaded = true;
 
-  if (!promos || promos.length === 0) {
-    container.innerHTML = `
-      <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
-      </div>
-    `;
-    registerAnimatedElements(container);
-    return;
-  }
-
+  // Filtrar promos activas
   const now = new Date();
-  const activePromos = promos.filter(promo => {
-    if (promo.estado && promo.estado === 'inactivo') return false;
-    if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
-    const start = new Date(promo.desde);
-    const end = new Date(promo.hasta);
-    return now >= start && now <= end;
+  const activePromos =
+    promos && promos.length > 0
+      ? promos.filter(promo => {
+          if (promo.estado && promo.estado === 'inactivo') return false;
+          if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
+          const start = new Date(promo.desde);
+          const end = new Date(promo.hasta);
+          return now >= start && now <= end;
+        })
+      : [];
+
+  // Packs de stickers (de promos.js)
+  const { PACKS } = await import('./promos.js');
+  const stickerPromos = PACKS.map((p, idx) => {
+    const ppu = (p.price / p.units).toFixed(2);
+    const solo = p.units * 3;
+    const savings = Math.max(0, solo - p.price);
+    let highlights = '';
+    if (p.units >= 25) highlights += '<span class="badge badge--value">Mejor valor</span> ';
+    else if (p.units === 10)
+      highlights += '<span class="badge badge--bestseller">Más vendido</span> ';
+    else if (p.units === 2) highlights += '<span class="badge badge--entry">Entrada</span> ';
+    const saveBadge = savings > 0 ? `<span class="badge badge-save">Ahorra $${savings}</span>` : '';
+    return `
+      <article class="card promo-card promo-sticker animate-delay-${Math.min(idx, 5)}" data-animate="fade-up">
+        <div class="card-body">
+          <h3 class="promo-price">$${p.price} MXN</h3>
+          <p class="promo-units">${p.units} stickers</p>
+          <div class="promo-badges">${highlights}<span class="badge badge-ppu">$${ppu}/ud</span> ${saveBadge}</div>
+        </div>
+      </article>
+    `;
   });
 
-  // Actualizar título con contador de promociones activas
-  const sectionTitle = document.querySelector('#promos .section-title');
-  if (sectionTitle && activePromos.length > 0) {
-    sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${activePromos.length})</span>`;
-  }
-
-  if (activePromos.length === 0) {
-    container.innerHTML = `
-      <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No hay promociones activas en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
-      </div>
-    `;
-    registerAnimatedElements(container);
-    return;
-  }
-
-  // SECURITY: Todos los campos usan escapeHTML/sanitizeURL - validado manualmente
-  container.innerHTML = activePromos
-    .map((promo, index) => {
+  // Unir promos y packs de stickers
+  const allPromos = [
+    ...activePromos.map((promo, index) => {
       const delay = Math.min(index, 5) * 70;
       const destacadoClass = promo.destacado ? 'promo-destacado' : '';
       const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
       const accentColor = promo.color_acento || '#6366F1';
-
-      // Construir precio visual
       let precioHTML = '';
       if (promo.precio_regular) {
         const unitario = promo.precio_unitario
@@ -985,51 +982,22 @@ async function loadPromos() {
         </div>
       `;
       }
-
-      // Badge
       const badgeHTML = promo.badge
         ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
         : '';
-
-      // Beneficios
       const beneficiosHTML =
         promo.beneficios && promo.beneficios.length > 0
-          ? `
-        <ul class="promo-beneficios">
-          ${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}
-        </ul>
-      `
+          ? `<ul class="promo-beneficios">${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}</ul>`
           : '';
-
-      // Fechas o permanente
       let validezHTML = '';
       if (promo.tipo === 'permanente') {
         validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
       } else if (promo.desde && promo.hasta) {
         validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
       }
-
-      // CTA
       const ctaHTML = promo.cta_url
-        ? `
-        <a href="${sanitizeURL(promo.cta_url)}" 
-           class="btn btn-primary promo-cta" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           data-promo-id="${escapeHTML(promo.id)}" 
-           data-promo-name="${escapeHTML(promo.titulo)}">
-          ${escapeHTML(promo.cta_text || 'Más info')}
-        </a>
-      `
-        : `
-        <button class="btn btn-primary promo-cta-contact" 
-                data-promo-id="${escapeHTML(promo.id)}" 
-                data-promo-name="${escapeHTML(promo.titulo)}">
-          ${escapeHTML('Consultar por Messenger')}
-        </button>
-      `;
-
-      // Icono (SVG o emoji)
+        ? `<a href="${sanitizeURL(promo.cta_url)}" class="btn btn-primary promo-cta" target="_blank" rel="noopener noreferrer" data-promo-id="${escapeHTML(promo.id)}" data-promo-name="${escapeHTML(promo.titulo)}">${escapeHTML(promo.cta_text || 'Más info')}</a>`
+        : `<button class="btn btn-primary promo-cta-contact" data-promo-id="${escapeHTML(promo.id)}" data-promo-name="${escapeHTML(promo.titulo)}">${escapeHTML('Consultar por Messenger')}</button>`;
       let iconoHTML = '';
       if (promo.icono) {
         if (promo.icono.endsWith('.svg')) {
@@ -1040,32 +1008,21 @@ async function loadPromos() {
       } else {
         iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
       }
+      return `<article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${delay}" data-animate="fade-up" data-promo-tipo="${promo.tipo}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
+    }),
+    ...stickerPromos
+  ];
 
-      return `
-  <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index, 5)}" 
-       data-animate="fade-up" 
-       data-promo-tipo="${promo.tipo}">
-      ${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}
-      <div class="promo-icono-container">
-        ${iconoHTML}
-      </div>
-      <h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3>
-      <p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>
-      ${precioHTML}
-      ${beneficiosHTML}
-      ${validezHTML}
-      ${ctaHTML}
-    </article>
-  `;
-    })
-    .join('');
+  // Actualizar título con contador total
+  const sectionTitle = document.querySelector('#promos .section-title');
+  if (sectionTitle && allPromos.length > 0) {
+    sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${allPromos.length})</span>`;
+  }
 
+  container.innerHTML = allPromos.join('');
   registerAnimatedElements(container);
+  initPromosCarousel(allPromos.length);
 
-  // Inicializar carrusel
-  initPromosCarousel(activePromos.length);
-
-  // Analytics para CTAs externas
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
     if (!a) return;
@@ -1074,13 +1031,10 @@ async function loadPromos() {
       promotion_name: a.getAttribute('data-promo-name') || ''
     });
   });
-
-  // CTAs de contacto interno - Redirigir a Messenger
   container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
     const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
-    // Abrir Messenger con la página de Mahitek 3D Lab
     window.open(`https://m.me/${CONFIG.MESSENGER_PAGE}`, '_blank', 'noopener');
     log('contact_promo', {
       promotion_id: btn.getAttribute('data-promo-id') || '',

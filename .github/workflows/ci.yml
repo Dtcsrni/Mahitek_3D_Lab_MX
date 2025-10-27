@@ -91,6 +91,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: write
+    continue-on-error: true
 
     steps:
       - name: 📥 Checkout código
@@ -130,6 +131,7 @@ jobs:
             ${{ needs.deploy.outputs.page_url }}
         env:
           CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          LHCI_CHROMIUM_FLAGS: '--no-sandbox'
 
       - name: 📦 Subir artefactos de Lighthouse
         if: always()

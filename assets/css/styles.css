@@ -5847,6 +5847,8 @@ svg.logo.auto-neon {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 1.5rem;
+  min-height: 320px;
+  /* Espacio reservado para promos y productos, reduce CLS */
 }
 
 .carousel-track.promos-grid {
@@ -5857,6 +5859,8 @@ svg.logo.auto-neon {
 .carousel-track > * {
   flex: 0 0 100%;
   max-width: 100%;
+  min-height: 260px;
+  /* Espacio reservado para cada tarjeta del carrusel */
 }
 
 @media (min-width: 768px) {
