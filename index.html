@@ -1404,15 +1404,66 @@
           <div class="segments-grid">
             <article class="card glass" data-animate="fade-up">
               <figure class="card-figure">
-                <img
-                  src="assets/img/segment-deco.svg"
-                  alt="Maceta impresa y lámpara para hogar"
-                  class="card-illustration"
+                <svg
+                  class="card-illustration neon-icon"
                   width="200"
                   height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
+                  viewBox="0 0 120 120"
+                  role="img"
+                  aria-labelledby="seg-deco-title seg-deco-desc"
+                >
+                  <title id="seg-deco-title">Ilustración decorativa: hogar</title>
+                  <desc id="seg-deco-desc">Marco cuadrado con luz neón y una planta en maceta minimalista</desc>
+                  <defs>
+                    <linearGradient id="grad-frame-a" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#22d3ee" />
+                      <stop offset="100%" stop-color="#a78bfa" />
+                    </linearGradient>
+                    <linearGradient id="grad-accent-a" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#34d399" />
+                      <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                    <radialGradient id="glow-a" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <!-- Marco -->
+                  <rect
+                    x="18"
+                    y="18"
+                    width="84"
+                    height="84"
+                    rx="16"
+                    fill="rgba(255,255,255,0.02)"
+                    stroke="url(#grad-frame-a)"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="14"
+                    y="14"
+                    width="92"
+                    height="92"
+                    rx="20"
+                    fill="none"
+                    stroke="url(#grad-frame-a)"
+                    stroke-opacity="0.25"
+                  />
+                  <circle cx="60" cy="60" r="42" fill="url(#glow-a)" class="glow" />
+                  <!-- Planta -->
+                  <g class="float-1">
+                    <path d="M54 78h12c2 0 3 1 3 3v3H51v-3c0-2 1-3 3-3z" fill="#0ea5e9" opacity="0.9" />
+                    <rect x="57" y="46" width="6" height="24" rx="3" fill="url(#grad-accent-a)" />
+                    <path d="M60 44c7 0 10-7 10-7s-7-2-10 1c-3-3-10-1-10-1s3 7 10 7z" fill="#34d399" />
+                    <path d="M60 56c5 0 8-5 8-5s-5-2-8 1c-3-3-8-1-8-1s3 5 8 5z" fill="#22d3ee" />
+                  </g>
+                  <!-- Partículas -->
+                  <g fill="#22d3ee" opacity="0.6">
+                    <circle cx="30" cy="34" r="2" class="orbit-1" />
+                    <circle cx="94" cy="40" r="1.8" class="orbit-2" />
+                    <circle cx="28" cy="86" r="1.6" class="orbit-3" />
+                  </g>
+                </svg>
               </figure>
               <h3>🏡 Tu espacio, tu identidad</h3>
               <p>
@@ -1422,15 +1473,67 @@
             </article>
             <article class="card glass animate-delay-1" data-animate="fade-up">
               <figure class="card-figure">
-                <img
-                  src="assets/img/segment-gift.svg"
-                  alt="Caja de regalo con piezas impresas"
-                  class="card-illustration"
+                <svg
+                  class="card-illustration neon-icon"
                   width="200"
                   height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
+                  viewBox="0 0 120 120"
+                  role="img"
+                  aria-labelledby="seg-gift-title seg-gift-desc"
+                >
+                  <title id="seg-gift-title">Ilustración: regalo con contexto</title>
+                  <desc id="seg-gift-desc">Marco neón y caja de regalo estilizada con brillos</desc>
+                  <defs>
+                    <linearGradient id="grad-frame-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f472b6" />
+                      <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                    <linearGradient id="grad-accent-b" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#fb923c" />
+                      <stop offset="100%" stop-color="#f59e0b" />
+                    </linearGradient>
+                    <radialGradient id="glow-b" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#f472b6" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect
+                    x="18"
+                    y="18"
+                    width="84"
+                    height="84"
+                    rx="16"
+                    fill="rgba(255,255,255,0.02)"
+                    stroke="url(#grad-frame-b)"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="14"
+                    y="14"
+                    width="92"
+                    height="92"
+                    rx="20"
+                    fill="none"
+                    stroke="url(#grad-frame-b)"
+                    stroke-opacity="0.25"
+                  />
+                  <circle cx="60" cy="60" r="42" fill="url(#glow-b)" class="glow" />
+                  <!-- Caja de regalo -->
+                  <g class="float-2">
+                    <rect x="40" y="52" width="40" height="28" rx="4" fill="#0ea5e9" opacity="0.9" />
+                    <path d="M60 52v28" stroke="url(#grad-accent-b)" stroke-width="6" />
+                    <path d="M40 62h40" stroke="url(#grad-accent-b)" stroke-width="6" />
+                    <!-- Listón superior como lazo -->
+                    <path d="M60 46c7-9 16-6 16 0s-8 6-16 0z" fill="#f472b6" />
+                    <path d="M60 46c-7-9-16-6-16 0s8 6 16 0z" fill="#f472b6" />
+                  </g>
+                  <!-- Chispeo -->
+                  <g fill="#f472b6" opacity="0.8">
+                    <circle cx="88" cy="42" r="1.8" class="sparkle-1" />
+                    <circle cx="32" cy="40" r="1.5" class="sparkle-2" />
+                    <circle cx="92" cy="78" r="1.6" class="sparkle-3" />
+                  </g>
+                </svg>
               </figure>
               <h3>🎁 Regalos con contexto</h3>
               <p>
@@ -1440,15 +1543,65 @@
             </article>
             <article class="card glass animate-delay-2" data-animate="fade-up">
               <figure class="card-figure">
-                <img
-                  src="assets/img/segment-fandom-static.svg"
-                  alt="Display con figura coleccionable"
-                  class="card-illustration"
+                <svg
+                  class="card-illustration neon-icon"
                   width="200"
                   height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
+                  viewBox="0 0 120 120"
+                  role="img"
+                  aria-labelledby="seg-fandom-title seg-fandom-desc"
+                >
+                  <title id="seg-fandom-title">Ilustración: fandom</title>
+                  <desc id="seg-fandom-desc">Marco neón con robotcito y notas musicales</desc>
+                  <defs>
+                    <linearGradient id="grad-frame-c" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#22d3ee" />
+                      <stop offset="100%" stop-color="#06b6d4" />
+                    </linearGradient>
+                    <linearGradient id="grad-accent-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#60a5fa" />
+                      <stop offset="100%" stop-color="#a78bfa" />
+                    </linearGradient>
+                    <radialGradient id="glow-c" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect
+                    x="18"
+                    y="18"
+                    width="84"
+                    height="84"
+                    rx="16"
+                    fill="rgba(255,255,255,0.02)"
+                    stroke="url(#grad-frame-c)"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="14"
+                    y="14"
+                    width="92"
+                    height="92"
+                    rx="20"
+                    fill="none"
+                    stroke="url(#grad-frame-c)"
+                    stroke-opacity="0.25"
+                  />
+                  <circle cx="60" cy="60" r="42" fill="url(#glow-c)" class="glow" />
+                  <!-- Robot -->
+                  <g class="float-1">
+                    <rect x="50" y="56" width="20" height="16" rx="4" fill="url(#grad-accent-c)" />
+                    <rect x="46" y="48" width="28" height="12" rx="6" fill="#22d3ee" />
+                    <circle cx="56" cy="54" r="2" fill="#0ea5e9" />
+                    <circle cx="64" cy="54" r="2" fill="#0ea5e9" />
+                    <rect x="54" y="74" width="12" height="3" rx="1.5" fill="#60a5fa" />
+                  </g>
+                  <!-- Notas -->
+                  <g fill="#a78bfa" opacity="0.9">
+                    <path d="M86 40v8c0 2-2 4-4 4-1.7 0-3-1.3-3-3s1.3-3 3-3c.7 0 1.3.2 1.8.6V40h2.2z" class="float-2" />
+                    <circle cx="84" cy="38" r="1.5" class="sparkle-2" />
+                  </g>
+                </svg>
               </figure>
               <h3>🎮 Fandom con propósito</h3>
               <p>
@@ -1458,15 +1611,64 @@
             </article>
             <article class="card glass animate-delay-3" data-animate="fade-up">
               <figure class="card-figure">
-                <img
-                  src="assets/img/segment-education.svg"
-                  alt="Kit educativo con piezas modulares"
-                  class="card-illustration"
+                <svg
+                  class="card-illustration neon-icon"
                   width="200"
                   height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
+                  viewBox="0 0 120 120"
+                  role="img"
+                  aria-labelledby="seg-brand-title seg-brand-desc"
+                >
+                  <title id="seg-brand-title">Ilustración: primeras series</title>
+                  <desc id="seg-brand-desc">Marco neón con mini plataforma de impresión 3D</desc>
+                  <defs>
+                    <linearGradient id="grad-frame-d" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#10b981" />
+                      <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                    <linearGradient id="grad-accent-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#14b8a6" />
+                      <stop offset="100%" stop-color="#10b981" />
+                    </linearGradient>
+                    <radialGradient id="glow-d" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect
+                    x="18"
+                    y="18"
+                    width="84"
+                    height="84"
+                    rx="16"
+                    fill="rgba(255,255,255,0.02)"
+                    stroke="url(#grad-frame-d)"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="14"
+                    y="14"
+                    width="92"
+                    height="92"
+                    rx="20"
+                    fill="none"
+                    stroke="url(#grad-frame-d)"
+                    stroke-opacity="0.25"
+                  />
+                  <circle cx="60" cy="60" r="42" fill="url(#glow-d)" class="glow" />
+                  <!-- Plataforma 3D -->
+                  <g class="float-1">
+                    <rect x="40" y="72" width="40" height="6" rx="3" fill="#10b981" />
+                    <rect x="46" y="54" width="28" height="16" rx="2" fill="#22d3ee" />
+                    <rect x="58" y="40" width="4" height="14" rx="2" fill="url(#grad-accent-d)" />
+                    <circle cx="60" cy="38" r="2" fill="#22d3ee" />
+                  </g>
+                  <!-- Partículas -->
+                  <g fill="#10b981" opacity="0.8">
+                    <circle cx="86" cy="46" r="1.6" class="sparkle-1" />
+                    <circle cx="36" cy="84" r="1.4" class="sparkle-2" />
+                  </g>
+                </svg>
               </figure>
               <h3>📚 Primeras series de tu marca</h3>
               <p>
