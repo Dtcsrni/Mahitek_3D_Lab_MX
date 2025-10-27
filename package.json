@@ -18,7 +18,7 @@
     "lighthouse": "lhci autorun",
     "lighthouse:badges": "npm run lighthouse && node scripts/generar-lighthouse-badges.js",
     "watch:css": "echo 'CSS directo - no requiere compilación'",
-    "build": "npm run format",
+    "build": "npm run format && cleancss -o assets/css/styles.min.css assets/css/styles.css && csso assets/js/app.js -o assets/js/app.min.js",
     "deploy": "git add . && git commit -m 'chore: actualizar sitio' && git push origin main",
     "version:patch": "npm version patch -m 'chore(release): v%s'",
     "version:minor": "npm version minor -m 'feat(release): v%s'",
