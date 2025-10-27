@@ -1,91 +1,127 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title-pack-stickers-15">
   <title id="title-pack-stickers-15">Pack 15 Stickers</title>
-  <desc>Pegote sabroso - 15 stickers laminados 5×5cm</desc>
-  
+  <desc>Pegote sabroso - 15 stickers laminados 5×5cm listos para surtir y compartir.</desc>
+
   <defs>
+    <radialGradient id="bg-amber" cx="45%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#7c2d12" stop-opacity="0.95" />
+      <stop offset="70%" stop-color="#9a3412" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#431407" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="sticker-gloss-15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#f97316" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="shine-15" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff7ed" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#fb923c" stop-opacity="0" />
+    </linearGradient>
+    <filter id="shadow-soft-15" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#3f1d0b" flood-opacity="0.45" />
+    </filter>
     <style>
-      @keyframes stackWobble {
-        0%, 100% { transform: translateX(0) rotate(0deg); }
-        25% { transform: translateX(4px) rotate(1deg); }
-        75% { transform: translateX(-4px) rotate(-1deg); }
+      :root { color-scheme: dark; }
+      .bg-disc { animation: bgPulse15 11s ease-in-out infinite; transform-origin: 96px 92px; }
+      .orbit-line { stroke-dasharray: 6 14; animation: orbitDash15 9s linear infinite; }
+      .stack { animation: stackFloat15 5s ease-in-out infinite; transform-origin: 102px 104px; }
+      .sticker-top { animation: stickerTilt15 4s ease-in-out infinite; transform-origin: 104px 96px; }
+      .badge-qty { animation: badgePop15 3s ease-in-out infinite; transform-origin: center; }
+      .price-tag { animation: priceGlow15 2.4s ease-in-out infinite; transform-origin: center; }
+      .confetti { animation: confettiDrift 6s ease-in-out infinite; transform-origin: center; }
+      @keyframes bgPulse15 {
+        0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.92; }
+        45% { transform: scale(1.08) rotate(-4deg); opacity: 1; }
+        70% { transform: scale(1.04) rotate(3deg); }
       }
-      @keyframes layerWave {
-        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
-        50% { transform: translateY(-6px) translateX(2px); opacity: 0.4; }
+      @keyframes orbitDash15 {
+        to { stroke-dashoffset: -160; }
       }
-      @keyframes badgeRotate {
-        0%, 100% { transform: rotate(0deg) scale(1); }
-        50% { transform: rotate(20deg) scale(1.12); }
+      @keyframes stackFloat15 {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-7px); }
       }
-      @keyframes priceShine {
-        0%, 100% { opacity: 1; filter: brightness(1); }
-        50% { opacity: 0.9; filter: brightness(1.2); }
+      @keyframes stickerTilt15 {
+        0%, 100% { transform: rotate(0deg) translateY(0); }
+        50% { transform: rotate(3deg) translateY(-5px); }
       }
-      .stack-main { animation: stackWobble 6s ease-in-out infinite; will-change: transform; }
-      .layer-1 { animation: layerWave 5s ease-in-out infinite 0s; will-change: transform, opacity; }
-      .layer-2 { animation: layerWave 5s ease-in-out infinite 0.15s; will-change: transform, opacity; }
-      .layer-3 { animation: layerWave 5s ease-in-out infinite 0.3s; will-change: transform, opacity; }
-      .layer-4 { animation: layerWave 5s ease-in-out infinite 0.45s; will-change: transform, opacity; }
-      .badge-qty { animation: badgeRotate 3.5s ease-in-out infinite; will-change: transform; }
-      .price-tag { animation: priceShine 2.2s ease-in-out infinite; will-change: opacity, filter; }
+      @keyframes badgePop15 {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+      }
+      @keyframes priceGlow15 {
+        0%, 100% { filter: brightness(1); opacity: 1; }
+        50% { filter: brightness(1.2); opacity: 0.9; }
+      }
+      @keyframes confettiDrift {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+        50% { transform: translateY(-6px) rotate(12deg); opacity: 1; }
+        100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      }
       @media (prefers-reduced-motion: reduce) {
-        .stack-main, .layer-1, .layer-2, .layer-3, .layer-4, .badge-qty, .price-tag { animation: none !important; }
+        .bg-disc, .orbit-line, .stack, .sticker-top, .badge-qty, .price-tag, .confetti {
+          animation: none !important;
+        }
       }
     </style>
-    <linearGradient id="bg-st15" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:0.12"/>
-      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0.12"/>
-    </linearGradient>
-    <linearGradient id="hologram-15" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:0.9"/>
-      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:0.9"/>
-      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:0.9"/>
-    </linearGradient>
-    <filter id="shadow-st15">
-      <feGaussianBlur stdDeviation="2.5"/>
-      <feOffset dx="0" dy="3"/>
-    </filter>
   </defs>
-  
-  <!-- Stack más grueso -->
-  <g transform="translate(100, 100)" class="stack-main">
-    <rect x="-52" y="-36" width="104" height="72" rx="6" fill="#CCC" opacity="0.2" filter="url(#shadow-st15)" class="layer-1"/>
-    <rect x="-50" y="-38" width="104" height="72" rx="6" fill="#D5D5D5" opacity="0.3" class="layer-2"/>
-    <rect x="-48" y="-40" width="104" height="72" rx="6" fill="#DDD" opacity="0.4" class="layer-3"/>
-    <rect x="-46" y="-42" width="104" height="72" rx="6" fill="#E8E8E8" opacity="0.5" class="layer-4"/>
-    <rect x="-44" y="-44" width="104" height="72" rx="6" fill="#F0F0F0" opacity="0.6"/>
-    <rect x="-42" y="-46" width="104" height="72" rx="6" fill="#FFF" stroke="url(#hologram-15)" stroke-width="3"/>
-    
-    <!-- Diseños variados -->
-    <g opacity="0.85">
-      <circle cx="-30" cy="-28" r="9" fill="#FB923C" opacity="0.7"/>
-      <circle cx="-8" cy="-25" r="7" fill="#F59E0B" opacity="0.7"/>
-      <circle cx="15" cy="-30" r="10" fill="#FFA500" opacity="0.6"/>
-      <circle cx="35" cy="-26" r="8" fill="#FF6B00" opacity="0.7"/>
-      
-      <rect x="-35" y="-8" width="70" height="5" rx="2.5" fill="#333" opacity="0.7"/>
-      <rect x="-28" y="2" width="56" height="4" rx="2" fill="#555" opacity="0.6"/>
-      <rect x="-20" y="11" width="40" height="3" rx="1.5" fill="#777" opacity="0.5"/>
-      
-      <circle cx="-30" cy="26" r="8" fill="#FF8C00" opacity="0.7"/>
-      <circle cx="-5" cy="28" r="6" fill="#FFA500" opacity="0.7"/>
-      <circle cx="15" cy="30" r="7" fill="#FB923C" opacity="0.6"/>
-      <circle cx="35" cy="25" r="9" fill="#F59E0B" opacity="0.7"/>
+
+  <rect width="200" height="200" fill="url(#bg-amber)" rx="26" />
+
+  <g class="bg-disc" opacity="0.42">
+    <circle cx="96" cy="100" r="78" fill="#fb923c" />
+    <circle cx="96" cy="100" r="62" fill="#7c2d12" opacity="0.75" />
+  </g>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="1.8" opacity="0.55">
+    <ellipse cx="104" cy="104" rx="74" ry="56" class="orbit-line" />
+    <ellipse cx="104" cy="104" rx="60" ry="46" class="orbit-line" style="animation-duration: 12s; animation-delay: -3s;" />
+  </g>
+
+  <g class="stack" filter="url(#shadow-soft-15)">
+    <g opacity="0.35">
+      <rect x="52" y="76" width="96" height="88" rx="14" fill="#3f1d0b" />
+      <rect x="56" y="70" width="96" height="88" rx="14" fill="#4a1f0d" />
+      <rect x="60" y="66" width="96" height="88" rx="14" fill="#5c2610" />
     </g>
-    
-    <!-- Badge cantidad -->
-    <g transform="translate(56, -52)" class="badge-qty">
-      <circle cx="0" cy="0" r="20" fill="#FB923C"/>
-      <text x="0" y="7" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFF" text-anchor="middle">15</text>
+    <g class="sticker-top">
+      <rect x="62" y="64" width="96" height="88" rx="14" fill="#3f1d0b" />
+      <rect x="62" y="64" width="96" height="88" rx="14" fill="#3f1d0b" stroke="url(#sticker-gloss-15)" stroke-width="4" />
+      <rect x="70" y="74" width="78" height="24" rx="12" fill="#f97316" opacity="0.9" />
+      <rect x="70" y="108" width="56" height="12" rx="6" fill="#fb923c" opacity="0.65" />
+      <rect x="70" y="128" width="36" height="8" rx="4" fill="#fdba74" opacity="0.5" />
+      <circle cx="128" cy="118" r="16" fill="#fbbf24" opacity="0.55" />
+      <circle cx="138" cy="92" r="12" fill="#f97316" opacity="0.6" />
+      <path d="M78 122 Q100 138 138 126" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" opacity="0.55" />
+      <rect x="62" y="64" width="96" height="88" rx="14" fill="url(#shine-15)" opacity="0.6" />
     </g>
   </g>
-  
-  <!-- Precio -->
-  <g transform="translate(100, 175)" class="price-tag">
-    <rect x="-30" y="-12" width="60" height="24" rx="12" fill="#F59E0B"/>
-    <text x="0" y="4" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFF" text-anchor="middle">$30</text>
+
+  <g class="badge-qty" transform="translate(156 58)">
+    <circle cx="0" cy="0" r="22" fill="#fb923c" />
+    <circle cx="0" cy="0" r="26" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.6" />
+    <text x="0" y="8" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff7ed" text-anchor="middle">15</text>
   </g>
-  
-  <!-- Título -->
-  <text x="100" y="30" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FB923C" text-anchor="middle" opacity="0.8">Pegote sabroso</text>
+
+  <g class="price-tag" transform="translate(104 176)">
+    <rect x="-36" y="-14" width="72" height="28" rx="14" fill="#ea580c" />
+    <rect x="-36" y="-14" width="72" height="28" rx="14" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.65" />
+    <text x="0" y="5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff7ed" text-anchor="middle">$30</text>
+  </g>
+
+  <g opacity="0.85" fill="#fff7ed" font-family="'Segoe UI', Arial, sans-serif" text-anchor="middle">
+    <text x="100" y="34" font-size="13" font-weight="700" fill="#fb923c">Pegote sabroso</text>
+    <text x="100" y="50" font-size="10" fill="#fed7aa">Surtido balanceado · laminado premium</text>
+  </g>
+
+  <g class="confetti" opacity="0.8">
+    <rect x="36" y="126" width="6" height="18" rx="3" fill="#fb923c" />
+    <rect x="44" y="120" width="4" height="12" rx="2" fill="#f97316" opacity="0.7" />
+    <circle cx="50" cy="144" r="4" fill="#fbbf24" opacity="0.6" />
+  </g>
+  <g class="confetti" style="animation-delay: 2s;" opacity="0.75">
+    <rect x="152" y="70" width="6" height="16" rx="3" fill="#fbbf24" />
+    <rect x="160" y="68" width="4" height="12" rx="2" fill="#fb923c" opacity="0.7" />
+    <circle cx="168" cy="92" r="4" fill="#fdba74" opacity="0.6" />
+  </g>
 </svg>

@@ -16,6 +16,29 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
+// ===== Path helpers =====
+const SITE_BASE_URL = (() => {
+  if (typeof import.meta !== 'undefined' && import.meta.url) {
+    try {
+      return new URL('../..', import.meta.url).href;
+    } catch (_) {
+      /* no-op */
+    }
+  }
+
+  if (typeof document !== 'undefined' && document.baseURI) {
+    const base = document.baseURI;
+    return base.endsWith('/') ? base : `${base}/`;
+  }
+
+  if (typeof window !== 'undefined' && window.location) {
+    const href = window.location.href;
+    return href.endsWith('/') ? href : href.replace(/[^/]*$/, '');
+  }
+
+  return 'https://example.invalid/';
+})();
+
 // ===== Detección y Gestión de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
@@ -358,11 +381,23 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
   try {
     const u = String(url || '').trim();
     if (!u) return '#';
-    // Rutas relativas
-    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
-      return u;
+
+    // Bloquear esquemas peligrosos explícitos
+    if (/^(javascript|data):/i.test(u)) return '#';
+
+    if (allowRelative) {
+      // Permitir rutas relativas comunes (incluyendo rutas sin prefijo ./)
+      if (
+        u.startsWith('/') ||
+        u.startsWith('./') ||
+        u.startsWith('../') ||
+        (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
+      ) {
+        return new URL(u, SITE_BASE_URL).href;
+      }
     }
-    const parsed = new URL(u, window.location.origin);
+
+    const parsed = new URL(u, SITE_BASE_URL);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -414,9 +449,14 @@ function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONF
 // ===== Data Loading =====
 async function loadJSON(path) {
   try {
-    const response = await fetch(path);
+    const safePath = sanitizeURL(path);
+    if (safePath === '#') {
+      throw new Error(`Ruta no segura: ${path}`);
+    }
+
+    const response = await fetch(safePath);
     if (!response.ok) {
-      throw new Error(`${TextosSistema.obtener('error.red')} (${path})`);
+      throw new Error(`${TextosSistema.obtener('error.red')} (${safePath})`);
     }
     return await response.json();
   } catch (error) {
@@ -917,136 +957,166 @@ async function loadPromos() {
 
   // Filtrar promos activas
   const now = new Date();
-  const activePromos =
-    promos && promos.length > 0
-      ? promos.filter(promo => {
-          if (promo.estado && promo.estado === 'inactivo') return false;
-          if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
-          const start = new Date(promo.desde);
-          const end = new Date(promo.hasta);
-          return now >= start && now <= end;
-        })
-      : [];
-
-  // Packs de stickers (de promos.js)
-  const { PACKS } = await import('./promos.js');
-  // Formatos populares de stickers
-  const stickerFormats = [
-    {
-      name: 'Redondo',
-      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="32" fill="#0ff" stroke="#ff00cc" stroke-width="6"><animate attributeName="r" values="32;36;32" dur="1.2s" repeatCount="indefinite"/></circle><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#fff" font-family="monospace">●</text></g><g><path d="M20 60 Q40 70 60 60" stroke="#ffea00" stroke-width="2" fill="none"/></g></svg>`
-    },
-    {
-      name: 'Cuadrado',
-      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="16" y="16" width="48" height="48" rx="12" fill="#ff00cc" stroke="#0ff" stroke-width="6"><animate attributeName="rx" values="12;20;12" dur="1.2s" repeatCount="indefinite"/></rect><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#fff" font-family="monospace">■</text></g><g><path d="M24 24 L56 56" stroke="#ffea00" stroke-width="2"/></g></svg>`
-    },
-    {
-      name: 'Rectangular',
-      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="28" width="60" height="24" rx="8" fill="#ffea00" stroke="#00ffd0" stroke-width="6"><animate attributeName="width" values="60;66;60" dur="1.2s" repeatCount="indefinite"/></rect><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#222" font-family="monospace">▬</text></g><g><path d="M20 40 Q40 60 60 40" stroke="#ff00cc" stroke-width="2" fill="none"/></g></svg>`
-    },
-    {
-      name: 'Troquelado',
-      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M16,40 Q40,12 64,40 Q40,68 16,40 Z" fill="#00ffd0" stroke="#ff00cc" stroke-width="6"><animate attributeName="d" values="M16,40 Q40,12 64,40 Q40,68 16,40 Z;M20,36 Q40,20 60,36 Q40,64 20,36 Z;M16,40 Q40,12 64,40 Q40,68 16,40 Z" dur="1.2s" repeatCount="indefinite"/></path><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#222" font-family="monospace">✦</text></g><g><path d="M24 60 Q40 72 56 60" stroke="#ffea00" stroke-width="2" fill="none"/></g></svg>`
-    }
-  ];
-
-  const stickerPromos = PACKS.map((p, idx) => {
-    const ppu = (p.price / p.units).toFixed(2);
-    const solo = p.units * 3;
-    const savings = Math.max(0, solo - p.price);
-    let highlights = '';
-    if (p.units >= 25) highlights += '<span class="badge badge--value">Mejor valor</span> ';
-    else if (p.units === 10)
-      highlights += '<span class="badge badge--bestseller">Más vendido</span> ';
-    else if (p.units === 2) highlights += '<span class="badge badge--entry">Entrada</span> ';
-    const saveBadge = savings > 0 ? `<span class="badge badge-save">Ahorra $${savings}</span>` : '';
-    // Seleccionar formato SVG según pack
-    const formatSVG = stickerFormats[idx % stickerFormats.length].svg;
-    const formatName = stickerFormats[idx % stickerFormats.length].name;
-    return `
-      <article class="card glass promo-card promo-sticker animate-delay-${Math.min(idx, 5)}" data-animate="fade-up" style="background: linear-gradient(135deg, #1a0033 60%, #0ff 100%); box-shadow: 0 0 24px #ff00cc55;">
-        <div class="promo-icono-container" style="margin-bottom:8px;">${formatSVG}</div>
-        <h3 class="promo-titulo" style="color:#ffea00;">${formatName} ${p.units} stickers</h3>
-        <div class="card-body">
-          <h3 class="promo-price" style="color:#0ff;">$${p.price} MXN</h3>
-          <p class="promo-units" style="color:#fff;">${p.units} unidades</p>
-          <div class="promo-badges">${highlights}<span class="badge badge-ppu">$${ppu}/ud</span> ${saveBadge}</div>
-        </div>
-      </article>
-    `;
+  const source = Array.isArray(promos) ? promos : [];
+  const activePromos = source.filter(promo => {
+    if (promo.estado && promo.estado === 'inactivo') return false;
+    if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
+    const start = new Date(promo.desde);
+    const end = new Date(promo.hasta);
+    return now >= start && now <= end;
   });
 
-  // Unir promos y packs de stickers
-  const allPromos = [
-    ...activePromos.map((promo, index) => {
-      const delay = Math.min(index, 5) * 70;
-      const destacadoClass = promo.destacado ? 'promo-destacado' : '';
-      const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
-      const accentColor = promo.color_acento || '#6366F1';
-      let precioHTML = '';
-      if (promo.precio_regular) {
-        const unitario = promo.precio_unitario
-          ? `<span class="promo-unitario">$${promo.precio_unitario.toFixed(2)} c/u</span>`
-          : '';
-        precioHTML = `
+  const seenIds = new Set();
+  const uniquePromos = [];
+  activePromos.forEach(promo => {
+    const rawId = promo.id || promo.titulo || `promo-${uniquePromos.length}`;
+    const key = String(rawId).toLowerCase();
+    if (seenIds.has(key)) return;
+    seenIds.add(key);
+    uniquePromos.push({ ...promo, __resolvedId: rawId });
+  });
+
+  const orderMap = {
+    combo: 0,
+    stickers: 1,
+    fidelidad: 2,
+    referidos: 3,
+    addon: 4
+  };
+
+  const numericValue = value => {
+    const num = Number(value);
+    return Number.isFinite(num) ? num : Number.MAX_SAFE_INTEGER;
+  };
+
+  uniquePromos.sort((a, b) => {
+    const typeA = orderMap[String(a.tipo || '').toLowerCase()] ?? 99;
+    const typeB = orderMap[String(b.tipo || '').toLowerCase()] ?? 99;
+    if (typeA !== typeB) return typeA - typeB;
+
+    const featuredDiff = (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0);
+    if (featuredDiff !== 0) return featuredDiff;
+
+    const priceA = Math.min(
+      numericValue(a.precio_regular),
+      numericValue(a.precio_especial),
+      numericValue(a.precio_base),
+      numericValue(a.monto_minimo)
+    );
+    const priceB = Math.min(
+      numericValue(b.precio_regular),
+      numericValue(b.precio_especial),
+      numericValue(b.precio_base),
+      numericValue(b.monto_minimo)
+    );
+
+    if (priceA !== priceB) return priceA - priceB;
+
+    return String(a.titulo || '').localeCompare(String(b.titulo || ''), 'es');
+  });
+
+  const totalPromos = uniquePromos.length;
+  const sectionTitle = document.querySelector('#promos .section-title');
+  if (sectionTitle) {
+    if (totalPromos > 0) {
+      sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${totalPromos})</span>`;
+    } else {
+      sectionTitle.textContent = '🎯 Promociones activas';
+    }
+  }
+
+  if (totalPromos === 0) {
+    log('promos_empty', { reason: 'no_active_promos' });
+    return;
+  }
+
+  const formatMoney = value => {
+    const num = Number(value);
+    if (!Number.isFinite(num)) return null;
+    return num % 1 === 0 ? `$${num}` : `$${num.toFixed(2)}`;
+  };
+
+  const promoCards = uniquePromos.map((promo, index) => {
+    const delay = Math.min(index, 5) * 70;
+    const destacadoClass = promo.destacado ? 'promo-destacado' : '';
+    const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
+    const promoType = promo.tipo ? String(promo.tipo) : 'general';
+    const promoId = String(promo.__resolvedId || promo.id || `promo-${index}`);
+    const safePromoId = escapeHTML(promoId);
+
+    let precioHTML = '';
+    const regularPrice = formatMoney(promo.precio_regular ?? promo.precio_base);
+    const unitario = Number.isFinite(Number(promo.precio_unitario))
+      ? `<span class="promo-unitario">$${Number(promo.precio_unitario).toFixed(2)} c/u</span>`
+      : '';
+    if (regularPrice) {
+      precioHTML = `
         <div class="promo-precio">
-          <span class="promo-precio-total">$${promo.precio_regular}</span>
+          <span class="promo-precio-total">${regularPrice}</span>
           ${unitario}
         </div>
       `;
-      } else if (promo.precio_especial) {
+    } else {
+      const especial = formatMoney(promo.precio_especial);
+      const minimo = formatMoney(promo.monto_minimo);
+      if (especial) {
         precioHTML = `
         <div class="promo-precio">
-          <span class="promo-precio-especial">$${promo.precio_especial}</span>
+          <span class="promo-precio-especial">${especial}</span>
         </div>
       `;
-      } else if (promo.monto_minimo) {
+      } else if (minimo) {
         precioHTML = `
         <div class="promo-minimo">
-          <span>Mínimo: $${promo.monto_minimo}</span>
+          <span>Mínimo: ${minimo}</span>
         </div>
       `;
       }
-      const badgeHTML = promo.badge
-        ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
+    }
+
+    const badgeHTML = promo.badge ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>` : '';
+    const beneficiosHTML =
+      promo.beneficios && promo.beneficios.length > 0
+        ? `<ul class="promo-beneficios">${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}</ul>`
         : '';
-      const beneficiosHTML =
-        promo.beneficios && promo.beneficios.length > 0
-          ? `<ul class="promo-beneficios">${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}</ul>`
-          : '';
-      let validezHTML = '';
-      if (promo.tipo === 'permanente') {
-        validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
-      } else if (promo.desde && promo.hasta) {
-        validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
-      }
-      const ctaHTML = promo.cta_url
-        ? `<a href="${sanitizeURL(promo.cta_url)}" class="btn btn-primary promo-cta" target="_blank" rel="noopener noreferrer" data-promo-id="${escapeHTML(promo.id)}" data-promo-name="${escapeHTML(promo.titulo)}">${escapeHTML(promo.cta_text || 'Más info')}</a>`
-        : `<button class="btn btn-primary promo-cta-contact" data-promo-id="${escapeHTML(promo.id)}" data-promo-name="${escapeHTML(promo.titulo)}">${escapeHTML('Consultar por Messenger')}</button>`;
-      let iconoHTML = '';
-      if (promo.icono) {
-        if (promo.icono.endsWith('.svg')) {
-          iconoHTML = `<img src="${sanitizeURL(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+
+    let validezHTML = '';
+    if ((promo.tipo || '').toLowerCase() === 'permanente') {
+      validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
+    } else if (promo.desde && promo.hasta) {
+      validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
+    }
+
+    const safePromoName = escapeHTML(promo.titulo || 'Promoción');
+    const ctaHTML = promo.cta_url
+      ? `<a href="${sanitizeURL(promo.cta_url)}" class="btn btn-primary promo-cta" target="_blank" rel="noopener noreferrer" data-promo-id="${safePromoId}" data-promo-name="${safePromoName}">${escapeHTML(promo.cta_text || 'Más info')}</a>`
+      : `<button class="btn btn-primary promo-cta-contact" data-promo-id="${safePromoId}" data-promo-name="${safePromoName}">${escapeHTML('Consultar por Messenger')}</button>`;
+
+    let iconoHTML = '';
+    if (typeof promo.icono === 'string' && promo.icono.trim()) {
+      const trimmedIcon = promo.icono.trim();
+      const isSvg = /\.svg(\?|$)/i.test(trimmedIcon);
+      if (isSvg) {
+        const iconSrc = sanitizeURL(trimmedIcon);
+        if (iconSrc && iconSrc !== '#') {
+          iconoHTML = `<img src="${iconSrc}" alt="${safePromoName}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" data-promo-id="${safePromoId}" data-icon-src="${escapeHTML(iconSrc)}" />`;
         } else {
-          iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
+          iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
         }
       } else {
-        iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
+        iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(trimmedIcon)}</span>`;
       }
-      return `<article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${delay}" data-animate="fade-up" data-promo-tipo="${promo.tipo}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
-    }),
-    ...stickerPromos
-  ];
+    } else {
+      iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
+    }
 
-  // Actualizar título con contador total
-  const sectionTitle = document.querySelector('#promos .section-title');
-  if (sectionTitle && allPromos.length > 0) {
-    sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${allPromos.length})</span>`;
-  }
+    return `<article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${delay}" data-animate="fade-up" data-promo-id="${safePromoId}" data-promo-tipo="${escapeHTML(promoType)}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${safePromoName}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
+  });
 
-  container.innerHTML = allPromos.join('');
+  container.innerHTML = promoCards.join('');
+  monitorPromoIcons(container);
   registerAnimatedElements(container);
-  initPromosCarousel(allPromos.length);
+  initPromosCarousel(container, totalPromos);
 
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
@@ -1070,92 +1140,147 @@ async function loadPromos() {
 }
 
 // ===== Carrusel de Promos =====
-function initPromosCarousel(totalPromos) {
-  const track = document.querySelector('.carousel-track');
-  const prevBtn = document.querySelector('.carousel-btn-prev');
-  const nextBtn = document.querySelector('.carousel-btn-next');
-  const dotsContainer = document.getElementById('promos-dots');
+function initPromosCarousel(trackElement, totalPromos) {
+  if (!trackElement) return;
 
-  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+  const carousel = trackElement.closest('.carousel-container');
+  const section = carousel?.closest('section');
+  const track = trackElement;
+  const prevBtn = carousel?.querySelector('.carousel-btn-prev');
+  const nextBtn = carousel?.querySelector('.carousel-btn-next');
+  const dotsContainer = section?.querySelector('#promos-dots');
+  const wrapper = carousel?.querySelector('.carousel-wrapper');
 
-  let currentIndex = 0;
+  if (!carousel || !prevBtn || !nextBtn || !dotsContainer || !wrapper) return;
+
+  const cards = Array.from(track.children);
+  if (cards.length === 0) return;
+
+  let currentPage = 0;
   let itemsPerView = 1;
 
-  // Calcular items por vista según viewport
-  function updateItemsPerView() {
-    if (window.innerWidth >= 1024) {
-      itemsPerView = 3;
-    } else if (window.innerWidth >= 768) {
-      itemsPerView = 2;
-    } else {
-      itemsPerView = 1;
+  const computeItemsPerView = () => {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  };
+
+  const getBaseOffset = () => cards[0]?.offsetLeft ?? 0;
+
+  const getTotalPages = () => Math.max(1, Math.ceil(totalPromos / Math.max(itemsPerView, 1)));
+  const getMaxPage = () => Math.max(0, getTotalPages() - 1);
+
+  const getOffsetForPage = page => {
+    const baseOffset = getBaseOffset();
+    const targetIndex = Math.min(cards.length - 1, Math.max(0, page * itemsPerView));
+    const target = cards[targetIndex];
+    if (!target) return 0;
+
+    const offset = target.offsetLeft - baseOffset;
+    if (Number.isFinite(offset) && offset >= 0) {
+      return offset;
     }
-  }
 
-  // Calcular total de páginas
-  function getTotalPages() {
-    return Math.ceil(totalPromos / itemsPerView);
-  }
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    const width = target.getBoundingClientRect().width || wrapper.clientWidth || track.clientWidth;
+    return Math.max(0, targetIndex * (width + gap));
+  };
 
-  // Actualizar posición del track
-  function updateTrack() {
-    const offset = -currentIndex * (100 / itemsPerView);
-    track.style.transform = `translateX(${offset}%)`;
+  const updateMetrics = () => {
+    const previousPage = currentPage;
+    itemsPerView = computeItemsPerView();
+    const maxPage = getMaxPage();
+    if (previousPage > maxPage) {
+      currentPage = maxPage;
+    }
+  };
+
+  const updateButtons = () => {
+    const totalPages = getTotalPages();
+    const maxPage = getMaxPage();
+    const disableAll = totalPages <= 1;
+    prevBtn.disabled = disableAll || currentPage <= 0;
+    nextBtn.disabled = disableAll || currentPage >= maxPage;
+  };
+
+  const updateDots = () => {
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentPage);
+    });
+  };
+
+  const updateTrack = ({ smooth = true } = {}) => {
+    const offset = getOffsetForPage(currentPage);
+    track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    if (smooth) {
+      wrapper.scrollTo({ left: offset, behavior: 'smooth' });
+    } else {
+      wrapper.scrollLeft = offset;
+    }
     updateButtons();
     updateDots();
-  }
+  };
 
-  // Actualizar estado de botones
-  function updateButtons() {
-    const totalPages = getTotalPages();
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex >= totalPages - 1;
-  }
-
-  // Crear y actualizar dots
-  function createDots() {
+  const createDots = () => {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
 
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
-      if (i === currentIndex) dot.classList.add('active');
+    if (totalPages <= 1) {
+      dotsContainer.setAttribute('hidden', '');
+      updateDots();
+      return;
+    }
 
+    dotsContainer.removeAttribute('hidden');
+
+    for (let i = 0; i < totalPages; i += 1) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Ir a la página ${i + 1}`);
+      dot.dataset.pageIndex = String(i);
       dot.addEventListener('click', () => {
-        currentIndex = i;
+        const pageIndex = Number(dot.dataset.pageIndex) || 0;
+        currentPage = Math.max(0, Math.min(getMaxPage(), pageIndex));
         updateTrack();
+        log('promo_carousel_navigation', {
+          method: 'dot',
+          page: pageIndex + 1,
+          total_pages: getTotalPages()
+        });
       });
 
       dotsContainer.appendChild(dot);
     }
-  }
+  };
 
-  function updateDots() {
-    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
-  }
-
-  // Event listeners para botones
   prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateTrack();
-    }
+    if (currentPage <= 0) return;
+    currentPage = Math.max(0, currentPage - 1);
+    updateTrack();
+    log('promo_carousel_navigation', {
+      method: 'arrow',
+      direction: 'prev',
+      page: currentPage + 1,
+      total_pages: getTotalPages()
+    });
   });
 
   nextBtn.addEventListener('click', () => {
-    const totalPages = getTotalPages();
-    if (currentIndex < totalPages - 1) {
-      currentIndex++;
-      updateTrack();
-    }
+    const maxPage = getMaxPage();
+    if (currentPage >= maxPage) return;
+    currentPage = Math.min(maxPage, currentPage + 1);
+    updateTrack();
+    log('promo_carousel_navigation', {
+      method: 'arrow',
+      direction: 'next',
+      page: currentPage + 1,
+      total_pages: getTotalPages()
+    });
   });
 
-  // Soporte táctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -1182,33 +1307,87 @@ function initPromosCarousel(totalPromos) {
 
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
-        // Swipe left - next
         nextBtn.click();
       } else {
-        // Swipe right - prev
         prevBtn.click();
       }
     }
   }
 
-  // Registrar callback de resize optimizado
   const handlePromosResize = () => {
-    const oldItemsPerView = itemsPerView;
-    updateItemsPerView();
-
-    if (oldItemsPerView !== itemsPerView) {
-      currentIndex = 0;
-      createDots();
-      updateTrack();
-    }
+    const previousPage = currentPage;
+    updateMetrics();
+    createDots();
+    const maxPage = getMaxPage();
+    currentPage = Math.min(previousPage, maxPage);
+    updateTrack({ smooth: false });
   };
 
   ResizeManager.register(handlePromosResize);
 
-  // Inicializar
-  updateItemsPerView();
+  updateMetrics();
   createDots();
-  updateTrack();
+  updateTrack({ smooth: false });
+}
+
+function monitorPromoIcons(container) {
+  if (!container) return;
+
+  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
+  if (icons.length === 0) {
+    container.dataset.iconsReady = 'true';
+    return;
+  }
+
+  let pending = icons.length;
+  const markDone = () => {
+    pending -= 1;
+    if (pending <= 0) {
+      container.dataset.iconsReady = 'true';
+    }
+  };
+
+  icons.forEach(img => {
+    const handleFailure = () => {
+      if (!img.isConnected) {
+        markDone();
+        return;
+      }
+      const fallback = document.createElement('span');
+      fallback.className = 'promo-emoji';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = '🎁';
+      fallback.dataset.iconStatus = 'fallback';
+      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
+      const parent = img.parentElement;
+      if (parent) {
+        parent.replaceChild(fallback, img);
+      } else {
+        img.replaceWith(fallback);
+      }
+      log('promo_icon_missing', {
+        promotion_id: fallback.dataset.promoId || '',
+        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
+      });
+      markDone();
+    };
+
+    const markLoaded = () => {
+      img.dataset.iconStatus = 'loaded';
+      markDone();
+    };
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        handleFailure();
+      }
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', handleFailure, { once: true });
+    }
+  });
 }
 
 function formatDate(dateString) {
