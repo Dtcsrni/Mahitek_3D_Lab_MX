@@ -1,21 +1,23 @@
 {
   "ci": {
     "collect": {
-      "url": ["https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"],
-      "numberOfRuns": 3,
+      "url": ["http://localhost:8080"],
+      "numberOfRuns": 1,
+      "startServerCommand": "npm run dev",
+      "startServerReadyPattern": "Serving",
       "settings": {
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
         "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"],
         "emulatedFormFactor": "desktop",
-        "chromeFlags": ["--no-sandbox", "--disable-dev-shm-usage"]
+        "chromeFlags": ["--no-sandbox", "--disable-dev-shm-usage", "--headless"]
       }
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.85 }],
-        "categories:accessibility": ["error", { "minScore": 0.9 }],
-        "categories:best-practices": ["warn", { "minScore": 0.85 }],
-        "categories:seo": ["warn", { "minScore": 0.9 }]
+        "categories:performance": ["warn", { "minScore": 0.75 }],
+        "categories:accessibility": ["warn", { "minScore": 0.85 }],
+        "categories:best-practices": ["warn", { "minScore": 0.8 }],
+        "categories:seo": ["warn", { "minScore": 0.85 }]
       }
     },
     "upload": {

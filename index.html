@@ -74,7 +74,8 @@
     <!-- PRELOAD (Recursos críticos) -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <link rel="preload" href="assets/css/styles.css?v=2024102410" as="style" />
-    <link rel="preload" href="assets/js/app.js?v=2024102410" as="script" />
+    <link rel="preload" href="assets/js/boot.js?v=20251026" as="script" />
+    <link rel="preload" href="assets/img/hero-lab.svg" as="image" />
 
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- CANONICAL & SEO -->
@@ -85,8 +86,17 @@
     <!-- ESTILOS CSS -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <link rel="stylesheet" href="assets/css/styles.css?v=2024102410" />
-    <link rel="stylesheet" href="assets/css/promo.css?v=20251026" />
-    <link rel="stylesheet" href="assets/css/modules/animations.css?v=20251026" />
+    <link rel="stylesheet" href="assets/css/promo.css?v=20251026" media="print" onload="this.media='all'" />
+    <link
+      rel="stylesheet"
+      href="assets/css/modules/animations.css?v=20251026"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="assets/css/promo.css?v=20251026" />
+      <link rel="stylesheet" href="assets/css/modules/animations.css?v=20251026" />
+    </noscript>
 
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- FAVICONS -->
@@ -316,6 +326,7 @@
                 width="512"
                 height="512"
                 loading="eager"
+                fetchpriority="high"
                 decoding="async"
               />
             </figure>
@@ -1345,7 +1356,7 @@
                   class="card-illustration"
                   width="200"
                   height="200"
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                 />
               </figure>
@@ -1363,7 +1374,7 @@
                   class="card-illustration"
                   width="200"
                   height="200"
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                 />
               </figure>
@@ -1766,6 +1777,7 @@
                         class="placeholder-illustration"
                         width="280"
                         height="200"
+                        loading="lazy"
                         decoding="async"
                       />
                       <p class="placeholder-text">⏳ Cargando productos disponibles...</p>
@@ -2006,6 +2018,7 @@
                     class="placeholder-illustration"
                     width="320"
                     height="240"
+                    loading="lazy"
                     decoding="async"
                   />
                   <p>
@@ -2152,6 +2165,7 @@
                 class="placeholder-illustration"
                 width="320"
                 height="240"
+                loading="lazy"
                 decoding="async"
               />
               <p>Estamos redactando respuestas útiles. Mientras tanto, contáctanos y resolvemos tu caso directo 🤗.</p>
