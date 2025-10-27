@@ -10,6 +10,9 @@ build/
 .cache/
 *.min.js
 *.min.css
+!assets/js/*.min.js
+!assets/css/*.min.css
+!assets/css/modules/*.min.css
 
 # Logs
 *.log
@@ -100,3 +103,4 @@ Thumbs.db
 
 # NPM extraneous files
 @*/desktop.ini
+.lighthouseci/

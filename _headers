@@ -41,8 +41,8 @@ Cache-Control: public, max-age=3600, must-revalidate
 # Preload headers para recursos críticos
 
 /
-Link: </assets/css/styles.css?v=2024102408>; rel=preload; as=style
-Link: </assets/js/app.js?v=2024102408>; rel=preload; as=script
+Link: </assets/css/styles.min.css?v=2024102408>; rel=preload; as=style
+Link: </assets/js/app.min.js?v=2024102408>; rel=preload; as=script
 
 # CSP específica para la página de QR (usa scripts y estilos inline)
 
