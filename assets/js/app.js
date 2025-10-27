@@ -930,6 +930,26 @@ async function loadPromos() {
 
   // Packs de stickers (de promos.js)
   const { PACKS } = await import('./promos.js');
+  // Formatos populares de stickers
+  const stickerFormats = [
+    {
+      name: 'Redondo',
+      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="32" fill="#0ff" stroke="#ff00cc" stroke-width="6"><animate attributeName="r" values="32;36;32" dur="1.2s" repeatCount="indefinite"/></circle><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#fff" font-family="monospace">●</text></g><g><path d="M20 60 Q40 70 60 60" stroke="#ffea00" stroke-width="2" fill="none"/></g></svg>`
+    },
+    {
+      name: 'Cuadrado',
+      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="16" y="16" width="48" height="48" rx="12" fill="#ff00cc" stroke="#0ff" stroke-width="6"><animate attributeName="rx" values="12;20;12" dur="1.2s" repeatCount="indefinite"/></rect><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#fff" font-family="monospace">■</text></g><g><path d="M24 24 L56 56" stroke="#ffea00" stroke-width="2"/></g></svg>`
+    },
+    {
+      name: 'Rectangular',
+      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="28" width="60" height="24" rx="8" fill="#ffea00" stroke="#00ffd0" stroke-width="6"><animate attributeName="width" values="60;66;60" dur="1.2s" repeatCount="indefinite"/></rect><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#222" font-family="monospace">▬</text></g><g><path d="M20 40 Q40 60 60 40" stroke="#ff00cc" stroke-width="2" fill="none"/></g></svg>`
+    },
+    {
+      name: 'Troquelado',
+      svg: `<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M16,40 Q40,12 64,40 Q40,68 16,40 Z" fill="#00ffd0" stroke="#ff00cc" stroke-width="6"><animate attributeName="d" values="M16,40 Q40,12 64,40 Q40,68 16,40 Z;M20,36 Q40,20 60,36 Q40,64 20,36 Z;M16,40 Q40,12 64,40 Q40,68 16,40 Z" dur="1.2s" repeatCount="indefinite"/></path><g><text x="40" y="48" text-anchor="middle" font-size="24" fill="#222" font-family="monospace">✦</text></g><g><path d="M24 60 Q40 72 56 60" stroke="#ffea00" stroke-width="2" fill="none"/></g></svg>`
+    }
+  ];
+
   const stickerPromos = PACKS.map((p, idx) => {
     const ppu = (p.price / p.units).toFixed(2);
     const solo = p.units * 3;
@@ -940,11 +960,16 @@ async function loadPromos() {
       highlights += '<span class="badge badge--bestseller">Más vendido</span> ';
     else if (p.units === 2) highlights += '<span class="badge badge--entry">Entrada</span> ';
     const saveBadge = savings > 0 ? `<span class="badge badge-save">Ahorra $${savings}</span>` : '';
+    // Seleccionar formato SVG según pack
+    const formatSVG = stickerFormats[idx % stickerFormats.length].svg;
+    const formatName = stickerFormats[idx % stickerFormats.length].name;
     return `
-      <article class="card promo-card promo-sticker animate-delay-${Math.min(idx, 5)}" data-animate="fade-up">
+      <article class="card glass promo-card promo-sticker animate-delay-${Math.min(idx, 5)}" data-animate="fade-up" style="background: linear-gradient(135deg, #1a0033 60%, #0ff 100%); box-shadow: 0 0 24px #ff00cc55;">
+        <div class="promo-icono-container" style="margin-bottom:8px;">${formatSVG}</div>
+        <h3 class="promo-titulo" style="color:#ffea00;">${formatName} ${p.units} stickers</h3>
         <div class="card-body">
-          <h3 class="promo-price">$${p.price} MXN</h3>
-          <p class="promo-units">${p.units} stickers</p>
+          <h3 class="promo-price" style="color:#0ff;">$${p.price} MXN</h3>
+          <p class="promo-units" style="color:#fff;">${p.units} unidades</p>
           <div class="promo-badges">${highlights}<span class="badge badge-ppu">$${ppu}/ud</span> ${saveBadge}</div>
         </div>
       </article>

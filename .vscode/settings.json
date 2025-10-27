@@ -36,9 +36,9 @@
   "emmet.includeLanguages": {
     "javascript": "html"
   },
-  "liveServer.settings.port": 8080,
+  "liveServer.settings.port": 8081,
   "liveServer.settings.root": "/",
-  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.CustomBrowser": "microsoft-edge",
   "liveServer.settings.NoBrowser": false,
   "liveServer.settings.ignoreFiles": [
     ".vscode/**",
