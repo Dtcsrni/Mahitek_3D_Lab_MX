@@ -935,6 +935,12 @@ async function loadPromos() {
     return now >= start && now <= end;
   });
 
+  // Actualizar título con contador de promociones activas
+  const sectionTitle = document.querySelector('#promos .section-title');
+  if (sectionTitle && activePromos.length > 0) {
+    sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${activePromos.length})</span>`;
+  }
+
   if (activePromos.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">

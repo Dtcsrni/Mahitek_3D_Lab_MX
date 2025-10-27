@@ -31,6 +31,9 @@ export class SVGAnimations {
     // Iniciar animaciones
     this.startAnimations();
 
+    // Aplicar estilo/animación neon automáticamente a SVGs estáticos
+    this.autoEnhanceSVGs();
+
     ConfigUtils.log('Animaciones SVG inicializadas ✓');
   }
 
@@ -604,6 +607,44 @@ export class SVGAnimations {
     // Las animaciones están definidas en SVG con <animate> y <animateTransform>
     // No requieren control adicional de JavaScript
     ConfigUtils.log('Animaciones SVG iniciadas');
+  }
+
+  /**
+   * Aplica clases de realce neon a SVGs/imágenes SVG estáticos del DOM
+   * - Evita logotipos y elementos marcados con .no-neon
+   * - Respeta prefers-reduced-motion mediante reglas CSS globales
+   */
+  autoEnhanceSVGs() {
+    try {
+      // 1) SVG inline que no pertenezcan ya a la librería ni estén opt-out
+      const inlineSVGs = document.querySelectorAll(
+        'svg:not(.svg-3d):not(.svg-icon):not(.neon-icon):not(.no-neon)'
+      );
+      inlineSVGs.forEach(svg => {
+        // Evitar logotipos por accesibilidad y marca
+        const ariaLabel = (svg.getAttribute('aria-label') || '').toLowerCase();
+        if (ariaLabel.includes('logo') || svg.classList.contains('logo')) return;
+        svg.classList.add('auto-neon');
+      });
+
+      // 2) Imágenes externas .svg (no se inyectan; se realzan suavemente)
+      const svgImgs = document.querySelectorAll('img[src$=".svg"]:not(.no-neon)');
+      svgImgs.forEach(img => {
+        const src = img.getAttribute('src') || '';
+        // Omitir logotipos y favicons/og-image
+        if (src.includes('logo-color.svg') || src.includes('favicon') || src.includes('og-image')) {
+          return;
+        }
+        img.classList.add('auto-neon');
+        if (src.includes('placeholder') || img.classList.contains('placeholder-illustration')) {
+          img.classList.add('auto-neon--placeholder');
+        }
+      });
+
+      ConfigUtils.log(`AutoNeon aplicado: inline=${inlineSVGs.length}, imgs=${svgImgs.length}`);
+    } catch (e) {
+      console.warn('[SVG] Error en autoEnhanceSVGs:', e);
+    }
   }
 
   /**
