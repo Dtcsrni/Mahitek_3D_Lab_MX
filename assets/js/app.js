@@ -393,11 +393,14 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
         u.startsWith('../') ||
         (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
       ) {
-        return new URL(u, SITE_BASE_URL).href;
+        return u;
       }
     }
 
-    const parsed = new URL(u, SITE_BASE_URL);
+    const base =
+      (typeof document !== 'undefined' && document.baseURI) ||
+      (typeof window !== 'undefined' ? window.location.href : 'https://example.invalid/');
+    const parsed = new URL(u, base);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -959,23 +962,12 @@ async function loadPromos() {
   // Filtrar promos activas
   const now = new Date();
   const source = Array.isArray(promos) ? promos : [];
-  const normalizeState = value => String(value || '').toLowerCase();
-  const inactiveStates = new Set(['inactivo', 'pausado', 'desactivado', 'draft']);
-
   const activePromos = source.filter(promo => {
-    const state = normalizeState(promo.estado || 'activo');
-    if (inactiveStates.has(state)) return false;
-
-    const end = promo.hasta ? new Date(promo.hasta) : null;
-    if (end && now > end) return false;
-
-    const start = promo.desde ? new Date(promo.desde) : null;
-    if (state === 'programado' || state === 'pendiente') {
-      return !start || now >= start;
-    }
-
-    // Promos marcadas como activas se muestran aunque tengan fecha futura de inicio
-    return true;
+    if (promo.estado && promo.estado === 'inactivo') return false;
+    if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
+    const start = new Date(promo.desde);
+    const end = new Date(promo.hasta);
+    return now >= start && now <= end;
   });
 
   const seenIds = new Set();
@@ -1055,10 +1047,6 @@ async function loadPromos() {
     const promoType = promo.tipo ? String(promo.tipo) : 'general';
     const promoId = String(promo.__resolvedId || promo.id || `promo-${index}`);
     const safePromoId = escapeHTML(promoId);
-    const state = normalizeState(promo.estado || 'activo');
-    const startDateObj = promo.desde ? new Date(promo.desde) : null;
-    const endDateObj = promo.hasta ? new Date(promo.hasta) : null;
-    const isUpcoming = Boolean(startDateObj && startDateObj > now);
 
     let precioHTML = '';
     const regularPrice = formatMoney(promo.precio_regular ?? promo.precio_base);
@@ -1099,16 +1087,8 @@ async function loadPromos() {
     let validezHTML = '';
     if ((promo.tipo || '').toLowerCase() === 'permanente') {
       validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
-    } else if (isUpcoming && startDateObj && endDateObj) {
-      validezHTML = `<p class="promo-validez">🚀 Disponible ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
-    } else if (isUpcoming && startDateObj) {
-      validezHTML = `<p class="promo-validez">🚀 Disponible desde ${escapeHTML(formatDate(promo.desde))}</p>`;
-    } else if (startDateObj && endDateObj) {
+    } else if (promo.desde && promo.hasta) {
       validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
-    } else if (endDateObj) {
-      validezHTML = `<p class="promo-validez">⏰ Vigente hasta ${escapeHTML(formatDate(promo.hasta))}</p>`;
-    } else if (startDateObj) {
-      validezHTML = `<p class="promo-validez">📅 Vigente desde ${escapeHTML(formatDate(promo.desde))}</p>`;
     }
 
     const safePromoName = escapeHTML(promo.titulo || 'Promoción');
@@ -1134,14 +1114,13 @@ async function loadPromos() {
       iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
     }
 
-    const stateClass = isUpcoming ? 'promo-upcoming' : '';
-    return `<article class="card glass promo-card ${destacadoClass} ${animClass} ${stateClass} animate-delay-${delay}" data-animate="fade-up" data-promo-id="${safePromoId}" data-promo-tipo="${escapeHTML(promoType)}" data-promo-state="${escapeHTML(state)}" data-promo-upcoming="${isUpcoming}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${safePromoName}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
+    return `<article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${delay}" data-animate="fade-up" data-promo-id="${safePromoId}" data-promo-tipo="${escapeHTML(promoType)}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${safePromoName}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
   });
 
   container.innerHTML = promoCards.join('');
   monitorPromoIcons(container);
   registerAnimatedElements(container);
-  initPromosCarousel(container, totalPromos);
+  initPromosCarousel(container, allPromos.length);
 
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
@@ -1170,49 +1149,69 @@ function initPromosCarousel(trackElement, totalPromos) {
 
   const carousel = trackElement.closest('.carousel-container');
   const section = carousel?.closest('section');
+  const track = trackElement;
   const prevBtn = carousel?.querySelector('.carousel-btn-prev');
   const nextBtn = carousel?.querySelector('.carousel-btn-next');
   const dotsContainer = section?.querySelector('#promos-dots');
 
   if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
 
-  const cards = Array.from(trackElement.children);
+  if (!carousel || !prevBtn || !nextBtn || !dotsContainer || !wrapper) return;
+
+  const cards = Array.from(track.children);
   if (cards.length === 0) return;
 
-  let currentPage = 0;
+  let currentIndex = 0; // índice del primer elemento visible
   let itemsPerView = 1;
+  let stepSize = 0;
 
-  const computeItemsPerView = () => {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
+  const computeStep = () => {
+    if (cards.length <= 1) {
+      return cards[0]?.getBoundingClientRect().width || wrapper.clientWidth || track.clientWidth;
+    }
+    const delta = cards[1].offsetLeft - cards[0].offsetLeft;
+    if (delta > 0) return delta;
+    return cards[0]?.getBoundingClientRect().width || wrapper.clientWidth || track.clientWidth;
   };
 
-  const getTotalPages = () => Math.max(1, Math.ceil(totalPromos / Math.max(itemsPerView, 1)));
+  const getMaxIndex = () => Math.max(0, totalPromos - itemsPerView);
+  const getTotalPages = () => Math.ceil(totalPromos / itemsPerView);
+  const getActivePage = () => Math.min(getTotalPages() - 1, Math.floor(currentIndex / Math.max(itemsPerView, 1)));
 
-  const clampPage = value => {
-    const maxPage = Math.max(0, getTotalPages() - 1);
-    return Math.min(Math.max(0, value), maxPage);
+  const updateMetrics = () => {
+    if (window.innerWidth >= 1024) {
+      itemsPerView = 3;
+    } else if (window.innerWidth >= 768) {
+      itemsPerView = 2;
+    } else {
+      itemsPerView = 1;
+    }
+    stepSize = computeStep();
+    if (!Number.isFinite(stepSize) || stepSize <= 0) {
+      stepSize = wrapper.clientWidth || track.clientWidth || 0;
+    }
+    const maxIndex = getMaxIndex();
+    if (currentIndex > maxIndex) {
+      currentIndex = Math.max(0, Math.floor(maxIndex / Math.max(itemsPerView, 1)) * itemsPerView);
+    }
   };
 
   const updateButtons = () => {
-    const totalPages = getTotalPages();
-    const maxPage = Math.max(0, totalPages - 1);
-    const disableAll = totalPages <= 1;
-    prevBtn.disabled = disableAll || currentPage <= 0;
-    nextBtn.disabled = disableAll || currentPage >= maxPage;
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= getMaxIndex();
   };
 
   const updateDots = () => {
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    const activePage = getActivePage();
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentPage);
+      dot.classList.toggle('active', index === activePage);
     });
   };
 
   const updateTrack = () => {
-    const offset = -currentPage * (100 / Math.max(itemsPerView, 1));
-    trackElement.style.transform = `translateX(${offset}%)`;
+    const offset = -(currentIndex * stepSize);
+    track.style.transform = `translateX(${offset}px)`;
     updateButtons();
     updateDots();
   };
@@ -1223,6 +1222,7 @@ function initPromosCarousel(trackElement, totalPromos) {
 
     if (totalPages <= 1) {
       dotsContainer.setAttribute('hidden', '');
+      updateDots();
       return;
     }
 
@@ -1232,15 +1232,16 @@ function initPromosCarousel(trackElement, totalPromos) {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Ir a la página ${i + 1}`);
-      if (i === currentPage) dot.classList.add('active');
+      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+      if (i === getActivePage()) dot.classList.add('active');
+
       dot.addEventListener('click', () => {
-        currentPage = clampPage(i);
+        currentIndex = i * itemsPerView;
         updateTrack();
         log('promo_carousel_navigation', {
           method: 'dot',
-          page: currentPage + 1,
-          total_pages: totalPages
+          page: pageIndex + 1,
+          total_pages: getTotalPages()
         });
       });
       dotsContainer.appendChild(dot);
@@ -1248,29 +1249,16 @@ function initPromosCarousel(trackElement, totalPromos) {
   };
 
   prevBtn.addEventListener('click', () => {
-    const nextPage = clampPage(currentPage - 1);
-    if (nextPage === currentPage) return;
-    currentPage = nextPage;
+    if (currentIndex <= 0) return;
+    currentIndex = Math.max(0, currentIndex - itemsPerView);
     updateTrack();
-    log('promo_carousel_navigation', {
-      method: 'arrow',
-      direction: 'prev',
-      page: currentPage + 1,
-      total_pages: getTotalPages()
-    });
   });
 
   nextBtn.addEventListener('click', () => {
-    const nextPage = clampPage(currentPage + 1);
-    if (nextPage === currentPage) return;
-    currentPage = nextPage;
+    const maxIndex = getMaxIndex();
+    if (currentIndex >= maxIndex) return;
+    currentIndex = Math.min(maxIndex, currentIndex + itemsPerView);
     updateTrack();
-    log('promo_carousel_navigation', {
-      method: 'arrow',
-      direction: 'next',
-      page: currentPage + 1,
-      total_pages: getTotalPages()
-    });
   });
 
   let touchStartX = 0;
@@ -1306,23 +1294,138 @@ function initPromosCarousel(trackElement, totalPromos) {
   }
 
   const handlePromosResize = () => {
-    const previousItemsPerView = itemsPerView;
-    itemsPerView = computeItemsPerView();
-    if (previousItemsPerView !== itemsPerView) {
-      const firstVisibleIndex = Math.min(currentPage * previousItemsPerView, totalPromos - 1);
-      currentPage = clampPage(Math.floor(firstVisibleIndex / Math.max(itemsPerView, 1)));
-      createDots();
-    } else {
-      currentPage = clampPage(currentPage);
-    }
+    const previousPage = getActivePage();
+    updateMetrics();
+    createDots();
+    currentIndex = Math.min(previousPage * itemsPerView, getMaxIndex());
     updateTrack();
   };
 
   ResizeManager.register(handlePromosResize);
 
-  itemsPerView = computeItemsPerView();
+  updateMetrics();
   createDots();
-  updateTrack();
+  updateTrack({ smooth: false });
+}
+
+function monitorPromoIcons(container) {
+  if (!container) return;
+
+  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
+  if (icons.length === 0) {
+    container.dataset.iconsReady = 'true';
+    return;
+  }
+
+  let pending = icons.length;
+  const markDone = () => {
+    pending -= 1;
+    if (pending <= 0) {
+      container.dataset.iconsReady = 'true';
+    }
+  };
+
+  icons.forEach(img => {
+    const handleFailure = () => {
+      if (!img.isConnected) {
+        markDone();
+        return;
+      }
+      const fallback = document.createElement('span');
+      fallback.className = 'promo-emoji';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = '🎁';
+      fallback.dataset.iconStatus = 'fallback';
+      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
+      const parent = img.parentElement;
+      if (parent) {
+        parent.replaceChild(fallback, img);
+      } else {
+        img.replaceWith(fallback);
+      }
+      log('promo_icon_missing', {
+        promotion_id: fallback.dataset.promoId || '',
+        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
+      });
+      markDone();
+    };
+
+    const markLoaded = () => {
+      img.dataset.iconStatus = 'loaded';
+      markDone();
+    };
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        handleFailure();
+      }
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', handleFailure, { once: true });
+    }
+  });
+}
+
+function monitorPromoIcons(container) {
+  if (!container) return;
+
+  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
+  if (icons.length === 0) {
+    container.dataset.iconsReady = 'true';
+    return;
+  }
+
+  let pending = icons.length;
+  const markDone = () => {
+    pending -= 1;
+    if (pending <= 0) {
+      container.dataset.iconsReady = 'true';
+    }
+  };
+
+  icons.forEach(img => {
+    const handleFailure = () => {
+      if (!img.isConnected) {
+        markDone();
+        return;
+      }
+      const fallback = document.createElement('span');
+      fallback.className = 'promo-emoji';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = '🎁';
+      fallback.dataset.iconStatus = 'fallback';
+      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
+      const parent = img.parentElement;
+      if (parent) {
+        parent.replaceChild(fallback, img);
+      } else {
+        img.replaceWith(fallback);
+      }
+      log('promo_icon_missing', {
+        promotion_id: fallback.dataset.promoId || '',
+        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
+      });
+      markDone();
+    };
+
+    const markLoaded = () => {
+      img.dataset.iconStatus = 'loaded';
+      markDone();
+    };
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        handleFailure();
+      }
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', handleFailure, { once: true });
+    }
+  });
 }
 
 function monitorPromoIcons(container) {
