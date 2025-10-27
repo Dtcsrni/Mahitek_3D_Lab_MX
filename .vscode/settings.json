@@ -85,5 +85,8 @@
   "html.validate.scripts": true,
   "css.lint.unknownAtRules": "ignore",
   "prettier.requireConfig": false,
-  "prettier.useEditorConfig": false
+  "prettier.useEditorConfig": false,
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/ci.yml"
+  ]
 }
