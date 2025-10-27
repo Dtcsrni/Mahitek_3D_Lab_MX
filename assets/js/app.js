@@ -1089,7 +1089,7 @@ async function loadPromos() {
 
   container.innerHTML = allPromos.join('');
   registerAnimatedElements(container);
-  initPromosCarousel(allPromos.length);
+  initPromosCarousel(container, allPromos.length);
 
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
@@ -1113,13 +1113,17 @@ async function loadPromos() {
 }
 
 // ===== Carrusel de Promos =====
-function initPromosCarousel(totalPromos) {
-  const track = document.querySelector('.carousel-track');
-  const prevBtn = document.querySelector('.carousel-btn-prev');
-  const nextBtn = document.querySelector('.carousel-btn-next');
-  const dotsContainer = document.getElementById('promos-dots');
+function initPromosCarousel(trackElement, totalPromos) {
+  if (!trackElement) return;
 
-  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+  const carousel = trackElement.closest('.carousel-container');
+  const section = carousel?.closest('section');
+  const track = trackElement;
+  const prevBtn = carousel?.querySelector('.carousel-btn-prev');
+  const nextBtn = carousel?.querySelector('.carousel-btn-next');
+  const dotsContainer = section?.querySelector('#promos-dots');
+
+  if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
 
   let currentIndex = 0;
   let itemsPerView = 1;

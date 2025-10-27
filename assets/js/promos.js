@@ -96,14 +96,14 @@ export function bestValueFor(units) {
 }
 
 export function renderPromos() {
-  const root = document.getElementById('promos');
+  const root = document.getElementById('promos-stickers');
   if (!root) return;
   const container = document.createElement('div');
   container.className = 'container promo-grid';
 
   const title = document.createElement('h2');
   title.className = 'section-title';
-  title.id = 'promos-title';
+  title.id = 'promos-stickers-title';
   title.textContent = 'Promociones de Stickers 50×50';
   container.appendChild(title);
 
