@@ -756,6 +756,8 @@ function initCatalogCarousel(totalProducts) {
 
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
+  const DOTS_ARIA_LABEL = 'Navegación del catálogo';
+
   let currentIndex = 0;
   let itemsPerView = 1;
 
@@ -795,10 +797,25 @@ function initCatalogCarousel(totalProducts) {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
 
+    if (totalPages <= 1) {
+      dotsContainer.setAttribute('aria-hidden', 'true');
+      dotsContainer.removeAttribute('role');
+      dotsContainer.removeAttribute('aria-label');
+      return;
+    }
+
+    dotsContainer.removeAttribute('aria-hidden');
+    dotsContainer.setAttribute('role', 'tablist');
+    dotsContainer.setAttribute('aria-label', DOTS_ARIA_LABEL);
+
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+      dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+      dot.setAttribute('tabindex', i === currentIndex ? '0' : '-1');
       if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
@@ -815,8 +832,35 @@ function initCatalogCarousel(totalProducts) {
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
+      dot.setAttribute('aria-selected', index === currentIndex ? 'true' : 'false');
+      dot.setAttribute('tabindex', index === currentIndex ? '0' : '-1');
     });
   }
+
+  dotsContainer.addEventListener('keydown', event => {
+    const totalPages = getTotalPages();
+    if (totalPages <= 1) return;
+
+    let handled = true;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      currentIndex = Math.min(currentIndex + 1, totalPages - 1);
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      currentIndex = Math.max(currentIndex - 1, 0);
+    } else if (event.key === 'Home') {
+      currentIndex = 0;
+    } else if (event.key === 'End') {
+      currentIndex = totalPages - 1;
+    } else {
+      handled = false;
+    }
+
+    if (handled) {
+      event.preventDefault();
+      updateTrack();
+      const activeDot = dotsContainer.querySelector('.carousel-dot.active');
+      activeDot?.focus({ preventScroll: true });
+    }
+  });
 
   // Event listeners para botones
   prevBtn.addEventListener('click', () => {
