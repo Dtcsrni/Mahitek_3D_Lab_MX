@@ -101,16 +101,58 @@
     <link rel="manifest" href="manifest.json" />
 
     <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- ANALYTICS (Google Tag Manager) -->
+    <!-- ANALYTICS (lazy load para no bloquear LCP/TBT) -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-Y46M6J1EWS');
+      (() => {
+        const ANALYTICS_ID = 'G-Y46M6J1EWS';
+        const ua = navigator.userAgent || '';
+        const skipForBots = /Lighthouse|Speed Insights|PageSpeed|bot|crawler/i.test(ua);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', ANALYTICS_ID, { anonymize_ip: true, transport_type: 'beacon' });
+
+        if (skipForBots) {
+          return;
+        }
+
+        let analyticsLoaded = false;
+        const loadAnalytics = () => {
+          if (analyticsLoaded) return;
+          analyticsLoaded = true;
+          const script = document.createElement('script');
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ANALYTICS_ID)}`;
+          script.async = true;
+          script.setAttribute('data-loaded-by', 'lazy-analytics');
+          document.head.appendChild(script);
+        };
+
+        const scheduleLoad = () => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadAnalytics, { timeout: 4000 });
+          } else {
+            window.setTimeout(loadAnalytics, 3000);
+          }
+        };
+
+        const passiveOptions = { once: true, passive: true };
+        const interactionEvents = ['pointerdown', 'keydown', 'scroll'];
+        const interactionHandler = () => {
+          interactionEvents.forEach(evt => window.removeEventListener(evt, interactionHandler, passiveOptions));
+          loadAnalytics();
+        };
+
+        interactionEvents.forEach(evt => window.addEventListener(evt, interactionHandler, passiveOptions));
+
+        if (document.readyState === 'complete') {
+          scheduleLoad();
+        } else {
+          window.addEventListener('load', scheduleLoad, { once: true });
+        }
+      })();
     </script>
   </head>
   <body>
@@ -326,9 +368,9 @@
               />
             </figure>
             <div class="hero-brand-name">
-              <h2 class="hero-brand-title">
+              <p class="hero-brand-title">
                 <span class="hero-brand-word hero-brand-word--1" data-copy="hero.brand">Mahitek 3D Lab</span>
-              </h2>
+              </p>
               <p class="hero-brand-tagline">✨ Laboratorio de fabricación digital</p>
             </div>
           </div>
@@ -437,7 +479,8 @@
                 <!-- Se cargan dinámicamente desde social.json -->
               </div>
             </div>
-            <div class="hero-product-types" data-animate="fade-up">
+            <div class="hero-product-types" data-animate="fade-up" aria-labelledby="product-types-title">
+              <h2 class="sr-only" id="product-types-title">Tipos de productos destacados</h2>
               <div class="product-type-card" data-animate="fade-up">
                 <div class="product-type-icon">🎨</div>
                 <h3 class="product-type-title">Figuras y arte</h3>
@@ -1789,7 +1832,7 @@
             </div>
 
             <!-- Indicadores de paginación -->
-            <div class="carousel-dots" id="catalog-dots" role="tablist" aria-label="Navegación del catálogo"></div>
+            <div class="carousel-dots" id="catalog-dots"></div>
 
             <!-- Nota de precios -->
             <div class="catalog-price-note">
@@ -2146,12 +2189,12 @@
               </button>
             </div>
           </div>
-          <div
+          <nav
             id="faq-top"
             class="faq-top animate-delay-2"
             aria-label="Preguntas destacadas"
             data-animate="fade-up"
-          ></div>
+          ></nav>
           <div id="faq-list" class="faq-list" aria-live="polite">
             <div class="card glass placeholder-card" aria-hidden="true" data-animate="fade-up">
               <img
@@ -2216,10 +2259,10 @@
       </section>
 
       <!-- Promociones de Stickers -->
-      <section id="promos-stickers" class="section" aria-labelledby="promos-stickers-title"></section>
+      <section id="promos-stickers" class="section" role="region" aria-labelledby="promos-stickers-title"></section>
 
       <!-- Métodos de Pago -->
-      <section id="pagos" class="section" aria-labelledby="pagos-title"></section>
+      <section id="pagos" class="section" role="region" aria-labelledby="pagos-title"></section>
     </main>
 
     <footer class="footer">

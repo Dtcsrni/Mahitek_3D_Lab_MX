@@ -27,7 +27,14 @@ jobs:
           node-version: '20'
 
       - name: 📦 Instalar dependencias
-        run: npm ci || npm install
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            echo "🔐 Instalando dependencias con npm ci"
+            npm ci
+          else
+            echo "ℹ️ Sin lockfile detectado, usando npm install"
+            npm install
+          fi
 
       - name: 📄 Verificar archivos principales
         run: |
