@@ -86,7 +86,7 @@ const onReady = () => {
       window.MahitekUI = UIComponents;
       window.MahitekData = DataManager;
       ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
-    },
+    }
   ];
 
   const scheduleNext = () => {

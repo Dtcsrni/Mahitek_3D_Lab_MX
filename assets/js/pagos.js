@@ -305,4 +305,16 @@ export function renderPayments() {
   container.appendChild(cards);
   container.appendChild(reassurance);
   root.appendChild(container);
+
+  if (typeof window !== 'undefined') {
+    if (typeof window.registerAnimatedElements === 'function') {
+      window.registerAnimatedElements(container);
+    } else {
+      window.dispatchEvent(
+        new CustomEvent('mahitek:register-animations', {
+          detail: container
+        })
+      );
+    }
+  }
 }

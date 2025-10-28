@@ -591,6 +591,26 @@ function registerAnimatedElements(root) {
   candidates.forEach(el => scrollObserver.observe(el));
 }
 
+if (typeof window !== 'undefined') {
+  window.addEventListener('mahitek:register-animations', event => {
+    const target = event?.detail;
+    if (!target) return;
+
+    if (target instanceof Element) {
+      registerAnimatedElements(target);
+      return;
+    }
+
+    if (typeof target.forEach === 'function') {
+      target.forEach(node => {
+        if (node instanceof Element) {
+          registerAnimatedElements(node);
+        }
+      });
+    }
+  });
+}
+
 // ===== Products =====
 let allProducts = [];
 let displayedProducts = [];
@@ -1122,7 +1142,9 @@ async function loadPromos() {
       }
     }
 
-    const badgeHTML = promo.badge ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>` : '';
+    const badgeHTML = promo.badge
+      ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
+      : '';
     const beneficiosHTML =
       promo.beneficios && promo.beneficios.length > 0
         ? `<ul class="promo-beneficios">${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}</ul>`
@@ -1220,7 +1242,8 @@ function initPromosCarousel(trackElement, totalPromos) {
 
   const getMaxIndex = () => Math.max(0, totalPromos - itemsPerView);
   const getTotalPages = () => Math.ceil(totalPromos / itemsPerView);
-  const getActivePage = () => Math.min(getTotalPages() - 1, Math.floor(currentIndex / Math.max(itemsPerView, 1)));
+  const getActivePage = () =>
+    Math.min(getTotalPages() - 1, Math.floor(currentIndex / Math.max(itemsPerView, 1)));
 
   const updateMetrics = () => {
     if (window.innerWidth >= 1024) {
