@@ -4,7 +4,7 @@
       "url": ["http://localhost:8080"],
       "numberOfRuns": 1,
       "startServerCommand": "npm run build:assets && npm run serve:lighthouse",
-      "startServerReadyPattern": "Accepting connections",
+      "startServerReadyPattern": "http://localhost:8080",
       "settings": {
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
         "skipAudits": ["screenshot-thumbnails", "final-screenshot", "full-page-screenshot"],
