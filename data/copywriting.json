@@ -10,8 +10,8 @@
     "brand": "Mahitek 3D Lab",
     "title": {
       "line1": "De la Idea al Objeto",
-      "line2": "en Impresión 3D",
-      "highlight": "Impresión 3D"
+      "line2": "en 48 Horas",
+      "highlight": "48 Horas"
     },
     "subtitle": "Fabricamos tus proyectos 3D con precisión industrial. Material PETG de alta resistencia. Desde Pachuca para todo México.",
     "cta_primary": {
@@ -25,9 +25,9 @@
     },
     "stats": [
       {
-        "value": "PETG",
-        "label": "Material Industrial",
-        "description": "Alta resistencia a impactos y temperaturas"
+        "value": "24-72h",
+        "label": "Entrega promedio",
+        "description": "Desde que apruebas el diseño hasta tu puerta"
       },
       {
         "value": "500+",
@@ -67,10 +67,10 @@
       {
         "id": "espera",
         "icon": "slow-delivery",
-        "title": "Pedidos mínimos muy altos",
-        "description": "Te piden comprar 100 piezas cuando solo necesitas 5. Tu presupuesto no alcanza para mínimos industriales.",
-        "emotion": "limitación",
-        "solution_preview": "Pedidos desde 1 pieza, sin mínimos"
+        "title": "Semanas de espera interminables",
+        "description": "Tu proyecto está detenido esperando a proveedores internacionales. El cliente presionando y tú sin respuestas.",
+        "emotion": "estrés",
+        "solution_preview": "Producción local en 24-72 horas"
       },
       {
         "id": "personalizacion",
@@ -89,6 +89,18 @@
     "intro": "No buscamos venderte catálogo. Escuchamos tu proyecto y lo hacemos realidad.",
     "value_proposition": "Diseño + Fabricación + Envío: Todo en un solo lugar",
     "benefits": [
+      {
+        "id": "rapido",
+        "icon": "printer-3d",
+        "title": "Rápido",
+        "subtitle": "24-72 horas",
+        "description": "De archivo 3D a pieza física en tu mano. Sin esperas de semanas ni trámites complicados.",
+        "features": [
+          "Cotización en menos de 2 horas",
+          "Producción inmediata al aprobar",
+          "Envío express disponible"
+        ]
+      },
       {
         "id": "resistente",
         "icon": "quality-badge",
@@ -281,7 +293,7 @@
         "Ahorra $40 MXN vs compra individual"
       ],
       "urgency": "Termina en 10 días",
-      "social_proof": "⭐ 4.9/5 - \"Calidad increíble, bien empacado\"",
+      "social_proof": "⭐ 4.9/5 - \"Calidad increíble, llegó rápido\"",
       "cta": "Conseguir Pack Grupal"
     }
   },
@@ -300,8 +312,8 @@
     "contact_methods": [
       {
         "type": "messenger",
-        "title": "Messenger",
-        "description": "Respuesta en horario laboral",
+        "title": "Messenger (Más Rápido)",
+        "description": "Respuesta inmediata en horario laboral",
         "icon": "messenger",
         "url": "https://m.me/mahitek3dlabmx",
         "badge": "⚡ Recomendado"
@@ -314,18 +326,11 @@
         "address": "armsystechno@gmail.com"
       },
       {
-        "type": "messenger",
-        "title": "Messenger",
+        "type": "whatsapp",
+        "title": "WhatsApp",
         "description": "Envía fotos de tu idea directamente",
-        "icon": "messenger",
-        "url": "https://m.me/mahitek3dlabmx"
-      },
-      {
-        "type": "instagram",
-        "title": "Instagram",
-        "description": "Síguenos y envía DM",
-        "icon": "instagram",
-        "url": "https://instagram.com/mahitek3dlabmx"
+        "icon": "whatsapp",
+        "note": "Disponible próximamente"
       }
     ],
     "horario": {
@@ -353,7 +358,7 @@
       "name": "Mahitek 3D Lab",
       "tagline": "Laboratorio abierto con impresión 3D en PETG",
       "location": "📍 Pachuca, Hidalgo, México",
-      "description": "Fabricación 3D personalizada desde 2023. De la idea al objeto, diseño a medida."
+      "description": "Fabricación 3D personalizada desde 2023. De la idea al objeto en 48 horas."
     },
     "links": {
       "productos": {

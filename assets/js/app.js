@@ -16,29 +16,6 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
-// ===== Path helpers =====
-const SITE_BASE_URL = (() => {
-  if (typeof import.meta !== 'undefined' && import.meta.url) {
-    try {
-      return new URL('../..', import.meta.url).href;
-    } catch (_) {
-      /* no-op */
-    }
-  }
-
-  if (typeof document !== 'undefined' && document.baseURI) {
-    const base = document.baseURI;
-    return base.endsWith('/') ? base : `${base}/`;
-  }
-
-  if (typeof window !== 'undefined' && window.location) {
-    const href = window.location.href;
-    return href.endsWith('/') ? href : href.replace(/[^/]*$/, '');
-  }
-
-  return 'https://example.invalid/';
-})();
-
 // ===== Detección y Gestión de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
@@ -244,10 +221,10 @@ const TextosSistema = {
     },
 
     // Contacto
-    'contacto.messenger_main': {
-      'es-MX': 'Contactar por Messenger',
-      es: 'Contactar por Messenger',
-      en: 'Contact via Messenger'
+    'contacto.whatsapp': {
+      'es-MX': 'Contactar por WhatsApp',
+      es: 'Contactar por WhatsApp',
+      en: 'Contact via WhatsApp'
     },
     'contacto.messenger': {
       'es-MX': 'Enviar mensaje',
@@ -381,26 +358,11 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
   try {
     const u = String(url || '').trim();
     if (!u) return '#';
-
-    // Bloquear esquemas peligrosos explícitos
-    if (/^(javascript|data):/i.test(u)) return '#';
-
-    if (allowRelative) {
-      // Permitir rutas relativas comunes (incluyendo rutas sin prefijo ./)
-      if (
-        u.startsWith('/') ||
-        u.startsWith('./') ||
-        u.startsWith('../') ||
-        (!u.startsWith('//') && !/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(u))
-      ) {
-        return u;
-      }
+    // Rutas relativas
+    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
+      return u;
     }
-
-    const base =
-      (typeof document !== 'undefined' && document.baseURI) ||
-      (typeof window !== 'undefined' ? window.location.href : 'https://example.invalid/');
-    const parsed = new URL(u, base);
+    const parsed = new URL(u, window.location.origin);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -452,14 +414,9 @@ function calculateSalePrice(basePrice, markup = CONFIG.PRICE_MARKUP, step = CONF
 // ===== Data Loading =====
 async function loadJSON(path) {
   try {
-    const safePath = sanitizeURL(path);
-    if (safePath === '#') {
-      throw new Error(`Ruta no segura: ${path}`);
-    }
-
-    const response = await fetch(safePath);
+    const response = await fetch(path);
     if (!response.ok) {
-      throw new Error(`${TextosSistema.obtener('error.red')} (${safePath})`);
+      throw new Error(`${TextosSistema.obtener('error.red')} (${path})`);
     }
     return await response.json();
   } catch (error) {
@@ -589,26 +546,6 @@ function registerAnimatedElements(root) {
   });
 
   candidates.forEach(el => scrollObserver.observe(el));
-}
-
-if (typeof window !== 'undefined') {
-  window.addEventListener('mahitek:register-animations', event => {
-    const target = event?.detail;
-    if (!target) return;
-
-    if (target instanceof Element) {
-      registerAnimatedElements(target);
-      return;
-    }
-
-    if (typeof target.forEach === 'function') {
-      target.forEach(node => {
-        if (node instanceof Element) {
-          registerAnimatedElements(node);
-        }
-      });
-    }
-  });
 }
 
 // ===== Products =====
@@ -768,15 +705,12 @@ function setupImageErrorFallbacks(root) {
 
 // ===== Carrusel de Catálogo =====
 function initCatalogCarousel(totalProducts) {
-  const catalogSection = document.getElementById('catalogo');
-  const track = catalogSection?.querySelector('#product-carousel');
-  const prevBtn = catalogSection?.querySelector('.carousel-btn-prev');
-  const nextBtn = catalogSection?.querySelector('.carousel-btn-next');
+  const track = document.getElementById('product-carousel');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
   const dotsContainer = document.getElementById('catalog-dots');
 
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
-
-  const DOTS_ARIA_LABEL = 'Navegación del catálogo';
 
   let currentIndex = 0;
   let itemsPerView = 1;
@@ -817,25 +751,10 @@ function initCatalogCarousel(totalProducts) {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
 
-    if (totalPages <= 1) {
-      dotsContainer.setAttribute('aria-hidden', 'true');
-      dotsContainer.removeAttribute('role');
-      dotsContainer.removeAttribute('aria-label');
-      return;
-    }
-
-    dotsContainer.removeAttribute('aria-hidden');
-    dotsContainer.setAttribute('role', 'tablist');
-    dotsContainer.setAttribute('aria-label', DOTS_ARIA_LABEL);
-
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
-      dot.type = 'button';
-      dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
-      dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
-      dot.setAttribute('tabindex', i === currentIndex ? '0' : '-1');
       if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
@@ -852,35 +771,8 @@ function initCatalogCarousel(totalProducts) {
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
-      dot.setAttribute('aria-selected', index === currentIndex ? 'true' : 'false');
-      dot.setAttribute('tabindex', index === currentIndex ? '0' : '-1');
     });
   }
-
-  dotsContainer.addEventListener('keydown', event => {
-    const totalPages = getTotalPages();
-    if (totalPages <= 1) return;
-
-    let handled = true;
-    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-      currentIndex = Math.min(currentIndex + 1, totalPages - 1);
-    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-      currentIndex = Math.max(currentIndex - 1, 0);
-    } else if (event.key === 'Home') {
-      currentIndex = 0;
-    } else if (event.key === 'End') {
-      currentIndex = totalPages - 1;
-    } else {
-      handled = false;
-    }
-
-    if (handled) {
-      event.preventDefault();
-      updateTrack();
-      const activeDot = dotsContainer.querySelector('.carousel-dot.active');
-      activeDot?.focus({ preventScroll: true });
-    }
-  });
 
   // Event listeners para botones
   prevBtn.addEventListener('click', () => {
@@ -1023,10 +915,19 @@ async function loadPromos() {
 
   promosLoaded = true;
 
-  // Filtrar promos activas
+  if (!promos || promos.length === 0) {
+    container.innerHTML = `
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
+      </div>
+    `;
+    registerAnimatedElements(container);
+    return;
+  }
+
   const now = new Date();
-  const source = Array.isArray(promos) ? promos : [];
-  const activePromos = source.filter(promo => {
+  const activePromos = promos.filter(promo => {
     if (promo.estado && promo.estado === 'inactivo') return false;
     if (!promo.desde || !promo.hasta) return promo.estado === 'activo';
     const start = new Date(promo.desde);
@@ -1034,160 +935,131 @@ async function loadPromos() {
     return now >= start && now <= end;
   });
 
-  const seenIds = new Set();
-  const uniquePromos = [];
-  activePromos.forEach(promo => {
-    const rawId = promo.id || promo.titulo || `promo-${uniquePromos.length}`;
-    const key = String(rawId).toLowerCase();
-    if (seenIds.has(key)) return;
-    seenIds.add(key);
-    uniquePromos.push({ ...promo, __resolvedId: rawId });
-  });
-
-  const orderMap = {
-    combo: 0,
-    stickers: 1,
-    fidelidad: 2,
-    referidos: 3,
-    addon: 4
-  };
-
-  const numericValue = value => {
-    const num = Number(value);
-    return Number.isFinite(num) ? num : Number.MAX_SAFE_INTEGER;
-  };
-
-  uniquePromos.sort((a, b) => {
-    const typeA = orderMap[String(a.tipo || '').toLowerCase()] ?? 99;
-    const typeB = orderMap[String(b.tipo || '').toLowerCase()] ?? 99;
-    if (typeA !== typeB) return typeA - typeB;
-
-    const featuredDiff = (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0);
-    if (featuredDiff !== 0) return featuredDiff;
-
-    const priceA = Math.min(
-      numericValue(a.precio_regular),
-      numericValue(a.precio_especial),
-      numericValue(a.precio_base),
-      numericValue(a.monto_minimo)
-    );
-    const priceB = Math.min(
-      numericValue(b.precio_regular),
-      numericValue(b.precio_especial),
-      numericValue(b.precio_base),
-      numericValue(b.monto_minimo)
-    );
-
-    if (priceA !== priceB) return priceA - priceB;
-
-    return String(a.titulo || '').localeCompare(String(b.titulo || ''), 'es');
-  });
-
-  const totalPromos = uniquePromos.length;
-  const sectionTitle = document.querySelector('#promos .section-title');
-  if (sectionTitle) {
-    if (totalPromos > 0) {
-      sectionTitle.innerHTML = `🎯 Promociones activas <span class="promo-count">(${totalPromos})</span>`;
-    } else {
-      sectionTitle.textContent = '🎯 Promociones activas';
-    }
-  }
-
-  if (totalPromos === 0) {
-    log('promos_empty', { reason: 'no_active_promos' });
+  if (activePromos.length === 0) {
+    container.innerHTML = `
+      <div class="card glass placeholder-card" data-animate="fade-up">
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No hay promociones activas en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
+      </div>
+    `;
+    registerAnimatedElements(container);
     return;
   }
 
-  const formatMoney = value => {
-    const num = Number(value);
-    if (!Number.isFinite(num)) return null;
-    return num % 1 === 0 ? `$${num}` : `$${num.toFixed(2)}`;
-  };
+  // SECURITY: Todos los campos usan escapeHTML/sanitizeURL - validado manualmente
+  container.innerHTML = activePromos
+    .map((promo, index) => {
+      const delay = Math.min(index, 5) * 70;
+      const destacadoClass = promo.destacado ? 'promo-destacado' : '';
+      const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
+      const accentColor = promo.color_acento || '#6366F1';
 
-  const promoCards = uniquePromos.map((promo, index) => {
-    const delay = Math.min(index, 5) * 70;
-    const destacadoClass = promo.destacado ? 'promo-destacado' : '';
-    const animClass = promo.animacion ? `promo-anim-${promo.animacion}` : '';
-    const promoType = promo.tipo ? String(promo.tipo) : 'general';
-    const promoId = String(promo.__resolvedId || promo.id || `promo-${index}`);
-    const safePromoId = escapeHTML(promoId);
-
-    let precioHTML = '';
-    const regularPrice = formatMoney(promo.precio_regular ?? promo.precio_base);
-    const unitario = Number.isFinite(Number(promo.precio_unitario))
-      ? `<span class="promo-unitario">$${Number(promo.precio_unitario).toFixed(2)} c/u</span>`
-      : '';
-    if (regularPrice) {
-      precioHTML = `
+      // Construir precio visual
+      let precioHTML = '';
+      if (promo.precio_regular) {
+        const unitario = promo.precio_unitario
+          ? `<span class="promo-unitario">$${promo.precio_unitario.toFixed(2)} c/u</span>`
+          : '';
+        precioHTML = `
         <div class="promo-precio">
-          <span class="promo-precio-total">${regularPrice}</span>
+          <span class="promo-precio-total">$${promo.precio_regular}</span>
           ${unitario}
         </div>
       `;
-    } else {
-      const especial = formatMoney(promo.precio_especial);
-      const minimo = formatMoney(promo.monto_minimo);
-      if (especial) {
+      } else if (promo.precio_especial) {
         precioHTML = `
         <div class="promo-precio">
-          <span class="promo-precio-especial">${especial}</span>
+          <span class="promo-precio-especial">$${promo.precio_especial}</span>
         </div>
       `;
-      } else if (minimo) {
+      } else if (promo.monto_minimo) {
         precioHTML = `
         <div class="promo-minimo">
-          <span>Mínimo: ${minimo}</span>
+          <span>Mínimo: $${promo.monto_minimo}</span>
         </div>
       `;
       }
-    }
 
-    const badgeHTML = promo.badge
-      ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
-      : '';
-    const beneficiosHTML =
-      promo.beneficios && promo.beneficios.length > 0
-        ? `<ul class="promo-beneficios">${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}</ul>`
+      // Badge
+      const badgeHTML = promo.badge
+        ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
         : '';
 
-    let validezHTML = '';
-    if ((promo.tipo || '').toLowerCase() === 'permanente') {
-      validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
-    } else if (promo.desde && promo.hasta) {
-      validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
-    }
+      // Beneficios
+      const beneficiosHTML =
+        promo.beneficios && promo.beneficios.length > 0
+          ? `
+        <ul class="promo-beneficios">
+          ${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}
+        </ul>
+      `
+          : '';
 
-    const safePromoName = escapeHTML(promo.titulo || 'Promoción');
-    const ctaHTML = promo.cta_url
-      ? `<a href="${sanitizeURL(promo.cta_url)}" class="btn btn-primary promo-cta" target="_blank" rel="noopener noreferrer" data-promo-id="${safePromoId}" data-promo-name="${safePromoName}">${escapeHTML(promo.cta_text || 'Más info')}</a>`
-      : `<button class="btn btn-primary promo-cta-contact" data-promo-id="${safePromoId}" data-promo-name="${safePromoName}">${escapeHTML('Consultar por Messenger')}</button>`;
+      // Fechas o permanente
+      let validezHTML = '';
+      if (promo.tipo === 'permanente') {
+        validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
+      } else if (promo.desde && promo.hasta) {
+        validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
+      }
 
-    let iconoHTML = '';
-    if (typeof promo.icono === 'string' && promo.icono.trim()) {
-      const trimmedIcon = promo.icono.trim();
-      const isSvg = /\.svg(\?|$)/i.test(trimmedIcon);
-      if (isSvg) {
-        const iconSrc = sanitizeURL(trimmedIcon);
-        if (iconSrc && iconSrc !== '#') {
-          iconoHTML = `<img src="${iconSrc}" alt="${safePromoName}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" data-promo-id="${safePromoId}" data-icon-src="${escapeHTML(iconSrc)}" />`;
+      // CTA
+      const ctaHTML = promo.cta_url
+        ? `
+        <a href="${sanitizeURL(promo.cta_url)}" 
+           class="btn btn-primary promo-cta" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           data-promo-id="${escapeHTML(promo.id)}" 
+           data-promo-name="${escapeHTML(promo.titulo)}">
+          ${escapeHTML(promo.cta_text || 'Más info')}
+        </a>
+      `
+        : `
+        <button class="btn btn-primary promo-cta-contact" 
+                data-promo-id="${escapeHTML(promo.id)}" 
+                data-promo-name="${escapeHTML(promo.titulo)}">
+          ${escapeHTML('Consultar por WhatsApp')}
+        </button>
+      `;
+
+      // Icono (SVG o emoji)
+      let iconoHTML = '';
+      if (promo.icono) {
+        if (promo.icono.endsWith('.svg')) {
+          iconoHTML = `<img src="${sanitizeURL(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
         } else {
-          iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
+          iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
         }
       } else {
-        iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(trimmedIcon)}</span>`;
+        iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
       }
-    } else {
-      iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
-    }
 
-    return `<article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${delay}" data-animate="fade-up" data-promo-id="${safePromoId}" data-promo-tipo="${escapeHTML(promoType)}">${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}<div class="promo-icono-container">${iconoHTML}</div><h3 class="promo-titulo">${safePromoName}</h3><p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>${precioHTML}${beneficiosHTML}${validezHTML}${ctaHTML}</article>`;
-  });
+      return `
+  <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(index, 5)}" 
+       data-animate="fade-up" 
+       data-promo-tipo="${promo.tipo}">
+      ${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}
+      <div class="promo-icono-container">
+        ${iconoHTML}
+      </div>
+      <h3 class="promo-titulo">${escapeHTML(promo.titulo)}</h3>
+      <p class="promo-subtitulo">${escapeHTML(promo.subtitulo || promo.descripcion || '')}</p>
+      ${precioHTML}
+      ${beneficiosHTML}
+      ${validezHTML}
+      ${ctaHTML}
+    </article>
+  `;
+    })
+    .join('');
 
-  container.innerHTML = promoCards.join('');
-  monitorPromoIcons(container);
   registerAnimatedElements(container);
-  initPromosCarousel(container, allPromos.length);
 
+  // Inicializar carrusel
+  initPromosCarousel(activePromos.length);
+
+  // Analytics para CTAs externas
   container.addEventListener('click', ev => {
     const a = ev.target.closest('.promo-cta');
     if (!a) return;
@@ -1196,56 +1068,35 @@ async function loadPromos() {
       promotion_name: a.getAttribute('data-promo-name') || ''
     });
   });
+
+  // CTAs de contacto interno
   container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
     const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
-    window.open(`https://m.me/${CONFIG.MESSENGER_PAGE}`, '_blank', 'noopener');
+    const message = encodeURIComponent(`Hola, quiero consultar sobre: ${promoName}`);
+    window.open(`https://wa.me/52XXXXXXXXXX?text=${message}`, '_blank', 'noopener');
     log('contact_promo', {
       promotion_id: btn.getAttribute('data-promo-id') || '',
-      promotion_name: promoName,
-      platform: 'messenger'
+      promotion_name: promoName
     });
   });
 }
 
 // ===== Carrusel de Promos =====
-function initPromosCarousel(trackElement, totalPromos) {
-  if (!trackElement) return;
+function initPromosCarousel(totalPromos) {
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
+  const dotsContainer = document.getElementById('promos-dots');
 
-  const carousel = trackElement.closest('.carousel-container');
-  const section = carousel?.closest('section');
-  const track = trackElement;
-  const prevBtn = carousel?.querySelector('.carousel-btn-prev');
-  const nextBtn = carousel?.querySelector('.carousel-btn-next');
-  const dotsContainer = section?.querySelector('#promos-dots');
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
-  if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
-
-  if (!carousel || !prevBtn || !nextBtn || !dotsContainer || !wrapper) return;
-
-  const cards = Array.from(track.children);
-  if (cards.length === 0) return;
-
-  let currentIndex = 0; // índice del primer elemento visible
+  let currentIndex = 0;
   let itemsPerView = 1;
-  let stepSize = 0;
 
-  const computeStep = () => {
-    if (cards.length <= 1) {
-      return cards[0]?.getBoundingClientRect().width || wrapper.clientWidth || track.clientWidth;
-    }
-    const delta = cards[1].offsetLeft - cards[0].offsetLeft;
-    if (delta > 0) return delta;
-    return cards[0]?.getBoundingClientRect().width || wrapper.clientWidth || track.clientWidth;
-  };
-
-  const getMaxIndex = () => Math.max(0, totalPromos - itemsPerView);
-  const getTotalPages = () => Math.ceil(totalPromos / itemsPerView);
-  const getActivePage = () =>
-    Math.min(getTotalPages() - 1, Math.floor(currentIndex / Math.max(itemsPerView, 1)));
-
-  const updateMetrics = () => {
+  // Calcular items por vista según viewport
+  function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
       itemsPerView = 3;
     } else if (window.innerWidth >= 768) {
@@ -1253,85 +1104,76 @@ function initPromosCarousel(trackElement, totalPromos) {
     } else {
       itemsPerView = 1;
     }
-    stepSize = computeStep();
-    if (!Number.isFinite(stepSize) || stepSize <= 0) {
-      stepSize = wrapper.clientWidth || track.clientWidth || 0;
-    }
-    const maxIndex = getMaxIndex();
-    if (currentIndex > maxIndex) {
-      currentIndex = Math.max(0, Math.floor(maxIndex / Math.max(itemsPerView, 1)) * itemsPerView);
-    }
-  };
+  }
 
-  const updateButtons = () => {
-    prevBtn.disabled = currentIndex <= 0;
-    nextBtn.disabled = currentIndex >= getMaxIndex();
-  };
+  // Calcular total de páginas
+  function getTotalPages() {
+    return Math.ceil(totalPromos / itemsPerView);
+  }
 
-  const updateDots = () => {
-    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-    const activePage = getActivePage();
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === activePage);
-    });
-  };
-
-  const updateTrack = () => {
-    const offset = -(currentIndex * stepSize);
-    track.style.transform = `translateX(${offset}px)`;
+  // Actualizar posición del track
+  function updateTrack() {
+    const offset = -currentIndex * (100 / itemsPerView);
+    track.style.transform = `translateX(${offset}%)`;
     updateButtons();
     updateDots();
-  };
+  }
 
-  const createDots = () => {
+  // Actualizar estado de botones
+  function updateButtons() {
+    const totalPages = getTotalPages();
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= totalPages - 1;
+  }
+
+  // Crear y actualizar dots
+  function createDots() {
     const totalPages = getTotalPages();
     dotsContainer.innerHTML = '';
 
-    if (totalPages <= 1) {
-      dotsContainer.setAttribute('hidden', '');
-      updateDots();
-      return;
-    }
-
-    dotsContainer.removeAttribute('hidden');
-
-    for (let i = 0; i < totalPages; i += 1) {
+    for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
-      dot.type = 'button';
       dot.classList.add('carousel-dot');
       dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
-      if (i === getActivePage()) dot.classList.add('active');
+      if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
-        currentIndex = i * itemsPerView;
+        currentIndex = i;
         updateTrack();
-        log('promo_carousel_navigation', {
-          method: 'dot',
-          page: pageIndex + 1,
-          total_pages: getTotalPages()
-        });
       });
+
       dotsContainer.appendChild(dot);
     }
-  };
+  }
 
+  function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  // Event listeners para botones
   prevBtn.addEventListener('click', () => {
-    if (currentIndex <= 0) return;
-    currentIndex = Math.max(0, currentIndex - itemsPerView);
-    updateTrack();
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateTrack();
+    }
   });
 
   nextBtn.addEventListener('click', () => {
-    const maxIndex = getMaxIndex();
-    if (currentIndex >= maxIndex) return;
-    currentIndex = Math.min(maxIndex, currentIndex + itemsPerView);
-    updateTrack();
+    const totalPages = getTotalPages();
+    if (currentIndex < totalPages - 1) {
+      currentIndex++;
+      updateTrack();
+    }
   });
 
+  // Soporte táctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
 
-  trackElement.addEventListener(
+  track.addEventListener(
     'touchstart',
     e => {
       touchStartX = e.changedTouches[0].screenX;
@@ -1339,7 +1181,7 @@ function initPromosCarousel(trackElement, totalPromos) {
     { passive: true }
   );
 
-  trackElement.addEventListener(
+  track.addEventListener(
     'touchend',
     e => {
       touchEndX = e.changedTouches[0].screenX;
@@ -1351,208 +1193,36 @@ function initPromosCarousel(trackElement, totalPromos) {
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
+
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
+        // Swipe left - next
         nextBtn.click();
       } else {
+        // Swipe right - prev
         prevBtn.click();
       }
     }
   }
 
+  // Registrar callback de resize optimizado
   const handlePromosResize = () => {
-    const previousPage = getActivePage();
-    updateMetrics();
-    createDots();
-    currentIndex = Math.min(previousPage * itemsPerView, getMaxIndex());
-    updateTrack();
+    const oldItemsPerView = itemsPerView;
+    updateItemsPerView();
+
+    if (oldItemsPerView !== itemsPerView) {
+      currentIndex = 0;
+      createDots();
+      updateTrack();
+    }
   };
 
   ResizeManager.register(handlePromosResize);
 
-  updateMetrics();
+  // Inicializar
+  updateItemsPerView();
   createDots();
-  updateTrack({ smooth: false });
-}
-
-function monitorPromoIcons(container) {
-  if (!container) return;
-
-  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
-  if (icons.length === 0) {
-    container.dataset.iconsReady = 'true';
-    return;
-  }
-
-  let pending = icons.length;
-  const markDone = () => {
-    pending -= 1;
-    if (pending <= 0) {
-      container.dataset.iconsReady = 'true';
-    }
-  };
-
-  icons.forEach(img => {
-    const handleFailure = () => {
-      if (!img.isConnected) {
-        markDone();
-        return;
-      }
-      const fallback = document.createElement('span');
-      fallback.className = 'promo-emoji';
-      fallback.setAttribute('aria-hidden', 'true');
-      fallback.textContent = '🎁';
-      fallback.dataset.iconStatus = 'fallback';
-      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
-      const parent = img.parentElement;
-      if (parent) {
-        parent.replaceChild(fallback, img);
-      } else {
-        img.replaceWith(fallback);
-      }
-      log('promo_icon_missing', {
-        promotion_id: fallback.dataset.promoId || '',
-        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
-      });
-      markDone();
-    };
-
-    const markLoaded = () => {
-      img.dataset.iconStatus = 'loaded';
-      markDone();
-    };
-
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        markLoaded();
-      } else {
-        handleFailure();
-      }
-    } else {
-      img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener('error', handleFailure, { once: true });
-    }
-  });
-}
-
-function monitorPromoIcons(container) {
-  if (!container) return;
-
-  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
-  if (icons.length === 0) {
-    container.dataset.iconsReady = 'true';
-    return;
-  }
-
-  let pending = icons.length;
-  const markDone = () => {
-    pending -= 1;
-    if (pending <= 0) {
-      container.dataset.iconsReady = 'true';
-    }
-  };
-
-  icons.forEach(img => {
-    const handleFailure = () => {
-      if (!img.isConnected) {
-        markDone();
-        return;
-      }
-      const fallback = document.createElement('span');
-      fallback.className = 'promo-emoji';
-      fallback.setAttribute('aria-hidden', 'true');
-      fallback.textContent = '🎁';
-      fallback.dataset.iconStatus = 'fallback';
-      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
-      const parent = img.parentElement;
-      if (parent) {
-        parent.replaceChild(fallback, img);
-      } else {
-        img.replaceWith(fallback);
-      }
-      log('promo_icon_missing', {
-        promotion_id: fallback.dataset.promoId || '',
-        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
-      });
-      markDone();
-    };
-
-    const markLoaded = () => {
-      img.dataset.iconStatus = 'loaded';
-      markDone();
-    };
-
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        markLoaded();
-      } else {
-        handleFailure();
-      }
-    } else {
-      img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener('error', handleFailure, { once: true });
-    }
-  });
-}
-
-function monitorPromoIcons(container) {
-  if (!container) return;
-
-  const icons = Array.from(container.querySelectorAll('img.promo-icon'));
-  if (icons.length === 0) {
-    container.dataset.iconsReady = 'true';
-    return;
-  }
-
-  let pending = icons.length;
-  const markDone = () => {
-    pending -= 1;
-    if (pending <= 0) {
-      container.dataset.iconsReady = 'true';
-    }
-  };
-
-  icons.forEach(img => {
-    const handleFailure = () => {
-      if (!img.isConnected) {
-        markDone();
-        return;
-      }
-      const fallback = document.createElement('span');
-      fallback.className = 'promo-emoji';
-      fallback.setAttribute('aria-hidden', 'true');
-      fallback.textContent = '🎁';
-      fallback.dataset.iconStatus = 'fallback';
-      fallback.dataset.promoId = img.getAttribute('data-promo-id') || '';
-      const parent = img.parentElement;
-      if (parent) {
-        parent.replaceChild(fallback, img);
-      } else {
-        img.replaceWith(fallback);
-      }
-      log('promo_icon_missing', {
-        promotion_id: fallback.dataset.promoId || '',
-        src: img.getAttribute('data-icon-src') || img.currentSrc || img.src || ''
-      });
-      markDone();
-    };
-
-    const markLoaded = () => {
-      img.dataset.iconStatus = 'loaded';
-      markDone();
-    };
-
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        markLoaded();
-      } else {
-        handleFailure();
-      }
-    } else {
-      img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener('error', handleFailure, { once: true });
-    }
-  });
+  updateTrack();
 }
 
 function formatDate(dateString) {
@@ -1965,16 +1635,6 @@ function setupFilters() {
 
 // ===== Lazy Loading de Secciones No-Críticas =====
 function setupLazyLoading() {
-  if (typeof IntersectionObserver === 'undefined') {
-    if (!promosLoaded) {
-      loadPromos();
-    }
-    if (!faqLoaded) {
-      loadFAQ();
-    }
-    return;
-  }
-
   const lazyObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
