@@ -3618,7 +3618,6 @@ html[lang="es-MX"] .show-when-mx {
 
 @media (max-width: 767px) {
   .section--full {
-    min-height: auto;
     padding: clamp(2.5rem, 8vw, 4rem) 0;
   }
 
