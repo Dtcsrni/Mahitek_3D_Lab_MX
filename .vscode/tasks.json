@@ -1,182 +1,144 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "🚀 Iniciar Servidor de Desarrollo",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"dev"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "new",
-				"focus": false,
-				"showReuseMessage": false
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"runOptions": {
-				"runOn": "folderOpen"
-			}
-		},
-		{
-			"label": "� Iniciar Servidor (con navegador)",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"dev:open"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "new",
-				"focus": false
-			},
-			"group": "build"
-		},
-		{
-			"label": "💅 Formatear Todo el Código",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"format"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared",
-				"focus": true
-			},
-			"group": "none"
-		},
-		{
-			"label": "✅ Validar Código",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"validate"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared"
-			},
-			"group": "test"
-		},
-		{
-			"label": "� Verificar Formateo",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"check:format"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared"
-			},
-			"group": "test"
-		},
-		{
-			"label": "🏗️ Build (Formatear)",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"build"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared"
-			},
-			"group": "build"
-		},
-		{
-			"label": "🚀 Deploy a GitHub",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"deploy"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared",
-				"focus": true
-			},
-			"group": "none"
-		},
-		{
-			"label": "📦 Git: Commit Rápido",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"add",
-				".",
-				"&&",
-				"git",
-				"commit",
-				"-m",
-				"${input:commitMessage}",
-				"&&",
-				"git",
-				"push"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared",
-				"focus": true
-			},
-			"group": "none"
-		},
-		{
-			"label": "🔄 Reinstalar Dependencias",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"install",
-				"--force"
-			],
-			"problemMatcher": [],
-			"presentation": {
-				"reveal": "always",
-				"panel": "shared"
-			},
-			"group": "none"
-		},
-		{
-			"label": "🏗️ Build Automatizado",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"build"
-			],
-			"isBackground": false,
-			"problemMatcher": [
-				"$tsc"
-			],
-			"group": "build"
-		}
-	],
-	"inputs": [
-		{
-			"id": "commitMessage",
-			"type": "promptString",
-			"description": "Mensaje del commit",
-			"default": "chore: actualizar archivos"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Iniciar Servidor de Desarrollo",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false,
+        "showReuseMessage": false
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "� Iniciar Servidor (con navegador)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:open"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
+      },
+      "group": "build"
+    },
+    {
+      "label": "💅 Formatear Todo el Código",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "format"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "group": "none"
+    },
+    {
+      "label": "✅ Validar Código",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "validate"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test"
+    },
+    {
+      "label": "� Verificar Formateo",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "check:format"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test"
+    },
+    {
+      "label": "🏗️ Build (Formatear)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "🚀 Deploy a GitHub",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "deploy"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "group": "none"
+    },
+    {
+      "label": "📦 Git: Commit Rápido",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "add",
+        ".",
+        "&&",
+        "git",
+        "commit",
+        "-m",
+        "${input:commitMessage}",
+        "&&",
+        "git",
+        "push"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "group": "none"
+    },
+    {
+      "label": "🔄 Reinstalar Dependencias",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install", "--force"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "none"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "commitMessage",
+      "type": "promptString",
+      "description": "Mensaje del commit",
+      "default": "chore: actualizar archivos"
+    }
+  ]
 }
