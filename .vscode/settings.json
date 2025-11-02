@@ -36,9 +36,9 @@
   "emmet.includeLanguages": {
     "javascript": "html"
   },
-  "liveServer.settings.port": 8081,
+  "liveServer.settings.port": 8080,
   "liveServer.settings.root": "/",
-  "liveServer.settings.CustomBrowser": "microsoft-edge",
+  "liveServer.settings.CustomBrowser": "chrome",
   "liveServer.settings.NoBrowser": false,
   "liveServer.settings.ignoreFiles": [
     ".vscode/**",
@@ -85,8 +85,5 @@
   "html.validate.scripts": true,
   "css.lint.unknownAtRules": "ignore",
   "prettier.requireConfig": false,
-  "prettier.useEditorConfig": false,
-  "github-actions.workflows.pinned.workflows": [
-    ".github/workflows/ci.yml"
-  ]
+  "prettier.useEditorConfig": false
 }
