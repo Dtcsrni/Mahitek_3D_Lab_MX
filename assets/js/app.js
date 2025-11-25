@@ -714,6 +714,7 @@ function initCatalogCarousel(totalProducts) {
 
   let currentIndex = 0;
   let itemsPerView = 1;
+  let hasMultiplePages = false;
 
   // Calcular items por vista según viewport
   function updateItemsPerView() {
@@ -736,25 +737,36 @@ function initCatalogCarousel(totalProducts) {
     const offset = -currentIndex * (100 / itemsPerView);
     track.style.transform = `translateX(${offset}%)`;
     updateButtons();
-    updateDots();
+    if (hasMultiplePages) {
+      updateDots();
+    }
   }
 
   // Actualizar estado de botones
   function updateButtons() {
     const totalPages = getTotalPages();
+    if (!hasMultiplePages) {
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      return;
+    }
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= totalPages - 1;
   }
 
   // Crear y actualizar dots
-  function createDots() {
-    const totalPages = getTotalPages();
+  function createDots(totalPages) {
+    if (!hasMultiplePages) {
+      dotsContainer.innerHTML = '';
+      return;
+    }
+
     dotsContainer.innerHTML = '';
 
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+            dot.setAttribute('aria-label', `Ir a pagina ${i + 1}`);
       if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
@@ -768,6 +780,7 @@ function initCatalogCarousel(totalProducts) {
   }
 
   function updateDots() {
+    if (!hasMultiplePages) return;
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
@@ -1085,17 +1098,20 @@ async function loadPromos() {
 
 // ===== Carrusel de Promos =====
 function initPromosCarousel(totalPromos) {
-  const track = document.querySelector('.carousel-track');
-  const prevBtn = document.querySelector('.carousel-btn-prev');
-  const nextBtn = document.querySelector('.carousel-btn-next');
-  const dotsContainer = document.getElementById('promos-dots');
+  const promosSection = document.getElementById('promos');
+  const carouselContainer = promosSection?.querySelector('.carousel-container');
+  const track = carouselContainer?.querySelector('#promos-container');
+  const wrapper = carouselContainer?.querySelector('.carousel-wrapper');
+  const prevBtn = carouselContainer?.querySelector('.carousel-btn-prev');
+  const nextBtn = carouselContainer?.querySelector('.carousel-btn-next');
+  const dotsContainer = promosSection?.querySelector('#promos-dots');
 
-  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+  if (!track || !wrapper || !prevBtn || !nextBtn || !dotsContainer) return;
 
   let currentIndex = 0;
   let itemsPerView = 1;
+  let hasMultiplePages = false;
 
-  // Calcular items por vista según viewport
   function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
       itemsPerView = 3;
@@ -1106,35 +1122,45 @@ function initPromosCarousel(totalPromos) {
     }
   }
 
-  // Calcular total de páginas
   function getTotalPages() {
     return Math.ceil(totalPromos / itemsPerView);
   }
 
-  // Actualizar posición del track
   function updateTrack() {
-    const offset = -currentIndex * (100 / itemsPerView);
-    track.style.transform = `translateX(${offset}%)`;
+    const wrapperWidth = wrapper.clientWidth;
+    const maxOffset = Math.max(track.scrollWidth - wrapperWidth, 0);
+    const offset = Math.min(currentIndex * wrapperWidth, maxOffset);
+    track.style.transform = `translate3d(-${offset}px, 0, 0)`;
     updateButtons();
-    updateDots();
+    if (hasMultiplePages) {
+      updateDots();
+    }
   }
 
-  // Actualizar estado de botones
   function updateButtons() {
     const totalPages = getTotalPages();
+    if (!hasMultiplePages) {
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      return;
+    }
+
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= totalPages - 1;
   }
 
-  // Crear y actualizar dots
-  function createDots() {
-    const totalPages = getTotalPages();
+  function createDots(totalPages) {
+    if (!hasMultiplePages) {
+      dotsContainer.innerHTML = '';
+      return;
+    }
+
     dotsContainer.innerHTML = '';
 
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+      dot.setAttribute('aria-label', `Ir a pagina ${i + 1}`);
       if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
@@ -1147,13 +1173,14 @@ function initPromosCarousel(totalPromos) {
   }
 
   function updateDots() {
+    if (!hasMultiplePages) return;
+
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
   }
 
-  // Event listeners para botones
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
       currentIndex--;
@@ -1196,32 +1223,66 @@ function initPromosCarousel(totalPromos) {
 
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
-        // Swipe left - next
         nextBtn.click();
       } else {
-        // Swipe right - prev
         prevBtn.click();
       }
     }
   }
 
-  // Registrar callback de resize optimizado
+  function syncNavigation(forceRebuildDots = false) {
+    const totalPages = getTotalPages();
+    hasMultiplePages = totalPages > 1;
+    const shouldHideNav = !hasMultiplePages;
+
+    [prevBtn, nextBtn].forEach(btn => {
+      btn.hidden = shouldHideNav;
+      btn.setAttribute('aria-hidden', shouldHideNav ? 'true' : 'false');
+      btn.tabIndex = shouldHideNav ? -1 : 0;
+    });
+
+    if (currentIndex > totalPages - 1) {
+      currentIndex = Math.max(totalPages - 1, 0);
+    }
+
+    if (shouldHideNav) {
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      dotsContainer.hidden = true;
+      dotsContainer.setAttribute('aria-hidden', 'true');
+      dotsContainer.innerHTML = '';
+      track.style.transform = 'translate3d(0, 0, 0)';
+      return;
+    }
+
+    dotsContainer.hidden = false;
+    dotsContainer.setAttribute('aria-hidden', 'false');
+
+    if (forceRebuildDots || dotsContainer.childElementCount !== totalPages) {
+      createDots(totalPages);
+    } else {
+      updateDots();
+    }
+
+    updateButtons();
+  }
+
   const handlePromosResize = () => {
     const oldItemsPerView = itemsPerView;
     updateItemsPerView();
 
     if (oldItemsPerView !== itemsPerView) {
       currentIndex = 0;
-      createDots();
-      updateTrack();
     }
+
+    syncNavigation(true);
+    updateTrack();
   };
 
   ResizeManager.register(handlePromosResize);
 
-  // Inicializar
   updateItemsPerView();
-  createDots();
+  syncNavigation(true);
   updateTrack();
 }
 
@@ -1265,14 +1326,26 @@ async function loadFAQ() {
   // Render de items con IDs linkeables
   container.innerHTML = faqData
     .map((item, index) => {
-      const delay = Math.min(index, 5) * 70;
       const id = `faq-${slugify(item.q)}`;
+      const categoryValue = (item.categoria || '').toLowerCase();
+      const categoryAttr = categoryValue ? ` data-category="${escapeHTML(categoryValue)}"` : '';
+      const categoryPill = item.categoria
+        ? `<span class="faq-item-pill">${escapeHTML(item.categoria)}</span>`
+        : '';
       return `
-  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up">
-      <summary><span>${escapeHTML(item.q)}</span></summary>
+  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up"${categoryAttr}>
+    <summary>
+      <div class="faq-item-title">
+        <span class="faq-item-question">${escapeHTML(item.q)}</span>
+        ${categoryPill}
+      </div>
+      <span class="faq-item-chevron" aria-hidden="true"></span>
+    </summary>
+    <div class="faq-item-content">
       <p>${escapeHTML(item.a)}</p>
-    </details>
-  `;
+    </div>
+  </details>
+`;
     })
     .join('');
 
@@ -1280,14 +1353,16 @@ async function loadFAQ() {
 
   // Render de destacadas como chips
   const top = document.getElementById('faq-top');
+  const featured = faqData.filter(i => i.destacada);
   if (top) {
-    const featured = faqData.filter(i => i.destacada);
     if (featured.length > 0) {
       // SECURITY: it.q usa escapeHTML - validado manualmente
       top.innerHTML = featured
         .map(it => {
           const id = `faq-${slugify(it.q)}`;
-          return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(it.q)}">⭐ ${escapeHTML(it.q)}</a>`;
+          return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(
+            it.q
+          )}"><span aria-hidden="true">★</span><span>${escapeHTML(it.q)}</span></a>`;
         })
         .join('');
 
@@ -1314,13 +1389,24 @@ async function loadFAQ() {
   const countEl = document.getElementById('faq-count');
   const items = Array.from(container.querySelectorAll('.faq-item'));
 
+  const totalStat = document.querySelector('[data-faq-total]');
+  if (totalStat) {
+    totalStat.textContent = faqData.length;
+  }
+  const featuredStat = document.querySelector('[data-faq-featured]');
+  if (featuredStat) {
+    featuredStat.textContent = featured.length;
+  }
+
   // Poblar categorías desde data
   if (categorySelect) {
-    const categories = Array.from(new Set(faqData.map(i => i.categoria).filter(Boolean))).sort();
+    const categories = Array.from(new Set(faqData.map(i => i.categoria).filter(Boolean)))
+      .map(cat => ({ label: cat, value: cat.toLowerCase() }))
+      .sort((a, b) => a.label.localeCompare(b.label));
     categories.forEach(cat => {
       const opt = document.createElement('option');
-      opt.value = cat;
-      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      opt.value = cat.value;
+      opt.textContent = cat.label;
       categorySelect.appendChild(opt);
     });
   }
@@ -1332,10 +1418,8 @@ async function loadFAQ() {
     items.forEach(el => {
       const text = el.textContent.toLowerCase();
       const matchText = q.length === 0 || text.includes(q);
-      const matchCat =
-        !cat ||
-        text.includes(cat) ||
-        el.querySelector('summary span')?.textContent.toLowerCase().includes(cat);
+      const itemCat = (el.dataset.category || '').toLowerCase();
+      const matchCat = !cat || itemCat === cat;
       const match = matchText && matchCat;
       el.style.display = match ? '' : 'none';
       if (match) visible++;

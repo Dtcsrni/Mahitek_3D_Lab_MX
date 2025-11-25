@@ -10,10 +10,10 @@
     "brand": "Mahitek 3D Lab",
     "title": {
       "line1": "De la Idea al Objeto",
-      "line2": "en 48 Horas",
-      "highlight": "48 Horas"
+      "line2": "con Acompañamiento Experto",
+      "highlight": "Acompañamiento Experto"
     },
-    "subtitle": "Fabricamos tus proyectos 3D con precisión industrial. Material PETG de alta resistencia. Desde Pachuca para todo México.",
+    "subtitle": "Diseñamos piezas 3D con sello artesanal e integramos sensores inteligentes. PETG de alta resistencia desde Pachuca para todo México.",
     "cta_primary": {
       "text": "Ver Catálogo",
       "url": "#catalogo",
@@ -25,9 +25,9 @@
     },
     "stats": [
       {
-        "value": "24-72h",
-        "label": "Entrega promedio",
-        "description": "Desde que apruebas el diseño hasta tu puerta"
+        "value": "Plazos acordados",
+        "label": "Plan de entrega",
+        "description": "Definimos contigo el calendario ideal y te mantenemos informado"
       },
       {
         "value": "500+",
@@ -36,8 +36,8 @@
       },
       {
         "value": "100%",
-        "label": "PETG industrial",
-        "description": "Material resistente a impactos y temperaturas"
+        "label": "Hecho a mano",
+        "description": "Calibramos y terminamos cada pieza en el taller antes de enviarla"
       }
     ],
     "scroll_indicator": "Descubre más"
@@ -62,7 +62,7 @@
         "title": "Prototipos carísimos",
         "description": "$5,000 MXN por un simple prototipo de plástico. Mínimos de 100 piezas. Tiempos de entrega de un mes.",
         "emotion": "impotencia",
-        "solution_preview": "Fabricamos desde 1 pieza, sin mínimos"
+        "solution_preview": "Series piloto bajo pedido y precio mejorado en pedidos de 100+ unidades"
       },
       {
         "id": "espera",
@@ -70,7 +70,7 @@
         "title": "Semanas de espera interminables",
         "description": "Tu proyecto está detenido esperando a proveedores internacionales. El cliente presionando y tú sin respuestas.",
         "emotion": "estrés",
-        "solution_preview": "Producción local en 24-72 horas"
+        "solution_preview": "Producción local con seguimiento continuo"
       },
       {
         "id": "personalizacion",
@@ -92,25 +92,25 @@
       {
         "id": "rapido",
         "icon": "printer-3d",
-        "title": "Rápido",
-        "subtitle": "24-72 horas",
-        "description": "De archivo 3D a pieza física en tu mano. Sin esperas de semanas ni trámites complicados.",
+        "title": "Flexible",
+        "subtitle": "Plazos acordados",
+        "description": "Coordinamos cada etapa contigo para entregar en el momento adecuado.",
         "features": [
-          "Cotización en menos de 2 horas",
-          "Producción inmediata al aprobar",
-          "Envío express disponible"
+          "Calendario definido junto contigo",
+          "Actualizaciones en cada etapa",
+          "Envíos coordinados con previo aviso"
         ]
       },
       {
         "id": "resistente",
         "icon": "quality-badge",
-        "title": "Resistente",
-        "subtitle": "PETG grado industrial",
-        "description": "Material de alta resistencia mecánica y térmica. Aguanta uso real, no solo decoración.",
+        "title": "Conectado",
+        "subtitle": "Listo para IoT",
+        "description": "Integramos sensores, LEDs o microcontroladores probados para que lleguen funcionando.",
         "features": [
-          "Soporta temperaturas -40°C a +80°C",
-          "Resistencia a impactos superior",
-          "No se deforma con el tiempo"
+          "Cableado ordenado y protegido",
+          "Firmware básico configurado contigo",
+          "Guía rápida con conexiones y pruebas"
         ]
       },
       {
@@ -118,8 +118,8 @@
         "icon": "affordable-price",
         "title": "Accesible",
         "subtitle": "Desde $35 MXN",
-        "description": "Sin mínimos de producción, sin costos de moldes. Pagas solo lo que necesitas.",
-        "features": ["Fabricamos desde 1 pieza", "Sin costos de setup", "Descuentos por volumen"]
+        "description": "Series piloto sin costos de moldes y precio preferente al superar las 100 unidades.",
+        "features": ["Series piloto bajo pedido", "Sin costos de setup", "Precio mejorado en pedidos de 100+ unidades"]
       },
       {
         "id": "personalizable",
@@ -161,9 +161,9 @@
       },
       {
         "number": 3,
-        "title": "Fabricamos con precisión",
-        "description": "Imprimimos tu pieza en PETG industrial con tolerancias de ±0.2mm.",
-        "detail": "Monitoreo en tiempo real. Te enviamos fotos del proceso si lo deseas.",
+        "title": "Fabricamos y ensamblamos",
+        "description": "Imprimimos tu pieza en PETG reforzado y ensamblamos los componentes inteligentes.",
+        "detail": "Probamos sensores y microcontroladores y te compartimos fotos del proceso.",
         "icon": "printer-working"
       },
       {
@@ -190,12 +190,12 @@
       "llaveros": {
         "name": "Llaveros",
         "description": "Resistentes al uso diario extremo. PETG que no se rompe.",
-        "value_prop": "Material industrial que sobrevive años en tu bolsillo"
+        "value_prop": "Material reforzado que sobrevive años en tu bolsillo"
       },
       "colgantes": {
         "name": "Colgantes",
         "description": "Joyería técnica con diseños únicos. Peso balanceado.",
-        "value_prop": "Arte wearable fabricado con precisión"
+        "value_prop": "Arte wearable fabricado a mano"
       },
       "organizadores": {
         "name": "Organizadores",
@@ -225,7 +225,7 @@
       "beneficios": [
         "Material PETG resistente a impactos (no se rompe en caídas)",
         "Textura antideslizante para agarre seguro",
-        "Herraje industrial de 25mm que no se sale",
+        "Herraje metálico reforzado de 25mm que no se sale",
         "Personalización con iniciales sin costo extra"
       ],
       "casos_uso": [
@@ -358,7 +358,7 @@
       "name": "Mahitek 3D Lab",
       "tagline": "Laboratorio abierto con impresión 3D en PETG",
       "location": "📍 Pachuca, Hidalgo, México",
-      "description": "Fabricación 3D personalizada desde 2023. De la idea al objeto en 48 horas."
+      "description": "Fabricación 3D personalizada desde 2023. Te acompañamos de la idea al objeto con plazos acordados."
     },
     "links": {
       "productos": {

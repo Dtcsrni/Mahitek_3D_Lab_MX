@@ -13,10 +13,10 @@ function animateCounter(element) {
   const target = element.getAttribute('data-counter');
   if (!target) return;
 
-  // Extraer número del target (ej: "500+" -> 500, "100%" -> 100, "24-72h" -> skip animation)
+  // Extraer número del target (ej: "500+" -> 500, "100%" -> 100, "Plazos acordados" -> omitir animación)
   const numMatch = target.match(/(\d+)/);
   if (!numMatch) {
-    // Si no hay número (ej: "24-72h"), solo mostrar el valor
+    // Si no hay número (ej: "Plazos acordados"), solo mostrar el valor
     element.textContent = target;
     return;
   }

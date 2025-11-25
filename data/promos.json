@@ -583,16 +583,16 @@
   {
     "id": "preventa-48h",
     "tipo": "permanente",
-    "titulo": "Preventa 48 h",
+    "titulo": "Preventa Programada",
     "subtitulo": "Mismo precio + herraje Pro o 1 personalización en 1 pieza",
     "icono": "🚀",
     "badge": "⏰ Preventa",
     "color_acento": "#E74C3C",
     "animacion": "pulse-grow",
     "destacado": true,
-    "descripcion": "Ordena con 48h de anticipación y recibe herraje premium o personalización gratis.",
+    "descripcion": "Ordena con anticipación y recibe herraje premium o personalización gratis.",
     "beneficios": ["Upgrade incluido", "Planificación", "Sin costo extra"],
-    "tiempo_minimo": "48h",
+    "tiempo_minimo": "Agenda previa",
     "estado": "activo"
   },
   {

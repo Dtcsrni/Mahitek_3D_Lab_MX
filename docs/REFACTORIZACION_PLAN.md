@@ -85,8 +85,8 @@ assets/css/modules/
 
 **Después:**
 
-> "De la Idea al Objeto en 48 Horas"
-> "Fabricamos tus proyectos 3D con precisión industrial en PETG de alta resistencia"
+> "De la Idea al Objeto con Acompañamiento Experto"
+> "Diseñamos piezas 3D con sello artesanal e integramos sensores inteligentes en PETG de alta resistencia"
 
 #### Sección Problema (NUEVA)
 
@@ -100,9 +100,9 @@ assets/css/modules/
 
 > "Creamos exactamente lo que necesitas"
 >
-> - Fabricación bajo demanda en 24-72 horas
-> - Material PETG resistente a uso industrial
-> - Sin costos de moldes ni mínimos de producción
+> - Fabricación bajo demanda con plazos acordados
+> - Material PETG reforzado con acabado artesanal
+> - Sin costos de moldes y precio preferente al superar las 100 unidades
 
 #### Productos
 
@@ -114,7 +114,7 @@ Transformar descripciones técnicas en beneficios:
 
 **Después:**
 
-> "Llavero resistente que soporta uso diario extremo. Material PETG de grado industrial que no se rompe ni decolora. Personalizable con tus iniciales sin costo extra."
+> "Llavero resistente que soporta uso diario extremo. PETG reforzado y acabado a mano que no se rompe ni decolora. Personalizable con tus iniciales sin costo extra."
 
 #### Promociones
 
@@ -270,25 +270,25 @@ Mahitek_3D_Lab_MX/
 <section id="solucion" class="section section--full section-accent--teal">
   <div class="container">
     <h2>Creamos exactamente lo que necesitas</h2>
-    <p class="section-lead">Fabricación 3D personalizada en 24-72 horas</p>
+    <p class="section-lead">Fabricación 3D personalizada con plazos acordados</p>
 
     <div class="benefits-grid">
       <div class="benefit" data-animate="scale-up">
         <div class="benefit__icon" data-svg="printer-3d"></div>
-        <h3>Rápido</h3>
-        <p>De archivo 3D a pieza física en 24-72 horas</p>
+        <h3>Flexible</h3>
+        <p>Coordinamos cada etapa contigo para entregar cuando lo necesitas.</p>
       </div>
 
       <div class="benefit" data-animate="scale-up">
         <div class="benefit__icon" data-svg="quality-badge"></div>
-        <h3>Resistente</h3>
-        <p>PETG de grado industrial, soporta uso extremo</p>
+        <h3>Conectado</h3>
+        <p>Listo para IoT: sensores y microcontroladores probados</p>
       </div>
 
       <div class="benefit" data-animate="scale-up">
         <div class="benefit__icon" data-svg="affordable"></div>
         <h3>Accesible</h3>
-        <p>Sin mínimos de producción, pagas solo lo que necesitas</p>
+        <p>Series piloto sin costos de moldes y precio preferente al superar las 100 unidades</p>
       </div>
     </div>
   </div>
@@ -310,12 +310,12 @@ Mahitek_3D_Lab_MX/
 
       <h1 class="hero-title" data-animate="fade-up">
         De la Idea al Objeto<br />
-        <span class="hero-title__highlight">en 48 Horas</span>
+        <span class="hero-title__highlight">con Acompañamiento Experto</span>
       </h1>
 
       <p class="hero-subtitle" data-animate="fade-up">
-        Fabricamos tus proyectos 3D con precisión industrial.<br />
-        Material PETG de alta resistencia. Desde Pachuca para todo México.
+        Diseñamos piezas 3D con sello artesanal e integramos sensores inteligentes.<br />
+        PETG de alta resistencia desde Pachuca para todo México.
       </p>
 
       <div class="hero-cta" data-animate="fade-up">
@@ -329,8 +329,8 @@ Mahitek_3D_Lab_MX/
       <!-- Stats bar -->
       <div class="hero-stats" data-animate="fade-up">
         <div class="stat">
-          <div class="stat__value">48h</div>
-          <div class="stat__label">Entrega promedio</div>
+          <div class="stat__value">Plazos acordados</div>
+          <div class="stat__label">Plan de entrega</div>
         </div>
         <div class="stat">
           <div class="stat__value">500+</div>
@@ -338,7 +338,7 @@ Mahitek_3D_Lab_MX/
         </div>
         <div class="stat">
           <div class="stat__value">100%</div>
-          <div class="stat__label">PETG industrial</div>
+          <div class="stat__label">Hecho a mano</div>
         </div>
       </div>
     </div>
