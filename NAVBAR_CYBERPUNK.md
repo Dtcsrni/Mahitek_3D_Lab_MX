@@ -1,6 +1,6 @@
 # 🌵 Navbar Cyberpunk Mexicano - Mahitek 3D Lab
 
-## 📋 Descripción General
+## 🎯 Descripción General
 
 Rediseño completo del navbar con estética **cyberpunk** fusionada con elementos culturales **mexicanos** (nopales, águilas, bandera), manteniendo el profesionalismo y la funcionalidad del sistema inteligente (auto-hide, compact mode).
 
@@ -65,15 +65,15 @@ Rediseño completo del navbar con estética **cyberpunk** fusionada con elemento
 
 ---
 
-#### Insignia “Hecho en México” (con micro-franja tricolor)
+#### Insignia "Hecho en México" (con micro-franja tricolor)
 - Uso de colores de la bandera exclusivamente dentro de un contexto explícito de país o fabricación.
 - Ubicación: en el bloque de marca, como insignia compacta.
 - Tamaño: 160 × 32 (auto-escalable en CSS)
 - Composición:
   - Placa con borde neon sutil
-  - Icono circular con “engranaje” simulado (stroke-dash)
+  - Icono circular con "engranaje" simulado (stroke-dash)
   - Águila abstracta geométrica (original)
-  - Texto “HECHO EN / MÉXICO” en dos líneas
+  - Texto "HECHO EN / MÉXICO" en dos líneas
   - Micro-franja tricolor encapsulada al extremo derecho
 
 ```html
@@ -90,7 +90,7 @@ Nota: Evitar usar la bandera por separado en el navbar; la franja tricolor queda
 
 ### 2. **Efectos Cyberpunk**
 
-#### Líneas de Escaneo (Scan Lines) con “tonos mecatrónicos”
+#### Líneas de Escaneo (Scan Lines) con "tonos mecatrónicos"
 - **Ubicación**: Overlay completo del navbar
 - **Patrón**: Líneas horizontales repetidas cada 4px
 - **Color**: hsla(var(--tone-hue), 85%, 60%, 0.06)
@@ -276,7 +276,7 @@ Nota: Evitar usar la bandera por separado en el navbar; la franja tricolor queda
 - **Efecto**: Onda expansiva en hover
 - **Origen**: Centro del botón
 - **Duración**: 1.5s infinite
-- **Color**: rgba(6, 182, 212, 0.5) → transparent
+- **Color**: rgba(6, 182, 212, 0.5) → transparente
 
 ```css
 @keyframes btn-pulse-anim {
@@ -297,17 +297,17 @@ Nota: Evitar usar la bandera por separado en el navbar; la franja tricolor queda
 
 ---
 
-## ⚡ Optimización de Performance
+## 🚀 Optimización de Performance
 
 ### GPU Acceleration
 Todas las animaciones usan **solo** `transform` y `opacity` para aprovechar aceleración GPU:
 
 ```css
-/* ✅ GPU-accelerated */
+/* 🚀 GPU-accelerated */
 animation: float-nopal 6s ease-in-out infinite;
 transform: translateY(-50%) rotate(-5deg);
 
-/* ❌ Evitado (CPU-intensive) */
+/* 🚫 Evitado (CPU-intensive) */
 /* animation: move-left 3s; */
 /* left: 10px → 50px; */
 ```
@@ -372,7 +372,7 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## 🎨 Variables CSS Utilizadas
+## 🧪 Variables CSS Utilizadas
 
 ```css
 :root {
@@ -394,7 +394,7 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## 📊 Tabla de Animaciones
+## 🌀 Tabla de Animaciones
 
 | Nombre | Duración | Timing | Propiedad | Descripción |
 |--------|----------|--------|-----------|-------------|
@@ -415,7 +415,7 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## 🔧 Estructura HTML
+## 🧩 Estructura HTML
 
 ```html
 <header class="header">
@@ -506,7 +506,7 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## 🧪 Testing Checklist
+## ✅ Testing Checklist
 
 ### Visual
 - [x] Nopales visibles y flotando suavemente
@@ -543,7 +543,7 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## 📝 Notas de Diseño
+## 🎨 Notas de Diseño
 
 ### Filosofía
 Fusionar **cyberpunk** (tecnología, futuro, neón) con **mexicanidad** (nopales, águila, bandera) para crear identidad visual única que refleje:
@@ -563,7 +563,7 @@ Fusionar **cyberpunk** (tecnología, futuro, neón) con **mexicanidad** (nopales
 
 ---
 
-## 🚀 Futuras Mejoras
+## 🧭 Futuras Mejoras
 
 ### v2.0 Planeado
 1. **Modo Nocturno Dinámico**
@@ -601,7 +601,7 @@ Fusionar **cyberpunk** (tecnología, futuro, neón) con **mexicanidad** (nopales
 
 ---
 
-## 👥 Créditos
+## 🙌 Créditos
 
 **Diseño e Implementación**: GitHub Copilot + Mahitek Development Team  
 **Fecha**: Octubre 2024  
@@ -619,4 +619,4 @@ Para dudas o sugerencias sobre el navbar cyberpunk:
 
 ---
 
-**¡Viva México! 🇲🇽 ¡Viva el Cyberpunk! 🌃**
+**¡Viva México! 🇲🇽 ¡Viva el Cyberpunk! 🤖**
