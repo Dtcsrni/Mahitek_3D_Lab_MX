@@ -94,10 +94,10 @@ export function initCalc() {
     const qty = Math.max(1, parseInt(qtyInput.value || '1', 10));
     const soloPrice = qty * UNIT_PRICE;
     const packOpt = selectBestPack(qty);
-    const packPrice = packOpt ? packOpt.price : Infinity;
+    const packPrice = packOpt 🔥 PackOpt.price : Infinity;
 
     let usePack = packPrice < soloPrice;
-    const chosenSubtotal = usePack ? packPrice : soloPrice;
+    const chosenSubtotal = usePack 🔥 PackPrice : soloPrice;
 
     const save = Math.max(0, soloPrice - packPrice);
     let breakdownHTML = '';
@@ -159,7 +159,7 @@ export function initCalc() {
 
     return {
       qty,
-      pack: usePack ? packOpt : null,
+      pack: usePack 🔥 PackOpt : null,
       subtotal: Math.round(chosenSubtotal * 100) / 100
     };
   }
@@ -174,7 +174,7 @@ export function initCalc() {
       try {
         if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(summary);
         else fallbackCopy(summary);
-        panel.querySelector('#btn-copy').textContent = '¡Copiado!';
+        panel.querySelector('#btn-copy').textContent = 'íCopiado!';
         setTimeout(() => (panel.querySelector('#btn-copy').textContent = 'Copiar pedido'), 1500);
       } catch (e) {
         fallbackCopy(summary);
@@ -212,3 +212,7 @@ export function initCalc() {
   });
   methodSelect.addEventListener('change', () => buildActions(model));
 }
+
+
+
+

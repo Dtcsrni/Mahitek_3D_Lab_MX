@@ -506,7 +506,139 @@ Todos los elementos decorativos tienen `aria-hidden="true"`:
 
 ---
 
-## ✅ Testing Checklist
+## ?? Correcciones y Mejoras Integradas
+
+### CSS base y capas
+```css
+.header {
+  position: fixed; top: 0; left: 0; width: 100%;
+  z-index: 1200;
+  background: radial-gradient(120% 120% at 50% -10%, rgba(0, 217, 255, 0.12), rgba(0, 0, 0, 0.9));
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.25);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+.header.is-hidden { transform: translateY(-100%); }
+.nav-decorations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.nav-border { position: absolute; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.35), transparent); }
+.nav-border-top { top: 0; }
+.nav-border-bottom { bottom: 0; }
+.nav { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 18px; position: relative; }
+```
+
+### Prefers-reduced-motion (cubre todo lo animado)
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+  .nav-decorations { opacity: 0.35; }
+}
+```
+
+### SVG de nopales (shape base reutilizable)
+```html
+<svg class="nav-deco nav-nopal nav-nopal-left" viewBox="0 0 60 90">
+  <path d="M30 10 C20 25 18 40 22 60 C26 78 18 82 16 90
+           C22 82 30 84 34 74 C40 58 42 40 36 22 Z"
+        fill="url(#nopalGrad)" stroke="rgba(16,185,129,0.6)" stroke-width="2" />
+  <circle cx="24" cy="36" r="2" fill="#06B6D4" />
+  <circle cx="30" cy="50" r="2" fill="#06B6D4" />
+  <circle cx="20" cy="58" r="2" fill="#06B6D4" />
+  <defs>
+    <linearGradient id="nopalGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0F766E" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+</svg>
+```
+Reutilizar el mismo svg invirtiendo en X (`transform: scaleX(-1)`) para el lado derecho.
+
+### SVG aguila compacta (60x50)
+```html
+<svg class="nav-deco nav-aguila" viewBox="0 0 60 50">
+  <g filter="drop-shadow(0 0 12px rgba(6,182,212,0.6))">
+    <path class="aguila-body" d="M28 24 Q30 14 34 10 Q38 14 40 24 Q36 22 32 22 Z"
+          fill="rgba(6,182,212,0.45)" stroke="#06B6D4" stroke-width="1.4" />
+    <path class="aguila-wing-left" d="M30 20 Q12 18 8 30 Q18 26 26 28"
+          fill="none" stroke="#00D9FF" stroke-width="2.2" stroke-linecap="round" />
+    <path class="aguila-wing-right" d="M32 20 Q50 18 54 30 Q44 26 36 28"
+          fill="none" stroke="#00D9FF" stroke-width="2.2" stroke-linecap="round" />
+    <circle cx="34" cy="9" r="3" fill="#E0F2FE" />
+  </g>
+</svg>
+```
+
+### Insignia "Hecho en Mexico" lista
+```html
+<div class="badge-made-mx" role="img" aria-label="Hecho en Mexico">
+  <svg class="badge-made-mx-svg" viewBox="0 0 160 32" preserveAspectRatio="xMidYMid meet">
+    <rect x="1" y="1" width="158" height="30" rx="6" ry="6"
+          fill="rgba(0,0,0,0.45)" stroke="rgba(6,182,212,0.5)" stroke-width="1.5" />
+    <g class="badge-gear" transform="translate(16 16)">
+      <circle r="6" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="2 2" />
+      <circle r="2.2" fill="#06B6D4" />
+    </g>
+    <g class="badge-eagle" transform="translate(40 8)">
+      <path d="M0 8 Q6 0 12 8 Q8 6 6 10 Q4 6 0 8" fill="#00D9FF" opacity="0.8" />
+    </g>
+    <text x="62" y="13" fill="#E0F2FE" font-size="10" font-weight="700" letter-spacing="0.6">HECHO EN</text>
+    <text x="62" y="24" fill="#E0F2FE" font-size="12" font-weight="800" letter-spacing="0.8">MEXICO</text>
+    <g class="badge-flag" transform="translate(136 4)">
+      <rect width="6" height="24" fill="#006847" />
+      <rect x="6" width="6" height="24" fill="#FFFFFF" />
+      <rect x="12" width="6" height="24" fill="#CE1126" />
+      <rect x="0" y="10" width="18" height="4" fill="rgba(0,217,255,0.2)" />
+    </g>
+  </svg>
+</div>
+```
+
+### JS de comportamiento inteligente
+```js
+const header = document.querySelector('.header');
+const toggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+let lastY = 0;
+
+// Auto-hide al hacer scroll hacia abajo, mostrar al subir
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const delta = y - lastY;
+  header.classList.toggle('is-hidden', delta > 6 && y > 80);
+  header.classList.toggle('is-compact', y > 260);
+  lastY = y;
+}, { passive: true });
+
+// Toggle menu mobile
+toggle?.addEventListener('click', () => {
+  const open = navMenu?.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+// Cerrar al hacer click en un link (mobile)
+navMenu?.addEventListener('click', (e) => {
+  if (e.target.closest('a')) {
+    navMenu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+});
+```
+
+### Accesibilidad extra
+- `aria-expanded` en el boton de menu.
+- Decorativos con `aria-hidden="true"`; solo poner `role` o `aria-label` si aportan significado.
+- Focus visible: `:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }`
+- Contraste en textos sobre gradientes: fondo `rgba(0,0,0,0.72)` o similar.
+
+### Notas de implementacion
+- Insertar `nav-decorations` antes de `.container` para que quede bajo el contenido pero dentro del header.
+- Fallback a `background-color: rgba(0,0,0,0.82);` si no hay `backdrop-filter`.
+- Comprimir SVG (svgo) y centralizar `defs` en un `<svg width="0" height="0" style="position:absolute">` para reuso.
+- Reutilizar el mismo nopal espejado; reduces peso y cargas solo una definicion.
+
+---
+## ? Testing Checklist
 
 ### Visual
 - [x] Nopales visibles y flotando suavemente
@@ -620,3 +752,5 @@ Para dudas o sugerencias sobre el navbar cyberpunk:
 ---
 
 **¡Viva México! 🇲🇽 ¡Viva el Cyberpunk! 🤖**
+
+

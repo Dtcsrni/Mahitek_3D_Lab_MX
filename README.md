@@ -6,10 +6,10 @@
 
 <!-- Badges dinámicos de Lighthouse (se actualizan en cada pipeline) -->
 
-[![LH Performance](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-performance.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH Accessibility](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-accessibility.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH Best Practices](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-best-practices.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH SEO](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-seo.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Performance](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-performance.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Accessibility](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-accessibility.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Best Practices](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-best-practices.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH SEO](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-seo.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
 
 Landing page moderna con diseño cyberpunk mexicano, sistema de precios automático y optimización completa para dispositivos móviles. Impresión 3D funcional en PETG desde Pachuca, Hidalgo.
 
@@ -142,7 +142,7 @@ Cálculo: $185 × 1.10 = $203.5
 Redondeo: step=10 → $200 MXN
 ```
 
-## �️ Scripts de Desarrollo
+## ¿️ Scripts de Desarrollo
 
 El proyecto incluye scripts NPM para automatizar tareas comunes:
 
@@ -205,7 +205,7 @@ El proyecto incluye snippets para acelerar el desarrollo:
 
 Escribe el prefijo y presiona `Tab` para expandir el snippet.
 
-## �📝 Editar Contenido
+## ¿📝 Editar Contenido
 
 ### Catálogo (`/data/products_base.json`)
 
@@ -254,7 +254,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
     "desde": "2025-01-01",
     "hasta": "2025-12-31",
     "cta_text": "Texto del botón",
-    "cta_url": "https://wa.me/52XXXXXXXXXX?text=..."
+    "cta_url": "https://wa.me/52XXXXXXXXXX¿Text=..."
   }
 ]
 ```
@@ -607,3 +607,7 @@ window.MahitekLab.calculateSalePrice(200); // → 260
 ## 📄 Licencia
 
 Proyecto propietario de Mahitek 3D Lab.
+
+
+
+

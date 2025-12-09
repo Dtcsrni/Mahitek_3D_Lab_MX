@@ -13,11 +13,11 @@
       "line2": "con Acompañamiento Experto",
       "highlight": "Acompañamiento Experto"
     },
-    "subtitle": "Diseñamos piezas 3D con sello artesanal e integramos sensores inteligentes. PETG de alta resistencia desde Pachuca para todo México.",
+    "subtitle": "diseñamos piezas 3D con sello artesanal e integramos sensores inteligentes. PETG de alta resistencia desde Pachuca para todo México.",
     "cta_primary": {
       "text": "Ver Catálogo",
       "url": "#catalogo",
-      "icon": "→"
+      "icon": "?"
     },
     "cta_secondary": {
       "text": "Cómo Funciona",
@@ -32,7 +32,7 @@
       {
         "value": "500+",
         "label": "Piezas fabricadas",
-        "description": "Proyectos técnicos, decorativos y funcionales"
+        "description": "Proyectos túcnicos, decorativos y funcionales"
       },
       {
         "value": "100%",
@@ -40,7 +40,7 @@
         "description": "Calibramos y terminamos cada pieza en el taller antes de enviarla"
       }
     ],
-    "scroll_indicator": "Descubre más"
+    "scroll_indicator": "Descubre Más"
   },
 
   "problema": {
@@ -68,7 +68,7 @@
         "id": "espera",
         "icon": "slow-delivery",
         "title": "Semanas de espera interminables",
-        "description": "Tu proyecto está detenido esperando a proveedores internacionales. El cliente presionando y tú sin respuestas.",
+        "description": "Tu proyecto estú detenido esperando a proveedores internacionales. El cliente presionando y tú sin respuestas.",
         "emotion": "estrés",
         "solution_preview": "Producción local con seguimiento continuo"
       },
@@ -86,8 +86,8 @@
   "solucion": {
     "title": "Creamos Exactamente lo que Necesitas",
     "subtitle": "Fabricación 3D personalizada de principio a fin",
-    "intro": "No buscamos venderte catálogo. Escuchamos tu proyecto y lo hacemos realidad.",
-    "value_proposition": "Diseño + Fabricación + Envío: Todo en un solo lugar",
+    "intro": "No buscamos venderte Catálogo. Escuchamos tu proyecto y lo hacemos realidad.",
+    "value_proposition": "diseño + Fabricación + Envío: Todo en un solo lugar",
     "benefits": [
       {
         "id": "rapido",
@@ -135,7 +135,7 @@
       }
     ],
     "guarantee": {
-      "title": "Garantía de Satisfacción",
+      "title": "Garantía de satisfacción",
       "text": "Si no cumple tus expectativas, lo refabricamos o te devolvemos tu dinero. Sin letra pequeña."
     }
   },
@@ -169,14 +169,14 @@
       {
         "number": 4,
         "title": "Recibes en tu puerta",
-        "description": "Empaque protegido y envío asegurado a toda la República Mexicana.",
+        "description": "Empaque protegido y Envío asegurado a toda la República Mexicana.",
         "detail": "Paquetería con rastreo. Recolección local disponible en Pachuca.",
         "icon": "delivery-box"
       }
     ],
     "cta": {
       "title": "¿Listo para empezar?",
-      "subtitle": "La primer cotización es gratis y sin compromiso",
+      "subtitle": "La primer Cotización es gratis y sin compromiso",
       "button": "Solicitar Cotización",
       "url": "#contacto"
     }
@@ -184,8 +184,8 @@
 
   "productos": {
     "section_title": "Catálogo de Productos",
-    "section_subtitle": "Diseños listos para fabricar o personalizar",
-    "intro": "Cada pieza se fabrica bajo demanda con tu elección de color y personalización",
+    "section_subtitle": "diseños listos para fabricar o personalizar",
+    "intro": "Cada pieza se fabrica bajo demanda con tu elección de color y Personalización",
     "categories": {
       "llaveros": {
         "name": "Llaveros",
@@ -194,7 +194,7 @@
       },
       "colgantes": {
         "name": "Colgantes",
-        "description": "Joyería técnica con diseños únicos. Peso balanceado.",
+        "description": "Joyería túcnica con diseños ¿nicos. Peso balanceado.",
         "value_prop": "Arte wearable fabricado a mano"
       },
       "organizadores": {
@@ -205,7 +205,7 @@
       "decoracion": {
         "name": "Decoración",
         "description": "Piezas statement para tu espacio. Geometrías imposibles.",
-        "value_prop": "Diseño que no encuentras en tiendas"
+        "value_prop": "diseño que no encuentras en tiendas"
       }
     },
     "product_features_default": [
@@ -221,7 +221,7 @@
     "llavero_zombie": {
       "nombre": "Llavero \"Zombie\" A",
       "tagline": "El llavero que sobrevive al apocalipsis",
-      "descripcion": "Diseño temático con relieve pronunciado y textura antideslizante. PETG que aguanta uso extremo sin romperse ni decolorarse.",
+      "descripcion": "diseño temático con relieve pronunciado y textura antideslizante. PETG que aguanta uso extremo sin romperse ni decolorarse.",
       "beneficios": [
         "Material PETG resistente a impactos (no se rompe en caídas)",
         "Textura antideslizante para agarre seguro",
@@ -233,7 +233,7 @@
         "Regalo original para fans del género",
         "Merchandising para eventos temáticos"
       ],
-      "incluye": "Herraje 25mm + argolla, personalización iniciales, bolsa holográfica + sticker Mahitek"
+      "incluye": "Herraje 25mm + argolla, Personalización iniciales, bolsa holográfica + sticker Mahitek"
     },
     "llavero_chimuelo": {
       "nombre": "Llavero \"Chimuelo\"",
@@ -241,7 +241,7 @@
       "descripcion": "Silueta icónica de dragón con perfil suave que no engancha ni daña ropa. Acabado mate premium.",
       "beneficios": [
         "Perfil redondeado que no daña bolsillos ni ropa",
-        "Diseño reconocible al instante",
+        "diseño reconocible al instante",
         "PETG resistente que mantiene el color",
         "Nombre corto personalizable incluido"
       ],
@@ -250,16 +250,16 @@
         "Merchandising de temática dragón/fantasía",
         "Combo con stickers para eventos"
       ],
-      "incluye": "Herraje montado, personalización nombre corto, empaque estándar"
+      "incluye": "Herraje montado, Personalización nombre corto, empaque estándar"
     }
   },
 
   "promos": {
     "section_title": "Promociones Activas",
     "section_subtitle": "Combos inteligentes que te ahorran dinero",
-    "intro": "Packs diseñados para dar más por menos. Ofertas limitadas.",
-    "urgency_badge": "🔥 Oferta Temporal",
-    "limited_stock_badge": "⏰ Cupo Limitado",
+    "intro": "Packs diseñados para dar Más por menos. Ofertas limitadas.",
+    "urgency_badge": "?🔥 Oferta Temporal",
+    "limited_stock_badge": "⚡ Cupo Limitado",
     "promo_features": [
       "Envío gratis en pedidos +$500",
       "Personalización incluida",
@@ -271,20 +271,20 @@
 
   "promos_mejoradas": {
     "combo_trio_stickers": {
-      "titulo": "🔥 Pack Starter: 3 Llaveros + 10 Stickers",
+      "titulo": "?🔥 Pack Starter: 3 Llaveros + 10 Stickers",
       "subtitulo": "Todo lo que necesitas para personalizar tu estilo",
       "value_prop": "Llévate 3 llaveros resistentes + 10 stickers premium al precio de 2 llaveros",
       "beneficios": [
         "Llaveros PETG que aguantan uso diario extremo",
         "Stickers laminados que no se despegan",
-        "Ideal para personalizar mochila, laptop y más"
+        "Ideal para personalizar mochila, laptop y Más"
       ],
       "urgency": "Solo 25 packs disponibles este mes",
-      "social_proof": "El combo más vendido del mes pasado",
+      "social_proof": "El combo Más vendido del mes pasado",
       "cta": "Comprar Pack Starter"
     },
     "combo_pack4_stickers": {
-      "titulo": "💰 Pack Grupal: 4 Llaveros + 25 Stickers",
+      "titulo": "?🔥 Pack Grupal: 4 Llaveros + 25 Stickers",
       "subtitulo": "Perfecto para regalar a tu crew",
       "value_prop": "Equipa a toda tu banda: 4 llaveros personalizados + 25 stickers para todos",
       "beneficios": [
@@ -293,7 +293,7 @@
         "Ahorra $40 MXN vs compra individual"
       ],
       "urgency": "Termina en 10 días",
-      "social_proof": "⭐ 4.9/5 - \"Calidad increíble, llegó rápido\"",
+      "social_proof": "? 4.9/5 - \"Calidad increíble, llegó rápido\"",
       "cta": "Conseguir Pack Grupal"
     }
   },
@@ -301,22 +301,22 @@
   "faq": {
     "section_title": "Preguntas Frecuentes",
     "section_subtitle": "Todo lo que necesitas saber antes de ordenar",
-    "intro": "Resolvemos tus dudas más comunes. ¿No encuentras tu pregunta? Escríbenos.",
+    "intro": "Resolvemos tus dudas Más comunes. ¿No encuentras tu pregunta? Escríbenos.",
     "cta": "¿Más preguntas? Contáctanos"
   },
 
   "contacto": {
     "title": "Empecemos tu Proyecto",
     "subtitle": "Respuesta en menos de 2 horas laborales",
-    "intro": "Cuéntanos qué necesitas. La primera cotización es gratis y sin compromiso.",
+    "intro": "Cuéntanos qué necesitas. La primera Cotización es gratis y sin compromiso.",
     "contact_methods": [
       {
         "type": "messenger",
-        "title": "Messenger (Más Rápido)",
+        "title": "Messenger (Más rápido)",
         "description": "Respuesta inmediata en horario laboral",
         "icon": "messenger",
         "url": "https://m.me/mahitek3dlabmx",
-        "badge": "⚡ Recomendado"
+        "badge": "⭐ Recomendado"
       },
       {
         "type": "email",
@@ -342,7 +342,7 @@
       ],
       "timezone": "Hora del Centro (GMT-6)"
     },
-    "response_promise": "🕒 Respondemos todas las consultas en menos de 2 horas laborales. Fines de semana con cita previa."
+    "response_promise": "?? Respondemos todas las consultas en menos de 2 horas laborales. Fines de semana con cita previa."
   },
 
   "footer": {
@@ -357,7 +357,7 @@
     "brand": {
       "name": "Mahitek 3D Lab",
       "tagline": "Laboratorio abierto con impresión 3D en PETG",
-      "location": "📍 Pachuca, Hidalgo, México",
+      "location": "?? Pachuca, Hidalgo, México",
       "description": "Fabricación 3D personalizada desde 2023. Te acompañamos de la idea al objeto con plazos acordados."
     },
     "links": {
@@ -373,8 +373,8 @@
       "servicios": {
         "title": "Servicios",
         "items": [
-          { "text": "Impresión PETG", "url": "#proceso" },
-          { "text": "Diseño 3D Custom", "url": "#contacto" },
+          { "text": "impresión PETG", "url": "#proceso" },
+          { "text": "diseño 3D Custom", "url": "#contacto" },
           { "text": "Envíos Nacionales", "url": "#faq?q=envios" },
           { "text": "Cotización Gratis", "url": "#contacto" }
         ]
@@ -400,7 +400,7 @@
       },
       {
         "icon": "satisfaction-guarantee",
-        "text": "Garantía 30 Días"
+        "text": "Garantía 30 días"
       },
       {
         "icon": "made-in-mexico",
@@ -410,16 +410,16 @@
     "payments": {
       "label": "Métodos de pago aceptados:",
       "methods": ["Tarjeta", "Transferencia", "Efectivo", "Contraentrega"],
-      "icons": "💳 💵 📦"
+      "icons": "?? ?? ??"
     },
     "copyright": {
       "year": "2025",
       "brand": "Mahitek 3D Lab",
       "tagline": "Memoria en forma, uso que perdura",
-      "developer": "Desarrollado con ❤️ y tecnología de vanguardia",
-      "attribution": "Ingeniería & Diseño: I.S.C ERVC",
+      "developer": "Desarrollado con ?? y tecnología de vanguardia",
+      "attribution": "Ingeniería & diseño: I.S.C ERVC",
       "license_code": "Código disponible bajo licencia MIT",
-      "license_content": "Contenido y marca registrada: © Mahitek 3D Lab",
+      "license_content": "Contenido y marca registrada: ¿ Mahitek 3D Lab",
       "rights": "Todos los derechos reservados"
     }
   },
@@ -427,12 +427,12 @@
   "microcopy": {
     "loading": "Cargando...",
     "error": "Algo salió mal. Intenta de nuevo.",
-    "success": "¡Listo!",
+    "success": "¿Listo!",
     "add_to_cart": "Agregar al carrito",
     "view_details": "Ver detalles",
     "close": "Cerrar",
-    "learn_more": "Saber más",
-    "read_more": "Leer más",
+    "learn_more": "Saber Más",
+    "read_more": "Leer Más",
     "show_less": "Mostrar menos",
     "next": "Siguiente",
     "previous": "Anterior",
@@ -448,3 +448,8 @@
     "pre_order": "Pre-orden"
   }
 }
+
+
+
+
+

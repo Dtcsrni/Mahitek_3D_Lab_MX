@@ -1,4 +1,4 @@
-// Bootstrapping de módulos ES6 sin romper app.js legacy
+// Bootstrapping de m¿dulos ES6 sin romper app.js legacy
 // Este archivo se carga como type="module" y orquesta las inicializaciones
 
 import { initScrollNarrative } from './modules/scroll-narrative.js';
@@ -13,10 +13,10 @@ function animateCounter(element) {
   const target = element.getAttribute('data-counter');
   if (!target) return;
 
-  // Extraer número del target (ej: "500+" -> 500, "100%" -> 100, "Plazos acordados" -> omitir animación)
+  // Extraer n¿mero del target (ej: "500+" -> 500, "100%" -> 100, "Plazos acordados" -> omitir animaci¿n)
   const numMatch = target.match(/(\d+)/);
   if (!numMatch) {
-    // Si no hay número (ej: "Plazos acordados"), solo mostrar el valor
+    // Si no hay n¿mero (ej: "Plazos acordados"), solo mostrar el valor
     element.textContent = target;
     return;
   }
@@ -61,13 +61,13 @@ function initHeroCounters() {
   counters.forEach(counter => observer.observe(counter));
 }
 
-// Inicialización segura tras carga del DOM
+// Inicializaci¿n segura tras carga del DOM
 const onReady = async () => {
   try {
     // Inicializar DataManager
     DataManager.init();
 
-    // Precarga de datos críticos (no bloqueante)
+    // Precarga de datos cr¿ticos (no bloqueante)
     DataManager.preloadCritical().catch(err => {
       console.warn('[Boot] Error en precarga:', err);
     });
@@ -93,9 +93,9 @@ const onReady = async () => {
     window.MahitekUI = UIComponents;
     window.MahitekData = DataManager;
 
-    ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
+    ConfigUtils.log('Boot completado. Versi¿n:', CONFIG.VERSION);
   } catch (err) {
-    console.error('[Boot] Error inicializando módulos:', err);
+    console.error('[Boot] Error inicializando m¿dulos:', err);
   }
 };
 
@@ -104,3 +104,8 @@ if (document.readyState === 'loading') {
 } else {
   onReady();
 }
+
+
+
+
+

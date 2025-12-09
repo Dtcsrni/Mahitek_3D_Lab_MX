@@ -1,8 +1,8 @@
 // ===== Configuration =====
 const CONFIG = {
   PRICE_MARKUP: 1.0, // Ajusta si requieres recargo adicional
-  PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
-  // Página de Facebook/Messenger
+  PRICE_STEP: 10, // Redondea al m¿ltiplo de 10 MXN Más cercano
+  // P¿gina de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   DATA_PATHS: {
@@ -12,11 +12,11 @@ const CONFIG = {
     social: 'data/social.json',
     faq: 'data/faq.json'
   },
-  // Control de logs en producción (cambiar a false en producción)
+  // Control de logs en Producción (cambiar a false en Producción)
   DEBUG_MODE: false
 };
 
-// ===== Detección y Gestión de Idioma =====
+// ===== Detecci¿n y Gesti¿n de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
   IDIOMA_PREDETERMINADO: 'es-MX',
@@ -36,22 +36,22 @@ const GestorIdioma = {
       // 2. Detectar idioma del navegador
       const navegador = navigator.language || navigator.userLanguage || '';
 
-      // Si es español mexicano explícito
+      // Si es espa¿ol mexicano expl¿cito
       if (navegador.toLowerCase().startsWith('es-mx')) {
         return 'es-MX';
       }
 
-      // Si es cualquier variante de español
+      // Si es cualquier variante de espa¿ol
       if (navegador.toLowerCase().startsWith('es')) {
         return 'es';
       }
 
-      // Si es inglés
+      // Si es ingl¿s
       if (navegador.toLowerCase().startsWith('en')) {
         return 'en';
       }
 
-      // 3. Fallback a español mexicano
+      // 3. Fallback a espa¿ol mexicano
       return this.IDIOMA_PREDETERMINADO;
     } catch (error) {
       console.warn('Error detectando idioma:', error);
@@ -76,22 +76,22 @@ const GestorIdioma = {
   },
 
   /**
-   * Verifica si el idioma es español (cualquier variante)
+   * Verifica si el idioma es espa¿ol (cualquier variante)
    */
-  esEspañol() {
+  esEspa¿ol() {
     const idioma = this.obtenerIdioma();
     return idioma.startsWith('es');
   },
 
   /**
-   * Verifica si el idioma es español mexicano específico
+   * Verifica si el idioma es espa¿ol mexicano específico
    */
   esMexicano() {
     return this.obtenerIdioma() === 'es-MX';
   },
 
   /**
-   * Actualiza el contenido del cintillo según el idioma
+   * Actualiza el contenido del cintillo seg¿n el idioma
    */
   actualizarCintillo() {
     const cintillo = document.querySelector('.cintillo-texto');
@@ -112,8 +112,8 @@ const GestorIdioma = {
     this.actualizarCintillo();
 
     if (CONFIG.DEBUG_MODE) {
-      console.log('🌐 Idioma detectado:', idioma);
-      console.log('🇲🇽 Es mexicano:', this.esMexicano());
+      console.log('?? Idioma detectado:', idioma);
+      console.log('???? Es mexicano:', this.esMexicano());
     }
   }
 };
@@ -132,7 +132,7 @@ const TextosSistema = {
       return clave;
     }
 
-    // Prioridad: idioma exacto > idioma base (es-MX -> es) > español > inglés
+    // Prioridad: idioma exacto > idioma base (es-MX -> es) > espa¿ol > ingl¿s
     return (
       textos[idioma] || textos[idioma.split('-')[0]] || textos['es-MX'] || textos['en'] || clave
     );
@@ -140,11 +140,11 @@ const TextosSistema = {
 
   // Catálogo de textos del sistema
   textos: {
-    // Cintillo de construcción
+    // Cintillo de construcci¿n
     'cintillo.construccion': {
-      'es-MX': '⚡ SITIO EN DESARROLLO ⚡ PRÓXIMAMENTE FUNCIONALIDAD COMPLETA ⚡',
-      es: '⚡ EN CONSTRUCCIÓN ⚡ PRÓXIMAMENTE DISPONIBLE ⚡',
-      en: '⚡ UNDER DEVELOPMENT ⚡ COMING SOON ⚡'
+      'es-MX': '? SITIO EN DESARROLLO ? próximamente FUNCIONALIDAD COMPLETA ?',
+      es: '? EN CONSTRUCCI¿N ? próximamente DISPONIBLE ?',
+      en: '? UNDER DEVELOPMENT ? COMING SOON ?'
     },
 
     // Mensajes del sistema
@@ -171,8 +171,8 @@ const TextosSistema = {
       en: 'From'
     },
     'productos.verMas': {
-      'es-MX': 'Ver más detalles',
-      es: 'Ver más detalles',
+      'es-MX': 'Ver Más detalles',
+      es: 'Ver Más detalles',
       en: 'View more details'
     },
     'productos.disponible': {
@@ -198,8 +198,8 @@ const TextosSistema = {
       en: 'Save'
     },
     'promos.valido': {
-      'es-MX': 'Válido hasta',
-      es: 'Válido hasta',
+      'es-MX': 'V¿lido hasta',
+      es: 'V¿lido hasta',
       en: 'Valid until'
     },
 
@@ -210,8 +210,8 @@ const TextosSistema = {
       en: 'All'
     },
     'filtros.categoria': {
-      'es-MX': 'Categoría',
-      es: 'Categoría',
+      'es-MX': 'Categor¿a',
+      es: 'Categor¿a',
       en: 'Category'
     },
     'filtros.limpiar': {
@@ -232,8 +232,8 @@ const TextosSistema = {
       en: 'Send message'
     },
     'contacto.cotizar': {
-      'es-MX': 'Solicitar cotización',
-      es: 'Solicitar cotización',
+      'es-MX': 'Solicitar Cotización',
+      es: 'Solicitar Cotización',
       en: 'Request quote'
     },
 
@@ -266,8 +266,8 @@ const TextosSistema = {
       en: 'Error loading FAQs. Please try again.'
     },
     'error.red': {
-      'es-MX': 'Error de conexión. Verifique su conexión a internet.',
-      es: 'Error de conexión. Verifique su conexión a internet.',
+      'es-MX': 'Error de conexi¿n. Verifique su conexi¿n a internet.',
+      es: 'Error de conexi¿n. Verifique su conexi¿n a internet.',
       en: 'Connection error. Please check your internet connection.'
     },
 
@@ -307,7 +307,7 @@ const ResizeManager = {
 
   register(callback) {
     this.callbacks.add(callback);
-    // Ejecutar inmediatamente para inicialización
+    // Ejecutar inmediatamente para inicializaci¿n
     callback();
   },
 
@@ -374,11 +374,11 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
 // ===== Analytics bootstrap (evita scripts inline) =====
 function setupAnalytics() {
   try {
-    // Verificar si gtag.js se cargó (puede estar bloqueado por ad-blockers)
+    // Verificar si gtag.js se carg¿ (puede estar bloqueado por ad-blockers)
     if (typeof window.gtag === 'undefined') {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () {
-        // Stub silencioso si GA está bloqueado
+        // Stub silencioso si GA estú bloqueado
         if (window.dataLayer) {
           window.dataLayer.push(arguments);
         }
@@ -420,7 +420,7 @@ async function loadJSON(path) {
     }
     return await response.json();
   } catch (error) {
-    console.error(`❌ ${TextosSistema.obtener('sistema.error')}: ${path}`, error);
+    console.error(`? ${TextosSistema.obtener('sistema.error')}: ${path}`, error);
     return null;
   }
 }
@@ -442,7 +442,7 @@ function setupHeaderScroll() {
     const scrollY = window.scrollY;
     const scrollDelta = scrollY - lastScrollY;
 
-    // Determinar dirección de scroll
+    // Determinar direcci¿n de scroll
     if (Math.abs(scrollDelta) > 5) {
       // Ignorar micro-scrolls
       scrollDirection = scrollDelta > 0 ? 'down' : 'up';
@@ -470,7 +470,7 @@ function setupHeaderScroll() {
       header.classList.remove('is-hidden');
     }
 
-    // Actualizar última posición
+    // Actualizar ¿ltima posici¿n
     lastScrollY = scrollY;
     ticking = false;
   };
@@ -498,12 +498,12 @@ function setupScrollReveal() {
     return;
   }
 
-  // Configuración mejorada del Intersection Observer
+  // Configuraci¿n mejorada del Intersection Observer
   scrollObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Agregar pequeño delay para efecto más natural
+          // Agregar peque¿o delay para efecto Más natural
           setTimeout(() => {
             entry.target.classList.add('is-visible');
           }, 50);
@@ -512,7 +512,7 @@ function setupScrollReveal() {
       });
     },
     {
-      threshold: 0.15, // Detectar más temprano
+      threshold: 0.15, // Detectar Más temprano
       rootMargin: '0px 0px -8% 0px' // Trigger antes de que entre completamente
     }
   );
@@ -571,8 +571,8 @@ function renderProducts() {
   if (displayedProducts.length === 0) {
     carousel.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No se encontraron productos con los filtros seleccionados. Ajusta los filtros o cuéntanos qué estás buscando.</p>
+        <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el Catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No se encontraron productos con los filtros seleccionados. Ajusta los filtros o Cuéntanos qué estús buscando.</p>
       </div>
     `;
     registerAnimatedElements(carousel);
@@ -628,7 +628,7 @@ function renderProducts() {
 
       // Sugerencias de negocio
       const sugerenciasMarkup = product.sugerencias
-        ? `<p class="product-suggestions">💡 <strong>Sugerencias:</strong> ${escapeHTML(product.sugerencias)}</p>`
+        ? `<p class="product-suggestions">?? <strong>Sugerencias:</strong> ${escapeHTML(product.sugerencias)}</p>`
         : '';
 
       // Analytics: vista de item al render
@@ -650,7 +650,7 @@ function renderProducts() {
       </div>
   <h3 class="product-name">${safeName}</h3>
   <p class="product-price">${product.precio_rango_mxn ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN` : `$${escapeHTML(String(product.precio_mxn))} MXN`}</p>
-  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
+  <p class="product-price-note">Rango por Personalización, tama¿o/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
       <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
       ${detailMarkup}
       ${tagsMarkup}
@@ -672,7 +672,7 @@ function renderProducts() {
   setupImageErrorFallbacks(carousel);
   initCatalogCarousel(displayedProducts.length);
 
-  // Log de interacción: add_to_cart en CTA
+  // Log de interacci¿n: add_to_cart en CTA
   carousel.addEventListener(
     'click',
     ev => {
@@ -716,7 +716,7 @@ function initCatalogCarousel(totalProducts) {
   let itemsPerView = 1;
   let hasMultiplePages = false;
 
-  // Calcular items por vista según viewport
+  // Calcular items por vista seg¿n viewport
   function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
       itemsPerView = 3;
@@ -727,12 +727,12 @@ function initCatalogCarousel(totalProducts) {
     }
   }
 
-  // Calcular total de páginas
+  // Calcular total de p¿ginas
   function getTotalPages() {
     return Math.ceil(totalProducts / itemsPerView);
   }
 
-  // Actualizar posición del track
+  // Actualizar posici¿n del track
   function updateTrack() {
     const offset = -currentIndex * (100 / itemsPerView);
     track.style.transform = `translateX(${offset}%)`;
@@ -813,7 +813,7 @@ function initCatalogCarousel(totalProducts) {
     }
   });
 
-  // Soporte táctil para swipe
+  // Soporte túctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -880,7 +880,7 @@ function populateCategoryFilter() {
 
   const categories = [...new Set(allProducts.map(p => p.categoria))];
 
-  // Construcción segura de opciones
+  // Construcci¿n segura de opciones
   select.innerHTML = '';
   const optAll = document.createElement('option');
   optAll.value = 'todas';
@@ -919,7 +919,7 @@ function filterProducts() {
 let promosLoaded = false;
 
 async function loadPromos() {
-  // Si ya se cargó, no hacer nada
+  // Si ya se carg¿, no hacer nada
   if (promosLoaded) return;
 
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
@@ -931,7 +931,7 @@ async function loadPromos() {
   if (!promos || promos.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
       </div>
     `;
@@ -951,8 +951,8 @@ async function loadPromos() {
   if (activePromos.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No hay promociones activas en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No hay promociones activas en este momento. ¿Escríbenos y te contamos qué estamos creando!</p>
       </div>
     `;
     registerAnimatedElements(container);
@@ -988,7 +988,7 @@ async function loadPromos() {
       } else if (promo.monto_minimo) {
         precioHTML = `
         <div class="promo-minimo">
-          <span>Mínimo: $${promo.monto_minimo}</span>
+          <span>M¿nimo: $${promo.monto_minimo}</span>
         </div>
       `;
       }
@@ -1003,7 +1003,7 @@ async function loadPromos() {
         promo.beneficios && promo.beneficios.length > 0
           ? `
         <ul class="promo-beneficios">
-          ${promo.beneficios.map(b => `<li>✓ ${escapeHTML(b)}</li>`).join('')}
+          ${promo.beneficios.map(b => `<li>? ${escapeHTML(b)}</li>`).join('')}
         </ul>
       `
           : '';
@@ -1011,9 +1011,9 @@ async function loadPromos() {
       // Fechas o permanente
       let validezHTML = '';
       if (promo.tipo === 'permanente') {
-        validezHTML = '<p class="promo-validez">⏰ Promoción permanente</p>';
+        validezHTML = '<p class="promo-validez">? Promoci¿n permanente</p>';
       } else if (promo.desde && promo.hasta) {
-        validezHTML = `<p class="promo-validez">📅 Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
+        validezHTML = `<p class="promo-validez">?? V¿lido ${escapeHTML(formatDate(promo.desde))} ¿ ${escapeHTML(formatDate(promo.hasta))}</p>`;
       }
 
       // CTA
@@ -1045,7 +1045,7 @@ async function loadPromos() {
           iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
         }
       } else {
-        iconoHTML = `<span class="promo-emoji" aria-hidden="true">🎁</span>`;
+        iconoHTML = `<span class="promo-emoji" aria-hidden="true">??</span>`;
       }
 
       return `
@@ -1086,9 +1086,9 @@ async function loadPromos() {
   container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
-    const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
+    const promoName = btn.getAttribute('data-promo-name') || 'Promoci¿n';
     const message = encodeURIComponent(`Hola, quiero consultar sobre: ${promoName}`);
-    window.open(`https://wa.me/52XXXXXXXXXX?text=${message}`, '_blank', 'noopener');
+    window.open(`https://wa.me/52XXXXXXXXXX¿Text=${message}`, '_blank', 'noopener');
     log('contact_promo', {
       promotion_id: btn.getAttribute('data-promo-id') || '',
       promotion_name: promoName
@@ -1196,7 +1196,7 @@ function initPromosCarousel(totalPromos) {
     }
   });
 
-  // Soporte táctil para swipe
+  // Soporte túctil para swipe
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -1302,7 +1302,7 @@ function buildMessengerURL(ref) {
 let faqLoaded = false;
 
 async function loadFAQ() {
-  // Si ya se cargó, no hacer nada
+  // Si ya se carg¿, no hacer nada
   if (faqLoaded) return;
 
   const faqData = await loadJSON(CONFIG.DATA_PATHS.faq);
@@ -1314,8 +1314,8 @@ async function loadFAQ() {
   if (!faqData || faqData.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Aún estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
+        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>A¿n estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
       </div>
     `;
     registerAnimatedElements(container);
@@ -1362,7 +1362,7 @@ async function loadFAQ() {
           const id = `faq-${slugify(it.q)}`;
           return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(
             it.q
-          )}"><span aria-hidden="true">★</span><span>${escapeHTML(it.q)}</span></a>`;
+          )}"><span aria-hidden="true">?</span><span>${escapeHTML(it.q)}</span></a>`;
         })
         .join('');
 
@@ -1381,7 +1381,7 @@ async function loadFAQ() {
     }
   }
 
-  // Interacciones: búsqueda y expandir/contraer
+  // Interacciones: b¿squeda y expandir/contraer
   const search = document.getElementById('faq-search');
   const categorySelect = document.getElementById('faq-category');
   const btnExpand = document.getElementById('faq-expand');
@@ -1398,7 +1398,7 @@ async function loadFAQ() {
     featuredStat.textContent = featured.length;
   }
 
-  // Poblar categorías desde data
+  // Poblar categor¿as desde data
   if (categorySelect) {
     const categories = Array.from(new Set(faqData.map(i => i.categoria).filter(Boolean)))
       .map(cat => ({ label: cat, value: cat.toLowerCase() }))
@@ -1562,7 +1562,7 @@ async function loadSocialLinks() {
   }
 }
 
-// Oficial logos via Simple Icons CDN (CC0) — single-color SVGs
+// Oficial logos via Simple Icons CDN (CC0) ¿ single-color SVGs
 function getSocialIconMarkup(platform) {
   const size = 28;
 
@@ -1588,9 +1588,9 @@ function setupNav() {
 
   const initialState = menu.classList.contains('active');
   toggle.setAttribute('aria-expanded', String(initialState));
-  toggle.setAttribute('aria-label', initialState ? 'Cerrar menú' : 'Abrir menú');
+  toggle.setAttribute('aria-label', initialState ? 'Cerrar men¿' : 'Abrir men¿');
 
-  // Prevención de doble-click/doble-tap
+  // Prevenci¿n de doble-click/doble-tap
   let isAnimating = false;
 
   const closeMenu = () => {
@@ -1600,10 +1600,10 @@ function setupNav() {
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir menú');
+    toggle.setAttribute('aria-label', 'Abrir men¿');
     document.body.classList.remove('nav-open');
 
-    // Reset flag después de la animación
+    // Reset flag despu¿s de la animaci¿n
     setTimeout(() => {
       isAnimating = false;
     }, 350);
@@ -1616,10 +1616,10 @@ function setupNav() {
     menu.classList.add('active');
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Cerrar menú');
+    toggle.setAttribute('aria-label', 'Cerrar men¿');
     document.body.classList.add('nav-open');
 
-    // Reset flag después de la animación
+    // Reset flag despu¿s de la animaci¿n
     setTimeout(() => {
       isAnimating = false;
     }, 350);
@@ -1629,7 +1629,7 @@ function setupNav() {
     e.preventDefault();
     e.stopPropagation();
 
-    if (isAnimating) return; // Prevenir clicks durante animación
+    if (isAnimating) return; // Prevenir clicks durante animaci¿n
 
     const isOpen = menu.classList.contains('active');
 
@@ -1672,7 +1672,7 @@ function setupNav() {
     }
   });
 
-  // Cerrar menú en resize (si pasamos a desktop) - usando ResizeManager
+  // Cerrar men¿ en resize (si pasamos a desktop) - usando ResizeManager
   const handleNavResize = () => {
     if (window.innerWidth >= 768 && menu.classList.contains('active')) {
       closeMenu();
@@ -1717,7 +1717,7 @@ function setupFilters() {
   }
 }
 
-// ===== Lazy Loading de Secciones No-Críticas =====
+// ===== Lazy Loading de Secciones No-Cr¿ticas =====
 function setupLazyLoading() {
   const lazyObserver = new IntersectionObserver(
     entries => {
@@ -1726,7 +1726,7 @@ function setupLazyLoading() {
           const section = entry.target;
           const sectionId = section.id;
 
-          // Cargar datos según la sección
+          // Cargar datos seg¿n la secci¿n
           if (sectionId === 'promos' && !promosLoaded) {
             loadPromos();
             lazyObserver.unobserve(section);
@@ -1742,7 +1742,7 @@ function setupLazyLoading() {
     }
   );
 
-  // Observar secciones no-críticas
+  // Observar secciones no-cr¿ticas
   const promosSection = document.getElementById('promos');
   const faqSection = document.getElementById('faq');
 
@@ -1755,7 +1755,7 @@ async function init() {
   // Inicializar sistema de idioma PRIMERO
   GestorIdioma.inicializar();
 
-  // Ajuste de viewport y recursos según dispositivo
+  // Ajuste de viewport y recursos seg¿n dispositivo
   setupViewportAndDevice();
 
   setupAnalytics();
@@ -1766,23 +1766,23 @@ async function init() {
   hydrateEmails();
   injectOrganizationSchema();
 
-  // Cargar solo datos críticos inmediatamente
+  // Cargar solo datos cr¿ticos inmediatamente
   await Promise.all([loadProducts(), loadSocialLinks()]);
 
-  // Configurar lazy loading para secciones no-críticas
+  // Configurar lazy loading para secciones no-cr¿ticas
   setupLazyLoading();
 
   // Aplicar estado desde la URL y sincronizar cambios
   applyURLState();
 
-  // Logs solo en modo debug (en español profesional)
+  // Logs solo en modo debug (en espa¿ol profesional)
   if (CONFIG.DEBUG_MODE) {
-    console.log(`✅ ${TextosSistema.obtener('debug.iniciado')}`);
-    console.log(`📊 ${TextosSistema.obtener('debug.productosOK')}: ${allProducts.length}`);
+    console.log(`? ${TextosSistema.obtener('debug.iniciado')}`);
+    console.log(`?? ${TextosSistema.obtener('debug.productosOK')}: ${allProducts.length}`);
     console.log(
-      `💰 Margen de precio: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`
+      `?? Margen de precio: ${CONFIG.PRICE_MARKUP} (${(CONFIG.PRICE_MARKUP - 1) * 100}%)`
     );
-    console.log(`🔄 Redondeo: $${CONFIG.PRICE_STEP} MXN`);
+    console.log(`?? Redondeo: $${CONFIG.PRICE_STEP} MXN`);
   }
 }
 
@@ -1942,7 +1942,7 @@ function injectOrganizationSchema() {
       logo: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/mark-icon.svg',
       sameAs: ['https://www.instagram.com/mahitek3dlab', 'https://www.facebook.com/mahitek3dlab'],
       description:
-        'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, decoración y proyectos creativos.',
+        'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, Decoración y proyectos creativos.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Pachuca',
@@ -1965,3 +1965,8 @@ function injectOrganizationSchema() {
     /* no-op */
   }
 }
+
+
+
+
+

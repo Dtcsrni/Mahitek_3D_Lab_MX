@@ -1,5 +1,5 @@
-/* ===== OPTIMIZACIÃ“N DE RENDIMIENTO ===== */
-/* Habilitar aceleraciÃ³n GPU para animaciones */
+/* ===== OPTIMIZACIÓN DE RENDIMIENTO ===== */
+/* Habilitar aceleración GPU para animaciones */
 @media (prefers-reduced-motion: no-preference) {
   :root {
     --enable-animations: 1;
@@ -28,7 +28,7 @@
   --accent-green: #10b981;
   --accent-red: #d22623;
 
-  /* Alias para compatibilidad con cÃ³digo legacy */
+  /* Alias para compatibilidad con código legacy */
   --primary-cyan: var(--accent-cyan);
   --background-dark: var(--bg-dark);
   --text-light: var(--text-primary);
@@ -42,7 +42,7 @@
     var(--accent-cyan)
   );
   --blur: blur(12px);
-  --radius: 12px; /* Mobile-first: bordes mÃ¡s suaves */
+  --radius: 12px; /* Mobile-first: bordes más suaves */
   --radius-sm: 8px;
   --radius-lg: 16px;
   --transition: 300ms ease;
@@ -61,7 +61,7 @@
   --space-2xl: 3rem; /* 48px */
   --space-3xl: 4rem; /* 64px */
 
-  /* TipografÃ­a fluida (mÃ³vil â†’ 1440+) */
+  /* Tipografía fluida (móvil → 1440+) */
   --font-size-xs: clamp(0.72rem, 0.64rem + 0.2vw, 0.8rem);
   --font-size-sm: clamp(0.84rem, 0.72rem + 0.35vw, 0.95rem);
   --font-size-base: clamp(1rem, 0.94rem + 0.4vw, 1.125rem);
@@ -87,7 +87,7 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
 
-  /* Peek mÃ­nimo del header cuando auto-oculto */
+  /* Peek mínimo del header cuando auto-oculto */
   --peek-height: 10px;
 }
 
@@ -152,14 +152,14 @@ body {
   /* Mobile-first optimizations */
   font-size: var(--font-size-base);
   -webkit-tap-highlight-color: rgba(6, 182, 212, 0.2);
-  touch-action: manipulation; /* Mejora respuesta tÃ¡ctil */
+  touch-action: manipulation; /* Mejora respuesta táctil */
 
   /* Performance: renderizado optimizado */
   text-rendering: optimizeSpeed;
   font-display: swap; /* Evitar FOIT */
 }
 
-/* Mobile: Prevenir scroll cuando el menÃº estÃ¡ abierto */
+/* Mobile: Prevenir scroll cuando el menú está abierto */
 body.nav-open {
   overflow: hidden;
   position: fixed;
@@ -173,7 +173,7 @@ body.nav-open {
   }
 }
 
-/* ===== Banner de ConstrucciÃ³n (Sticky) ===== */
+/* ===== Banner de Construcción (Sticky) ===== */
 /* ===== Cintillo Cyberpunk (Esquina Superior Derecha) ===== */
 .cintillo-cyberpunk {
   position: fixed;
@@ -288,7 +288,7 @@ body.nav-open {
   }
 }
 
-/* Microajustes para mÃ³viles muy pequeÃ±os */
+/* Microajustes para móviles muy pequeños */
 @media (max-width: 400px) {
   .hero {
     padding: 4rem 0 2.5rem;
@@ -563,8 +563,8 @@ button {
   }
 }
 
-/* ===== Acentos temÃ¡ticos por secciÃ³n (opt-in por clases) ===== */
-/* SecciÃ³n cyan (por defecto/hero) */
+/* ===== Acentos temáticos por sección (opt-in por clases) ===== */
+/* Sección cyan (por defecto/hero) */
 .section-accent--cyan .accent-text,
 .section-accent--cyan .accent-chip,
 .section-accent--cyan .btn-primary {
@@ -572,7 +572,7 @@ button {
   --section-accent-rgb: 6, 182, 212;
 }
 
-/* SecciÃ³n teal (servicios/proceso) */
+/* Sección teal (servicios/proceso) */
 .section-accent--teal {
   --section-accent: #14b8a6;
   --section-accent-rgb: 20, 184, 166;
@@ -615,7 +615,7 @@ button {
     btnPulseGlow 3s ease-in-out infinite;
 }
 
-/* SecciÃ³n red (aplicaciones/sectores) */
+/* Sección red (aplicaciones/sectores) */
 .section-accent--red {
   --section-accent: var(--accent-red);
   --section-accent-rgb: 210, 38, 35;
@@ -641,7 +641,7 @@ button {
   background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
 }
 
-/* SecciÃ³n purple (catÃ¡logo) */
+/* Sección purple (catálogo) */
 .section-accent--purple {
   --section-accent: #a855f7;
   --section-accent-rgb: 168, 85, 247;
@@ -670,7 +670,7 @@ button {
     btnPulseGlow 3s ease-in-out infinite;
 }
 
-/* SecciÃ³n green (promociones/FAQ) */
+/* Sección green (promociones/FAQ) */
 .section-accent--green {
   --section-accent: var(--accent-green);
   --section-accent-rgb: 16, 185, 129;
@@ -839,7 +839,7 @@ button {
 
 @media (min-width: 640px) {
   .container {
-    padding: 0 var(--space-lg); /* 24px en tablets pequeÃ±as */
+    padding: 0 var(--space-lg); /* 24px en tablets pequeñas */
     max-width: var(--container-md);
   }
 }
@@ -868,36 +868,40 @@ button {
 @media (min-width: 1536px) {
   .container {
     max-width: var(--container-2xl);
-    padding: 0 5rem; /* mÃ¡s aire lateral */
+    padding: 0 5rem; /* más aire lateral */
   }
 }
 
 /* ===== Header ===== */
 /* ===== Header & Navigation ===== */
 .header {
-  position: sticky;
-  top: 0; /* Pegada al top siempre */
-  z-index: 1000;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 15, 20, 0.95) 0%,
-    rgba(15, 20, 28, 0.96) 50%,
-    rgba(11, 15, 20, 0.95) 100%
-  );
-  -webkit-backdrop-filter: var(--blur);
-  backdrop-filter: var(--blur);
-  border-bottom: 1px solid rgba(6, 182, 212, 0.12);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  background: radial-gradient(120% 120% at 50% -10%, rgba(0, 217, 255, 0.12), rgba(11, 15, 20, 0.92));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.25);
   border-top: 1px solid rgba(6, 182, 212, 0.08);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
   transition:
-    all var(--motion-duration-fast) var(--motion-ease),
-    transform var(--motion-duration-base) var(--motion-ease);
+    transform var(--motion-duration-fast) var(--motion-ease),
+    background-color var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease);
   will-change: transform, background-color, box-shadow;
   transform: translateY(0);
   overflow: visible;
-  /* Asegurar que no tape contenido bajo notch */
   padding-top: var(--safe-top);
   padding-left: max(0px, var(--safe-left));
   padding-right: max(0px, var(--safe-right));
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .header {
+    background: rgba(11, 15, 20, 0.94);
+  }
 }
 
 .header::before {
@@ -976,7 +980,7 @@ button {
   box-shadow: none;
 }
 
-/* Navbar compacto - solo logo y menÃº visible */
+/* Navbar compacto - solo logo y menú visible */
 .header.is-compact .nav-brand-info {
   opacity: 0;
   max-height: 0;
@@ -990,7 +994,7 @@ button {
   height: 36px !important; /* Modo ultra-compacto */
 }
 
-/* Estados combinados para mÃ¡xima optimizaciÃ³n */
+/* Estados combinados para máxima optimización */
 .header.is-scrolled.is-compact {
   padding: 0;
 }
@@ -1046,7 +1050,7 @@ button {
   }
 }
 
-/* Ãguila mexicana estilizada */
+/* Águila mexicana estilizada */
 .nav-aguila {
   position: absolute;
   left: 50%;
@@ -1095,7 +1099,7 @@ button {
   }
 }
 
-/* LÃ­neas de escaneo */
+/* Líneas de escaneo */
 .scan-lines {
   position: absolute;
   top: 0;
@@ -1124,7 +1128,7 @@ button {
   }
 }
 
-/* PartÃ­culas flotantes */
+/* Partículas flotantes */
 .nav-particles {
   position: absolute;
   top: 0;
@@ -1233,6 +1237,23 @@ button {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .nav-decorations,
+  .nav-nopal,
+  .nav-aguila,
+  .nav-particles,
+  .scan-lines,
+  .nav-border,
+  .hex-pulse,
+  .aguila-wing-left,
+  .aguila-wing-right {
+    animation: none !important;
+  }
+  .nav-decorations {
+    opacity: 0.35;
+  }
+}
+
 /* Reducir opacidad y escala en mobile compacto pero mantenerlos visibles */
 @media (max-width: 768px) {
   .header.is-compact .nav-decorations {
@@ -1262,6 +1283,7 @@ button {
   justify-content: space-between;
   padding: var(--space-md) 0; /* Mobile: Padding reducido */
   position: relative;
+  gap: var(--space-md);
   transition: padding var(--motion-duration-fast) var(--motion-ease);
 }
 
@@ -1273,7 +1295,7 @@ button {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  z-index: 9999; /* Sobre el menÃº mobile */
+  z-index: 9999; /* Sobre el menú mobile */
   position: relative;
 }
 
@@ -1338,7 +1360,7 @@ button {
 }
 
 .logo-img {
-  height: 48px; /* Mobile: Logo mÃ¡s pequeÃ±o */
+  height: 48px; /* Mobile: Logo más pequeño */
   width: auto;
   display: block;
   filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.25));
@@ -1348,10 +1370,10 @@ button {
 }
 
 .header.is-scrolled .logo-img {
-  height: 44px; /* Mobile scrolled: Logo aÃºn mÃ¡s pequeÃ±o */
+  height: 44px; /* Mobile scrolled: Logo aún más pequeño */
 }
 
-/* Modo compacto: logo ultra-pequeÃ±o */
+/* Modo compacto: logo ultra-pequeño */
 .header.is-compact .logo-img {
   height: 36px !important;
 }
@@ -1372,7 +1394,7 @@ button {
 
 @media (min-width: 1024px) {
   .logo-img {
-    height: 68px; /* Desktop: Logo mÃ¡s grande */
+    height: 68px; /* Desktop: Logo más grande */
   }
 
   .header.is-scrolled .logo-img {
@@ -1489,7 +1511,7 @@ button {
   }
 }
 
-/* Badge Hecho en MÃ©xico */
+/* Badge Hecho en México */
 .badge-made-mx {
   display: inline-flex;
   align-items: center;
@@ -1559,7 +1581,7 @@ html[lang="es-MX"] .show-when-mx {
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 9999; /* Mobile: Sobre el menÃº y el contenido */
+  z-index: 9999; /* Mobile: Sobre el menú y el contenido */
   position: relative;
 
   /* Mobile-first: Touch optimizado */
@@ -1571,7 +1593,7 @@ html[lang="es-MX"] .show-when-mx {
   /* Visual feedback mejorado */
   box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
 
-  /* Prevenir selecciÃ³n de texto */
+  /* Prevenir selección de texto */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -1584,11 +1606,11 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .nav-toggle:active {
-  transform: scale(0.95); /* Feedback tÃ¡ctil mÃ¡s evidente */
+  transform: scale(0.95); /* Feedback táctil más evidente */
   box-shadow: 0 2px 6px rgba(6, 182, 212, 0.15);
 }
 
-/* Estado activo (menÃº abierto) */
+/* Estado activo (menú abierto) */
 .nav-toggle.active {
   background: rgba(6, 182, 212, 0.2);
   border-color: rgba(6, 182, 212, 0.5);
@@ -1615,7 +1637,7 @@ html[lang="es-MX"] .show-when-mx {
   transform-origin: center;
 }
 
-/* AnimaciÃ³n mejorada para el estado activo */
+/* Animación mejorada para el estado activo */
 .nav-toggle.active .nav-toggle-icon span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
   background: var(--accent-cyan);
@@ -2047,7 +2069,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Glow effect mejorado con animaciÃ³n mÃ¡s suave */
+/* Glow effect mejorado con animación más suave */
 .hero::before {
   content: "";
   position: absolute;
@@ -2070,7 +2092,7 @@ html[lang="es-MX"] .show-when-mx {
   will-change: opacity, transform;
 }
 
-/* AnimaciÃ³n de glow mÃ¡s sutil y elegante */
+/* Animación de glow más sutil y elegante */
 @keyframes heroGlow {
   0%,
   100% {
@@ -2143,11 +2165,11 @@ html[lang="es-MX"] .show-when-mx {
   /* Simplificado: solo float, sin tilt 3D pesado */
   animation: heroMainFloat 6s ease-in-out infinite;
 
-  /* Performance: preparar GPU para animaciÃ³n */
+  /* Performance: preparar GPU para animación */
   will-change: transform;
 }
 
-/* AnimaciÃ³n simplificada - solo translateY y rotateZ ligero */
+/* Animación simplificada - solo translateY y rotateZ ligero */
 @keyframes heroMainFloat {
   0%,
   100% {
@@ -2158,7 +2180,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Eliminada animaciÃ³n heroTilt - causaba reflow pesado */
+/* Eliminada animación heroTilt - causaba reflow pesado */
 
 .hero-illustration-main::before {
   content: "";
@@ -2174,7 +2196,7 @@ html[lang="es-MX"] .show-when-mx {
   );
   border-radius: 50%;
   /* Simplificado: solo spin, sin pulse */
-  animation: heroSpin 12s linear infinite; /* MÃ¡s lento: 8s â†’ 12s */
+  animation: heroSpin 12s linear infinite; /* Más lento: 8s → 12s */
   filter: blur(50px);
   opacity: 0.8;
   z-index: -1;
@@ -2183,7 +2205,7 @@ html[lang="es-MX"] .show-when-mx {
   will-change: transform;
 }
 
-/* AnimaciÃ³n heroPulseBg eliminada - no se usa mÃ¡s */
+/* Animación heroPulseBg eliminada - no se usa más */
 
 /* Sombra proyectada optimizada */
 .hero-illustration-main::after {
@@ -2197,13 +2219,13 @@ html[lang="es-MX"] .show-when-mx {
   background: radial-gradient(ellipse, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
   filter: blur(20px);
   z-index: -2;
-  animation: shadowPulse 5s ease-in-out infinite; /* MÃ¡s lento: 4s â†’ 5s */
+  animation: shadowPulse 5s ease-in-out infinite; /* Más lento: 4s → 5s */
 
   /* Performance: GPU layer para transform */
   will-change: transform, opacity;
 }
 
-/* AnimaciÃ³n simplificada - menos cambios */
+/* Animación simplificada - menos cambios */
 @keyframes shadowPulse {
   0%,
   100% {
@@ -2230,7 +2252,7 @@ html[lang="es-MX"] .show-when-mx {
   width: 100%;
   max-width: 500px;
   height: auto;
-  /* Sin fondo cuadrado - se integra con el fondo de la pÃ¡gina */
+  /* Sin fondo cuadrado - se integra con el fondo de la página */
   filter: drop-shadow(0 35px 80px rgba(6, 182, 212, 0.6))
     drop-shadow(0 25px 50px rgba(139, 92, 246, 0.5))
     drop-shadow(0 15px 35px rgba(16, 185, 129, 0.4)) drop-shadow(0 10px 25px rgba(0, 0, 0, 0.7));
@@ -2244,7 +2266,7 @@ html[lang="es-MX"] .show-when-mx {
   /* Mezcla natural con el fondo */
   mix-blend-mode: screen;
   opacity: 0.95;
-  /* OptimizaciÃ³n de rendimiento */
+  /* Optimización de rendimiento */
   will-change: transform, filter;
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
@@ -2293,7 +2315,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Hero Content con animaciÃ³n de entrada */
+/* Hero Content con animación de entrada */
 .hero-content {
   animation: heroContentSlide 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
@@ -2498,7 +2520,7 @@ html[lang="es-MX"] .show-when-mx {
   align-items: flex-start;
 }
 
-/* SÃ­guenos / Comunidad */
+/* Síguenos / Comunidad */
 .hero-community {
   margin-top: 2rem;
   padding: 2rem;
@@ -2585,7 +2607,7 @@ html[lang="es-MX"] .show-when-mx {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Colores especÃ­ficos por red social */
+/* Colores específicos por red social */
 .community-link[href*="instagram"]:hover {
   background: linear-gradient(135deg, #833ab4 0%, #e1306c 50%, #f77737 100%);
   border-color: #e1306c;
@@ -2700,7 +2722,7 @@ html[lang="es-MX"] .show-when-mx {
   animation-delay: 1.5s;
 }
 
-/* AnimaciÃ³n float reutilizable - usado en mÃºltiples secciones */
+/* Animación float reutilizable - usado en múltiples secciones */
 @keyframes float {
   0%,
   100% {
@@ -2752,7 +2774,7 @@ html[lang="es-MX"] .show-when-mx {
   color: #06b6d4;
 }
 
-/* Mantener compatibilidad con galerÃ­a antigua */
+/* Mantener compatibilidad con galería antigua */
 .hero-gallery {
   display: grid;
   gap: 1rem;
@@ -2901,7 +2923,7 @@ html[lang="es-MX"] .show-when-mx {
 @media (min-width: 1024px) {
   .hero-illustration-img-main {
     max-width: 700px;
-    /* Efecto cyberpunk mÃ¡s intenso en pantallas grandes */
+    /* Efecto cyberpunk más intenso en pantallas grandes */
     filter: drop-shadow(0 40px 100px rgba(6, 182, 212, 0.7))
       drop-shadow(0 30px 60px rgba(139, 92, 246, 0.6))
       drop-shadow(0 20px 45px rgba(16, 185, 129, 0.5)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
@@ -2963,7 +2985,7 @@ html[lang="es-MX"] .show-when-mx {
   font-size: var(--font-size-3xl); /* Mobile: 30px (1.875rem) */
   font-weight: 800;
   margin-bottom: var(--space-md);
-  line-height: 1.25; /* Mobile: Line-height mÃ¡s ajustado para mejor legibilidad */
+  line-height: 1.25; /* Mobile: Line-height más ajustado para mejor legibilidad */
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -3119,7 +3141,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* PartÃ­culas flotantes tecnolÃ³gicas */
+/* Partículas flotantes tecnológicas */
 .hero::after {
   content: "";
   position: absolute;
@@ -3225,7 +3247,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Hero Stats: EstadÃ­sticas animadas */
+/* Hero Stats: Estadísticas animadas */
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -3591,7 +3613,7 @@ html[lang="es-MX"] .show-when-mx {
   box-sizing: border-box;
 }
 
-/* Sección a pantalla completa con soporte de unidades modernas y fallback */
+/* Secci¿n a pantalla completa con soporte de unidades modernas y fallback */
 .section--full {
   min-height: max(520px, calc(100vh - var(--header-h, 72px) - var(--safe-top, 0px)));
   min-height: max(520px, calc(100svh - var(--header-h, 72px) - var(--safe-top, 0px)));
@@ -3675,7 +3697,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Section Value Proposition (destacado despuÃ©s del intro) */
+/* Section Value Proposition (destacado después del intro) */
 .section-value-prop {
   font-size: 1.25rem;
   font-weight: 700;
@@ -3689,7 +3711,7 @@ html[lang="es-MX"] .show-when-mx {
   border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
-/* Feature Solution (preview de soluciÃ³n en problema) */
+/* Feature Solution (preview de solución en problema) */
 .feature-solution {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -3700,7 +3722,7 @@ html[lang="es-MX"] .show-when-mx {
   line-height: 1.4;
 }
 
-/* Feature Subtitle (subtÃ­tulo en beneficios) */
+/* Feature Subtitle (subtítulo en beneficios) */
 .feature-subtitle {
   font-size: 0.875rem;
   font-weight: 700;
@@ -3825,7 +3847,7 @@ html[lang="es-MX"] .show-when-mx {
   animation-play-state: paused;
 }
 
-/* AnimaciÃ³n suave de flotaciÃ³n para ilustraciones */
+/* Animación suave de flotación para ilustraciones */
 @keyframes float-gentle {
   0%,
   100% {
@@ -3993,7 +4015,7 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .problem-resource-card ul li::before {
-  content: 'â€¢';
+  content: '•';
   margin-right: 0.35rem;
   color: var(--accent-cyan);
 }
@@ -4651,7 +4673,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* Animaciones por tarjeta (segÃºn orden en el grid) */
+/* Animaciones por tarjeta (según orden en el grid) */
 .info-grid .info-item:nth-child(1) .info-icon {
   animation: twinkle 3.2s ease-in-out infinite;
 }
@@ -4998,7 +5020,7 @@ html[lang="es-MX"] .show-when-mx {
   transform: translateY(-50%);
   z-index: 10;
   flex-shrink: 0;
-  width: 48px; /* Mobile: TamaÃ±o ajustado para touch */
+  width: 48px; /* Mobile: Tamaño ajustado para touch */
   height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(6, 182, 212, 0.95), rgba(16, 185, 129, 0.9));
@@ -5030,7 +5052,7 @@ html[lang="es-MX"] .show-when-mx {
 
 @media (min-width: 768px) {
   .carousel-btn {
-    width: 56px; /* Desktop: TamaÃ±o mÃ¡s grande */
+    width: 56px; /* Desktop: Tamaño más grande */
     height: 56px;
   }
 }
@@ -5112,7 +5134,7 @@ html[lang="es-MX"] .show-when-mx {
   z-index: 1;
 }
 
-/* Posiciones especÃ­ficas de las flechas del catÃ¡logo se heredan de .carousel-btn-prev y .carousel-btn-next */
+/* Posiciones específicas de las flechas del catálogo se heredan de .carousel-btn-prev y .carousel-btn-next */
 
 .product-card {
   scroll-snap-align: center;
@@ -5137,7 +5159,7 @@ html[lang="es-MX"] .show-when-mx {
   -webkit-tap-highlight-color: transparent;
 
   /* Mobile: Mejor legibilidad */
-  min-height: 380px; /* Altura mÃ­nima para contenido legible */
+  min-height: 380px; /* Altura mínima para contenido legible */
 }
 
 /* Efecto de hover en tarjetas - vitrina destacada */
@@ -5428,7 +5450,7 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .catalog-notes li::before {
-  content: "â€¢";
+  content: "•";
   color: var(--accent-cyan);
   font-size: 1.25rem;
   line-height: 1;
@@ -5588,13 +5610,13 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .carousel-btn-prev {
-  left: var(--space-xs); /* Mobile: Margen mÃ­nimo */
-  display: none; /* Mobile: Ocultar para evitar obstrucciÃ³n */
+  left: var(--space-xs); /* Mobile: Margen mínimo */
+  display: none; /* Mobile: Ocultar para evitar obstrucción */
 }
 
 .carousel-btn-next {
-  right: var(--space-xs); /* Mobile: Margen mÃ­nimo */
-  display: none; /* Mobile: Ocultar para evitar obstrucciÃ³n */
+  right: var(--space-xs); /* Mobile: Margen mínimo */
+  display: none; /* Mobile: Ocultar para evitar obstrucción */
 }
 
 @media (min-width: 768px) {
@@ -5618,7 +5640,7 @@ html[lang="es-MX"] .show-when-mx {
   position: relative;
 }
 
-/* LÃ­nea de conexiÃ³n entre dots */
+/* Línea de conexión entre dots */
 .carousel-dots::before {
   content: "";
   position: absolute;
@@ -5641,7 +5663,7 @@ html[lang="es-MX"] .show-when-mx {
 .carousel-dot {
   position: relative;
   z-index: 1;
-  width: 14px; /* Mobile: MÃ¡s grande para touch */
+  width: 14px; /* Mobile: Más grande para touch */
   height: 14px;
   border-radius: 50%;
   background: rgba(6, 182, 212, 0.15);
@@ -5653,11 +5675,11 @@ html[lang="es-MX"] .show-when-mx {
     0 0 8px rgba(6, 182, 212, 0.2),
     inset 0 1px 2px rgba(0, 0, 0, 0.3);
 
-  /* Mobile: Touch target mÃ­nimo */
+  /* Mobile: Touch target mínimo */
   min-width: var(--touch-target-min);
   min-height: var(--touch-target-min);
 
-  /* Ãrea tÃ¡ctil expandida invisible */
+  /* Área táctil expandida invisible */
   &::after {
     content: "";
     position: absolute;
@@ -5918,7 +5940,7 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .promo-beneficios li::before {
-  content: "âœ“";
+  content: "✓";
   color: var(--promo-accent);
   font-weight: 700;
   font-size: 1rem;
@@ -5992,7 +6014,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* AnimaciÃ³n float ya definida en lÃ­nea 1620 - reutilizada aquÃ­ */
+/* Animación float ya definida en línea 1620 - reutilizada aquí */
 
 @keyframes swing {
   0%,
@@ -6054,7 +6076,7 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .promo-anim-terminal-blink .promo-icono::after {
-  content: "â–‹";
+  content: "▋";
   animation: blink 1s step-end infinite;
 }
 
@@ -6605,7 +6627,7 @@ html[lang="es-MX"] .show-when-mx {
   backdrop-filter: var(--blur);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
-  /* SVGs usan currentColor; controlamos tamaÃ±o en svg */
+  /* SVGs usan currentColor; controlamos tamaño en svg */
   transition:
     transform var(--motion-duration-fast) var(--motion-ease),
     box-shadow var(--motion-duration-fast) var(--motion-ease),
@@ -6828,7 +6850,7 @@ html[lang="es-MX"] .show-when-mx {
   }
 }
 
-/* ===== Efectos de PartÃ­culas para Promos === */
+/* ===== Efectos de Partículas para Promos === */
 .promo-anim-confetti::before,
 .promo-anim-confetti::after {
   content: "";
@@ -6931,10 +6953,10 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 .promo-anim-bounce .promo-icono {
-  animation: bounce-icon 2s ease-in-out infinite; /* Reutilizando bounce-icon definido en lÃ­nea 971 */
+  animation: bounce-icon 2s ease-in-out infinite; /* Reutilizando bounce-icon definido en línea 971 */
 }
 
-/* AnimaciÃ³n bounce consolidada - ver bounce-icon lÃ­nea 971 */
+/* Animación bounce consolidada - ver bounce-icon línea 971 */
 
 .promo-anim-rotate-3d .promo-icono {
   animation: rotate-3d 4s ease-in-out infinite;
@@ -7074,7 +7096,7 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 /* ===== CLASES DE BADGES PARA PROMOCIONES ===== */
-/* Agregado automÃ¡ticamente por script de mejoras */
+/* Agregado automáticamente por script de mejoras */
 
 .badge--valor {
   background: #7ec8e3 !important;
@@ -7118,6 +7140,9 @@ html[lang="es-MX"] .show-when-mx {
 }
 
 /* ===== FIN DE CLASES DE BADGES ===== */
+
+
+
 
 
 

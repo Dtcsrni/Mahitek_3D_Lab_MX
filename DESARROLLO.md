@@ -179,7 +179,7 @@ Los snippets están en:
 
 Usa `mhk-` + Tab para auto-completar.
 
-## � Tips de Productividad
+## ¿ Tips de Productividad
 
 ### Atajos de Teclado
 
@@ -252,7 +252,11 @@ npm install -g live-server
 
 ---
 
-✨ **¡Todo configurado y listo para desarrollar!** ✨
+✨ **íTodo configurado y listo para desarrollar!** ✨
 
 **Primera vez:** `npm install && npm run dev`  
 **Siguiente:** `npm run dev` o `Ctrl+Shift+B`
+
+
+
+
