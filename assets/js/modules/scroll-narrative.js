@@ -452,3 +452,4 @@ export function getNarrativeInstance() {
 }
 
 export default ScrollNarrative;
+

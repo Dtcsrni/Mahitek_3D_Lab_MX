@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "combo-trio-stickers",
     "tipo": "combo",
@@ -9,7 +9,7 @@
     "ahorro": 0,
     "contenido": "3 llaveros PETG + 10 stickers",
     "icono": "assets/img/promo-combo-trio-stickers.svg",
-    "badge": "?? Compra inteligente",
+    "badge": "🧠 Compra inteligente",
     "color_acento": "#FFB347",
     "animacion": "glow",
     "destacado": true,
@@ -17,7 +17,7 @@
     "beneficios": [
       "Llaveros resistentes para uso diario",
       "Stickers laminados premium",
-      "Ideal para personalizar mochila + equipo"
+      "Ideal para personalizar mochila y equipo"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -46,7 +46,7 @@
     "ahorro": 0,
     "contenido": "4 llaveros PETG + 25 stickers",
     "icono": "assets/img/promo-combo-pack4-stickers.svg",
-    "badge": "?? Valor",
+    "badge": "💸 Valor",
     "color_acento": "#7EC8E3",
     "animacion": "bounce",
     "destacado": true,
@@ -54,7 +54,7 @@
     "beneficios": [
       "Volumen ideal para compartir",
       "Stickers para toda la banda",
-      "Regalo corporativo econámico"
+      "Regalo corporativo económico"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -83,7 +83,7 @@
     "ahorro": 0,
     "contenido": "5 llaveros PETG + 15 stickers + nombre en 1 pieza",
     "icono": "assets/img/promo-combo-quinteto-premium.svg",
-    "badge": "? Premium",
+    "badge": "⭐ Premium",
     "color_acento": "#9B59B6",
     "animacion": "pulse-soft",
     "destacado": true,
@@ -91,7 +91,7 @@
     "beneficios": [
       "Personalización incluida (1 llavero con nombre)",
       "Balance perfecto precio/cantidad",
-      "Presentacián premium"
+      "Presentación premium"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -115,21 +115,21 @@
     "id": "combo-sexta-envío-gratis",
     "tipo": "combo",
     "titulo": "Se arma, se arma",
-    "subtitulo": "Pack 6 + Pack 10 + EnvÍo gratis",
+    "subtitulo": "Pack 6 + Pack 10 + Envío gratis",
     "precio_regular": 220,
     "precio_base": 220,
     "ahorro": 0,
-    "contenido": "6 llaveros PETG + 10 stickers + EnvÍo gratis",
-    "icono": "??",
-    "badge": "?? EnvÍo gratis",
+    "contenido": "6 llaveros PETG + 10 stickers + Envío gratis",
+    "icono": "assets/img/promo-combo-pack6-envio.svg",
+    "badge": "🚚 Envío gratis",
     "color_acento": "#E74C3C",
     "animacion": "fade-scale",
     "destacado": false,
-    "descripcion": "Lote listo para equipo o intercambio. 6 llaveros PETG ($200) + 10 stickers ($20) + EnvÍo incluido.",
+    "descripcion": "Lote listo para equipo o intercambio. 6 llaveros PETG ($200) + 10 stickers ($20) + envío incluido.",
     "beneficios": [
-      "EnvÍo gratis asegurado",
+      "Envío gratis asegurado",
       "Volumen para equipos",
-      "Ideal para intercambio/sorteo"
+      "Ideal para intercambio o sorteo"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -153,27 +153,27 @@
     "id": "combo-quetzalcoatl-cultural",
     "tipo": "combo-temático",
     "titulo": "Orgullo mexa",
-    "subtitulo": "Quetzalcáatl mini 3 + 1 colgante + Pack 25",
+    "subtitulo": "Quetzalcóatl mini 3 + 1 colgante + Pack 25",
     "precio_regular": 180,
     "precio_base": 180,
     "ahorro": 0,
-    "contenido": "4 piezas coleccián + 25 stickers",
-    "icono": "??",
-    "badge": "???? Cultural",
+    "contenido": "4 piezas de colección + 25 stickers",
+    "icono": "assets/img/promo-combo-quetzal.svg",
+    "badge": "🌀 Cultural",
     "color_acento": "#10B981",
     "animacion": "glow",
     "destacado": false,
-    "descripcion": "Historia que se presume. Coleccián PETG (4 pzas, $130) + 25 stickers ($50). Opcián brillo +$10.",
+    "descripcion": "Historia que se presume. Colección PETG (4 pzas, $130) + 25 stickers ($50). Opción brillo +$10.",
     "beneficios": [
-      "diseño cultural exclusivo",
-      "Coleccián completa mini",
+      "Diseño cultural exclusivo",
+      "Colección completa mini",
       "Upgrade translúcido disponible (+$10)"
     ],
     "detalle_contenido": {
       "colección": {
         "cantidad": 4,
         "tipo": "3 mini + 1 colgante",
-        "tema": "Quetzalcáatl",
+        "tema": "Quetzalcóatl",
         "material": "PETG",
         "opcion_translúcido": 10
       },
@@ -196,15 +196,15 @@
     "precio_base": 150,
     "ahorro": 0,
     "contenido": "4 llaveros Zombies + 10 stickers",
-    "icono": "??",
-    "badge": "?? Textura marcada",
+    "icono": "assets/img/promo-combo-zombies.svg",
+    "badge": "🧟 Textura marcada",
     "color_acento": "#6366F1",
     "animacion": "slide-in",
     "destacado": false,
-    "descripcion": "Conversacián garantizada en mochila y libreta. Textura ánica + pegote sabroso.",
+    "descripcion": "Conversación garantizada en mochila y libreta. Textura única + pegote sabroso.",
     "beneficios": [
       "Relieve antideslizante",
-      "diseño de conversacián",
+      "Diseño de conversación",
       "Pack temático completo"
     ],
     "detalle_contenido": {
@@ -234,7 +234,7 @@
     "ahorro": 0,
     "contenido": "1 sticker adicional",
     "icono": "assets/img/promo-addon-sticker.svg",
-    "badge": "? Add-on",
+    "badge": "➕ Add-on",
     "color_acento": "#10B981",
     "animacion": "pulse-soft",
     "destacado": false,
@@ -264,13 +264,17 @@
     "precio_regular": 70,
     "precio_unitario": 35,
     "cantidad": 2,
-    "icono": "??",
-    "badge": "Regalo",
+    "icono": "assets/img/promo-pack-key-duo.svg",
+    "badge": "🎁 Regalo",
     "color_acento": "#FF6B9D",
     "animacion": "pulse-soft",
     "destacado": false,
     "descripcion": "Dos llaveros PETG de tu elección, empaque listo para obsequiar.",
-    "beneficios": ["Selección libre", "Empaque incluido", "Ideal para parejas"],
+    "beneficios": [
+      "Selección libre",
+      "Empaque incluido",
+      "Ideal para parejas"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -278,18 +282,22 @@
   {
     "id": "key-trio",
     "tipo": "pack",
-    "titulo": "Llavero PETG | TrÍo",
-    "subtitulo": "Punto dulce para colecciónar",
+    "titulo": "Llavero PETG | Trío",
+    "subtitulo": "Punto dulce para coleccionar",
     "precio_regular": 100,
     "precio_unitario": 33.33,
     "cantidad": 3,
-    "icono": "??",
-    "badge": "? Popular",
+    "icono": "assets/img/promo-pack-key-trio.svg",
+    "badge": "🔥 Popular",
     "color_acento": "#FFB347",
     "animacion": "glow",
     "destacado": true,
     "descripcion": "Tres llaveros PETG, el equilibrio perfecto entre variedad y precio.",
-    "beneficios": ["Mejor precio unitario", "Mix & match", "Stock rotativo"],
+    "beneficios": [
+      "Mejor precio unitario",
+      "Mix & match",
+      "Stock rotativo"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -302,13 +310,17 @@
     "precio_regular": 130,
     "precio_unitario": 32.5,
     "cantidad": 4,
-    "icono": "??",
-    "badge": "Valor",
+    "icono": "assets/img/promo-pack-key-4.svg",
+    "badge": "💠 Valor",
     "color_acento": "#7EC8E3",
     "animacion": "bounce",
     "destacado": false,
-    "descripcion": "Cuatro llaveros PETG, ideal para equipos o surtir coleccián.",
-    "beneficios": ["Menor costo/pieza", "Flexibilidad de diseños", "Regalos corporativos"],
+    "descripcion": "Cuatro llaveros PETG, ideal para equipos o surtir colección.",
+    "beneficios": [
+      "Menor costo por pieza",
+      "Flexibilidad de diseños",
+      "Regalos corporativos"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -321,13 +333,17 @@
     "precio_regular": 165,
     "precio_unitario": 33,
     "cantidad": 5,
-    "icono": "??",
-    "badge": "Eficiente",
+    "icono": "assets/img/promo-pack-key-5.svg",
+    "badge": "✅ Eficiente",
     "color_acento": "#9B59B6",
     "animacion": "slide-in",
     "destacado": false,
-    "descripcion": "Cinco llaveros PETG, cantidad áptima para grupos pequeáos.",
-    "beneficios": ["Balance cantidad/precio", "Personalización máltiple", "Equipos pequeáos"],
+    "descripcion": "Cinco llaveros PETG, cantidad óptima para grupos pequeños.",
+    "beneficios": [
+      "Balance cantidad/precio",
+      "Personalización múltiple",
+      "Equipos pequeños"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -340,13 +356,17 @@
     "precio_regular": 200,
     "precio_unitario": 33.33,
     "cantidad": 6,
-    "icono": "??",
-    "badge": "Evento",
+    "icono": "assets/img/promo-pack-key-6.svg",
+    "badge": "🎪 Evento",
     "color_acento": "#E74C3C",
     "animacion": "fade-scale",
     "destacado": false,
     "descripcion": "Seis llaveros PETG, paquete completo para activaciones y eventos.",
-    "beneficios": ["Volumen medio", "Rotacián de serie", "Unifica branding"],
+    "beneficios": [
+      "Volumen medio",
+      "Rotación de serie",
+      "Unifica branding"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -359,13 +379,17 @@
     "precio_regular": 130,
     "precio_unitario": 32.5,
     "cantidad": 4,
-    "icono": "??",
-    "badge": "?? temático",
+    "icono": "assets/img/promo-pack-zombies.svg",
+    "badge": "🧟 Temático",
     "color_acento": "#2ECC71",
     "animacion": "shake",
     "destacado": true,
-    "descripcion": "Cuatro llaveros de la serie Zombies, coleccián completa.",
-    "beneficios": ["Serie limitada", "diseños exclusivos", "Tema cohesivo"],
+    "descripcion": "Cuatro llaveros de la serie Zombies, colección completa.",
+    "beneficios": [
+      "Serie limitada",
+      "Diseños exclusivos",
+      "Tema cohesivo"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -373,18 +397,22 @@
   {
     "id": "key-quetzal-mini",
     "tipo": "pack-temático",
-    "titulo": "Llavero PETG Quetzalcáatl mini 3 + 1 colgante",
+    "titulo": "Llavero PETG Quetzalcóatl mini 3 + 1 colgante",
     "subtitulo": "Icono compacto",
     "precio_regular": 130,
     "precio_unitario": 32.5,
     "cantidad": 4,
-    "icono": "??",
-    "badge": "Cultural",
+    "icono": "assets/img/promo-pack-quetzal.svg",
+    "badge": "🪶 Cultural",
     "color_acento": "#F39C12",
     "animacion": "rotate-3d",
     "destacado": false,
-    "descripcion": "Tres llaveros mini + un colgante de Quetzalcáatl, sámbolo cultural.",
-    "beneficios": ["diseño prehispánico", "Tamaáo versátil", "Mix formatos"],
+    "descripcion": "Tres llaveros mini + un colgante de Quetzalcóatl, símbolo cultural.",
+    "beneficios": [
+      "Diseño prehispánico",
+      "Tamaño versátil",
+      "Mix de formatos"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -397,13 +425,17 @@
     "precio_regular": 100,
     "precio_unitario": 33.33,
     "cantidad": 3,
-    "icono": "??",
-    "badge": "??? Geek",
+    "icono": "assets/img/promo-pack-tux.svg",
+    "badge": "💻 Geek",
     "color_acento": "#1ABC9C",
     "animacion": "terminal-blink",
     "destacado": true,
     "descripcion": "Tres llaveros de Tux (Linux), ideal para developers y sysadmins.",
-    "beneficios": ["Comunidad open-source", "Estilo minimal", "diseño icánico"],
+    "beneficios": [
+      "Comunidad open-source",
+      "Estilo minimal",
+      "Diseño icónico"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -414,13 +446,17 @@
     "titulo": "Stasher PETG mini",
     "subtitulo": "Contenedor compacto para uso diario",
     "precio_regular": 100,
-    "icono": "??",
-    "badge": "EDC",
+    "icono": "assets/img/promo-stasher-mini.svg",
+    "badge": "🧳 EDC",
     "color_acento": "#34495E",
     "animacion": "flip",
     "destacado": false,
-    "descripcion": "Mini stasher impreso, ideal para llevar pastillas, audífonos, monedas.",
-    "beneficios": ["Ultraportútil", "Cierre seguro", "Varios colores"],
+    "descripcion": "Mini stasher impreso, ideal para llevar pastillas, audífonos o monedas.",
+    "beneficios": [
+      "Ultraportátil",
+      "Cierre seguro",
+      "Varios colores"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -429,16 +465,20 @@
     "id": "stasher-duo-priority",
     "tipo": "funcional",
     "titulo": "Stasher PETG mini | Dúo",
-    "subtitulo": "Priorizacián de cola incluida",
+    "subtitulo": "Priorización de cola incluida",
     "precio_regular": 200,
     "cantidad": 2,
-    "icono": "??",
-    "badge": "? Priority",
+    "icono": "assets/img/promo-stasher-duo.svg",
+    "badge": "⏱️ Priority",
     "color_acento": "#E67E22",
     "animacion": "pulse-fast",
     "destacado": true,
-    "descripcion": "Dos stashers mini con Producción prioritaria, ideal para organizar EDC.",
-    "beneficios": ["Producción acelerada", "Stock garantizado", "Personalización"],
+    "descripcion": "Dos stashers mini con producción prioritaria, ideal para organizar EDC.",
+    "beneficios": [
+      "Producción acelerada",
+      "Stock garantizado",
+      "Personalización"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -450,13 +490,17 @@
     "subtitulo": "Presencia limpia",
     "precio_regular": 100,
     "dimensiones": "6x8 cm",
-    "icono": "??",
-    "badge": "Decorativo",
+    "icono": "assets/img/promo-figura-med.svg",
+    "badge": "🖼️ Decorativo",
     "color_acento": "#95A5A6",
     "animacion": "float",
     "destacado": false,
-    "descripcion": "Figura decorativa mediana, perfecto balance entre detalle y tamaño.",
-    "beneficios": ["Acabado premium", "Máltiples motivos", "Escritorio/repisa"],
+    "descripcion": "Figura decorativa mediana, balance entre detalle y tamaño.",
+    "beneficios": [
+      "Acabado premium",
+      "Múltiples motivos",
+      "Para escritorio o repisa"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -469,13 +513,17 @@
     "precio_regular": 200,
     "cantidad": 2,
     "dimensiones": "6x8 cm c/u",
-    "icono": "??",
-    "badge": "? Priority",
+    "icono": "assets/img/promo-figura-duo.svg",
+    "badge": "⚡ Priority",
     "color_acento": "#C0392B",
     "animacion": "swing",
     "destacado": true,
     "descripcion": "Dos figuras medianas con prioridad en cola de impresión.",
-    "beneficios": ["Entrega acelerada", "Mix de diseños", "Regalo premium"],
+    "beneficios": [
+      "Entrega acelerada",
+      "Mix de diseños",
+      "Regalo premium"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -484,17 +532,21 @@
     "id": "key-outlet",
     "tipo": "outlet",
     "titulo": "Llavero PETG Outlet A-/B | 3 pzas",
-    "subtitulo": "Estútico leve, funcional al 100",
+    "subtitulo": "Estético leve, funcional al 100",
     "precio_regular": 100,
     "precio_unitario": 33.33,
     "cantidad": 3,
-    "icono": "???",
-    "badge": "?? Outlet",
+    "icono": "assets/img/promo-key-outlet.svg",
+    "badge": "♻️ Outlet",
     "color_acento": "#16A085",
     "animacion": "zoom-in",
     "destacado": false,
     "descripcion": "Tres llaveros con leves imperfecciones estéticas, funcionalidad completa.",
-    "beneficios": ["Precio reducido", "Calidad funcional", "Sostenible"],
+    "beneficios": [
+      "Precio reducido",
+      "Calidad funcional",
+      "Sostenible"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -503,15 +555,19 @@
     "id": "maker-72h",
     "tipo": "dinamica",
     "titulo": "Dinámica 72 h Maker",
-    "subtitulo": "Pedido =$300 ? upgrade translúcido en 1 pieza",
+    "subtitulo": "Pedido ≥ $300: upgrade translúcido en 1 pieza",
     "monto_minimo": 300,
-    "icono": "?",
-    "badge": "?? 72h",
+    "icono": "assets/img/promo-maker-72h.svg",
+    "badge": "⏳ 72h",
     "color_acento": "#F1C40F",
     "animacion": "countdown",
     "destacado": true,
     "descripcion": "Compras mayores a $300 reciben upgrade a filamento translúcido premium en una pieza.",
-    "beneficios": ["Material premium", "Sin costo extra", "Sorpresa garantizada"],
+    "beneficios": [
+      "Material premium",
+      "Sin costo extra",
+      "Sorpresa garantizada"
+    ],
     "desde": "2025-10-22",
     "hasta": "2025-10-25",
     "estado": "activo"
@@ -520,16 +576,23 @@
     "id": "weekend-trio",
     "tipo": "dinamica",
     "titulo": "Dinámica fin de semana",
-    "subtitulo": "Llavero PETG TrÍo $100 activo sáb/dom",
+    "subtitulo": "Llavero PETG Trío $100 activo sáb/dom",
     "precio_especial": 100,
-    "icono": "??",
-    "badge": "?? Finde",
+    "icono": "assets/img/promo-weekend-trio.svg",
+    "badge": "🎉 Finde",
     "color_acento": "#E91E63",
     "animacion": "confetti",
     "destacado": true,
     "descripcion": "Cada fin de semana, el pack de 3 llaveros a precio especial.",
-    "beneficios": ["Precio fijo", "Elige tus diseños", "Válido sáb/dom"],
-    "dias_activos": ["sábado", "domingo"],
+    "beneficios": [
+      "Precio fijo",
+      "Elige tus diseños",
+      "Válido sáb/dom"
+    ],
+    "dias_activos": [
+      "sábado",
+      "domingo"
+    ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
     "estado": "activo"
@@ -538,15 +601,19 @@
     "id": "back-to-school",
     "tipo": "estacional",
     "titulo": "Back to School/Oficina",
-    "subtitulo": "EnvÍo gratis =$400 sin tocar unitario",
+    "subtitulo": "Envío gratis ≥ $400 sin tocar unitario",
     "monto_minimo": 400,
-    "icono": "??",
-    "badge": "?? Regreso",
+    "icono": "assets/img/promo-back-to-school.svg",
+    "badge": "🎒 Regreso",
     "color_acento": "#3498DB",
     "animacion": "slide-bounce",
     "destacado": false,
-    "descripcion": "Compras mayores a $400 con EnvÍo gratis, precios unitarios intactos.",
-    "beneficios": ["EnvÍo gratis", "Sin aumento de precios", "Stock educativo"],
+    "descripcion": "Compras mayores a $400 con envío gratis, precios unitarios intactos.",
+    "beneficios": [
+      "Envío gratis",
+      "Sin aumento de precios",
+      "Stock educativo"
+    ],
     "desde": "2025-08-01",
     "hasta": "2025-09-30",
     "estado": "inactivo"
@@ -554,44 +621,56 @@
   {
     "id": "envío-online",
     "tipo": "permanente",
-    "titulo": "EnvÍo online",
-    "subtitulo": "Gratis =$200",
+    "titulo": "Envío online",
+    "subtitulo": "Gratis ≥ $200",
     "monto_minimo": 200,
-    "icono": "??",
-    "badge": "?? EnvÍo",
+    "icono": "assets/img/promo-envio-online.svg",
+    "badge": "🚚 Envío",
     "color_acento": "#27AE60",
     "animacion": "slide-right",
     "destacado": false,
-    "descripcion": "Todas las compras online mayores a $200 incluyen EnvÍo sin costo adicional.",
-    "beneficios": ["Sin costo oculto", "Cobertura amplia", "Rastreo incluido"],
+    "descripcion": "Todas las compras online mayores a $200 incluyen envío sin costo adicional.",
+    "beneficios": [
+      "Sin costo oculto",
+      "Cobertura amplia",
+      "Rastreo incluido"
+    ],
     "estado": "activo"
   },
   {
     "id": "click-pick-sticker",
     "tipo": "permanente",
     "titulo": "Click & Pick",
-    "subtitulo": "Sticker edicián limitada al recoger",
-    "icono": "??",
-    "badge": "?? Regalo",
+    "subtitulo": "Sticker edición limitada al recoger",
+    "icono": "assets/img/promo-click-pick.svg",
+    "badge": "🎁 Regalo",
     "color_acento": "#8E44AD",
     "animacion": "pop",
     "destacado": true,
-    "descripcion": "Recoge en ubicacián y lleva un sticker edicián limitada de regalo.",
-    "beneficios": ["Sticker exclusivo", "Sin EnvÍo", "Inmediato"],
+    "descripcion": "Recoge en ubicación y lleva un sticker edición limitada de regalo.",
+    "beneficios": [
+      "Sticker exclusivo",
+      "Sin envío",
+      "Entrega inmediata"
+    ],
     "estado": "activo"
   },
   {
     "id": "preventa-48h",
     "tipo": "permanente",
     "titulo": "Preventa Programada",
-    "subtitulo": "Mismo precio + herraje Pro o 1 Personalización en 1 pieza",
-    "icono": "??",
-    "badge": "? Preventa",
+    "subtitulo": "Mismo precio + herraje Pro o 1 personalización en 1 pieza",
+    "icono": "assets/img/promo-preventa.svg",
+    "badge": "🗓️ Preventa",
     "color_acento": "#E74C3C",
     "animacion": "pulse-grow",
     "destacado": true,
-    "descripcion": "Ordena con anticipacián y recibe herraje premium o Personalización gratis.",
-    "beneficios": ["Upgrade incluido", "Planificacián", "Sin costo extra"],
+    "descripcion": "Ordena con anticipación y recibe herraje premium o personalización gratis.",
+    "beneficios": [
+      "Upgrade incluido",
+      "Planificación",
+      "Sin costo extra"
+    ],
     "tiempo_minimo": "Agenda previa",
     "estado": "activo"
   },
@@ -599,14 +678,18 @@
     "id": "club-mahitek",
     "tipo": "lealtad",
     "titulo": "Club Mahitek",
-    "subtitulo": "1 punto/$20 ¿ 100 pts = $20 saldo ¿ Tope $50 por orden",
-    "icono": "??",
-    "badge": "?? Club",
+    "subtitulo": "1 punto/$20 → 100 pts = $20 saldo · Tope $50 por orden",
+    "icono": "assets/img/promo-club.svg",
+    "badge": "🎯 Club",
     "color_acento": "#9B59B6",
     "animacion": "sparkle",
     "destacado": true,
-    "descripcion": "Acumula puntos con cada compra y redime saldo en futuras árdenes.",
-    "beneficios": ["1 punto por cada $20", "100 pts = $20 de saldo", "Tope $50/orden"],
+    "descripcion": "Acumula puntos con cada compra y redime saldo en futuras órdenes.",
+    "beneficios": [
+      "1 punto por cada $20",
+      "100 pts = $20 de saldo",
+      "Tope $50/orden"
+    ],
     "puntos_por_peso": 0.05,
     "conversion_pts_saldo": 0.2,
     "tope_descuento": 50,
@@ -616,15 +699,19 @@
     "id": "nivel-pro",
     "tipo": "lealtad",
     "titulo": "Nivel PRO",
-    "subtitulo": "3 compras/60 dÍas o $1,500 acumulado",
-    "requisitos": "3 compras en 60 dÍas o $1,500 acumulado",
-    "icono": "??",
-    "badge": "? PRO",
+    "subtitulo": "3 compras/60 días o $1,500 acumulado",
+    "requisitos": "3 compras en 60 días o $1,500 acumulado",
+    "icono": "assets/img/promo-nivel-pro.svg",
+    "badge": "👑 PRO",
     "color_acento": "#F39C12",
     "animacion": "crown-glow",
     "destacado": true,
-    "descripcion": "Alcanza nivel PRO y accede a beneficios exclusivos: prioridad, revisián de archivo y reimpresión 30 dÍas.",
-    "beneficios": ["Cola prioritaria", "Revisián túcnica incluida", "GarantÍa reimpresión 30d"],
+    "descripcion": "Alcanza nivel PRO y accede a beneficios exclusivos: prioridad, revisión de archivo y reimpresión 30 días.",
+    "beneficios": [
+      "Cola prioritaria",
+      "Revisión técnica incluida",
+      "Garantía reimpresión 30d"
+    ],
     "compras_requeridas": 3,
     "dias_periodo": 60,
     "monto_alternativo": 1500,
@@ -634,16 +721,20 @@
     "id": "referidos-p2p",
     "tipo": "referidos",
     "titulo": "Referidos P2P",
-    "subtitulo": "Quien refiere $50 saldo ¿ Referido EnvÍo gratis o $40 saldo (=$300)",
-    "icono": "??",
-    "badge": "?? Referir",
+    "subtitulo": "Quien refiere $50 saldo · Referido: envío gratis o $40 saldo (≥ $300)",
+    "icono": "assets/img/promo-referidos.svg",
+    "badge": "🤝 Referir",
     "color_acento": "#1ABC9C",
     "animacion": "handshake",
     "destacado": true,
-    "descripcion": "Refiere a un amigo: tú ganas $50 de saldo, tu amigo elige EnvÍo gratis o $40 de saldo en pedido =$300.",
-    "beneficios": ["$50 para quien refiere", "EnvÍo gratis o $40 saldo para referido", "Pedido mánimo $300"],
+    "descripcion": "Refiere a un amigo: tú ganas $50 de saldo, tu amigo elige envío gratis o $40 de saldo en pedido ≥ $300.",
+    "beneficios": [
+      "$50 para quien refiere",
+      "Envío gratis o $40 saldo para referido",
+      "Pedido mínimo $300"
+    ],
     "saldo_referente": 50,
-    "beneficio_referido_opcion1": "EnvÍo gratis",
+    "beneficio_referido_opcion1": "Envío gratis",
     "beneficio_referido_opcion2": 40,
     "monto_minimo_referido": 300,
     "estado": "activo"
@@ -658,7 +749,7 @@
     "ahorro": 0,
     "contenido": "10 stickers laminados 5x5 cm",
     "icono": "assets/img/promo-pack-stickers-10.svg",
-    "badge": "??? Remata carrito",
+    "badge": "🛒 Remata carrito",
     "color_acento": "#06B6D4",
     "animacion": "slide-in",
     "destacado": false,
@@ -690,7 +781,7 @@
     "ahorro": 0,
     "contenido": "15 stickers laminados 5x5 cm",
     "icono": "assets/img/promo-pack-stickers-15.svg",
-    "badge": "?? Equilibrio",
+    "badge": "🟢 Equilibrio",
     "color_acento": "#FB923C",
     "animacion": "pulse-soft",
     "destacado": false,
@@ -722,7 +813,7 @@
     "ahorro": 0,
     "contenido": "25 stickers laminados 5x5 cm",
     "icono": "assets/img/promo-pack-stickers-25.svg",
-    "badge": "?? Volumen",
+    "badge": "📦 Volumen",
     "color_acento": "#E74C3C",
     "animacion": "bounce",
     "destacado": true,
@@ -745,10 +836,3 @@
     "estado": "activo"
   }
 ]
-
-
-
-
-
-
-
