@@ -1,0 +1,61 @@
+name: 📊 Lighthouse (Programado / Manual)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1" # Lunes 12:00 UTC
+
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    name: 📊 Auditoría Lighthouse (no bloqueante)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 📦 Instalar dependencias
+        run: npm ci || npm install
+
+      - name: 📊 Ejecutar Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        continue-on-error: true
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: false
+          temporaryPublicStorage: true
+
+      - name: 📦 Subir artefactos de Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse_report
+          path: |
+            .lighthouseci/**
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: 🧩 Generar badges Lighthouse (Node script)
+        if: always()
+        run: node scripts/generar-lighthouse-badges.js
+
+      - name: 💾 Commit de badges (solo schedule)
+        if: always() && github.event_name == 'schedule'
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "docs/badges/*.json"
+          message: "chore(ci): actualizar badges de Lighthouse"
+
