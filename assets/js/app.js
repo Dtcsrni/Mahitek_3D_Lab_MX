@@ -1,7 +1,7 @@
 // ===== Configuration =====
 const CONFIG = {
   PRICE_MARKUP: 1.0, // Ajusta si requieres recargo adicional
-  PRICE_STEP: 10, // Redondea al m¿ltiplo de 10 MXN Más cercano
+  PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
   // P¿gina de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
@@ -198,8 +198,8 @@ const TextosSistema = {
       en: 'Save'
     },
     'promos.valido': {
-      'es-MX': 'V¿lido hasta',
-      es: 'V¿lido hasta',
+      'es-MX': 'Válido hasta',
+      es: 'Válido hasta',
       en: 'Valid until'
     },
 
@@ -210,8 +210,8 @@ const TextosSistema = {
       en: 'All'
     },
     'filtros.categoria': {
-      'es-MX': 'Categor¿a',
-      es: 'Categor¿a',
+      'es-MX': 'Categoría',
+      es: 'Categoría',
       en: 'Category'
     },
     'filtros.limpiar': {
@@ -668,7 +668,7 @@ function renderProducts() {
       </div>
   <h3 class="product-name">${safeName}</h3>
   <p class="product-price">${product.precio_rango_mxn ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN` : `$${escapeHTML(String(product.precio_mxn))} MXN`}</p>
-  <p class="product-price-note">Rango por Personalización, tama¿o/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
+  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
       <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
       ${detailMarkup}
       ${tagsMarkup}
@@ -745,7 +745,7 @@ function initCatalogCarousel(totalProducts) {
     }
   }
 
-  // Calcular total de p¿ginas
+  // Calcular total de páginas
   function getTotalPages() {
     return Math.ceil(totalProducts / itemsPerView);
   }
@@ -949,7 +949,7 @@ async function loadPromos() {
   if (!promos || promos.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
       </div>
     `;
@@ -969,7 +969,7 @@ async function loadPromos() {
   if (activePromos.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>No hay promociones activas en este momento. ¿Escríbenos y te contamos qué estamos creando!</p>
       </div>
     `;
@@ -1031,7 +1031,7 @@ async function loadPromos() {
       if (promo.tipo === 'permanente') {
         validezHTML = '<p class="promo-validez">? Promoci¿n permanente</p>';
       } else if (promo.desde && promo.hasta) {
-        validezHTML = `<p class="promo-validez">?? V¿lido ${escapeHTML(formatDate(promo.desde))} ¿ ${escapeHTML(formatDate(promo.hasta))}</p>`;
+        validezHTML = `<p class="promo-validez">⏳ Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
       }
 
       // CTA
@@ -1332,7 +1332,7 @@ async function loadFAQ() {
   if (!faqData || faqData.length === 0) {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparaci¿n" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>A¿n estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
       </div>
     `;
@@ -1760,7 +1760,7 @@ function setupLazyLoading() {
     }
   );
 
-  // Observar secciones no-cr¿ticas
+  // Observar secciones no-críticas
   const promosSection = document.getElementById('promos');
   const faqSection = document.getElementById('faq');
 
@@ -1784,10 +1784,10 @@ async function init() {
   hydrateEmails();
   injectOrganizationSchema();
 
-  // Cargar solo datos cr¿ticos inmediatamente
+  // Cargar solo datos críticos inmediatamente
   await Promise.all([loadProducts(), loadSocialLinks()]);
 
-  // Configurar lazy loading para secciones no-cr¿ticas
+  // Configurar lazy loading para secciones no-críticas
   setupLazyLoading();
 
   // Aplicar estado desde la URL y sincronizar cambios

@@ -1,4 +1,4 @@
-// Bootstrapping de m¿dulos ES6 sin romper app.js legacy
+// Bootstrapping de módulos ES6 sin romper app.js legacy
 // Este archivo se carga como type="module" y orquesta las inicializaciones
 
 import { initScrollNarrative } from './modules/scroll-narrative.js';
@@ -67,7 +67,7 @@ const onReady = async () => {
     // Inicializar DataManager
     DataManager.init();
 
-    // Precarga de datos cr¿ticos (no bloqueante)
+    // Precarga de datos críticos (no bloqueante)
     DataManager.preloadCritical().catch(err => {
       console.warn('[Boot] Error en precarga:', err);
     });
@@ -93,9 +93,9 @@ const onReady = async () => {
     window.MahitekUI = UIComponents;
     window.MahitekData = DataManager;
 
-    ConfigUtils.log('Boot completado. Versi¿n:', CONFIG.VERSION);
+    ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
   } catch (err) {
-    console.error('[Boot] Error inicializando m¿dulos:', err);
+    console.error('[Boot] Error inicializando módulos:', err);
   }
 };
 
