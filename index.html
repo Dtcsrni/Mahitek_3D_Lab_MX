@@ -382,49 +382,138 @@
             <!-- Insignia Hecho en México: visible solo en es-MX -->
             <div class="badge-made-mx show-when-mx" role="img" aria-label="Hecho en México">
               <svg class="badge-made-mx-svg" viewBox="0 0 160 32" width="160" height="32" aria-hidden="true">
+                <defs>
+                  <linearGradient id="mx-badge-border" x1="0" y1="0" x2="160" y2="0">
+                    <stop offset="0%" stop-color="rgba(6,182,212,0.65)" />
+                    <stop offset="55%" stop-color="rgba(16,185,129,0.55)" />
+                    <stop offset="100%" stop-color="rgba(139,92,246,0.45)" />
+                  </linearGradient>
+                  <linearGradient id="mx-badge-seal" x1="0" y1="0" x2="24" y2="24">
+                    <stop offset="0%" stop-color="rgba(6,182,212,0.9)" />
+                    <stop offset="100%" stop-color="rgba(16,185,129,0.9)" />
+                  </linearGradient>
+                  <clipPath id="mx-badge-flag-clip">
+                    <rect x="0" y="0" width="28" height="16" rx="3" ry="3" />
+                  </clipPath>
+                </defs>
+
                 <!-- Placa base -->
                 <rect
                   x="0.5"
                   y="0.5"
                   width="159"
                   height="31"
-                  rx="8"
-                  ry="8"
-                  fill="rgba(8,12,18,0.6)"
-                  stroke="rgba(6,182,212,0.35)"
+                  rx="10"
+                  ry="10"
+                  fill="rgba(8,12,18,0.62)"
+                  stroke="url(#mx-badge-border)"
                   stroke-width="1"
                 />
-                <!-- Icono circular con dienteado (simulación de engrane) -->
+                <path d="M10 7H150" stroke="rgba(224,242,254,0.09)" stroke-width="1" stroke-linecap="round" />
+
+                <!-- Sello (izquierda) -->
                 <g transform="translate(8,4)">
-                  <circle cx="12" cy="12" r="11.5" fill="none" stroke="rgba(6,182,212,0.6)" stroke-width="1" />
                   <circle
                     cx="12"
                     cy="12"
-                    r="9"
+                    r="11.5"
+                    fill="rgba(6,182,212,0.06)"
+                    stroke="url(#mx-badge-seal)"
+                    stroke-width="1.2"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9.2"
                     fill="none"
-                    stroke="rgba(6,182,212,0.35)"
-                    stroke-width="2"
-                    stroke-dasharray="2 3"
+                    stroke="rgba(224,242,254,0.22)"
+                    stroke-width="1.8"
+                    stroke-dasharray="1.2 2.6"
                   />
-                  <!-- Águila abstracta (geométrica) -->
+                  <g stroke="rgba(6,182,212,0.55)" stroke-width="1" stroke-linecap="round">
+                    <path d="M12 2.6V4.6" />
+                    <path d="M12 19.4V21.4" />
+                    <path d="M2.6 12H4.6" />
+                    <path d="M19.4 12H21.4" />
+                  </g>
+
+                  <g
+                    opacity="0.7"
+                    stroke="rgba(224,242,254,0.28)"
+                    stroke-width="0.8"
+                    fill="none"
+                    stroke-linecap="round"
+                  >
+                    <path d="M7.4 8.6H9.6" />
+                    <path d="M14.4 15.6H16.6" />
+                    <path d="M8.2 16.2V14.2" />
+                    <path d="M15.8 7.8V9.8" />
+                    <circle cx="9.6" cy="8.6" r="0.9" fill="rgba(6,182,212,0.45)" stroke="none" />
+                    <circle cx="16.6" cy="15.6" r="0.9" fill="rgba(16,185,129,0.45)" stroke="none" />
+                  </g>
+
                   <path
-                    d="M7 15 L11 9 L16 11 L19 10 L17 13 L18 14 L14 15 L12 18 Z"
-                    fill="rgba(6,182,212,0.35)"
-                    stroke="rgba(6,182,212,0.75)"
-                    stroke-width="1"
+                    d="M12 6.3l4.9 2v4.1c0 3.1-2.2 5.4-4.9 6.4-2.7-1-4.9-3.3-4.9-6.4V8.3z"
+                    fill="rgba(8,12,18,0.35)"
+                    stroke="rgba(6,182,212,0.7)"
+                    stroke-width="0.9"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M8.6 15.8c.8 1.4 2 2.4 3.4 3" stroke="#006847" stroke-width="0.7" stroke-linecap="round" />
+                  <path d="M15.4 15.8c-.8 1.4-2 2.4-3.4 3" stroke="#006847" stroke-width="0.7" stroke-linecap="round" />
+                  <circle cx="10.1" cy="16.9" r="0.55" fill="#006847" opacity="0.85" />
+                  <circle cx="13.9" cy="16.9" r="0.55" fill="#006847" opacity="0.85" />
+
+                  <path
+                    d="M9.1 13.4l2.2-2.4 1.5.9 2.5-.5-1.2 1.6 1 1.4-2.5.6-1.7 1.9-1.8-1.1z"
+                    fill="rgba(224,242,254,0.86)"
+                    stroke="rgba(6,182,212,0.55)"
+                    stroke-width="0.7"
+                    stroke-linejoin="round"
                   />
                 </g>
-                <!-- Texto HECHO EN MÉXICO -->
-                <g transform="translate(40,9)" fill="rgba(224, 242, 254, 0.9)">
-                  <text x="0" y="8" font-size="8.5" font-weight="700" letter-spacing="1.2">HECHO EN</text>
-                  <text x="0" y="19" font-size="10" font-weight="800" letter-spacing="1.1">MÉXICO</text>
+
+                <!-- Texto -->
+                <g transform="translate(40,9)" fill="rgba(224, 242, 254, 0.92)">
+                  <text x="0" y="8" font-size="8.6" font-weight="750" letter-spacing="1.25">HECHO EN</text>
+                  <text x="0" y="19" font-size="10.2" font-weight="850" letter-spacing="1.05">MÉXICO</text>
                 </g>
-                <!-- Micro franja tricolor (solo visible dentro del badge) -->
-                <g transform="translate(130,13)">
-                  <rect x="0" y="0" width="24" height="6" rx="2" ry="2" fill="rgba(255,255,255,0.06)" />
-                  <rect x="1" y="1" width="7" height="4" fill="#006847" />
-                  <rect x="9" y="1" width="7" height="4" fill="#FFFFFF" opacity="0.9" />
-                  <rect x="17" y="1" width="6" height="4" fill="#CE1126" />
+                <path
+                  d="M40 25H120"
+                  stroke="rgba(224,242,254,0.12)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-dasharray="2 4"
+                />
+
+                <!-- Bandera (derecha) - tricolor vertical con escudo simplificado centrado -->
+                <g transform="translate(124,8)">
+                  <g clip-path="url(#mx-badge-flag-clip)">
+                    <rect x="0" y="0" width="28" height="16" fill="#FFFFFF" />
+                    <rect x="0" y="0" width="9.3333" height="16" fill="#006847" />
+                    <rect x="18.6666" y="0" width="9.3334" height="16" fill="#CE1126" />
+                    <g transform="translate(14,8)">
+                      <circle r="2.25" fill="rgba(8,12,18,0.18)" />
+                      <path d="M-1.4.2l.9-1 .7.4 1.1-.2-.5.7.4.5-1 .2-.7.8-.8-.4z" fill="#8b5e3c" opacity="0.95" />
+                      <path
+                        d="M-2.2 1.6c.9 1 2.1 1.5 4.4 1.5"
+                        stroke="#006847"
+                        stroke-width="0.5"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="27"
+                    height="15"
+                    rx="3"
+                    ry="3"
+                    fill="none"
+                    stroke="rgba(224,242,254,0.22)"
+                  />
                 </g>
               </svg>
             </div>
@@ -1350,26 +1439,11 @@
       <!-- ===== SECCIÓN: PREGUNTAS FRECUENTES ===== -->
       <section id="faq" class="section section-alt section-accent--green">
         <div class="container">
-          <div class="faq-hero card glass" data-animate="fade-up">
-            <div class="faq-hero__badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9.09 9a3 3 0 1 1 4.83 3.36c-.55.49-.92 1.16-.92 1.91v.23" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-              </svg>
-              Centro de ayuda Mahitek
-            </div>
-            <div class="faq-hero__content">
-              <h2 class="section-title">¿Resolvemos tus dudas?</h2>
-              <p>
-                Respuestas rápidas sobre <span class="accent-text">personalización, tiempos, materiales y costos</span>.
-                Si necesitas algo más, escríbenos y te ayudamos en minutos.
-              </p>
-            </div>
-            <div class="faq-hero__actions">
-              <a href="#contacto" class="btn btn-primary">Escríbenos ahora</a>
-              <a href="#faq-list" class="btn btn-ghost">Explorar preguntas</a>
-            </div>
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title" id="faq-title">Preguntas frecuentes</h2>
+            <p class="section-intro">
+              Respuestas rápidas sobre <span class="accent-text">personalización, tiempos, materiales y costos</span>.
+            </p>
           </div>
 
           <ul class="faq-insights" data-animate="fade-up">
@@ -1469,6 +1543,28 @@
                 >Abrir chat</a
               >
             </aside>
+          </div>
+
+          <div class="faq-hero card glass" data-animate="fade-up">
+            <div class="faq-hero__badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 1 1 4.83 3.36c-.55.49-.92 1.16-.92 1.91v.23" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              Centro de ayuda Mahitek
+            </div>
+            <div class="faq-hero__content">
+              <h3 class="section-title">¿Resolvemos tus dudas?</h3>
+              <p>
+                Si necesitas algo más, escríbenos y te ayudamos en minutos. También puedes volver a la lista de
+                preguntas para explorar por categoría.
+              </p>
+            </div>
+            <div class="faq-hero__actions">
+              <a href="#contacto" class="btn btn-primary">Escríbenos ahora</a>
+              <a href="#faq-search" class="btn btn-ghost">Volver a preguntas</a>
+            </div>
           </div>
 
           <!-- Contenedor reservado para JSON-LD (sin inline script por CSP) -->
