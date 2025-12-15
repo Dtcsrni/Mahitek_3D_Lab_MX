@@ -73,6 +73,15 @@ jobs:
         with:
           node-version: '20'
 
+      - name: 📦 Instalar dependencias (para validadores)
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "⚠️ package-lock.json no encontrado; usando npm install."
+            npm install
+          fi
+
       - name: 🏗️ Preparar carpeta public/
         run: node scripts/build-public.js
 
