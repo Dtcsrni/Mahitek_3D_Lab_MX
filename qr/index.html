@@ -1,24 +1,12 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mahitek 3D Lab — Redirigiendo...</title>
     <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-Y46M6J1EWS', {
-        transport_type: 'beacon'
-        // No anonymize_ip para rastreo completo
-      });
-    </script>
+    <script src="./qr.js" defer></script>
 
     <style>
       * {
@@ -217,7 +205,9 @@
           <div class="spinner"></div>
         </div>
 
-        <a href="#" id="manualLink" class="manual-link"> Ir ahora → </a>
+        <a href="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/" id="manualLink" class="manual-link">
+          Ir ahora →
+        </a>
 
         <div class="info">
           Si no se redirige automáticamente en 2 segundos,<br />
@@ -226,81 +216,5 @@
       </div>
     </div>
 
-    <script>
-      // Configuración
-      const BASE_URL = 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/';
-      const REDIRECT_DELAY = 1500; // 1.5 segundos
-
-      // Leer parámetros del QR
-      const urlParams = new URLSearchParams(window.location.search);
-      const utm_campaign = urlParams.get('c') || 'default';
-      const utm_medium = urlParams.get('m') || 'print';
-      const utm_source = urlParams.get('s') || 'qr';
-
-      // Construir URL final con UTM
-      function buildFinalURL() {
-        const url = new URL(BASE_URL);
-        url.searchParams.set('utm_source', utm_source);
-        url.searchParams.set('utm_medium', utm_medium);
-        url.searchParams.set('utm_campaign', utm_campaign);
-        return url.toString();
-      }
-
-      const FINAL_URL = buildFinalURL();
-
-      // Actualizar enlace manual
-      document.getElementById('manualLink').href = FINAL_URL;
-
-      // Función de redirección
-      function performRedirect() {
-        try {
-          // Enviar evento a GA4
-          gtag('event', 'qr_redirect', {
-            qr_source: utm_source,
-            qr_medium: utm_medium,
-            qr_campaign: utm_campaign,
-            destination: FINAL_URL
-          });
-
-          console.log('✓ Evento GA4 enviado:', {
-            qr_source: utm_source,
-            qr_medium: utm_medium,
-            qr_campaign: utm_campaign,
-            destination: FINAL_URL
-          });
-        } catch (error) {
-          console.warn('⚠ Error al enviar evento GA4:', error);
-        }
-
-        // Redirigir después del delay
-        setTimeout(() => {
-          location.replace(FINAL_URL);
-        }, REDIRECT_DELAY);
-      }
-
-      // Ejecutar al cargar el DOM
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', performRedirect);
-      } else {
-        performRedirect();
-      }
-
-      // Permitir redirección manual inmediata
-      document.getElementById('manualLink').addEventListener('click', function (e) {
-        e.preventDefault();
-
-        try {
-          gtag('event', 'qr_manual_click', {
-            qr_source: utm_source,
-            qr_medium: utm_medium,
-            qr_campaign: utm_campaign
-          });
-        } catch (error) {
-          console.warn('⚠ Error al enviar evento manual:', error);
-        }
-
-        location.replace(FINAL_URL);
-      });
-    </script>
   </body>
 </html>

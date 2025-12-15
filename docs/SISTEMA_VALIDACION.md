@@ -25,6 +25,15 @@ Sistema unificado de validación que combina validaciones de sintaxis, integrida
 .\scripts\validar-todo.ps1 -SinSonidos
 ```
 
+## ✅ Validación oficial (CI/CD)
+
+El pipeline de GitHub Actions usa estas validaciones NPM (recomendadas para agentes):
+
+```bash
+npm run validate        # Prettier --check + validate-html + validate-links
+npm run validate:public # Build a public/ + validar HTML + links del deploy
+```
+
 ## 📊 Módulos de Validación
 
 ### 🔹 Módulo 1: Sintaxis y Estructura
@@ -51,7 +60,7 @@ Sistema unificado de validación que combina validaciones de sintaxis, integrida
 - ⚠️ **console.log sin protección DEBUG_MODE**
 - ✅ Función escapeHTML() presente
 - ✅ Content Security Policy (CSP)
-- ✅ Headers de seguridad (\_headers)
+- ✅ Headers de seguridad (opcional: `_headers` para hosts compatibles; GitHub Pages lo ignora)
 
 ### 🔹 Módulo 4: Integridad de Datos
 
@@ -138,7 +147,7 @@ Solo validaciones de seguridad
 - eval() y new Function()
 - document.write()
 - console.log expuestos
-- CSP y headers de seguridad
+- CSP y headers de seguridad (opcional: `_headers` para hosts compatibles)
 
 **Ideal para:** Auditorías de seguridad, antes de deploy
 

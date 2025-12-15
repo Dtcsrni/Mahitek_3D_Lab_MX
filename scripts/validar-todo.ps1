@@ -502,14 +502,17 @@ function Test-SecurityVulnerabilities {
         Test-Warn "Función escapeHTML() no encontrada" -Details "Recomendado para sanitización XSS"
     }
     
-    # ═══ CSP ═══
-    if (Test-Path 'index.html') {
-        $html = Get-Content 'index.html' -Raw
-        if ($html -match 'Content-Security-Policy') {
-            Test-Pass "Content Security Policy configurado" -Silent
+    # ═══ CSP (opcional, depende del host) ═══
+    # Nota: GitHub Pages ignora `_headers`. Esta validación solo confirma su presencia para hosts compatibles.
+    if (Test-Path '_headers') {
+        $headers = Get-Content '_headers' -Raw
+        if ($headers -match '(?m)^\s*Content-Security-Policy:') {
+            Test-Pass "CSP definido en _headers (host-dependiente)" -Silent
         } else {
-            Test-Warn "CSP no configurado" -Details "Recomendado para prevenir XSS"
+            Test-Warn "CSP no encontrado en _headers" -Details "Recomendado para prevenir XSS (si tu host soporta headers)"
         }
+    } else {
+        Test-Warn "_headers no existe" -Details "GitHub Pages lo ignora; para CSP usa Netlify/Cloudflare Pages u otro host con headers"
     }
     
     # ═══ HEADERS DE SEGURIDAD ═══

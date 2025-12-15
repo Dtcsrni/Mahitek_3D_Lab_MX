@@ -12,8 +12,8 @@
 | ------------------------ | --------------- | ---------------------------------------- |
 | **XSS Prevention**       | ✅ SEGURO       | Todas las superficies sanitizadas        |
 | **URL Injection**        | ✅ SEGURO       | sanitizeURL() implementado               |
-| **CSP**                  | ✅ IMPLEMENTADO | Política estricta en headers             |
-| **Headers de Seguridad** | 🟡 3/4          | X-Frame, X-Content-Type, Referrer-Policy |
+| **CSP**                  | ✅ IMPLEMENTADO | Política en `_headers` (hosts compatibles) |
+| **Headers de Seguridad** | ✅ 4/4          | X-Frame, X-Content-Type, Referrer-Policy, Permissions-Policy |
 | **innerHTML**            | ✅ VALIDADO     | Comentarios de supresión en templates    |
 | **eval()/Function()**    | ✅ NO USADO     | Sin construcción dinámica de código      |
 | **console.log**          | 🟡 PARCIAL      | 9 warnings apropiados (error handling)   |
@@ -117,16 +117,16 @@ Content-Security-Policy:
   style-src 'self';
   connect-src 'self' https://www.google-analytics.com;
   font-src 'self' data:;
-  frame-src https://www.facebook.com https://m.me https://wa.me;
+  frame-src https://www.facebook.com https://m.me;
   media-src 'self';
   object-src 'none';
   base-uri 'self';
-  form-action 'self'
+  form-action 'self' https://formspree.io
 ```
 
 **Efectos:**
 
-- ❌ Bloquea scripts inline (excepto GA)
+- ✅ Bloquea scripts inline (GA se carga desde JS, sin inline en la landing)
 - ❌ Bloquea eval() y new Function()
 - ✅ Permite recursos de dominios autorizados
 - ✅ Previene clickjacking (frame-src limitado)
@@ -135,10 +135,10 @@ Content-Security-Policy:
 
 ```
 Content-Security-Policy:
-  ... 'unsafe-inline' solo en script-src y style-src
+  ... sin `unsafe-inline` en `script-src` (scripts externos), `style-src` permite inline
 ```
 
-**Razón:** Página QR usa inline por diseño (página autónoma sin assets externos).
+**Razón:** Página QR mantiene estilos inline por diseño, pero el JS se sirve como archivo local.
 
 ---
 
@@ -149,6 +149,7 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 X-XSS-Protection: 1; mode=block
 Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
 ```
 
 | Header                   | Propósito                       | Estado       |
@@ -157,9 +158,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 | `X-Frame-Options`        | Anti-clickjacking               | ✅           |
 | `X-XSS-Protection`       | Activar filtro XSS navegador    | ✅           |
 | `Referrer-Policy`        | Limitar información de referrer | ✅           |
-| `Permissions-Policy`     | Limitar APIs del navegador      | 🔴 Pendiente |
-
-**TODO:** Añadir `Permissions-Policy: geolocation=(), microphone=(), camera=()`
+| `Permissions-Policy`     | Limitar APIs del navegador      | ✅           |
 
 ---
 
@@ -218,7 +217,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 ### CSP
 
 - [x] CSP configurado en headers
-- [x] No hay inline scripts (excepto GA analytics)
+- [x] No hay scripts inline (analytics se inyecta desde JS)
 - [x] Scripts cargados desde `self` o dominios autorizados
 - [x] Estilos desde `self`
 
@@ -228,7 +227,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 - [x] X-Frame-Options
 - [x] X-XSS-Protection
 - [x] Referrer-Policy
-- [ ] Permissions-Policy (pendiente)
+- [x] Permissions-Policy
 
 ### Seguridad de Datos
 
@@ -249,19 +248,19 @@ Referrer-Policy: strict-origin-when-cross-origin
 **Mitigación:** Son logs de **error handling**, no contienen datos sensibles  
 **Fix recomendado:** Envolver en `if (CONFIG.DEBUG_MODE)` si es crítico
 
-### 2. Permissions-Policy faltante
+### 2. Permissions-Policy
 
 **Severidad:** 🟡 BAJA  
 **Descripción:** No se limitan APIs del navegador (geolocation, camera, mic)  
 **Impacto:** Teórico, no usamos esas APIs  
-**Fix:** Añadir `Permissions-Policy: geolocation=(), microphone=(), camera=()`
+**Fix:** Añadido en `_headers` (hosts compatibles).
 
-### 3. Inline GA script
+### 3. `_headers` en GitHub Pages
 
 **Severidad:** 🟡 BAJA  
-**Descripción:** Google Analytics se carga como script inline  
-**Impacto:** Mitigado por CSP permitiendo `googletagmanager.com`  
-**Alternativa:** Migrar a GTM (Google Tag Manager) con nonce
+**Descripción:** GitHub Pages ignora `_headers`  
+**Impacto:** CSP/headers no se aplican en GH Pages (solo en hosts compatibles como Netlify/Cloudflare Pages)  
+**Mitigación:** Mantener el sitio sin scripts inline y con sanitización; aplicar headers en el host cuando aplique.
 
 ---
 
@@ -288,7 +287,7 @@ Tests ejecutados: 7
 4. ✅ document.write(): No usado
 5. 🟡 console.log: 9 sin DEBUG_MODE (apropiados para error handling)
 6. ✅ escapeHTML(): Definido y usado
-7. ✅ Headers de seguridad: 3/4 configurados
+7. ✅ Headers de seguridad: 4/4 configurados
 
 ---
 
@@ -296,8 +295,7 @@ Tests ejecutados: 7
 
 ### Alta prioridad
 
-- [ ] Añadir `Permissions-Policy` header
-- [ ] Migrar GA a GTM con nonce CSP
+- [ ] Migrar GA a GTM con nonce CSP (opcional)
 - [ ] Schema validation para JSON (productos, promos)
 
 ### Media prioridad

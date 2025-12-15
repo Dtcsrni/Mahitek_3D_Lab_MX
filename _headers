@@ -10,6 +10,7 @@
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
 Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://cdn.simpleicons.org https://www.google-analytics.com; style-src 'self'; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:; frame-src https://www.facebook.com https://m.me; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
 # Cache para assets estáticos (1 año)
@@ -26,6 +27,6 @@ Cache-Control: public, max-age=3600, must-revalidate
 /assets/data/*
 Cache-Control: public, max-age=3600, must-revalidate
 
-# CSP específica para la página de QR (usa scripts y estilos inline)
+# CSP específica para la página de QR (mantiene estilos inline; scripts externos)
 /qr/*
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.facebook.com https://m.me; object-src 'none'; base-uri 'self'; form-action 'self'
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.facebook.com https://m.me; object-src 'none'; base-uri 'self'; form-action 'self'
