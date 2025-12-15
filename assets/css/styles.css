@@ -3622,57 +3622,6 @@ html[lang="es-MX"] .show-when-mx {
     box-sizing: border-box;
   }
 
-  /* Secci¿n a pantalla completa con soporte de unidades modernas y fallback */
-  .section--full {
-    min-height: max(520px, calc(100vh - var(--header-h, 72px) - var(--safe-top, 0px)));
-    min-height: max(520px, calc(100svh - var(--header-h, 72px) - var(--safe-top, 0px)));
-    min-height: max(520px, calc(100dvh - var(--header-h, 72px) - var(--safe-top, 0px)));
-    min-height: max(
-      520px,
-      calc((var(--vh, 1vh) * 100) - var(--header-h, 72px) - var(--safe-top, 0px))
-    );
-    display: flex;
-    align-items: center;
-  }
-
-  #faq.section--full,
-  #contacto.section--full {
-    min-height: auto;
-    align-items: stretch;
-  }
-
-  #faq.section--full > .container,
-  #contacto.section--full > .container {
-    justify-content: flex-start;
-    gap: clamp(var(--space-lg), 4vw, var(--space-xl));
-  }
-
-  @supports not (min-height: max(520px, 100vh)) {
-    .section--full {
-      min-height: calc(100vh - var(--header-h, 72px) - var(--safe-top, 0px));
-    }
-  }
-
-  .section--full > .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: clamp(var(--space-xl), 5vw, var(--space-3xl));
-    flex: 1;
-    width: 100%;
-  }
-
-  @media (max-width: 767px) {
-    .section--full {
-      padding: clamp(2.5rem, 8vw, 4rem) 0;
-    }
-
-    .section--full > .container {
-      gap: var(--space-xl);
-      align-items: stretch;
-    }
-  }
-
   @media (min-width: 1024px) {
     .section {
       padding: 8rem 0; /* Desktop: 128px - Más espacio respirable */
@@ -3759,10 +3708,6 @@ html[lang="es-MX"] .show-when-mx {
   .section-header {
     max-width: 760px;
     margin: 0 auto 3rem;
-  }
-
-  .section--full .section-header {
-    margin-bottom: 0;
   }
 
   .section-heading {

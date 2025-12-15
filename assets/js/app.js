@@ -500,6 +500,12 @@ function setupScrollReveal() {
     return;
   }
 
+  if (typeof IntersectionObserver === 'undefined') {
+    animatedNodes.forEach(node => node.classList.add('is-visible'));
+    document.documentElement.classList.add('animations-ready');
+    return;
+  }
+
   // Configuraci¿n mejorada del Intersection Observer
   scrollObserver = new IntersectionObserver(
     (entries, observer) => {
