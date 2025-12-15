@@ -1,5 +1,16 @@
 # AI Backlog (agent-ready)
 
+## Estado
+
+- ✅ AI-001 (UTF‑8 / textos corruptos)
+- ✅ AI-002 (SEO: sitemap/robots)
+- ✅ AI-003 (README: badges + scripts reales)
+- ✅ AI-004 (Git Windows: script de reparación)
+- ✅ AI-006 (promos.js sin referencias rotas)
+- ✅ AI-007 (deploy hygiene: `public/` + Pages)
+- ⏳ AI-005 (arquitectura: reducir duplicación runtime)
+- ⏳ AI-008 (CSP/_headers: decisión)
+
 Formato de ticket recomendado:
 
 - **ID / Título**
@@ -181,4 +192,3 @@ Formato de ticket recomendado:
 
 **Criterios de aceptación**
 - No hay configuración “falsa” o contradictoria.
-

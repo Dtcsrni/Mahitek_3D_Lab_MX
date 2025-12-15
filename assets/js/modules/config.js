@@ -54,13 +54,11 @@ export const CONFIG = {
   NARRATIVE: {
     // Secciones en orden narrativo
     SECTIONS: [
-      { id: 'hero', name: 'Hero', theme: 'dark', narrative: 'hook' },
-      { id: 'problema', name: 'Problema', theme: 'accent-red', narrative: 'pain-points' },
-      { id: 'solucion', name: 'Solución', theme: 'accent-teal', narrative: 'benefits' },
-      { id: 'servicios', name: 'Proceso', theme: 'accent-teal', narrative: 'how-it-works' },
-      { id: 'sectores', name: 'Casos de Uso', theme: 'accent-red', narrative: 'use-cases' },
-      { id: 'catalogo', name: 'Productos', theme: 'dark', narrative: 'catalog' },
+      { id: 'inicio', name: 'Hero', theme: 'dark', narrative: 'hook' },
+      { id: 'servicios', name: 'Cómo trabajamos', theme: 'accent-teal', narrative: 'how-it-works' },
+      { id: 'catalogo', name: 'Catálogo', theme: 'dark', narrative: 'catalog' },
       { id: 'promos', name: 'Promociones', theme: 'accent-purple', narrative: 'urgency' },
+      { id: 'proceso', name: 'Proceso', theme: 'accent-teal', narrative: 'how-it-works' },
       { id: 'faq', name: 'FAQ', theme: 'dark', narrative: 'objections' },
       { id: 'contacto', name: 'Contacto', theme: 'accent-teal', narrative: 'cta' }
     ],
@@ -90,7 +88,7 @@ export const CONFIG = {
     SCROLL_THROTTLE: 16, // ~60fps
 
     // Preload crítico
-    CRITICAL_IMAGES: ['assets/img/logo-color.svg', 'assets/img/hero-bg.webp'],
+    CRITICAL_IMAGES: ['assets/img/logo-color.svg', 'assets/img/hero-lab-epic.svg'],
 
     // Code splitting
     DEFER_NON_CRITICAL: true,

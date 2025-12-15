@@ -3,9 +3,6 @@
 
 import { initScrollNarrative } from './modules/scroll-narrative.js';
 import { initSVGAnimations } from './modules/svg-animations.js';
-import DataManager from './modules/data-manager.js';
-import CopyBinder from './modules/copywriting-binder.js';
-import UIComponents from './modules/ui-components.js';
 import CONFIG, { ConfigUtils } from './modules/config.js';
 
 // ===== CONTADOR ANIMADO PARA STATS =====
@@ -13,10 +10,10 @@ function animateCounter(element) {
   const target = element.getAttribute('data-counter');
   if (!target) return;
 
-  // Extraer n¿mero del target (ej: "500+" -> 500, "100%" -> 100, "Plazos acordados" -> omitir animaci¿n)
+  // Extraer número del target (ej: "500+" -> 500, "100%" -> 100, "Plazos acordados" -> omitir animación)
   const numMatch = target.match(/(\d+)/);
   if (!numMatch) {
-    // Si no hay n¿mero (ej: "Plazos acordados"), solo mostrar el valor
+    // Si no hay número (ej: "Plazos acordados"), solo mostrar el valor
     element.textContent = target;
     return;
   }
@@ -61,21 +58,10 @@ function initHeroCounters() {
   counters.forEach(counter => observer.observe(counter));
 }
 
-// Inicializaci¿n segura tras carga del DOM
+// Inicialización segura tras carga del DOM
 const onReady = async () => {
   try {
-    // Inicializar DataManager
-    DataManager.init();
-
-    // Precarga de datos críticos (no bloqueante)
-    DataManager.preloadCritical().catch(err => {
-      console.warn('[Boot] Error en precarga:', err);
-    });
-
-    // Enlazar copywriting a elementos con data-copy (no bloqueante)
-    CopyBinder.bindCopywriting().catch(err => {
-      console.warn('[Boot] Error enlazando copywriting:', err);
-    });
+    // boot.js es mejora progresiva: no carga datos ni re-renderiza secciones (eso lo hace app.js).
 
     // Inicializar narrativa con scroll
     initScrollNarrative();
@@ -88,10 +74,6 @@ const onReady = async () => {
 
     // Bandera visual en body para estilos condicionales si se requiere
     document.documentElement.classList.add('js-modules-ready');
-
-    // Exportar componentes UI a window para acceso desde app.js legacy (opcional)
-    window.MahitekUI = UIComponents;
-    window.MahitekData = DataManager;
 
     ConfigUtils.log('Boot completado. Versión:', CONFIG.VERSION);
   } catch (err) {

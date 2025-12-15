@@ -2,7 +2,7 @@
 const CONFIG = {
   PRICE_MARKUP: 1.0, // Ajusta si requieres recargo adicional
   PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
-  // P¿gina de Facebook/Messenger
+  // Página de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   DATA_PATHS: {
@@ -16,7 +16,7 @@ const CONFIG = {
   DEBUG_MODE: false
 };
 
-// ===== Detecci¿n y Gesti¿n de Idioma =====
+// ===== Detección y Gestión de Idioma =====
 const GestorIdioma = {
   IDIOMAS_SOPORTADOS: ['es-MX', 'es', 'en'],
   IDIOMA_PREDETERMINADO: 'es-MX',
@@ -36,22 +36,22 @@ const GestorIdioma = {
       // 2. Detectar idioma del navegador
       const navegador = navigator.language || navigator.userLanguage || '';
 
-      // Si es espa¿ol mexicano expl¿cito
+      // Si es español mexicano explícito
       if (navegador.toLowerCase().startsWith('es-mx')) {
         return 'es-MX';
       }
 
-      // Si es cualquier variante de espa¿ol
+      // Si es cualquier variante de español
       if (navegador.toLowerCase().startsWith('es')) {
         return 'es';
       }
 
-      // Si es ingl¿s
+      // Si es inglés
       if (navegador.toLowerCase().startsWith('en')) {
         return 'en';
       }
 
-      // 3. Fallback a espa¿ol mexicano
+      // 3. Fallback a español mexicano
       return this.IDIOMA_PREDETERMINADO;
     } catch (error) {
       console.warn('Error detectando idioma:', error);
@@ -91,7 +91,7 @@ const GestorIdioma = {
   },
 
   /**
-   * Actualiza el contenido del cintillo seg¿n el idioma
+   * Actualiza el contenido del cintillo según el idioma
    */
   actualizarCintillo() {
     const cintillo = document.querySelector('.cintillo-texto');
@@ -132,7 +132,7 @@ const TextosSistema = {
       return clave;
     }
 
-    // Prioridad: idioma exacto > idioma base (es-MX -> es) > espa¿ol > ingl¿s
+    // Prioridad: idioma exacto > idioma base (es-MX -> es) > español > inglés
     return (
       textos[idioma] || textos[idioma.split('-')[0]] || textos['es-MX'] || textos['en'] || clave
     );
@@ -140,10 +140,10 @@ const TextosSistema = {
 
   // Catálogo de textos del sistema
   textos: {
-    // Cintillo de construcci¿n
+    // Cintillo de construcción
     'cintillo.construccion': {
       'es-MX': '? SITIO EN DESARROLLO ? próximamente FUNCIONALIDAD COMPLETA ?',
-      es: '? EN CONSTRUCCI¿N ? próximamente DISPONIBLE ?',
+      es: '? EN CONSTRUCCIÓN ? próximamente DISPONIBLE ?',
       en: '? UNDER DEVELOPMENT ? COMING SOON ?'
     },
 
@@ -266,8 +266,8 @@ const TextosSistema = {
       en: 'Error loading FAQs. Please try again.'
     },
     'error.red': {
-      'es-MX': 'Error de conexi¿n. Verifique su conexi¿n a internet.',
-      es: 'Error de conexi¿n. Verifique su conexi¿n a internet.',
+      'es-MX': 'Error de conexión. Verifica tu conexión a internet.',
+      es: 'Error de conexión. Verifica tu conexión a internet.',
       en: 'Connection error. Please check your internet connection.'
     },
 
@@ -307,7 +307,7 @@ const ResizeManager = {
 
   register(callback) {
     this.callbacks.add(callback);
-    // Ejecutar inmediatamente para inicializaci¿n
+    // Ejecutar inmediatamente para inicialización
     callback();
   },
 
@@ -374,7 +374,7 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
 // ===== Analytics bootstrap (evita scripts inline) =====
 function setupAnalytics() {
   try {
-    // Verificar si gtag.js se carg¿ (puede estar bloqueado por ad-blockers)
+    // Verificar si gtag.js se cargó (puede estar bloqueado por ad-blockers)
     if (typeof window.gtag === 'undefined') {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () {
@@ -442,7 +442,7 @@ function setupHeaderScroll() {
     const scrollY = window.scrollY;
     const scrollDelta = scrollY - lastScrollY;
 
-    // Determinar direcci¿n de scroll
+    // Determinar dirección de scroll
     if (Math.abs(scrollDelta) > 5) {
       // Ignorar micro-scrolls
       scrollDirection = scrollDelta > 0 ? 'down' : 'up';
@@ -470,7 +470,7 @@ function setupHeaderScroll() {
       header.classList.remove('is-hidden');
     }
 
-    // Actualizar ¿ltima posici¿n
+    // Actualizar última posición
     lastScrollY = scrollY;
     ticking = false;
   };
@@ -506,12 +506,12 @@ function setupScrollReveal() {
     return;
   }
 
-  // Configuraci¿n mejorada del Intersection Observer
+  // Configuración mejorada del Intersection Observer
   scrollObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Agregar peque¿o delay para efecto Más natural
+          // Agregar pequeño delay para efecto más natural
           setTimeout(() => {
             entry.target.classList.add('is-visible');
           }, 50);
@@ -690,7 +690,7 @@ function renderProducts() {
   setupImageErrorFallbacks(carousel);
   initCatalogCarousel(displayedProducts.length);
 
-  // Log de interacci¿n: add_to_cart en CTA
+  // Log de interacción: add_to_cart en CTA
   carousel.addEventListener(
     'click',
     ev => {
@@ -734,7 +734,7 @@ function initCatalogCarousel(totalProducts) {
   let itemsPerView = 1;
   let hasMultiplePages = false;
 
-  // Calcular items por vista seg¿n viewport
+  // Calcular items por vista según viewport
   function updateItemsPerView() {
     if (window.innerWidth >= 1024) {
       itemsPerView = 3;
@@ -750,7 +750,7 @@ function initCatalogCarousel(totalProducts) {
     return Math.ceil(totalProducts / itemsPerView);
   }
 
-  // Actualizar posici¿n del track
+  // Actualizar posición del track
   function updateTrack() {
     const offset = -currentIndex * (100 / itemsPerView);
     track.style.transform = `translateX(${offset}%)`;
@@ -898,7 +898,7 @@ function populateCategoryFilter() {
 
   const categories = [...new Set(allProducts.map(p => p.categoria))];
 
-  // Construcci¿n segura de opciones
+  // Construcción segura de opciones
   select.innerHTML = '';
   const optAll = document.createElement('option');
   optAll.value = 'todas';
@@ -937,7 +937,7 @@ function filterProducts() {
 let promosLoaded = false;
 
 async function loadPromos() {
-  // Si ya se carg¿, no hacer nada
+  // Si ya se cargó, no hacer nada
   if (promosLoaded) return;
 
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
@@ -1006,7 +1006,7 @@ async function loadPromos() {
       } else if (promo.monto_minimo) {
         precioHTML = `
         <div class="promo-minimo">
-          <span>M¿nimo: $${promo.monto_minimo}</span>
+          <span>Mínimo: $${promo.monto_minimo}</span>
         </div>
       `;
       }
@@ -1029,7 +1029,7 @@ async function loadPromos() {
       // Fechas o permanente
       let validezHTML = '';
       if (promo.tipo === 'permanente') {
-        validezHTML = '<p class="promo-validez">? Promoci¿n permanente</p>';
+        validezHTML = '<p class="promo-validez">⏳ Promoción permanente</p>';
       } else if (promo.desde && promo.hasta) {
         validezHTML = `<p class="promo-validez">⏳ Válido ${escapeHTML(formatDate(promo.desde))} – ${escapeHTML(formatDate(promo.hasta))}</p>`;
       }
@@ -1104,9 +1104,10 @@ async function loadPromos() {
   container.addEventListener('click', ev => {
     const btn = ev.target.closest('.promo-cta-contact');
     if (!btn) return;
-    const promoName = btn.getAttribute('data-promo-name') || 'Promoci¿n';
-    const message = encodeURIComponent(`Hola, quiero consultar sobre: ${promoName}`);
-    window.open(`https://wa.me/52XXXXXXXXXX¿Text=${message}`, '_blank', 'noopener');
+    const promoId = btn.getAttribute('data-promo-id') || '';
+    const promoName = btn.getAttribute('data-promo-name') || 'Promoción';
+    const ref = `promo:${promoId || promoName}`;
+    window.open(buildMessengerURL(ref), '_blank', 'noopener');
     log('contact_promo', {
       promotion_id: btn.getAttribute('data-promo-id') || '',
       promotion_name: promoName
@@ -1320,7 +1321,7 @@ function buildMessengerURL(ref) {
 let faqLoaded = false;
 
 async function loadFAQ() {
-  // Si ya se carg¿, no hacer nada
+  // Si ya se cargó, no hacer nada
   if (faqLoaded) return;
 
   const faqData = await loadJSON(CONFIG.DATA_PATHS.faq);
@@ -1333,7 +1334,7 @@ async function loadFAQ() {
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
         <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>A¿n estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
+        <p>Aún estamos documentando las preguntas frecuentes. Escríbenos por Messenger y resolvemos tu caso.</p>
       </div>
     `;
     registerAnimatedElements(container);
@@ -1399,7 +1400,7 @@ async function loadFAQ() {
     }
   }
 
-  // Interacciones: b¿squeda y expandir/contraer
+  // Interacciones: búsqueda y expandir/contraer
   const search = document.getElementById('faq-search');
   const categorySelect = document.getElementById('faq-category');
   const btnExpand = document.getElementById('faq-expand');
@@ -1416,7 +1417,7 @@ async function loadFAQ() {
     featuredStat.textContent = featured.length;
   }
 
-  // Poblar categor¿as desde data
+  // Poblar categorías desde data
   if (categorySelect) {
     const categories = Array.from(new Set(faqData.map(i => i.categoria).filter(Boolean)))
       .map(cat => ({ label: cat, value: cat.toLowerCase() }))
@@ -1580,7 +1581,7 @@ async function loadSocialLinks() {
   }
 }
 
-// Oficial logos via Simple Icons CDN (CC0) ¿ single-color SVGs
+// Official logos via Simple Icons CDN (CC0) - single-color SVGs
 function getSocialIconMarkup(platform) {
   const size = 28;
 
@@ -1606,9 +1607,9 @@ function setupNav() {
 
   const initialState = menu.classList.contains('active');
   toggle.setAttribute('aria-expanded', String(initialState));
-  toggle.setAttribute('aria-label', initialState ? 'Cerrar men¿' : 'Abrir men¿');
+  toggle.setAttribute('aria-label', initialState ? 'Cerrar menú' : 'Abrir menú');
 
-  // Prevenci¿n de doble-click/doble-tap
+  // Prevención de doble-click/doble-tap
   let isAnimating = false;
 
   const closeMenu = () => {
@@ -1618,10 +1619,10 @@ function setupNav() {
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir men¿');
+    toggle.setAttribute('aria-label', 'Abrir menú');
     document.body.classList.remove('nav-open');
 
-    // Reset flag despu¿s de la animaci¿n
+    // Reset flag después de la animación
     setTimeout(() => {
       isAnimating = false;
     }, 350);
@@ -1634,10 +1635,10 @@ function setupNav() {
     menu.classList.add('active');
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Cerrar men¿');
+    toggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.classList.add('nav-open');
 
-    // Reset flag despu¿s de la animaci¿n
+    // Reset flag después de la animación
     setTimeout(() => {
       isAnimating = false;
     }, 350);
@@ -1647,7 +1648,7 @@ function setupNav() {
     e.preventDefault();
     e.stopPropagation();
 
-    if (isAnimating) return; // Prevenir clicks durante animaci¿n
+    if (isAnimating) return; // Prevenir clicks durante animación
 
     const isOpen = menu.classList.contains('active');
 
@@ -1690,7 +1691,7 @@ function setupNav() {
     }
   });
 
-  // Cerrar men¿ en resize (si pasamos a desktop) - usando ResizeManager
+  // Cerrar menú en resize (si pasamos a desktop) - usando ResizeManager
   const handleNavResize = () => {
     if (window.innerWidth >= 768 && menu.classList.contains('active')) {
       closeMenu();
@@ -1735,7 +1736,7 @@ function setupFilters() {
   }
 }
 
-// ===== Lazy Loading de Secciones No-Cr¿ticas =====
+// ===== Lazy Loading de Secciones No-Críticas =====
 function setupLazyLoading() {
   const lazyObserver = new IntersectionObserver(
     entries => {
@@ -1744,7 +1745,7 @@ function setupLazyLoading() {
           const section = entry.target;
           const sectionId = section.id;
 
-          // Cargar datos seg¿n la secci¿n
+          // Cargar datos según la sección
           if (sectionId === 'promos' && !promosLoaded) {
             loadPromos();
             lazyObserver.unobserve(section);
@@ -1773,7 +1774,7 @@ async function init() {
   // Inicializar sistema de idioma PRIMERO
   GestorIdioma.inicializar();
 
-  // Ajuste de viewport y recursos seg¿n dispositivo
+  // Ajuste de viewport y recursos según dispositivo
   setupViewportAndDevice();
 
   setupAnalytics();
@@ -1793,7 +1794,7 @@ async function init() {
   // Aplicar estado desde la URL y sincronizar cambios
   applyURLState();
 
-  // Logs solo en modo debug (en espa¿ol profesional)
+  // Logs solo en modo debug (en español profesional)
   if (CONFIG.DEBUG_MODE) {
     console.log(`? ${TextosSistema.obtener('debug.iniciado')}`);
     console.log(`?? ${TextosSistema.obtener('debug.productosOK')}: ${allProducts.length}`);
