@@ -62,6 +62,7 @@ coverage/
 *.swp
 *.swo
 ~$*
+public/
 
 # Python (servidor local)
 __pycache__/

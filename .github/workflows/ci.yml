@@ -65,13 +65,21 @@ jobs:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
 
+      - name: ⚙️ Configurar Node.js (build public/)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🏗️ Preparar carpeta public/
+        run: node scripts/build-public.js
+
       - name: ⚙️ Configurar GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: 📤 Subir artefacto de Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'public'
 
       - name: 🚀 Deploy a GitHub Pages
         id: deployment

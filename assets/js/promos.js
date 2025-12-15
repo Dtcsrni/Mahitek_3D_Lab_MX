@@ -9,12 +9,24 @@ export const PACKS = [
 
 const UNIT_PRICE = 3; // público
 
-function pricePerUnit(pack) {
-  return pack.price / pack.units;
-}
+const STICKER_PROMO_ICONS = [
+  'assets/img/promo-pack-stickers-10.svg',
+  'assets/img/promo-pack-stickers-15.svg',
+  'assets/img/promo-pack-stickers-25.svg',
+  'assets/img/promo-addon-sticker.svg',
+  'assets/img/promo-combo-trio-stickers.svg',
+  'assets/img/promo-combo-pack4-stickers.svg',
+  'assets/img/promo-combo-quinteto-premium.svg'
+];
 
-function clone(arr) {
-  return JSON.parse(JSON.stringify(arr));
+function preloadImages(srcs) {
+  return srcs.map(src => {
+    const img = new Image();
+    img.decoding = 'async';
+    img.loading = 'eager';
+    img.src = src;
+    return img;
+  });
 }
 
 // Devuelve la mejor combinación de packs para alcanzar al menos targetUnits
@@ -98,6 +110,8 @@ export function bestValueFor(units) {
 export function renderPromos() {
   const root = document.getElementById('promos-stickers');
   if (!root) return;
+
+  root.innerHTML = '';
   const container = document.createElement('div');
   container.className = 'container promo-grid';
 
@@ -140,13 +154,15 @@ export function renderPromos() {
     grid.appendChild(card);
   });
 
-  return resolved.map(src => {
-    const img = new Image();
-    img.decoding = 'async';
-    img.loading = 'eager';
-    img.src = src;
-    return img;
-  });
+  const note = document.createElement('p');
+  note.className = 'promo-note';
+  note.textContent = `Mínimo sugerido: $${TICKET_MIN} MXN. Si tu subtotal es menor, te diremos cuánto falta.`;
+
+  container.appendChild(grid);
+  container.appendChild(note);
+  root.appendChild(container);
+
+  return preloadImages(STICKER_PROMO_ICONS);
 }
 
 export function getStickerPromoIcons() {

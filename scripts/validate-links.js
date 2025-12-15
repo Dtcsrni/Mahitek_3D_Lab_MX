@@ -13,6 +13,7 @@ const IGNORE_DIRS = new Set([
   ".tasks",
   "dist",
   "build",
+  "public",
 ]);
 
 function walkFiles(rootDir, predicate) {
@@ -173,4 +174,3 @@ function main() {
 }
 
 main();
-
