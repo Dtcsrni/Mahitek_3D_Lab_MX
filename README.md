@@ -6,10 +6,10 @@
 
 <!-- Badges dinámicos de Lighthouse (se actualizan en cada pipeline) -->
 
-[![LH Performance](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-performance.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH Accessibility](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-accessibility.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH Best Practices](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-best-practices.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
-[![LH SEO](https://img.shields.io/endpointúurl=https://raw.githubusercontent.com/Dtcsrni/Mahitek_3D_Lab_MX/main/docs/badges/lh-seo.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Performance](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDtcsrni%2FMahitek_3D_Lab_MX%2Fmain%2Fdocs%2Fbadges%2Flh-performance.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Accessibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDtcsrni%2FMahitek_3D_Lab_MX%2Fmain%2Fdocs%2Fbadges%2Flh-accessibility.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH Best Practices](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDtcsrni%2FMahitek_3D_Lab_MX%2Fmain%2Fdocs%2Fbadges%2Flh-best-practices.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
+[![LH SEO](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDtcsrni%2FMahitek_3D_Lab_MX%2Fmain%2Fdocs%2Fbadges%2Flh-seo.json)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
 
 Landing page moderna con diseño cyberpunk mexicano, sistema de precios automático y optimización completa para dispositivos móviles. Impresión 3D funcional en PETG desde Pachuca, Hidalgo.
 
@@ -77,9 +77,9 @@ Mahitek_3D_Lab_MX/
 │   ├── extensions.json              # Extensiones recomendadas
 │   └── *.code-snippets              # Snippets personalizados
 ├── 📄 package.json                  # Scripts NPM y dependencias dev
-├── 📄 .eslintrc.json               # Configuración ESLint
 ├── 📄 .prettierrc                  # Configuración Prettier
-├── 📄 .stylelintrc.json            # Configuración Stylelint
+├── 📄 .prettierignore              # Exclusiones Prettier
+├── 📄 .hintrc                      # Validación HTML (hint)
 ├── 📄 DESARROLLO.md                 # Guía de desarrollo
 ├── 📄 NAVBAR_INTELIGENTE.md        # Documentación navbar
 ├── 📄 NAVBAR_CYBERPUNK.md          # Diseño cyberpunk
@@ -142,31 +142,24 @@ Cálculo: $185 × 1.10 = $203.5
 Redondeo: step=10 → $200 MXN
 ```
 
-## ¿️ Scripts de Desarrollo
+## ⚙️ Scripts de Desarrollo
 
 El proyecto incluye scripts NPM para automatizar tareas comunes:
 
 ```bash
 # 🚀 Desarrollo
 npm run dev              # Iniciar servidor local (puerto 8080)
+npm run dev:open         # Abrir navegador con live-server
+npm run serve            # Servidor alterno simple
 
 # ✅ Validación
-npm run lint:js          # Validar JavaScript con ESLint
-npm run lint:css         # Validar CSS con Stylelint
-npm run validate         # Ejecutar todos los linters
+npm run validate         # Formato (Prettier) + validación HTML + links/recursos
+npm run check:format     # Solo verificación de formato (Prettier)
+npm run validate:html    # Validación semántica de index.html (JSDOM)
+npm run validate:links   # Links/recursos locales (HTML + url() en CSS)
 
 # 💅 Formateo
-npm run format:js        # Formatear archivos JavaScript
-npm run format:css       # Formatear archivos CSS
-npm run format:html      # Formatear archivos HTML
 npm run format           # Formatear todo el proyecto
-
-# 🎨 SASS (opcional)
-npm run watch:sass       # Compilar SASS en tiempo real
-npm run build:css        # Construir CSS optimizado
-
-# ⚡ Optimización
-npm run optimize         # Build + Format completo
 ```
 
 ## 🔧 Extensiones de VS Code Recomendadas
@@ -461,8 +454,8 @@ El proyecto valida automáticamente en cada push:
 
 ```bash
 # Ejecutar localmente las mismas validaciones del CI
-npm run validate         # ESLint + Stylelint
-npm run format           # Verificar formateo
+npm run validate         # Prettier --check + validate-html + validate-links
+npm run format           # Prettier --write (aplica formato)
 ```
 
 ### Testing Manual
@@ -607,7 +600,6 @@ window.MahitekLab.calculateSalePrice(200); // → 260
 ## 📄 Licencia
 
 Proyecto propietario de Mahitek 3D Lab.
-
 
 
 
