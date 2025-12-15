@@ -163,12 +163,78 @@ function validateCssUrls(errors) {
   }
 }
 
+function looksLikeLocalResourcePath(value) {
+  const raw = stripQueryAndHash(value);
+  if (!raw) return false;
+  if (isExternalUrl(raw)) return false;
+  if (raw.trim().startsWith("#")) return false;
+
+  // Solo paths que claramente apuntan a archivos estáticos.
+  return /^(?:\/|\.{1,2}\/|assets\/|data\/|qr\/).+\.(?:svg|png|jpe?g|webp|gif|ico|json|mp4|webm|mp3|wav|ogg)$/i.test(raw.trim());
+}
+
+function resolveJsonResourcePath(fromJsonFile, target) {
+  const raw = stripQueryAndHash(target);
+  if (!raw) return null;
+
+  // En JSON tratamos `assets/...` como relativo a la raíz del proyecto/sitio.
+  if (raw.startsWith("/")) return path.join(PROJECT_ROOT, raw.replace(/^\//, ""));
+  if (raw.startsWith("./") || raw.startsWith("../")) return path.resolve(path.dirname(fromJsonFile), raw);
+  return path.join(PROJECT_ROOT, raw);
+}
+
+function walkJsonValues(value, visitor, keyPath = "") {
+  if (typeof value === "string") {
+    visitor(value, keyPath);
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((item, idx) => walkJsonValues(item, visitor, `${keyPath}[${idx}]`));
+    return;
+  }
+  if (value && typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) {
+      const nextPath = keyPath ? `${keyPath}.${key}` : key;
+      walkJsonValues(child, visitor, nextPath);
+    }
+  }
+}
+
+function validateJsonResources(errors) {
+  const dataDir = path.join(PROJECT_ROOT, "data");
+  if (!fs.existsSync(dataDir)) return;
+
+  const jsonFiles = walkFiles(dataDir, (file) => file.endsWith(".json"));
+  for (const jsonFile of jsonFiles) {
+    let parsed;
+    try {
+      parsed = JSON.parse(fs.readFileSync(jsonFile, "utf8"));
+    } catch (err) {
+      errors.push(`${path.relative(PROJECT_ROOT, jsonFile)}: JSON inválido (${err.message || String(err)})`);
+      continue;
+    }
+
+    walkJsonValues(parsed, (rawValue, keyPath) => {
+      if (!looksLikeLocalResourcePath(rawValue)) return;
+
+      const resolved = resolveJsonResourcePath(jsonFile, rawValue);
+      if (!resolved) return;
+      if (!fs.existsSync(resolved)) {
+        errors.push(
+          `${path.relative(PROJECT_ROOT, jsonFile)}: ${keyPath} -> "${rawValue}" (no existe: ${path.relative(PROJECT_ROOT, resolved)})`,
+        );
+      }
+    });
+  }
+}
+
 function main() {
   const errors = [];
 
   const htmlFiles = walkFiles(PROJECT_ROOT, (file) => file.endsWith(".html"));
   for (const htmlFile of htmlFiles) validateHtmlFile(htmlFile, errors);
   validateCssUrls(errors);
+  validateJsonResources(errors);
 
   if (errors.length) {
     console.error("✗ Links/recursos rotos detectados:");
@@ -177,7 +243,7 @@ function main() {
   }
 
   const rootLabel = rootArg ? `root=${rootArg}` : "root=repo";
-  console.log(`✓ Links/recursos OK (${htmlFiles.length} HTML, CSS url() verificado, ${rootLabel})`);
+  console.log(`✓ Links/recursos OK (${htmlFiles.length} HTML, CSS url() verificado, JSON recursos verificados, ${rootLabel})`);
 }
 
 main();

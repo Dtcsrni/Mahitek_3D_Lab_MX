@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Etiqueta de promoción</title>
+  <desc id="desc">Gráfico de etiqueta con porcentaje de descuento y destellos brillantes.</desc>
+  <defs>
+    <linearGradient id="tagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6fb7" />
+      <stop offset="100%" stop-color="#ffb15f" />
+    </linearGradient>
+    <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f1b4d" />
+      <stop offset="100%" stop-color="#2f5fff" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="28" fill="#0b1024" />
+  <path d="M60 108l56-56h56l16 16v56l-56 56z" fill="url(#tagGradient)" />
+  <circle cx="160" cy="92" r="10" fill="#0b1024" opacity="0.35" />
+  <text x="92" y="136" font-family="'Rubik', 'Segoe UI', sans-serif" font-size="56" font-weight="700" fill="#ffffff" text-anchor="middle">%</text>
+  <path d="M62 168l40-12 16 36z" fill="url(#ribbonGradient)" opacity="0.9" />
+  <path d="M158 68l8-16" stroke="#fff3db" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+  <path d="M172 78l12-6" stroke="#fff3db" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+  <path d="M120 54l4-12" stroke="#fff3db" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+</svg>
