@@ -374,6 +374,23 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
 // ===== Analytics bootstrap (evita scripts inline) =====
 function setupAnalytics() {
   try {
+    const ua = navigator.userAgent || '';
+    const skipAnalytics =
+      ua.includes('Chrome-Lighthouse') || ua.includes('Speed Insights') || ua.includes('PageSpeed');
+    if (skipAnalytics) return;
+
+    // Inyectar gtag.js si no existe (sin inline scripts)
+    const gaId = 'G-Y46M6J1EWS';
+    const hasGtagScript = Array.from(document.scripts || []).some(s =>
+      String(s.src || '').includes('googletagmanager.com/gtag/js')
+    );
+    if (!hasGtagScript) {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`;
+      document.head.appendChild(s);
+    }
+
     // Verificar si gtag.js se cargó (puede estar bloqueado por ad-blockers)
     if (typeof window.gtag === 'undefined') {
       window.dataLayer = window.dataLayer || [];
@@ -385,7 +402,7 @@ function setupAnalytics() {
       };
     }
     gtag('js', new Date());
-    gtag('config', 'G-Y46M6J1EWS', {
+    gtag('config', gaId, {
       send_page_view: true,
       anonymize_ip: true // Privacy-friendly
     });

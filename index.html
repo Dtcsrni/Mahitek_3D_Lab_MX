@@ -97,23 +97,7 @@
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- ANALYTICS (Google Tag Manager) -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
-    <script>
-      (function () {
-        var ua = navigator.userAgent || '';
-        var skipAnalytics = ua.indexOf('Chrome-Lighthouse') !== -1 || ua.indexOf('Speed Insights') !== -1;
-        if (skipAnalytics) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y46M6J1EWS';
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-Y46M6J1EWS');
-      })();
-    </script>
+    <!-- Analytics se carga desde `assets/js/app.js` (sin scripts inline para compatibilidad con CSP) -->
   </head>
   <body>
     <!-- Skip Link para accesibilidad -->

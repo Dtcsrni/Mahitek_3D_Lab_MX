@@ -9,7 +9,7 @@
 - ✅ AI-006 (promos.js sin referencias rotas)
 - ✅ AI-007 (deploy hygiene: `public/` + Pages)
 - ⏳ AI-005 (arquitectura: reducir duplicación runtime)
-- ⏳ AI-008 (CSP/_headers: decisión)
+- ✅ AI-008 (CSP/_headers: alineado + sin scripts inline)
 
 Formato de ticket recomendado:
 

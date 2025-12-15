@@ -1,50 +1,31 @@
-# Headers para optimización (Netlify/Vercel compatible)
+# Headers opcionales para hosts que soportan `_headers` (Netlify/Cloudflare Pages).
+#
+# Nota: GitHub Pages ignora este archivo. Aquí se mantiene para despliegues alternos.
+#
+# Importante:
+# - No fijar `Content-Encoding` manualmente (lo hace el host automáticamente).
+# - Evitar `unsafe-inline` en la landing principal (analytics se carga desde JS).
 
-# GitHub Pages maneja compresión automáticamente, pero esto sirve para otros hosts
-
-# Comprimir todos los archivos de texto
-
-/\*
-Content-Encoding: gzip
+/*
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
-X-XSS-Protection: 1; mode=block
 Referrer-Policy: strict-origin-when-cross-origin
-Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://cdn.simpleicons.org https://www.google-analytics.com; style-src 'self'; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:; frame-src https://www.facebook.com https://m.me https://wa.me; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://cdn.simpleicons.org https://www.google-analytics.com; style-src 'self'; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:; frame-src https://www.facebook.com https://m.me; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
 # Cache para assets estáticos (1 año)
-
-/assets/\*
+/assets/*
 Cache-Control: public, max-age=31536000, immutable
 
-# Cache para HTML (1 hora, debe revalidar)
-
-/\*.html
+# Cache para HTML (1 hora, revalidar)
+/*.html
 Cache-Control: public, max-age=3600, must-revalidate
 
-# Cache para imágenes (1 año)
-
-/_.svg
-Cache-Control: public, max-age=31536000, immutable
-/_.png
-Cache-Control: public, max-age=31536000, immutable
-/_.jpg
-Cache-Control: public, max-age=31536000, immutable
-/_.webp
-Cache-Control: public, max-age=31536000, immutable
-
-# Cache para JSON data (1 hora)
-
-/\*.json
+# Cache para data JSON (1 hora, revalidar)
+/data/*
 Cache-Control: public, max-age=3600, must-revalidate
-
-# Preload headers para recursos críticos
-
-/
-Link: </assets/css/styles.css?v=2024102408>; rel=preload; as=style
-Link: </assets/js/app.js?v=2024102408>; rel=preload; as=script
+/assets/data/*
+Cache-Control: public, max-age=3600, must-revalidate
 
 # CSP específica para la página de QR (usa scripts y estilos inline)
-
-/qr/\*
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.facebook.com https://m.me https://wa.me; object-src 'none'; base-uri 'self'; form-action 'self'
+/qr/*
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.facebook.com https://m.me; object-src 'none'; base-uri 'self'; form-action 'self'

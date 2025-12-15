@@ -46,9 +46,14 @@ Notas:
 - CI genera `public/` con `node scripts/build-public.js`.
 - Pages sube **solo** `public/` (evita exponer `scripts/`, `docs/`, `test-*.html`, etc.).
 
+## Headers/CSP (`_headers`)
+
+- GitHub Pages ignora `_headers`.
+- El archivo `_headers` existe como configuración **opcional** para hosts que sí lo respeten (Netlify/Cloudflare Pages).
+- Regla: evitar scripts inline en `index.html` para mantener CSP estricta (analytics se carga desde `assets/js/app.js`).
+
 ## Convención para tickets
 
 - Cambios mínimos, un objetivo.
 - Siempre incluir comando de verificación en el ticket.
 - Antes de terminar: `npm run validate`.
-
