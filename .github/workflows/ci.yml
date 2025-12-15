@@ -25,10 +25,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: 📦 Instalar dependencias
-        run: npm ci || npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "⚠️ package-lock.json no encontrado; usando npm install (recomendado: commitear el lockfile)."
+            npm install
+          fi
 
       - name: 📄 Verificar archivos principales
         run: |

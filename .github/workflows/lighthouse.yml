@@ -25,10 +25,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: 📦 Instalar dependencias
-        run: npm ci || npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "⚠️ package-lock.json no encontrado; usando npm install."
+            npm install
+          fi
 
       - name: 📊 Ejecutar Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
@@ -58,4 +63,3 @@ jobs:
         with:
           add: "docs/badges/*.json"
           message: "chore(ci): actualizar badges de Lighthouse"
-
