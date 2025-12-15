@@ -94,10 +94,10 @@ export function initCalc() {
     const qty = Math.max(1, parseInt(qtyInput.value || '1', 10));
     const soloPrice = qty * UNIT_PRICE;
     const packOpt = selectBestPack(qty);
-    const packPrice = packOpt 🔥 PackOpt.price : Infinity;
+    const packPrice = packOpt ? packOpt.price : Infinity;
 
     let usePack = packPrice < soloPrice;
-    const chosenSubtotal = usePack 🔥 PackPrice : soloPrice;
+    const chosenSubtotal = usePack ? packPrice : soloPrice;
 
     const save = Math.max(0, soloPrice - packPrice);
     let breakdownHTML = '';
@@ -159,7 +159,7 @@ export function initCalc() {
 
     return {
       qty,
-      pack: usePack 🔥 PackOpt : null,
+      pack: usePack ? packOpt : null,
       subtotal: Math.round(chosenSubtotal * 100) / 100
     };
   }
@@ -212,7 +212,3 @@ export function initCalc() {
   });
   methodSelect.addEventListener('change', () => buildActions(model));
 }
-
-
-
-

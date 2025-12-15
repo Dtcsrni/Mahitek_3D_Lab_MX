@@ -647,4 +647,3 @@ export function getSVGInstance() {
 }
 
 export default SVGAnimations;
-

@@ -265,9 +265,7 @@ export function renderPayments() {
     card.style.setProperty('--accent', method.accent.base);
     card.style.setProperty('--accent-strong', method.accent.strong);
     card.style.setProperty('--accent-soft', method.accent.soft);
-    const benefits = method.bullets
-      .map(point => `<li>${point}</li>`)
-      .join('');
+    const benefits = method.bullets.map(point => `<li>${point}</li>`).join('');
 
     card.innerHTML = `
       <div class="payment-card-glow" aria-hidden="true"></div>

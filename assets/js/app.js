@@ -76,15 +76,15 @@ const GestorIdioma = {
   },
 
   /**
-   * Verifica si el idioma es espa¿ol (cualquier variante)
+   * Verifica si el idioma es español (cualquier variante)
    */
-  esEspa¿ol() {
+  esEspanol() {
     const idioma = this.obtenerIdioma();
     return idioma.startsWith('es');
   },
 
   /**
-   * Verifica si el idioma es espa¿ol mexicano específico
+   * Verifica si el idioma es español mexicano específico
    */
   esMexicano() {
     return this.obtenerIdioma() === 'es-MX';
@@ -490,11 +490,13 @@ function setupHeaderScroll() {
 }
 
 function setupScrollReveal() {
+  document.documentElement.classList.add('js-animate');
   const animatedNodes = document.querySelectorAll('[data-animate]');
   if (!animatedNodes.length) return;
 
   if (prefersReducedMotion.matches) {
     animatedNodes.forEach(node => node.classList.add('is-visible'));
+    document.documentElement.classList.add('animations-ready');
     return;
   }
 
@@ -517,7 +519,17 @@ function setupScrollReveal() {
     }
   );
 
-  animatedNodes.forEach(node => scrollObserver.observe(node));
+  animatedNodes.forEach(node => {
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) {
+      node.classList.add('is-visible');
+    }
+    scrollObserver.observe(node);
+  });
+
+  requestAnimationFrame(() => {
+    document.documentElement.classList.add('animations-ready');
+  });
 }
 
 function registerAnimatedElements(root) {
@@ -766,7 +778,7 @@ function initCatalogCarousel(totalProducts) {
     for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('button');
       dot.classList.add('carousel-dot');
-            dot.setAttribute('aria-label', `Ir a pagina ${i + 1}`);
+      dot.setAttribute('aria-label', `Ir a pagina ${i + 1}`);
       if (i === currentIndex) dot.classList.add('active');
 
       dot.addEventListener('click', () => {
@@ -1965,9 +1977,3 @@ function injectOrganizationSchema() {
     /* no-op */
   }
 }
-
-
-
-
-
-
