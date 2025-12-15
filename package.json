@@ -17,6 +17,7 @@
     "validate:links": "node scripts/validate-links.js",
     "validate": "npm run check:format && npm run validate:html && npm run validate:links",
     "build:public": "node scripts/build-public.js",
+    "validate:public": "npm run build:public && node scripts/validate-html.js --file public/index.html && node scripts/validate-links.js --root public",
     "watch:css": "echo 'CSS directo - no requiere compilación'",
     "build": "npm run format",
     "deploy": "git add . && git commit -m 'chore: actualizar sitio' && git push origin main",

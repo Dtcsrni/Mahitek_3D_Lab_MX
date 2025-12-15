@@ -45,6 +45,9 @@ jobs:
       - name: ✅ Validaciones (HTML + links + formato)
         run: npm run validate
 
+      - name: ✅ Validar deploy (public/)
+        run: npm run validate:public
+
   # Job 2: Deploy a GitHub Pages (solo en main)
   deploy:
     name: 🚀 Deploy a GitHub Pages
@@ -72,6 +75,11 @@ jobs:
 
       - name: 🏗️ Preparar carpeta public/
         run: node scripts/build-public.js
+
+      - name: ✅ Verificar carpeta public/ (HTML + links)
+        run: |
+          node scripts/validate-html.js --file public/index.html
+          node scripts/validate-links.js --root public
 
       - name: ⚙️ Configurar GitHub Pages
         uses: actions/configure-pages@v4

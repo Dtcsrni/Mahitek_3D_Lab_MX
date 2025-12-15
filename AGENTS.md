@@ -13,6 +13,7 @@ Este repositorio es un sitio estático (GitHub Pages) con HTML/CSS/JS sin build 
 
 - Instalar: `npm ci` (preferido) o `npm install`
 - Validar (igual que CI): `npm run validate`
+- Validar deploy (`public/`): `npm run validate:public`
 - Servir local: `npm run dev` (puerto 8080)
 
 ## Archivos clave
@@ -40,4 +41,3 @@ Si ves warnings tipo “ignoring broken ref refs/.../desktop.ini” o errores al
 - Este repo puede estar usando `reftable` (`.git/config` -> `extensions.refstorage=reftable`).
   - Fix recomendado: `git refs migrate --ref-format=files`
   - Luego: `git fsck --full` y `git gc`
-

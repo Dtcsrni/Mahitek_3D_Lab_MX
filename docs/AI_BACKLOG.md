@@ -8,7 +8,7 @@
 - ✅ AI-004 (Git Windows: script de reparación)
 - ✅ AI-006 (promos.js sin referencias rotas)
 - ✅ AI-007 (deploy hygiene: `public/` + Pages)
-- ⏳ AI-005 (arquitectura: reducir duplicación runtime)
+- ✅ AI-005 (arquitectura: contrato `app.js` + boot progresivo)
 - ✅ AI-008 (CSP/_headers: alineado + sin scripts inline)
 
 Formato de ticket recomendado:

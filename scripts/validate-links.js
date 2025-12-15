@@ -3,7 +3,14 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { JSDOM } = require("jsdom");
 
-const PROJECT_ROOT = path.resolve(__dirname, "..");
+function getArg(name) {
+  const idx = process.argv.indexOf(name);
+  if (idx === -1) return null;
+  return process.argv[idx + 1] || null;
+}
+
+const rootArg = getArg("--root");
+const PROJECT_ROOT = path.resolve(__dirname, "..", rootArg || "");
 
 const IGNORE_DIRS = new Set([
   ".git",
@@ -13,7 +20,6 @@ const IGNORE_DIRS = new Set([
   ".tasks",
   "dist",
   "build",
-  "public",
 ]);
 
 function walkFiles(rootDir, predicate) {
@@ -170,7 +176,8 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`✓ Links/recursos OK (${htmlFiles.length} HTML, CSS url() verificado)`);
+  const rootLabel = rootArg ? `root=${rootArg}` : "root=repo";
+  console.log(`✓ Links/recursos OK (${htmlFiles.length} HTML, CSS url() verificado, ${rootLabel})`);
 }
 
 main();

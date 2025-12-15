@@ -11,6 +11,12 @@
 const fs = require('fs');
 const path = require('path');
 
+function getArg(name) {
+  const idx = process.argv.indexOf(name);
+  if (idx === -1) return null;
+  return process.argv[idx + 1] || null;
+}
+
 function fail(msg) {
   console.error(`✗ ${msg}`);
   errors++;
@@ -20,9 +26,10 @@ function ok(msg) {
 }
 
 let errors = 0;
-const htmlPath = path.resolve(process.cwd(), 'index.html');
+const fileArg = getArg('--file');
+const htmlPath = path.resolve(process.cwd(), fileArg || 'index.html');
 if (!fs.existsSync(htmlPath)) {
-  console.error('✗ index.html no encontrado');
+  console.error(`✗ HTML no encontrado: ${path.relative(process.cwd(), htmlPath)}`);
   process.exit(1);
 }
 
