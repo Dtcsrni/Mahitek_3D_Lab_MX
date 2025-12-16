@@ -358,11 +358,14 @@ function sanitizeURL(url, { allowRelative = true } = {}) {
   try {
     const u = String(url || '').trim();
     if (!u) return '#';
-    // Rutas relativas
-    if (allowRelative && (u.startsWith('/') || u.startsWith('./') || u.startsWith('../'))) {
+    const hasScheme = /^[a-zA-Z][a-zA-Z+.-]*:/.test(u);
+    // Rutas relativas (incluye "assets/..." sin prefijo) — no reescribir para conservar subpaths (GitHub Pages).
+    if (allowRelative && !hasScheme && !u.startsWith('//')) {
       return u;
     }
-    const parsed = new URL(u, window.location.origin);
+
+    const base = document.baseURI || window.location.href;
+    const parsed = new URL(u, base);
     const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
     if (allowedProtocols.includes(parsed.protocol)) return parsed.href;
   } catch (_) {
@@ -1038,7 +1041,7 @@ async function loadPromos() {
         promo.beneficios && promo.beneficios.length > 0
           ? `
         <ul class="promo-beneficios">
-          ${promo.beneficios.map(b => `<li>? ${escapeHTML(b)}</li>`).join('')}
+          ${promo.beneficios.map(b => `<li>${escapeHTML(b)}</li>`).join('')}
         </ul>
       `
           : '';
