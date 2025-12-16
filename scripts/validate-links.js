@@ -22,6 +22,64 @@ const IGNORE_DIRS = new Set([
   "build",
 ]);
 
+const DIR_INDEX_CACHE = new Map();
+
+function getDirIndex(dir) {
+  const key = path.resolve(dir);
+  const cached = DIR_INDEX_CACHE.get(key);
+  if (cached) return cached;
+
+  let entries = [];
+  try {
+    entries = fs.readdirSync(key, { withFileTypes: true });
+  } catch (_) {
+    const empty = { names: new Set(), lowerToActual: new Map() };
+    DIR_INDEX_CACHE.set(key, empty);
+    return empty;
+  }
+
+  const names = new Set();
+  const lowerToActual = new Map();
+  for (const entry of entries) {
+    names.add(entry.name);
+    const lower = entry.name.toLowerCase();
+    if (!lowerToActual.has(lower)) lowerToActual.set(lower, entry.name);
+  }
+
+  const idx = { names, lowerToActual };
+  DIR_INDEX_CACHE.set(key, idx);
+  return idx;
+}
+
+function getPathWithActualCase(targetPath) {
+  const abs = path.resolve(targetPath);
+  const parsed = path.parse(abs);
+  let current = parsed.root;
+  const segments = abs.slice(parsed.root.length).split(path.sep).filter(Boolean);
+
+  const actualParts = [];
+  const mismatches = [];
+
+  for (const seg of segments) {
+    const { names, lowerToActual } = getDirIndex(current);
+    if (names.has(seg)) {
+      actualParts.push(seg);
+      current = path.join(current, seg);
+      continue;
+    }
+
+    const actual = lowerToActual.get(seg.toLowerCase());
+    if (!actual) return { ok: false, actualPath: abs, mismatches };
+
+    mismatches.push({ expected: seg, actual });
+    actualParts.push(actual);
+    current = path.join(current, actual);
+  }
+
+  const actualPath = path.join(parsed.root, ...actualParts);
+  return { ok: mismatches.length === 0, actualPath, mismatches };
+}
+
 function walkFiles(rootDir, predicate) {
   const results = [];
   const entries = fs.readdirSync(rootDir, { withFileTypes: true });
@@ -80,6 +138,15 @@ function checkFileExists(fromFile, attr, value, errors) {
 
   if (!fs.existsSync(resolved)) {
     errors.push(`${path.relative(PROJECT_ROOT, fromFile)}: ${attr} -> "${value}" (no existe: ${path.relative(PROJECT_ROOT, resolved)})`);
+    return;
+  }
+
+  // En Windows `existsSync` es case-insensitive; en deploys Linux (GitHub Pages) no.
+  const { ok, actualPath } = getPathWithActualCase(resolved);
+  if (!ok) {
+    errors.push(
+      `${path.relative(PROJECT_ROOT, fromFile)}: ${attr} -> "${value}" (case mismatch: ${path.relative(PROJECT_ROOT, resolved)} vs ${path.relative(PROJECT_ROOT, actualPath)})`,
+    );
   }
 }
 

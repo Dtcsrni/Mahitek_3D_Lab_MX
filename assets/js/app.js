@@ -5,6 +5,7 @@ const CONFIG = {
   // Página de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
+  PLACEHOLDER_PROMO_ICON: 'assets/img/placeholder-promos.svg',
   DATA_PATHS: {
     brand: 'assets/data/brand.json',
     productsBase: 'data/products.json',
@@ -727,17 +728,21 @@ function renderProducts() {
 
 function setupImageErrorFallbacks(root) {
   if (!root) return;
-  root.querySelectorAll('img.product-image').forEach(img => {
-    img.addEventListener(
-      'error',
-      function () {
-        const ph = this.getAttribute('data-placeholder') || CONFIG.PLACEHOLDER_IMAGE;
-        if (this.src !== ph) {
-          this.src = ph;
-        }
-      },
-      { once: true }
-    );
+  root.querySelectorAll('img[data-placeholder]').forEach(img => {
+    img.addEventListener('error', function () {
+      const fallbacks = [
+        this.getAttribute('data-placeholder') || '',
+        this.getAttribute('data-fallback-raster') || ''
+      ].filter(Boolean);
+
+      if (!fallbacks.length) return;
+
+      const step = Number(this.dataset.fallbackStep || '0');
+      if (step >= fallbacks.length) return;
+
+      this.dataset.fallbackStep = String(step + 1);
+      this.src = fallbacks[step];
+    });
   });
 }
 
@@ -1078,7 +1083,7 @@ async function loadPromos() {
       let iconoHTML = '';
       if (promo.icono) {
         if (promo.icono.endsWith('.svg')) {
-          iconoHTML = `<img src="${sanitizeURL(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" />`;
+          iconoHTML = `<img src="${sanitizeURL(promo.icono)}" alt="${escapeHTML(promo.titulo)}" class="promo-icon" width="200" height="200" loading="lazy" decoding="async" data-placeholder="${CONFIG.PLACEHOLDER_PROMO_ICON}" data-fallback-raster="assets/img/og-image.png" />`;
         } else {
           iconoHTML = `<span class="promo-emoji" aria-hidden="true">${escapeHTML(promo.icono)}</span>`;
         }
@@ -1106,6 +1111,7 @@ async function loadPromos() {
     .join('');
 
   registerAnimatedElements(container);
+  setupImageErrorFallbacks(container);
 
   // Inicializar carrusel
   initPromosCarousel(activePromos.length);
@@ -1340,6 +1346,59 @@ function buildMessengerURL(ref) {
 // ===== FAQ (Lazy Load cuando sea visible) =====
 let faqLoaded = false;
 
+function normalizeKey(str) {
+  return String(str || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
+}
+
+function getFAQTheme(categoryLabel) {
+  const key = normalizeKey(categoryLabel);
+
+  if (key.includes('personal')) {
+    return { icon: 'i-faq-wand', theme: 'violet' };
+  }
+  if (key.includes('produc') || key.includes('equipo')) {
+    return { icon: 'i-faq-printer', theme: 'cyan' };
+  }
+  if (key.includes('servic') || key.includes('post')) {
+    return { icon: 'i-faq-wrench', theme: 'green' };
+  }
+  if (key.includes('env')) {
+    return { icon: 'i-faq-truck', theme: 'amber' };
+  }
+  if (key.includes('garant') || key.includes('calid')) {
+    return { icon: 'i-faq-shield', theme: 'blue' };
+  }
+  if (key.includes('precio') || key.includes('pago') || key.includes('fact')) {
+    return { icon: 'i-faq-tag', theme: 'lime' };
+  }
+  if (key.includes('archivo') || key.includes('formato')) {
+    return { icon: 'i-faq-file', theme: 'rose' };
+  }
+  if (key.includes('disen')) {
+    return { icon: 'i-faq-pen', theme: 'rose' };
+  }
+  if (key.includes('privac')) {
+    return { icon: 'i-faq-lock', theme: 'violet' };
+  }
+  if (key.includes('sosten')) {
+    return { icon: 'i-faq-leaf', theme: 'emerald' };
+  }
+  if (key.includes('devol')) {
+    return { icon: 'i-faq-refresh', theme: 'slate' };
+  }
+  if (key.includes('material') || key.includes('acab')) {
+    return { icon: 'i-faq-layers', theme: 'pink' };
+  }
+  if (key.includes('tiemp')) {
+    return { icon: 'i-faq-clock', theme: 'sky' };
+  }
+
+  return { icon: 'i-faq-spark', theme: 'teal' };
+}
+
 async function loadFAQ() {
   // Si ya se cargó, no hacer nada
   if (faqLoaded) return;
@@ -1368,13 +1427,20 @@ async function loadFAQ() {
       const id = `faq-${slugify(item.q)}`;
       const categoryValue = (item.categoria || '').toLowerCase();
       const categoryAttr = categoryValue ? ` data-category="${escapeHTML(categoryValue)}"` : '';
+      const theme = getFAQTheme(item.categoria || '');
+      const themeAttr = theme?.theme ? ` data-faq-theme="${escapeHTML(theme.theme)}"` : '';
       const categoryPill = item.categoria
         ? `<span class="faq-item-pill">${escapeHTML(item.categoria)}</span>`
         : '';
       return `
-  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up"${categoryAttr}>
+  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up"${categoryAttr}${themeAttr}>
     <summary>
       <div class="faq-item-title">
+        <span class="faq-item-icon" aria-hidden="true">
+          <svg class="ui-icon ui-icon--draw" viewBox="0 0 24 24">
+            <use href="#${escapeHTML(theme.icon)}"></use>
+          </svg>
+        </span>
         <span class="faq-item-question">${escapeHTML(item.q)}</span>
         ${categoryPill}
       </div>
@@ -1399,9 +1465,13 @@ async function loadFAQ() {
       top.innerHTML = featured
         .map(it => {
           const id = `faq-${slugify(it.q)}`;
+          const theme = getFAQTheme(it.categoria || '');
+          const themeAttr = theme?.theme ? ` data-faq-theme="${escapeHTML(theme.theme)}"` : '';
           return `<a class="faq-chip" href="#${id}" data-faq-target="#${id}" aria-label="Ir a: ${escapeHTML(
             it.q
-          )}"><span aria-hidden="true">?</span><span>${escapeHTML(it.q)}</span></a>`;
+          )}"${themeAttr}><svg class="faq-chip-icon ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#${escapeHTML(
+            theme.icon
+          )}"></use></svg><span>${escapeHTML(it.q)}</span></a>`;
         })
         .join('');
 
