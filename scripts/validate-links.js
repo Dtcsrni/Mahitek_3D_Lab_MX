@@ -268,10 +268,23 @@ function walkJsonValues(value, visitor, keyPath = "") {
 }
 
 function validateJsonResources(errors) {
-  const dataDir = path.join(PROJECT_ROOT, "data");
-  if (!fs.existsSync(dataDir)) return;
+  const jsonFiles = [];
 
-  const jsonFiles = walkFiles(dataDir, (file) => file.endsWith(".json"));
+  const roots = [
+    path.join(PROJECT_ROOT, "data"),
+    path.join(PROJECT_ROOT, "assets", "data"),
+  ];
+
+  for (const root of roots) {
+    if (!fs.existsSync(root)) continue;
+    jsonFiles.push(...walkFiles(root, (file) => file.endsWith(".json")));
+  }
+
+  const manifest = path.join(PROJECT_ROOT, "manifest.json");
+  if (fs.existsSync(manifest)) jsonFiles.push(manifest);
+
+  if (!jsonFiles.length) return;
+
   for (const jsonFile of jsonFiles) {
     let parsed;
     try {
