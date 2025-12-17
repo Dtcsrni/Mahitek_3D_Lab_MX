@@ -102,12 +102,20 @@ function listFilesFromTargets(targets) {
     }
   }
   const filtered = files.filter((p) => fs.statSync(p).isFile());
-  filtered.sort((a, b) =>
-    toPosix(path.relative(repoRoot, a)).localeCompare(
-      toPosix(path.relative(repoRoot, b)),
-    ),
-  );
+  filtered.sort((a, b) => {
+    const ra = toPosix(path.relative(repoRoot, a));
+    const rb = toPosix(path.relative(repoRoot, b));
+    if (ra < rb) return -1;
+    if (ra > rb) return 1;
+    return 0;
+  });
   return filtered;
+}
+
+function readCanonicalForHash(abs) {
+  const raw = fs.readFileSync(abs, "utf8");
+  // Normalizar line endings para que el fingerprint sea estable entre Windows (CRLF) y CI (LF).
+  return raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
 }
 
 function sha256Fingerprint(filePaths) {
@@ -116,7 +124,7 @@ function sha256Fingerprint(filePaths) {
     const rel = toPosix(path.relative(repoRoot, abs));
     hash.update(rel);
     hash.update("\0");
-    hash.update(fs.readFileSync(abs));
+    hash.update(readCanonicalForHash(abs));
     hash.update("\0");
   }
   return hash.digest("hex");
