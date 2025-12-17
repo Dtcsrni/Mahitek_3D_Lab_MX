@@ -29,7 +29,16 @@ function rmDirSafe(dirPath) {
 
 function copyRecursive(src, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.cpSync(src, dest, { recursive: true });
+  fs.cpSync(src, dest, {
+    recursive: true,
+    filter: (srcPath) => {
+      const base = path.basename(srcPath).toLowerCase();
+      if (base === "desktop.ini") return false;
+      if (base === "thumbs.db") return false;
+      if (base === ".ds_store") return false;
+      return true;
+    },
+  });
 }
 
 function main() {
@@ -52,4 +61,3 @@ function main() {
 }
 
 main();
-

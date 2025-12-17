@@ -159,7 +159,6 @@ Total de archivos: 1,519
    - `instalar-hooks.ps1` - Git hooks
    - `probar-sonidos.ps1` - Testing de audio
    - `cleanup-workflows.ps1` - Limpieza de CI/CD
-   - `verificar-workflow.ps1` - Monitoreo
 
 #### ⚠️ **Advertencias de Linting:**
 
@@ -267,7 +266,6 @@ Productos sin nombre/precio completo:
 README.md                    - Documentación principal
 DESARROLLO.md               - Guía de desarrollo
 GITHUB_PAGES_SETUP.md       - Configuración de Pages
-SOLUCION_WORKFLOWS.md       - Troubleshooting CI/CD
 NAVBAR_CYBERPUNK.md         - Diseño del navbar
 NAVBAR_INTELIGENTE.md       - Comportamiento adaptativo
 PROMOS_COMBOS.md           - Sistema de promociones
