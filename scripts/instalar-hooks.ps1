@@ -33,6 +33,11 @@ $preCommitContent = @'
 
 echo "🔍 Ejecutando validaciones pre-commit..."
 
+# Mantener docs del sistema actualizadas para cambios significativos
+echo "🧾 Actualizando ANALISIS_SISTEMA.md..."
+npm run docs:update
+git add ANALISIS_SISTEMA.md >/dev/null 2>&1 || true
+
 # Ejecutar script de validación (PowerShell)
 pwsh -File scripts/validar-codigo.ps1
 

@@ -29,22 +29,25 @@ Formato de ticket recomendado:
 
 ---
 
-## AI-001 — Normalizar encoding UTF‑8 (UI sin “V¿lido/Categor¿a/preparaci¿n”)
+## AI-001 — Normalizar encoding UTF‑8 (UI sin “Válido/Categoría/preparación”)
 
 **Contexto**
 
 - Hay strings en `assets/js/app.js` y `assets/js/boot.js` con caracteres corruptos por encoding.
-- Impacta UX y confianza (textos visibles como “V¿lido”, “Categor¿a”, “preparaci¿n”).
+- Impacta UX y confianza (textos visibles como “Válido”, “Categoría”, “preparación”).
 
 **Cambios esperados**
 
 - Reemplazar textos corruptos por español correcto.
 - Guardar archivos en UTF‑8.
+- Agregar una validación automática para prevenir regresiones (mojibake).
 
 **Archivos probables**
 
 - `assets/js/app.js`
 - `assets/js/boot.js`
+- `scripts/validate-encoding.js`
+- `package.json`
 
 **Comandos de verificación**
 
@@ -53,7 +56,7 @@ Formato de ticket recomendado:
 
 **Criterios de aceptación**
 
-- No aparecen “¿” basura dentro de palabras en la UI.
+- No aparecen caracteres basura dentro de palabras en la UI (ej. “¨”, “¿”, “�”).
 
 ---
 
