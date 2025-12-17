@@ -6307,9 +6307,51 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   height: 66px;
   border-radius: 20px;
   background: rgba(15, 23, 42, 0.7);
+  position: relative;
+  overflow: hidden;
   box-shadow:
     0 14px 28px rgba(2, 6, 23, 0.35),
     0 0 0 1px var(--faq-accent-soft) inset;
+}
+
+.faq-card-illustration::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 999px;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0%,
+    var(--faq-accent-soft) 22%,
+    transparent 55%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.faq-item:hover .faq-card-illustration::before,
+.faq-item[open] .faq-card-illustration::before {
+  opacity: 0.6;
+}
+
+.faq-card-illustration svg {
+  filter: drop-shadow(0 10px 20px rgba(2, 6, 23, 0.45));
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    filter var(--motion-duration-fast) var(--motion-ease);
+  will-change: transform;
+}
+
+.faq-item:hover .faq-card-illustration svg,
+.faq-item:focus-within .faq-card-illustration svg {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 14px 28px rgba(2, 6, 23, 0.55));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq-card-illustration::before {
+    animation: spinSlow 5.6s linear infinite;
+  }
 }
 
 .faq-card-illustration svg {
@@ -6598,6 +6640,23 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   transition: opacity var(--motion-duration-fast) var(--motion-ease);
 }
 
+.faq-item::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 14px;
+  height: 22px;
+  border-radius: 999px;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.65), transparent 70%);
+  filter: blur(16px);
+  opacity: 0.35;
+  transform: translate3d(0, 10px, 0) scale(0.98);
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
 .faq-item summary {
   list-style: none;
   padding: 0;
@@ -6633,6 +6692,24 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   gap: 0.85rem;
   padding: 1.2rem 1.2rem 1rem 1.2rem;
   min-height: 172px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 58%);
+}
+
+.faq-card-summary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 15%, rgba(255, 255, 255, 0.09), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--motion-duration-fast) var(--motion-ease);
+  pointer-events: none;
+}
+
+.faq-item:hover .faq-card-summary::after,
+.faq-item:focus-within .faq-card-summary::after,
+.faq-item[open] .faq-card-summary::after {
+  opacity: 1;
 }
 
 .faq-card-summary:focus-visible {
@@ -6671,22 +6748,47 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .faq-item.is-visible::after {
+    animation: faqFloatShadow 5.8s ease-in-out infinite;
+    animation-delay: var(--animate-delay, 0s);
+  }
+
+  .faq-item.is-visible .faq-card-illustration {
+    animation: floatMicro 4.4s ease-in-out infinite;
+    animation-delay: var(--animate-delay, 0s);
+  }
+
+  .faq-item:not([open]):hover .faq-item-chevron::before {
+    animation: faqPlusPulse 1.25s ease-in-out infinite;
+  }
+
   .faq-item[open] .faq-item-content {
     animation: faqAnswerIn 220ms var(--motion-ease) both;
   }
 
-  .faq-item[open] .faq-card-illustration {
+  .faq-item[open] .faq-card-illustration svg {
     animation: faqIllustrationIn 260ms var(--motion-ease) both;
+  }
+
+  .faq-item:hover .faq-card-illustration .icon-stroke,
+  .faq-item[open] .faq-card-illustration .icon-stroke {
+    stroke-dasharray: 7 18;
+    stroke-dashoffset: 0;
+    animation: strokeFlow 2.8s linear infinite;
   }
 }
 
 .faq-item:hover,
 .faq-item[open] {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   border-color: var(--faq-accent, rgba(94, 234, 212, 0.5));
   box-shadow:
     0 18px 38px rgba(2, 6, 23, 0.45),
     0 10px 30px var(--faq-accent-soft, rgba(6, 182, 212, 0.18));
+}
+
+.faq-item[open] {
+  transform: translateY(-3px);
 }
 
 .faq-item:hover::before,
@@ -6755,6 +6857,28 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   }
   to {
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes faqFloatShadow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate3d(0, 10px, 0) scale(0.98);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translate3d(0, 4px, 0) scale(1.05);
+  }
+}
+
+@keyframes faqPlusPulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.12);
   }
 }
 
