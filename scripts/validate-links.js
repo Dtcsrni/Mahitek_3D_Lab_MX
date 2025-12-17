@@ -180,10 +180,56 @@ function validateHtmlFile(filePath, errors) {
       .filter(Boolean),
   );
 
+  function checkIdRefs(fromFile, attr, value) {
+    if (!value) return;
+    const tokens = String(value)
+      .trim()
+      .split(/\s+/)
+      .map((t) => t.trim())
+      .filter(Boolean);
+
+    for (const token of tokens) {
+      const id = token.replace(/^#/, "");
+      if (!id) continue;
+      if (!ids.has(id)) {
+        errors.push(
+          `${path.relative(PROJECT_ROOT, fromFile)}: ${attr} -> "${value}" (id no encontrado: #${id})`,
+        );
+      }
+    }
+  }
+
   for (const anchor of document.querySelectorAll("a[href]")) {
     const href = anchor.getAttribute("href");
+    if (href !== null && href.trim() === "") {
+      errors.push(`${path.relative(PROJECT_ROOT, filePath)}: href vacío en <a>`);
+      continue;
+    }
+
     checkAnchorId(filePath, href, ids, errors);
     checkFileExists(filePath, "href", href, errors);
+
+    // `href="#"` se permite solo para enlaces que serán hidratados por JS (ej. email-link).
+    if (href && href.trim() === "#") {
+      const isEmailLink =
+        anchor.classList.contains("email-link") ||
+        (anchor.getAttribute("data-email-user") && anchor.getAttribute("data-email-domain"));
+      if (!isEmailLink) {
+        errors.push(
+          `${path.relative(PROJECT_ROOT, filePath)}: href -> "#" (evitar placeholder; define destino real o marca email-link)`,
+        );
+      }
+    }
+
+    // Seguridad/usabilidad: target=_blank requiere rel=noopener
+    if (String(anchor.getAttribute("target") || "").toLowerCase() === "_blank") {
+      const rel = String(anchor.getAttribute("rel") || "").toLowerCase();
+      if (!rel.includes("noopener")) {
+        errors.push(
+          `${path.relative(PROJECT_ROOT, filePath)}: <a target=\"_blank\"> sin rel=\"noopener\" (href="${href || ""}")`,
+        );
+      }
+    }
   }
 
   for (const node of document.querySelectorAll("img[src], script[src], iframe[src], source[src], video[src], audio[src]")) {
@@ -205,6 +251,42 @@ function validateHtmlFile(filePath, errors) {
     const srcset = node.getAttribute("srcset");
     for (const url of parseSrcset(srcset)) {
       checkFileExists(filePath, "srcset", url, errors);
+    }
+  }
+
+  // Validar referencias ARIA (controles y labels)
+  for (const node of document.querySelectorAll("[aria-controls]")) {
+    checkIdRefs(filePath, "aria-controls", node.getAttribute("aria-controls"));
+  }
+  for (const node of document.querySelectorAll("[aria-labelledby]")) {
+    checkIdRefs(filePath, "aria-labelledby", node.getAttribute("aria-labelledby"));
+  }
+  for (const label of document.querySelectorAll("label[for]")) {
+    const target = String(label.getAttribute("for") || "").trim();
+    if (target && !ids.has(target)) {
+      errors.push(
+        `${path.relative(PROJECT_ROOT, filePath)}: label[for] -> "${target}" (id no encontrado)`,
+      );
+    }
+  }
+
+  // Validar <use href="#..."> contra símbolos del sprite (evita iconos rotos).
+  const symbolIds = new Set(
+    Array.from(document.querySelectorAll("symbol[id]"))
+      .map((n) => n.getAttribute("id"))
+      .filter(Boolean),
+  );
+  if (symbolIds.size) {
+    for (const use of document.querySelectorAll("use[href], use[xlink\\:href]")) {
+      const raw = use.getAttribute("href") || use.getAttribute("xlink:href") || "";
+      if (!raw.trim().startsWith("#")) continue;
+      const id = raw.trim().slice(1);
+      if (!id) continue;
+      if (!symbolIds.has(id)) {
+        errors.push(
+          `${path.relative(PROJECT_ROOT, filePath)}: <use href=\"${raw}\"> (symbol no encontrado: #${id})`,
+        );
+      }
     }
   }
 }
