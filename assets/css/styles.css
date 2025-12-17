@@ -7212,6 +7212,16 @@ html.js-animate [data-animate="zoom-in"].is-visible {
     radial-gradient(42% 62% at 72% 72%, rgba(254, 44, 85, 0.68), transparent), #0b0f14;
 }
 
+#social-links .social-icon--youtube {
+  background: linear-gradient(135deg, #ff0033, #ff0000, #b91c1c);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+#social-links .social-icon--youtube:hover,
+#social-links .social-icon--youtube:focus-visible {
+  background: linear-gradient(135deg, #ff2a4f, #ff0000, #991b1b);
+}
+
 /* Footer contact minor tweak */
 .footer-contact .btn {
   width: fit-content;

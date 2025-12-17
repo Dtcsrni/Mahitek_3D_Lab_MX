@@ -1619,14 +1619,29 @@ async function loadSocialLinks() {
   }
   if (!social) return;
 
+  const isValidSocialUrl = value => {
+    const raw = String(value || '').trim();
+    if (!raw) return false;
+    // Evita placeholders típicos o strings no listas (ej. "<tu_usuario>").
+    if (raw.includes('<') || raw.includes('>')) return false;
+    if (/tu_usuario/i.test(raw)) return false;
+    const safe = sanitizeURL(raw, { allowRelative: false });
+    return safe.startsWith('http://') || safe.startsWith('https://');
+  };
+
+  const pushIfValid = (arr, { key, label, url }) => {
+    if (!isValidSocialUrl(url)) return;
+    arr.push({ key, label, url });
+  };
+
   // Footer social links (iconos)
   const container = document.getElementById('social-links');
   if (container) {
     const links = [];
-    if (social.instagram)
-      links.push({ key: 'instagram', label: 'Instagram', url: social.instagram });
-    if (social.facebook) links.push({ key: 'facebook', label: 'Facebook', url: social.facebook });
-    if (social.tiktok) links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok });
+    pushIfValid(links, { key: 'instagram', label: 'Instagram', url: social.instagram });
+    pushIfValid(links, { key: 'facebook', label: 'Facebook', url: social.facebook });
+    pushIfValid(links, { key: 'tiktok', label: 'TikTok', url: social.tiktok });
+    pushIfValid(links, { key: 'youtube', label: 'YouTube', url: social.youtube });
 
     container.innerHTML = links
       .map(
@@ -1644,17 +1659,10 @@ async function loadSocialLinks() {
   const heroContainer = document.getElementById('hero-social-links');
   if (heroContainer) {
     const links = [];
-    if (social.instagram)
-      links.push({
-        key: 'instagram',
-        label: 'Instagram',
-        url: social.instagram,
-        icon: 'instagram'
-      });
-    if (social.facebook)
-      links.push({ key: 'facebook', label: 'Facebook', url: social.facebook, icon: 'facebook' });
-    if (social.tiktok)
-      links.push({ key: 'tiktok', label: 'TikTok', url: social.tiktok, icon: 'tiktok' });
+    pushIfValid(links, { key: 'instagram', label: 'Instagram', url: social.instagram });
+    pushIfValid(links, { key: 'facebook', label: 'Facebook', url: social.facebook });
+    pushIfValid(links, { key: 'tiktok', label: 'TikTok', url: social.tiktok });
+    pushIfValid(links, { key: 'youtube', label: 'YouTube', url: social.youtube });
 
     heroContainer.innerHTML = links
       .map(
@@ -2047,7 +2055,12 @@ function injectOrganizationSchema() {
       name: 'Mahitek 3D Lab',
       url: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/',
       logo: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/mark-icon.svg',
-      sameAs: ['https://www.instagram.com/mahitek3dlab', 'https://www.facebook.com/mahitek3dlab'],
+      sameAs: [
+        'https://www.instagram.com/mahitek_3d_lab_mx/',
+        'https://www.facebook.com/mahitek3dlabmx',
+        'https://www.tiktok.com/@mahitek_3d_lab_mx',
+        'https://www.youtube.com/@mahitek3dlabmx'
+      ],
       description:
         'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, Decoración y proyectos creativos.',
       address: {
