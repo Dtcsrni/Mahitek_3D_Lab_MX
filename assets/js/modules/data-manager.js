@@ -26,13 +26,17 @@ const subscribers = new Map();
 // ═══════════════════════════════════════════════════════════════════════════
 
 const ENDPOINTS = {
+  // No está en CONFIG por ahora (solo docs/data)
   copywriting: 'data/copywriting.json',
-  products: 'data/products.json',
-  productsBase: 'data/products.json',
-  promos: 'data/promos.json',
-  faq: 'data/faq.json',
-  social: 'data/social.json',
-  brand: 'assets/data/brand.json'
+
+  // Alias para compatibilidad con helpers (mapeado a productsBase)
+  products: CONFIG.DATA_PATHS.productsBase,
+  productsBase: CONFIG.DATA_PATHS.productsBase,
+
+  promos: CONFIG.DATA_PATHS.promos,
+  faq: CONFIG.DATA_PATHS.faq,
+  social: CONFIG.DATA_PATHS.social,
+  brand: CONFIG.DATA_PATHS.brand
 };
 
 // Tiempo de caché en milisegundos (5 minutos por defecto)

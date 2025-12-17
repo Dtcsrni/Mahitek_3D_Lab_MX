@@ -135,7 +135,10 @@ const welcome = await CopyBinder.getCopy('hero.welcome', {
 
 ## 🚀 Inicialización
 
-El sistema se inicializa automáticamente en `boot.js`:
+Integración recomendada (opcional) en `boot.js`:
+
+- Actualmente `boot.js` es mejora progresiva y evita cargar datos para no duplicar trabajo con `app.js`.
+- Si decides migrar carga/binding a módulos, este es el patrón sugerido.
 
 ```javascript
 // boot.js
@@ -338,6 +341,10 @@ El sistema es **100% compatible** con `app.js` existente:
 - [ ] Migrar `loadFAQ()` a usar `DataManager.getFAQ()`
 - [ ] Añadir binding de copywriting al catálogo de productos
 - [ ] Crear helper para actualizar microcopy dinámico
+
+Notas:
+
+- Estos pendientes dependen de implementar primero `DataManager` (ver AI-009 en [docs/AI_BACKLOG.md](docs/AI_BACKLOG.md)).
 
 ---
 
