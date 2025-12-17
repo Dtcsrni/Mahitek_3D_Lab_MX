@@ -6116,6 +6116,17 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   .is-visible .ui-icon--draw .icon-stroke {
     animation: iconDraw 1.1s ease forwards;
   }
+
+  /* Footer icons: siempre vivos (sin depender del observer) */
+  .footer .ui-icon--live {
+    animation: floatMicro 3.6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .footer .ui-icon--live .icon-stroke {
+    stroke-dasharray: 7 18;
+    animation: strokeFlow 2.8s linear infinite;
+  }
 }
 
 .faq-item {
@@ -6752,10 +6763,47 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   }
 }
 
+@keyframes strokeFlow {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes floatMicro {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes neonPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(94, 234, 212, 0));
+  }
+  50% {
+    filter: drop-shadow(0 10px 22px rgba(94, 234, 212, 0.18));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .faq-hero::after,
   .faq-item::before {
     animation: none;
+  }
+
+  .footer .ui-icon--live,
+  .footer .ui-icon--live .icon-stroke,
+  .payment-icon,
+  .payment-icon::before,
+  .footer-extras-grid::before,
+  .trust-icon,
+  .trust-badges li {
+    animation: none !important;
+    filter: none !important;
   }
 } /* ===== CTA Section ===== */
 .cta-section {
@@ -7031,6 +7079,12 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   }
 }
 
+@media (min-width: 1024px) {
+  .footer-extras-grid {
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  }
+}
+
 .footer-extras-grid::before {
   content: "";
   position: absolute;
@@ -7295,6 +7349,24 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   overflow: hidden;
 }
 
+.payment-icon::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 999px;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0%,
+    var(--pay-soft) 25%,
+    transparent 55%,
+    var(--pay-soft) 75%,
+    transparent 100%
+  );
+  filter: blur(10px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 .payment-icon::after {
   content: "";
   position: absolute;
@@ -7312,6 +7384,14 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 @media (prefers-reduced-motion: no-preference) {
   .payment-method:hover .payment-icon .ui-icon {
     animation: iconNudge 520ms var(--motion-ease);
+  }
+
+  .payment-icon::before {
+    animation: spinSlow 7.5s linear infinite;
+  }
+
+  .payment-icon {
+    animation: neonPulse 4.2s ease-in-out infinite;
   }
 }
 
@@ -7375,10 +7455,26 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   background: rgba(15, 23, 42, 0.55);
   color: rgba(226, 232, 240, 0.92);
   box-shadow: 0 18px 34px rgba(2, 6, 23, 0.25);
+  position: relative;
+  overflow: hidden;
   transition:
     transform var(--motion-duration-fast) var(--motion-ease),
     box-shadow var(--motion-duration-fast) var(--motion-ease),
     border-color var(--motion-duration-fast) var(--motion-ease);
+}
+
+.trust-badges li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, var(--trust-soft), transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.trust-badges li > * {
+  position: relative;
+  z-index: 1;
 }
 
 .trust-badge[data-trust="shipping"] {
@@ -7411,6 +7507,16 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   transform: translateY(-2px);
   border-color: var(--trust-accent);
   box-shadow: 0 22px 46px rgba(2, 6, 23, 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .trust-icon {
+    animation: floatMicro 3.2s ease-in-out infinite;
+  }
+
+  .trust-badges li {
+    animation: neonPulse 5.2s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
