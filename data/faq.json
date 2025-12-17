@@ -1,30 +1,156 @@
 [
-  {"q":"¿Personalizan?","a":"Sí, con criterios claros y tiempos definidos.", "categoria": "personalización"},
-  {"q":"¿Tiradas pequeñas?","a":"Sí, por eso existimos.", "categoria": "producción"},
-  {"q":"¿Reparación?","a":"Sí, con guía simple y opciones de arreglo.", "categoria": "servicio"},
-  {"q":"¿Cómo cuido mi pieza?","a":"Cada entrega incluye una guía breve.", "categoria": "uso"},
-  {"q":"¿Envíos?","a":"Sí. Opciones al confirmar el pedido.", "categoria": "envíos"},
-  {"q":"¿En qué material trabajan?","a":"PETG como estándar por durabilidad y consistencia visual. PLA solo en casos donde el uso y el costo lo justifican.", "categoria": "materiales"},
+  {
+    "q": "¿Aceptan pedidos de una sola pieza?",
+    "a": "Sí, sin problema. Trabajamos con cualquier cantidad. Los packs de varias piezas tienen mejor precio unitario.",
+    "categoria": "pedidos",
+    "destacada": true
+  },
 
-  {"q":"¿Cuánto tardan?","a":"Piezas pequeñas: 2–5 días. Proyectos medianos: 5–10 días. Confirmamos fechas realistas al aprobar el diseño.", "categoria": "tiempos", "destacada": true},
-  {"q":"¿Ofrecen prioridad/express?","a":"Por ahora no ofrecemos servicio express; trabajamos con entregas programadas.", "categoria": "servicio"},
-  {"q":"¿Qué formatos aceptan?","a":"3D: STL/STEP/OBJ. 2D: SVG/PDF/PNG. Ideal vector (SVG/PDF). Si no los tienes, podemos ayudar a convertir.", "categoria": "archivos"},
-  {"q":"¿Pueden ayudar con el diseño?","a":"Ajuste básico incluido en packs impresos. Diseño a medida y modelado 3D se cotiza por hora/alcance.", "categoria": "diseño"},
-  {"q":"¿Cuál es la tolerancia?","a":"Usualmente ±0.3–0.5 mm en piezas pequeñas. Depende del diseño, orientación y material.", "categoria": "calidad"},
-  {"q":"¿Qué colores hay?","a":"Stock PETG: negro, blanco, translúcidos y acentos. Otros bajo pedido o por disponibilidad.", "categoria": "materiales"},
-  {"q":"¿Qué acabados manejan?","a":"Mate/brillante en impresos; lijado/ajuste ligero en 3D; laminado en tarjetas/etiquetas.", "categoria": "acabados"},
-  {"q":"¿Hay mínimo de pedido?","a":"No. 1 pieza es posible. Packs mejoran precio unitario.", "categoria": "precios"},
-  {"q":"¿Cómo cotizo?","a":"Envíanos foto/dibujo, medidas y uso. Te enviamos propuesta visual con costos en 1–2 días hábiles.", "categoria": "pedidos", "destacada": true},
-  {"q":"¿Garantía y reimpresión?","a":"30 días por defectos de fabricación. Outlet A-/B excluye estética, funcionalidad garantizada.", "categoria": "garantía", "destacada": true},
-  {"q":"¿Pagos y anticipos?","a":"Efectivo, tarjeta y transferencia. Anticipo 50% en órdenes > $500.", "categoria": "pagos"},
-  {"q":"¿Facturan?","a":"Sí. Solicítala al confirmar. Requerimos tus datos fiscales y uso de CFDI.", "categoria": "facturación"},
-  {"q":"¿Costos y tiempos de envío?","a":"Gratis online ≥$200. Local programado según zona. Nacional según paquetería y peso.", "categoria": "envíos", "destacada": true},
-  {"q":"¿Qué opciones de entrega tienen?","a":"<strong>Local en Pachuca (programado):</strong> Moto o auto según zona y tamaño. Coordinamos día y rango horario. <strong>Nacional:</strong> Envío por paquetería con tiempos típicos de 2–5 días hábiles según destino. Te mostramos tarifas estimadas al cotizar; el monto final depende de peso real/volumétrico, zona y recargos de la paquetería.", "categoria": "envíos", "destacada": true},
-  {"q":"¿Puedo recoger en punto?","a":"Sí, Click & Pick con cita. Llévate un sticker edición limitada al recoger.", "categoria": "servicio"},
-  {"q":"¿Dimensiones máximas de impresión?","a":"Volumen por pieza ~220×220×250 mm. Piezas mayores se seccionan y ensamblan.", "categoria": "equipos"},
-  {"q":"¿Privacidad de mis archivos?","a":"Confidencial. No compartimos tus modelos ni renders sin permiso.", "categoria": "privacidad"},
-  {"q":"¿Sustentabilidad?","a":"Optimizamos soportes, reutilizamos empaque y priorizamos PETG durable.", "categoria": "sostenibilidad"},
-  {"q":"¿Post-procesos disponibles?","a":"Inserto roscado, imanes, herrajes, pegado por secciones y montaje básico.", "categoria": "post-proceso"},
-  {"q":"¿Devoluciones?","a":"Hechos a pedido. Si algo no va bien, ajustamos o reimprimimos según garantía.", "categoria": "devoluciones"},
-  {"q":"¿Cómo manejan los precios?","a":"Trabajamos con rangos por complejidad/material/extra. El precio base es el piso mínimo.", "categoria": "precios"}
+  {
+    "q": "¿Cómo hago una cotización?",
+    "a": "Envíanos una foto, dibujo o archivo del producto, las medidas y para qué va a servir. Te respondemos con una propuesta visual y presupuesto en 1 a 2 días hábiles.",
+    "categoria": "pedidos",
+    "destacada": true
+  },
+
+  {
+    "q": "¿Qué tiempo de entrega tienen?",
+    "a": "Las piezas pequeñas tardan entre 2 a 5 días. Los proyectos medianos entre 5 a 10 días. Confirmamos las fechas exactas una vez que aprobamos el diseño.",
+    "categoria": "tiempos",
+    "destacada": true
+  },
+
+  {
+    "q": "¿Hacen servicios express o prioritarios?",
+    "a": "Por ahora no ofrecemos entregas express. Trabajamos con un calendario de entregas programadas para mantener la calidad.",
+    "categoria": "tiempos"
+  },
+
+  {
+    "q": "¿Qué materiales utilizan?",
+    "a": "Usamos PETG como material principal porque es durable y tiene una excelente consistencia visual. En casos especiales donde el uso y el presupuesto lo justifican, también trabajamos con PLA.",
+    "categoria": "materiales"
+  },
+
+  {
+    "q": "¿Qué colores están disponibles?",
+    "a": "En PETG tenemos en stock: negro, blanco, translúcidos y colores acentos. Otros colores los conseguimos bajo pedido según disponibilidad.",
+    "categoria": "materiales"
+  },
+
+  {
+    "q": "¿Qué formatos de archivo aceptan?",
+    "a": "Para modelos 3D: STL, STEP u OBJ. Para diseños 2D: SVG, PDF o PNG. Lo ideal es usar vectores (SVG o PDF). Si no tienes el archivo en ese formato, podemos ayudarte a convertirlo.",
+    "categoria": "diseño"
+  },
+
+  {
+    "q": "¿Pueden ayudar con el diseño de mi producto?",
+    "a": "Sí. Los ajustes básicos están incluidos en nuestros paquetes. Si necesitas un diseño completamente personalizado o modelado 3D desde cero, cotizamos por horas de trabajo según el alcance del proyecto.",
+    "categoria": "diseño"
+  },
+
+  {
+    "q": "¿Personalizan los diseños?",
+    "a": "Claro que sí. Trabajamos con criterios claros y tiempos definidos. Podemos adaptar modelos existentes o crear nuevos diseños según tus necesidades.",
+    "categoria": "personalización"
+  },
+
+  {
+    "q": "¿Qué tan precisas son las piezas?",
+    "a": "La tolerancia típica es de ±0,3 a ±0,5 mm en piezas pequeñas. El resultado exacto depende del diseño, cómo orientamos la pieza y el material que usamos.",
+    "categoria": "calidad"
+  },
+
+  {
+    "q": "¿Qué acabados ofrecen?",
+    "a": "En piezas impresas manejamos acabados mate o brillante. En objetos 3D podemos lijar o hacer ajustes ligeros. En tarjetas y etiquetas aplicamos laminado para protegerlas.",
+    "categoria": "acabados"
+  },
+
+  {
+    "q": "¿Cuál es el tamaño máximo que pueden imprimir?",
+    "a": "El volumen máximo por pieza es de aproximadamente 220 x 220 x 250 mm. Si necesitas algo más grande, podemos dividir la pieza en secciones y luego ensamblarlas.",
+    "categoria": "especificaciones"
+  },
+
+  {
+    "q": "¿Realizan post-procesos o acabados adicionales?",
+    "a": "Sí. Podemos colocar insertos roscados, imanes, herrajes, pegar por secciones e incluso hacer montaje básico. Consulta las opciones disponibles cuando cotices.",
+    "categoria": "acabados"
+  },
+
+  {
+    "q": "¿Tienen opciones de entrega?",
+    "a": "Sí. En Pachuca ofrecemos recogida local programada con cita. Puedes elegir moto o auto según el tamaño. A nivel nacional enviamos por paquetería con entregas típicas de 2 a 5 días hábiles según el destino. Te mostramos las tarifas estimadas al cotizar.",
+    "categoria": "envíos",
+    "destacada": true
+  },
+
+  {
+    "q": "¿Hay envío gratis?",
+    "a": "Sí, a partir de $200 de compra en la zona local. Para entregas nacionales el costo depende del peso, tamaño y la zona de destino. La paquetería también puede aplicar recargos según la región.",
+    "categoria": "envíos"
+  },
+
+  {
+    "q": "¿Puedo recoger mi pedido en persona?",
+    "a": "Por supuesto. Ofrecemos Click & Pick con cita previa. Cuando recoges tu pedido te regalamos un sticker edición limitada.",
+    "categoria": "envíos"
+  },
+
+  {
+    "q": "¿Cuáles son los métodos de pago?",
+    "a": "Aceptamos efectivo, tarjeta de crédito o débito, y transferencia bancaria. Para órdenes mayores a $500 pedimos un anticipo del 50%.",
+    "categoria": "pagos"
+  },
+
+  {
+    "q": "¿Pueden facturar?",
+    "a": "Sí, sin problema. Pídela cuando confirmes tu pedido. Necesitamos tus datos fiscales para emitir la factura con CFDI.",
+    "categoria": "pagos"
+  },
+
+  {
+    "q": "¿Qué garantía ofrecen en los productos?",
+    "a": "Te ofrecemos 30 días de garantía por defectos de fabricación. En productos de la línea Outlet (calidad A- o B) la estética no está garantizada, pero la funcionalidad sí.",
+    "categoria": "garantía",
+    "destacada": true
+  },
+
+  {
+    "q": "¿Qué pasa si algo no sale bien?",
+    "a": "Si algo no está como esperabas, ajustamos o reimprimimos el producto según lo que establece nuestra garantía. Queremos que quedes satisfecho.",
+    "categoria": "garantía"
+  },
+
+  {
+    "q": "¿Cómo cuido mi pieza impresa?",
+    "a": "Cada entrega incluye una pequeña guía de cuidados. Básicamente evita temperatura excesiva, compresión prolongada y limpia con agua tibia cuando sea necesario.",
+    "categoria": "uso"
+  },
+
+  {
+    "q": "¿Ofrecen servicio de reparación?",
+    "a": "Sí. Si tu pieza se daña, podemos ayudarte con una guía simple para intentar repararla, o ofrecemos opciones para hacer un arreglo más profesional.",
+    "categoria": "servicio"
+  },
+
+  {
+    "q": "¿Mis archivos están seguros?",
+    "a": "Totalmente. Tratamos tus modelos y renders como confidencial. No los compartimos ni los usamos sin tu permiso.",
+    "categoria": "privacidad"
+  },
+
+  {
+    "q": "¿Realizan entregas pequeñas?",
+    "a": "Claro. De hecho, por eso existimos. Nos especializamos en tiradas pequeñas y prototipos. No hay mínimo de cantidad.",
+    "categoria": "producción"
+  },
+
+  {
+    "q": "¿Qué hacen por el medio ambiente?",
+    "a": "Optimizamos el uso de soportes para reducir residuos, reutilizamos el empaque y priorizamos PETG por su durabilidad y vida útil más larga.",
+    "categoria": "sostenibilidad"
+  }
 ]
