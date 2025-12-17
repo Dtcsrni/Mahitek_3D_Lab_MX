@@ -8,24 +8,25 @@ Este archivo genera automáticamente una imagen optimizada para previsualizacion
 
 ### 1. Generar la imagen
 
-1. Abre el archivo `generate-og-image.html` en tu navegador (doble clic)
+1. Abre `/.dev/og-image-generator.html` en tu navegador
+   - Recomendado: ejecuta `npm run dev` y visita `http://localhost:8080/.dev/og-image-generator.html`
 2. Verás una previsualización de cómo quedará la imagen
 3. Haz clic en el botón **"💾 Descargar og-image.png"**
 4. Se descargará automáticamente el archivo `og-image.png` (1200x630px)
 
 ### 2. Subir al servidor
 
-**Importante:** El archivo `og-image.png` debe estar en la **raíz** de tu sitio web (mismo nivel que `index.html`).
+**Importante:** En este repo el sitio usa `assets/img/og-image.png` (no la raíz).
 
 **Estructura correcta:**
 ```
-mahitek3dlab.mx/
+Mahitek_3D_Lab_MX/
 ├── index.html
-├── og-image.png          ← AQUÍ debe estar
 ├── robots.txt
 ├── sitemap.xml
 └── assets/
-    └── ...
+    └── img/
+        └── og-image.png  ← AQUÍ debe estar
 ```
 
 ### 3. Verificar que funciona
@@ -34,13 +35,13 @@ Después de subir la imagen, verifica que las previsualizaciones funcionan corre
 
 #### Facebook & LinkedIn
 https://developers.facebook.com/tools/debug/
-- Pega tu URL: `https://mahitek3dlab.mx/`
+- Pega tu URL: `https://dtcsrni.github.io/Mahitek_3D_Lab_MX/`
 - Haz clic en "Depurar" (Debug)
 - Verifica que aparezca la imagen correcta
 
 #### Twitter
 https://cards-dev.twitter.com/validator
-- Pega tu URL: `https://mahitek3dlab.mx/`
+- Pega tu URL: `https://dtcsrni.github.io/Mahitek_3D_Lab_MX/`
 - Haz clic en "Preview card"
 - Verifica la imagen
 
@@ -54,21 +55,21 @@ https://developers.facebook.com/tools/debug/sharing/
 Ya están actualizados en tu `index.html`:
 
 ```html
-<meta property="og:image" content="https://mahitek3dlab.mx/og-image.png">
+<meta property="og:image" content="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta name="twitter:image" content="https://mahitek3dlab.mx/og-image.png">
+<meta name="twitter:image" content="https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/og-image.png">
 ```
 
 ## 🔄 Actualizar la imagen
 
 Si quieres cambiar el diseño:
 
-1. Edita el SVG dentro de `generate-og-image.html` (función `getSVGContent()`)
-2. Abre el archivo en el navegador
-3. Descarga la nueva versión
-4. Reemplaza `og-image.png` en tu servidor
+1. Edita `.dev/og-image.svg` (fuente)
+2. Abre `/.dev/og-image-generator.html` en el navegador
+3. Descarga la nueva versión como `og-image.png`
+4. Reemplaza `assets/img/og-image.png` en el repo
 5. Limpia la caché en las herramientas de validación
 
 ## 📐 Especificaciones técnicas

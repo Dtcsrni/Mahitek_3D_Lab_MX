@@ -76,25 +76,37 @@
   <canvas id="canvas" style="display: none;"></canvas>
 
   <script>
+    function waitForImage(img) {
+      if (!img) return Promise.reject(new Error('No hay imagen de preview'));
+      if (img.complete) return Promise.resolve();
+
+      return new Promise((resolve, reject) => {
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', reject, { once: true });
+      });
+    }
+
     async function downloadPNG() {
       const img = document.getElementById('preview');
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
-      
+
       // Configurar dimensiones exactas para OG
       canvas.width = 1200;
       canvas.height = 630;
-      
-      // Cargar SVG como imagen
-      const svgImg = new Image();
-      svgImg.crossOrigin = 'anonymous';
-      
-      svgImg.onload = function() {
-        // Dibujar SVG en canvas
-        ctx.drawImage(svgImg, 0, 0, 1200, 630);
-        
-        // Convertir a PNG y descargar
-        canvas.toBlob(function(blob) {
+
+      try {
+        await waitForImage(img);
+        ctx.drawImage(img, 0, 0, 1200, 630);
+      } catch (err) {
+        alert(
+          '❌ Error al cargar el SVG.\n\nSugerencia: abre esto con un servidor local (ej. `npm run dev`) y visita:\nhttp://localhost:8080/.dev/og-image-generator.html',
+        );
+        return;
+      }
+
+      canvas.toBlob(
+        function (blob) {
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
@@ -103,17 +115,12 @@
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
-          
+
           alert('✅ PNG descargado! Guárdalo como "og-image.png" en assets/img/');
-        }, 'image/png');
-      };
-      
-      svgImg.onerror = function() {
-        alert('❌ Error al cargar SVG. Intenta abrir este archivo desde un servidor local.');
-      };
-      
-      // Cargar SVG
-      svgImg.src = 'og-image.svg';
+        },
+        'image/png',
+        0.95,
+      );
     }
   </script>
 
