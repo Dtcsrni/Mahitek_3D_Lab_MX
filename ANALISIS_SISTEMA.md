@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-17T12:10:52.809Z
-Fingerprint: sha256:fbde4900bb75a2b5f06370978f86428a85fd3d835d1c665ca4b39abc1064dfca
-Archivos hasheados: 57
+Generado: 2025-12-17T12:54:26.081Z
+Fingerprint: sha256:51f2770fcdc819b4997f628f1eb9e5e5aa277749e64104574cb61ea799964f87
+Archivos hasheados: 48
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -44,27 +44,26 @@ Inventario (excluye .git/node_modules/public):
 
 | Ext | Conteo |
 | --- | -----: |
-| `.svg` | 79 |
-| `.md` | 27 |
-| `.js` | 21 |
+| `.svg` | 46 |
+| `.md` | 28 |
+| `.js` | 20 |
 | `.json` | 17 |
-| `.css` | 11 |
 | `.ps1` | 11 |
 | `(sin-ext)` | 6 |
-| `.html` | 4 |
+| `.css` | 6 |
 | `.yml` | 2 |
 | `.png` | 2 |
+| `.ini` | 2 |
+| `.html` | 2 |
 | `.code-workspace` | 1 |
 | `.txt` | 1 |
 | `.xml` | 1 |
 | `.bat` | 1 |
 | `.sh` | 1 |
 
-HTML detectados (4):
-- comparacion-svgs.html
+HTML detectados (2):
 - index.html
 - qr/index.html
-- visualizacion-promos.html
 
 Workflows (2):
 - .github/workflows/ci.yml
@@ -99,4 +98,3 @@ Scripts npm (26):
 - `watch:css`
 
 <!-- AUTO-GENERATED:END -->
-
