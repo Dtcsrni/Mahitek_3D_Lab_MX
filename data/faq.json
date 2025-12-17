@@ -13,13 +13,13 @@
   },
   {
     "q": "¿Cuánto tarda mi pedido?",
-    "a": "Piezas pequeñas: 2 a 5 días. Proyectos más grandes: 5 a 10 días. Te confirmamos la fecha exacta una vez que apruebas el diseño.",
+    "a": "Piezas pequeñas: 2 a 5 días. Proyectos más grandes: 5 a 10 días. Te damos un estimado y lo ajustamos cuando apruebas el diseño.",
     "categoria": "tiempos",
     "destacada": true
   },
   {
     "q": "¿Hay servicio urgente?",
-    "a": "Trabajamos con fechas que respetamos y priorizamos calidad. Contáctanos para consultar disponibilidad especial.",
+    "a": "A veces sí, según carga y complejidad. Contáctanos para revisar si podemos ajustar tiempos y con qué costo.",
     "categoria": "tiempos"
   },
   {
@@ -39,7 +39,7 @@
   },
   {
     "q": "¿Qué material usan?",
-    "a": "Principalmente PETG. Es resistente, durable y da un acabado consistente. Disponible en varios colores.",
+    "a": "Principalmente PETG. Es resistente y durable, con un acabado estable. Disponible en varios colores.",
     "categoria": "materiales"
   },
   {
@@ -74,7 +74,7 @@
   },
   {
     "q": "¿Tienen garantía?",
-    "a": "30 días por defectos de fabricación. Si algo no sale como esperabas, lo ajustamos o reimprimimos. En Outlet garantizamos funcionalidad.",
+    "a": "Revisamos defectos de impresión reportados al recibir. Si nos avisas dentro de 7 días, lo evaluamos caso por caso y te proponemos solución (ajuste, reimpresión o alternativa). En Outlet, el precio refleja posibles detalles estéticos.",
     "categoria": "garantía",
     "destacada": true
   },
@@ -100,7 +100,7 @@
   },
   {
     "q": "¿Mis archivos son seguros?",
-    "a": "Totalmente confidencial. Nunca compartimos ni usamos tus modelos y diseños sin tu permiso.",
+    "a": "Tratamos tus archivos como confidenciales. No compartimos tus modelos y diseños sin tu permiso.",
     "categoria": "privacidad"
   },
   {
