@@ -15,8 +15,8 @@
 
 ### Pendientes actuales (plan de modularización)
 
-- ⏳ AI-011 (JS módulos: `animations.js`)
-- ⏳ AI-012 (CSS módulos: base `assets/css/modules/*`)
+- ✅ AI-011 (JS módulos: `animations.js`)
+- ✅ AI-012 (CSS módulos: base `assets/css/modules/*`)
 
 Formato de ticket recomendado:
 

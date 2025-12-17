@@ -13,9 +13,13 @@ const path = require("node:path");
 
 const repoRoot = path.resolve(__dirname, "..");
 
-const FILES = ["index.html", "assets/js/app.js", "assets/js/boot.js", "data/faq.json"].map(
-  (p) => path.join(repoRoot, p),
-);
+const FILES = [
+  "index.html",
+  "assets/js/app.js",
+  "assets/js/boot.js",
+  "data/faq.json",
+  "package.json",
+].map((p) => path.join(repoRoot, p));
 
 const SUSPECT_CHARS = [
   "\uFFFD", // replacement char
@@ -26,6 +30,10 @@ const SUSPECT_CHARS = [
   "\u201A", // ‚
   "\u00C2", // Â
   "\u00C3", // Ã
+  "\u00BD", // ½
+  "\u00CF", // Ï
+  "\u00F9", // ù
+  "\u0153", // œ
 ];
 
 const SUSPECT_STRINGS = [
@@ -38,6 +46,15 @@ const SUSPECT_STRINGS = [
   "espa¤ol",
   "ingl‚s",
   "pr¢ximamente",
+  "Vùlido",
+  "Categorùa",
+  "preparaciùn",
+  "Producci½n",
+  "Gesti½n",
+  "Detecci½n",
+  "V\u00A0lido",
+  "Categor\u00A1a",
+  "preparaci\u00A2n",
 ];
 
 function posToLineCol(text, pos) {
