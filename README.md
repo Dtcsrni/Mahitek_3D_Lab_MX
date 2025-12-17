@@ -200,7 +200,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
 
 ## ¿📝 Editar Contenido
 
-### Catálogo (`/data/products_base.json`)
+### Catálogo (`/data/products.json`)
 
 ```json
 [
@@ -209,7 +209,7 @@ Escribe el prefijo y presiona `Tab` para expandir el snippet.
     "nombre": "Nombre del producto",
     "categoria": "colgantes",
     "precio_base_mxn": 200,
-    "imagen": "/assets/img/producto.svg",
+    "imagen": "🧩",
     "coda": "Una frase corta",
     "historia": "Descripción del producto y su uso",
     "material_preferente": "PETG",
@@ -600,6 +600,4 @@ window.MahitekLab.calculateSalePrice(200); // → 260
 ## 📄 Licencia
 
 Proyecto propietario de Mahitek 3D Lab.
-
-
 

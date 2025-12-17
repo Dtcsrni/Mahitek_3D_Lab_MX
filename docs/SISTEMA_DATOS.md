@@ -160,7 +160,7 @@ CopyBinder.bindCopywriting();
 
 | Tipo          | Endpoint                 | Helper                 |
 | ------------- | ------------------------ | ---------------------- |
-| `copywriting` | `data/copywriting.json`  | `getCopywriting(key)`  |
+| `copywriting` | `docs/archive/data/copywriting.json`  | `getCopywriting(key)`  |
 | `products`    | `data/products.json`     | `getProducts(filters)` |
 | `promos`      | `data/promos.json`       | `getActivePromos()`    |
 | `faq`         | `data/faq.json`          | `getFAQ(options)`      |

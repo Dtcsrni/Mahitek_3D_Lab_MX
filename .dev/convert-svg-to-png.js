@@ -3,7 +3,7 @@ const fs = require('fs');
 
 console.log('🎨 Mahitek 3D Lab - OG Image Converter\n');
 
-const svgBuffer = fs.readFileSync('assets/img/og-image.svg');
+const svgBuffer = fs.readFileSync('.dev/og-image.svg');
 
 sharp(svgBuffer)
   .resize(1200, 630)

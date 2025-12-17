@@ -32,7 +32,7 @@ Archivos de datos usados por `app.js`:
 - `assets/data/brand.json` (marca/redes)
 
 Notas:
-- `data/copywriting.json` existe para copy declarativo (`data-copy`), pero si no hay binder activo, el HTML debe traer texto por defecto.
+- `docs/archive/data/copywriting.json` existe para copy declarativo (`data-copy`), pero si no hay binder activo, el HTML debe traer texto por defecto.
 
 ## Validaciones (CI / local)
 

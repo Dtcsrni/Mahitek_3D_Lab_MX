@@ -127,7 +127,7 @@ img-src 'self' data: blob: https://...
 
 1. El SVG completo se carga como archivo externo (`'self'`)
 2. Los estilos están dentro del archivo SVG, no inline en HTML
-3. `<img src="assets/img/promo.svg">` carga el SVG completo
+3. Verificar que un SVG de promo (ej. `assets/img/promo-maker-72h.svg`) se carga correctamente
 4. Las animaciones CSS dentro del SVG se aplican automáticamente
 
 **Ejemplo de SVG con animaciones:**

@@ -145,7 +145,7 @@ if ($FixInlineStyles -or $TodosLosCambios) {
             Write-Host "  ✅ Clases CSS agregadas a $cssPath" -ForegroundColor Green
             
             # Lista de archivos a modificar
-            $archivosHTML = @("visualizacion-promos.html", "comparacion-svgs.html")
+            $archivosHTML = @()
             
             Write-Host "`n  📝 Archivos que necesitan actualización manual:" -ForegroundColor Yellow
             foreach ($archivo in $archivosHTML) {
@@ -176,8 +176,7 @@ if ($LimpiarDesktopIni -or $TodosLosCambios) {
 
 if ($FixInlineStyles -or $TodosLosCambios) {
     Write-Host "`n  3. Actualizar archivos HTML manualmente:" -ForegroundColor Yellow
-    Write-Host "     • visualizacion-promos.html" -ForegroundColor Cyan
-    Write-Host "     • comparacion-svgs.html" -ForegroundColor Cyan
+    # Archivos HTML auxiliares removidos (ya no se generan)
     Write-Host "     Buscar: style='background: #...'  " -ForegroundColor Gray
     Write-Host "     Reemplazar por: class='badge badge--...'  " -ForegroundColor Gray
 }

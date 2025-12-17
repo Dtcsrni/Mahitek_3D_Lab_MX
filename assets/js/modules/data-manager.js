@@ -27,7 +27,7 @@ const subscribers = new Map();
 
 const ENDPOINTS = {
   // No está en CONFIG por ahora (solo docs/data)
-  copywriting: 'data/copywriting.json',
+  copywriting: 'docs/archive/data/copywriting.json',
 
   // Alias para compatibilidad con helpers (mapeado a productsBase)
   products: CONFIG.DATA_PATHS.productsBase,
