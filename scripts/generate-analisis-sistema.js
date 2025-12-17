@@ -205,6 +205,12 @@ function upsertAutoBlock(markdown, newBlock) {
   return markdown.trimEnd() + suffix;
 }
 
+function extractStoredFingerprint(markdown) {
+  if (!markdown.includes(AUTO_START) || !markdown.includes(AUTO_END)) return null;
+  const match = markdown.match(/Fingerprint:\s*sha256:([a-f0-9]{64})/i);
+  return match?.[1] || null;
+}
+
 function main() {
   const allFiles = walkFiles(repoRoot).filter((p) => {
     const rel = toPosix(path.relative(repoRoot, p));
@@ -223,15 +229,24 @@ function main() {
   );
 
   const fingerprint = sha256Fingerprint(fingerprintFiles);
+
+  const existing = fs.existsSync(outputPath)
+    ? fs.readFileSync(outputPath, "utf8")
+    : "# Análisis del Sistema\n";
+
+  const stored = extractStoredFingerprint(existing);
+  const hasAutoBlock = existing.includes(AUTO_START) && existing.includes(AUTO_END);
+  if (stored && stored === fingerprint && hasAutoBlock) {
+    console.log(`✓ ANALISIS_SISTEMA.md ya está actualizado (fingerprint ${fingerprint.slice(0, 12)}…)`);
+    return;
+  }
+
   const autoSection = renderAutoSection({
     fingerprint,
     fingerprintFiles,
     allFiles,
   });
 
-  const existing = fs.existsSync(outputPath)
-    ? fs.readFileSync(outputPath, "utf8")
-    : "# Análisis del Sistema\n";
   const updated = upsertAutoBlock(existing, autoSection);
   fs.writeFileSync(outputPath, updated, "utf8");
   console.log(`✓ ANALISIS_SISTEMA.md actualizado (fingerprint ${fingerprint.slice(0, 12)}…)`);

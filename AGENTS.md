@@ -20,7 +20,7 @@ Este repositorio es un sitio estático (GitHub Pages) con HTML/CSS/JS sin build 
 ## Documentación automática (ANALISIS_SISTEMA.md)
 
 - `ANALISIS_SISTEMA.md` incluye una sección autogenerada con inventario y fingerprint (sha256) del sistema.
-- `npm run validate` falla si el fingerprint no coincide (solo cambia con archivos “significativos”).
+- `npm run validate` actualiza `ANALISIS_SISTEMA.md` en local y valida el fingerprint (en CI solo valida).
 - Para que se actualice automáticamente al commitear: ejecuta `.\scripts\instalar-hooks.ps1` (el pre-commit corre `npm run docs:update`).
 
 ## Archivos clave
