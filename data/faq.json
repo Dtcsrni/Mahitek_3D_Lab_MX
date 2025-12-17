@@ -1,131 +1,131 @@
 [
   {
-    "q": "¿Cuál es el primer paso para hacer un pedido?",
-    "a": "Solo tienes que contactarnos con la idea de lo que necesitas. Puede ser una foto, un archivo 3D, un dibujo o simplemente una descripción. Nosotros te asesoramos y te enviamos un presupuesto en 1 a 2 días hábiles.",
+    "q": "¿Por dónde empiezo si quiero hacer un pedido?",
+    "a": "¡Muy fácil! Contáctanos con tu idea: una foto, un archivo 3D, un dibujo o simplemente describen qué necesitas. Nosotros te asesoramos y te enviamos un presupuesto en 1 a 2 días hábiles.",
     "categoria": "pedidos",
     "destacada": true
   },
 
   {
-    "q": "¿Aceptan pedidos pequeños o de una sola pieza?",
-    "a": "Claro que sí. No tenemos mínimo de cantidad. Trabajamos tanto con prototipos únicos como con producción pequeña. Es más, ese es nuestro fuerte.",
+    "q": "¿Hacen pedidos de una sola pieza?",
+    "a": "Por supuesto. No tenemos mínimo de cantidad. Especialistas en prototipos únicos y producción pequeña. Ese es nuestro fuerte.",
     "categoria": "pedidos",
     "destacada": true
   },
 
   {
-    "q": "¿Cuánto tiempo tarda mi pedido?",
-    "a": "Piezas pequeñas se entregan en 2 a 5 días. Proyectos más grandes entre 5 a 10 días. Una vez que apruebas el diseño, confirmamos la fecha exacta de entrega.",
+    "q": "¿Cuánto tiempo demora mi pedido?",
+    "a": "Depende del tamaño: piezas pequeñas entre 2 a 5 días, proyectos más grandes de 5 a 10 días. Confirmamos la fecha exacta después que apruebas el diseño.",
     "categoria": "tiempos",
     "destacada": true
   },
 
   {
-    "q": "¿Ofrecen entregas express?",
-    "a": "No, pero contamos con un calendario de entregas que respetamos al pie de la letra. Preferimos mantener la calidad antes que apresurar los tiempos.",
+    "q": "¿Hay entregas express o urgentes?",
+    "a": "Trabajamos con un calendario de entregas que respetamos. Priorizamos la calidad sobre la velocidad, pero podés contactarnos para consultar disponibilidad urgente.",
     "categoria": "tiempos"
   },
 
   {
-    "q": "¿Puedo recoger mi pedido en la tienda?",
-    "a": "Sí, ofrecemos Click & Pick con cita previa. Además, cuando recoges tu pedido en Pachuca te regalamos un sticker edición limitada.",
+    "q": "¿Puedo recoger mi pedido en persona?",
+    "a": "Claro. Ofrecemos Click & Pick con cita previa en Pachuca. ¡Bonus! Al recoger tu pedido te regalamos un sticker edición limitada.",
     "categoria": "envíos"
   },
 
   {
-    "q": "¿Cómo funciona el envío a otras ciudades?",
-    "a": "Enviamos por paquetería a todo el país. Los tiempos van de 2 a 5 días hábiles según tu zona. El costo depende del peso y destino, y te lo mostramos al cotizar.",
+    "q": "¿Hacen entregas en todo el país?",
+    "a": "Sí. Enviamos por paquetería a todo México. Según tu zona, tarda de 2 a 5 días hábiles. El costo depende del peso y destino, y te lo mostramos al cotizar.",
     "categoria": "envíos"
   },
 
   {
     "q": "¿Hay envío gratis?",
-    "a": "Sí. En la zona local de Pachuca, envío gratis a partir de $200. Para entregas nacionales, consulta el costo al finalizar tu pedido.",
+    "a": "En Pachuca y zona local, envío gratis a partir de $200. Para entregas nacionales, consultá el costo final al completar tu pedido.",
     "categoria": "envíos"
   },
 
   {
     "q": "¿Qué materiales usan?",
-    "a": "Trabajamos principalmente con PETG porque es resistente y tiene acabado consistente. También usamos PLA en proyectos especiales. En ambos tenemos varios colores disponibles.",
+    "a": "Usamos principalmente PETG porque es resistente y da acabado consistente. También PETG en proyectos especiales. Ambos con varios colores disponibles.",
     "categoria": "materiales"
   },
 
   {
-    "q": "¿Qué colores hay disponibles?",
-    "a": "En PETG tenemos: negro, blanco, translúcidos y colores acentos en stock. Otros colores los conseguimos bajo pedido según disponibilidad.",
+    "q": "¿Qué colores tenén en stock?",
+    "a": "En PETG: negro, blanco, translúcidos y varios colores acentos. Otros colores los conseguimos bajo pedido según disponibilidad.",
     "categoria": "materiales"
   },
 
   {
-    "q": "¿Qué tipos de archivo aceptan?",
-    "a": "Para modelos 3D aceptamos STL, STEP u OBJ. Para diseños 2D: SVG, PDF o PNG. Los vectores (SVG o PDF) son lo ideal, pero podemos ayudarte a convertir archivos.",
+    "q": "¿Qué archivos puedo enviar?",
+    "a": "Para modelos 3D: STL, STEP u OBJ. Para diseños 2D: SVG, PDF o PNG. Los vectores son lo ideal, pero podemos ayudarte a convertir archivos.",
     "categoria": "diseño"
   },
 
   {
-    "q": "¿Pueden crear un diseño personalizado?",
-    "a": "Sí. Los ajustes básicos están incluidos en nuestros paquetes. Si necesitas un diseño completamente nuevo o modelado 3D desde cero, cotizamos por horas de trabajo.",
+    "q": "¿Hacen diseños a medida desde cero?",
+    "a": "Sí. Ajustes básicos están incluidos en nuestros paquetes. Para diseño completamente nuevo o modelado 3D, cotizamos por horas de trabajo.",
     "categoria": "diseño"
   },
 
   {
     "q": "¿Qué tan precisas son las piezas?",
-    "a": "La tolerancia típica es ±0,3 a ±0,5 mm en piezas pequeñas. El resultado final depende del diseño, la orientación de la pieza en la impresora y el material elegido.",
+    "a": "Tolerancia típica de ±0,3 a ±0,5 mm en piezas pequeñas. La precisión final depende del diseño, orientación y material elegido.",
     "categoria": "calidad"
   },
 
   {
-    "q": "¿Cuál es el tamaño máximo de una pieza?",
-    "a": "El volumen máximo es 220 x 220 x 250 mm. Si necesitas algo más grande, podemos dividirla en partes y ensamblarlas después.",
+    "q": "¿Cuál es el tamaño máximo?",
+    "a": "Volumen máximo: 220 x 220 x 250 mm. Si necesitas algo más grande, dividimos en partes y las ensamblamos después.",
     "categoria": "especificaciones"
   },
 
   {
-    "q": "¿Qué acabados están disponibles?",
-    "a": "Ofrecemos acabados mate o brillante. Podemos lijar, hacer ajustes ligeros, o aplicar laminado en tarjetas y etiquetas. También hacemos post-procesamiento como agregar insertos roscados o imanes.",
+    "q": "¿Qué acabados ofrecen?",
+    "a": "Mate o brillante. Además hacemos: lijado, ajustes ligeros, laminado en tarjetas, insertos roscados, imanes y otros post-procesamientos a medida.",
     "categoria": "acabados"
   },
 
   {
-    "q": "¿Cuál es la garantía?",
-    "a": "Ofrecemos 30 días de garantía por defectos de fabricación. Si algo no sale como esperabas, lo ajustamos o reimprimimos. En productos Outlet, la funcionalidad está garantizada aunque la estética puede variar.",
+    "q": "¿Tienen garantía?",
+    "a": "30 días de garantía por defectos de fabricación. Si algo no sale como esperabas, lo ajustamos o reimprimimos. En productos Outlet garantizamos funcionalidad.",
     "categoria": "garantía",
     "destacada": true
   },
 
   {
-    "q": "¿Cómo cuido mi pieza después de recibirla?",
-    "a": "Con cada entrega incluimos una guía de cuidados. Lo esencial: evita temperatura extrema, no la sometas a compresión prolongada, y limpia con agua tibia si es necesario.",
+    "q": "¿Cómo cuido la pieza cuando llega?",
+    "a": "Incluimos guía de cuidados con cada entrega. Lo principal: evita temperaturas extremas, no comprimas prolongadamente, y limpia con agua tibia si es necesario.",
     "categoria": "uso"
   },
 
   {
-    "q": "¿Ofrecen reparación si la pieza se daña?",
-    "a": "Sí. Podemos darte una guía para intentar reparaciones simples, o coordinar arreglos más profesionales si lo requieres.",
+    "q": "¿Si se daña, pueden repararla?",
+    "a": "Sí. Te damos guía para reparaciones simples, o coordinamos arreglos profesionales si lo necesitás.",
     "categoria": "servicio"
   },
 
   {
-    "q": "¿Cuáles son los métodos de pago?",
-    "a": "Aceptamos efectivo, tarjeta de crédito, tarjeta de débito y transferencia bancaria. Para pedidos mayores a $500, solicitamos un anticipo del 50%.",
+    "q": "¿Qué métodos de pago aceptan?",
+    "a": "Efectivo, tarjeta de crédito, débito y transferencia bancaria. Para pedidos mayores a $500 solicitamos anticipo del 50%.",
     "categoria": "pagos"
   },
 
   {
     "q": "¿Puedo pedir factura?",
-    "a": "Claro que sí. Pídela cuando confirmes el pedido y proporciona tus datos fiscales. Emitimos factura con CFDI.",
+    "a": "Claro. Pídela al confirmar tu pedido con tus datos fiscales. Emitimos factura con CFDI.",
     "categoria": "pagos"
   },
 
   {
-    "q": "¿Mis archivos están confidenciales?",
-    "a": "Totalmente. Tratamos todos tus modelos, diseños y renders como información confidencial. Nunca los compartimos ni usamos sin tu permiso explícito.",
+    "q": "¿Mis archivos son confidenciales?",
+    "a": "Totalmente. Tratamos tus modelos, diseños y renders como información confidencial. Nunca los compartimos ni usamos sin tu permiso explícito.",
     "categoria": "privacidad"
   },
 
   {
-    "q": "¿Qué hacen para proteger el medio ambiente?",
-    "a": "Optimizamos el uso de soportes para reducir desperdicios, reutilizamos empaque, y elegimos PETG por su durabilidad y vida útil más larga.",
+    "q": "¿Qué hacen por el medio ambiente?",
+    "a": "Optimizamos soportes para reducir desperdicios, reutilizamos empaque, y elegimos PETG por su durabilidad y larga vida útil.",
     "categoria": "sostenibilidad"
   }
 ]
