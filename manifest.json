@@ -52,7 +52,7 @@
       "name": "Contacto",
       "short_name": "Contacto",
       "description": "Enviar mensaje por Messenger",
-      "url": "https://m.me/mahitek3dlabmx",
+      "url": "./#contacto",
       "icons": [
         {
           "src": "assets/img/favicon_512.png",
