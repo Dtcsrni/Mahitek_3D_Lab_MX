@@ -1433,18 +1433,16 @@ async function loadFAQ() {
         ? `<span class="faq-item-pill">${escapeHTML(item.categoria)}</span>`
         : '';
       return `
-  <details class="faq-item animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up"${categoryAttr}${themeAttr}>
-    <summary>
-      <div class="faq-item-title">
-        <span class="faq-item-icon" aria-hidden="true">
-          <svg class="ui-icon ui-icon--draw" viewBox="0 0 24 24">
-            <use href="#${escapeHTML(theme.icon)}"></use>
-          </svg>
-        </span>
-        <span class="faq-item-question">${escapeHTML(item.q)}</span>
-        ${categoryPill}
-      </div>
+  <details class="faq-item faq-card animate-delay-${Math.min(index, 5)}" id="${id}" data-animate="fade-up"${categoryAttr}${themeAttr}>
+    <summary class="faq-card-summary">
       <span class="faq-item-chevron" aria-hidden="true"></span>
+      <span class="faq-card-illustration" aria-hidden="true">
+        <svg class="ui-icon ui-icon--draw" viewBox="0 0 24 24">
+          <use href="#${escapeHTML(theme.icon)}"></use>
+        </svg>
+      </span>
+      <span class="faq-item-question">${escapeHTML(item.q)}</span>
+      ${categoryPill}
     </summary>
     <div class="faq-item-content">
       <p>${escapeHTML(item.a)}</p>

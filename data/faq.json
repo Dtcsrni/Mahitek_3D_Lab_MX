@@ -5,124 +5,104 @@
     "categoria": "pedidos",
     "destacada": true
   },
-
   {
     "q": "¿Necesito hacer cantidad mínima?",
     "a": "No. Hacemos desde una sola pieza. Somos especialistas en prototipos únicos y producción pequeña.",
     "categoria": "pedidos",
     "destacada": true
   },
-
   {
     "q": "¿Cuánto tarda mi pedido?",
     "a": "Piezas pequeñas: 2 a 5 días. Proyectos más grandes: 5 a 10 días. Te confirmamos la fecha exacta una vez que apruebas el diseño.",
     "categoria": "tiempos",
     "destacada": true
   },
-
   {
     "q": "¿Hay servicio urgente?",
     "a": "Trabajamos con fechas que respetamos y priorizamos calidad. Contáctanos para consultar disponibilidad especial.",
     "categoria": "tiempos"
   },
-
   {
     "q": "¿Puedo recoger en persona?",
     "a": "Sí. Ofrecemos Click & Pick en Pachuca con cita previa. ¡Y te regalamos un sticker edición limitada al recoger!",
     "categoria": "envíos"
   },
-
   {
     "q": "¿Envían a todo México?",
     "a": "Claro. Usamos paquetería nacional. El tiempo es 2 a 5 días hábiles según tu zona. El costo depende del peso y ubicación.",
     "categoria": "envíos"
   },
-
   {
     "q": "¿Hay envío gratis?",
     "a": "En Pachuca, envío gratis a partir de $200. Para el resto del país, te mostramos el costo al completar tu pedido.",
     "categoria": "envíos"
   },
-
   {
     "q": "¿Qué material usan?",
-    "a": "Principalmente PETG. Es resistente, durable y da acabado consistente. Disponible en varios colores.",
+    "a": "Principalmente PETG. Es resistente, durable y da un acabado consistente. Disponible en varios colores.",
     "categoria": "materiales"
   },
-
   {
     "q": "¿Qué colores hay disponibles?",
-    "a": "PETG: negro, blanco, translúcidos y colores acentos. Otros colores se consiguen bajo pedido según disponibilidad.",
+    "a": "PETG: negro, blanco, translúcidos y colores acento. Otros colores se consiguen bajo pedido según disponibilidad.",
     "categoria": "materiales"
   },
-
   {
     "q": "¿Qué archivos aceptan?",
     "a": "Para modelos 3D: STL, STEP, OBJ. Para diseños 2D: SVG, PDF, PNG. Podemos ayudarte a convertir archivos si es necesario.",
     "categoria": "diseño"
   },
-
   {
     "q": "¿Hacen diseño desde cero?",
     "a": "Sí. Cambios básicos están incluidos. Para diseño completamente nuevo o modelado 3D, cotizamos por horas de trabajo.",
     "categoria": "diseño"
   },
-
   {
     "q": "¿Qué precisión tienen?",
     "a": "Tolerancia de ±0,3 a ±0,5 mm en piezas pequeñas. Depende del diseño, orientación y material.",
     "categoria": "calidad"
   },
-
   {
     "q": "¿Cuál es el tamaño máximo?",
-    "a": "Máximo: 220 x 220 x 250 mm. Si necesitas algo más grande, dividimos en partes y las ensamblamos.",
+    "a": "Máximo: 220 × 220 × 250 mm. Si necesitas algo más grande, lo dividimos en partes y lo ensamblamos.",
     "categoria": "especificaciones"
   },
-
   {
     "q": "¿Qué acabados ofrecen?",
     "a": "Mate o brillante. También: lijado, insertos roscados, imanes, laminado y otros acabados a medida.",
     "categoria": "acabados"
   },
-
   {
     "q": "¿Tienen garantía?",
     "a": "30 días por defectos de fabricación. Si algo no sale como esperabas, lo ajustamos o reimprimimos. En Outlet garantizamos funcionalidad.",
     "categoria": "garantía",
     "destacada": true
   },
-
   {
     "q": "¿Cómo cuido mi pieza?",
-    "a": "Te incluimos guía de cuidados. Lo principal: evita temperaturas extremas, no comprimas prolongadamente, y limpia con agua tibia si es necesario.",
+    "a": "Te incluimos guía de cuidados. Lo principal: evita temperaturas extremas, no comprimas prolongadamente y limpia con agua tibia si es necesario.",
     "categoria": "uso"
   },
-
   {
     "q": "¿Pueden reparar una pieza dañada?",
     "a": "Sí. Te damos guía para reparaciones simples, o coordinamos reparación profesional si la necesitas.",
     "categoria": "servicio"
   },
-
   {
     "q": "¿Qué formas de pago tienen?",
     "a": "Efectivo, tarjeta de crédito, débito y transferencia bancaria. Pedidos mayores a $500 requieren anticipo del 50%.",
     "categoria": "pagos"
   },
-
   {
     "q": "¿Puedo pedir factura?",
-    "a": "Claro. Solicitala al confirmar con tus datos fiscales. Emitimos factura con CFDI.",
+    "a": "Claro. Solicítala al confirmar con tus datos fiscales. Emitimos factura con CFDI.",
     "categoria": "pagos"
   },
-
   {
     "q": "¿Mis archivos son seguros?",
     "a": "Totalmente confidencial. Nunca compartimos ni usamos tus modelos y diseños sin tu permiso.",
     "categoria": "privacidad"
   },
-
   {
     "q": "¿Qué hacen por el ambiente?",
     "a": "Optimizamos soportes para reducir desperdicio, reutilizamos empaque y usamos PETG por su durabilidad.",

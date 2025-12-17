@@ -13,8 +13,8 @@ const path = require("node:path");
 
 const repoRoot = path.resolve(__dirname, "..");
 
-const FILES = ["index.html", "assets/js/app.js", "assets/js/boot.js"].map((p) =>
-  path.join(repoRoot, p),
+const FILES = ["index.html", "assets/js/app.js", "assets/js/boot.js", "data/faq.json"].map(
+  (p) => path.join(repoRoot, p),
 );
 
 const SUSPECT_CHARS = [
@@ -98,4 +98,3 @@ if (errors > 0) {
 }
 
 console.log("✓ Encoding OK (archivos críticos sin mojibake)");
-
