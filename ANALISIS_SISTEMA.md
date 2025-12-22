@@ -29,8 +29,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-22T20:00:25.883Z
-Fingerprint: sha256:2fe55bf643d2aa2eb8aa74fdc331045c560f8006de22f08d64c1330b40112b63
+Generado: 2025-12-22T20:25:10.621Z
+Fingerprint: sha256:8518736e3994a466b09ababc39b6de5780662c51d948126cacadb5b215a753bd
 Archivos hasheados: 56
 
 Criterio del fingerprint (cambios “significativos”):
@@ -52,7 +52,7 @@ Inventario (excluye .git/node_modules/public):
 | `.js` | 22 |
 | `.json` | 17 |
 | `.ps1` | 11 |
-| `(sin-ext)` | 7 |
+| `(sin-ext)` | 8 |
 | `.css` | 7 |
 | `.html` | 3 |
 | `.yml` | 2 |
