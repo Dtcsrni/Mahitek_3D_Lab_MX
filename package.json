@@ -41,9 +41,9 @@
   "author": "Mahitek 3D Lab",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.3.0",
-    "live-server": "^1.2.2",
-    "jsdom": "^24.1.0"
+    "jsdom": "^24.1.0",
+    "live-server": "^1.2.0",
+    "prettier": "^3.3.0"
   },
   "engines": {
     "node": ">=18.0.0",

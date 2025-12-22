@@ -7777,6 +7777,10 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--text-secondary);
 }
 
+.newsletter-turnstile {
+  margin-top: 0.75rem;
+}
+
 .newsletter-status.is-ok {
   color: #86efac;
 }

@@ -23,7 +23,11 @@ function corsify(request, response, env) {
   headers.set('Access-Control-Allow-Credentials', 'false');
   headers.set('Access-Control-Allow-Headers', 'content-type, authorization, x-admin-role');
   headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  return new Response(response.body, { ...response, headers });
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
 }
 
 function isEmail(value) {

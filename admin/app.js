@@ -1,4 +1,4 @@
-const DEFAULT_API_BASE = 'https://mahiteklab-api.workers.dev';
+const DEFAULT_API_BASE = 'https://mahiteklab-api.mahiteklab.workers.dev';
 
 function $(id) {
   return document.getElementById(id);

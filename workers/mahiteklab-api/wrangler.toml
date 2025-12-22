@@ -1,6 +1,8 @@
 name = "mahiteklab-api"
 main = "src/index.js"
 compatibility_date = "2025-12-01"
+workers_dev = true
+preview_urls = true
 
 # Config local:
 # - `wrangler dev` (usa .wrangler/ y un DB local emulado si configuras D1)
@@ -25,5 +27,5 @@ ADMIN_ROLE_TOKENS_JSON = "{\"general\":\"\",\"finance\":\"\",\"marketing\":\"\",
 [[d1_databases]]
 binding = "DB"
 database_name = "mahiteklab-db"
-database_id = "REEMPLAZA_CON_TU_ID"
+database_id = "ee58d4db-eb60-4451-871d-fe59b452770c"
 

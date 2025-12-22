@@ -1773,6 +1773,7 @@
                   class="newsletter"
                   action="https://formspree.io/f/xayzlqny"
                   method="POST"
+                  data-turnstile-sitekey=""
                   aria-label="Suscripción por correo"
                 >
                   <label for="newsletter-email" class="sr-only">Correo para suscripción</label>
@@ -1780,6 +1781,7 @@
                     <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" required />
                     <button type="submit" class="btn btn-primary">Suscribirme</button>
                   </div>
+                  <div class="newsletter-turnstile" id="newsletter-turnstile"></div>
                   <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
                 </form>
               </section>

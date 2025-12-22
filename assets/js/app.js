@@ -4,8 +4,9 @@ const CONFIG = {
   PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
   // Página de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
-  NEWSLETTER_API_BASE: 'https://mahiteklab-api.workers.dev',
+  NEWSLETTER_API_BASE: 'https://mahiteklab-api.mahiteklab.workers.dev',
   NEWSLETTER_TIMEOUT_MS: 8000,
+  NEWSLETTER_TURNSTILE_SITEKEY: '',
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   PLACEHOLDER_PROMO_ICON: 'assets/img/placeholder-promos.svg',
   DATA_PATHS: {
@@ -2124,9 +2125,78 @@ function setupNewsletterSubscription() {
   const apiBase = String(
     form.getAttribute('data-api-base') || CONFIG.NEWSLETTER_API_BASE || ''
   ).trim();
+  const turnstileSiteKey = String(
+    form.getAttribute('data-turnstile-sitekey') || CONFIG.NEWSLETTER_TURNSTILE_SITEKEY || ''
+  ).trim();
   const timeoutMs = Number(CONFIG.NEWSLETTER_TIMEOUT_MS || 8000);
 
   if (!emailInput) return;
+
+  let turnstilePromise = null;
+  let turnstileWidgetId = null;
+  let turnstileToken = '';
+
+  function loadTurnstile() {
+    if (!turnstileSiteKey) return Promise.resolve(null);
+    if (window.turnstile) return Promise.resolve(window.turnstile);
+    if (turnstilePromise) return turnstilePromise;
+
+    turnstilePromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => resolve(window.turnstile);
+      script.onerror = () => reject(new Error('turnstile_load_failed'));
+      document.head.appendChild(script);
+    });
+
+    return turnstilePromise;
+  }
+
+  function ensureTurnstileContainer() {
+    const existing = form.querySelector('#newsletter-turnstile');
+    if (existing) return existing;
+    const container = document.createElement('div');
+    container.className = 'newsletter-turnstile';
+    container.id = 'newsletter-turnstile';
+    form.appendChild(container);
+    return container;
+  }
+
+  function renderTurnstile(api) {
+    if (!api || !turnstileSiteKey || turnstileWidgetId !== null) return;
+    const container = ensureTurnstileContainer();
+    turnstileWidgetId = api.render(container, {
+      sitekey: turnstileSiteKey,
+      callback: token => {
+        turnstileToken = token || '';
+      },
+      'expired-callback': () => {
+        turnstileToken = '';
+      },
+      'error-callback': () => {
+        turnstileToken = '';
+      }
+    });
+  }
+
+  function getTurnstileToken(api) {
+    if (!api || turnstileWidgetId === null) return turnstileToken;
+    return api.getResponse(turnstileWidgetId) || turnstileToken;
+  }
+
+  function resetTurnstile(api) {
+    if (!api || turnstileWidgetId === null) return;
+    api.reset(turnstileWidgetId);
+    turnstileToken = '';
+  }
+
+  if (turnstileSiteKey) {
+    loadTurnstile()
+      .then(api => renderTurnstile(api))
+      .catch(() => {});
+  }
 
   form.addEventListener('submit', async ev => {
     ev.preventDefault();
@@ -2151,6 +2221,30 @@ function setupNewsletterSubscription() {
       referrer: document.referrer || '',
       landingPath: `${location.pathname}${location.search}`
     };
+
+    let turnstileApi = null;
+    if (turnstileSiteKey) {
+      try {
+        turnstileApi = await loadTurnstile();
+        renderTurnstile(turnstileApi);
+      } catch (_) {
+        setNewsletterStatus(
+          statusEl,
+          'No se pudo cargar la verificación. Intenta más tarde.',
+          'error'
+        );
+        if (button) button.disabled = false;
+        return;
+      }
+
+      const token = getTurnstileToken(turnstileApi);
+      if (!token) {
+        setNewsletterStatus(statusEl, 'Completa la verificación antes de enviar.', 'error');
+        if (button) button.disabled = false;
+        return;
+      }
+      payload.turnstileToken = token;
+    }
 
     try {
       if (!apiBase) throw new Error('missing_api_base');
@@ -2193,6 +2287,7 @@ function setupNewsletterSubscription() {
         );
       }
     } finally {
+      resetTurnstile(turnstileApi);
       if (button) button.disabled = false;
     }
   });
