@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mahitek Admin — Campañas</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="topbar__logo">M</span>
+        <div class="topbar__meta">
+          <strong>Mahitek Admin</strong>
+          <small>Campañas · Cupones · Métricas</small>
+        </div>
+      </div>
+      <div class="topbar__actions">
+        <span class="pill" id="env-pill">API: sin configurar</span>
+        <button class="btn btn-ghost" id="btn-logout" type="button">Salir</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <nav class="nav">
+          <a class="nav__item nav__item--active" href="#campaigns">Campañas</a>
+          <a class="nav__item" href="#stats">Métricas</a>
+          <a class="nav__item" href="#help">Ayuda</a>
+        </nav>
+        <section class="card">
+          <h3 class="card__title">Roles</h3>
+          <p class="card__hint">MVP por token. Recomendado: proteger con Cloudflare Access.</p>
+          <label class="field">
+            <span>Rol</span>
+            <select id="role">
+              <option value="general">Admin general</option>
+              <option value="finance">Finanzas</option>
+              <option value="marketing">Marketing</option>
+              <option value="ops">Operaciones</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Token</span>
+            <input id="token" type="password" autocomplete="current-password" placeholder="Bearer token" />
+          </label>
+          <label class="field">
+            <span>API base</span>
+            <input id="apiBase" type="url" placeholder="https://mahiteklab-api.workers.dev" />
+          </label>
+          <button class="btn btn-primary" id="btn-login" type="button">Conectar</button>
+          <p class="status" id="auth-status" aria-live="polite"></p>
+        </section>
+      </aside>
+
+      <section class="content">
+        <section class="panel" id="campaigns">
+          <div class="panel__head">
+            <div>
+              <h1>Campañas</h1>
+              <p class="muted">
+                Emite 1 cupón por email + campaña. Se combina solo con WELCOME (si es acumulable).
+              </p>
+            </div>
+            <div class="panel__actions">
+              <button class="btn btn-ghost" id="btn-refresh" type="button">Refrescar</button>
+              <button class="btn btn-primary" id="btn-new" type="button">Nueva campaña</button>
+            </div>
+          </div>
+
+          <div class="grid" id="campaign-list"></div>
+        </section>
+
+        <section class="panel" id="stats">
+          <div class="panel__head">
+            <div>
+              <h2>Métricas</h2>
+              <p class="muted">Resumen rápido (D1).</p>
+            </div>
+            <div class="panel__actions">
+              <button class="btn btn-ghost" id="btn-stats" type="button">Actualizar</button>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__label">Suscriptores</span>
+              <strong class="stat__value" id="stat-subs">-</strong>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Cupones emitidos</span>
+              <strong class="stat__value" id="stat-coupons">-</strong>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Campañas activas</span>
+              <strong class="stat__value" id="stat-campaigns">-</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="help">
+          <h2>Ayuda</h2>
+          <ul class="help">
+            <li>
+              Recomendado: activar Cloudflare Access en `mahiteklab-admin.pages.dev` y usar allowlist de correos + 2FA.
+            </li>
+            <li>Los tokens por rol son un MVP; cámbialos desde `ADMIN_ROLE_TOKENS_JSON` en el Worker.</li>
+            <li>La campaña `WELCOME` existe por defecto y no debería desactivarse.</li>
+          </ul>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="modal" id="campaign-modal">
+      <form method="dialog" class="modal__card" id="campaign-form">
+        <div class="modal__head">
+          <h3 id="modal-title">Nueva campaña</h3>
+          <button class="icon-btn" value="cancel" aria-label="Cerrar" type="submit">×</button>
+        </div>
+
+        <div class="modal__body">
+          <div class="two">
+            <label class="field">
+              <span>ID</span>
+              <input id="c-id" required placeholder="NAVIDAD_2025" />
+            </label>
+            <label class="field">
+              <span>Prefijo cupón</span>
+              <input id="c-prefix" required placeholder="NAVIDAD" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Nombre</span>
+            <input id="c-name" required placeholder="Navidad 2025" />
+          </label>
+
+          <div class="two">
+            <label class="field">
+              <span>Tipo descuento</span>
+              <select id="c-type">
+                <option value="percent">% (porcentaje)</option>
+                <option value="amount">$ (monto)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Valor</span>
+              <input id="c-value" type="number" min="1" step="1" required />
+            </label>
+          </div>
+
+          <div class="two">
+            <label class="field">
+              <span>Activo</span>
+              <select id="c-active">
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Acumulable</span>
+              <select id="c-stackable">
+                <option value="true">Sí (solo con WELCOME)</option>
+                <option value="false">No</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="status" id="modal-status" aria-live="polite"></p>
+        </div>
+
+        <div class="modal__foot">
+          <button class="btn btn-ghost" value="cancel" type="submit">Cancelar</button>
+          <button class="btn btn-primary" id="btn-save" type="button">Guardar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

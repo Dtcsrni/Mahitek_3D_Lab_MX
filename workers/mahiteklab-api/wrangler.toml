@@ -1,0 +1,29 @@
+name = "mahiteklab-api"
+main = "src/index.js"
+compatibility_date = "2025-12-01"
+
+# Config local:
+# - `wrangler dev` (usa .wrangler/ y un DB local emulado si configuras D1)
+# - `wrangler d1 create mahiteklab-db` y pega el id abajo
+#
+# Deploy:
+# - `wrangler deploy`
+
+[vars]
+ALLOWED_ORIGINS = "https://dtcsrni.github.io,https://mahiteklab-admin.pages.dev"
+PUBLIC_LANDING_URL = "https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"
+
+# Email provider (elige 1):
+# EMAIL_PROVIDER = "brevo" | "resend" | "ses"
+# Nota: se configuran secrets con `wrangler secret put ...`.
+EMAIL_PROVIDER = "brevo"
+
+# Admin auth (MVP): token manual en el admin panel.
+# Recomendado (luego): Cloudflare Access cuando haya dominio propio.
+ADMIN_ROLE_TOKENS_JSON = "{\"general\":\"\",\"finance\":\"\",\"marketing\":\"\",\"ops\":\"\"}"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mahiteklab-db"
+database_id = "REEMPLAZA_CON_TU_ID"
+

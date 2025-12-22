@@ -7770,6 +7770,21 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--text-primary);
 }
 
+.newsletter-status {
+  min-height: 1.25rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.newsletter-status.is-ok {
+  color: #86efac;
+}
+
+.newsletter-status.is-error {
+  color: #fca5a5;
+}
+
 /* ===== Process ===== */
 .process-container {
   display: grid;

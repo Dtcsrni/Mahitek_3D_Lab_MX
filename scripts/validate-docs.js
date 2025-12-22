@@ -30,10 +30,9 @@ function tryGitAddAnalysis() {
   });
 }
 
-const isCI =
-  process.env.CI === "true" ||
-  process.env.GITHUB_ACTIONS === "true" ||
-  process.env.BUILDKITE === "true";
+// Nota: algunos entornos locales pueden exportar `CI=true`. Para evitar falsos positivos,
+// detectamos CI real por vendor (GitHub Actions/Buildkite).
+const isCI = process.env.GITHUB_ACTIONS === "true" || process.env.BUILDKITE === "true";
 
 if (!isCI) {
   const genStatus = runNode(path.join(repoRoot, "scripts", "generate-analisis-sistema.js"));

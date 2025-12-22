@@ -30,12 +30,14 @@ const FINGERPRINT_GLOBS = [
   "sitemap.xml",
   "package.json",
   "package-lock.json",
+  "admin",
   "assets/css",
   "assets/js",
   "assets/data",
   "data",
   ".github/workflows",
   "scripts",
+  "workers",
 ];
 
 function isSignificantFile(relPosix) {
@@ -65,6 +67,20 @@ function isSignificantFile(relPosix) {
       relPosix.endsWith(".ps1") ||
       relPosix.endsWith(".sh") ||
       relPosix.endsWith(".bat")
+    );
+  }
+
+  if (relPosix.startsWith("admin/")) {
+    if (relPosix === "admin/_headers") return true;
+    return relPosix.endsWith(".html") || relPosix.endsWith(".css") || relPosix.endsWith(".js");
+  }
+
+  if (relPosix.startsWith("workers/")) {
+    return (
+      relPosix.endsWith(".js") ||
+      relPosix.endsWith(".toml") ||
+      relPosix.endsWith(".md") ||
+      relPosix.endsWith(".sql")
     );
   }
 
@@ -178,6 +194,8 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   lines.push("- `assets/data/**/*.json`, `data/**/*.json`");
   lines.push("- `.github/workflows/**/*.{yml,yaml}`");
   lines.push("- `scripts/**/*.{js,ps1,sh,bat}`");
+  lines.push("- `admin/**/*.{html,css,js}` + `admin/_headers`");
+  lines.push("- `workers/**/*.{js,toml,md,sql}`");
   lines.push("");
   lines.push("Inventario (excluye .git/node_modules/public):");
   lines.push("");

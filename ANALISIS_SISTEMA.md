@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-17T13:30:54.805Z
-Fingerprint: sha256:4c906cd24960146c17ca5cd3305925834b03cb9daa25547d2b0a3207b27c7c7d
-Archivos hasheados: 48
+Generado: 2025-12-22T13:23:03.790Z
+Fingerprint: sha256:4b62d4d3475e7900503186a51fbaa4416f8337d0a767c5d96b44dd1cafd56ac1
+Archivos hasheados: 56
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -39,34 +39,40 @@ Criterio del fingerprint (cambios “significativos”):
 - `assets/data/**/*.json`, `data/**/*.json`
 - `.github/workflows/**/*.{yml,yaml}`
 - `scripts/**/*.{js,ps1,sh,bat}`
+- `admin/**/*.{html,css,js}` + `admin/_headers`
+- `workers/**/*.{js,toml,md,sql}`
 
 Inventario (excluye .git/node_modules/public):
 
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 46 |
-| `.md` | 28 |
-| `.js` | 20 |
+| `.md` | 30 |
+| `.ini` | 25 |
+| `.js` | 22 |
 | `.json` | 17 |
 | `.ps1` | 11 |
-| `(sin-ext)` | 6 |
-| `.css` | 6 |
+| `(sin-ext)` | 7 |
+| `.css` | 7 |
+| `.html` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
-| `.ini` | 2 |
-| `.html` | 2 |
 | `.code-workspace` | 1 |
 | `.txt` | 1 |
 | `.xml` | 1 |
 | `.bat` | 1 |
 | `.sh` | 1 |
+| `.sql` | 1 |
+| `.toml` | 1 |
 
-HTML detectados (2):
+HTML detectados (3):
+- admin/index.html
 - index.html
 - qr/index.html
 
-Workflows (2):
+Workflows (3):
 - .github/workflows/ci.yml
+- .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
 Scripts npm (26):

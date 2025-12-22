@@ -4,6 +4,8 @@ const CONFIG = {
   PRICE_STEP: 10, // Redondea al múltiplo de 10 MXN más cercano
   // Página de Facebook/Messenger
   MESSENGER_PAGE: 'mahitek3dlabmx',
+  NEWSLETTER_API_BASE: 'https://mahiteklab-api.workers.dev',
+  NEWSLETTER_TIMEOUT_MS: 8000,
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
   PLACEHOLDER_PROMO_ICON: 'assets/img/placeholder-promos.svg',
   DATA_PATHS: {
@@ -1879,6 +1881,7 @@ async function init() {
   setupHeaderScroll();
   setupScrollReveal();
   hydrateEmails();
+  setupNewsletterSubscription();
   injectOrganizationSchema();
 
   // Cargar solo datos críticos inmediatamente
@@ -2044,6 +2047,155 @@ function applyURLState() {
 
   if (catSel) catSel.addEventListener('change', updateURL);
   if (search) search.addEventListener('input', updateURL);
+}
+
+function getCampaignIdFromURL() {
+  const sp = new URLSearchParams(location.search);
+  const raw = sp.get('campaign') || sp.get('utm_campaign') || sp.get('camp') || sp.get('c');
+  if (!raw) return null;
+
+  const normalized = raw
+    .trim()
+    .replace(/[^a-z0-9_-]/gi, '')
+    .slice(0, 32);
+  if (normalized.length < 2) return null;
+  return normalized.toUpperCase();
+}
+
+function setNewsletterStatus(el, msg, kind = 'info') {
+  if (!el) return;
+  el.textContent = msg || '';
+  el.classList.toggle('is-ok', kind === 'ok');
+  el.classList.toggle('is-error', kind === 'error');
+}
+
+async function subscribeViaWorker(apiBase, payload, timeoutMs) {
+  const url = new URL('/subscribe', apiBase);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const err = data && data.error ? data.error : `http_${res.status}`;
+      throw new Error(err);
+    }
+    return data;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function submitToFormspree(form, timeoutMs) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(form.action, {
+      method: form.method || 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form),
+      signal: controller.signal
+    });
+    if (!res.ok) throw new Error(`http_${res.status}`);
+    return true;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function setupNewsletterSubscription() {
+  const form = document.querySelector('form.newsletter');
+  if (!form) return;
+
+  const emailInput =
+    form.querySelector('input[type="email"][name="email"]') ||
+    form.querySelector('input[type="email"]');
+  const button = form.querySelector('button[type="submit"], input[type="submit"]');
+  const statusEl =
+    form.querySelector('#newsletter-status') || form.querySelector('.newsletter-status');
+  const apiBase = String(
+    form.getAttribute('data-api-base') || CONFIG.NEWSLETTER_API_BASE || ''
+  ).trim();
+  const timeoutMs = Number(CONFIG.NEWSLETTER_TIMEOUT_MS || 8000);
+
+  if (!emailInput) return;
+
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+
+    const email = String(emailInput.value || '')
+      .trim()
+      .toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setNewsletterStatus(statusEl, 'Escribe un correo válido.', 'error');
+      emailInput.focus();
+      return;
+    }
+
+    setNewsletterStatus(statusEl, 'Enviando...', 'info');
+    if (button) button.disabled = true;
+
+    const sp = new URLSearchParams(location.search);
+    const payload = {
+      email,
+      campaignId: getCampaignIdFromURL(),
+      source: sp.get('utm_source') || sp.get('src') || 'landing',
+      referrer: document.referrer || '',
+      landingPath: `${location.pathname}${location.search}`
+    };
+
+    try {
+      if (!apiBase) throw new Error('missing_api_base');
+      const data = await subscribeViaWorker(apiBase, payload, timeoutMs);
+
+      if (data && data.ok) {
+        const msg = data.emailSent
+          ? 'Listo. Revisa tu correo para tu cupón (incluye bienvenida y/o campaña).'
+          : 'Listo. Registro guardado, pero el correo puede tardar o no estar disponible.';
+        setNewsletterStatus(statusEl, msg, 'ok');
+        form.reset();
+        return;
+      }
+
+      throw new Error('unexpected_response');
+    } catch (_) {
+      const canFallback = typeof form.action === 'string' && form.action.includes('formspree.io');
+      if (!canFallback) {
+        setNewsletterStatus(
+          statusEl,
+          'No se pudo enviar. Intenta más tarde o contáctanos por WhatsApp.',
+          'error'
+        );
+        return;
+      }
+
+      try {
+        await submitToFormspree(form, timeoutMs);
+        setNewsletterStatus(
+          statusEl,
+          'Listo. Te registramos en la lista (el cupón por correo puede no estar disponible aún).',
+          'ok'
+        );
+        form.reset();
+      } catch (_) {
+        setNewsletterStatus(
+          statusEl,
+          'No se pudo enviar. Intenta más tarde o contáctanos por WhatsApp.',
+          'error'
+        );
+      }
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
 }
 
 // Inyecta Organization JSON-LD en head (evita inline para cumplir CSP)
