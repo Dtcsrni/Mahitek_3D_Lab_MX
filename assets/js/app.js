@@ -2253,7 +2253,7 @@ function setupNewsletterSubscription() {
       if (data && data.ok) {
         const msg = data.emailSent
           ? 'Listo. Revisa tu correo para tu cupón (incluye bienvenida y/o campaña).'
-          : 'Listo. Registro guardado, pero el correo puede tardar o no estar disponible.';
+          : '¡Gracias! Guardamos tu registro. El correo puede tardar un poco o no estar disponible.';
         setNewsletterStatus(statusEl, msg, 'ok');
         form.reset();
         return;
