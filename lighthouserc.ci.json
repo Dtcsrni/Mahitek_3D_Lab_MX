@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "url": ["https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"],
+      "url": ["https://mahitek3dlab.com/"],
       "numberOfRuns": 3,
       "settings": {
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],

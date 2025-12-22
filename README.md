@@ -2,7 +2,7 @@
 
 [![CI/CD](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions/workflows/ci.yml/badge.svg)](https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Live](https://img.shields.io/badge/live-dtcsrni.github.io-success)](https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
+[![Live](https://img.shields.io/badge/live-mahitek3dlab.com-success)](https://mahitek3dlab.com/)
 
 <!-- Badges dinámicos de Lighthouse (se actualizan en cada pipeline) -->
 
@@ -303,7 +303,7 @@ Si no se ha configurado:
 3. Si usas branch: selecciona `main` / `root`
 4. Guarda cambios
 
-Sitio disponible en: `https://dtcsrni.github.io/Mahitek_3D_Lab_MX/`
+Sitio disponible en: `https://mahitek3dlab.com/`
 
 ## 🎨 Personalización Avanzada
 
@@ -518,7 +518,7 @@ MIT License - Ver [LICENSE](LICENSE) para más detalles.
 
 - **Email**: armsystechno@gmail.com
 - **Messenger**: [m.me/mahitek3dlabmx](https://m.me/mahitek3dlabmx)
-- **Sitio Web**: [dtcsrni.github.io/Mahitek_3D_Lab_MX](https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
+- **Sitio Web**: [mahitek3dlab.com](https://mahitek3dlab.com/)
 
 ---
 

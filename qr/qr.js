@@ -2,7 +2,7 @@
   "use strict";
 
   const CONFIG = Object.freeze({
-    baseUrl: "https://dtcsrni.github.io/Mahitek_3D_Lab_MX/",
+    baseUrl: "https://mahitek3dlab.com/",
     redirectDelayMs: 1500,
     gaMeasurementId: "G-Y46M6J1EWS",
   });
@@ -106,4 +106,3 @@
 
   onReady(main);
 })();
-

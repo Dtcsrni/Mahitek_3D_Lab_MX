@@ -12,8 +12,8 @@ preview_urls = true
 # - `wrangler deploy`
 
 [vars]
-ALLOWED_ORIGINS = "https://dtcsrni.github.io,https://mahiteklab-admin.pages.dev"
-PUBLIC_LANDING_URL = "https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"
+ALLOWED_ORIGINS = "https://mahitek3dlab.com,https://www.mahitek3dlab.com,https://dtcsrni.github.io,https://mahiteklab-admin.pages.dev"
+PUBLIC_LANDING_URL = "https://mahitek3dlab.com/"
 
 # Email provider (elige 1):
 # EMAIL_PROVIDER = "brevo" | "resend" | "ses"
@@ -28,4 +28,3 @@ ADMIN_ROLE_TOKENS_JSON = "{\"general\":\"\",\"finance\":\"\",\"marketing\":\"\",
 binding = "DB"
 database_name = "mahiteklab-db"
 database_id = "ee58d4db-eb60-4451-871d-fe59b452770c"
-

@@ -21,7 +21,8 @@ Para que el CI/CD funcione correctamente, debes configurar GitHub Pages en tu re
 ### 🔍 Verificar Configuración
 
 Una vez configurado, deberías ver:
-- ✅ Una sección que dice: "Your site is live at https://dtcsrni.github.io/Mahitek_3D_Lab_MX/"
+- ✅ Una sección que dice: "Your site is live at https://mahitek3dlab.com/"
+- ✅ La URL antigua redirige a la nueva (https://dtcsrni.github.io/Mahitek_3D_Lab_MX/)
 - ✅ El workflow debería ejecutarse correctamente
 
 ### 🎯 Qué hace cada Job del Workflow
@@ -75,7 +76,8 @@ Una vez configurado, deberías ver:
 - **Repositorio**: https://github.com/Dtcsrni/Mahitek_3D_Lab_MX
 - **GitHub Actions**: https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/actions
 - **Settings de Pages**: https://github.com/Dtcsrni/Mahitek_3D_Lab_MX/settings/pages
-- **Sitio Publicado**: https://dtcsrni.github.io/Mahitek_3D_Lab_MX/
+- **Sitio Publicado**: https://mahitek3dlab.com/
+- **Redirección**: https://dtcsrni.github.io/Mahitek_3D_Lab_MX/ -> https://mahitek3dlab.com/
 
 ---
 

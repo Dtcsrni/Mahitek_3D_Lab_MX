@@ -68,7 +68,7 @@ Formato de ticket recomendado:
 
 **Cambios esperados**
 
-- Alinear URLs a `https://dtcsrni.github.io/Mahitek_3D_Lab_MX/`.
+- Alinear URLs a `https://mahitek3dlab.com/`.
 
 **Archivos probables**
 

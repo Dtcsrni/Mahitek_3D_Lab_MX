@@ -43,7 +43,9 @@ Edita `ADMIN_ROLE_TOKENS_JSON` en `wrangler.toml` o usa `wrangler secret put ADM
 ## CORS
 
 Se permite solo:
-- `https://dtcsrni.github.io`
+- `https://mahitek3dlab.com`
+- `https://www.mahitek3dlab.com`
+- `https://dtcsrni.github.io` (redirecci¢n)
 - `https://mahiteklab-admin.pages.dev`
 
 Configurable en `ALLOWED_ORIGINS`.

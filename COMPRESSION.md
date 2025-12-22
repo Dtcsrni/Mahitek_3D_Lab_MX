@@ -23,7 +23,7 @@ Para verificar que la compresión está activa:
 
 ```bash
 # Verificar headers de respuesta
-curl -I -H "Accept-Encoding: gzip,deflate" https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/js/app.js
+curl -I -H "Accept-Encoding: gzip,deflate" https://mahitek3dlab.com/assets/js/app.js
 
 # Buscar header:
 # Content-Encoding: gzip

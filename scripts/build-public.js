@@ -20,6 +20,7 @@ const COPY_TARGETS = [
   "manifest.json",
   "robots.txt",
   "sitemap.xml",
+  "CNAME",
   "qr",
 ];
 

@@ -2300,8 +2300,8 @@ function injectOrganizationSchema() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Mahitek 3D Lab',
-      url: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/',
-      logo: 'https://dtcsrni.github.io/Mahitek_3D_Lab_MX/assets/img/mark-icon.svg',
+      url: 'https://mahitek3dlab.com/',
+      logo: 'https://mahitek3dlab.com/assets/img/mark-icon.svg',
       sameAs: [
         'https://www.instagram.com/mahitek_3d_lab_mx/',
         'https://www.facebook.com/mahitek3dlabmx',
