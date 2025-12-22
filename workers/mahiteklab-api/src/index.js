@@ -252,25 +252,104 @@ async function sendEmail(env, { to, subject, html }) {
 }
 
 function renderCouponEmail({ landingUrl, welcome, campaign }) {
-  const lines = [];
-  lines.push(`<p>Gracias por suscribirte a <strong>Mahitek 3D Lab</strong>.</p>`);
-  lines.push(`<p>Tu cupón de bienvenida:</p>`);
-  lines.push(`<p style="font-size:18px"><strong>${welcome.code}</strong></p>`);
+  const brand = {
+    teal: '#0ea5a3',
+    tealDeep: '#0b6b6a',
+    blue: '#1d9bf0',
+    red: '#ef4444',
+    ink: '#0b0f12',
+    inkSoft: '#111827',
+    text: '#e5e7eb',
+    muted: '#cbd5f5',
+    panel: '#0f172a',
+    panelSoft: '#111827',
+  };
 
-  if (campaign) {
-    lines.push(`<p>Tu cupón de campaña:</p>`);
-    lines.push(`<p style="font-size:18px"><strong>${campaign.code}</strong></p>`);
-    lines.push(`<p><small>Se pueden usar juntos: <strong>WELCOME + campaña</strong> (máximo 2 cupones).</small></p>`);
-  }
+  const title = campaign
+    ? 'Tus cupones están listos'
+    : 'Tu cupón de bienvenida está listo';
+  const subtitle = campaign
+    ? 'Activa tu descuento ahora y aprovecha el extra de campaña.'
+    : 'Gracias por sumarte. Aquí tienes tu beneficio de bienvenida.';
 
-  lines.push(
-    `<p><small>Si no solicitaste esto, ignora este correo.</small></p>`,
-  );
-  if (landingUrl) lines.push(`<p><a href="${landingUrl}">Volver al sitio</a></p>`);
+  const couponBlock = (label, code, accent) => `
+    <div class="mail-coupon mail-anim" style="background:${brand.panel};border:1px solid ${accent};border-radius:14px;padding:18px;margin:14px 0;">
+      <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${brand.muted};margin-bottom:6px;">
+        ${label}
+      </div>
+      <div style="font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.08em;">
+        ${code}
+      </div>
+    </div>
+  `;
 
-  return `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5">${lines.join(
-    '',
-  )}</body></html>`;
+  const stackNote = campaign
+    ? `<div style="font-size:13px;color:${brand.muted};margin-top:6px;">
+         Puedes usar <strong>WELCOME + campaña</strong> en la misma compra (máx. 2 cupones).
+       </div>`
+    : '';
+
+  const button = landingUrl
+    ? `<a class="mail-btn mail-anim" href="${landingUrl}" style="display:inline-block;background:${brand.blue};color:#ffffff;text-decoration:none;font-weight:600;padding:12px 18px;border-radius:10px;">
+         Volver al sitio
+       </a>`
+    : '';
+
+  return `<!doctype html>
+  <html lang="es">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Mahitek 3D Lab</title>
+      <style>
+        @media (prefers-reduced-motion: reduce) {
+          .mail-anim { animation: none !important; }
+        }
+        @keyframes mailFloat {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+          100% { transform: translateY(0); }
+        }
+        @keyframes mailPulse {
+          0%, 100% { box-shadow: 0 0 0 rgba(14, 165, 163, 0); }
+          50% { box-shadow: 0 0 18px rgba(14, 165, 163, 0.35); }
+        }
+        @keyframes mailCTA {
+          0%, 100% { box-shadow: 0 0 0 rgba(29, 155, 240, 0); }
+          50% { box-shadow: 0 0 16px rgba(29, 155, 240, 0.45); }
+        }
+        .mail-hero { animation: mailFloat 7s ease-in-out infinite; }
+        .mail-coupon { animation: mailPulse 5s ease-in-out infinite; }
+        .mail-btn { animation: mailCTA 4s ease-in-out infinite; }
+      </style>
+    </head>
+    <body style="margin:0;background:${brand.ink};font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;">
+      <div style="max-width:640px;margin:0 auto;padding:28px 18px 36px;">
+        <div class="mail-hero mail-anim" style="background:linear-gradient(135deg,${brand.teal},${brand.tealDeep});border-radius:18px;padding:20px 22px;color:#ffffff;">
+          <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Mahitek 3D Lab</div>
+          <h1 style="margin:10px 0 6px;font-size:24px;font-weight:700;">${title}</h1>
+          <p style="margin:0;color:#e0f2f1;">${subtitle}</p>
+        </div>
+
+        <div class="mail-anim" style="background:${brand.panelSoft};border-radius:18px;padding:22px;margin-top:18px;color:${brand.text};">
+          <p style="margin:0 0 8px;font-size:16px;">
+            Gracias por registrarte. Aquí tienes tus códigos para usar en tu próxima impresión:
+          </p>
+          ${couponBlock('Cupón de bienvenida', welcome.code, brand.teal)}
+          ${campaign ? couponBlock('Cupón de campaña', campaign.code, brand.red) : ''}
+          ${stackNote}
+
+          <div style="margin-top:18px;">
+            ${button}
+          </div>
+        </div>
+
+        <div style="margin-top:16px;color:${brand.muted};font-size:12px;">
+          Si no solicitaste este correo, puedes ignorarlo con tranquilidad.
+        </div>
+      </div>
+    </body>
+  </html>`;
 }
 
 function parseAdminTokens(env) {
@@ -337,8 +416,8 @@ async function handleSubscribe(request, env) {
   const landingUrl = String(env.PUBLIC_LANDING_URL || '').trim();
   const html = renderCouponEmail({ landingUrl, welcome: welcomeCoupon, campaign: campaignCoupon });
   const subject = campaignCoupon
-    ? 'Tus cupones de Mahitek 3D Lab (bienvenida + campaña)'
-    : 'Tu cupón de bienvenida — Mahitek 3D Lab';
+    ? 'Tus cupones están listos — Mahitek 3D Lab'
+    : 'Tu cupón de bienvenida está listo — Mahitek 3D Lab';
 
   const emailResult = await sendEmail(env, { to: email, subject, html });
   return json({ ok: true, emailSent: emailResult.ok });

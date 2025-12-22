@@ -2252,8 +2252,8 @@ function setupNewsletterSubscription() {
 
       if (data && data.ok) {
         const msg = data.emailSent
-          ? 'Listo. Revisa tu correo para tu cupón (incluye bienvenida y/o campaña).'
-          : '¡Gracias! Guardamos tu registro. El correo puede tardar un poco o no estar disponible.';
+          ? '¡Gracias por registrarte! Tu cupón ya va en camino a tu correo.'
+          : '¡Gracias! Guardamos tu registro y reservamos tu cupón. El correo puede tardar unos minutos.';
         setNewsletterStatus(statusEl, msg, 'ok');
         form.reset();
         return;
@@ -2275,7 +2275,7 @@ function setupNewsletterSubscription() {
         await submitToFormspree(form, timeoutMs);
         setNewsletterStatus(
           statusEl,
-          'Listo. Te registramos en la lista (el cupón por correo puede no estar disponible aún).',
+          '¡Gracias! Te registramos en la lista. Tu cupón puede tardar unos minutos en llegar.',
           'ok'
         );
         form.reset();
