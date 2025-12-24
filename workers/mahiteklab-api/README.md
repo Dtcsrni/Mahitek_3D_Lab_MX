@@ -49,3 +49,11 @@ Se permite solo:
 - `https://mahiteklab-admin.pages.dev`
 
 Configurable en `ALLOWED_ORIGINS`.
+
+## Dev local (CORS)
+
+Para pruebas locales usa:
+- `wrangler dev --env dev`
+
+El entorno `dev` permite `http://localhost:8080`, `http://127.0.0.1:8080`,
+`http://localhost:5500` y `http://127.0.0.1:5500`.

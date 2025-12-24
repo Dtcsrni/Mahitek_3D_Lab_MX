@@ -2070,6 +2070,18 @@ function setNewsletterStatus(el, msg, kind = 'info') {
   el.classList.toggle('is-error', kind === 'error');
 }
 
+function resolveNewsletterApiBase(attrValue, configValue) {
+  const fromAttr = String(attrValue || '').trim();
+  if (fromAttr) return fromAttr;
+  const fromConfig = String(configValue || '').trim();
+  if (!fromConfig) return '';
+  const host = String(window.location.hostname || '').toLowerCase();
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return 'http://127.0.0.1:8787';
+  }
+  return fromConfig;
+}
+
 async function subscribeViaWorker(apiBase, payload, timeoutMs) {
   const url = new URL('/subscribe', apiBase);
   const controller = new AbortController();
@@ -2122,9 +2134,10 @@ function setupNewsletterSubscription() {
   const button = form.querySelector('button[type="submit"], input[type="submit"]');
   const statusEl =
     form.querySelector('#newsletter-status') || form.querySelector('.newsletter-status');
-  const apiBase = String(
-    form.getAttribute('data-api-base') || CONFIG.NEWSLETTER_API_BASE || ''
-  ).trim();
+  const apiBase = resolveNewsletterApiBase(
+    form.getAttribute('data-api-base'),
+    CONFIG.NEWSLETTER_API_BASE
+  );
   const turnstileSiteKey = String(
     form.getAttribute('data-turnstile-sitekey') || CONFIG.NEWSLETTER_TURNSTILE_SITEKEY || ''
   ).trim();
