@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-22T20:25:10.621Z
-Fingerprint: sha256:8518736e3994a466b09ababc39b6de5780662c51d948126cacadb5b215a753bd
-Archivos hasheados: 56
+Generado: 2025-12-24T08:53:01.760Z
+Fingerprint: sha256:8677349ee132ac8afd506ad9f5ffbdee29aaf8dfe708f728b6e00fa2fbb0a654
+Archivos hasheados: 57
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -48,8 +48,8 @@ Inventario (excluye .git/node_modules/public):
 | --- | -----: |
 | `.svg` | 46 |
 | `.md` | 30 |
-| `.ini` | 25 |
-| `.js` | 22 |
+| `.ini` | 29 |
+| `.js` | 23 |
 | `.json` | 17 |
 | `.ps1` | 11 |
 | `(sin-ext)` | 8 |
@@ -62,6 +62,9 @@ Inventario (excluye .git/node_modules/public):
 | `.xml` | 1 |
 | `.bat` | 1 |
 | `.sh` | 1 |
+| `.sqlite` | 1 |
+| `.sqlite-shm` | 1 |
+| `.sqlite-wal` | 1 |
 | `.sql` | 1 |
 | `.toml` | 1 |
 
@@ -75,7 +78,7 @@ Workflows (3):
 - .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
-Scripts npm (26):
+Scripts npm (27):
 - `build`
 - `build:public`
 - `check:format`
@@ -98,6 +101,7 @@ Scripts npm (26):
 - `validate:html`
 - `validate:links`
 - `validate:public`
+- `validate:public:critical`
 - `version:major`
 - `version:minor`
 - `version:patch`
