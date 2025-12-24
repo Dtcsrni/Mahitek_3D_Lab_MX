@@ -22,6 +22,7 @@ const COPY_TARGETS = [
   "sitemap.xml",
   "CNAME",
   "qr",
+  "admin",
 ];
 
 function rmDirSafe(dirPath) {

@@ -74,7 +74,7 @@ function renderCampaignCard(c) {
       </div>
       <div class="campaign__meta">
         <div><span class="muted">Descuento:</span> <strong>${escapeHTML(discount)}</strong></div>
-        <div><span class="muted">Acumulable:</span> ${escapeHTML(stackable)} (solo con WELCOME)</div>
+        <div><span class="muted">Acumulable:</span> ${escapeHTML(stackable)} (solo con BIENVENIDA)</div>
       </div>
       <div class="campaign__actions">
         <button class="btn btn-ghost" type="button" data-action="edit">Editar</button>
@@ -102,7 +102,7 @@ function getCampaignFromForm() {
     discountValue: Number($('c-value').value),
     active: $('c-active').value === 'true',
     stackable: $('c-stackable').value === 'true',
-    stackGroup: 'welcome_plus_campaign'
+    stackGroup: 'bienvenida_plus_campaign'
   };
 }
 

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS subscribers (
   user_agent TEXT
 );
 
--- Campañas (WELCOME es una campaña especial siempre activa)
+-- Campañas (BIENVENIDA es una campaña especial siempre activa)
 CREATE TABLE IF NOT EXISTS campaigns (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
@@ -50,17 +50,17 @@ CREATE TABLE IF NOT EXISTS events (
   payload_json TEXT
 );
 
--- Seed: campaña WELCOME
+-- Seed: campaña BIENVENIDA
 INSERT OR IGNORE INTO campaigns (
   id, name, prefix, discount_type, discount_value, stackable, stack_group, active, created_at, updated_at
 ) VALUES (
-  'WELCOME',
+  'BIENVENIDA',
   'Bienvenida',
-  'WELCOME',
+  'BIENV',
   'percent',
   10,
   1,
-  'welcome_plus_campaign',
+  'bienvenida_plus_campaign',
   1,
   datetime('now'),
   datetime('now')

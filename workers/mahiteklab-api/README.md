@@ -1,7 +1,7 @@
 # `mahiteklab-api` (Cloudflare Workers)
 
 API serverless para:
-- Suscripción + cupones (`WELCOME` + campaña) con envío por correo.
+- Suscripcion + cupones (`BIENVENIDA` + campana) con envio por correo.
 - Admin básico de campañas (MVP) vía endpoints.
 
 ## Deploy rápido (resumen)
