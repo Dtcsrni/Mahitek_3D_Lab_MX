@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T05:03:31.535Z
-Fingerprint: sha256:a9f613c2b39d86b00c19e96a42cfb26aed0aa6ba7dd0c652edf63cae8a53dcc7
-Archivos hasheados: 58
+Generado: 2025-12-26T06:07:34.346Z
+Fingerprint: sha256:7b0a923232530b9241da991727ca2859760447a283ad00846c2d08ce180d8b47
+Archivos hasheados: 60
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -47,9 +47,9 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 46 |
-| `.ini` | 33 |
+| `.ini` | 35 |
 | `.md` | 30 |
-| `.js` | 23 |
+| `.js` | 25 |
 | `.json` | 18 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 8 |
@@ -57,6 +57,8 @@ Inventario (excluye .git/node_modules/public):
 | `.html` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
+| `.log` | 2 |
+| `.err` | 2 |
 | `.code-workspace` | 1 |
 | `.txt` | 1 |
 | `.xml` | 1 |
@@ -65,6 +67,8 @@ Inventario (excluye .git/node_modules/public):
 | `.sqlite` | 1 |
 | `.sqlite-shm` | 1 |
 | `.sqlite-wal` | 1 |
+| `.ts` | 1 |
+| `.map` | 1 |
 | `.sql` | 1 |
 | `.toml` | 1 |
 
