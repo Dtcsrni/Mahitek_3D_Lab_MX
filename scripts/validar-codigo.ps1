@@ -291,6 +291,28 @@ function Test-GitStatus {
     }
 }
 
+# ===== 7. Validacion completa (npm run validate) =====
+function Test-NpmValidate {
+    Write-Header "Validacion completa (npm run validate)"
+
+    try {
+        npm run validate
+        if ($LASTEXITCODE -eq 0) {
+            Write-Success "npm run validate OK"
+            $script:TotalPasados++
+        }
+        else {
+            Write-Error-Custom "npm run validate fallo"
+            $script:TotalErrores++
+        }
+    }
+    catch {
+        Write-Error-Custom "No se pudo ejecutar npm run validate"
+        Write-Warning-Custom "  Error: $($_.Exception.Message)"
+        $script:TotalErrores++
+    }
+}
+
 # Ejecutar todas las validaciones
 Write-Host "`n================================================" -ForegroundColor Cyan
 Write-Host "  Sistema de Validacion - Mahitek 3D Lab" -ForegroundColor Cyan
@@ -304,6 +326,7 @@ Test-JavaScriptSyntax
 Test-HTMLStructure
 Test-DataIntegrity
 Test-GitStatus
+Test-NpmValidate
 
 # Resumen Final
 Write-Header "Resumen de Validacion"
