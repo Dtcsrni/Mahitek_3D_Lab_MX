@@ -20,6 +20,13 @@ export const CONFIG = {
 
   // Imágenes
   PLACEHOLDER_IMAGE: 'assets/img/placeholder-catalog.svg',
+  PLACEHOLDER_PROMO_ICON: 'assets/img/placeholder-promos.svg',
+
+  NEWSLETTER_API_BASE: 'https://mahiteklab-api.mahiteklab.workers.dev',
+  NEWSLETTER_TIMEOUT_MS: 8000,
+  NEWSLETTER_TURNSTILE_SITEKEY: '',
+
+  ANALYTICS_GA_ID: 'G-Y46M6J1EWS',
 
   // Rutas de datos JSON
   DATA_PATHS: {

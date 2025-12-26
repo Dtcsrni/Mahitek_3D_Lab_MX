@@ -206,7 +206,7 @@ function extractCssLinks(html) {
 function extractModuleImports(jsText) {
   if (!jsText) return [];
   const matches = [];
-  const regex = /import\s+(?:[^"']+from\s+)?["']\.\/modules\/([^"']+)["']/gi;
+  const regex = /import\s+(?:[^"']+from\s+)?["']\.\/(?:modules\/)?([^"']+)["']/gi;
   let match = null;
   while ((match = regex.exec(jsText))) {
     matches.push(match[1]);
@@ -244,7 +244,6 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   const npmScripts = pkg?.scripts ? Object.keys(pkg.scripts).sort() : [];
 
   const indexHtml = readTextSafe(path.join(repoRoot, "index.html"));
-  const bootJs = readTextSafe(path.join(repoRoot, "assets/js/boot.js"));
   const appJs = readTextSafe(path.join(repoRoot, "assets/js/app.js"));
   const configJs = readTextSafe(path.join(repoRoot, "assets/js/modules/config.js"));
   const workerIndex = readTextSafe(path.join(repoRoot, "workers/mahiteklab-api/src/index.js"));
@@ -257,7 +256,12 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   );
 
   const jsModules = listFilesInDir(path.join(repoRoot, "assets/js/modules"), ".js");
-  const jsImported = extractModuleImports(bootJs).map(stripQuery);
+  const moduleImports = jsModules.flatMap((name) =>
+    extractModuleImports(readTextSafe(path.join(repoRoot, "assets/js/modules", name))),
+  );
+  const jsImported = Array.from(new Set([...extractModuleImports(appJs), ...moduleImports])).map(
+    stripQuery,
+  );
   const jsModulesMissing = jsModules.filter((name) => !jsImported.includes(name));
 
   const imageDir = path.join(repoRoot, "assets/img");
@@ -279,7 +283,6 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   const assetTexts = [
     indexHtml,
     appJs,
-    bootJs,
     configJs,
     workerIndex,
     ...dataFiles.map((rel) => readTextSafe(path.join(repoRoot, rel))),
@@ -355,15 +358,14 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   const hasAdminHeaders = fs.existsSync(path.join(repoRoot, "admin/_headers"));
   const hasCname = fs.existsSync(path.join(repoRoot, "CNAME"));
 
-  const apiBaseMatch = appJs.match(/NEWSLETTER_API_BASE:\s*'([^']*)'/);
+  const apiBaseMatch = configJs.match(/NEWSLETTER_API_BASE:\s*'([^']*)'/);
   const apiBaseValue = apiBaseMatch ? apiBaseMatch[1].trim() : "";
-  const turnstileMatch = appJs.match(/NEWSLETTER_TURNSTILE_SITEKEY:\s*'([^']*)'/);
+  const turnstileMatch = configJs.match(/NEWSLETTER_TURNSTILE_SITEKEY:\s*'([^']*)'/);
   const turnstileValue = turnstileMatch ? turnstileMatch[1].trim() : "";
 
   const indexHasStyles = indexHtml.includes("assets/css/styles.css");
   const indexHasAnimations = indexHtml.includes("assets/css/modules/animations.css");
   const indexHasApp = indexHtml.includes("assets/js/app.js");
-  const indexHasBoot = indexHtml.includes("assets/js/boot.js");
   const indexHasManifest = indexHtml.includes('rel="manifest"') || indexHtml.includes("rel='manifest'");
 
   const qrHasPlaceholderGa = qrJs.includes("G-XXXXXXXXXX");
@@ -442,9 +444,6 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   if (!indexHasApp) {
     diagnostics.push("index.html no referencia assets/js/app.js.");
   }
-  if (!indexHasBoot) {
-    diagnostics.push("index.html no referencia assets/js/boot.js.");
-  }
   if (!indexHasManifest) {
     diagnostics.push("index.html no incluye el manifest.");
   }
@@ -457,7 +456,7 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   }
   if (jsModulesMissing.length > 0) {
     diagnostics.push(
-      `Modulos JS sin import en boot.js (${jsModulesMissing.length}): ${jsModulesMissing.join(
+      `Modulos JS sin import en app.js (${jsModulesMissing.length}): ${jsModulesMissing.join(
         ", ",
       )}`,
     );
@@ -504,7 +503,7 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
     diagnostics.push("data/social.json no se pudo leer.");
   }
   if (!apiBaseValue) {
-    diagnostics.push("NEWSLETTER_API_BASE no esta configurado en assets/js/app.js.");
+    diagnostics.push("NEWSLETTER_API_BASE no esta configurado en assets/js/modules/config.js.");
   }
   if (!turnstileValue) {
     diagnostics.push("NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).");

@@ -73,12 +73,6 @@
     "categoria": "acabados"
   },
   {
-    "q": "¿Tienen garantía?",
-    "a": "Revisamos defectos de impresión reportados al recibir. Si nos avisas dentro de 7 días, lo evaluamos caso por caso y te proponemos solución (ajuste, reimpresión o alternativa). En Outlet, el precio refleja posibles detalles estéticos.",
-    "categoria": "garantía",
-    "destacada": true
-  },
-  {
     "q": "¿Cómo cuido mi pieza?",
     "a": "Te incluimos guía de cuidados. Lo principal: evita temperaturas extremas, no comprimas prolongadamente y limpia con agua tibia si es necesario.",
     "categoria": "uso"

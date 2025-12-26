@@ -8,7 +8,7 @@
 - ✅ AI-004 (Git Windows: script de reparación)
 - ✅ AI-006 (promos.js sin referencias rotas)
 - ✅ AI-007 (deploy hygiene: `public/` + Pages)
-- ✅ AI-005 (arquitectura: contrato `app.js` + boot progresivo)
+- ✅ AI-005 (arquitectura: runtime modular `app.js` + módulos)
 - ✅ AI-008 (CSP/\_headers: alineado + sin scripts inline)
 - ✅ AI-009 (JS módulos: `data-manager.js`)
 - ✅ AI-010 (JS módulos: `ui-components.js`)
@@ -33,7 +33,7 @@ Formato de ticket recomendado:
 
 **Contexto**
 
-- Hay strings en `assets/js/app.js` y `assets/js/boot.js` con caracteres corruptos por encoding.
+- Hay strings en `assets/js/app.js` y `assets/js/modules/*` con caracteres corruptos por encoding.
 - Impacta UX y confianza (textos visibles como “Válido”, “Categoría”, “preparación”).
 
 **Cambios esperados**
@@ -45,7 +45,7 @@ Formato de ticket recomendado:
 **Archivos probables**
 
 - `assets/js/app.js`
-- `assets/js/boot.js`
+- `assets/js/modules/*`
 - `scripts/validate-encoding.js`
 - `package.json`
 
@@ -141,7 +141,7 @@ Formato de ticket recomendado:
 
 **Contexto**
 
-- Hay dos arquitecturas JS en paralelo: `assets/js/app.js` (legacy) y `assets/js/boot.js` + módulos.
+- Hay dos arquitecturas JS en paralelo: `assets/js/app.js` (modular) y `assets/js/modules/*`.
 - Existe config duplicada y cargas duplicadas.
 
 **Cambios esperados**
@@ -155,7 +155,7 @@ Formato de ticket recomendado:
 
 - `docs/ARCHITECTURE.md` (nuevo)
 - `assets/js/app.js`
-- `assets/js/boot.js`
+- `assets/js/modules/*`
 - `assets/js/modules/*`
 
 **Comandos de verificación**
@@ -258,7 +258,7 @@ Formato de ticket recomendado:
 **Archivos probables**
 
 - `assets/js/modules/data-manager.js`
-- (Opcional) `assets/js/boot.js` / `assets/js/modules/*` (integración)
+- (Opcional) `assets/js/app.js` + `assets/js/modules/*` (integración)
 
 **Comandos de verificación**
 

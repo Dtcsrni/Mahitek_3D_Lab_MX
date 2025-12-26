@@ -1,19 +1,19 @@
 # Inventario de conexiones (archivo por archivo)
 
-## Metodologia
+## Metodología
 
-- Se revisaron referencias en `index.html`, `admin/index.html`, `qr/index.html`, `assets/js/app.js`, `assets/js/boot.js` y `data/*.json`.
-- Se reviso el build `scripts/build-public.js` y los workflows de CI.
-- Este inventario indica si cada archivo esta conectado al runtime, al deploy o si es documentacion/manual.
+- Se revisaron referencias en `index.html`, `admin/index.html`, `qr/index.html`, `assets/js/app.js` y `data/*.json`.
+- Se revisó el build `scripts/build-public.js` y los workflows de CI.
+- Este inventario indica si cada archivo está conectado al runtime, al deploy o si es documentación/manual.
 
 ## Entradas principales
 
-- `index.html` -> `assets/css/styles.css`, `assets/css/modules/animations.css`, `assets/js/app.js`, `assets/js/boot.js`, `manifest.json`, imagenes `assets/img/*`.
+- `index.html` -> `assets/css/styles.css`, `assets/css/modules/animations.css`, `assets/js/app.js`, `manifest.json`, imágenes `assets/img/*`.
 - `admin/index.html` -> `admin/styles.css`, `admin/app.js`.
 - `qr/index.html` -> `qr/qr.js` (CSS inline).
 - `workers/mahiteklab-api/src/index.js` -> API usada por `assets/js/app.js` (NEWSLETTER_API_BASE) y `admin/app.js` (DEFAULT_API_BASE).
 
-## Root y configuracion
+## Root y configuración
 
 - `CNAME` -> usado por GitHub Pages (dominio custom).
 - `manifest.json` -> referenciado por `index.html`.
@@ -21,7 +21,7 @@
 - `sitemap.xml` -> consumido por crawlers (no requiere referencia directa).
 - `_headers` -> solo para hosts que soportan headers (no aplica en GitHub Pages).
 - `lighthouserc.json` -> usado por workflow Lighthouse.
-- `lighthouserc.ci.json` -> configuracion alternativa (no usada en workflows actuales).
+- `lighthouserc.ci.json` -> configuración alternativa (no usada en workflows actuales).
 - `package.json` / `package-lock.json` -> scripts y dependencias.
 - `start.bat` / `start.sh` -> arranque manual del dev server.
 - `cleanup-workflows.ps1` -> script manual para limpiar ejecuciones de GitHub Actions.
@@ -29,16 +29,25 @@
 ## CSS
 
 - `assets/css/styles.css` -> CSS principal del landing (conectado a `index.html`).
-- `assets/css/modules/animations.css` -> utilidades de animacion (conectado a `index.html`).
+- `assets/css/modules/animations.css` -> utilidades de animación (conectado a `index.html`).
 - `admin/styles.css` -> estilos del admin (`admin/index.html`).
 
 ## JS (landing)
 
-- `assets/js/app.js` -> runtime principal (render catalogo/promos/FAQ, navbar, filtros, animaciones basicas).
-- `assets/js/boot.js` -> mejora progresiva (scroll narrative, SVG animado, contadores).
-- `assets/js/modules/config.js` -> importado por `boot.js`.
-- `assets/js/modules/scroll-narrative.js` -> importado por `boot.js`.
-- `assets/js/modules/svg-animations.js` -> importado por `boot.js`.
+- `assets/js/app.js` -> entry point ESM (orquesta módulos y runtime principal).
+- `assets/js/modules/config.js` -> configuración central usada por módulos.
+- `assets/js/modules/data-loader.js` -> fetch y cache de JSON.
+- `assets/js/modules/validation.js` -> validaciones de esquema por módulo.
+- `assets/js/modules/health-report.js` -> registro de health checks en consola.
+- `assets/js/modules/catalog.js` -> catálogo, filtros y carrusel.
+- `assets/js/modules/promos.js` -> promos, CTA y carrusel.
+- `assets/js/modules/faq.js` -> FAQ, filtros y schema.
+- `assets/js/modules/newsletter.js` -> suscripción y Turnstile opcional.
+- `assets/js/modules/system-checks.js` -> verificaciones ligeras de DOM y dependencias.
+- `assets/js/modules/social.js` -> enlaces sociales en footer/hero.
+- `assets/js/modules/schema.js` -> JSON-LD de organización/FAQ.
+- `assets/js/modules/scroll-narrative.js` -> narrativa por scroll (inicializada desde `app.js`).
+- `assets/js/modules/svg-animations.js` -> SVG animado (inicializado desde `app.js`).
 
 ## JS (admin / qr / worker)
 
@@ -48,23 +57,23 @@
 
 ## Datos
 
-- `assets/data/brand.json` -> cargado por `assets/js/app.js`.
-- `data/products.json` -> cargado por `assets/js/app.js`.
-- `data/promos.json` -> cargado por `assets/js/app.js`.
-- `data/faq.json` -> cargado por `assets/js/app.js`.
+- `assets/data/brand.json` -> cargado por `assets/js/modules/schema.js` y `assets/js/modules/social.js`.
+- `data/products.json` -> cargado por `assets/js/modules/catalog.js`.
+- `data/promos.json` -> cargado por `assets/js/modules/promos.js`.
+- `data/faq.json` -> cargado por `assets/js/modules/faq.js`.
 - `data/social.json` -> fallback cuando `assets/data/brand.json` no trae `social`.
 
-## Imagenes (assets/img)
+## Imágenes (assets/img)
 
 - `assets/img/favicon_512.png` -> `index.html` (favicon).
 - `assets/img/hero-lab.svg` -> `index.html` (hero).
 - `assets/img/hero-lab-epic.svg` -> usado por el Worker para emails (URL en `workers/mahiteklab-api/src/index.js`).
 - `assets/img/logo-color.svg` -> `index.html` (logos en secciones).
-- `assets/img/mark-icon.svg` -> `assets/js/app.js` (JSON-LD logo).
+- `assets/img/mark-icon.svg` -> `assets/js/modules/schema.js` (JSON-LD logo).
 - `assets/img/og-image.png` -> `index.html` (og:image) y fallback en promos.
-- `assets/img/placeholder-catalog.svg` -> placeholders en `index.html` y `assets/js/app.js`.
-- `assets/img/placeholder-promos.svg` -> placeholders en `index.html` y `assets/js/app.js`.
-- `assets/img/placeholder-faq.svg` -> placeholders en `index.html` y `assets/js/app.js`.
+- `assets/img/placeholder-catalog.svg` -> placeholders en `index.html` y `assets/js/modules/catalog.js`.
+- `assets/img/placeholder-promos.svg` -> placeholders en `index.html` y `assets/js/modules/promos.js`.
+- `assets/img/placeholder-faq.svg` -> placeholders en `index.html` y `assets/js/modules/faq.js`.
 - `assets/img/service-design-v2.svg` -> `index.html`.
 - `assets/img/service-packaging-v2.svg` -> `index.html`.
 - `assets/img/service-support-v2.svg` -> `index.html`.
@@ -136,14 +145,14 @@
 - `scripts/SONIDOS_v2.md`
 - `scripts/SISTEMA_SONIDOS_RESUMEN.md`
 
-## Documentacion y archivos auxiliares
+## Documentación y archivos auxiliares
 
-- `docs/` -> documentacion tecnica (no se carga en runtime).
+- `docs/` -> documentación técnica (no se carga en runtime).
 - `docs/archive/` -> datos y pruebas archivadas.
 - `docs/AI_BACKLOG.md` -> backlog de tareas.
 - `docs/ARCHITECTURE.md` -> arquitectura general.
-- `docs/SISTEMA_DATOS.md`, `docs/UI_COMPONENTS.md`, `docs/SISTEMA_VALIDACION.md`, `docs/VALIDACION_AVANZADA.md`, `docs/SEGURIDAD_INFORME.md` -> documentacion de sistemas.
-- `ESTRUCTURA_SECCIONES.md`, `DESARROLLO.md`, `NAVBAR_*.md`, `PERFORMANCE_AUDIT.md`, `PROMOS_COMBOS.md`, `TESTING.md`, `CONFIGURACION_EXTENSIONES.md`, `COMPRESSION.md`, `GITHUB_PAGES_SETUP.md`, `VALIDATION_PROMOS.md` -> documentacion en raiz.
+- `docs/SISTEMA_DATOS.md`, `docs/UI_COMPONENTS.md`, `docs/SISTEMA_VALIDACION.md`, `docs/VALIDACION_AVANZADA.md`, `docs/SEGURIDAD_INFORME.md` -> documentación de sistemas.
+- `ESTRUCTURA_SECCIONES.md`, `DESARROLLO.md`, `NAVBAR_*.md`, `PERFORMANCE_AUDIT.md`, `PROMOS_COMBOS.md`, `TESTING.md`, `CONFIGURACION_EXTENSIONES.md`, `COMPRESSION.md`, `GITHUB_PAGES_SETUP.md`, `VALIDATION_PROMOS.md` -> documentación en raíz.
 
 ## Archivos generados / no versionables
 

@@ -464,18 +464,18 @@
   },
   {
     "id": "M3D-CARD-WARR-9X5-20",
-    "nombre": "Tarjeta garantía 20 pzas laminadas",
+    "nombre": "Tarjeta soporte 20 pzas laminadas",
     "categoria": "impresion",
     "precio_mxn": 70,
     "precio_rango_mxn": "70–90",
     "imagen": "🛡️",
     "material": "Impreso",
-    "descripcion": "Tarjetas de garantía con campos personalizables.",
+    "descripcion": "Tarjetas informativas con campos personalizables.",
     "incluye": "Campos de compra/serie.",
     "variantes": "Varios diseños",
     "sugerencias": "Posventa, soporte.",
     "estado": "activo",
-    "tags": ["tarjeta", "garantía", "impresión", "soporte"]
+    "tags": ["tarjeta", "postventa", "impresión", "soporte"]
   },
   {
     "id": "M3D-INST-A6",

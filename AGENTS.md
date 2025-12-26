@@ -27,8 +27,7 @@ Este repositorio es un sitio estático (GitHub Pages) con HTML/CSS/JS sin build 
 
 - UI: `index.html`
 - CSS: `assets/css/styles.css` (principal), `assets/css/modules/animations.css` (utilidades)
-- Runtime legacy (principal): `assets/js/app.js`
-- Runtime módulos (ESM): `assets/js/boot.js` + `assets/js/modules/*`
+- Runtime ESM: `assets/js/app.js` + `assets/js/modules/*`
 - Datos: `data/*.json` y `assets/data/brand.json`
 - CI/CD: `.github/workflows/ci.yml` y `.github/workflows/lighthouse.yml`
 - Validaciones: `scripts/validate-encoding.js`, `scripts/check-analisis-sistema.js`, `scripts/validate-html.js`, `scripts/validate-links.js`

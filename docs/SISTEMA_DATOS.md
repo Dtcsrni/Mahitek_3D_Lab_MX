@@ -133,15 +133,15 @@ const welcome = await CopyBinder.getCopy('hero.welcome', {
 
 ---
 
-## 🚀 Inicialización
+## Inicialización
 
-Integración recomendada (opcional) en `boot.js`:
+Integración recomendada (opcional) en `app.js`:
 
-- Actualmente `boot.js` es mejora progresiva y evita cargar datos para no duplicar trabajo con `app.js`.
+- `app.js` es el orquestador modular y evita duplicar carga de datos.
 - Si decides migrar carga/binding a módulos, este es el patrón sugerido.
 
 ```javascript
-// boot.js
+// app.js
 import DataManager from './modules/data-manager.js';
 import CopyBinder from './modules/copywriting-binder.js';
 
@@ -197,7 +197,7 @@ CopyBinder.bindCopywriting();
   <button data-copy="hero.cta">Cargando...</button>
 </section>;
 
-// JS (boot.js ya lo hace automáticamente)
+// JS (app.js ya lo hace automáticamente)
 await CopyBinder.bindCopywriting();
 ```
 
@@ -246,7 +246,7 @@ await DataManager.loadData('products', { forceRefresh: true });
 
 ### Estrategia de carga
 
-1. **Precarga crítica** (boot.js):
+1. **Precarga crítica** (app.js):
    - `copywriting`, `products`, `brand`, `social`
    - Carga en paralelo, no bloqueante
 
