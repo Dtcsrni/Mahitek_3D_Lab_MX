@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T04:03:02.509Z
-Fingerprint: sha256:91298b2709283ecd8ea41f03ddba3fddf8242d39980097f42bced580befd70e7
-Archivos hasheados: 57
+Generado: 2025-12-26T05:03:31.535Z
+Fingerprint: sha256:a9f613c2b39d86b00c19e96a42cfb26aed0aa6ba7dd0c652edf63cae8a53dcc7
+Archivos hasheados: 58
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -47,11 +47,11 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 46 |
-| `.ini` | 32 |
+| `.ini` | 33 |
 | `.md` | 30 |
 | `.js` | 23 |
-| `.json` | 17 |
-| `.ps1` | 11 |
+| `.json` | 18 |
+| `.ps1` | 12 |
 | `(sin-ext)` | 8 |
 | `.css` | 7 |
 | `.html` | 3 |
@@ -78,7 +78,7 @@ Workflows (3):
 - .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
-Scripts npm (27):
+Scripts npm (28):
 - `build`
 - `build:public`
 - `check:format`
@@ -91,6 +91,7 @@ Scripts npm (27):
 - `format:css`
 - `format:html`
 - `format:js`
+- `monitor`
 - `postinstall`
 - `preinstall`
 - `serve`
