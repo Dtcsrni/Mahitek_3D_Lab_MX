@@ -1,19 +1,19 @@
-# 🔍 Análisis del Sistema — Mahitek 3D Lab MX
+# ?? Analisis del Sistema - Mahitek 3D Lab MX
 
-Este documento describe el estado del proyecto y se mantiene **parcialmente automático** para evitar desactualización.
+Este documento describe el estado del proyecto y se mantiene **parcialmente automatico** para evitar desactualizacion.
 
 ## Objetivo
 
-- Tener un inventario confiable de archivos/estructura (para auditoría y mantenimiento).
-- Detectar cambios “significativos” en el sistema (UI/CSS/JS/datos/scripts/CI) y exigir que el análisis se actualice.
+- Tener un inventario confiable de archivos/estructura (para auditoria y mantenimiento).
+- Detectar cambios "significativos" en el sistema (UI/CSS/JS/datos/scripts/CI) y exigir que el analisis se actualice.
 
-## Mantenimiento automático
+## Mantenimiento automatico
 
-- Actualizar: `npm run docs:update` (regenera la sección autogenerada).
+- Actualizar: `npm run docs:update` (regenera la seccion autogenerada).
 - Verificar: `npm run validate` (incluye `validate:docs` y falla si el fingerprint no coincide).
 - Auto en commits: `.\scripts\instalar-hooks.ps1` instala un `pre-commit` que ejecuta `npm run docs:update` y agrega `ANALISIS_SISTEMA.md`.
 
-## Alcance del fingerprint (cambios “significativos”)
+## Alcance del fingerprint (cambios "significativos")
 
 El fingerprint considera contenido y rutas de:
 
@@ -23,17 +23,16 @@ El fingerprint considera contenido y rutas de:
 - `scripts/**`
 - `package.json`, `package-lock.json`
 
-Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
+Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 
 ---
-
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T07:29:57.845Z
-Fingerprint: sha256:c9b3d131041f3a80b2c10164417e93f0e3af258be99f5f36d28d794944153373
-Archivos hasheados: 52
+Generado: 2025-12-26T07:51:52.693Z
+Fingerprint: sha256:e73504d21d5cdf08b0e84c59931c7de9cf4e56ded11fd6a9b5669acdbd5cb041
+Archivos hasheados: 50
 
-Criterio del fingerprint (cambios “significativos”):
+Criterio del fingerprint (cambios significativos):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
 - `assets/js/**/*.js`, `assets/css/**/*.css`
 - `assets/data/**/*.json`, `data/**/*.json`
@@ -47,28 +46,21 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 46 |
-| `.ini` | 32 |
 | `.md` | 31 |
-| `.js` | 21 |
-| `.json` | 18 |
+| `.ini` | 20 |
+| `.js` | 19 |
+| `.json` | 17 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 8 |
 | `.html` | 3 |
 | `.css` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
-| `.log` | 2 |
-| `.err` | 2 |
 | `.code-workspace` | 1 |
 | `.txt` | 1 |
 | `.xml` | 1 |
 | `.bat` | 1 |
 | `.sh` | 1 |
-| `.sqlite` | 1 |
-| `.sqlite-shm` | 1 |
-| `.sqlite-wal` | 1 |
-| `.ts` | 1 |
-| `.map` | 1 |
 | `.sql` | 1 |
 | `.toml` | 1 |
 
@@ -110,5 +102,14 @@ Scripts npm (28):
 - `version:minor`
 - `version:patch`
 - `watch:css`
+
+Diagnostico rapido:
+- Datos: Productos: 39/39 activos (placeholders: 0) | Promos: 30/32 activas | FAQ: 21 items
+- Archivos de sistema detectados (20): .github/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, docs/archive/data/desktop.ini, docs/archive/desktop.ini, docs/badges/desktop.ini, ...
+- brand.json incluye social; data/social.json queda como fallback.
+- NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
+- No se encontro LICENSE en la raiz (README lo referencia).
+- lighthouserc.ci.json existe, pero no esta referenciado en workflows.
+- public/ existe en disco (salida generada). Verifica que no se versiona.
 
 <!-- AUTO-GENERATED:END -->
