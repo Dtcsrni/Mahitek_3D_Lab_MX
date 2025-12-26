@@ -59,13 +59,56 @@
           <div class="panel__head">
             <div>
               <h1>Campañas</h1>
-              <p class="muted">
-                Emite 1 cupon por email + campana. Se combina solo con BIENVENIDA (si es acumulable).
-              </p>
+              <p class="muted">Emite 1 cupon por email + campana. Se combina solo con BIENVENIDA (si es acumulable).</p>
             </div>
             <div class="panel__actions">
               <button class="btn btn-ghost" id="btn-refresh" type="button">Refrescar</button>
               <button class="btn btn-primary" id="btn-new" type="button">Nueva campaña</button>
+            </div>
+          </div>
+          <div class="campaign-tools">
+            <div class="campaign-tools__filters">
+              <label class="field field--inline">
+                <span>Buscar</span>
+                <input id="campaign-search" type="search" placeholder="Nombre, ID o prefijo" />
+              </label>
+              <label class="field field--inline">
+                <span>Estado</span>
+                <select id="campaign-status">
+                  <option value="all">Todas</option>
+                  <option value="live">Activas</option>
+                  <option value="scheduled">Programadas</option>
+                  <option value="expired">Vencidas</option>
+                  <option value="paused">Pausadas</option>
+                </select>
+              </label>
+              <label class="field field--inline">
+                <span>Orden</span>
+                <select id="campaign-sort">
+                  <option value="recent">Mas recientes</option>
+                  <option value="name">Nombre</option>
+                  <option value="discount">Descuento</option>
+                  <option value="status">Estado</option>
+                </select>
+              </label>
+            </div>
+            <div class="campaign-summary">
+              <div class="stat-pill">
+                <span>Total</span>
+                <strong id="campaign-total">-</strong>
+              </div>
+              <div class="stat-pill stat-pill--accent">
+                <span>Activas</span>
+                <strong id="campaign-active">-</strong>
+              </div>
+              <div class="stat-pill stat-pill--muted">
+                <span>Pausadas</span>
+                <strong id="campaign-inactive">-</strong>
+              </div>
+              <div class="stat-pill stat-pill--muted">
+                <span>Sync</span>
+                <strong id="campaign-sync">-</strong>
+              </div>
             </div>
           </div>
 
@@ -165,6 +208,21 @@
               </select>
             </label>
           </div>
+          <div class="two">
+            <label class="field">
+              <span>Inicio</span>
+              <input id="c-start" type="date" />
+            </label>
+            <label class="field">
+              <span>Fin</span>
+              <input id="c-end" type="date" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Grupo de stack</span>
+            <input id="c-stack-group" placeholder="bienvenida_plus_campaign" />
+          </label>
 
           <p class="status" id="modal-status" aria-live="polite"></p>
         </div>
