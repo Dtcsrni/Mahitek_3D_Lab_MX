@@ -1,18 +1,27 @@
 # QR Redirect (GitHub Pages)
 
-Este directorio contiene un `index.html` minimalista para redirección con UTM y GA4.
+Landing minima para redireccion con UTM y GA4.
 
-Instrucciones:
-1) Usa Measurement ID real en las dos apariciones de `G-XXXXXXXXXX`.
-2) Publica como repositorio aparte (recomendado):
-   - Crea repo `qr` en tu cuenta.
-   - Copia este `index.html` a la raíz del repo.
-   - Settings → Pages → Branch: `main` y carpeta `/`.
-   - URL pública esperada: `https://mahitek3dlab.com/qr/`
-3) Parámetros opcionales en la URL del QR:
-   - `?c=<campaign>` para campaign
-   - `?m=<medium>` para medium (default `print`)
-   - `?s=<source>` para source (default `qr`)
+## Ajustes necesarios
 
-El script enviará un evento `qr_redirect` a GA4 y luego redirigirá a:
-`https://mahitek3dlab.com/?utm_source=<s>&utm_medium=<m>&utm_campaign=<c>`
+- `qr/qr.js`: actualiza `CONFIG.gaMeasurementId` y `CONFIG.baseUrl`.
+
+## Deploy (opciones)
+
+Opcion A: Mantener dentro de este repo
+- El build `scripts/build-public.js` copia `qr/` a `public/`.
+- La ruta final queda como `https://mahitek3dlab.com/qr/`.
+
+Opcion B: Publicar como repo aparte
+- Crea un repo `qr`.
+- Copia `qr/index.html` y `qr/qr.js` a la raiz del repo.
+- En Settings -> Pages, selecciona `main` y carpeta `/`.
+
+## Parametros de URL
+
+- `?c=<campaign>` para campaign
+- `?m=<medium>` para medium (default `print`)
+- `?s=<source>` para source (default `qr`)
+
+Redirige a:
+`<baseUrl>?utm_source=<s>&utm_medium=<m>&utm_campaign=<c>`

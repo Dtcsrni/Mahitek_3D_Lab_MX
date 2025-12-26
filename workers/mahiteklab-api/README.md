@@ -1,10 +1,10 @@
-# `mahiteklab-api` (Cloudflare Workers)
+# mahiteklab-api (Cloudflare Workers)
 
 API serverless para:
-- Suscripcion + cupones (`BIENVENIDA` + campana) con envio por correo.
-- Admin básico de campañas (MVP) vía endpoints.
+- Suscripcion y cupones (BIENVENIDA + campanas).
+- Admin basico de campanas via endpoints.
 
-## Deploy rápido (resumen)
+## Deploy rapido (resumen)
 
 1) Instala Wrangler:
 
@@ -20,11 +20,11 @@ API serverless para:
 
 4) Pega el `database_id` en `wrangler.toml`.
 
-5) Aplica migración:
+5) Aplica migracion:
 
 `wrangler d1 execute mahiteklab-db --file migrations/0001_init.sql`
 
-6) Configura secrets (mínimo):
+6) Configura secrets (minimo):
 
 - `wrangler secret put COUPON_SECRET`
 - `wrangler secret put TURNSTILE_SECRET` (recomendado)
@@ -42,18 +42,17 @@ Edita `ADMIN_ROLE_TOKENS_JSON` en `wrangler.toml` o usa `wrangler secret put ADM
 
 ## CORS
 
-Se permite solo:
+Se controla con `ALLOWED_ORIGINS` (lista separada por comas). Ejemplo prod:
 - `https://mahitek3dlab.com`
 - `https://www.mahitek3dlab.com`
-- `https://dtcsrni.github.io` (redirecci¢n)
+- `https://dtcsrni.github.io`
 - `https://mahiteklab-admin.pages.dev`
 
-Configurable en `ALLOWED_ORIGINS`.
+## Dev local
 
-## Dev local (CORS)
+`wrangler dev --env dev` habilita `http://localhost:8080` y `http://127.0.0.1:8080`.
 
-Para pruebas locales usa:
-- `wrangler dev --env dev`
+## Conexiones en el repo
 
-El entorno `dev` permite `http://localhost:8080`, `http://127.0.0.1:8080`,
-`http://localhost:5500` y `http://127.0.0.1:5500`.
+- `assets/js/app.js` usa `NEWSLETTER_API_BASE`.
+- `admin/app.js` usa `DEFAULT_API_BASE`.

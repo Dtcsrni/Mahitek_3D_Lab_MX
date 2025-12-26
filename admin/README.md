@@ -1,15 +1,21 @@
-# `mahiteklab-admin` (Cloudflare Pages)
+# mahiteklab-admin (Cloudflare Pages)
 
-Panel estático para administrar campañas y ver métricas del Worker `mahiteklab-api`.
+Panel estatico para administrar campanas y ver metricas del Worker `mahiteklab-api`.
 
 ## Deploy (Cloudflare Pages)
 
-- **Project name:** `mahiteklab-admin`
-- **Build command:** (vacío)
-- **Output directory:** `admin`
+- Project name: `mahiteklab-admin`
+- Build command: (vacio)
+- Output directory: `admin`
+
+## Uso
+
+- Abre `admin/index.html`.
+- Ingresa role y token (configurados en el Worker).
+- Ajusta `API Base` si usas un entorno distinto.
 
 ## Seguridad (MVP)
 
-- El panel está pensado para ser **público pero restringido**.
-- Recomendado: activar **Cloudflare Access** (allowlist de correos + 2FA).
-- Los tokens por rol se configuran en el Worker (`ADMIN_ROLE_TOKENS_JSON`).
+- El panel esta pensado para ser publico pero restringido.
+- Recomendado: Cloudflare Access (allowlist de correos + 2FA).
+- Tokens por rol: `ADMIN_ROLE_TOKENS_JSON` en el Worker.
