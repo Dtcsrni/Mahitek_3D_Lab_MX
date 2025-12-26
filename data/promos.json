@@ -601,14 +601,14 @@
     "id": "back-to-school",
     "tipo": "estacional",
     "titulo": "Back to School/Oficina",
-    "subtitulo": "Envío gratis ≥ $400 sin tocar unitario",
-    "monto_minimo": 400,
+    "subtitulo": "Envío gratis ≥ $600 sin tocar unitario",
+    "monto_minimo": 600,
     "icono": "assets/img/promo-back-to-school.svg",
     "badge": "🎒 Regreso",
     "color_acento": "#3498DB",
     "animacion": "slide-bounce",
     "destacado": false,
-    "descripcion": "Compras mayores a $400 con envío gratis, precios unitarios intactos.",
+    "descripcion": "Compras mayores a $600 con envío gratis, precios unitarios intactos.",
     "beneficios": [
       "Envío gratis",
       "Sin aumento de precios",
@@ -622,14 +622,14 @@
     "id": "envío-online",
     "tipo": "permanente",
     "titulo": "Envío online",
-    "subtitulo": "Gratis ≥ $200",
-    "monto_minimo": 200,
+    "subtitulo": "Gratis ≥ $600",
+    "monto_minimo": 600,
     "icono": "assets/img/promo-envio-online.svg",
     "badge": "🚚 Envío",
     "color_acento": "#27AE60",
     "animacion": "slide-right",
     "destacado": false,
-    "descripcion": "Todas las compras online mayores a $200 incluyen envío sin costo adicional.",
+    "descripcion": "Todas las compras online mayores a $600 incluyen envío sin costo adicional.",
     "beneficios": [
       "Sin costo oculto",
       "Cobertura amplia",
@@ -721,22 +721,22 @@
     "id": "referidos-p2p",
     "tipo": "referidos",
     "titulo": "Referidos P2P",
-    "subtitulo": "Quien refiere $50 saldo · Referido: envío gratis o $40 saldo (≥ $300)",
+    "subtitulo": "Quien refiere $50 saldo · Referido: envío gratis o $40 saldo (≥ $600)",
     "icono": "assets/img/promo-referidos.svg",
     "badge": "🤝 Referir",
     "color_acento": "#1ABC9C",
     "animacion": "handshake",
     "destacado": true,
-    "descripcion": "Refiere a un amigo: tú ganas $50 de saldo, tu amigo elige envío gratis o $40 de saldo en pedido ≥ $300.",
+    "descripcion": "Refiere a un amigo: tú ganas $50 de saldo, tu amigo elige envío gratis o $40 de saldo en pedido ≥ $600.",
     "beneficios": [
       "$50 para quien refiere",
       "Envío gratis o $40 saldo para referido",
-      "Pedido mínimo $300"
+      "Pedido mínimo $600"
     ],
     "saldo_referente": 50,
     "beneficio_referido_opcion1": "Envío gratis",
     "beneficio_referido_opcion2": 40,
-    "monto_minimo_referido": 300,
+    "monto_minimo_referido": 600,
     "estado": "activo"
   },
   {
@@ -836,3 +836,5 @@
     "estado": "activo"
   }
 ]
+
+

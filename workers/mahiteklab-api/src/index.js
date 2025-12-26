@@ -10,7 +10,7 @@ function getAllowedOrigins(env) {
   const raw = String(env.ALLOWED_ORIGINS || '').trim();
   return raw
     .split(',')
-    .map((s) => s.trim())
+    .map(s => s.trim())
     .filter(Boolean);
 }
 
@@ -38,6 +38,34 @@ function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function trimText(value, max = 180) {
+  const s = String(value || '').trim();
+  if (!s) return '';
+  return s.length > max ? s.slice(0, max) : s;
+}
+
+function sanitizeRecord(raw, maxLen = 180, maxKeys = 24) {
+  if (!isPlainObject(raw)) return null;
+  const entries = Object.entries(raw).slice(0, maxKeys);
+  const out = {};
+  for (const [key, value] of entries) {
+    const safeKey = trimText(key, 64);
+    if (!safeKey) continue;
+    if (value === null || value === undefined) continue;
+    const safeValue =
+      typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean'
+        ? trimText(value, maxLen)
+        : '';
+    if (safeValue === '') continue;
+    out[safeKey] = safeValue;
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -49,10 +77,10 @@ async function hmacSha256Hex(secret, message) {
     enc.encode(secret),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
-    ['sign'],
+    ['sign']
   );
   const sig = await crypto.subtle.sign('HMAC', key, enc.encode(message));
-  return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 function toCouponCode(prefix, hex) {
@@ -61,11 +89,9 @@ function toCouponCode(prefix, hex) {
 }
 
 function getIp(request) {
-  return (
-    request.headers.get('CF-Connecting-IP') ||
-    request.headers.get('X-Forwarded-For') ||
-    ''
-  ).split(',')[0].trim();
+  return (request.headers.get('CF-Connecting-IP') || request.headers.get('X-Forwarded-For') || '')
+    .split(',')[0]
+    .trim();
 }
 
 async function dbEnsure(env) {
@@ -74,19 +100,28 @@ async function dbEnsure(env) {
 }
 
 async function dbExec(db, sql, params = []) {
-  return db.prepare(sql).bind(...params).run();
+  return db
+    .prepare(sql)
+    .bind(...params)
+    .run();
 }
 
 async function dbFirst(db, sql, params = []) {
-  const res = await db.prepare(sql).bind(...params).all();
+  const res = await db
+    .prepare(sql)
+    .bind(...params)
+    .all();
   return res.results && res.results.length ? res.results[0] : null;
 }
 
-async function recordEvent(db, { type, email = null, campaignId = null, ip = null, payload = null }) {
+async function recordEvent(
+  db,
+  { type, email = null, campaignId = null, ip = null, payload = null }
+) {
   await dbExec(
     db,
     'INSERT INTO events (type, email, campaign_id, ip, created_at, payload_json) VALUES (?, ?, ?, ?, ?, ?)',
-    [type, email, campaignId, ip, nowIso(), payload ? JSON.stringify(payload) : null],
+    [type, email, campaignId, ip, nowIso(), payload ? JSON.stringify(payload) : null]
   );
 }
 
@@ -111,17 +146,15 @@ async function getActiveCampaign(db, id) {
         AND (ends_at IS NULL OR ends_at >= datetime('now'))
       LIMIT 1
     `,
-    [id],
+    [id]
   );
   return row;
 }
 
 async function getWelcomeCampaign(db) {
-  const row = await dbFirst(
-    db,
-    'SELECT * FROM campaigns WHERE id = ? LIMIT 1',
-    [BIENVENIDA_CAMPAIGN_ID],
-  );
+  const row = await dbFirst(db, 'SELECT * FROM campaigns WHERE id = ? LIMIT 1', [
+    BIENVENIDA_CAMPAIGN_ID
+  ]);
   return row;
 }
 
@@ -156,8 +189,8 @@ async function upsertSubscriber(db, request, email, body) {
       cf.country || null,
       cf.region || null,
       cf.city || null,
-      ua || null,
-    ],
+      ua || null
+    ]
   );
 
   return { ip, ua };
@@ -174,13 +207,13 @@ async function issueCoupon(db, env, { email, campaign }) {
   await dbExec(
     db,
     'INSERT OR IGNORE INTO coupons (code, email, campaign_id, created_at) VALUES (?, ?, ?, ?)',
-    [code, email, campaign.id, nowIso()],
+    [code, email, campaign.id, nowIso()]
   );
 
   const row = await dbFirst(
     db,
     'SELECT code, campaign_id AS campaignId, created_at AS createdAt, redeemed_at AS redeemedAt FROM coupons WHERE email = ? AND campaign_id = ? LIMIT 1',
-    [email, campaign.id],
+    [email, campaign.id]
   );
 
   return row;
@@ -201,7 +234,7 @@ async function verifyTurnstile(env, token, ip) {
 
   const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
-    body: form,
+    body: form
   });
   const data = await res.json().catch(() => ({}));
   if (data && data.success) return { ok: true, data };
@@ -209,7 +242,9 @@ async function verifyTurnstile(env, token, ip) {
 }
 
 async function sendEmail(env, { to, subject, html }) {
-  const provider = String(env.EMAIL_PROVIDER || '').trim().toLowerCase();
+  const provider = String(env.EMAIL_PROVIDER || '')
+    .trim()
+    .toLowerCase();
   if (!provider) return { ok: false, error: 'missing_email_provider' };
 
   if (provider === 'brevo') {
@@ -222,14 +257,14 @@ async function sendEmail(env, { to, subject, html }) {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'api-key': apiKey,
+        'api-key': apiKey
       },
       body: JSON.stringify({
         sender: { name: fromName, email: fromEmail },
         to: [{ email: to }],
         subject,
-        htmlContent: html,
-      }),
+        htmlContent: html
+      })
     });
     if (res.ok) return { ok: true };
     const text = await res.text().catch(() => '');
@@ -245,9 +280,9 @@ async function sendEmail(env, { to, subject, html }) {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${apiKey}`,
+        authorization: `Bearer ${apiKey}`
       },
-      body: JSON.stringify({ from, to: [to], subject, html }),
+      body: JSON.stringify({ from, to: [to], subject, html })
     });
     if (res.ok) return { ok: true };
     const text = await res.text().catch(() => '');
@@ -271,7 +306,7 @@ function renderCouponEmail({ landingUrl, welcome, campaign }) {
     muted: '#a7b0c2',
     panel: '#0f172a',
     panelSoft: '#111827',
-    line: '#1f2937',
+    line: '#1f2937'
   };
 
   const baseUrl = landingUrl ? String(landingUrl).replace(/\/$/, '') : '';
@@ -469,7 +504,9 @@ function requireAdmin(request, env) {
   const auth = request.headers.get('Authorization') || '';
   const m = auth.match(/^Bearer\s+(.+)$/i);
   const token = m ? m[1].trim() : '';
-  const role = String(request.headers.get('X-Admin-Role') || 'general').trim().toLowerCase();
+  const role = String(request.headers.get('X-Admin-Role') || 'general')
+    .trim()
+    .toLowerCase();
 
   const tokens = parseAdminTokens(env);
   const expected = String(tokens[role] || '').trim();
@@ -481,9 +518,12 @@ function requireAdmin(request, env) {
 
 async function handleSubscribe(request, env) {
   const body = await request.json().catch(() => null);
-  if (!body || typeof body !== 'object') return json({ ok: false, error: 'invalid_json' }, { status: 400 });
+  if (!body || typeof body !== 'object')
+    return json({ ok: false, error: 'invalid_json' }, { status: 400 });
 
-  const email = String(body.email || '').trim().toLowerCase();
+  const email = String(body.email || '')
+    .trim()
+    .toLowerCase();
   if (!isEmail(email)) return json({ ok: false, error: 'invalid_email' }, { status: 400 });
 
   const db = await dbEnsure(env);
@@ -493,10 +533,29 @@ async function handleSubscribe(request, env) {
   if (!turnstile.ok) return json({ ok: false, error: turnstile.error }, { status: 400 });
 
   const { ua } = await upsertSubscriber(db, request, email, body);
-  await recordEvent(db, { type: 'subscribe', email, ip, payload: { ua } });
+  const details = sanitizeRecord(body.details, 180, 30);
+  const meta = sanitizeRecord(body.meta, 180, 30);
+  const utm = sanitizeRecord(body.utm, 120, 12);
+  const source = trimText(body.source, 64);
+  const sourceDetail = trimText(body.sourceDetail, 64);
+
+  await recordEvent(db, {
+    type: 'subscribe',
+    email,
+    ip,
+    payload: {
+      ua,
+      source: source || null,
+      sourceDetail: sourceDetail || null,
+      details,
+      meta,
+      utm
+    }
+  });
 
   const welcomeCampaign = await getWelcomeCampaign(db);
-  if (!welcomeCampaign) return json({ ok: false, error: 'missing_welcome_campaign' }, { status: 500 });
+  if (!welcomeCampaign)
+    return json({ ok: false, error: 'missing_welcome_campaign' }, { status: 500 });
 
   const requestedCampaignId = getCampaignIdFromRequest(body);
   const campaign = requestedCampaignId ? await getActiveCampaign(db, requestedCampaignId) : null;
@@ -512,7 +571,7 @@ async function handleSubscribe(request, env) {
     email,
     campaignId: campaign ? campaign.id : BIENVENIDA_CAMPAIGN_ID,
     ip,
-    payload: { welcome: Boolean(welcomeCoupon), campaign: Boolean(campaignCoupon) },
+    payload: { welcome: Boolean(welcomeCoupon), campaign: Boolean(campaignCoupon) }
   });
 
   const landingUrl = String(env.PUBLIC_LANDING_URL || '').trim();
@@ -533,7 +592,7 @@ async function handleAdminCampaigns(request, env) {
   if (request.method === 'GET') {
     const res = await db
       .prepare(
-        'SELECT id, name, prefix, discount_type AS discountType, discount_value AS discountValue, stackable, stack_group AS stackGroup, active, starts_at AS startsAt, ends_at AS endsAt, created_at AS createdAt, updated_at AS updatedAt FROM campaigns ORDER BY id ASC',
+        'SELECT id, name, prefix, discount_type AS discountType, discount_value AS discountValue, stackable, stack_group AS stackGroup, active, starts_at AS startsAt, ends_at AS endsAt, created_at AS createdAt, updated_at AS updatedAt FROM campaigns ORDER BY id ASC'
       )
       .all();
     return json({ ok: true, campaigns: res.results || [] });
@@ -541,17 +600,23 @@ async function handleAdminCampaigns(request, env) {
 
   if (request.method === 'POST') {
     const body = await request.json().catch(() => null);
-    if (!body || typeof body !== 'object') return json({ ok: false, error: 'invalid_json' }, { status: 400 });
+    if (!body || typeof body !== 'object')
+      return json({ ok: false, error: 'invalid_json' }, { status: 400 });
 
     const id = String(body.id || '').trim();
     const name = String(body.name || '').trim();
-    const prefix = String(body.prefix || '').trim().toUpperCase();
+    const prefix = String(body.prefix || '')
+      .trim()
+      .toUpperCase();
     const discountType = String(body.discountType || '').trim();
     const discountValue = Number(body.discountValue);
 
-    if (!/^[A-Z0-9_-]{2,32}$/.test(id)) return json({ ok: false, error: 'invalid_id' }, { status: 400 });
-    if (!name || name.length > 80) return json({ ok: false, error: 'invalid_name' }, { status: 400 });
-    if (!/^[A-Z0-9]{2,12}$/.test(prefix)) return json({ ok: false, error: 'invalid_prefix' }, { status: 400 });
+    if (!/^[A-Z0-9_-]{2,32}$/.test(id))
+      return json({ ok: false, error: 'invalid_id' }, { status: 400 });
+    if (!name || name.length > 80)
+      return json({ ok: false, error: 'invalid_name' }, { status: 400 });
+    if (!/^[A-Z0-9]{2,12}$/.test(prefix))
+      return json({ ok: false, error: 'invalid_prefix' }, { status: 400 });
     if (!['percent', 'amount'].includes(discountType))
       return json({ ok: false, error: 'invalid_discount_type' }, { status: 400 });
     if (!Number.isFinite(discountValue) || discountValue <= 0)
@@ -593,14 +658,14 @@ async function handleAdminCampaigns(request, env) {
         startsAt,
         endsAt,
         ts,
-        ts,
-      ],
+        ts
+      ]
     );
 
     await recordEvent(db, {
       type: 'admin_action',
       ip: getIp(request),
-      payload: { action: 'upsert_campaign', role: auth.role, id },
+      payload: { action: 'upsert_campaign', role: auth.role, id }
     });
 
     return json({ ok: true });
@@ -622,8 +687,8 @@ async function handleAdminStats(request, env) {
     stats: {
       subscribers: subs ? subs.n : 0,
       coupons: coupons ? coupons.n : 0,
-      activeCampaigns: campaigns ? campaigns.n : 0,
-    },
+      activeCampaigns: campaigns ? campaigns.n : 0
+    }
   });
 }
 
@@ -655,15 +720,7 @@ export default {
 
       return corsify(request, json({ ok: false, error: 'not_found' }, { status: 404 }), env);
     } catch (err) {
-      return corsify(
-        request,
-        json({ ok: false, error: 'server_error' }, { status: 500 }),
-        env,
-      );
+      return corsify(request, json({ ok: false, error: 'server_error' }, { status: 500 }), env);
     }
-  },
+  }
 };
-
-
-
-

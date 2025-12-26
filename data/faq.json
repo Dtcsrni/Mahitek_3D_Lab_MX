@@ -34,7 +34,7 @@
   },
   {
     "q": "¿Hay envío gratis?",
-    "a": "En Pachuca, envío gratis a partir de $200. Para el resto del país, te mostramos el costo al completar tu pedido.",
+    "a": "En Pachuca, envío gratis a partir de $600. Para el resto del país, te mostramos el costo al completar tu pedido.",
     "categoria": "envíos"
   },
   {
@@ -103,3 +103,5 @@
     "categoria": "sostenibilidad"
   }
 ]
+
+

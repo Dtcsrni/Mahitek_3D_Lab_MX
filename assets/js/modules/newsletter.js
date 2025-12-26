@@ -77,6 +77,65 @@ function getCampaignIdFromURL() {
   return String(raw).trim().slice(0, 64);
 }
 
+function trimValue(value, max = 180) {
+  const s = String(value || '').trim();
+  if (!s) return '';
+  return s.length > max ? s.slice(0, max) : s;
+}
+
+function getUtmParams() {
+  const sp = new URLSearchParams(location.search);
+  const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const out = {};
+  keys.forEach(key => {
+    const value = trimValue(sp.get(key));
+    if (value) out[key] = value;
+  });
+  return out;
+}
+
+function getClientMeta() {
+  const meta = {
+    url: trimValue(location.href, 380),
+    path: trimValue(`${location.pathname}${location.search}${location.hash}`, 200),
+    referrer: trimValue(document.referrer, 380),
+    lang: trimValue(navigator.language || '', 40),
+    timezone: trimValue(Intl.DateTimeFormat().resolvedOptions().timeZone || '', 64),
+    screen: trimValue(`${window.screen.width}x${window.screen.height}`, 32),
+    viewport: trimValue(`${window.innerWidth}x${window.innerHeight}`, 32),
+    platform: trimValue(navigator.platform || '', 80),
+    deviceMemory: navigator.deviceMemory || '',
+    hardwareConcurrency: navigator.hardwareConcurrency || '',
+    connection: trimValue(navigator.connection?.effectiveType || '', 32)
+  };
+  return meta;
+}
+
+function collectExtraFields(form, ignoreKeys) {
+  const fields = {};
+  const elements = form.querySelectorAll('input, select, textarea');
+  elements.forEach(el => {
+    const name = String(el.name || '').trim();
+    if (!name || ignoreKeys.has(name)) return;
+
+    if (el.type === 'checkbox') {
+      if (!el.checked) return;
+      fields[name] = trimValue(el.value || true);
+      return;
+    }
+    if (el.type === 'radio') {
+      if (!el.checked) return;
+      fields[name] = trimValue(el.value);
+      return;
+    }
+
+    const value = trimValue(el.value);
+    if (!value) return;
+    fields[name] = value;
+  });
+  return fields;
+}
+
 export function initNewsletter() {
   const form = document.querySelector('form.newsletter');
   if (!form) {
@@ -94,6 +153,7 @@ export function initNewsletter() {
   const button = form.querySelector('button[type="submit"], input[type="submit"]');
   const statusEl =
     form.querySelector('#newsletter-status') || form.querySelector('.newsletter-status');
+  const sourceDetailInput = form.querySelector('input[name="source_detail"]');
   const apiBase = resolveNewsletterApiBase(
     form.getAttribute('data-api-base'),
     CONFIG.NEWSLETTER_API_BASE
@@ -182,6 +242,13 @@ export function initNewsletter() {
       .catch(() => {});
   }
 
+  const floatingCta = document.querySelector('.floating-coupon');
+  if (floatingCta && sourceDetailInput) {
+    floatingCta.addEventListener('click', () => {
+      sourceDetailInput.value = 'floating_coupon';
+    });
+  }
+
   form.addEventListener('submit', async ev => {
     ev.preventDefault();
     const email = String(emailInput.value || '')
@@ -196,10 +263,22 @@ export function initNewsletter() {
     setNewsletterStatus(statusEl, 'Enviando...', 'info');
     if (button) button.disabled = true;
 
+    const ignoreKeys = new Set(['email', 'source_detail', 'cf-turnstile-response']);
+    const details = collectExtraFields(form, ignoreKeys);
+    const utm = getUtmParams();
+    const meta = getClientMeta();
+    const sourceDetail = trimValue(sourceDetailInput?.value || '', 64);
+
     const payload = {
       email,
       campaign: getCampaignIdFromURL() || undefined,
-      source: 'newsletter_form'
+      source: 'newsletter_form',
+      sourceDetail: sourceDetail || undefined,
+      referrer: meta.referrer || undefined,
+      landingPath: meta.path || undefined,
+      details: Object.keys(details).length ? details : undefined,
+      utm: Object.keys(utm).length ? utm : undefined,
+      meta: Object.keys(meta).length ? meta : undefined
     };
 
     let turnstileApi = null;

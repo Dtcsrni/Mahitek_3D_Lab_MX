@@ -664,69 +664,90 @@
                 loading="lazy"
                 decoding="async"
               />
-              <h2 class="section-title" id="servicios-title">Cómo trabajamos 🤝</h2>
+              <h2 class="section-title" id="servicios-title">Como trabajamos</h2>
             </div>
-            <p class="section-intro">
-              No es solo imprimir.
-              <span class="accent-text">Definimos medidas, validamos el modelo y entregamos con seguimiento</span>.
-              Pensado para proyectos que requieren
-              <span class="accent-text--green">claridad técnica y consistencia</span>.
-            </p>
+            <p class="section-intro">Tres pasos claros: definimos, validamos y entregamos con seguimiento.</p>
+            <div class="workflow-rail" aria-hidden="true">
+              <span class="workflow-rail-node">01</span>
+              <span class="workflow-rail-node">02</span>
+              <span class="workflow-rail-node">03</span>
+            </div>
           </div>
-          <div class="features-grid">
-            <article class="card glass" data-animate="fade-up">
+          <div class="features-grid workflow-grid">
+            <article class="card glass workflow-card" data-animate="fade-up">
+              <div class="workflow-card-head">
+                <span class="workflow-step">Paso 1</span>
+                <span class="workflow-chip">Definir</span>
+              </div>
               <figure class="card-figure">
-                <img
-                  src="assets/img/service-design-v2.svg"
-                  alt="Modelado 3D técnico con dimensiones y vistas"
-                  class="card-illustration"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div class="workflow-visual">
+                  <img
+                    src="assets/img/service-design-v2.svg"
+                    alt="Modelado 3D tecnico con dimensiones y vistas"
+                    class="card-illustration"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </figure>
-              <h3>🧪 Modelado técnico sin jerga</h3>
-              <p>
-                Revisamos especificaciones, generamos <span class="accent-text">vistas 3D previas</span> y ajustamos
-                antes de producir. Lenguaje claro, sin tecnicismos innecesarios.
-              </p>
+              <h3>Modelado claro</h3>
+              <p>Medidas exactas y vista previa antes de imprimir.</p>
+              <div class="workflow-tags">
+                <span>Checklist</span>
+                <span>Ajustes rapidos</span>
+              </div>
             </article>
-            <article class="card glass animate-delay-1" data-animate="fade-up">
+            <article class="card glass workflow-card animate-delay-1" data-animate="fade-up">
+              <div class="workflow-card-head">
+                <span class="workflow-step">Paso 2</span>
+                <span class="workflow-chip">Empaque</span>
+              </div>
               <figure class="card-figure">
-                <img
-                  src="assets/img/service-packaging-v2.svg"
-                  alt="Empaque premium con lazo holográfico y tarjeta"
-                  class="card-illustration"
-                  width="200"
-                  height="200"
-                  loading="eager"
-                  decoding="async"
-                />
+                <div class="workflow-visual">
+                  <img
+                    src="assets/img/service-packaging-v2.svg"
+                    alt="Empaque premium con lazo holografico y tarjeta"
+                    class="card-illustration"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </figure>
-              <h3>🎁 Llega listo para entregar</h3>
-              <p>
-                Cada pieza va con <span class="accent-text">empaque pensado</span>: bolsa resellable, tarjeta con tu
-                mensaje y tips de cuidado. Si es regalo, solo ponle moño.
-              </p>
+              <h3>Empaque listo</h3>
+              <p>Pieza lista para regalar o enviar.</p>
+              <div class="workflow-tags">
+                <span>Proteccion</span>
+                <span>Tarjeta</span>
+              </div>
             </article>
-            <article class="card glass animate-delay-2" data-animate="fade-up">
+            <article class="card glass workflow-card animate-delay-2" data-animate="fade-up">
+              <div class="workflow-card-head">
+                <span class="workflow-step">Paso 3</span>
+                <span class="workflow-chip">Soporte</span>
+              </div>
               <figure class="card-figure">
-                <img
-                  src="assets/img/service-support-v2.svg"
-                  alt="Chat de Messenger con soporte en tiempo real"
-                  class="card-illustration"
-                  width="200"
-                  height="200"
-                  loading="eager"
-                  decoding="async"
-                />
+                <div class="workflow-visual">
+                  <img
+                    src="assets/img/service-support-v2.svg"
+                    alt="Chat de Messenger con soporte en tiempo real"
+                    class="card-illustration"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </figure>
-              <h3>📱 Soporte continuo</h3>
-              <p>
-                Atención post-entrega por Messenger. Revisamos incidencias reportadas al recibir,
-                <span class="accent-text">pedidos recurrentes simplificados</span> y asesoría técnica sin recargos.
-              </p>
+              <h3>Soporte activo</h3>
+              <p>Seguimiento post-entrega y pedidos recurrentes.</p>
+              <div class="workflow-tags">
+                <span>Asesoria</span>
+                <span>Reorden rapido</span>
+              </div>
             </article>
           </div>
         </div>
@@ -941,7 +962,7 @@
                 💎 El rango varía por personalización (nombres, formas), tamaño/grosor, acabados extra, herrajes o
                 adhesivos y cantidad de piezas.
                 <strong>Precio base: $40 MXN</strong> (mínimo $35 en llaveros planos). Te cotizamos claro antes de
-                empezar.
+                empezar. Recomendado: 3 piezas o $150 MXN para que valga la pena produccion y empaque.
               </p>
             </div>
           </div>
@@ -1896,7 +1917,11 @@
                 </ul>
               </section>
 
-              <section class="footer-card footer-newsletter-card card glass" aria-labelledby="newsletter-title">
+              <section
+                id="newsletter"
+                class="footer-card footer-newsletter-card card glass"
+                aria-labelledby="newsletter-title"
+              >
                 <div class="footer-card-head">
                   <h4 id="newsletter-title" class="footer-card-title">
                     <svg class="ui-icon ui-icon--draw ui-icon--live" viewBox="0 0 24 24" aria-hidden="true">
@@ -1919,6 +1944,114 @@
                     <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" required />
                     <button type="submit" class="btn btn-primary">Suscribirme</button>
                   </div>
+                  <div class="newsletter-fields">
+                    <div class="newsletter-field">
+                      <label for="newsletter-name">Nombre</label>
+                      <input
+                        id="newsletter-name"
+                        name="name"
+                        type="text"
+                        placeholder="Nombre (opcional)"
+                        autocomplete="name"
+                      />
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-phone">WhatsApp</label>
+                      <input
+                        id="newsletter-phone"
+                        name="whatsapp"
+                        type="tel"
+                        placeholder="Numero (opcional)"
+                        autocomplete="tel"
+                      />
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-city">Ciudad / Estado</label>
+                      <input
+                        id="newsletter-city"
+                        name="city_state"
+                        type="text"
+                        placeholder="Ubicacion (opcional)"
+                        autocomplete="address-level2"
+                      />
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-project">Tipo de proyecto</label>
+                      <select id="newsletter-project" name="project_type">
+                        <option value="">Selecciona (opcional)</option>
+                        <option value="regalo">Regalo o detalle</option>
+                        <option value="deco">Decoracion / hogar</option>
+                        <option value="funcional">Pieza funcional</option>
+                        <option value="prototipo">Prototipo</option>
+                        <option value="marca">Marca / negocio</option>
+                        <option value="otro">Otro</option>
+                      </select>
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-qty">Cantidad estimada</label>
+                      <select id="newsletter-qty" name="quantity_range">
+                        <option value="">Selecciona (opcional)</option>
+                        <option value="1-3">1 a 3 piezas</option>
+                        <option value="4-10">4 a 10 piezas</option>
+                        <option value="11-30">11 a 30 piezas</option>
+                        <option value="31-100">31 a 100 piezas</option>
+                        <option value="100+">Mas de 100</option>
+                      </select>
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-budget">Presupuesto</label>
+                      <select id="newsletter-budget" name="budget_range">
+                        <option value="">Selecciona (opcional)</option>
+                        <option value="under-300">Menos de $300</option>
+                        <option value="300-600">$300 a $600</option>
+                        <option value="600-1200">$600 a $1200</option>
+                        <option value="1200-2500">$1200 a $2500</option>
+                        <option value="2500+">Mas de $2500</option>
+                      </select>
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-contact">Contacto preferido</label>
+                      <select id="newsletter-contact" name="contact_pref">
+                        <option value="">Selecciona (opcional)</option>
+                        <option value="email">Email</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="llamada">Llamada</option>
+                      </select>
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-heard">Como nos conociste</label>
+                      <select id="newsletter-heard" name="heard_from">
+                        <option value="">Selecciona (opcional)</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="recomendacion">Recomendacion</option>
+                        <option value="busqueda">Busqueda</option>
+                        <option value="otro">Otro</option>
+                      </select>
+                    </div>
+                    <div class="newsletter-field">
+                      <label for="newsletter-ig">Instagram</label>
+                      <input
+                        id="newsletter-ig"
+                        name="instagram"
+                        type="text"
+                        placeholder="@usuario (opcional)"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="newsletter-field newsletter-field--wide">
+                      <label for="newsletter-notes">Que quieres imprimir</label>
+                      <textarea
+                        id="newsletter-notes"
+                        name="notes"
+                        rows="2"
+                        placeholder="Idea, estilo o detalles (opcional)"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <p class="newsletter-note">Campos opcionales para personalizar tu cupon y recomendaciones.</p>
+                  <input id="newsletter-source-detail" name="source_detail" type="hidden" value="footer" />
                   <div class="newsletter-turnstile" id="newsletter-turnstile"></div>
                   <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
                 </form>
@@ -1960,6 +2093,12 @@
         </p>
       </div>
     </footer>
+
+    <a class="floating-coupon" href="#newsletter" aria-label="Ir al newsletter para cupon de bienvenida">
+      <span class="floating-coupon__badge">Cupon</span>
+      <span class="floating-coupon__text">Bienvenida</span>
+      <span class="floating-coupon__cta">Activar</span>
+    </a>
 
     <!-- SVG Sprite (iconos reutilizables, sin requests extra) -->
     <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
