@@ -67,29 +67,67 @@ $commitMsgPath = Join-Path $hooksDir "commit-msg"
 $commitMsgContent = @'
 #!/bin/sh
 # Git hook: commit-msg
-# Valida formato de mensajes de commit (Conventional Commits)
+# Validate commit message format (Conventional Commits)
 
 COMMIT_MSG_FILE=$1
-COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+RAW_MSG=$(cat "$COMMIT_MSG_FILE")
+# Subject = first non-empty, non-comment line
+SUBJECT=$(printf "%s\n" "$RAW_MSG" | sed '/^#/d' | sed '/^[[:space:]]*$/d' | head -n 1)
 
-# Verificar formato: tipo(scope): mensaje
-# Tipos válidos: feat, fix, docs, style, refactor, perf, test, chore
+# Expected: type(scope): description
+# Allowed types: feat, fix, docs, style, refactor, perf, test, chore
 PATTERN="^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .{1,}"
 
-if ! echo "$COMMIT_MSG" | grep -qE "$PATTERN"; then
+if [ -z "$SUBJECT" ]; then
     echo ""
-    echo "❌ Formato de mensaje de commit inválido"
+    echo "x Commit message empty or comments only"
+    echo "  file: $COMMIT_MSG_FILE"
     echo ""
-    echo "   Formato esperado:"
-    echo "   tipo(scope): descripción"
+    echo "  Expected format:"
+    echo "  type(scope): description"
     echo ""
-    echo "   Tipos válidos: feat, fix, docs, style, refactor, perf, test, chore"
+    echo "  Examples:"
+    echo "  feat: add pricing system"
+    echo "  fix(css): align mobile navbar"
     echo ""
-    echo "   Ejemplo:"
-    echo "   feat: agregar sistema de localización"
-    echo "   fix(css): corregir alineación en mobile"
+    echo "  Hint: use scripts/commit-auto.ps1 for guided messages"
+    exit 1
+fi
+
+if ! printf "%s\n" "$SUBJECT" | grep -qE "$PATTERN"; then
     echo ""
-    echo "   Usa scripts/commit-auto.ps1 para generar mensajes automáticos"
+    echo "x Commit message invalid"
+    echo ""
+    echo "  file: $COMMIT_MSG_FILE"
+    echo "  subject: $SUBJECT"
+    echo "  subject length: ${#SUBJECT}"
+    echo ""
+    echo "  Expected format:"
+    echo "  type(scope): description"
+    echo ""
+    echo "  Allowed types: feat, fix, docs, style, refactor, perf, test, chore"
+    echo ""
+    echo "  Pattern:"
+    echo "  $PATTERN"
+    echo ""
+    if echo "$SUBJECT" | grep -qE "^[^:]+$"; then
+        echo "  Hint: missing colon after type(scope)"
+        echo ""
+    fi
+    if echo "$SUBJECT" | grep -qE "^[a-zA-Z]+(\(.+\))?:[^ ]"; then
+        echo "  Hint: add a space after colon"
+        echo ""
+    fi
+    if echo "$SUBJECT" | grep -qE "^[a-zA-Z]+"; then
+        TYPE=$(printf "%s" "$SUBJECT" | sed -E "s/^([a-zA-Z]+).*/\1/")
+        echo "  Detected type: $TYPE"
+        echo ""
+    fi
+    echo "  Examples:"
+    echo "  feat: add pricing system"
+    echo "  fix(css): align mobile navbar"
+    echo ""
+    echo "  Hint: use scripts/commit-auto.ps1 for guided messages"
     exit 1
 fi
 
