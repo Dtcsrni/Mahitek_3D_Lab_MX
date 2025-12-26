@@ -95,18 +95,41 @@ function getUtmParams() {
 }
 
 function getClientMeta() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersContrast = window.matchMedia('(prefers-contrast: more)').matches;
+  const prefersTouch = window.matchMedia('(pointer: coarse)').matches;
+  const connection = navigator.connection || {};
   const meta = {
     url: trimValue(location.href, 380),
     path: trimValue(`${location.pathname}${location.search}${location.hash}`, 200),
     referrer: trimValue(document.referrer, 380),
     lang: trimValue(navigator.language || '', 40),
+    languages: trimValue((navigator.languages || []).join(', '), 120),
     timezone: trimValue(Intl.DateTimeFormat().resolvedOptions().timeZone || '', 64),
     screen: trimValue(`${window.screen.width}x${window.screen.height}`, 32),
+    screenColorDepth: trimValue(window.screen.colorDepth, 16),
+    pixelRatio: trimValue(window.devicePixelRatio, 16),
     viewport: trimValue(`${window.innerWidth}x${window.innerHeight}`, 32),
     platform: trimValue(navigator.platform || '', 80),
-    deviceMemory: navigator.deviceMemory || '',
-    hardwareConcurrency: navigator.hardwareConcurrency || '',
-    connection: trimValue(navigator.connection?.effectiveType || '', 32)
+    userAgent: trimValue(navigator.userAgent || '', 200),
+    vendor: trimValue(navigator.vendor || '', 80),
+    deviceMemory: trimValue(navigator.deviceMemory || '', 16),
+    hardwareConcurrency: trimValue(navigator.hardwareConcurrency || '', 16),
+    maxTouchPoints: trimValue(navigator.maxTouchPoints || '', 8),
+    cookieEnabled: trimValue(navigator.cookieEnabled ? 'yes' : 'no', 8),
+    doNotTrack: trimValue(navigator.doNotTrack || '', 8),
+    online: trimValue(navigator.onLine ? 'yes' : 'no', 8),
+    prefersDark: trimValue(prefersDark ? 'yes' : 'no', 8),
+    prefersLight: trimValue(prefersLight ? 'yes' : 'no', 8),
+    prefersReducedMotion: trimValue(prefersReducedMotion ? 'yes' : 'no', 8),
+    prefersContrast: trimValue(prefersContrast ? 'yes' : 'no', 8),
+    prefersTouch: trimValue(prefersTouch ? 'yes' : 'no', 8),
+    connectionType: trimValue(connection.effectiveType || '', 32),
+    connectionDownlink: trimValue(connection.downlink || '', 16),
+    connectionRtt: trimValue(connection.rtt || '', 16),
+    connectionSaveData: trimValue(connection.saveData ? 'yes' : 'no', 8)
   };
   return meta;
 }

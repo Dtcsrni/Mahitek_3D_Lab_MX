@@ -8200,7 +8200,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 .newsletter-fields {
   margin-top: 0.75rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -8219,6 +8219,10 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   }
   .newsletter-row .btn {
     width: 100%;
+  }
+
+  .newsletter-fields {
+    grid-template-columns: 1fr;
   }
 }
 
