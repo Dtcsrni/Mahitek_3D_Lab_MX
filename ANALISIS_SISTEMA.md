@@ -29,9 +29,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T07:08:12.631Z
-Fingerprint: sha256:ccb99ff9f378268ba6662ea17d824542fb0bb96b7b61757b99938ef8a41257a7
-Archivos hasheados: 60
+Generado: 2025-12-26T07:24:54.319Z
+Fingerprint: sha256:a41261a5512829ee1b7cb809329118f0d02eb0b8339be5db914d389bc590463e
+Archivos hasheados: 52
 
 Criterio del fingerprint (cambios “significativos”):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -47,14 +47,14 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 46 |
-| `.ini` | 35 |
+| `.ini` | 32 |
 | `.md` | 31 |
-| `.js` | 25 |
+| `.js` | 21 |
 | `.json` | 18 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 8 |
-| `.css` | 7 |
 | `.html` | 3 |
+| `.css` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
 | `.log` | 2 |
@@ -77,9 +77,8 @@ HTML detectados (3):
 - index.html
 - qr/index.html
 
-Workflows (3):
+Workflows (2):
 - .github/workflows/ci.yml
-- .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
 Scripts npm (28):
