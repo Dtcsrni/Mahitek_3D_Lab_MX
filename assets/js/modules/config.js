@@ -88,7 +88,7 @@ export const CONFIG = {
     SCROLL_THROTTLE: 16, // ~60fps
 
     // Preload crítico
-    CRITICAL_IMAGES: ['assets/img/logo-color.svg', 'assets/img/hero-lab-epic.svg'],
+    CRITICAL_IMAGES: ['assets/img/logo-color.svg'],
 
     // Code splitting
     DEFER_NON_CRITICAL: true,

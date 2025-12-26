@@ -49,7 +49,7 @@
   <!-- Fondo oscuro con textura -->
   <rect width="400" height="400" fill="url(#bg-dark)"/>
   
-  <!-- Círculos mágicos de fondo -->
+  <!-- C├¡rculos m├ígicos de fondo -->
   <circle cx="320" cy="100" r="60" fill="url(#glow-purple)" opacity="0.3">
     <animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.3;0.5;0.3" dur="4s" repeatCount="indefinite"/>
@@ -60,20 +60,20 @@
     <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3.5s" repeatCount="indefinite"/>
   </circle>
   
-  <!-- Mesa de trabajo tech-mágica -->
+  <!-- Mesa de trabajo tech-m├ígica -->
   <rect x="50" y="320" width="300" height="15" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="2" opacity="0.7"/>
   
   <!-- Runas arcanas en la mesa -->
   <g class="runes" opacity="0.6">
-    <text x="100" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">⟨ ◊ ⟩</text>
+    <text x="100" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">Ôƒ¿ Ôùè Ôƒ®</text>
     <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
-    <text x="180" y="330" font-family="serif" font-size="10" fill="#06B6D4" opacity="0.8">⬡ ✦ ⬡</text>
-    <text x="260" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">⟨ ◊ ⟩</text>
+    <text x="180" y="330" font-family="serif" font-size="10" fill="#06B6D4" opacity="0.8">Ô¼í Ô£ª Ô¼í</text>
+    <text x="260" y="330" font-family="serif" font-size="10" fill="#8b5cf6" opacity="0.8">Ôƒ¿ Ôùè Ôƒ®</text>
   </g>
   
-  <!-- IMPRESORA 3D CENTRAL - Tech-Mágica -->
+  <!-- IMPRESORA 3D CENTRAL - Tech-M├ígica -->
   <g class="printer-magic">
-    <!-- Aura mágica pulsante -->
+    <!-- Aura m├ígica pulsante -->
     <ellipse cx="200" cy="250" rx="110" ry="30" fill="url(#glow-cyan)" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
       <animate attributeName="rx" values="110;120;110" dur="2s" repeatCount="indefinite"/>
@@ -82,16 +82,16 @@
     <!-- Base de la impresora -->
     <rect x="120" y="240" width="160" height="60" rx="8" fill="url(#magic-dark)" stroke="#06B6D4" stroke-width="3" filter="url(#shadow-strong)"/>
     
-    <!-- Pantalla holográfica -->
+    <!-- Pantalla hologr├ífica -->
     <rect x="135" y="250" width="50" height="35" rx="4" fill="#06B6D4" opacity="0.2" stroke="#06B6D4" stroke-width="2">
       <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
     </rect>
     
-    <!-- Símbolos en la pantalla -->
+    <!-- S├¡mbolos en la pantalla -->
     <text x="145" y="270" font-family="monospace" font-size="10" fill="#06B6D4" opacity="0.9">3D</text>
-    <text x="160" y="280" font-family="monospace" font-size="8" fill="#10B981" opacity="0.7">▲</text>
+    <text x="160" y="280" font-family="monospace" font-size="8" fill="#10B981" opacity="0.7">Ôû▓</text>
     
-    <!-- Cama de impresión con runas -->
+    <!-- Cama de impresi├│n con runas -->
     <rect x="130" y="250" width="140" height="40" rx="4" fill="#1e293b" opacity="0.6"/>
     
     <!-- Objeto siendo impreso - con magia -->
@@ -101,13 +101,13 @@
         <animate attributeName="opacity" values="0.95;0.7;0.95" dur="2s" repeatCount="indefinite"/>
       </path>
       
-      <!-- Capa mágica siendo impresa -->
+      <!-- Capa m├ígica siendo impresa -->
       <rect x="180" y="268" width="40" height="2" fill="#FEDA77" opacity="0.9">
         <animate attributeName="width" values="0;40;0" dur="3s" repeatCount="indefinite"/>
         <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
       </rect>
       
-      <!-- Partículas mágicas -->
+      <!-- Part├¡culas m├ígicas -->
       <circle cx="185" cy="272" r="1.5" fill="#06B6D4">
         <animate attributeName="cy" values="272;260;272" dur="2s" repeatCount="indefinite"/>
         <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
@@ -118,7 +118,7 @@
       </circle>
     </g>
     
-    <!-- Torres verticales (Eje Z) con energía arcana -->
+    <!-- Torres verticales (Eje Z) con energ├¡a arcana -->
     <rect x="110" y="180" width="12" height="60" rx="4" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="2" opacity="0.9">
       <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
     </rect>
@@ -126,7 +126,7 @@
       <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
     </rect>
     
-    <!-- Rayos de energía en las torres -->
+    <!-- Rayos de energ├¡a en las torres -->
     <line x1="116" y1="185" x2="116" y2="235" stroke="#8b5cf6" stroke-width="1" opacity="0.6">
       <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </line>
@@ -134,24 +134,24 @@
       <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </line>
     
-    <!-- Eje horizontal (X) con energía -->
+    <!-- Eje horizontal (X) con energ├¡a -->
     <rect x="110" y="175" width="180" height="12" rx="4" fill="url(#magic-cyan)" stroke="#06B6D4" stroke-width="2.5" opacity="0.95">
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,10; 0,0" dur="5s" repeatCount="indefinite"/>
     </rect>
     
-    <!-- Extrusor mágico -->
+    <!-- Extrusor m├ígico -->
     <g class="extrusor-magic" filter="url(#glow-effect)">
       <rect x="180" y="168" width="40" height="40" rx="6" fill="url(#magic-purple)" stroke="#8b5cf6" stroke-width="3" opacity="0.95">
         <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
       </rect>
       
-      <!-- Ojo mágico del extrusor -->
+      <!-- Ojo m├ígico del extrusor -->
       <circle cx="200" cy="185" r="6" fill="#06B6D4" opacity="0.9">
         <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
         <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
       </circle>
       
-      <!-- Rayo láser del extrusor -->
+      <!-- Rayo l├íser del extrusor -->
       <line x1="200" y1="193" x2="200" y2="268" stroke="#FEDA77" stroke-width="2" opacity="0.8">
         <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.5s" repeatCount="indefinite"/>
         <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; 0,0; -20,0; 0,0" dur="8s" repeatCount="indefinite"/>
@@ -161,7 +161,7 @@
   
   <!-- BRUJO TECH (basado en tus rasgos) -->
   <g class="tech-wizard" filter="url(#shadow-strong)">
-    <!-- Posición nerviosa -->
+    <!-- Posici├│n nerviosa -->
     <g class="wizard-body">
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0; 0,-1; 0,0" dur="3s" repeatCount="indefinite"/>
       
@@ -169,7 +169,7 @@
       <ellipse cx="300" cy="260" rx="20" ry="35" fill="#1e293b" stroke="#06B6D4" stroke-width="2"/>
       <path d="M280 230 Q300 240 320 230" fill="#0f172a" stroke="#06B6D4" stroke-width="2"/>
       
-      <!-- Capucha con símbolos -->
+      <!-- Capucha con s├¡mbolos -->
       <path d="M285 220 Q300 210 315 220 Q315 240 300 245 Q285 240 285 220" fill="#1e293b" stroke="#8b5cf6" stroke-width="2.5"/>
       
       <!-- Cabeza - rasgos latinos -->
@@ -222,7 +222,7 @@
       <path d="M292 232 Q300 230 308 232" stroke="#06B6D4" stroke-width="1.5" fill="none" opacity="0.6"/>
     </g>
     
-    <!-- Energía mágica emanando de las manos -->
+    <!-- Energ├¡a m├ígica emanando de las manos -->
     <g class="magic-energy">
       <!-- Mano izquierda -->
       <circle cx="270" cy="255" r="12" fill="url(#glow-purple)" opacity="0.5">
@@ -248,24 +248,24 @@
   
   <!-- EFECTOS DE MAGIA NEGRA -->
   <g class="dark-magic" opacity="0.7">
-    <!-- Círculo de invocación en el suelo -->
+    <!-- C├¡rculo de invocaci├│n en el suelo -->
     <circle cx="200" cy="330" r="40" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,5" opacity="0.6">
       <animateTransform attributeName="transform" type="rotate" values="0 200 330; 360 200 330" dur="20s" repeatCount="indefinite"/>
     </circle>
     
-    <!-- Símbolos arcanos girando -->
+    <!-- S├¡mbolos arcanos girando -->
     <g opacity="0.8">
       <animateTransform attributeName="transform" type="rotate" values="0 200 330; 360 200 330" dur="15s" repeatCount="indefinite"/>
-      <text x="190" y="315" font-family="serif" font-size="12" fill="#8b5cf6">◬</text>
-      <text x="210" y="315" font-family="serif" font-size="12" fill="#8b5cf6">◭</text>
-      <text x="190" y="345" font-family="serif" font-size="12" fill="#8b5cf6">◮</text>
-      <text x="210" y="345" font-family="serif" font-size="12" fill="#8b5cf6">◯</text>
+      <text x="190" y="315" font-family="serif" font-size="12" fill="#8b5cf6">Ôù¼</text>
+      <text x="210" y="315" font-family="serif" font-size="12" fill="#8b5cf6">Ôù¡</text>
+      <text x="190" y="345" font-family="serif" font-size="12" fill="#8b5cf6">Ôù«</text>
+      <text x="210" y="345" font-family="serif" font-size="12" fill="#8b5cf6">Ôù»</text>
     </g>
   </g>
   
-  <!-- PARTÍCULAS MÁGICAS FLOTANTES -->
+  <!-- PART├ìCULAS M├üGICAS FLOTANTES -->
   <g class="magic-particles">
-    <!-- Partículas cyan -->
+    <!-- Part├¡culas cyan -->
     <circle cx="150" cy="200" r="2" fill="#06B6D4" opacity="0.8">
       <animate attributeName="cy" values="200;150;200" dur="5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5s" repeatCount="indefinite"/>
@@ -275,7 +275,7 @@
       <animate attributeName="opacity" values="0.8;0.2;0.8" dur="4.5s" repeatCount="indefinite"/>
     </circle>
     
-    <!-- Partículas purple -->
+    <!-- Part├¡culas purple -->
     <circle cx="180" cy="190" r="2" fill="#8b5cf6" opacity="0.8">
       <animate attributeName="cy" values="190;140;190" dur="5.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5.5s" repeatCount="indefinite"/>
@@ -285,7 +285,7 @@
       <animate attributeName="opacity" values="0.8;0.2;0.8" dur="6s" repeatCount="indefinite"/>
     </circle>
     
-    <!-- Partículas green -->
+    <!-- Part├¡culas green -->
     <circle cx="160" cy="220" r="2" fill="#10B981" opacity="0.8">
       <animate attributeName="cy" values="220;170;220" dur="5.2s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.8;0.2;0.8" dur="5.2s" repeatCount="indefinite"/>
@@ -296,7 +296,7 @@
     </circle>
   </g>
   
-  <!-- CÓDIGO BINARIO FLOTANTE (Matrix style) -->
+  <!-- C├ôDIGO BINARIO FLOTANTE (Matrix style) -->
   <g class="binary-code" opacity="0.4">
     <text x="60" y="150" font-family="monospace" font-size="10" fill="#10B981">01</text>
     <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
@@ -304,7 +304,7 @@
     <text x="80" y="120" font-family="monospace" font-size="8" fill="#8b5cf6">11</text>
   </g>
   
-  <!-- RELÁMPAGOS DE ENERGÍA -->
+  <!-- REL├üMPAGOS DE ENERG├ìA -->
   <g class="energy-bolts" opacity="0.5">
     <path d="M200 150 L205 160 L198 160 L203 170" stroke="#FEDA77" stroke-width="2" fill="none">
       <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite" begin="0s"/>

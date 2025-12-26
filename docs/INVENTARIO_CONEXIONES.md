@@ -25,16 +25,11 @@
 - `package.json` / `package-lock.json` -> scripts y dependencias.
 - `start.bat` / `start.sh` -> arranque manual del dev server.
 - `cleanup-workflows.ps1` -> script manual para limpiar ejecuciones de GitHub Actions.
-- `desktop.ini` -> archivo de sistema, no requerido.
 
 ## CSS
 
 - `assets/css/styles.css` -> CSS principal del landing (conectado a `index.html`).
 - `assets/css/modules/animations.css` -> utilidades de animacion (conectado a `index.html`).
-- `assets/css/modules/components.css` -> no referenciado.
-- `assets/css/modules/sections.css` -> no referenciado.
-- `assets/css/modules/typography.css` -> no referenciado.
-- `assets/css/modules/variables.css` -> no referenciado.
 - `admin/styles.css` -> estilos del admin (`admin/index.html`).
 
 ## JS (landing)
@@ -44,10 +39,6 @@
 - `assets/js/modules/config.js` -> importado por `boot.js`.
 - `assets/js/modules/scroll-narrative.js` -> importado por `boot.js`.
 - `assets/js/modules/svg-animations.js` -> importado por `boot.js`.
-- `assets/js/modules/animations.js` -> no importado.
-- `assets/js/modules/data-manager.js` -> no importado.
-- `assets/js/modules/copywriting-binder.js` -> no importado.
-- `assets/js/modules/ui-components.js` -> no importado.
 
 ## JS (admin / qr / worker)
 
@@ -67,6 +58,7 @@
 
 - `assets/img/favicon_512.png` -> `index.html` (favicon).
 - `assets/img/hero-lab.svg` -> `index.html` (hero).
+- `assets/img/hero-lab-epic.svg` -> usado por el Worker para emails (URL en `workers/mahiteklab-api/src/index.js`).
 - `assets/img/logo-color.svg` -> `index.html` (logos en secciones).
 - `assets/img/mark-icon.svg` -> `assets/js/app.js` (JSON-LD logo).
 - `assets/img/og-image.png` -> `index.html` (og:image) y fallback en promos.
@@ -153,19 +145,7 @@
 - `docs/SISTEMA_DATOS.md`, `docs/UI_COMPONENTS.md`, `docs/SISTEMA_VALIDACION.md`, `docs/VALIDACION_AVANZADA.md`, `docs/SEGURIDAD_INFORME.md` -> documentacion de sistemas.
 - `ESTRUCTURA_SECCIONES.md`, `DESARROLLO.md`, `NAVBAR_*.md`, `PERFORMANCE_AUDIT.md`, `PROMOS_COMBOS.md`, `TESTING.md`, `CONFIGURACION_EXTENSIONES.md`, `COMPRESSION.md`, `GITHUB_PAGES_SETUP.md`, `VALIDATION_PROMOS.md` -> documentacion en raiz.
 
-## Archivos desconectados o con uso pendiente
+## Archivos generados / no versionables
 
-- `assets/css/modules/components.css` -> no referenciado por `index.html` ni importado.
-- `assets/css/modules/sections.css` -> no referenciado por `index.html` ni importado.
-- `assets/css/modules/typography.css` -> no referenciado por `index.html` ni importado.
-- `assets/css/modules/variables.css` -> no referenciado por `index.html` ni importado.
-- `assets/js/modules/animations.js` -> no importado por `boot.js`.
-- `assets/js/modules/data-manager.js` -> no importado por `boot.js`.
-- `assets/js/modules/copywriting-binder.js` -> no importado por `boot.js`.
-- `assets/js/modules/ui-components.js` -> no importado por `boot.js`.
-- `assets/img/hero-lab-epic.svg` -> solo listado en `assets/js/modules/config.js` (CRITICAL_IMAGES), sin uso directo.
-- `assets/img/desktop.ini` -> archivo de sistema.
-- `.github/workflows/desktop.ini` -> archivo de sistema.
-- `desktop.ini` -> archivo de sistema.
 - `public/` -> salida generada por `scripts/build-public.js` (no versionar).
 - `logs/` -> carpeta de logs (gitignored).
