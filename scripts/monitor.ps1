@@ -13,6 +13,25 @@ function Ensure-Dir($path) {
     }
 }
 
+function Write-Title($text) {
+    Write-Host $text -ForegroundColor Cyan
+}
+
+function Write-Separator {
+    Write-Host "------------------------------------------------------------" -ForegroundColor DarkGray
+}
+
+function Write-StatusLine($name, $state, $procId, $url) {
+    $label = if ($name) { $name } else { "service" }
+    Write-Host "  $label " -NoNewline -ForegroundColor Cyan
+    if ($state -eq "running") {
+        Write-Host "RUNNING" -NoNewline -ForegroundColor Green
+    } else {
+        Write-Host "STOPPED" -NoNewline -ForegroundColor Yellow
+    }
+    Write-Host "  PID: $procId  $url"
+}
+
 function Get-StateObject($statePath) {
     if (-not (Test-Path $statePath)) { return [pscustomobject]@{} }
     try {
@@ -55,15 +74,16 @@ function Start-ServiceProcess($statePath, $svc) {
     if (-not $svc) { return }
     $state = Get-StateObject $statePath
     $current = Get-ServiceState $state $svc.name
+    $svcName = if ($svc.PSObject.Properties["name"]) { $svc.name } else { "service" }
     if ($current -and (Is-ProcessRunning $current.pid)) {
-        Write-Host "[${($svc.name)}] already running (PID $($current.pid))"
+        Write-Host "[$svcName] already running (PID $($current.pid))"
         return
     }
 
     $logFile = $svc.log
-    $errFile = "${logFile}.err"
+    $errFile = $svc.err
     $started = (Get-Date).ToString("s")
-    Write-Host "[${($svc.name)}] starting: $($svc.command)"
+    Write-Host "[$svcName] starting: $($svc.command)"
     try {
         $proc = Start-Process -FilePath "cmd.exe" `
             -ArgumentList "/c", $svc.command `
@@ -73,7 +93,7 @@ function Start-ServiceProcess($statePath, $svc) {
             -NoNewWindow `
             -PassThru
     } catch {
-        Write-Host "[${($svc.name)}] failed to start: $($_.Exception.Message)"
+        Write-Host "[$svcName] failed to start: $($_.Exception.Message)"
         return
     }
 
@@ -87,7 +107,7 @@ function Start-ServiceProcess($statePath, $svc) {
     }
     Set-ServiceState $state $svc.name $entry
     Save-StateObject $statePath $state
-    Write-Host "[${($svc.name)}] started (PID $($proc.Id))"
+    Write-Host "[$svcName] started (PID $($proc.Id))"
 }
 
 function Stop-ServiceProcess($statePath, $svc) {
@@ -109,15 +129,27 @@ function Stop-ServiceProcess($statePath, $svc) {
 function Show-Status($statePath, $services) {
     $state = Get-StateObject $statePath
     Write-Host ""
-    Write-Host "Status:"
+    Write-Title "Status"
     foreach ($svc in $services) {
         $current = Get-ServiceState $state $svc.name
         if ($current -and (Is-ProcessRunning $current.pid)) {
-            Write-Host "  - $($svc.name): running (PID $($current.pid))"
+            Write-StatusLine $svc.name "running" $current.pid $svc.url
         } else {
-            Write-Host "  - $($svc.name): stopped"
+            Write-StatusLine $svc.name "stopped" "-" $svc.url
         }
     }
+    Write-Host ""
+}
+
+function Show-Dashboard($statePath, $services) {
+    Clear-Host
+    Write-Title "Mahitek Dev Monitor"
+    Write-Host "Repo: $repoRoot"
+    Write-Host "Time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")"
+    Write-Separator
+    Show-Status $statePath $services
+    Write-Separator
+    Write-Host "Commands: start|stop|restart web|worker|all  status  logs web|worker  open web|worker  validate  docs  clear  help  exit"
     Write-Host ""
 }
 
@@ -160,6 +192,7 @@ function Show-Help {
     Write-Host "  stop web|worker|all"
     Write-Host "  restart web|worker|all"
     Write-Host "  status"
+    Write-Host "  dashboard"
     Write-Host "  logs web|worker"
     Write-Host "  open web|worker"
     Write-Host "  validate"
@@ -184,6 +217,7 @@ $services = @(
         command = "npm run dev"
         workdir = $repoRoot
         log = (Join-Path $logsDir "web.log")
+        err = (Join-Path $logsDir "web.log.err")
         url = "http://localhost:8080"
     },
     [pscustomobject]@{
@@ -191,13 +225,12 @@ $services = @(
         command = "wrangler dev --env dev"
         workdir = (Join-Path $repoRoot "workers\\mahiteklab-api")
         log = (Join-Path $logsDir "worker.log")
+        err = (Join-Path $logsDir "worker.log.err")
         url = "http://127.0.0.1:8787"
     }
 )
 
-Write-Host "Mahitek Dev Monitor"
-Write-Host "Repo: $repoRoot"
-Show-Help
+Show-Dashboard $statePath $services
 
 while ($true) {
     $input = Read-Host "monitor"
@@ -231,6 +264,7 @@ while ($true) {
             Start-ServiceProcess $statePath $svc
         }
         "status" { Show-Status $statePath $services }
+        "dashboard" { Show-Dashboard $statePath $services }
         "logs" {
             $svc = $services | Where-Object { $_.name -eq $arg }
             if (-not $svc) { Write-Host "Unknown service: $arg"; break }
