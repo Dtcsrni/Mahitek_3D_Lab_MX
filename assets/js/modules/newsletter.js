@@ -280,8 +280,28 @@ export function initNewsletter() {
 
     const floatingLink = floatingCta.querySelector('.floating-coupon__link');
     if (floatingLink && sourceDetailInput) {
-      floatingLink.addEventListener('click', () => {
+      floatingLink.addEventListener('click', ev => {
+        const target = document.querySelector('#newsletter');
+        if (target) {
+          ev.preventDefault();
+        }
         sourceDetailInput.value = 'floating_coupon';
+        if (target) {
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({
+            behavior: prefersReduced ? 'auto' : 'smooth',
+            block: 'start'
+          });
+          const emailField = form.querySelector('#newsletter-email');
+          if (emailField) {
+            window.setTimeout(
+              () => {
+                emailField.focus({ preventScroll: true });
+              },
+              prefersReduced ? 0 : 450
+            );
+          }
+        }
       });
     }
 
