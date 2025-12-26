@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T12:50:23.515Z
-Fingerprint: sha256:3a0c345bd3d89d8de5301fd42236d91577263fb3a211bad33b38414aea0ddef3
+Generado: 2025-12-26T13:41:10.825Z
+Fingerprint: sha256:270d9f5a1f98a35fd83d9699c2b2e63647dca696d23bf605a196e5f2847184dd
 Archivos hasheados: 72
 
 Criterio del fingerprint (cambios significativos):
