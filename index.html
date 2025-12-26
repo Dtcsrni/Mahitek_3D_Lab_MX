@@ -1868,7 +1868,14 @@
                     Pago seguro
                   </span>
                 </div>
-                <p class="footer-card-sub">Elige lo más cómodo. Confirmamos el método al cerrar tu pedido.</p>
+                <div class="payment-intro">
+                  <p class="footer-card-sub">Elige lo mas comodo. Confirmamos el metodo al cerrar tu pedido.</p>
+                  <div class="payment-highlights" aria-label="Beneficios de pago">
+                    <span class="payment-highlight">Recibo digital</span>
+                    <span class="payment-highlight">Confirmacion rapida</span>
+                    <span class="payment-highlight">Soporte al pagar</span>
+                  </div>
+                </div>
                 <ul class="payment-methods" aria-label="Opciones de pago disponibles">
                   <li class="payment-method" data-pay="card">
                     <span class="payment-icon" aria-hidden="true">
@@ -2033,11 +2040,14 @@
       </div>
     </footer>
 
-    <a class="floating-coupon" href="#newsletter" aria-label="Ir al newsletter para cupon de bienvenida">
-      <span class="floating-coupon__badge">Cupon</span>
-      <span class="floating-coupon__text">Bienvenida</span>
-      <span class="floating-coupon__cta">Activar</span>
-    </a>
+    <div class="floating-coupon" data-coupon>
+      <button class="floating-coupon__close" type="button" aria-label="Cerrar aviso del cupon">&times;</button>
+      <a class="floating-coupon__link" href="#newsletter" aria-label="Ir al newsletter para cupon de bienvenida">
+        <span class="floating-coupon__badge">Cupon</span>
+        <span class="floating-coupon__text">Bienvenida</span>
+        <span class="floating-coupon__cta">Activar</span>
+      </a>
+    </div>
 
     <!-- SVG Sprite (iconos reutilizables, sin requests extra) -->
     <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">

@@ -266,10 +266,35 @@ export function initNewsletter() {
   }
 
   const floatingCta = document.querySelector('.floating-coupon');
-  if (floatingCta && sourceDetailInput) {
-    floatingCta.addEventListener('click', () => {
-      sourceDetailInput.value = 'floating_coupon';
-    });
+  if (floatingCta) {
+    const storageKey = 'mahitek_coupon_closed';
+    const hideFloatingCta = () => {
+      floatingCta.classList.add('is-hidden');
+    };
+
+    try {
+      if (localStorage.getItem(storageKey) === '1') {
+        hideFloatingCta();
+      }
+    } catch (_) {}
+
+    const floatingLink = floatingCta.querySelector('.floating-coupon__link');
+    if (floatingLink && sourceDetailInput) {
+      floatingLink.addEventListener('click', () => {
+        sourceDetailInput.value = 'floating_coupon';
+      });
+    }
+
+    const floatingClose = floatingCta.querySelector('.floating-coupon__close');
+    if (floatingClose) {
+      floatingClose.addEventListener('click', ev => {
+        ev.preventDefault();
+        hideFloatingCta();
+        try {
+          localStorage.setItem(storageKey, '1');
+        } catch (_) {}
+      });
+    }
   }
 
   form.addEventListener('submit', async ev => {

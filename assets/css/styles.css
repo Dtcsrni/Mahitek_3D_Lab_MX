@@ -7713,12 +7713,13 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   overflow: hidden;
   border-radius: var(--radius-lg);
   padding: 0.25rem;
+  align-items: start;
 }
 
 @media (min-width: 768px) {
   .footer-extras-grid {
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    align-items: stretch;
+    align-items: start;
   }
 }
 
@@ -7824,6 +7825,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   --footer-accent: rgba(34, 211, 238, 0.95);
   --footer-accent-soft: rgba(34, 211, 238, 0.12);
   --footer-sheen: rgba(34, 211, 238, 0.14);
+  align-content: start;
 }
 
 .footer-payments-card::after {
@@ -7873,6 +7875,28 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   font-size: 0.95rem;
 }
 
+.payment-intro {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.payment-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.payment-highlight {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(2, 6, 23, 0.35);
+  color: rgba(226, 232, 240, 0.75);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .footer-card-pill {
   display: inline-flex;
   align-items: center;
@@ -7902,6 +7926,8 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   margin: 0;
   display: grid;
   gap: 0.65rem;
+  grid-auto-rows: minmax(86px, auto);
+  align-content: start;
 }
 
 @media (min-width: 520px) {
@@ -7922,6 +7948,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   background: rgba(2, 6, 23, 0.25);
   position: relative;
   overflow: hidden;
+  height: 100%;
   transition:
     transform var(--motion-duration-fast) var(--motion-ease),
     box-shadow var(--motion-duration-fast) var(--motion-ease),
@@ -8319,6 +8346,19 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   bottom: 1.5rem;
   z-index: 999;
   display: grid;
+  gap: 0.35rem;
+  align-items: start;
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.floating-coupon.is-hidden {
+  display: none;
+}
+
+.floating-coupon__link {
+  display: grid;
   gap: 0.15rem;
   padding: 0.75rem 1rem;
   border-radius: 18px;
@@ -8329,15 +8369,13 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   box-shadow:
     0 18px 40px rgba(2, 6, 23, 0.45),
     0 0 0 1px rgba(6, 182, 212, 0.2);
-  transform: translateY(20px) scale(0.96);
-  opacity: 0;
+  position: relative;
   transition:
-    transform var(--motion-duration-fast) var(--motion-ease),
     box-shadow var(--motion-duration-fast) var(--motion-ease),
     border-color var(--motion-duration-fast) var(--motion-ease);
 }
 
-.floating-coupon::before {
+.floating-coupon__link::before {
   content: "";
   position: absolute;
   inset: -8px;
@@ -8347,7 +8385,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   pointer-events: none;
 }
 
-.floating-coupon::after {
+.floating-coupon__link::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -8356,6 +8394,36 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   background-size: 200% 100%;
   opacity: 0.3;
   pointer-events: none;
+}
+
+.floating-coupon__close {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(2, 6, 23, 0.92);
+  color: rgba(226, 232, 240, 0.85);
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.4);
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    color var(--motion-duration-fast) var(--motion-ease);
+  z-index: 2;
+}
+
+.floating-coupon__close:hover,
+.floating-coupon__close:focus-visible {
+  transform: scale(1.05);
+  border-color: rgba(94, 234, 212, 0.6);
+  color: rgba(94, 234, 212, 0.9);
+  outline: none;
 }
 
 .floating-coupon__badge {
@@ -8377,13 +8445,16 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 }
 
 .floating-coupon:hover,
-.floating-coupon:focus-visible {
+.floating-coupon:focus-within {
   transform: translateY(-4px) scale(1.02);
+}
+
+.floating-coupon:hover .floating-coupon__link,
+.floating-coupon:focus-within .floating-coupon__link {
   border-color: rgba(94, 234, 212, 0.8);
   box-shadow:
     0 26px 60px rgba(2, 6, 23, 0.5),
     0 0 35px rgba(6, 182, 212, 0.28);
-  outline: none;
 }
 
 @keyframes couponEnter {
@@ -8420,7 +8491,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
       couponFloat 6s ease-in-out 1.2s infinite;
   }
 
-  .floating-coupon::after {
+  .floating-coupon__link::after {
     animation: couponSheen 6.5s ease-in-out infinite;
   }
 }
@@ -8437,6 +8508,10 @@ html.js-animate [data-animate="zoom-in"].is-visible {
     right: 1rem;
     bottom: 1rem;
     width: min(88vw, 260px);
+  }
+
+  .floating-coupon__link {
+    width: 100%;
   }
 }
 
