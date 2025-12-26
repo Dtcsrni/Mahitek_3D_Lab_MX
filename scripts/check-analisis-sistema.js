@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verifica que `ANALISIS_SISTEMA.md` esté actualizado para cambios significativos.
+ * Verifica que `ANALISIS_SISTEMA.md` este actualizado para cambios significativos.
  * Falla si el fingerprint guardado no coincide con el actual.
  */
 const fs = require("node:fs");
@@ -20,6 +20,8 @@ const IGNORE_DIRS = new Set([
   ".dev",
   ".vscode",
   ".tasks",
+  ".wrangler",
+  "logs",
 ]);
 
 const FINGERPRINT_GLOBS = [
@@ -153,7 +155,7 @@ function extractStoredFingerprint(markdown) {
 
 function main() {
   if (!fs.existsSync(analysisPath)) {
-    console.error("✗ Falta `ANALISIS_SISTEMA.md`");
+    console.error("X Falta `ANALISIS_SISTEMA.md`");
     console.error("  Ejecuta: npm run docs:update");
     process.exit(1);
   }
@@ -161,7 +163,7 @@ function main() {
   const md = fs.readFileSync(analysisPath, "utf8");
   const stored = extractStoredFingerprint(md);
   if (!stored) {
-    console.error("✗ `ANALISIS_SISTEMA.md` no tiene fingerprint autogenerado");
+    console.error("X `ANALISIS_SISTEMA.md` no tiene fingerprint autogenerado");
     console.error("  Ejecuta: npm run docs:update");
     process.exit(1);
   }
@@ -175,7 +177,7 @@ function main() {
   const current = sha256Fingerprint(fingerprintFiles);
 
   if (current !== stored) {
-    console.error("✗ `ANALISIS_SISTEMA.md` está desactualizado para cambios significativos");
+    console.error("X `ANALISIS_SISTEMA.md` esta desactualizado para cambios significativos");
     console.error(`  Guardado:  ${stored}`);
     console.error(`  Actual:    ${current}`);
     console.error("");
@@ -183,7 +185,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log("✓ ANALISIS_SISTEMA.md actualizado (fingerprint OK)");
+  console.log("V ANALISIS_SISTEMA.md actualizado (fingerprint OK)");
 }
 
 main();

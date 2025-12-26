@@ -1,19 +1,19 @@
 #!/usr/bin/env pwsh
 # ===== Configurador de Git Hooks =====
-# Instala hooks de pre-commit para validación automática
+# Instala hooks de pre-commit para validacion automatica
 # Autor: Mahitek 3D Lab
-# Versión: 1.0.0
+# Version: 1.0.0
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "`n╔════════════════════════════════════════╗" -ForegroundColor Cyan
-Write-Host "║  Configurador de Git Hooks             ║" -ForegroundColor Cyan
-Write-Host "╚════════════════════════════════════════╝`n" -ForegroundColor Cyan
+Write-Host "`n==============================" -ForegroundColor Cyan
+Write-Host "  Configurador de Git Hooks" -ForegroundColor Cyan
+Write-Host "==============================`n" -ForegroundColor Cyan
 
 # Verificar que estamos en un repositorio Git
 if (-not (Test-Path ".git")) {
-    Write-Host "❌ Error: No se encontró directorio .git" -ForegroundColor Red
-    Write-Host "   Ejecuta este script desde la raíz del proyecto" -ForegroundColor Yellow
+    Write-Host "[ERROR] No se encontro directorio .git" -ForegroundColor Red
+    Write-Host "  Ejecuta este script desde la raiz del proyecto" -ForegroundColor Yellow
     exit 1
 }
 
@@ -31,35 +31,35 @@ $preCommitContent = @'
 # Git hook: pre-commit
 # Ejecuta validaciones antes de permitir commit
 
-echo "🔍 Ejecutando validaciones pre-commit..."
+echo "[INFO] Ejecutando validaciones pre-commit..."
 
 # Mantener docs del sistema actualizadas para cambios significativos
-echo "🧾 Actualizando ANALISIS_SISTEMA.md..."
+echo "[INFO] Actualizando ANALISIS_SISTEMA.md..."
 npm run docs:update
 git add ANALISIS_SISTEMA.md >/dev/null 2>&1 || true
 
-# Ejecutar script de validación (PowerShell)
+# Ejecutar script de validacion (PowerShell)
 pwsh -File scripts/validar-codigo.ps1
 
-# Capturar código de salida
+# Capturar codigo de salida
 VALIDATION_EXIT_CODE=$?
 
 if [ $VALIDATION_EXIT_CODE -ne 0 ]; then
     echo ""
-    echo "❌ Commit rechazado: Las validaciones fallaron"
-    echo "   Corrige los errores o usa 'git commit --no-verify' para omitir (no recomendado)"
+    echo "[ERROR] Commit rechazado: Las validaciones fallaron"
+    echo "  Corrige los errores o usa 'git commit --no-verify' para omitir (no recomendado)"
     exit 1
 fi
 
-echo "✅ Validaciones pasadas - Commit permitido"
+echo "[OK] Validaciones pasadas - Commit permitido"
 exit 0
 '@
 
 # Escribir hook
 Set-Content -Path $preCommitPath -Value $preCommitContent -Encoding UTF8
 
-# Hacer ejecutable (en Windows esto es principalmente simbólico)
-Write-Host "✅ Hook pre-commit instalado en: $preCommitPath" -ForegroundColor Green
+# Hacer ejecutable (en Windows esto es principalmente simbolico)
+Write-Host "[OK] Hook pre-commit instalado en: $preCommitPath" -ForegroundColor Green
 
 # ===== Crear hook de commit-msg (opcional) =====
 $commitMsgPath = Join-Path $hooksDir "commit-msg"
@@ -67,67 +67,83 @@ $commitMsgPath = Join-Path $hooksDir "commit-msg"
 $commitMsgContent = @'
 #!/bin/sh
 # Git hook: commit-msg
-# Validate commit message format (Conventional Commits)
+# Valida formato de mensajes de commit (Conventional Commits)
 
 COMMIT_MSG_FILE=$1
 RAW_MSG=$(cat "$COMMIT_MSG_FILE")
-# Subject = first non-empty, non-comment line
+# Subject = primera linea no vacia y no comentario
 SUBJECT=$(printf "%s\n" "$RAW_MSG" | sed '/^#/d' | sed '/^[[:space:]]*$/d' | head -n 1)
 
-# Expected: type(scope): description
-# Allowed types: feat, fix, docs, style, refactor, perf, test, chore
-PATTERN="^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .{1,}"
+# Formato esperado: tipo(scope): descripcion
+# Tipos validos: feat, fix, docs, style, refactor, perf, test, chore
+VALID_TYPES="feat|fix|docs|style|refactor|perf|test|chore"
+PATTERN="^(${VALID_TYPES})(\(.+\))?: .{1,}"
 
 if [ -z "$SUBJECT" ]; then
     echo ""
-    echo "x Commit message empty or comments only"
-    echo "  file: $COMMIT_MSG_FILE"
+    echo "[ERROR] Mensaje de commit vacio o solo comentarios"
+    echo "  archivo: $COMMIT_MSG_FILE"
     echo ""
-    echo "  Expected format:"
-    echo "  type(scope): description"
+    echo "  Formato esperado:"
+    echo "  tipo(scope): descripcion"
     echo ""
-    echo "  Examples:"
-    echo "  feat: add pricing system"
-    echo "  fix(css): align mobile navbar"
+    echo "  Ejemplos:"
+    echo "  feat: agregar sistema de precios"
+    echo "  fix(css): alinear navbar en mobile"
     echo ""
-    echo "  Hint: use scripts/commit-auto.ps1 for guided messages"
+    echo "  Sugerencia: usa scripts/commit-auto.ps1 para mensajes guiados"
     exit 1
 fi
 
 if ! printf "%s\n" "$SUBJECT" | grep -qE "$PATTERN"; then
     echo ""
-    echo "x Commit message invalid"
+    echo "[ERROR] Mensaje de commit invalido"
     echo ""
-    echo "  file: $COMMIT_MSG_FILE"
-    echo "  subject: $SUBJECT"
-    echo "  subject length: ${#SUBJECT}"
+    echo "  archivo: $COMMIT_MSG_FILE"
+    echo "  asunto: $SUBJECT"
+    echo "  longitud del asunto: ${#SUBJECT}"
     echo ""
-    echo "  Expected format:"
-    echo "  type(scope): description"
+    echo "  Formato esperado:"
+    echo "  tipo(scope): descripcion"
     echo ""
-    echo "  Allowed types: feat, fix, docs, style, refactor, perf, test, chore"
+    echo "  Tipos validos: feat, fix, docs, style, refactor, perf, test, chore"
     echo ""
-    echo "  Pattern:"
+    echo "  Patron:"
     echo "  $PATTERN"
     echo ""
     if echo "$SUBJECT" | grep -qE "^[^:]+$"; then
-        echo "  Hint: missing colon after type(scope)"
+        echo "  Sugerencia: falta dos puntos despues de tipo(scope)"
         echo ""
     fi
     if echo "$SUBJECT" | grep -qE "^[a-zA-Z]+(\(.+\))?:[^ ]"; then
-        echo "  Hint: add a space after colon"
+        echo "  Sugerencia: agrega un espacio despues de dos puntos"
         echo ""
     fi
-    if echo "$SUBJECT" | grep -qE "^[a-zA-Z]+"; then
-        TYPE=$(printf "%s" "$SUBJECT" | sed -E "s/^([a-zA-Z]+).*/\1/")
-        echo "  Detected type: $TYPE"
+    TYPE=$(printf "%s" "$SUBJECT" | sed -E "s/^([a-zA-Z]+).*/\1/")
+    if [ -n "$TYPE" ]; then
+        echo "  Tipo detectado: $TYPE"
+        if ! echo "$TYPE" | grep -qE "^(${VALID_TYPES})$"; then
+            echo "  Sugerencia: el tipo no es valido"
+        fi
         echo ""
     fi
-    echo "  Examples:"
-    echo "  feat: add pricing system"
-    echo "  fix(css): align mobile navbar"
+    if [ ${#SUBJECT} -gt 72 ]; then
+        echo "  Aviso: el asunto supera 72 caracteres"
+        echo ""
+    fi
+    if echo "$SUBJECT" | grep -qE "^[A-Z]"; then
+        echo "  Aviso: evita iniciar la descripcion con mayuscula"
+        echo ""
+    fi
+    if echo "$SUBJECT" | grep -qE "\.$"; then
+        echo "  Aviso: evita terminar el asunto con punto"
+        echo ""
+    fi
+    echo "  Ejemplos:"
+    echo "  feat: agregar sistema de precios"
+    echo "  fix(css): alinear navbar en mobile"
     echo ""
-    echo "  Hint: use scripts/commit-auto.ps1 for guided messages"
+    echo "  Sugerencia: usa scripts/commit-auto.ps1 para mensajes guiados"
     exit 1
 fi
 
@@ -135,24 +151,23 @@ exit 0
 '@
 
 Set-Content -Path $commitMsgPath -Value $commitMsgContent -Encoding UTF8
-Write-Host "✅ Hook commit-msg instalado en: $commitMsgPath" -ForegroundColor Green
+Write-Host "[OK] Hook commit-msg instalado en: $commitMsgPath" -ForegroundColor Green
 
 # ===== Instrucciones =====
 Write-Host ""
-Write-Host "╔════════════════════════════════════════════════════════╗" -ForegroundColor Green
-Write-Host "║  ✅ Git Hooks configurados exitosamente                    ║" -ForegroundColor Green
-Write-Host "╚════════════════════════════════════════════════════════╝" -ForegroundColor Green
+Write-Host "==============================" -ForegroundColor Green
+Write-Host "  Git Hooks configurados correctamente" -ForegroundColor Green
+Write-Host "==============================" -ForegroundColor Green
 Write-Host ""
-Write-Host "📋 Hooks instalados:" -ForegroundColor Cyan
-Write-Host "   • pre-commit:  Valida código antes de commit" -ForegroundColor White
-Write-Host "   • commit-msg:  Valida formato de mensaje" -ForegroundColor White
+Write-Host "- Hooks instalados:" -ForegroundColor Cyan
+Write-Host "  - pre-commit: valida codigo antes de commit" -ForegroundColor White
+Write-Host "  - commit-msg: valida formato del mensaje" -ForegroundColor White
 Write-Host ""
-Write-Host "🚀 Uso:" -ForegroundColor Cyan
-Write-Host "   Commit normal:        git commit -m 'mensaje'" -ForegroundColor White
-Write-Host "   Omitir validaciones:  git commit --no-verify" -ForegroundColor White
-Write-Host "   Commit automatizado:  .\scripts\commit-auto.ps1" -ForegroundColor White
+Write-Host "- Uso:" -ForegroundColor Cyan
+Write-Host "  - Commit normal:       git commit -m 'mensaje'" -ForegroundColor White
+Write-Host "  - Omitir validaciones: git commit --no-verify" -ForegroundColor White
+Write-Host "  - Commit guiado:       .\\scripts\\commit-auto.ps1" -ForegroundColor White
 Write-Host ""
-Write-Host "💡 Los hooks se ejecutarán automáticamente en cada commit" -ForegroundColor Yellow
-Write-Host ""
+Write-Host "Nota: Los hooks se ejecutan automaticamente en cada commit" -ForegroundColor Yellow
 
 exit 0

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Regenera la sección autogenerada de `ANALISIS_SISTEMA.md`.
+ * Regenera la seccion autogenerada de `ANALISIS_SISTEMA.md`.
  * - Produce inventario y fingerprint (sha256) del "sistema" (archivos significativos).
  * - No requiere build; funciona en Node >= 18.
  */
@@ -21,6 +21,8 @@ const IGNORE_DIRS = new Set([
   ".dev",
   ".vscode",
   ".tasks",
+  ".wrangler",
+  "logs",
 ]);
 
 const FINGERPRINT_GLOBS = [
@@ -165,6 +167,64 @@ function readJsonSafe(filePath) {
   }
 }
 
+function readTextSafe(filePath) {
+  try {
+    return fs.readFileSync(filePath, "utf8");
+  } catch {
+    return "";
+  }
+}
+
+function listFilesInDir(dirPath, ext) {
+  if (!fs.existsSync(dirPath)) return [];
+  return fs
+    .readdirSync(dirPath)
+    .filter((name) => {
+      const abs = path.join(dirPath, name);
+      if (!fs.statSync(abs).isFile()) return false;
+      if (!ext) return true;
+      return name.toLowerCase().endsWith(ext);
+    })
+    .sort();
+}
+
+function stripQuery(value) {
+  return value.split("?")[0];
+}
+
+function extractCssLinks(html) {
+  if (!html) return [];
+  const matches = [];
+  const regex = /href=["']([^"']+\.css[^"']*)["']/gi;
+  let match = null;
+  while ((match = regex.exec(html))) {
+    matches.push(match[1]);
+  }
+  return matches;
+}
+
+function extractModuleImports(jsText) {
+  if (!jsText) return [];
+  const matches = [];
+  const regex = /import\s+(?:[^"']+from\s+)?["']\.\/modules\/([^"']+)["']/gi;
+  let match = null;
+  while ((match = regex.exec(jsText))) {
+    matches.push(match[1]);
+  }
+  return matches;
+}
+
+function extractAssetImageRefs(text) {
+  if (!text) return [];
+  const matches = [];
+  const regex = /assets\/img\/[A-Za-z0-9._-]+/g;
+  let match = null;
+  while ((match = regex.exec(text))) {
+    matches.push(match[0]);
+  }
+  return matches;
+}
+
 function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   const nowIso = new Date().toISOString();
   const byExt = countByExtension(allFiles);
@@ -183,12 +243,150 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   const pkg = readJsonSafe(path.join(repoRoot, "package.json"));
   const npmScripts = pkg?.scripts ? Object.keys(pkg.scripts).sort() : [];
 
+  const indexHtml = readTextSafe(path.join(repoRoot, "index.html"));
+  const bootJs = readTextSafe(path.join(repoRoot, "assets/js/boot.js"));
+  const appJs = readTextSafe(path.join(repoRoot, "assets/js/app.js"));
+  const configJs = readTextSafe(path.join(repoRoot, "assets/js/modules/config.js"));
+  const workerIndex = readTextSafe(path.join(repoRoot, "workers/mahiteklab-api/src/index.js"));
+  const qrJs = readTextSafe(path.join(repoRoot, "qr/qr.js"));
+
+  const cssModules = listFilesInDir(path.join(repoRoot, "assets/css/modules"), ".css");
+  const cssLinked = extractCssLinks(indexHtml).map(stripQuery);
+  const cssModulesMissing = cssModules.filter(
+    (name) => !cssLinked.includes(`assets/css/modules/${name}`),
+  );
+
+  const jsModules = listFilesInDir(path.join(repoRoot, "assets/js/modules"), ".js");
+  const jsImported = extractModuleImports(bootJs).map(stripQuery);
+  const jsModulesMissing = jsModules.filter((name) => !jsImported.includes(name));
+
+  const imageDir = path.join(repoRoot, "assets/img");
+  const images = listFilesInDir(imageDir).filter(
+    (name) => !name.toLowerCase().endsWith(".ini"),
+  );
+  const dataFiles = [
+    "data/products.json",
+    "data/promos.json",
+    "data/faq.json",
+    "data/social.json",
+    "assets/data/brand.json",
+  ];
+  const products = readJsonSafe(path.join(repoRoot, "data/products.json"));
+  const promos = readJsonSafe(path.join(repoRoot, "data/promos.json"));
+  const faq = readJsonSafe(path.join(repoRoot, "data/faq.json"));
+  const social = readJsonSafe(path.join(repoRoot, "data/social.json"));
+  const brand = readJsonSafe(path.join(repoRoot, "assets/data/brand.json"));
+  const assetTexts = [
+    indexHtml,
+    appJs,
+    bootJs,
+    configJs,
+    workerIndex,
+    ...dataFiles.map((rel) => readTextSafe(path.join(repoRoot, rel))),
+  ];
+
+  const productsArray = Array.isArray(products) ? products : [];
+  const promosArray = Array.isArray(promos) ? promos : [];
+  const faqArray = Array.isArray(faq) ? faq : [];
+  const now = new Date();
+
+  const productsActive = productsArray.filter((item) => item?.estado === "activo").length;
+  const productsMissingRequired = productsArray.filter((item) => {
+    return !item?.id || !item?.nombre || !item?.categoria || item?.precio_mxn == null;
+  });
+  const productsPlaceholderImages = productsArray.filter((item) => {
+    const val = String(item?.imagen || "").trim();
+    return val === "" || val === "??";
+  }).length;
+
+  const promosActive = promosArray.filter((item) => {
+    if (!item || item.estado !== "activo") return false;
+    const desde = item.desde ? new Date(item.desde) : null;
+    const hasta = item.hasta ? new Date(item.hasta) : null;
+    if (desde && Number.isNaN(desde.getTime())) return false;
+    if (hasta && Number.isNaN(hasta.getTime())) return false;
+    if (desde && now < desde) return false;
+    if (hasta && now > hasta) return false;
+    return true;
+  }).length;
+
+  const promosMissingIcon = promosArray.filter((item) => {
+    const icon = String(item?.icono || "").trim();
+    if (!icon) return true;
+    if (!icon.startsWith("assets/img/")) return false;
+    const iconPath = path.join(repoRoot, icon);
+    return !fs.existsSync(iconPath);
+  });
+
+  const brandHasSocial = Boolean(
+    brand &&
+      brand.social &&
+      Object.values(brand.social).some((value) => String(value || "").trim()),
+  );
+  const cssFiles = allFiles.filter((abs) => {
+    const rel = toPosix(path.relative(repoRoot, abs));
+    return rel.startsWith("assets/css/") && rel.endsWith(".css");
+  });
+  for (const abs of cssFiles) {
+    assetTexts.push(readTextSafe(abs));
+  }
+
+  const referencedImages = new Set();
+  for (const text of assetTexts) {
+    for (const ref of extractAssetImageRefs(text)) {
+      referencedImages.add(ref);
+    }
+  }
+
+  const unusedImages = images.filter(
+    (name) => !referencedImages.has(`assets/img/${name}`),
+  );
+
+  const systemFiles = allFiles
+    .map((abs) => toPosix(path.relative(repoRoot, abs)))
+    .filter((rel) => {
+      const base = path.basename(rel).toLowerCase();
+      return base === "desktop.ini" || base === "thumbs.db" || base === ".ds_store";
+    });
+
+  const hasWranglerToml = fs.existsSync(
+    path.join(repoRoot, "workers/mahiteklab-api/wrangler.toml"),
+  );
+  const hasAdminHeaders = fs.existsSync(path.join(repoRoot, "admin/_headers"));
+  const hasCname = fs.existsSync(path.join(repoRoot, "CNAME"));
+
+  const apiBaseMatch = appJs.match(/NEWSLETTER_API_BASE:\s*'([^']*)'/);
+  const apiBaseValue = apiBaseMatch ? apiBaseMatch[1].trim() : "";
+  const turnstileMatch = appJs.match(/NEWSLETTER_TURNSTILE_SITEKEY:\s*'([^']*)'/);
+  const turnstileValue = turnstileMatch ? turnstileMatch[1].trim() : "";
+
+  const indexHasStyles = indexHtml.includes("assets/css/styles.css");
+  const indexHasAnimations = indexHtml.includes("assets/css/modules/animations.css");
+  const indexHasApp = indexHtml.includes("assets/js/app.js");
+  const indexHasBoot = indexHtml.includes("assets/js/boot.js");
+  const indexHasManifest = indexHtml.includes('rel="manifest"') || indexHtml.includes("rel='manifest'");
+
+  const qrHasPlaceholderGa = qrJs.includes("G-XXXXXXXXXX");
+
+  const hasLicense =
+    fs.existsSync(path.join(repoRoot, "LICENSE")) ||
+    fs.existsSync(path.join(repoRoot, "LICENSE.md"));
+
+  const lighthouseCiPath = path.join(repoRoot, "lighthouserc.ci.json");
+  const lighthouseCiExists = fs.existsSync(lighthouseCiPath);
+  const workflowText = workflows
+    .map((wf) => readTextSafe(path.join(repoRoot, wf)))
+    .join("\n");
+  const lighthouseCiUsed = lighthouseCiExists && workflowText.includes("lighthouserc.ci.json");
+
+  const publicDirExists = fs.existsSync(path.join(repoRoot, "public"));
+
   const lines = [];
   lines.push(`Generado: ${nowIso}`);
   lines.push(`Fingerprint: sha256:${fingerprint}`);
   lines.push(`Archivos hasheados: ${fingerprintFiles.length}`);
   lines.push("");
-  lines.push("Criterio del fingerprint (cambios “significativos”):");
+  lines.push("Criterio del fingerprint (cambios significativos):");
   lines.push("- Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`");
   lines.push("- `assets/js/**/*.js`, `assets/css/**/*.css`");
   lines.push("- `assets/data/**/*.json`, `data/**/*.json`");
@@ -214,6 +412,133 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   lines.push(`Scripts npm (${npmScripts.length}):`);
   for (const s of npmScripts) lines.push(`- \`${s}\``);
 
+  const diagnostics = [];
+  const dataSummary = [];
+  if (productsArray.length > 0) {
+    dataSummary.push(
+      `Productos: ${productsActive}/${productsArray.length} activos (placeholders: ${productsPlaceholderImages})`,
+    );
+  } else {
+    dataSummary.push("Productos: no se pudo leer data/products.json");
+  }
+  if (promosArray.length > 0) {
+    dataSummary.push(`Promos: ${promosActive}/${promosArray.length} activas`);
+  } else {
+    dataSummary.push("Promos: no se pudo leer data/promos.json");
+  }
+  if (faqArray.length > 0) {
+    dataSummary.push(`FAQ: ${faqArray.length} items`);
+  } else {
+    dataSummary.push("FAQ: no se pudo leer data/faq.json");
+  }
+  diagnostics.push(`Datos: ${dataSummary.join(" | ")}`);
+
+  if (!indexHasStyles) {
+    diagnostics.push("index.html no referencia assets/css/styles.css.");
+  }
+  if (!indexHasAnimations) {
+    diagnostics.push("index.html no referencia assets/css/modules/animations.css.");
+  }
+  if (!indexHasApp) {
+    diagnostics.push("index.html no referencia assets/js/app.js.");
+  }
+  if (!indexHasBoot) {
+    diagnostics.push("index.html no referencia assets/js/boot.js.");
+  }
+  if (!indexHasManifest) {
+    diagnostics.push("index.html no incluye el manifest.");
+  }
+  if (cssModulesMissing.length > 0) {
+    diagnostics.push(
+      `CSS sin referencia en index.html (${cssModulesMissing.length}): ${cssModulesMissing.join(
+        ", ",
+      )}`,
+    );
+  }
+  if (jsModulesMissing.length > 0) {
+    diagnostics.push(
+      `Modulos JS sin import en boot.js (${jsModulesMissing.length}): ${jsModulesMissing.join(
+        ", ",
+      )}`,
+    );
+  }
+  if (unusedImages.length > 0) {
+    const preview = unusedImages.slice(0, 12).join(", ");
+    const suffix = unusedImages.length > 12 ? ", ..." : "";
+    diagnostics.push(
+      `Imagenes sin referencia detectada (${unusedImages.length}): ${preview}${suffix}`,
+    );
+  }
+  if (systemFiles.length > 0) {
+    const preview = systemFiles.slice(0, 12).join(", ");
+    const suffix = systemFiles.length > 12 ? ", ..." : "";
+    diagnostics.push(
+      `Archivos de sistema detectados (${systemFiles.length}): ${preview}${suffix}`,
+    );
+  }
+  if (productsMissingRequired.length > 0) {
+    const preview = productsMissingRequired
+      .slice(0, 6)
+      .map((item) => item.id || item.nombre || "sin-id")
+      .join(", ");
+    const suffix = productsMissingRequired.length > 6 ? ", ..." : "";
+    diagnostics.push(
+      `Productos con campos requeridos incompletos (${productsMissingRequired.length}): ${preview}${suffix}`,
+    );
+  }
+  if (promosMissingIcon.length > 0) {
+    const preview = promosMissingIcon
+      .slice(0, 6)
+      .map((item) => item.id || item.titulo || "sin-id")
+      .join(", ");
+    const suffix = promosMissingIcon.length > 6 ? ", ..." : "";
+    diagnostics.push(
+      `Promos con icono faltante o inexistente (${promosMissingIcon.length}): ${preview}${suffix}`,
+    );
+  }
+  if (brandHasSocial && social) {
+    diagnostics.push("brand.json incluye social; data/social.json queda como fallback.");
+  } else if (!brandHasSocial && social) {
+    diagnostics.push("brand.json no incluye social; se usa data/social.json.");
+  } else if (!social) {
+    diagnostics.push("data/social.json no se pudo leer.");
+  }
+  if (!apiBaseValue) {
+    diagnostics.push("NEWSLETTER_API_BASE no esta configurado en assets/js/app.js.");
+  }
+  if (!turnstileValue) {
+    diagnostics.push("NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).");
+  }
+  if (qrHasPlaceholderGa) {
+    diagnostics.push("qr/qr.js usa un Measurement ID placeholder (G-XXXXXXXXXX).");
+  }
+  if (!hasAdminHeaders) {
+    diagnostics.push("admin/_headers no existe (CSP/headers no aplicaran en admin).");
+  }
+  if (!hasWranglerToml) {
+    diagnostics.push("workers/mahiteklab-api/wrangler.toml no existe.");
+  }
+  if (!hasCname) {
+    diagnostics.push("CNAME no existe (dominio custom no configurado).");
+  }
+  if (!hasLicense) {
+    diagnostics.push("No se encontro LICENSE en la raiz (README lo referencia).");
+  }
+  if (lighthouseCiExists && !lighthouseCiUsed) {
+    diagnostics.push("lighthouserc.ci.json existe, pero no esta referenciado en workflows.");
+  }
+  if (publicDirExists) {
+    diagnostics.push("public/ existe en disco (salida generada). Verifica que no se versiona.");
+  }
+
+  lines.push("");
+  lines.push("Diagnostico rapido:");
+  if (diagnostics.length === 0) {
+    lines.push("- Sin alertas detectadas.");
+  } else {
+    for (const item of diagnostics) lines.push(`- ${item}`);
+  }
+
   return lines.join("\n");
 }
 
@@ -221,7 +546,7 @@ function upsertAutoBlock(markdown, newBlock) {
   if (markdown.includes(AUTO_START) && markdown.includes(AUTO_END)) {
     const start = markdown.indexOf(AUTO_START);
     const end = markdown.indexOf(AUTO_END);
-    if (end < start) throw new Error("Markers inválidos en ANALISIS_SISTEMA.md");
+    if (end < start) throw new Error("Markers invalidos en ANALISIS_SISTEMA.md");
     const before = markdown.slice(0, start + AUTO_START.length);
     const after = markdown.slice(end);
     return `${before}\n\n${newBlock}\n\n${after}`;
@@ -258,12 +583,12 @@ function main() {
 
   const existing = fs.existsSync(outputPath)
     ? fs.readFileSync(outputPath, "utf8")
-    : "# Análisis del Sistema\n";
+    : "# Analisis del Sistema\n";
 
   const stored = extractStoredFingerprint(existing);
   const hasAutoBlock = existing.includes(AUTO_START) && existing.includes(AUTO_END);
   if (stored && stored === fingerprint && hasAutoBlock) {
-    console.log(`✓ ANALISIS_SISTEMA.md ya está actualizado (fingerprint ${fingerprint.slice(0, 12)}…)`);
+    console.log(`V ANALISIS_SISTEMA.md ya esta actualizado (fingerprint ${fingerprint.slice(0, 12)}...)`);
     return;
   }
 
@@ -275,7 +600,7 @@ function main() {
 
   const updated = upsertAutoBlock(existing, autoSection);
   fs.writeFileSync(outputPath, updated, "utf8");
-  console.log(`✓ ANALISIS_SISTEMA.md actualizado (fingerprint ${fingerprint.slice(0, 12)}…)`);
+  console.log(`V ANALISIS_SISTEMA.md actualizado (fingerprint ${fingerprint.slice(0, 12)}...)`);
 }
 
 main();
