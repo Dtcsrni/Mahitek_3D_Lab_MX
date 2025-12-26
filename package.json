@@ -4,8 +4,8 @@
   "description": "Landing page oficial de Mahitek 3D Lab - Impresión 3D funcional en PETG",
   "main": "assets/js/app.js",
   "scripts": {
-    "dev": "live-server --port=8080 --no-browser --watch=. --ignore=node_modules",
-    "dev:open": "live-server --port=8080 --watch=. --ignore=node_modules",
+    "dev": "web-dev-server --port=8080 --root-dir . --watch",
+    "dev:open": "web-dev-server --port=8080 --root-dir . --watch --open",
     "start": "npm run dev",
     "serve": "python -m http.server 8080 || npx serve -l 8080",
     "format:js": "prettier --write assets/js/**/*.js",
@@ -42,8 +42,8 @@
   "author": "Mahitek 3D Lab",
   "license": "MIT",
   "devDependencies": {
+    "@web/dev-server": "^0.4.6",
     "jsdom": "^24.1.0",
-    "live-server": "^1.2.0",
     "prettier": "^3.3.0"
   },
   "engines": {
