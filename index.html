@@ -1367,53 +1367,130 @@
               <h2 class="section-title" id="proceso-title">Flujo de producción 🛠️</h2>
             </div>
             <p class="section-intro">
-              Proceso claro y directo. Definimos requerimientos, validamos el modelo y acordamos especificaciones con
-              <span class="accent-text">tiempos estimados</span> según complejidad y carga.
+              Proceso breve y visible. Alineamos requerimientos, validamos el modelo y cerramos especificaciones con
+              <span class="accent-text">tiempos claros</span> según complejidad y carga.
             </p>
+            <div class="process-flow" aria-hidden="true">
+              <span class="process-flow-step">Brief</span>
+              <span class="process-flow-arrow">➜</span>
+              <span class="process-flow-step">Diseño</span>
+              <span class="process-flow-arrow">➜</span>
+              <span class="process-flow-step">Producción</span>
+              <span class="process-flow-arrow">➜</span>
+              <span class="process-flow-step">Entrega</span>
+            </div>
             <div class="card glass process-cta animate-delay-1" data-animate="fade-up">
-              <h3>✅ Incluido en cada proyecto</h3>
-              <ul>
-                <li>📸 Registro fotográfico del proceso (opcional)</li>
-                <li>🔄 Ajustes básicos de diseño hasta aprobación</li>
-                <li>📋 Revisión visual antes de envío</li>
-                <li>💌 Documentación de uso y cuidados</li>
+              <h3>Incluido en cada proyecto</h3>
+              <ul class="process-cta-list">
+                <li><span class="process-cta-icon">📸</span> Registro fotográfico del proceso (opcional).</li>
+                <li><span class="process-cta-icon">🧩</span> Ajustes básicos de diseño hasta aprobación.</li>
+                <li><span class="process-cta-icon">✅</span> Revisión visual antes de entregar.</li>
+                <li><span class="process-cta-icon">🧭</span> Guía breve solo si la pieza lo necesita.</li>
               </ul>
+              <p class="process-note">
+                La documentación completa se entrega únicamente en piezas complejas o sistemas poco intuitivos.
+              </p>
+            </div>
+            <div class="card glass process-timelapse animate-delay-2" data-animate="fade-up">
+              <div class="process-timelapse-media" role="img" aria-label="Vista previa de timelapse">
+                <span class="process-timelapse-pulse"></span>
+                <span class="process-timelapse-play" aria-hidden="true">▶</span>
+                <span class="process-timelapse-label">Timelapse (opcional)</span>
+              </div>
+              <div class="process-timelapse-body">
+                <h3>Timelapse del proceso</h3>
+                <p>
+                  Disponible cuando la pieza lo amerita o a solicitud. Muestra avances reales sin frenar la producción.
+                </p>
+                <div class="process-timelapse-meta">
+                  <span>⏱️ Clips cortos</span>
+                  <span>🎞️ Progreso visible</span>
+                </div>
+              </div>
             </div>
           </div>
           <ol class="process-steps">
             <li class="process-step" data-animate="fade-up">
-              <span class="process-step-number">1</span>
-              <h3>💬 Consulta inicial</h3>
-              <p>
-                Compartes requerimientos, presupuesto y plazos. Evaluamos
-                <span class="accent-text">viabilidad técnica, costos y tiempos estimados</span>. Te orientamos sobre
-                alternativas si es necesario.
-              </p>
+              <div class="process-step-visual process-visual--brief" aria-hidden="true">
+                <span class="process-visual-ring"></span>
+                <span class="process-visual-dot"></span>
+                <svg class="process-visual-icon" viewBox="0 0 24 24">
+                  <path d="M4 6h16v9H8l-4 3V6z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M8 10h8" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="process-step-body">
+                <span class="process-step-number">1</span>
+                <h3>Consulta inicial</h3>
+                <p>
+                  Compartes requerimientos, presupuesto y plazo. Evaluamos
+                  <span class="accent-text">viabilidad técnica, costos y tiempos</span> y proponemos alternativas.
+                </p>
+              </div>
             </li>
             <li class="process-step animate-delay-1" data-animate="fade-up">
-              <span class="process-step-number">2</span>
-              <h3>🎨 Validación de diseño</h3>
-              <p>
-                Generamos renders 3D o prototipos físicos según complejidad.
-                <span class="accent-text--green">Ajustamos dimensiones y detalles</span> hasta confirmación final.
-              </p>
+              <div class="process-step-visual process-visual--design" aria-hidden="true">
+                <span class="process-visual-ring"></span>
+                <span class="process-visual-dot"></span>
+                <svg class="process-visual-icon" viewBox="0 0 24 24">
+                  <rect
+                    x="5"
+                    y="5"
+                    width="14"
+                    height="14"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path d="M8 15l8-8" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="process-step-body">
+                <span class="process-step-number">2</span>
+                <h3>Validación de diseño</h3>
+                <p>
+                  Armamos renders o prototipos rápidos según complejidad.
+                  <span class="accent-text--green">Ajustamos dimensiones y detalles</span> hasta el visto bueno final.
+                </p>
+              </div>
             </li>
             <li class="process-step animate-delay-2" data-animate="fade-up">
-              <span class="process-step-number">3</span>
-              <h3>🖨️ Producción y acabados</h3>
-              <p>
-                Impresión, remoción de soportes, lijado y ensamblaje según especificaciones.
-                <span class="accent-text">Actualizaciones fotográficas disponibles bajo solicitud</span>.
-              </p>
+              <div class="process-step-visual process-visual--print" aria-hidden="true">
+                <span class="process-visual-ring"></span>
+                <span class="process-visual-dot"></span>
+                <svg class="process-visual-icon" viewBox="0 0 24 24">
+                  <path d="M6 8h12v4H6z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M8 12h8v6H8z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M10 5h4v3h-4z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="process-step-body">
+                <span class="process-step-number">3</span>
+                <h3>Producción y acabados</h3>
+                <p>
+                  Impresión, remoción de soportes y ensamblaje según especificaciones.
+                  <span class="accent-text">Actualizaciones fotográficas bajo solicitud</span>.
+                </p>
+              </div>
             </li>
             <li class="process-step animate-delay-3" data-animate="fade-up">
-              <span class="process-step-number">4</span>
-              <h3>📦 Entrega y seguimiento</h3>
-              <p>
-                Coordinación de pickup local o envío nacional.
-                <span class="accent-text">Reposiciones, pedidos recurrentes y ajustes posteriores</span> con proceso
-                simplificado.
-              </p>
+              <div class="process-step-visual process-visual--deliver" aria-hidden="true">
+                <span class="process-visual-ring"></span>
+                <span class="process-visual-dot"></span>
+                <svg class="process-visual-icon" viewBox="0 0 24 24">
+                  <path d="M5 8h10v9H5z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M15 12h4m0 0l-2-2m2 2l-2 2" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="process-step-body">
+                <span class="process-step-number">4</span>
+                <h3>Entrega y seguimiento</h3>
+                <p>
+                  Coordinamos pickup local o envío nacional.
+                  <span class="accent-text">Reposiciones y ajustes posteriores</span> con proceso simplificado.
+                </p>
+              </div>
             </li>
           </ol>
         </div>

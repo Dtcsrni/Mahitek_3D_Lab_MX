@@ -262,7 +262,9 @@ function renderCouponEmail({ landingUrl, welcome, campaign }) {
     teal: '#0ea5a3',
     tealDeep: '#0b6b6a',
     blue: '#1d9bf0',
+    blueDeep: '#0f5ea8',
     red: '#ef4444',
+    amber: '#f59e0b',
     ink: '#0b0f12',
     inkSoft: '#111827',
     text: '#e5e7eb',
@@ -277,41 +279,50 @@ function renderCouponEmail({ landingUrl, welcome, campaign }) {
   const heroArtUrl = baseUrl ? `${baseUrl}/assets/img/hero-lab-epic.svg` : '';
 
   const title = campaign
-    ? 'Tus cupones de bienvenida y campana estan listos'
-    : 'Tu cupon de bienvenida esta listo';
+    ? 'Tus cupones de bienvenida y campaña están listos'
+    : 'Tu cupón de bienvenida está listo';
   const subtitle = campaign
-    ? 'Gracias por sumarte a Mahitek 3D Lab. Usa tu bienvenida y aprovecha el extra de campana.'
-    : 'Gracias por sumarte a Mahitek 3D Lab. Tu descuento ya esta activo para tu proximo proyecto.';
+    ? 'Gracias por sumarte a Mahitek 3D Lab. Usa tu bienvenida y aprovecha el extra de campaña.'
+    : 'Gracias por sumarte a Mahitek 3D Lab. Tu descuento ya está activo para tu próximo proyecto.';
   const preheader = campaign
-    ? 'Tus cupones de bienvenida y campana estan listos.'
-    : 'Bienvenida a Mahitek 3D Lab. Tu cupon ya esta activo.';
+    ? 'Tus cupones de bienvenida y campaña ya están activos.'
+    : 'Bienvenida a Mahitek 3D Lab. Tu cupón ya está activo.';
+  const headerBadge = campaign ? 'BENEFICIO DOBLE ACTIVO' : 'BENEFICIO DE BIENVENIDA';
 
   const logoMarkup = logoUrl
-    ? `<img src="${logoUrl}" alt="Mahitek 3D Lab" width="140" style="display:block;max-width:140px;height:auto;border:0;" />`
+    ? `<img src="${logoUrl}" alt="Mahitek 3D Lab" width="150" style="display:block;max-width:150px;height:auto;border:0;" />`
     : `<div style="font-size:13px;letter-spacing:0.24em;text-transform:uppercase;opacity:0.85;">Mahitek 3D Lab</div>`;
+  const logoFooterMarkup = logoUrl
+    ? `<img src="${logoUrl}" alt="Mahitek 3D Lab" width="120" style="display:block;max-width:120px;height:auto;border:0;" />`
+    : `<div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.85;">Mahitek 3D Lab</div>`;
 
   const heroArt = heroArtUrl
-    ? `<img src="${heroArtUrl}" alt="Mahitek 3D Lab" width="100%" style="display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin-top:16px;border:1px solid ${brand.line};" />`
+    ? `<img src="${heroArtUrl}" alt="Mahitek 3D Lab" width="100%" style="display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin-top:18px;border:1px solid ${brand.line};" />`
     : '';
 
   const featureRow = `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px;border-collapse:collapse;">
       <tr>
-        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">Prototipos rapidos</td>
+        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">⚡ Respuesta rápida</td>
         <td style="width:8px"></td>
-        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">Detalles finos</td>
+        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">🧩 Ajustes precisos</td>
         <td style="width:8px"></td>
-        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">Hecho en Pachuca</td>
+        <td style="padding:8px 6px;background:${brand.panel};border:1px solid ${brand.line};border-radius:12px;color:${brand.text};font-size:13px;text-align:center;">🚚 Envío nacional</td>
       </tr>
     </table>
   `;
 
   const couponBlock = (label, code, accent) => `
-    <div class="mail-coupon mail-anim" style="background:${brand.panel};border:1px solid ${accent};border-radius:16px;padding:18px;margin:14px 0;">
-      <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:${brand.muted};margin-bottom:6px;">
-        ${label}
-      </div>
-      <div style="font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.1em;">
+    <div class="mail-coupon mail-anim" style="background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(12,74,110,0.35));border:1px solid ${accent};border-radius:16px;padding:18px;margin:14px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:${brand.muted};">
+            ${label}
+          </td>
+          <td align="right" style="font-size:12px;color:${brand.muted};">Listo para usar</td>
+        </tr>
+      </table>
+      <div style="font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.1em;margin-top:8px;">
         ${code}
       </div>
     </div>
@@ -319,14 +330,18 @@ function renderCouponEmail({ landingUrl, welcome, campaign }) {
 
   const stackNote = campaign
     ? `<div style="font-size:13px;color:${brand.muted};margin-top:8px;">
-         Puedes combinar <strong>Bienvenida + campana</strong> en la misma compra (max. 2 cupones).
+         Puedes combinar <strong>Bienvenida + campaña</strong> en la misma compra (máx. 2 cupones).
        </div>`
     : '';
 
+  const buttonLabel = campaign ? 'Usar mis cupones' : 'Usar mi cupón';
   const button = landingUrl
     ? `<a class="mail-btn mail-anim" href="${landingUrl}" style="display:inline-block;background:${brand.blue};color:#ffffff;text-decoration:none;font-weight:600;padding:12px 18px;border-radius:12px;">
-         Ir al sitio
+         ${buttonLabel}
        </a>`
+    : '';
+  const footerLink = landingUrl
+    ? `<a href="${landingUrl}" style="color:${brand.muted};text-decoration:none;">Visitar sitio</a>`
     : '';
 
   return `<!doctype html>
@@ -358,47 +373,84 @@ function renderCouponEmail({ landingUrl, welcome, campaign }) {
       </style>
     </head>
     <body style="margin:0;background:${brand.ink};font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;">
-      <div style="max-width:640px;margin:0 auto;padding:28px 18px 36px;">
-        <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
-          ${preheader}
-        </div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.ink};border-collapse:collapse;">
+        <tr>
+          <td align="center" style="padding:26px 12px 36px;">
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="border-collapse:collapse;max-width:600px;width:100%;">
+              <tr>
+                <td>
+                  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+                    ${preheader}
+                  </div>
 
-        <div class="mail-hero mail-anim" style="background:linear-gradient(135deg,${brand.teal},${brand.tealDeep});border-radius:20px;padding:22px 24px;color:#ffffff;border:1px solid ${brand.line};">
-          ${logoMarkup}
-          <h1 style="margin:12px 0 6px;font-size:24px;font-weight:700;">${title}</h1>
-          <p style="margin:0;color:#d0f3f2;">${subtitle}</p>
-          ${featureRow}
-          ${heroArt}
-        </div>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:${brand.panel};border-radius:24px;overflow:hidden;border:1px solid ${brand.line};">
+                    <tr>
+                      <td class="mail-hero mail-anim" style="padding:20px 22px;background:linear-gradient(135deg,${brand.teal},${brand.tealDeep});color:#ffffff;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                          <tr>
+                            <td align="left">${logoMarkup}</td>
+                            <td align="right" style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;opacity:0.75;">MAHITEK 3D LAB</td>
+                          </tr>
+                        </table>
+                        <div style="margin-top:14px;display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.18);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;">
+                          ${headerBadge}
+                        </div>
+                        <h1 style="margin:12px 0 6px;font-size:24px;font-weight:700;">${title}</h1>
+                        <p style="margin:0;color:#d0f3f2;">${subtitle}</p>
+                        ${featureRow}
+                        ${heroArt}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="mail-anim" style="padding:22px;background:${brand.panelSoft};color:${brand.text};">
+                        <p style="margin:0 0 12px;font-size:16px;">
+                          Aquí tienes tus códigos listos para usar en tu próxima impresión:
+                        </p>
+                        ${couponBlock('Cupón de bienvenida', welcome.code, brand.teal)}
+                        ${campaign ? couponBlock('Cupón de campaña', campaign.code, brand.red) : ''}
+                        ${stackNote}
 
-        <div class="mail-anim" style="background:${brand.panelSoft};border-radius:20px;padding:22px;margin-top:18px;color:${brand.text};border:1px solid ${brand.line};">
-          <p style="margin:0 0 12px;font-size:16px;">
-            Aqui tienes tus codigos listos para usar en tu proxima impresion:
-          </p>
-          ${couponBlock('Cupon de bienvenida', welcome.code, brand.teal)}
-          ${campaign ? couponBlock('Cupon de campana', campaign.code, brand.red) : ''}
-          ${stackNote}
+                        <div style="margin-top:16px;padding:14px 16px;border-radius:14px;background:${brand.panel};border:1px solid ${brand.line};">
+                          <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:${brand.muted};margin-bottom:8px;">
+                            Cómo usar tu cupón
+                          </div>
+                          <ol style="margin:0;padding-left:18px;color:${brand.text};font-size:14px;">
+                            <li>Aplica el código al finalizar tu pedido.</li>
+                            <li>Si tienes dos cupones, puedes combinarlos en la misma compra.</li>
+                            <li>Guarda este correo para tenerlo a la mano.</li>
+                          </ol>
+                        </div>
 
-          <div style="margin-top:16px;padding:14px 16px;border-radius:14px;background:${brand.panel};border:1px solid ${brand.line};">
-            <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:${brand.muted};margin-bottom:8px;">
-              Como usar tu cupon
-            </div>
-            <ol style="margin:0;padding-left:18px;color:${brand.text};font-size:14px;">
-              <li>Aplica el codigo al finalizar tu pedido.</li>
-              <li>Si tienes dos cupones, puedes combinarlos en la misma compra.</li>
-              <li>Guarda este correo para tenerlo a la mano.</li>
-            </ol>
-          </div>
-
-          <div style="margin-top:18px;">
-            ${button}
-          </div>
-        </div>
-
-        <div style="margin-top:16px;color:${brand.muted};font-size:12px;">
-          Si no solicitaste este correo, puedes ignorarlo con tranquilidad.
-        </div>
-      </div>
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;border-collapse:collapse;">
+                          <tr>
+                            <td align="left">${button}</td>
+                            <td align="right" style="font-size:13px;color:${brand.muted};">⏳ Disponible por tiempo limitado</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:18px 22px;background:${brand.panel};border-top:1px solid ${brand.line};color:${brand.muted};font-size:12px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                          <tr>
+                            <td align="left">${logoFooterMarkup}</td>
+                            <td align="right" style="font-size:12px;">
+                              ${footerLink}
+                            </td>
+                          </tr>
+                        </table>
+                        <div style="margin-top:10px;">
+                          Si no solicitaste este correo, puedes ignorarlo con tranquilidad. Si necesitas ayuda, responde a este correo.
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </body>
   </html>`;
 }
