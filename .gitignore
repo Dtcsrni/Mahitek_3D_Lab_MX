@@ -100,3 +100,6 @@ Thumbs.db
 
 # NPM extraneous files
 @*/desktop.ini
+
+# Wrangler
+workers/mahiteklab-api/.wrangler/
