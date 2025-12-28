@@ -6,9 +6,11 @@ export function initHeaderScroll() {
   const header = document.querySelector('.header');
   if (!header) return;
 
+  const docEl = document.documentElement;
   let ticking = false;
   let lastScrollY = 0;
   let scrollDirection = 'up';
+  let lastHeaderHeight = header.offsetHeight;
 
   const SCROLL_THRESHOLD = 24;
   const HIDE_THRESHOLD = 100;
@@ -32,6 +34,12 @@ export function initHeaderScroll() {
 
     if (scrollDirection === 'up' || isNearTop || isMenuOpen) {
       header.classList.remove('is-hidden');
+    }
+
+    const nextHeight = header.offsetHeight;
+    if (nextHeight !== lastHeaderHeight) {
+      docEl.style.setProperty('--header-h', `${nextHeight}px`);
+      lastHeaderHeight = nextHeight;
     }
 
     lastScrollY = scrollY;

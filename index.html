@@ -105,6 +105,52 @@
 
     <!-- Navbar/Header con decoraciones cyberpunk -->
     <header class="header">
+      <div class="promo-ticker" role="region" aria-label="Combos activos">
+        <div class="promo-ticker__inner">
+          <div class="promo-ticker__frame">
+            <span class="promo-ticker__label">
+              <svg class="promo-ticker__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect
+                  x="2.5"
+                  y="4"
+                  width="19"
+                  height="12"
+                  rx="3"
+                  fill="rgba(6, 182, 212, 0.12)"
+                  stroke="var(--accent-cyan)"
+                  stroke-width="1.2"
+                />
+                <path d="M5 16.5h14" stroke="var(--accent-green)" stroke-width="1.2" stroke-linecap="round" />
+                <circle cx="7" cy="8" r="1.3" fill="var(--accent-cyan)">
+                  <animate attributeName="opacity" values="0.4;1;0.4" dur="2.4s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="11.5" cy="8" r="1.3" fill="var(--accent-green)">
+                  <animate
+                    attributeName="opacity"
+                    values="0.4;1;0.4"
+                    dur="2.4s"
+                    begin="0.6s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle cx="16" cy="8" r="1.3" fill="var(--accent-primary)">
+                  <animate
+                    attributeName="opacity"
+                    values="0.4;1;0.4"
+                    dur="2.4s"
+                    begin="1.2s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+              <span>Combos activos</span>
+            </span>
+            <div class="promo-ticker__track" data-promo-ticker aria-hidden="true"></div>
+            <span class="promo-ticker__sr sr-only" data-promo-ticker-sr></span>
+            <a class="promo-ticker__cta" href="#promos">Ver combos</a>
+          </div>
+        </div>
+      </div>
       <div class="nav-decorations" aria-hidden="true">
         <svg class="nav-deco nav-nopal nav-nopal-left" viewBox="0 0 40 60" fill="none">
           <path
@@ -197,6 +243,22 @@
                   opacity="0"
                 />
               </svg>
+              <svg class="logo-orbit" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="46"
+                  stroke="rgba(6, 182, 212, 0.35)"
+                  stroke-width="1.2"
+                  stroke-dasharray="2 6"
+                />
+                <circle cx="60" cy="60" r="40" stroke="rgba(16, 185, 129, 0.28)" stroke-width="1" />
+                <g class="logo-orbit-dots">
+                  <circle cx="60" cy="12" r="2.2" fill="var(--accent-cyan)" />
+                  <circle cx="108" cy="68" r="1.8" fill="var(--accent-green)" />
+                  <circle cx="24" cy="94" r="1.6" fill="var(--accent-primary)" />
+                </g>
+              </svg>
               <img
                 src="assets/img/logo-color.svg"
                 alt="Mahitek 3D Lab, marca gráfica"
@@ -209,12 +271,44 @@
             </a>
             <div class="nav-brand-info">
               <p class="nav-tagline">
-                <span class="nav-tagline-icon">🧩</span>
+                <span class="nav-tagline-icon" aria-hidden="true">
+                  <svg class="nav-icon nav-icon--tagline" viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M12 3.5l1.8 3.8 4.2.6-3 3 0.7 4.3-3.7-2-3.7 2 0.7-4.3-3-3 4.2-.6z"
+                      fill="var(--nav-icon-secondary)"
+                      opacity="0.85"
+                    />
+                    <circle cx="12" cy="12" r="6.5" fill="none" stroke="var(--nav-icon-primary)" stroke-width="1">
+                      <animate
+                        attributeName="stroke-dasharray"
+                        values="0 42;18 24;0 42"
+                        dur="3s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </svg>
+                </span>
                 <span class="nav-tagline-text">Impresión 3D artesanal</span>
                 <span class="tagline-glitch" aria-hidden="true">Impresión 3D artesanal</span>
               </p>
               <p class="nav-location">
-                <span class="nav-location-icon">📍</span>
+                <span class="nav-location-icon" aria-hidden="true">
+                  <svg class="nav-icon nav-icon--location" viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M12 3.5c-3.3 0-6 2.5-6 5.8 0 4.6 6 10.6 6 10.6s6-6 6-10.6c0-3.3-2.7-5.8-6-5.8z"
+                      fill="rgba(6, 182, 212, 0.18)"
+                      stroke="var(--nav-icon-primary)"
+                      stroke-width="1.2"
+                    />
+                    <circle cx="12" cy="9.2" r="2.2" fill="var(--nav-icon-secondary)">
+                      <animate attributeName="r" values="1.6;2.2;1.6" dur="2.6s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="12" cy="17.8" r="4.5" fill="none" stroke="var(--nav-icon-tertiary)" stroke-width="1">
+                      <animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite" />
+                      <animate attributeName="r" values="3.5;5.5" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                  </svg>
+                </span>
                 <span class="nav-location-text">Pachuca, México</span>
               </p>
             </div>
@@ -248,42 +342,225 @@
           <ul class="nav-menu" id="primary-menu">
             <li class="nav-item">
               <a href="#servicios" class="nav-link">
-                <span class="nav-emoji" aria-hidden="true">🛠️</span>
+                <svg class="nav-icon nav-icon--services" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect
+                    x="4"
+                    y="7"
+                    width="16"
+                    height="10"
+                    rx="2"
+                    fill="rgba(6, 182, 212, 0.12)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1.2"
+                  />
+                  <rect
+                    x="7"
+                    y="4"
+                    width="10"
+                    height="3"
+                    rx="1.5"
+                    fill="rgba(16, 185, 129, 0.2)"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1"
+                  />
+                  <rect x="10" y="14" width="4" height="3" rx="1" fill="var(--nav-icon-secondary)" opacity="0.8" />
+                  <path d="M12 17.5v3" stroke="var(--nav-icon-secondary)" stroke-width="1.2" stroke-linecap="round" />
+                  <g class="nav-icon__gear" transform="translate(17 7)">
+                    <circle cx="0" cy="0" r="2.2" fill="none" stroke="var(--nav-icon-primary)" stroke-width="1" />
+                    <path
+                      d="M0-3.4v1.2 M0 2.2v1.2 M-3.4 0h1.2 M2.2 0h1.2 M-2.4 -2.4l.8.8 M1.6 1.6l.8.8 M-2.4 2.4l.8-.8 M1.6 -1.6l.8-.8"
+                      stroke="var(--nav-icon-tertiary)"
+                      stroke-width="0.8"
+                      stroke-linecap="round"
+                    />
+                    <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0"
+                      to="360"
+                      dur="6s"
+                      repeatCount="indefinite"
+                      additive="sum"
+                    />
+                  </g>
+                  <path d="M7 11h10" stroke="var(--nav-icon-primary)" stroke-width="1" stroke-dasharray="2 2">
+                    <animate attributeName="stroke-dashoffset" values="0;4" dur="1.4s" repeatCount="indefinite" />
+                  </path>
+                </svg>
                 <span class="nav-link-text">Servicios</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#catalogo" class="nav-link">
-                <span class="nav-emoji" aria-hidden="true">📂</span>
+                <svg class="nav-icon nav-icon--catalog" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect
+                    x="4"
+                    y="5"
+                    width="12"
+                    height="7"
+                    rx="2"
+                    fill="rgba(6, 182, 212, 0.1)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1"
+                  />
+                  <rect
+                    x="6"
+                    y="9"
+                    width="12"
+                    height="7"
+                    rx="2"
+                    fill="rgba(16, 185, 129, 0.12)"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1"
+                  />
+                  <rect
+                    x="8"
+                    y="13"
+                    width="10"
+                    height="6"
+                    rx="1.6"
+                    fill="rgba(14, 165, 233, 0.1)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1"
+                  />
+                  <rect x="6.5" y="6.2" width="4" height="1.4" rx="0.7" fill="var(--nav-icon-secondary)" opacity="0.7">
+                    <animate attributeName="x" values="6.5;12.5;6.5" dur="2.4s" repeatCount="indefinite" />
+                  </rect>
+                  <path d="M9 16.5h6" stroke="var(--nav-icon-tertiary)" stroke-width="1" stroke-linecap="round">
+                    <animate
+                      attributeName="stroke-dasharray"
+                      values="0 12;6 6;0 12"
+                      dur="2.8s"
+                      repeatCount="indefinite"
+                    />
+                  </path>
+                </svg>
                 <span class="nav-link-text">Catálogo</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#proceso" class="nav-link">
-                <span class="nav-emoji" aria-hidden="true">⚙️</span>
+                <svg class="nav-icon nav-icon--process" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M4 16c3.5-6 8-8 16-10"
+                    fill="none"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-dasharray="6 6"
+                  >
+                    <animate attributeName="stroke-dashoffset" values="0;12" dur="2.6s" repeatCount="indefinite" />
+                  </path>
+                  <circle cx="4" cy="16" r="2.2" fill="var(--nav-icon-secondary)">
+                    <animate attributeName="r" values="1.6;2.2;1.6" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                  <circle
+                    cx="12"
+                    cy="11"
+                    r="2.2"
+                    fill="rgba(6, 182, 212, 0.2)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1"
+                  />
+                  <circle cx="20" cy="6" r="2.2" fill="var(--nav-icon-secondary)">
+                    <animate attributeName="r" values="2.2;1.6;2.2" dur="2.4s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
                 <span class="nav-link-text">Proceso</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#faq" class="nav-link">
-                <span class="nav-emoji" aria-hidden="true">❓</span>
+                <svg class="nav-icon nav-icon--faq" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect
+                    x="4"
+                    y="5"
+                    width="16"
+                    height="11"
+                    rx="3"
+                    fill="rgba(6, 182, 212, 0.12)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M9 16l-2 3 5-3h5"
+                    fill="none"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 8.2c1.4 0 2.2.7 2.2 1.6 0 .9-.6 1.2-1.4 1.6-.6.3-.8.6-.8 1.4"
+                    fill="none"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="12" cy="13.4" r="0.9" fill="var(--nav-icon-secondary)">
+                    <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
                 <span class="nav-link-text">FAQ</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#contacto" class="nav-link">
-                <span class="nav-emoji" aria-hidden="true">✉️</span>
+                <svg class="nav-icon nav-icon--contact" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M4 12l16-7-4 14-4-4-4 4z"
+                    fill="rgba(6, 182, 212, 0.15)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M9 12l4 3" stroke="var(--nav-icon-secondary)" stroke-width="1.2" stroke-linecap="round" />
+                  <circle cx="18" cy="6" r="2.2" fill="none" stroke="var(--nav-icon-secondary)" stroke-width="1">
+                    <animate attributeName="r" values="1.6;2.6;1.6" dur="2.2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.2s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
                 <span class="nav-link-text">Contacto</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
             <li class="nav-item nav-item-cta">
               <a href="https://m.me/mahitek3dlabmx" class="btn-messenger" target="_blank" rel="noopener noreferrer">
-                <span class="btn-messenger-icon" aria-hidden="true">💬</span>
+                <span class="btn-messenger-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M5 6.5h14a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H11l-4.5 3v-3H5a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3z"
+                      fill="rgba(6, 182, 212, 0.2)"
+                      stroke="var(--accent-cyan)"
+                      stroke-width="1.2"
+                      stroke-linejoin="round"
+                    />
+                    <circle cx="9" cy="12" r="1.2" fill="var(--accent-cyan)">
+                      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="13" cy="12" r="1.2" fill="var(--accent-green)">
+                      <animate
+                        attributeName="opacity"
+                        values="0.3;1;0.3"
+                        dur="1.8s"
+                        begin="0.4s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    <circle cx="17" cy="12" r="1.2" fill="var(--accent-primary)">
+                      <animate
+                        attributeName="opacity"
+                        values="0.3;1;0.3"
+                        dur="1.8s"
+                        begin="0.8s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </svg>
+                </span>
                 <span class="btn-messenger-text">Cotizar pieza</span>
                 <!-- Pulso cyberpunk -->
                 <span class="btn-pulse" aria-hidden="true"></span>

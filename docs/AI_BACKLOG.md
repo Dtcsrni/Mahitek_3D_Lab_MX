@@ -319,7 +319,7 @@ Formato de ticket recomendado:
 
 ---
 
-## AI-012 — CSS módulos: base en `assets/css/modules/*`
+## AI-012 - CSS módulos: base en `assets/css/modules/*`
 
 **Contexto**
 
@@ -344,3 +344,36 @@ Formato de ticket recomendado:
 **Criterios de aceptación**
 
 - No se rompen estilos y no se introducen nuevos tokens globales innecesarios.
+
+---
+
+## AI-013 - Navbar: refactor completo + letrero neón de promociones
+
+**Contexto**
+
+- La navbar necesita una mejora visual y estructural (menús, logo, iconos y jerarquía).
+- Se requiere integrar promociones activas en una banda tipo letrero neón con movimiento.
+
+**Cambios esperados**
+
+- Refactor de la navbar (estructura y estilos) sin romper la navegación.
+- Banda de promociones tipo letrero neón (marquee) con datos desde `data/promos.json`.
+- Iconos SVG del menú reemplazados por versiones animadas y detalladas.
+- Logo refinado con mejor legibilidad en desktop y mobile.
+
+**Archivos probables**
+
+- `index.html`
+- `assets/css/styles.css`
+- `assets/js/modules/*` (promos/nav/animaciones)
+- `assets/img/*` (si hay nuevos SVG)
+
+**Comandos de verificación**
+
+- `npm run validate`
+
+**Criterios de aceptación**
+
+- Navbar más clara en desktop y mobile, sin regresiones de navegación.
+- Banda neón visible y accesible con promos activas (sin fechas).
+- Iconos y logo mejorados, manteniendo performance.

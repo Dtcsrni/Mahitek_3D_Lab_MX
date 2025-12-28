@@ -12,6 +12,7 @@ import { initSocialLinks } from './modules/social.js';
 import { initCatalog, filterProducts, getProducts, calculateSalePrice } from './modules/catalog.js';
 import { initLazySections } from './modules/lazy-load.js';
 import { initPromos } from './modules/promos.js';
+import { initPromoTicker } from './modules/promo-ticker.js';
 import { initFAQ } from './modules/faq.js';
 import { initUrlState } from './modules/url-state.js';
 import { initHeroCounters } from './modules/hero-counters.js';
@@ -28,6 +29,7 @@ async function initApp() {
   initViewport();
   setupAnalytics();
   initNav({ onEvent: logEvent });
+  initPromoTicker();
   initHeaderScroll();
   initScrollReveal();
   initEmailLinks();
