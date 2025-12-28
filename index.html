@@ -343,49 +343,74 @@
             <li class="nav-item">
               <a href="#servicios" class="nav-link">
                 <svg class="nav-icon nav-icon--services" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <defs>
+                    <linearGradient id="nav-services-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="var(--nav-icon-primary)" stop-opacity="0.55" />
+                      <stop offset="100%" stop-color="var(--nav-icon-secondary)" stop-opacity="0.55" />
+                    </linearGradient>
+                  </defs>
                   <rect
-                    x="4"
-                    y="7"
-                    width="16"
-                    height="10"
-                    rx="2"
-                    fill="rgba(6, 182, 212, 0.12)"
-                    stroke="var(--nav-icon-primary)"
+                    x="3.5"
+                    y="6.5"
+                    width="17"
+                    height="11"
+                    rx="2.4"
+                    fill="rgba(6, 182, 212, 0.08)"
+                    stroke="url(#nav-services-grad)"
                     stroke-width="1.2"
                   />
                   <rect
-                    x="7"
+                    x="6"
                     y="4"
-                    width="10"
+                    width="12"
                     height="3"
-                    rx="1.5"
-                    fill="rgba(16, 185, 129, 0.2)"
+                    rx="1.4"
+                    fill="rgba(16, 185, 129, 0.18)"
                     stroke="var(--nav-icon-secondary)"
-                    stroke-width="1"
+                    stroke-width="0.9"
                   />
-                  <rect x="10" y="14" width="4" height="3" rx="1" fill="var(--nav-icon-secondary)" opacity="0.8" />
-                  <path d="M12 17.5v3" stroke="var(--nav-icon-secondary)" stroke-width="1.2" stroke-linecap="round" />
-                  <g class="nav-icon__gear" transform="translate(17 7)">
-                    <circle cx="0" cy="0" r="2.2" fill="none" stroke="var(--nav-icon-primary)" stroke-width="1" />
+                  <g class="nav-icon__float">
+                    <rect
+                      x="9.6"
+                      y="11"
+                      width="4.8"
+                      height="3.6"
+                      rx="1"
+                      fill="var(--nav-icon-secondary)"
+                      opacity="0.85"
+                    />
                     <path
-                      d="M0-3.4v1.2 M0 2.2v1.2 M-3.4 0h1.2 M2.2 0h1.2 M-2.4 -2.4l.8.8 M1.6 1.6l.8.8 M-2.4 2.4l.8-.8 M1.6 -1.6l.8-.8"
+                      d="M12 14.8v3.1"
+                      stroke="var(--nav-icon-secondary)"
+                      stroke-width="1.1"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="12" cy="18.3" r="1" fill="var(--nav-icon-tertiary)" class="nav-icon__pulse" />
+                  </g>
+                  <g class="nav-icon__rotate">
+                    <circle cx="18" cy="9" r="2.6" fill="none" stroke="var(--nav-icon-primary)" stroke-width="1" />
+                    <path
+                      d="M18 5.8v1.1 M18 11.1v1.1 M14.8 9h1.1 M20.1 9h1.1 M15.7 6.7l.8.8 M19.5 10.5l.8.8 M15.7 11.3l.8-.8 M19.5 7.5l.8-.8"
                       stroke="var(--nav-icon-tertiary)"
                       stroke-width="0.8"
                       stroke-linecap="round"
                     />
-                    <animateTransform
-                      attributeName="transform"
-                      type="rotate"
-                      from="0"
-                      to="360"
-                      dur="6s"
-                      repeatCount="indefinite"
-                      additive="sum"
-                    />
                   </g>
-                  <path d="M7 11h10" stroke="var(--nav-icon-primary)" stroke-width="1" stroke-dasharray="2 2">
-                    <animate attributeName="stroke-dashoffset" values="0;4" dur="1.4s" repeatCount="indefinite" />
-                  </path>
+                  <path
+                    class="nav-icon__dash"
+                    d="M6.5 9.5h10.5"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="1"
+                    stroke-dasharray="4 3"
+                  />
+                  <path
+                    d="M6.5 15.6h7"
+                    stroke="var(--nav-icon-tertiary)"
+                    stroke-width="0.9"
+                    stroke-linecap="round"
+                    opacity="0.7"
+                  />
+                  <circle cx="7" cy="15.6" r="0.7" fill="var(--nav-icon-secondary)" class="nav-icon__pulse" />
                 </svg>
                 <span class="nav-link-text">Servicios</span>
                 <span class="nav-link-bg"></span>
@@ -394,47 +419,76 @@
             <li class="nav-item">
               <a href="#catalogo" class="nav-link">
                 <svg class="nav-icon nav-icon--catalog" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <rect
-                    x="4"
-                    y="5"
-                    width="12"
-                    height="7"
-                    rx="2"
-                    fill="rgba(6, 182, 212, 0.1)"
-                    stroke="var(--nav-icon-primary)"
-                    stroke-width="1"
-                  />
+                  <defs>
+                    <linearGradient id="nav-catalog-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="var(--nav-icon-secondary)" stop-opacity="0.5" />
+                      <stop offset="100%" stop-color="var(--nav-icon-primary)" stop-opacity="0.6" />
+                    </linearGradient>
+                  </defs>
+                  <g class="nav-icon__float">
+                    <rect
+                      x="4"
+                      y="5"
+                      width="13.5"
+                      height="7.5"
+                      rx="2"
+                      fill="rgba(6, 182, 212, 0.08)"
+                      stroke="url(#nav-catalog-grad)"
+                      stroke-width="1.1"
+                    />
+                    <rect
+                      x="6.2"
+                      y="6.7"
+                      width="5"
+                      height="1.4"
+                      rx="0.7"
+                      fill="var(--nav-icon-secondary)"
+                      opacity="0.7"
+                    />
+                  </g>
                   <rect
                     x="6"
                     y="9"
-                    width="12"
-                    height="7"
+                    width="13"
+                    height="7.5"
                     rx="2"
-                    fill="rgba(16, 185, 129, 0.12)"
+                    fill="rgba(16, 185, 129, 0.1)"
                     stroke="var(--nav-icon-secondary)"
-                    stroke-width="1"
+                    stroke-width="1.1"
                   />
                   <rect
-                    x="8"
-                    y="13"
-                    width="10"
-                    height="6"
+                    x="8.2"
+                    y="12.5"
+                    width="11.2"
+                    height="6.2"
                     rx="1.6"
-                    fill="rgba(14, 165, 233, 0.1)"
+                    fill="rgba(14, 165, 233, 0.08)"
                     stroke="var(--nav-icon-primary)"
                     stroke-width="1"
                   />
-                  <rect x="6.5" y="6.2" width="4" height="1.4" rx="0.7" fill="var(--nav-icon-secondary)" opacity="0.7">
-                    <animate attributeName="x" values="6.5;12.5;6.5" dur="2.4s" repeatCount="indefinite" />
-                  </rect>
-                  <path d="M9 16.5h6" stroke="var(--nav-icon-tertiary)" stroke-width="1" stroke-linecap="round">
-                    <animate
-                      attributeName="stroke-dasharray"
-                      values="0 12;6 6;0 12"
-                      dur="2.8s"
-                      repeatCount="indefinite"
-                    />
-                  </path>
+                  <path
+                    d="M16.8 6.2l3 3-3 3-1.8-1.8v-2.4z"
+                    fill="rgba(6, 182, 212, 0.15)"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="0.9"
+                    class="nav-icon__pulse"
+                  />
+                  <path
+                    class="nav-icon__dash"
+                    d="M9.2 15.7h7.2"
+                    stroke="var(--nav-icon-tertiary)"
+                    stroke-width="1"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle cx="18.2" cy="14.2" r="1.1" fill="var(--nav-icon-secondary)" class="nav-icon__pulse" />
+                  <circle
+                    cx="10.2"
+                    cy="18"
+                    r="0.9"
+                    fill="var(--nav-icon-primary)"
+                    opacity="0.8"
+                    class="nav-icon__pulse"
+                  />
                 </svg>
                 <span class="nav-link-text">Catálogo</span>
                 <span class="nav-link-bg"></span>
@@ -444,29 +498,43 @@
               <a href="#proceso" class="nav-link">
                 <svg class="nav-icon nav-icon--process" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
-                    d="M4 16c3.5-6 8-8 16-10"
+                    class="nav-icon__dash"
+                    d="M4 17c3.8-6.2 8.2-8.4 16-11"
                     fill="none"
                     stroke="var(--nav-icon-primary)"
                     stroke-width="1.4"
                     stroke-linecap="round"
                     stroke-dasharray="6 6"
-                  >
-                    <animate attributeName="stroke-dashoffset" values="0;12" dur="2.6s" repeatCount="indefinite" />
-                  </path>
-                  <circle cx="4" cy="16" r="2.2" fill="var(--nav-icon-secondary)">
-                    <animate attributeName="r" values="1.6;2.2;1.6" dur="2s" repeatCount="indefinite" />
-                  </circle>
+                  />
+                  <path
+                    d="M13.5 9.4l2.2-.8-1.2 2.1"
+                    fill="none"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="nav-icon__float"
+                  />
+                  <circle cx="4" cy="17" r="2.4" fill="var(--nav-icon-secondary)" class="nav-icon__pulse" />
                   <circle
                     cx="12"
                     cy="11"
-                    r="2.2"
+                    r="2.4"
                     fill="rgba(6, 182, 212, 0.2)"
                     stroke="var(--nav-icon-primary)"
                     stroke-width="1"
                   />
-                  <circle cx="20" cy="6" r="2.2" fill="var(--nav-icon-secondary)">
-                    <animate attributeName="r" values="2.2;1.6;2.2" dur="2.4s" repeatCount="indefinite" />
-                  </circle>
+                  <circle cx="20" cy="6" r="2.4" fill="var(--nav-icon-secondary)" class="nav-icon__pulse" />
+                  <circle
+                    cx="12"
+                    cy="11"
+                    r="5.2"
+                    fill="none"
+                    stroke="var(--nav-icon-tertiary)"
+                    stroke-width="0.9"
+                    class="nav-icon__rotate"
+                  />
+                  <circle cx="12" cy="11" r="1" fill="var(--nav-icon-tertiary)" opacity="0.8" />
                 </svg>
                 <span class="nav-link-text">Proceso</span>
                 <span class="nav-link-bg"></span>
@@ -476,32 +544,49 @@
               <a href="#faq" class="nav-link">
                 <svg class="nav-icon nav-icon--faq" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <rect
-                    x="4"
-                    y="5"
-                    width="16"
-                    height="11"
-                    rx="3"
-                    fill="rgba(6, 182, 212, 0.12)"
+                    x="3.8"
+                    y="4.5"
+                    width="13.8"
+                    height="9.5"
+                    rx="2.6"
+                    fill="rgba(6, 182, 212, 0.1)"
                     stroke="var(--nav-icon-primary)"
-                    stroke-width="1.2"
+                    stroke-width="1.1"
+                  />
+                  <rect
+                    x="8.5"
+                    y="9"
+                    width="11.5"
+                    height="9.5"
+                    rx="2.6"
+                    fill="rgba(16, 185, 129, 0.1)"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1.1"
                   />
                   <path
-                    d="M9 16l-2 3 5-3h5"
+                    d="M10.2 17.8l-2.2 3.2 5.8-3.2"
                     fill="none"
                     stroke="var(--nav-icon-secondary)"
-                    stroke-width="1.2"
+                    stroke-width="1.1"
                     stroke-linecap="round"
                   />
                   <path
-                    d="M12 8.2c1.4 0 2.2.7 2.2 1.6 0 .9-.6 1.2-1.4 1.6-.6.3-.8.6-.8 1.4"
+                    d="M12.3 9.8c1.6 0 2.6.8 2.6 1.9 0 1.1-.7 1.5-1.6 2-.7.3-1 .7-1 1.6"
                     fill="none"
-                    stroke="var(--nav-icon-secondary)"
+                    stroke="var(--nav-icon-tertiary)"
                     stroke-width="1.2"
                     stroke-linecap="round"
                   />
-                  <circle cx="12" cy="13.4" r="0.9" fill="var(--nav-icon-secondary)">
-                    <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite" />
-                  </circle>
+                  <circle cx="12.3" cy="16.1" r="1" fill="var(--nav-icon-tertiary)" class="nav-icon__pulse" />
+                  <circle
+                    cx="12.3"
+                    cy="13.3"
+                    r="4.8"
+                    fill="none"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="0.8"
+                    class="nav-icon__pulse"
+                  />
                 </svg>
                 <span class="nav-link-text">FAQ</span>
                 <span class="nav-link-bg"></span>
@@ -518,10 +603,39 @@
                     stroke-linejoin="round"
                   />
                   <path d="M9 12l4 3" stroke="var(--nav-icon-secondary)" stroke-width="1.2" stroke-linecap="round" />
-                  <circle cx="18" cy="6" r="2.2" fill="none" stroke="var(--nav-icon-secondary)" stroke-width="1">
-                    <animate attributeName="r" values="1.6;2.6;1.6" dur="2.2s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.2s" repeatCount="indefinite" />
-                  </circle>
+                  <path
+                    class="nav-icon__dash"
+                    d="M6 16.6c2.5 1.2 5.4 1 8-0.2"
+                    fill="none"
+                    stroke="var(--nav-icon-tertiary)"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle
+                    cx="18"
+                    cy="6"
+                    r="2.3"
+                    fill="none"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="1"
+                    class="nav-icon__pulse"
+                  />
+                  <path
+                    d="M18.2 2.8c1.6.6 2.8 2 3 3.7"
+                    fill="none"
+                    stroke="var(--nav-icon-primary)"
+                    stroke-width="0.9"
+                    stroke-linecap="round"
+                    class="nav-icon__float"
+                  />
+                  <path
+                    d="M15.2 5.6c1.2-1.2 2.7-1.8 4.3-1.8"
+                    fill="none"
+                    stroke="var(--nav-icon-secondary)"
+                    stroke-width="0.9"
+                    stroke-linecap="round"
+                  />
                 </svg>
                 <span class="nav-link-text">Contacto</span>
                 <span class="nav-link-bg"></span>
