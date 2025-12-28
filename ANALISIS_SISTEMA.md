@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-26T15:23:57.941Z
-Fingerprint: sha256:d0b886fee55256d81c473f05136ee3d2b3d551be882ac117bc2a0860898654a9
+Generado: 2025-12-28T11:59:35.806Z
+Fingerprint: sha256:20e723ae8538c3077d8873d375481e8cc57c92a3dcccf4033b558c2d700e3257
 Archivos hasheados: 72
 
 Criterio del fingerprint (cambios significativos):
@@ -45,10 +45,10 @@ Inventario (excluye .git/node_modules/public):
 
 | Ext | Conteo |
 | --- | -----: |
-| `.svg` | 46 |
+| `.svg` | 62 |
 | `.js` | 41 |
 | `.md` | 31 |
-| `.ini` | 20 |
+| `.ini` | 23 |
 | `.json` | 17 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 9 |
@@ -69,8 +69,9 @@ HTML detectados (3):
 - index.html
 - qr/index.html
 
-Workflows (2):
+Workflows (3):
 - .github/workflows/ci.yml
+- .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
 Scripts npm (28):
@@ -104,9 +105,9 @@ Scripts npm (28):
 - `watch:css`
 
 Diagnostico rapido:
-- Datos: Productos: 39/39 activos (placeholders: 0) | Promos: 30/32 activas | FAQ: 20 items
+- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 30/32 activas | FAQ: 20 items
 - Imagenes sin referencia detectada (1): mark-icon.svg
-- Archivos de sistema detectados (20): .github/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, docs/archive/data/desktop.ini, docs/archive/desktop.ini, docs/badges/desktop.ini, ...
+- Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
 - NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
 - No se encontro LICENSE en la raiz (README lo referencia).
