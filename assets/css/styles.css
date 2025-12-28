@@ -8666,6 +8666,62 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   gap: 0.75rem;
 }
 
+.newsletter-details {
+  margin-top: 0.85rem;
+  border: 1px dashed rgba(148, 163, 184, 0.4);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: rgba(10, 15, 22, 0.5);
+}
+
+.newsletter-details[open] {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: inset 0 0 16px rgba(6, 182, 212, 0.12);
+}
+
+.newsletter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.newsletter-summary::-webkit-details-marker {
+  display: none;
+}
+
+.newsletter-summary-title {
+  font-size: 0.95rem;
+}
+
+.newsletter-summary-note {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+}
+
+.newsletter-summary-icon {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(45deg);
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.newsletter-details[open] .newsletter-summary-icon {
+  transform: rotate(-135deg);
+}
+
 .newsletter-field {
   display: grid;
   gap: 0.35rem;
@@ -8794,17 +8850,20 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 
 .floating-coupon__link {
   display: grid;
-  gap: 0.15rem;
-  padding: 0.75rem 1rem;
+  gap: 0.2rem;
+  padding: 0.85rem 1.1rem;
   border-radius: 18px;
-  border: 1px solid rgba(94, 234, 212, 0.45);
-  background: linear-gradient(140deg, rgba(6, 182, 212, 0.16), rgba(15, 23, 42, 0.85));
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  background:
+    linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(11, 17, 26, 0.95)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 6px, transparent 6px 12px);
   color: var(--text-primary);
   text-decoration: none;
   box-shadow:
     0 18px 40px rgba(2, 6, 23, 0.45),
     0 0 0 1px rgba(6, 182, 212, 0.2);
   position: relative;
+  overflow: hidden;
   transition:
     box-shadow var(--motion-duration-fast) var(--motion-ease),
     border-color var(--motion-duration-fast) var(--motion-ease);
@@ -8813,10 +8872,15 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 .floating-coupon__link::before {
   content: "";
   position: absolute;
-  inset: -8px;
-  border-radius: 24px;
-  border: 1px solid rgba(94, 234, 212, 0.35);
-  opacity: 0.4;
+  top: 50%;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  box-shadow: calc(100% + 28px) 0 0 0 var(--bg-dark);
+  transform: translateY(-50%);
+  opacity: 0.9;
   pointer-events: none;
 }
 
@@ -8827,7 +8891,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   border-radius: 16px;
   background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.14), transparent 70%);
   background-size: 200% 100%;
-  opacity: 0.3;
+  opacity: 0.35;
   pointer-events: none;
 }
 
@@ -8865,7 +8929,11 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.9);
+  color: rgba(148, 163, 184, 0.95);
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 999px;
+  width: fit-content;
+  padding: 0.2rem 0.55rem;
 }
 
 .floating-coupon__text {
@@ -8873,10 +8941,29 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   font-weight: 700;
 }
 
-.floating-coupon__cta {
+.floating-coupon__value {
   font-size: 0.8rem;
+  color: rgba(226, 232, 240, 0.75);
+}
+
+.floating-coupon__cta {
+  font-size: 0.85rem;
   color: var(--accent-cyan);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.floating-coupon__barcode {
+  height: 10px;
+  width: 100%;
+  margin-top: 0.25rem;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.35) 0 2px,
+    transparent 2px 5px
+  );
+  opacity: 0.7;
 }
 
 .floating-coupon:hover,
@@ -8886,7 +8973,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 
 .floating-coupon:hover .floating-coupon__link,
 .floating-coupon:focus-within .floating-coupon__link {
-  border-color: rgba(94, 234, 212, 0.8);
+  border-color: rgba(94, 234, 212, 0.9);
   box-shadow:
     0 26px 60px rgba(2, 6, 23, 0.5),
     0 0 35px rgba(6, 182, 212, 0.28);

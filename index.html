@@ -2325,9 +2325,12 @@
                     </svg>
                     Bitácora del taller
                   </h4>
-                  <span class="footer-card-note">Máx. 1 envío/mes</span>
+                  <span class="footer-card-note">1 envío/mes, sin spam</span>
                 </div>
-                <p class="footer-card-sub">Lanzamientos, packs y piezas nuevas. Pocos envíos y baja fácil.</p>
+                <p class="footer-card-sub">
+                  Entérate primero de lanzamientos, combos y piezas nuevas. Incluye cupón de bienvenida y baja cuando
+                  quieras.
+                </p>
                 <form
                   class="newsletter"
                   action="https://formspree.io/f/xayzlqny"
@@ -2340,52 +2343,59 @@
                     <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" required />
                     <button type="submit" class="btn btn-primary">Unirme</button>
                   </div>
-                  <div class="newsletter-fields">
-                    <div class="newsletter-field">
-                      <label for="newsletter-name">Nombre</label>
-                      <input
-                        id="newsletter-name"
-                        name="name"
-                        type="text"
-                        placeholder="Nombre (opcional)"
-                        autocomplete="name"
-                      />
+                  <details class="newsletter-details">
+                    <summary class="newsletter-summary">
+                      <span class="newsletter-summary-title">Agregar detalles opcionales</span>
+                      <span class="newsletter-summary-note">Opcional</span>
+                      <span class="newsletter-summary-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="newsletter-fields">
+                      <div class="newsletter-field">
+                        <label for="newsletter-name">Nombre</label>
+                        <input
+                          id="newsletter-name"
+                          name="name"
+                          type="text"
+                          placeholder="Nombre (opcional)"
+                          autocomplete="name"
+                        />
+                      </div>
+                      <div class="newsletter-field">
+                        <label for="newsletter-phone">WhatsApp</label>
+                        <input
+                          id="newsletter-phone"
+                          name="whatsapp"
+                          type="tel"
+                          placeholder="Número (opcional)"
+                          autocomplete="tel"
+                        />
+                      </div>
+                      <div class="newsletter-field">
+                        <label for="newsletter-project">Tipo de pieza</label>
+                        <select id="newsletter-project" name="project_type">
+                          <option value="">Selecciona (opcional)</option>
+                          <option value="regalo">Regalo con historia</option>
+                          <option value="deco">Decoración / hogar</option>
+                          <option value="funcional">Pieza funcional</option>
+                          <option value="prototipo">Prototipo / experimento</option>
+                          <option value="marca">Marca / colección</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                      </div>
+                      <div class="newsletter-field newsletter-field--wide">
+                        <label for="newsletter-notes">Qué quieres imprimir</label>
+                        <textarea
+                          id="newsletter-notes"
+                          name="notes"
+                          rows="2"
+                          placeholder="Idea, símbolos, texturas o referencias (opcional)"
+                        ></textarea>
+                      </div>
                     </div>
-                    <div class="newsletter-field">
-                      <label for="newsletter-phone">WhatsApp</label>
-                      <input
-                        id="newsletter-phone"
-                        name="whatsapp"
-                        type="tel"
-                        placeholder="Número (opcional)"
-                        autocomplete="tel"
-                      />
-                    </div>
-                    <div class="newsletter-field">
-                      <label for="newsletter-project">Tipo de pieza</label>
-                      <select id="newsletter-project" name="project_type">
-                        <option value="">Selecciona (opcional)</option>
-                        <option value="regalo">Regalo con historia</option>
-                        <option value="deco">Decoración / hogar</option>
-                        <option value="funcional">Pieza funcional</option>
-                        <option value="prototipo">Prototipo / experimento</option>
-                        <option value="marca">Marca / colección</option>
-                        <option value="otro">Otro</option>
-                      </select>
-                    </div>
-                    <div class="newsletter-field newsletter-field--wide">
-                      <label for="newsletter-notes">Qué quieres imprimir</label>
-                      <textarea
-                        id="newsletter-notes"
-                        name="notes"
-                        rows="2"
-                        placeholder="Idea, símbolos, texturas o referencias (opcional)"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <p class="newsletter-note">
-                    Campos opcionales. Registramos datos técnicos del navegador para mejorar recomendaciones.
-                  </p>
+                    <p class="newsletter-note">
+                      Campos opcionales. Usamos datos técnicos del navegador para afinar recomendaciones y tiempos.
+                    </p>
+                  </details>
                   <input id="newsletter-source-detail" name="source_detail" type="hidden" value="footer" />
                   <div class="newsletter-turnstile" id="newsletter-turnstile"></div>
                   <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
@@ -2434,11 +2444,13 @@
       <a
         class="floating-coupon__link"
         href="#newsletter"
-        aria-label="Ir a la bitácora del taller para beneficio de bienvenida"
+        aria-label="Activar cupón de bienvenida en la bitácora del taller"
       >
-        <span class="floating-coupon__badge">Beneficio</span>
+        <span class="floating-coupon__badge">Cupón</span>
         <span class="floating-coupon__text">Bienvenida</span>
-        <span class="floating-coupon__cta">Recibir</span>
+        <span class="floating-coupon__value">Beneficio exclusivo en tu primera pieza</span>
+        <span class="floating-coupon__cta">Activar ahora</span>
+        <span class="floating-coupon__barcode" aria-hidden="true"></span>
       </a>
     </div>
 

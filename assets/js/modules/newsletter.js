@@ -323,12 +323,12 @@ export function initNewsletter() {
       .trim()
       .toLowerCase();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setNewsletterStatus(statusEl, 'Escribe un correo válido.', 'error');
+      setNewsletterStatus(statusEl, 'Ingresa un correo válido para enviarte el cupón.', 'error');
       emailInput.focus();
       return;
     }
 
-    setNewsletterStatus(statusEl, 'Enviando...', 'info');
+    setNewsletterStatus(statusEl, 'Enviando registro...', 'info');
     if (button) button.disabled = true;
 
     const ignoreKeys = new Set(['email', 'source_detail', 'cf-turnstile-response']);
@@ -377,8 +377,8 @@ export function initNewsletter() {
       if (!apiBase) throw new Error('missing_api_base');
       const data = await subscribeViaWorker(apiBase, payload, timeoutMs);
       const msg = data.emailSent
-        ? '¡Gracias por registrarte! Tu cupón ya va en camino a tu correo.'
-        : '¡Gracias! Guardamos tu registro y reservamos tu cupón. El correo puede tardar unos minutos.';
+        ? '¡Listo! Tu cupón de bienvenida va en camino y te avisaremos de nuevos lanzamientos.'
+        : 'Registro confirmado. Tu cupón llegará en unos minutos.';
       setNewsletterStatus(statusEl, msg, 'ok');
       form.reset();
       if (turnstileApi) resetTurnstile(turnstileApi);
@@ -389,7 +389,7 @@ export function initNewsletter() {
           await subscribeViaForm(form, payload, timeoutMs);
           setNewsletterStatus(
             statusEl,
-            '¡Gracias! Te registramos en la lista. Tu cupón puede tardar unos minutos en llegar.',
+            'Registro completo. Tu cupón llegará en unos minutos.',
             'ok'
           );
           form.reset();
@@ -397,12 +397,16 @@ export function initNewsletter() {
         } catch (_) {
           setNewsletterStatus(
             statusEl,
-            'No se pudo enviar el registro. Intenta más tarde.',
+            'No pudimos registrar el correo. Intenta más tarde.',
             'error'
           );
         }
       } else {
-        setNewsletterStatus(statusEl, 'No se pudo enviar el registro. Intenta más tarde.', 'error');
+        setNewsletterStatus(
+          statusEl,
+          'No pudimos registrar el correo. Intenta más tarde.',
+          'error'
+        );
       }
     } finally {
       if (button) button.disabled = false;
