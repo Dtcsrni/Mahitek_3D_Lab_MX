@@ -67,7 +67,7 @@ function renderProducts({ onEvent } = {}) {
     carousel.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
         <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No hay productos disponibles con estos filtros.</p>
+        <p>No hay piezas disponibles con estos filtros.</p>
       </div>
     `;
     setupImageErrorFallbacks(carousel);
@@ -115,6 +115,12 @@ function renderProducts({ onEvent } = {}) {
       `
           : '';
 
+      const priceText = product.texto_precio
+        ? escapeHTML(String(product.texto_precio))
+        : product.precio_rango_mxn
+          ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN`
+          : `$${escapeHTML(String(product.precio_mxn))} MXN`;
+
       const sugerenciasMarkup = product.sugerencias
         ? `<p class="product-suggestions"><strong>Sugerencias:</strong> ${escapeHTML(
             product.sugerencias
@@ -138,12 +144,8 @@ function renderProducts({ onEvent } = {}) {
         ${product.categoria ? `<span class="product-line">${escapeHTML(product.categoria)}</span>` : ''}
       </div>
   <h3 class="product-name">${safeName}</h3>
-  <p class="product-price">${
-    product.precio_rango_mxn
-      ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN`
-      : `$${escapeHTML(String(product.precio_mxn))} MXN`
-  }</p>
-  <p class="product-price-note">Rango por personalización, tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
+  <p class="product-price">${priceText}</p>
+  <p class="product-price-note">Rango por tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
       <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
       ${detailMarkup}
       ${tagsMarkup}

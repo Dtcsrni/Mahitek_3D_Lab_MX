@@ -73,8 +73,8 @@ export async function initFAQ() {
     flushHealthReports();
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-faq.svg" alt="Preguntas frecuentes en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Estamos preparando nuevas respuestas. Escríbenos si tienes dudas.</p>
+        <img src="assets/img/placeholder-faq.svg" alt="Archivo del taller en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>Estamos curando respuestas. Escríbenos si quieres resolver algo puntual.</p>
       </div>
     `;
     revealInRoot(container);

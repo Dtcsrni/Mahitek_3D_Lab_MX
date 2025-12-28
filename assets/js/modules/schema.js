@@ -18,7 +18,7 @@ export async function initOrganizationSchema() {
       logo: 'https://mahitek3dlab.com/assets/img/mark-icon.svg',
       sameAs: [social.instagram, social.facebook, social.tiktok, social.youtube].filter(Boolean),
       description:
-        'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas personalizadas para regalos, decoración y proyectos creativos.',
+        'Laboratorio de impresión 3D en PETG desde Pachuca, México. Creamos piezas para regalos, decoración y proyectos creativos con acabados cuidados.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Pachuca',

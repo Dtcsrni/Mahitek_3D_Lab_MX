@@ -9162,3 +9162,117 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 }
 
 /* ===== FIN DE CLASES DE BADGES ===== */
+
+/* ===== THEME: NOCTURNE ===== */
+body.theme-nocturne {
+  --accent-cyan: #0f5e58;
+  --accent-green: #c08a3c;
+  --accent-red: #7b1f30;
+  --gradient-accent: linear-gradient(135deg, var(--accent-red), var(--accent-green));
+  --gradient-accent-animated: linear-gradient(
+    120deg,
+    var(--accent-red),
+    #2a0f18,
+    var(--accent-green)
+  );
+  --glass-bg: rgba(12, 8, 16, 0.72);
+  --glass-border: rgba(192, 138, 60, 0.2);
+  background:
+    radial-gradient(1200px 680px at 12% -10%, rgba(123, 31, 48, 0.45) 0%, transparent 60%),
+    radial-gradient(900px 620px at 85% 12%, rgba(15, 94, 88, 0.35) 0%, transparent 60%), #0a0b10;
+}
+
+body.theme-nocturne .section-alt {
+  background: rgba(123, 31, 48, 0.06);
+}
+
+body.theme-nocturne .accent-text {
+  color: #e5b277;
+  background: linear-gradient(120deg, #e5b277, #f6d79c, #e5b277);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-nocturne .accent-chip {
+  background: rgba(123, 31, 48, 0.28);
+  border-color: rgba(229, 178, 119, 0.35);
+}
+
+body.theme-nocturne .accent-chip::before {
+  background: linear-gradient(120deg, rgba(229, 178, 119, 0.35), rgba(123, 31, 48, 0.2));
+}
+
+body.theme-nocturne .btn-primary {
+  background: linear-gradient(135deg, #7b1f30, #c08a3c);
+  box-shadow: 0 10px 28px rgba(123, 31, 48, 0.35);
+}
+
+body.theme-nocturne .hero::before {
+  background-image:
+    linear-gradient(rgba(123, 31, 48, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 31, 48, 0.08) 1px, transparent 1px);
+}
+
+body.theme-nocturne .hero::after {
+  background-image:
+    radial-gradient(circle at 18% 25%, rgba(123, 31, 48, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 80% 65%, rgba(15, 94, 88, 0.25) 0%, transparent 55%),
+    radial-gradient(circle at 45% 85%, rgba(192, 138, 60, 0.2) 0%, transparent 55%);
+}
+
+body.theme-nocturne .hero-badge {
+  border-color: rgba(229, 178, 119, 0.35);
+  box-shadow: 0 0 18px rgba(123, 31, 48, 0.3);
+  animation: emberPulse 9s ease-in-out infinite;
+}
+
+body.theme-nocturne .cta-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(229, 178, 119, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+body.theme-nocturne .cta-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, rgba(123, 31, 48, 0.25) 0%, transparent 60%);
+  opacity: 0.6;
+  animation: emberDrift 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.theme-nocturne .cta-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.theme-nocturne .footer {
+  background: linear-gradient(180deg, rgba(10, 11, 16, 0.85) 0%, rgba(4, 4, 8, 0.95) 100%);
+}
+
+@keyframes emberPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(123, 31, 48, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(123, 31, 48, 0.4);
+  }
+}
+
+@keyframes emberDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-3%, 3%, 0) scale(1);
+  }
+}

@@ -211,8 +211,8 @@ export async function initPromos({ onEvent } = {}) {
     flushHealthReports();
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Estamos preparando nuevas promociones. Escríbenos y recibe un adelanto personalizado.</p>
+        <img src="assets/img/placeholder-promos.svg" alt="Lanzamientos en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>Estamos curando el próximo lanzamiento del taller. Escríbenos y recibe un adelanto exclusivo.</p>
       </div>
     `;
     revealInRoot(container);
@@ -235,8 +235,8 @@ export async function initPromos({ onEvent } = {}) {
     flushHealthReports();
     container.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Promociones en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No hay promociones activas en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
+        <img src="assets/img/placeholder-promos.svg" alt="Lanzamientos en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <p>No hay lanzamientos activos en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
       </div>
     `;
     revealInRoot(container);

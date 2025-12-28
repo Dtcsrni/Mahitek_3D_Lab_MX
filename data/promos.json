@@ -2,7 +2,7 @@
   {
     "id": "combo-trio-stickers",
     "tipo": "combo",
-    "titulo": "Sin miedo al éxito",
+    "titulo": "Arranque seguro",
     "subtitulo": "Trío + Pack 10 stickers",
     "precio_regular": 120,
     "precio_base": 120,
@@ -13,11 +13,11 @@
     "color_acento": "#FFB347",
     "animacion": "glow",
     "destacado": true,
-    "descripcion": "Diario aguantador y laptop con barrio. 3 llaveros PETG ($100) + 10 stickers laminados ($20).",
+    "descripcion": "Combo inicial para arrancar series pequeñas y equipar laptop o mochila con gráfica consistente. Nació como respuesta a pedidos cortos que buscan presencia sin complicarse.",
     "beneficios": [
       "Llaveros resistentes para uso diario",
       "Stickers laminados premium",
-      "Ideal para personalizar mochila y equipo"
+      "Ideal para equipar mochila y equipo"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -39,7 +39,7 @@
   {
     "id": "combo-pack4-stickers",
     "tipo": "combo",
-    "titulo": "Pa' la banda",
+    "titulo": "Para equipos",
     "subtitulo": "Pack 4 + Pack 25 stickers",
     "precio_regular": 180,
     "precio_base": 180,
@@ -50,11 +50,11 @@
     "color_acento": "#7EC8E3",
     "animacion": "bounce",
     "destacado": true,
-    "descripcion": "Regalas, pegas y presumes sin llorar en caja. 4 llaveros PETG ($130) + 25 stickers ($50).",
+    "descripcion": "Paquete pensado para equipos o regalos corporativos con volumen equilibrado. Ofrece cuatro llaveros y stickers suficientes para repartir con orden.",
     "beneficios": [
       "Volumen ideal para compartir",
-      "Stickers para toda la banda",
-      "Regalo corporativo económico"
+      "Stickers para equipos y grupos",
+      "Regalo corporativo accesible"
     ],
     "detalle_contenido": {
       "llaveros": {
@@ -76,7 +76,7 @@
   {
     "id": "combo-quinteto-premium",
     "tipo": "combo",
-    "titulo": "Con todo y salsa",
+    "titulo": "Edición completa",
     "subtitulo": "Quinteto + Stickers + Personalización",
     "precio_regular": 210,
     "precio_base": 210,
@@ -87,9 +87,9 @@
     "color_acento": "#9B59B6",
     "animacion": "pulse-soft",
     "destacado": true,
-    "descripcion": "Llega con estilo y quedas como tipazo. 5 llaveros ($165) + 15 stickers ($30) + texto personalizado ($15).",
+    "descripcion": "Edición de presentación cuidada para eventos y clientes. Integra cinco llaveros, stickers seleccionados y un detalle gráfico en una pieza.",
     "beneficios": [
-      "Personalización incluida (1 llavero con nombre)",
+      "Detalle gráfico incluido en 1 pieza",
       "Balance perfecto precio/cantidad",
       "Presentación premium"
     ],
@@ -114,7 +114,7 @@
   {
     "id": "combo-sexta-envío-gratis",
     "tipo": "combo",
-    "titulo": "Se arma, se arma",
+    "titulo": "Listo para entrega",
     "subtitulo": "Pack 6 + Pack 10 + Envío gratis",
     "precio_regular": 220,
     "precio_base": 220,
@@ -125,7 +125,7 @@
     "color_acento": "#E74C3C",
     "animacion": "fade-scale",
     "destacado": false,
-    "descripcion": "Lote listo para equipo o intercambio. 6 llaveros PETG ($200) + 10 stickers ($20) + envío incluido.",
+    "descripcion": "Combo orientado a grupos con envío incluido para simplificar logística. Se armó para cierres rápidos de proyectos y entregas en una sola vuelta.",
     "beneficios": [
       "Envío gratis asegurado",
       "Volumen para equipos",
@@ -163,7 +163,7 @@
     "color_acento": "#10B981",
     "animacion": "glow",
     "destacado": false,
-    "descripcion": "Historia que se presume. Colección PETG (4 pzas, $130) + 25 stickers ($50). Opción brillo +$10.",
+    "descripcion": "Paquete cultural con Quetzalcóatl articulado como pieza central. Diseñado para colecciones que buscan un punto focal con narrativa mexicana.",
     "beneficios": [
       "Diseño cultural exclusivo",
       "Colección completa mini",
@@ -201,7 +201,7 @@
     "color_acento": "#6366F1",
     "animacion": "slide-in",
     "destacado": false,
-    "descripcion": "Conversación garantizada en mochila y libreta. Textura única + pegote sabroso.",
+    "descripcion": "Set temático con zombies articulados pensado para escritorio y conversación. Nació de pedidos recurrentes de regalo con toque lúdico.",
     "beneficios": [
       "Relieve antideslizante",
       "Diseño de conversación",
@@ -238,7 +238,7 @@
     "color_acento": "#10B981",
     "animacion": "pulse-soft",
     "destacado": false,
-    "descripcion": "$5 c/u al llevar cualquier llavero. Remata tu carrito con pegote extra.",
+    "descripcion": "Sticker adicional para complementar pedidos y dar continuidad visual. Útil cuando se requiere un acento gráfico puntual.",
     "beneficios": [
       "Solo $5 por unidad",
       "Requiere compra de llavero",
@@ -269,7 +269,7 @@
     "color_acento": "#FF6B9D",
     "animacion": "pulse-soft",
     "destacado": false,
-    "descripcion": "Dos llaveros PETG de tu elección, empaque listo para obsequiar.",
+    "descripcion": "Dúo de llaveros PETG para parejas o equipos pequeños. Mantiene producción ágil y costo por pieza estable.",
     "beneficios": [
       "Selección libre",
       "Empaque incluido",
@@ -292,7 +292,7 @@
     "color_acento": "#FFB347",
     "animacion": "glow",
     "destacado": true,
-    "descripcion": "Tres llaveros PETG, el equilibrio perfecto entre variedad y precio.",
+    "descripcion": "Trío de llaveros para regalos rápidos y reposición ligera. Diseñado para entregas cortas con buena consistencia.",
     "beneficios": [
       "Mejor precio unitario",
       "Mix & match",
@@ -315,7 +315,7 @@
     "color_acento": "#7EC8E3",
     "animacion": "bounce",
     "destacado": false,
-    "descripcion": "Cuatro llaveros PETG, ideal para equipos o surtir colección.",
+    "descripcion": "Pack de 4 llaveros para kits o puntos de venta. Nació como formato base para pedidos recurrentes.",
     "beneficios": [
       "Menor costo por pieza",
       "Flexibilidad de diseños",
@@ -338,7 +338,7 @@
     "color_acento": "#9B59B6",
     "animacion": "slide-in",
     "destacado": false,
-    "descripcion": "Cinco llaveros PETG, cantidad óptima para grupos pequeños.",
+    "descripcion": "Pack de 5 llaveros con balance entre volumen y tiempo. Ideal para mini series y reposición programada.",
     "beneficios": [
       "Balance cantidad/precio",
       "Personalización múltiple",
@@ -361,7 +361,7 @@
     "color_acento": "#E74C3C",
     "animacion": "fade-scale",
     "destacado": false,
-    "descripcion": "Seis llaveros PETG, paquete completo para activaciones y eventos.",
+    "descripcion": "Pack de 6 llaveros para cubrir equipos completos o colecciones pequeñas. Se enfoca en producción eficiente.",
     "beneficios": [
       "Volumen medio",
       "Rotación de serie",
@@ -384,7 +384,7 @@
     "color_acento": "#2ECC71",
     "animacion": "shake",
     "destacado": true,
-    "descripcion": "Cuatro llaveros de la serie Zombies, colección completa.",
+    "descripcion": "Pack de 4 zombies fidget con movimiento continuo. Pensado para escritorios creativos y regalos en grupo.",
     "beneficios": [
       "Serie limitada",
       "Diseños exclusivos",
@@ -407,7 +407,7 @@
     "color_acento": "#F39C12",
     "animacion": "rotate-3d",
     "destacado": false,
-    "descripcion": "Tres llaveros mini + un colgante de Quetzalcóatl, símbolo cultural.",
+    "descripcion": "Mini Quetzalcóatl en pack de llaveros para acento cultural discreto. Nace como extensión ligera de la línea mexica.",
     "beneficios": [
       "Diseño prehispánico",
       "Tamaño versátil",
@@ -430,7 +430,7 @@
     "color_acento": "#1ABC9C",
     "animacion": "terminal-blink",
     "destacado": true,
-    "descripcion": "Tres llaveros de Tux (Linux), ideal para developers y sysadmins.",
+    "descripcion": "Pack Tux para equipos de desarrollo o comunidad tech. Aporta identidad discreta en llaves y mochilas.",
     "beneficios": [
       "Comunidad open-source",
       "Estilo minimal",
@@ -451,7 +451,7 @@
     "color_acento": "#34495E",
     "animacion": "flip",
     "destacado": false,
-    "descripcion": "Mini stasher impreso, ideal para llevar pastillas, audífonos o monedas.",
+    "descripcion": "Stasher compacto para objetos pequeños y organización básica. Se diseñó como entrada a la línea funcional.",
     "beneficios": [
       "Ultraportátil",
       "Cierre seguro",
@@ -473,7 +473,7 @@
     "color_acento": "#E67E22",
     "animacion": "pulse-fast",
     "destacado": true,
-    "descripcion": "Dos stashers mini con producción prioritaria, ideal para organizar EDC.",
+    "descripcion": "Dúo de stashers con prioridad de producción para pedidos urgentes. Pensado para quienes necesitan orden inmediato.",
     "beneficios": [
       "Producción acelerada",
       "Stock garantizado",
@@ -495,7 +495,7 @@
     "color_acento": "#95A5A6",
     "animacion": "float",
     "destacado": false,
-    "descripcion": "Figura decorativa mediana, balance entre detalle y tamaño.",
+    "descripcion": "Figura mediana con escala balanceada para escritorio o repisa. Nace como formato versátil para regalos formales.",
     "beneficios": [
       "Acabado premium",
       "Múltiples motivos",
@@ -518,7 +518,7 @@
     "color_acento": "#C0392B",
     "animacion": "swing",
     "destacado": true,
-    "descripcion": "Dos figuras medianas con prioridad en cola de impresión.",
+    "descripcion": "Par de figuras con prioridad en producción y empaque. Útil para sets de exhibición o regalos dobles.",
     "beneficios": [
       "Entrega acelerada",
       "Mix de diseños",
@@ -541,7 +541,7 @@
     "color_acento": "#16A085",
     "animacion": "zoom-in",
     "destacado": false,
-    "descripcion": "Tres llaveros con leves imperfecciones estéticas, funcionalidad completa.",
+    "descripcion": "Selección outlet con piezas de temporadas anteriores o variaciones de inventario. Mantiene estándar de impresión con precio especial.",
     "beneficios": [
       "Precio reducido",
       "Calidad funcional",
@@ -562,7 +562,7 @@
     "color_acento": "#F1C40F",
     "animacion": "countdown",
     "destacado": true,
-    "descripcion": "Compras mayores a $300 reciben upgrade a filamento translúcido premium en una pieza.",
+    "descripcion": "Servicio de producción en 72 horas hábiles cuando la agenda lo permite. Diseñado para entregas con fecha definida.",
     "beneficios": [
       "Material premium",
       "Sin costo extra",
@@ -583,7 +583,7 @@
     "color_acento": "#E91E63",
     "animacion": "confetti",
     "destacado": true,
-    "descripcion": "Cada fin de semana, el pack de 3 llaveros a precio especial.",
+    "descripcion": "Trío con entrega de fin de semana bajo disponibilidad. Se activa para proyectos que requieren salida rápida.",
     "beneficios": [
       "Precio fijo",
       "Elige tus diseños",
@@ -608,7 +608,7 @@
     "color_acento": "#3498DB",
     "animacion": "slide-bounce",
     "destacado": false,
-    "descripcion": "Compras mayores a $600 con envío gratis, precios unitarios intactos.",
+    "descripcion": "Pack escolar pensado para uso diario en mochilas y termos. Piezas resistentes con buena lectura a distancia.",
     "beneficios": [
       "Envío gratis",
       "Sin aumento de precios",
@@ -629,7 +629,7 @@
     "color_acento": "#27AE60",
     "animacion": "slide-right",
     "destacado": false,
-    "descripcion": "Todas las compras online mayores a $600 incluyen envío sin costo adicional.",
+    "descripcion": "Envío nacional con prioridad de despacho para pedidos en línea. Se coordina con guía y seguimiento.",
     "beneficios": [
       "Sin costo oculto",
       "Cobertura amplia",
@@ -647,7 +647,7 @@
     "color_acento": "#8E44AD",
     "animacion": "pop",
     "destacado": true,
-    "descripcion": "Recoge en ubicación y lleva un sticker edición limitada de regalo.",
+    "descripcion": "Pickup local con sticker incluido para entrega en mano. Ideal para clientes en Pachuca con agenda cerrada.",
     "beneficios": [
       "Sticker exclusivo",
       "Sin envío",
@@ -659,13 +659,13 @@
     "id": "preventa-48h",
     "tipo": "permanente",
     "titulo": "Preventa Programada",
-    "subtitulo": "Mismo precio + herraje Pro o 1 personalización en 1 pieza",
+    "subtitulo": "Mismo precio + herraje Pro o detalle extra en 1 pieza",
     "icono": "assets/img/promo-preventa.svg",
     "badge": "🗓️ Preventa",
     "color_acento": "#E74C3C",
     "animacion": "pulse-grow",
     "destacado": true,
-    "descripcion": "Ordena con anticipación y recibe herraje premium o personalización gratis.",
+    "descripcion": "Preventa con ventana de 48 horas para asegurar lugar en producción. Nació para planear entregas sin presión y con orden.",
     "beneficios": [
       "Upgrade incluido",
       "Planificación",
@@ -684,7 +684,7 @@
     "color_acento": "#9B59B6",
     "animacion": "sparkle",
     "destacado": true,
-    "descripcion": "Acumula puntos con cada compra y redime saldo en futuras órdenes.",
+    "descripcion": "Programa de membresía para acceso anticipado y disponibilidad preferente. Pensado para compradores recurrentes y micro-marcas.",
     "beneficios": [
       "1 punto por cada $20",
       "100 pts = $20 de saldo",
@@ -706,7 +706,7 @@
     "color_acento": "#F39C12",
     "animacion": "crown-glow",
     "destacado": true,
-    "descripcion": "Alcanza nivel PRO y accede a beneficios exclusivos: prioridad, revisión de archivo y reimpresión 30 días.",
+    "descripcion": "Nivel Pro para clientes frecuentes con beneficios de volumen y atención prioritaria. Diseñado para equipos que producen de forma continua.",
     "beneficios": [
       "Cola prioritaria",
       "Revisión técnica incluida",
@@ -727,7 +727,7 @@
     "color_acento": "#1ABC9C",
     "animacion": "handshake",
     "destacado": true,
-    "descripcion": "Refiere a un amigo: tú ganas $50 de saldo, tu amigo elige envío gratis o $40 de saldo en pedido ≥ $600.",
+    "descripcion": "Sistema de referidos entre personas con beneficio compartido. Ideal para comunidades y grupos de amigos.",
     "beneficios": [
       "$50 para quien refiere",
       "Envío gratis o $40 saldo para referido",
@@ -753,7 +753,7 @@
     "color_acento": "#06B6D4",
     "animacion": "slide-in",
     "destacado": false,
-    "descripcion": "Pack básico para personalizar laptop, termo o mochila. Acabado mate o brillante.",
+    "descripcion": "Pack de 10 stickers laminados con gráfica consistente. Nació como formato base para branding personal o de equipo.",
     "beneficios": [
       "Laminado premium resistente",
       "Mix de diseños disponibles",
@@ -775,7 +775,7 @@
     "id": "pack-stickers-15",
     "tipo": "stickers",
     "titulo": "Pack 15 Stickers",
-    "subtitulo": "Pegote sabroso",
+    "subtitulo": "Set consistente",
     "precio_regular": 30,
     "precio_base": 30,
     "ahorro": 0,
@@ -785,7 +785,7 @@
     "color_acento": "#FB923C",
     "animacion": "pulse-soft",
     "destacado": false,
-    "descripcion": "Cantidad perfecta para surtir y compartir. Variedad de diseños personalizables.",
+    "descripcion": "Pack de 15 stickers con variedad de diseños disponibles. Pensado para repartir en eventos o equipos.",
     "beneficios": [
       "Balance cantidad/precio",
       "Mayor variedad de diseños",
@@ -807,7 +807,7 @@
     "id": "pack-stickers-25",
     "tipo": "stickers",
     "titulo": "Pack 25 Stickers",
-    "subtitulo": "Pa' la banda",
+    "subtitulo": "Para equipos",
     "precio_regular": 50,
     "precio_base": 50,
     "ahorro": 0,
@@ -817,7 +817,7 @@
     "color_acento": "#E74C3C",
     "animacion": "bounce",
     "destacado": true,
-    "descripcion": "Pack grande para compartir con toda la banda. Ideal para eventos, activaciones o regalos grupales.",
+    "descripcion": "Pack de 25 stickers para volumen y distribución rápida. Acabado laminado listo para uso intensivo.",
     "beneficios": [
       "Mejor precio por unidad",
       "Volumen para compartir",
@@ -836,5 +836,3 @@
     "estado": "activo"
   }
 ]
-
-
