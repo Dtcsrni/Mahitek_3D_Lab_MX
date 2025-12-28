@@ -8313,6 +8313,16 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 .payment-intro {
   display: grid;
   gap: 0.7rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+}
+
+.payment-eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.9);
 }
 
 .payment-highlights {
@@ -8375,7 +8385,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   --pay-accent: rgba(94, 234, 212, 0.95);
   --pay-soft: rgba(94, 234, 212, 0.12);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem 0.8rem;
   border-radius: 14px;
@@ -8522,7 +8532,14 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 
 .payment-meta {
   display: grid;
-  gap: 0.15rem;
+  gap: 0.2rem;
+}
+
+.payment-meta-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .payment-meta strong {
@@ -8530,8 +8547,31 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--text-primary);
 }
 
+.payment-meta-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--pay-accent);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(2, 6, 23, 0.35);
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+}
+
 .payment-meta small {
   color: rgba(226, 232, 240, 0.7);
+}
+
+.payment-meta-note {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.78);
+}
+
+.payment-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.85);
 }
 
 .footer-trust {
