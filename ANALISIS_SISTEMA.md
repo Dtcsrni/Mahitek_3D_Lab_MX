@@ -28,9 +28,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-28T13:00:02.899Z
-Fingerprint: sha256:8268c9dde054d01039a5da9512b5effd8e85192b1a9f424505fd24c20ce61627
-Archivos hasheados: 72
+Generado: 2025-12-28T13:35:38.103Z
+Fingerprint: sha256:401a716ef71f006ae77f05c5cdf1e4a56431322321a9f9952595ab1dde7c002b
+Archivos hasheados: 73
 
 Criterio del fingerprint (cambios significativos):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -46,7 +46,7 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 62 |
-| `.js` | 41 |
+| `.js` | 42 |
 | `.md` | 31 |
 | `.ini` | 23 |
 | `.json` | 17 |
