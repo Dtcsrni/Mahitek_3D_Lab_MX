@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-28T12:24:30.705Z
-Fingerprint: sha256:9b404f7d787f4bab0375b81e25528b5a03e7d055ba1d0287dd63c61ed180bf0c
+Generado: 2025-12-28T12:45:12.515Z
+Fingerprint: sha256:49ca49be1b73c7bee3a37bbafd770210a5284bdddc12fb21ae56d4a832cfb415
 Archivos hasheados: 72
 
 Criterio del fingerprint (cambios significativos):
@@ -105,7 +105,7 @@ Scripts npm (28):
 - `watch:css`
 
 Diagnostico rapido:
-- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 30/32 activas | FAQ: 20 items
+- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 3/32 activas | FAQ: 20 items
 - Imagenes sin referencia detectada (1): mark-icon.svg
 - Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
