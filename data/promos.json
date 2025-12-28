@@ -147,7 +147,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "combo-quetzalcoatl-cultural",
@@ -185,7 +185,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "combo-zombies-conversacion",
@@ -222,7 +222,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "addon-sticker-individual",
@@ -254,7 +254,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-duo",
@@ -277,7 +277,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-trio",
@@ -300,7 +300,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-pack4",
@@ -323,7 +323,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-pack5",
@@ -346,7 +346,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-pack6",
@@ -369,7 +369,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-zombie4",
@@ -392,7 +392,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-quetzal-mini",
@@ -415,7 +415,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-tux-dev",
@@ -438,7 +438,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "stasher-mini",
@@ -459,7 +459,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "stasher-duo-priority",
@@ -481,7 +481,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "figura-med",
@@ -503,7 +503,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "figura-duo-priority",
@@ -526,7 +526,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "key-outlet",
@@ -549,7 +549,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "maker-72h",
@@ -570,7 +570,7 @@
     ],
     "desde": "2025-10-22",
     "hasta": "2025-10-25",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "weekend-trio",
@@ -595,7 +595,7 @@
     ],
     "desde": "2025-10-01",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "back-to-school",
@@ -635,7 +635,7 @@
       "Cobertura amplia",
       "Rastreo incluido"
     ],
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "click-pick-sticker",
@@ -653,7 +653,7 @@
       "Sin envío",
       "Entrega inmediata"
     ],
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "preventa-48h",
@@ -672,7 +672,7 @@
       "Sin costo extra"
     ],
     "tiempo_minimo": "Agenda previa",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "club-mahitek",
@@ -693,7 +693,7 @@
     "puntos_por_peso": 0.05,
     "conversion_pts_saldo": 0.2,
     "tope_descuento": 50,
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "nivel-pro",
@@ -715,7 +715,7 @@
     "compras_requeridas": 3,
     "dias_periodo": 60,
     "monto_alternativo": 1500,
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "referidos-p2p",
@@ -737,7 +737,7 @@
     "beneficio_referido_opcion1": "Envío gratis",
     "beneficio_referido_opcion2": 40,
     "monto_minimo_referido": 600,
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "pack-stickers-10",
@@ -769,7 +769,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "pack-stickers-15",
@@ -801,7 +801,7 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   },
   {
     "id": "pack-stickers-25",
@@ -833,6 +833,6 @@
     },
     "desde": "2025-10-24",
     "hasta": "2025-12-31",
-    "estado": "activo"
+    "estado": "inactivo"
   }
 ]
