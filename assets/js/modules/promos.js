@@ -273,8 +273,16 @@ export async function initPromos({ onEvent } = {}) {
       `;
       }
 
+      const accentColor =
+        typeof promo.color_acento === 'string' &&
+        /^#([0-9a-fA-F]{3}){1,2}$/.test(promo.color_acento)
+          ? promo.color_acento
+          : '';
+      const badgeStyle = accentColor ? ` style="--badge-color: ${accentColor}"` : '';
       const badgeHTML = promo.badge
-        ? `<span class="promo-badge">${escapeHTML(promo.badge)}</span>`
+        ? `<span class="promo-badge"${badgeStyle}><span class="promo-badge-text">${escapeHTML(
+            promo.badge
+          )}</span></span>`
         : '';
 
       const beneficiosHTML =
@@ -288,11 +296,9 @@ export async function initPromos({ onEvent } = {}) {
 
       let validezHTML = '';
       if (promo.tipo === 'permanente') {
-        validezHTML = '<p class="promo-validez">Promoción permanente</p>';
-      } else if (promo.desde && promo.hasta) {
-        validezHTML = `<p class="promo-validez">Válido ${escapeHTML(
-          formatDate(promo.desde)
-        )} - ${escapeHTML(formatDate(promo.hasta))}</p>`;
+        validezHTML = '<p class="promo-validez">Beneficio permanente</p>';
+      } else {
+        validezHTML = '<p class="promo-validez">Disponibilidad limitada</p>';
       }
 
       const ctaHTML = promo.cta_url
@@ -333,7 +339,7 @@ export async function initPromos({ onEvent } = {}) {
   <article class="card glass promo-card ${destacadoClass} ${animClass} animate-delay-${Math.min(
     index,
     5
-  )}" 
+  )}"${accentColor ? ` style="--promo-accent: ${accentColor}"` : ''} 
        data-animate="fade-up" 
        data-promo-tipo="${promo.tipo}">
       ${badgeHTML ? `<div class="promo-badge-wrapper">${badgeHTML}</div>` : ''}
