@@ -206,6 +206,7 @@ export function initNewsletter() {
   let turnstilePromise = null;
   let turnstileWidgetId = null;
   let turnstileToken = '';
+  let turnstilePrimed = false;
 
   function loadTurnstile() {
     if (turnstilePromise) return turnstilePromise;
@@ -259,10 +260,17 @@ export function initNewsletter() {
     turnstileToken = '';
   }
 
-  if (turnstileSiteKey) {
+  const primeTurnstile = () => {
+    if (!turnstileSiteKey || turnstilePrimed) return;
+    turnstilePrimed = true;
     loadTurnstile()
       .then(api => renderTurnstile(api))
       .catch(() => {});
+  };
+
+  if (turnstileSiteKey) {
+    form.addEventListener('focusin', primeTurnstile, { once: true });
+    form.addEventListener('pointerdown', primeTurnstile, { once: true });
   }
 
   const floatingCta = document.querySelector('.floating-coupon');
@@ -352,6 +360,7 @@ export function initNewsletter() {
     let turnstileApi = null;
     if (turnstileSiteKey) {
       try {
+        primeTurnstile();
         turnstileApi = await loadTurnstile();
       } catch (_) {
         setNewsletterStatus(
