@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-28T15:10:20.281Z
-Fingerprint: sha256:a26662f7ead7a975d307eb89f5b6750964687d871fdab0a5d7a391170c2b3d52
+Generado: 2026-01-01T05:30:05.270Z
+Fingerprint: sha256:e8f352431077512e8a1847154543fb350568bd5021a98740aeecdba8ceb79ec4
 Archivos hasheados: 73
 
 Criterio del fingerprint (cambios significativos):
@@ -48,7 +48,6 @@ Inventario (excluye .git/node_modules/public):
 | `.svg` | 62 |
 | `.js` | 42 |
 | `.md` | 31 |
-| `.ini` | 23 |
 | `.json` | 17 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 9 |
@@ -69,9 +68,8 @@ HTML detectados (3):
 - index.html
 - qr/index.html
 
-Workflows (3):
+Workflows (2):
 - .github/workflows/ci.yml
-- .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
 Scripts npm (28):
@@ -105,13 +103,11 @@ Scripts npm (28):
 - `watch:css`
 
 Diagnostico rapido:
-- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 3/32 activas | FAQ: 20 items
+- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/32 activas | FAQ: 20 items
 - Imagenes sin referencia detectada (1): mark-icon.svg
-- Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
 - NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
 - No se encontro LICENSE en la raiz (README lo referencia).
 - lighthouserc.ci.json existe, pero no esta referenciado en workflows.
-- public/ existe en disco (salida generada). Verifica que no se versiona.
 
 <!-- AUTO-GENERATED:END -->
