@@ -12,6 +12,38 @@ import { revealInRoot } from './scroll-reveal.js';
 
 let faqLoaded = false;
 
+function getFaqDisclosure() {
+  return document.getElementById('faq-disclosure');
+}
+
+function openFaqDisclosure(target) {
+  const disclosure = getFaqDisclosure();
+  if (!disclosure) return false;
+  if (!disclosure.open) {
+    disclosure.open = true;
+  }
+  if (target && target.id !== 'faq') {
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: 'start' });
+    });
+  }
+  return true;
+}
+
+function handleFaqHash() {
+  const hash = window.location.hash;
+  if (!hash || hash.length < 2) return;
+  const id = decodeURIComponent(hash.slice(1));
+  const target = document.getElementById(id);
+  if (!target) return;
+  if (target.id === 'faq' || target.closest('#faq')) {
+    openFaqDisclosure(target);
+    if (target.classList.contains('faq-item')) {
+      target.open = true;
+    }
+  }
+}
+
 function getFAQTheme(categoryLabel) {
   const key = normalizeKey(categoryLabel);
 
@@ -154,6 +186,15 @@ export async function initFAQ() {
   const items = Array.from(container.querySelectorAll('.faq-item'));
   const featuredStat = document.querySelector('[data-faq-featured]');
   const totalStat = document.querySelector('[data-faq-total]');
+  const disclosure = getFaqDisclosure();
+
+  if (disclosure) {
+    disclosure.addEventListener('toggle', () => {
+      if (disclosure.open) {
+        revealInRoot(disclosure);
+      }
+    });
+  }
 
   if (totalStat) totalStat.textContent = faqData.length;
   if (featuredStat) featuredStat.textContent = featured.length;
@@ -205,10 +246,8 @@ export async function initFAQ() {
     countEl.textContent = `Mostrando ${items.length} de ${items.length} preguntas`;
   }
 
-  const targeted = document.querySelector(location.hash);
-  if (targeted && targeted.classList.contains('faq-item')) {
-    targeted.open = true;
-  }
+  handleFaqHash();
+  window.addEventListener('hashchange', handleFaqHash);
 
   revealInRoot(container);
   injectFAQSchema(faqData);

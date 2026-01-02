@@ -6988,6 +6988,73 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   height: 44px;
 }
 
+.faq-disclosure {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-disclosure__summary {
+  list-style: none;
+  cursor: pointer;
+  display: block;
+}
+
+.faq-disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-disclosure__summary:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.5);
+  outline-offset: 4px;
+}
+
+.faq-disclosure__summary-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.faq-disclosure__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  background: rgba(15, 23, 42, 0.65);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.faq-disclosure__label--open {
+  display: none;
+}
+
+.faq-disclosure[open] .faq-disclosure__label--open {
+  display: inline;
+}
+
+.faq-disclosure[open] .faq-disclosure__label--closed {
+  display: none;
+}
+
+.faq-disclosure__icon {
+  display: inline-flex;
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.faq-disclosure[open] .faq-disclosure__icon {
+  transform: rotate(180deg);
+}
+
+.faq-disclosure__content {
+  margin-top: var(--space-xl);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .ui-icon--draw .icon-stroke {
     stroke-dasharray: 140;
