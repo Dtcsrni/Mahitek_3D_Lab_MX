@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2026-01-02T06:04:29.334Z
-Fingerprint: sha256:59a5b21335d4c9b73461158a290cf8f5180ca22b673e466f8d77018e8c5ed852
+Generado: 2026-01-02T06:40:47.098Z
+Fingerprint: sha256:2d8bc2939eab68e149076bf6bbbb269a70e8b91313906e3685ea86a75181224f
 Archivos hasheados: 74
 
 Criterio del fingerprint (cambios significativos):
@@ -105,7 +105,7 @@ Scripts npm (28):
 - `watch:css`
 
 Diagnostico rapido:
-- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 20 items
+- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 18 items
 - index.html no referencia assets/css/modules/animations.css.
 - CSS sin referencia en index.html (1): animations.css
 - Modulos JS sin import en app.js (6): faq.js, hero-counters.js, promos.js, scroll-narrative.js, social.js, svg-animations.js
