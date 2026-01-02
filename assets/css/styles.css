@@ -2479,6 +2479,24 @@ html[lang="es-MX"] .show-when-mx {
   display: none !important;
 }
 
+button[data-action] {
+  cursor: pointer;
+}
+
+button[data-action]:focus-visible {
+  outline: 2px solid rgba(6, 182, 212, 0.6);
+  outline-offset: 3px;
+}
+
+.is-highlighted {
+  box-shadow:
+    0 0 0 2px rgba(6, 182, 212, 0.35),
+    0 0 20px rgba(6, 182, 212, 0.2);
+  transition:
+    box-shadow var(--motion-duration-fast) var(--motion-ease),
+    transform var(--motion-duration-fast) var(--motion-ease);
+}
+
 /* Hero Section Mejorado con Animaciones Fluidas */
 .hero {
   padding: 5rem 0 3rem;
@@ -4774,7 +4792,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   margin-top: 0.5rem;
 }
 
-.workflow-tags span {
+.workflow-tags .workflow-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -9565,18 +9583,39 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   overflow: hidden;
 }
 
-.process-timelapse-pulse {
+.process-timelapse-video {
   position: absolute;
-  inset: 18px;
-  border-radius: 50%;
-  border: 1px solid rgba(94, 234, 212, 0.35);
-  animation: process-timelapse-pulse 3.2s ease-in-out infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 0;
 }
 
 .process-timelapse-play {
-  font-size: 2rem;
-  color: #fff;
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(8, 12, 18, 0.7);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
   text-shadow: 0 0 18px rgba(56, 189, 248, 0.5);
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease);
+}
+
+.process-timelapse-play:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
 }
 
 .process-timelapse-label {
@@ -9589,6 +9628,7 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.3);
   color: var(--text-secondary);
+  z-index: 1;
 }
 
 .process-timelapse-body {

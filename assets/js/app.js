@@ -6,6 +6,7 @@ import { initViewport } from './modules/viewport.js';
 import { initNav } from './modules/nav.js';
 import { initHeaderScroll } from './modules/header-scroll.js';
 import { initScrollReveal } from './modules/scroll-reveal.js';
+import { initButtonActions } from './modules/button-actions.js';
 import { initEmailLinks } from './modules/email.js';
 import { initNewsletter } from './modules/newsletter.js';
 import { initCatalog, filterProducts, getProducts, calculateSalePrice } from './modules/catalog.js';
@@ -15,6 +16,7 @@ import { initUrlState } from './modules/url-state.js';
 import { addHealthReport, flushHealthReports } from './modules/health-report.js';
 import { runSystemChecks } from './modules/system-checks.js';
 import { initOrganizationSchema } from './modules/schema.js';
+import { initTimelapseVideo } from './modules/timelapse-video.js';
 
 ResizeManager.init();
 
@@ -109,6 +111,8 @@ async function initApp() {
   initViewport();
   setupAnalytics();
   initNav({ onEvent: logEvent });
+  initButtonActions();
+  initTimelapseVideo();
   initPromoTicker();
   initHeaderScroll();
   initScrollReveal();
