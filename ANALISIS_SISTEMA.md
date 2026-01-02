@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2026-01-02T01:25:01.558Z
-Fingerprint: sha256:a907cff9a9df6800fc33588778322674f0a78b180bf0fd913ff04c285b63be3e
+Generado: 2026-01-02T03:59:31.744Z
+Fingerprint: sha256:778b7ff922b74e6a871ad13218a32087c717eda8b53472e3844e37350e84f1f3
 Archivos hasheados: 73
 
 Criterio del fingerprint (cambios significativos):
@@ -106,6 +106,7 @@ Scripts npm (28):
 
 Diagnostico rapido:
 - Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 20 items
+- Modulos JS sin import en app.js (3): hero-counters.js, scroll-narrative.js, svg-animations.js
 - Imagenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
 - Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
