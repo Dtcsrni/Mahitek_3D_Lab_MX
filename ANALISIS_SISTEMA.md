@@ -28,9 +28,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2026-01-02T03:59:31.744Z
-Fingerprint: sha256:778b7ff922b74e6a871ad13218a32087c717eda8b53472e3844e37350e84f1f3
-Archivos hasheados: 73
+Generado: 2026-01-02T05:05:24.018Z
+Fingerprint: sha256:eb88299a01ef28825c24ad1830591b7b20479a4e811efb919fdd1e92b935fa0c
+Archivos hasheados: 74
 
 Criterio del fingerprint (cambios significativos):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -52,8 +52,8 @@ Inventario (excluye .git/node_modules/public):
 | `.json` | 17 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 9 |
+| `.css` | 4 |
 | `.html` | 3 |
-| `.css` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
 | `.code-workspace` | 1 |
@@ -106,7 +106,9 @@ Scripts npm (28):
 
 Diagnostico rapido:
 - Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 20 items
-- Modulos JS sin import en app.js (3): hero-counters.js, scroll-narrative.js, svg-animations.js
+- index.html no referencia assets/css/modules/animations.css.
+- CSS sin referencia en index.html (1): animations.css
+- Modulos JS sin import en app.js (6): faq.js, hero-counters.js, promos.js, scroll-narrative.js, social.js, svg-animations.js
 - Imagenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
 - Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
