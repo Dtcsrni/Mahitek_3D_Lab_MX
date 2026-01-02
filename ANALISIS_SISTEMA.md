@@ -28,9 +28,9 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2026-01-02T06:45:45.074Z
-Fingerprint: sha256:041878eba873a40d34caea12c5e978168077c34442b276c8471f3f79adcdfc63
-Archivos hasheados: 74
+Generado: 2026-01-02T07:40:43.875Z
+Fingerprint: sha256:69016702f04b99c41e73c4e23f0e2a089e9396fcde97c30393f64b391031397a
+Archivos hasheados: 76
 
 Criterio del fingerprint (cambios significativos):
 - Root: `index.html`, `manifest.json`, `robots.txt`, `sitemap.xml`, `package.json`, `package-lock.json`
@@ -46,9 +46,9 @@ Inventario (excluye .git/node_modules/public):
 | Ext | Conteo |
 | --- | -----: |
 | `.svg` | 62 |
-| `.js` | 42 |
+| `.js` | 44 |
 | `.md` | 31 |
-| `.ini` | 23 |
+| `.ini` | 24 |
 | `.json` | 17 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 9 |
@@ -56,6 +56,9 @@ Inventario (excluye .git/node_modules/public):
 | `.html` | 3 |
 | `.yml` | 2 |
 | `.png` | 2 |
+| `.jpg` | 1 |
+| `.mp4` | 1 |
+| `.webm` | 1 |
 | `.code-workspace` | 1 |
 | `.txt` | 1 |
 | `.xml` | 1 |
@@ -110,7 +113,7 @@ Diagnostico rapido:
 - CSS sin referencia en index.html (1): animations.css
 - Modulos JS sin import en app.js (6): faq.js, hero-counters.js, promos.js, scroll-narrative.js, social.js, svg-animations.js
 - Imagenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
-- Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
+- Archivos de sistema detectados (24): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, assets/video/desktop.ini, data/desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
 - NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
 - No se encontro LICENSE en la raiz (README lo referencia).
