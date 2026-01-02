@@ -1,7 +1,7 @@
 [
   {
     "q": "¿Cómo hago un pedido?",
-    "a": "Comparte tu idea (foto, archivo 3D, dibujo o referencia). Respondemos con una lectura inicial: propuesta de materiales/acabados y estimación en 1 a 2 días hábiles.",
+    "a": "Comparte tu idea (foto, archivo 3D, dibujo o referencia). Respondemos con una lectura inicial: propuesta de materiales/acabados y estimacion clara.",
     "categoria": "pedidos",
     "destacada": true
   },
@@ -13,7 +13,7 @@
   },
   {
     "q": "¿Cuánto tarda mi pedido?",
-    "a": "Piezas pequeñas: 2 a 5 días. Proyectos medianos o complejos: 5 a 10 días. Ajustamos tiempos cuando apruebas el diseño.",
+    "a": "Depende de la complejidad y carga. Confirmamos tiempos al aprobar el diseno.",
     "categoria": "tiempos",
     "destacada": true
   },
@@ -29,7 +29,7 @@
   },
   {
     "q": "¿Envían a todo México?",
-    "a": "Sí, envío nacional por paquetería. El tiempo suele ser de 2 a 5 días hábiles según zona.",
+    "a": "Si, envio nacional por paqueteria. El tiempo varia segun zona; te confirmamos al enviar.",
     "categoria": "envíos"
   },
   {
@@ -93,4 +93,5 @@
     "categoria": "privacidad"
   }
 ]
+
 
