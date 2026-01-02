@@ -201,21 +201,16 @@ export async function initPromos({ onEvent } = {}) {
 
   const promos = await loadJSON(CONFIG.DATA_PATHS.promos);
   const report = validatePromosData(promos);
+  const promosSection = document.getElementById('promos');
   const container = document.getElementById('promos-container');
-  if (!container) return;
+  if (!container || !promosSection) return;
 
   promosLoaded = true;
 
   if (!Array.isArray(promos) || promos.length === 0) {
     addHealthReport('promos', report);
     flushHealthReports();
-    container.innerHTML = `
-      <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Lanzamientos en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>Estamos curando el próximo lanzamiento del taller. Escríbenos y recibe un adelanto exclusivo.</p>
-      </div>
-    `;
-    revealInRoot(container);
+    promosSection.hidden = true;
     return;
   }
 
@@ -233,16 +228,11 @@ export async function initPromos({ onEvent } = {}) {
   if (activePromos.length === 0) {
     addHealthReport('promos', report);
     flushHealthReports();
-    container.innerHTML = `
-      <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-promos.svg" alt="Lanzamientos en preparación" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
-        <p>No hay lanzamientos activos en este momento. ¡Escríbenos y te contamos qué estamos creando!</p>
-      </div>
-    `;
-    revealInRoot(container);
+    promosSection.hidden = true;
     return;
   }
 
+  promosSection.hidden = false;
   container.innerHTML = activePromos
     .map((promo, index) => {
       const destacadoClass = promo.destacado ? 'promo-destacado' : '';

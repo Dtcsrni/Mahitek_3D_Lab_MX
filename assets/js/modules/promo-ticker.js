@@ -67,6 +67,8 @@ export async function initPromoTicker() {
     return;
   }
 
+  if (ticker) ticker.hidden = false;
+
   const items = activePromos.map(buildTickerItem);
   const content = items.join('<span class="promo-ticker__sep">•</span>');
   track.innerHTML = `
