@@ -107,8 +107,8 @@ html {
   scroll-padding-top: calc(var(--header-h, 72px) + var(--safe-top, 0px));
 }
 
-/* Defer de pintura para elementos animados fuera de pantalla */
-[data-animate] {
+/* Defer de pintura solo en modo rendimiento reducido */
+.perf-lite [data-animate] {
   content-visibility: auto;
   contain-intrinsic-size: 300px 400px;
 }
@@ -2484,10 +2484,8 @@ html[lang="es-MX"] .show-when-mx {
   overflow-x: hidden;
   box-sizing: border-box;
   position: relative;
-  /* Full viewport visible (excluye header y zona segura superior) */
-  min-height: calc(100svh - var(--header-h, 72px) - var(--safe-top, 0px));
-  min-height: calc(100dvh - var(--header-h, 72px) - var(--safe-top, 0px));
-  min-height: calc((var(--vh, 1vh) * 100) - var(--header-h, 72px) - var(--safe-top, 0px));
+  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
 
@@ -2602,6 +2600,16 @@ html[lang="es-MX"] .show-when-mx {
   display: none;
 }
 
+.hero--lite::before {
+  content: none;
+  display: none;
+}
+
+.hero--lite::after {
+  content: none;
+  display: none;
+}
+
 .hero--lite .hero-illustration-img-main {
   animation: none;
   filter: drop-shadow(0 22px 50px rgba(0, 0, 0, 0.45));
@@ -2614,6 +2622,17 @@ html[lang="es-MX"] .show-when-mx {
 .hero--lite .hero-highlights li {
   animation: none;
   transition: none;
+}
+
+.hero--lite .hero-title-line,
+.hero--lite .hero-title-animated,
+.hero--lite .hero-title-emoji {
+  animation: none;
+}
+
+.hero--lite .hero-badge {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 @keyframes heroVisualSlide {
@@ -4322,6 +4341,9 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   max-width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+}
+
+.perf-lite .section {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
 }
@@ -10119,10 +10141,20 @@ body.theme-nocturne .hero::after {
     radial-gradient(circle at 45% 85%, rgba(192, 138, 60, 0.2) 0%, transparent 55%);
 }
 
+body.theme-nocturne .hero--lite::before,
+body.theme-nocturne .hero--lite::after {
+  content: none;
+  display: none;
+}
+
 body.theme-nocturne .hero-badge {
   border-color: rgba(229, 178, 119, 0.35);
   box-shadow: 0 0 18px rgba(123, 31, 48, 0.3);
   animation: emberPulse 9s ease-in-out infinite;
+}
+
+body.theme-nocturne .hero--lite .hero-badge {
+  animation: none;
 }
 
 body.theme-nocturne .cta-card {
