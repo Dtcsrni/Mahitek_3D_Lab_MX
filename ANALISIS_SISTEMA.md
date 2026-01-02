@@ -28,8 +28,8 @@ Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2025-12-28T15:10:20.281Z
-Fingerprint: sha256:a26662f7ead7a975d307eb89f5b6750964687d871fdab0a5d7a391170c2b3d52
+Generado: 2026-01-02T01:18:17.121Z
+Fingerprint: sha256:70e03a14d770084251b4adb0f6db20b07d306001717bd5e8dfb383c1b2eb9689
 Archivos hasheados: 73
 
 Criterio del fingerprint (cambios significativos):
@@ -105,8 +105,8 @@ Scripts npm (28):
 - `watch:css`
 
 Diagnostico rapido:
-- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 3/32 activas | FAQ: 20 items
-- Imagenes sin referencia detectada (1): mark-icon.svg
+- Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 20 items
+- Imagenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
 - Archivos de sistema detectados (23): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, data/desktop.ini, desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
 - NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
