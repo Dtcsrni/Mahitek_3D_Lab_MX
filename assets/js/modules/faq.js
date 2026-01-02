@@ -61,7 +61,6 @@ function getFAQTheme(categoryLabel) {
     return { icon: 'i-faq-file', theme: 'rose' };
   if (key.includes('disen')) return { icon: 'i-faq-pen', theme: 'rose' };
   if (key.includes('privac')) return { icon: 'i-faq-lock', theme: 'violet' };
-  if (key.includes('sosten')) return { icon: 'i-faq-leaf', theme: 'emerald' };
   if (key.includes('devol')) return { icon: 'i-faq-refresh', theme: 'slate' };
   if (key.includes('material') || key.includes('acab'))
     return { icon: 'i-faq-layers', theme: 'pink' };

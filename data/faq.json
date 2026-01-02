@@ -43,11 +43,6 @@
     "categoria": "materiales"
   },
   {
-    "q": "¿Qué colores hay disponibles?",
-    "a": "Negros, humo, translúcidos y acentos especiales. Otros tonos se consiguen bajo pedido según disponibilidad.",
-    "categoria": "materiales"
-  },
-  {
     "q": "¿Qué archivos aceptan?",
     "a": "3D: STL, STEP, OBJ. 2D: SVG, PDF, PNG. Si no tienes archivo, envía referencias y lo modelamos.",
     "categoria": "diseño"
@@ -96,10 +91,6 @@
     "q": "¿Mis archivos son seguros?",
     "a": "Tratamos tus archivos como confidenciales. No compartimos diseños sin tu permiso.",
     "categoria": "privacidad"
-  },
-  {
-    "q": "¿Qué hacen por el ambiente?",
-    "a": "Optimizamos soportes para reducir desperdicio, reutilizamos empaque y priorizamos materiales durables.",
-    "categoria": "sostenibilidad"
   }
 ]
+
