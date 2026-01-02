@@ -15,9 +15,6 @@ import { initPromos } from './modules/promos.js';
 import { initPromoTicker } from './modules/promo-ticker.js';
 import { initFAQ } from './modules/faq.js';
 import { initUrlState } from './modules/url-state.js';
-import { initHeroCounters } from './modules/hero-counters.js';
-import { initScrollNarrative } from './modules/scroll-narrative.js';
-import { initSVGAnimations } from './modules/svg-animations.js';
 import { addHealthReport, flushHealthReports } from './modules/health-report.js';
 import { runSystemChecks } from './modules/system-checks.js';
 import { initOrganizationSchema } from './modules/schema.js';
@@ -33,6 +30,28 @@ const runWhenIdle = (cb, timeout = 1600) => {
     window.requestIdleCallback(() => cb(), { timeout });
   } else {
     window.setTimeout(cb, timeout);
+  }
+};
+
+const initDeferredModules = async () => {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData =
+    typeof navigator !== 'undefined' && navigator.connection && navigator.connection.saveData;
+
+  const { initHeroCounters } = await import('./modules/hero-counters.js');
+
+  initHeroCounters();
+
+  if (!prefersReducedMotion && !saveData) {
+    const [narrativeModule, svgModule] = await Promise.all([
+      import('./modules/scroll-narrative.js'),
+      import('./modules/svg-animations.js')
+    ]);
+    narrativeModule.initScrollNarrative();
+    svgModule.initSVGAnimations();
   }
 };
 
@@ -57,9 +76,9 @@ async function initApp() {
 
   initUrlState();
   runWhenIdle(() => {
-    initHeroCounters();
-    initScrollNarrative();
-    initSVGAnimations();
+    initDeferredModules().catch(() => {
+      /* no-op */
+    });
   });
 
   document.documentElement.classList.add('js-modules-ready');
