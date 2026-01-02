@@ -17,6 +17,13 @@
   }
 }
 
+.perf-lite *,
+.perf-lite *::before,
+.perf-lite *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
 /* ===== Variables ===== */
 :root {
   --bg-dark: #0b0f14;
@@ -1209,6 +1216,16 @@ button {
 }
 
 /* ===== Decoraciones Cyberpunk Mexicanas ===== */
+
+.promo-ticker,
+.nav-decorations,
+.nav-nopal,
+.nav-aguila,
+.nav-particles,
+.nav-border,
+.scan-lines {
+  display: block;
+}
 
 .nav-decorations {
   position: absolute;

@@ -8,18 +8,33 @@ import { initHeaderScroll } from './modules/header-scroll.js';
 import { initScrollReveal } from './modules/scroll-reveal.js';
 import { initEmailLinks } from './modules/email.js';
 import { initNewsletter } from './modules/newsletter.js';
-import { initSocialLinks } from './modules/social.js';
 import { initCatalog, filterProducts, getProducts, calculateSalePrice } from './modules/catalog.js';
 import { initLazySections } from './modules/lazy-load.js';
-import { initPromos } from './modules/promos.js';
 import { initPromoTicker } from './modules/promo-ticker.js';
-import { initFAQ } from './modules/faq.js';
 import { initUrlState } from './modules/url-state.js';
 import { addHealthReport, flushHealthReports } from './modules/health-report.js';
 import { runSystemChecks } from './modules/system-checks.js';
 import { initOrganizationSchema } from './modules/schema.js';
 
 ResizeManager.init();
+
+const DEFERRED_STYLES = [
+  'assets/css/styles.css?v=20260102',
+  'assets/css/modules/animations.css?v=20251026'
+];
+
+const loadDeferredStyles = () => {
+  if (typeof document === 'undefined') return;
+  const head = document.head;
+  DEFERRED_STYLES.forEach(href => {
+    if (document.querySelector(`link[data-deferred-style="${href}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute('data-deferred-style', href);
+    head.appendChild(link);
+  });
+};
 
 const runWhenIdle = (cb, timeout = 1600) => {
   if (typeof window === 'undefined') {
@@ -33,7 +48,8 @@ const runWhenIdle = (cb, timeout = 1600) => {
   }
 };
 
-const initDeferredModules = async () => {
+const applyPerfHints = () => {
+  if (typeof document === 'undefined') return;
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia &&
@@ -41,19 +57,52 @@ const initDeferredModules = async () => {
   const saveData =
     typeof navigator !== 'undefined' && navigator.connection && navigator.connection.saveData;
 
+  if (prefersReducedMotion || saveData) {
+    document.documentElement.classList.add('perf-lite');
+  }
+};
+
+const loadSocialLinks = async () => {
+  const { initSocialLinks } = await import('./modules/social.js');
+  return initSocialLinks();
+};
+
+const loadPromos = async onEvent => {
+  const { initPromos } = await import('./modules/promos.js');
+  return initPromos({ onEvent });
+};
+
+const loadFAQ = async () => {
+  const { initFAQ } = await import('./modules/faq.js');
+  return initFAQ();
+};
+
+const initDeferredModules = async () => {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData =
+    typeof navigator !== 'undefined' && navigator.connection && navigator.connection.saveData;
+  const hasSvgTargets =
+    typeof document !== 'undefined' && document.querySelector('[data-svg], .svg-3d');
+
   const { initHeroCounters } = await import('./modules/hero-counters.js');
 
   initHeroCounters();
 
   if (!prefersReducedMotion && !saveData) {
-    const [narrativeModule, svgModule] = await Promise.all([
-      import('./modules/scroll-narrative.js'),
-      import('./modules/svg-animations.js')
-    ]);
+    const narrativeModule = await import('./modules/scroll-narrative.js');
     narrativeModule.initScrollNarrative();
-    svgModule.initSVGAnimations();
+    if (hasSvgTargets) {
+      const svgModule = await import('./modules/svg-animations.js');
+      svgModule.initSVGAnimations();
+    }
   }
 };
+
+loadDeferredStyles();
+applyPerfHints();
 
 async function initApp() {
   initLanguage();
@@ -67,16 +116,19 @@ async function initApp() {
   initNewsletter();
   await initOrganizationSchema();
 
-  await Promise.all([initCatalog({ onEvent: logEvent }), initSocialLinks()]);
+  await initCatalog({ onEvent: logEvent });
 
   initLazySections({
-    onPromos: () => initPromos({ onEvent: logEvent }),
-    onFaq: () => initFAQ()
+    onPromos: () => loadPromos(logEvent),
+    onFaq: () => loadFAQ()
   });
 
   initUrlState();
   runWhenIdle(() => {
     initDeferredModules().catch(() => {
+      /* no-op */
+    });
+    loadSocialLinks().catch(() => {
       /* no-op */
     });
   });
