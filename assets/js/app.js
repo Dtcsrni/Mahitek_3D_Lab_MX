@@ -24,6 +24,18 @@ import { initOrganizationSchema } from './modules/schema.js';
 
 ResizeManager.init();
 
+const runWhenIdle = (cb, timeout = 1600) => {
+  if (typeof window === 'undefined') {
+    cb();
+    return;
+  }
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => cb(), { timeout });
+  } else {
+    window.setTimeout(cb, timeout);
+  }
+};
+
 async function initApp() {
   initLanguage();
   initViewport();
@@ -44,9 +56,11 @@ async function initApp() {
   });
 
   initUrlState();
-  initHeroCounters();
-  initScrollNarrative();
-  initSVGAnimations();
+  runWhenIdle(() => {
+    initHeroCounters();
+    initScrollNarrative();
+    initSVGAnimations();
+  });
 
   document.documentElement.classList.add('js-modules-ready');
   addHealthReport('dom', runSystemChecks());

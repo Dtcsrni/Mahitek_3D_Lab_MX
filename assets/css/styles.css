@@ -2569,6 +2569,36 @@ html[lang="es-MX"] .show-when-mx {
   animation: heroVisualSlide 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
+.hero--lite .hero-grid,
+.hero--lite .hero-visual,
+.hero--lite .hero-content {
+  animation: none;
+}
+
+.hero--lite .hero-illustration-main {
+  animation: none;
+}
+
+.hero--lite .hero-illustration-main::before,
+.hero--lite .hero-illustration-main::after {
+  content: none;
+  display: none;
+}
+
+.hero--lite .hero-illustration-img-main {
+  animation: none;
+  filter: drop-shadow(0 22px 50px rgba(0, 0, 0, 0.45));
+  mix-blend-mode: normal;
+  opacity: 1;
+  will-change: auto;
+  transform: none;
+}
+
+.hero--lite .hero-highlights li {
+  animation: none;
+  transition: none;
+}
+
 @keyframes heroVisualSlide {
   from {
     opacity: 0;
@@ -4275,6 +4305,8 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   max-width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 @media (min-width: 1024px) {
