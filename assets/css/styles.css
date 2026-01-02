@@ -2475,6 +2475,10 @@ html[lang="es-MX"] .show-when-mx {
   border: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 /* Hero Section Mejorado con Animaciones Fluidas */
 .hero {
   padding: 5rem 0 3rem;
