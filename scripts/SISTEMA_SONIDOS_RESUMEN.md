@@ -1,4 +1,5 @@
 # 🎵 Resumen del Sistema de Sonidos Cyberpunk v2.0
+<!-- cspell:ignore Validacion Confirmacion Opcion Categoria Navegacion -->
 
 ## ✅ Rediseño Completado
 
@@ -175,12 +176,12 @@ Set-PerfilSonido -Perfil "Silencioso"
   Frecuencias: 200-600 Hz (Nocturno)
 ======================================
 
-[INFO] Categoria 1: Sistema
+[INFO] categoría 1: Sistema
   [1.1] Sistema Iniciado (220 Hz):
   [1.2] Proceso Iniciado (240-220 Hz):
   [1.3] Cargando Datos (280-240 Hz):
 
-[INFO] Categoria 2: Retroalimentacion Positiva
+[INFO] categoría 2: retroalimentación Positiva
   [2.1] Tarea Completada (acorde D-F-A):
   ...
 
@@ -247,9 +248,9 @@ function Play-MiNuevoSonido {
     Patron: Patrón específico
     Frecuencias: X-Y Hz
     #>
-    Play-SonidoSutil -Frecuencia 300 -Duracion 50
-    Play-Silencio -Duracion 30
-    Play-SonidoSutil -Frecuencia 400 -Duracion 50
+    Play-SonidoSutil -Frecuencia 300 -duración 50
+    Play-Silencio -duración 30
+    Play-SonidoSutil -Frecuencia 400 -duración 50
 }
 ```
 
@@ -382,3 +383,5 @@ Sistema de retroalimentación auditiva **profesional, no invasivo y sostenible**
 **Versión**: 2.0.0  
 **Autor**: Sistema de IA asistido por investigación UX  
 **Proyecto**: Mahitek 3D Lab - Sistema de Testing Automatizado
+
+

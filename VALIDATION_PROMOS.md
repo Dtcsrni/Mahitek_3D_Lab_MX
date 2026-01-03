@@ -15,7 +15,7 @@
 1. `combo-trio-stickers` - "Sin miedo al éxito"
 2. `combo-pack4-stickers` - "Pa' la banda"
 3. `combo-quinteto-premium` - "Con todo y salsa"
-4. `combo-sexta-envio-gratis` - "Se arma se arma"
+4. `combo-sexta-envío-gratis` - "Se arma se arma"
 5. `combo-quetzalcoatl-cultural` - "Orgullo mexa"
 
 ## 🎨 Validación de Assets SVG
@@ -234,3 +234,4 @@ Todos los componentes necesarios están en su lugar:
 
 **Generado:** 24/10/2025  
 **Última actualización:** Commit 9a517a7
+

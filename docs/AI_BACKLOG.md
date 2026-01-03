@@ -90,7 +90,7 @@ Formato de ticket recomendado:
 
 **Contexto**
 
-- Badges Lighthouse usan un query mal escrito (`endpointúurl`) y el README describe scripts que no existen.
+- Badges Lighthouse usan un query mal escrito (`endpoint?url`) y el README describe scripts que no existen.
 
 **Cambios esperados**
 
@@ -275,7 +275,7 @@ Formato de ticket recomendado:
 
 **Contexto**
 
-- El plan de modularización contempla utilidades UI reusables separadas del runtime legacy.
+- El plan de modularización contempla utilidades UI reutilizables separadas del runtime legacy.
 
 **Cambios esperados**
 

@@ -1,6 +1,6 @@
-# Guia Rapida - Sistema de Pruebas Automatizadas
+# Guía Rápida - Sistema de Pruebas Automatizadas
 
-## Instalacion (Una sola vez)
+## Instalación (Una sola vez)
 
 ```powershell
 # 1. Instalar Git Hooks
@@ -9,20 +9,20 @@
 
 ## Uso Diario
 
-### Opcion 1: Commit Automatizado (Recomendado)
+### Opción 1: Commit Automatizado (Recomendado)
 
 ```powershell
-# Commit con mensaje automatico
+# Commit con mensaje automático
 .\scripts\commit-auto.ps1
 
 # Commit con mensaje personalizado
-.\scripts\commit-auto.ps1 -Mensaje "tu mensaje aqui"
+.\scripts\commit-auto.ps1 -Mensaje "tu mensaje aquí"
 
-# Commit de tipo especifico
+# Commit de tipo específico
 .\scripts\commit-auto.ps1 -Tipo fix -Mensaje "corregir bug"
 ```
 
-### Opcion 2: Commit Manual (con validacion automatica)
+### Opción 2: Commit Manual (con validación automática)
 
 ```powershell
 git add .
@@ -30,9 +30,9 @@ git commit -m "feat: nueva funcionalidad"
 git push origin main
 ```
 
-Los hooks ejecutaran validaciones automaticamente.
+Los hooks ejecutarán validaciones automáticamente.
 
-### Opcion 3: Solo Validar (sin commit)
+### Opción 3: Solo Validar (sin commit)
 
 ```powershell
 .\scripts\validar-codigo.ps1
@@ -43,10 +43,10 @@ Los hooks ejecutaran validaciones automaticamente.
 | Tipo | Uso |
 |------|-----|
 | `feat` | Nueva funcionalidad |
-| `fix` | Correccion de bug |
-| `docs` | Cambios en documentacion |
+| `fix` | Corrección de bug |
+| `docs` | Cambios en documentación |
 | `style` | Cambios de formato (CSS) |
-| `refactor` | Refactorizacion de codigo |
+| `refactor` | Refactorización de código |
 | `perf` | Mejora de rendimiento |
 | `test` | Agregar o modificar tests |
 | `chore` | Tareas de mantenimiento |
@@ -54,7 +54,7 @@ Los hooks ejecutaran validaciones automaticamente.
 ## Ejemplos
 
 ```powershell
-# Nueva caracteristica
+# Nueva característica
 .\scripts\commit-auto.ps1 -Tipo feat -Mensaje "agregar carousel de productos"
 
 # Corregir error
@@ -88,6 +88,8 @@ git commit -m "mensaje" --no-verify
 .\scripts\commit-auto.ps1 -SkipTests
 ```
 
-## Documentacion Completa
+## Documentación Completa
 
-Ver `scripts/README.md` para documentacion detallada.
+Ver `scripts/README.md` para documentación detallada.
+
+

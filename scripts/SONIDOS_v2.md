@@ -1,4 +1,5 @@
 # 🔊 Sistema de Retroalimentación Sonora Cyberpunk v2.0
+<!-- cspell:ignore Validacion Confirmacion Opcion Categoria Navegacion -->
 
 Sistema de sonidos sutiles, profesionales y **optimizados para ambiente nocturno** para programación asistida por IA en Mahitek 3D Lab.
 
@@ -138,14 +139,14 @@ Modo Nocturno:        Aplica reducción adicional de -100 Hz
   Frecuencias: 200-600 Hz (Nocturno)
 ======================================
 
-[INFO] Categoria 1: Sistema
+[INFO] categoría 1: Sistema
   [1.1] Sistema Iniciado (220 Hz):
   [1.2] Proceso Iniciado (240-220 Hz):
   [1.3] Cargando Datos (280-240 Hz):
 
-[INFO] Categoria 2: Retroalimentacion Positiva
+[INFO] categoría 2: retroalimentación Positiva
   [2.1] Tarea Completada (acorde D-F-A):
-  [2.2] Validacion OK (330-370 Hz):
+  [2.2] validación OK (330-370 Hz):
   ...
 
 ======================================
@@ -309,11 +310,11 @@ Editar `scripts/lib/sonidos.ps1`:
 ```powershell
 # Ejemplo: Hacer TareaCompletada más agudo
 function Play-TareaCompletada {
-    Play-SonidoSutil -Frecuencia 350 -Duracion 60  # Era 293
-    Play-Silencio -Duracion 40
-    Play-SonidoSutil -Frecuencia 420 -Duracion 60  # Era 349
-    Play-Silencio -Duracion 40
-    Play-SonidoSutil -Frecuencia 520 -Duracion 70  # Era 440
+    Play-SonidoSutil -Frecuencia 350 -duración 60  # Era 293
+    Play-Silencio -duración 40
+    Play-SonidoSutil -Frecuencia 420 -duración 60  # Era 349
+    Play-Silencio -duración 40
+    Play-SonidoSutil -Frecuencia 520 -duración 70  # Era 440
 }
 ```
 
@@ -336,9 +337,9 @@ function Play-MiSonidoCustom {
     Patron: Patrón específico
     Frecuencias: X-Y Hz
     #>
-    Play-SonidoSutil -Frecuencia 300 -Duracion 50
-    Play-Silencio -Duracion 30
-    Play-SonidoSutil -Frecuencia 400 -Duracion 50
+    Play-SonidoSutil -Frecuencia 300 -duración 50
+    Play-Silencio -duración 30
+    Play-SonidoSutil -Frecuencia 400 -duración 50
 }
 ```
 
@@ -379,7 +380,7 @@ function Play-MiSonidoCustom {
 
 ```powershell
 # En lib/sonidos.ps1, reducir duraciones
-Play-SonidoSutil -Frecuencia 330 -Duracion 30  # Era 60
+Play-SonidoSutil -Frecuencia 330 -duración 30  # Era 60
 ```
 
 ### Los sonidos interfieren con mi música
@@ -457,3 +458,5 @@ Parte del proyecto Mahitek 3D Lab - Sistema de testing automatizado.
 **Investigación UX**: ISO 9241-910, Norman 2013, Gaver 1986, Miller 1956, Weber-Fechner Law  
 **Frecuencias**: 200-600 Hz optimizadas para codificación nocturna prolongada  
 **Total sonidos**: 23 organizados en 5 categorías semánticas
+
+

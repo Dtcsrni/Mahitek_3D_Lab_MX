@@ -46,6 +46,7 @@ const SUSPECT_CHARS = [
   '\u0153' // œ
 ];
 
+/* cspell:disable */
 const SUSPECT_STRINGS = [
   'Vùlido',
   'Categorùa',
@@ -66,6 +67,7 @@ const SUSPECT_STRINGS = [
   'Categor\u00A1a',
   'preparaci\u00A2n'
 ];
+/* cspell:enable */
 
 function posToLineCol(text, pos) {
   const before = text.slice(0, pos);

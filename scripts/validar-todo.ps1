@@ -1,4 +1,5 @@
 #!/usr/bin/env pwsh
+# cspell:ignore Validacion Criticos
 # ═══════════════════════════════════════════════════════════════════════════
 # Sistema de Validación Integral - Mahitek 3D Lab
 # ═══════════════════════════════════════════════════════════════════════════

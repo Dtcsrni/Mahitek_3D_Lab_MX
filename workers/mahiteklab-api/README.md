@@ -1,10 +1,10 @@
 # mahiteklab-api (Cloudflare Workers)
 
 API serverless para:
-- Suscripcion y cupones (BIENVENIDA + campanas).
-- Admin basico de campanas via endpoints.
+- Suscripción y cupones (BIENVENIDA + campañas).
+- Admin básico de campañas vía endpoints.
 
-## Deploy rapido (resumen)
+## Deploy rápido (resumen)
 
 1) Instala Wrangler:
 
@@ -20,11 +20,11 @@ API serverless para:
 
 4) Pega el `database_id` en `wrangler.toml`.
 
-5) Aplica migracion:
+5) Aplica migración:
 
 `wrangler d1 execute mahiteklab-db --file migrations/0001_init.sql`
 
-6) Configura secrets (minimo):
+6) Configura secrets (mínimo):
 
 - `wrangler secret put COUPON_SECRET`
 - `wrangler secret put TURNSTILE_SECRET` (recomendado)
@@ -56,3 +56,4 @@ Se controla con `ALLOWED_ORIGINS` (lista separada por comas). Ejemplo prod:
 
 - `assets/js/app.js` usa `NEWSLETTER_API_BASE`.
 - `admin/app.js` usa `DEFAULT_API_BASE`.
+

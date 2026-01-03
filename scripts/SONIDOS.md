@@ -1,19 +1,20 @@
-# 🔊 Sistema de Retroalimentacion Sonora para IA
+# 🔊 Sistema de retroalimentación Sonora para IA
+<!-- cspell:ignore Validacion Confirmacion Opcion Categoria Navegacion -->
 
-Sistema de sonidos sutiles y profesionales para programacion asistida por IA en Mahitek 3D Lab.
+Sistema de sonidos sutiles y profesionales para programación asistida por IA en Mahitek 3D Lab.
 
-## 🎯 Filosofia de Diseño
+## 🎯 filosofía de Diseño
 
 - ✅ **Sonidos sutiles** en flujos normales (no molestos)
 - ✅ **Sonidos claros** solo para alertas/errores
 - ✅ **No invasivo** - no interrumpe el flujo de trabajo
-- ✅ **Opcional** - se puede deshabilitar facilmente
+- ✅ **Opcional** - se puede deshabilitar fácilmente
 
 ## 🎵 Tipos de Sonidos
 
 ### Flujos Normales (Sutiles)
 
-| Funcion | Patron | Uso | Frecuencia |
+| Función | Patrón | Uso | Frecuencia |
 |---------|--------|-----|------------|
 | `Play-ProcesoIniciado` | 1 tono bajo breve | Al iniciar script | 500 Hz, 70ms |
 | `Play-ValidacionOK` | 1 tono suave | Validaciones pasadas | 700 Hz, 60ms |
@@ -22,14 +23,14 @@ Sistema de sonidos sutiles y profesionales para programacion asistida por IA en 
 | `Play-CommitExitoso` | Acorde de 3 notas | Commit creado | 550→650→800 Hz |
 | `Play-PushExitoso` | Acorde espaciado | Push exitoso | 600→750→900 Hz |
 
-### Alertas (Mas Notorios)
+### Alertas (Más Notorios)
 
-| Funcion | Patron | Uso | Frecuencia |
+| Función | Patrón | Uso | Frecuencia |
 |---------|--------|-----|------------|
 | `Play-Advertencia` | 2 tonos iguales | Warnings | 550 Hz, 120ms ×2 |
 | `Play-TestsFallidos` | 2 tonos bajos | Tests fallan | 450→400 Hz |
 | `Play-ErrorCritico` | 3 tonos descendentes | Error grave | 600→500→400 Hz |
-| `Play-RiesgoDetectado` | Oscilacion rapida | Alerta urgente | 500↔600 Hz ×3 |
+| `Play-RiesgoDetectado` | oscilación rápida | Alerta urgente | 500↔600 Hz ×3 |
 
 ## 🚀 Uso
 
@@ -42,7 +43,7 @@ Sistema de sonidos sutiles y profesionales para programacion asistida por IA en 
 
 ### En Scripts Automatizados
 
-Los sonidos se activan automaticamente en:
+Los sonidos se activan automáticamente en:
 
 **validar-codigo.ps1**:
 - 🔔 Al iniciar: sonido suave
@@ -61,35 +62,35 @@ Los sonidos se activan automaticamente en:
 ### Deshabilitar Sonidos
 
 ```powershell
-# Opcion 1: Flag en cada ejecucion
+# opción 1: Flag en cada ejecución
 .\scripts\validar-codigo.ps1 -SinSonidos
 .\scripts\commit-auto.ps1 -SinSonidos
 
-# Opcion 2: Editar el script
+# opción 2: Editar el script
 # En sonidos.ps1, cambiar:
 $script:SonidosHabilitados = $false
 ```
 
 ## 📊 Frecuencias Usadas
 
-Todas las frecuencias son **armonicas y agradables**:
+Todas las frecuencias son **armónicas y agradables**:
 
 ```
 Rango: 400 - 900 Hz
-- Graves (400-500 Hz): Errores, finalizacion
+- Graves (400-500 Hz): Errores, finalización
 - Medios (550-700 Hz): Neutrales, confirmaciones
-- Agudos (750-900 Hz): Exitos, completados
+- Agudos (750-900 Hz): Éxitos, completados
 ```
 
-## ⚙️ Caracteristicas Tecnicas
+## ⚙️ características técnicas
 
-- **Metodo**: `[Console]::Beep(frecuencia, duracion)`
+- **método**: `[Console]::Beep(frecuencia, duración)`
 - **Duraciones**: 60-200ms (muy cortas)
 - **Compatibilidad**: Windows nativo
 - **Fallback**: Silencioso si no hay hardware de audio
 - **Performance**: Sin impacto (<0.5s total)
 
-## 🔧 Personalizacion
+## 🔧 personalización
 
 ### Cambiar Frecuencias
 
@@ -97,9 +98,9 @@ Edita `scripts/lib/sonidos.ps1`:
 
 ```powershell
 function Play-MiSonidoCustom {
-    Play-SonidoSutil -Frecuencia 800 -Duracion 100
+    Play-SonidoSutil -Frecuencia 800 -duración 100
     Start-Sleep -Milliseconds 50
-    Play-SonidoSutil -Frecuencia 1000 -Duracion 100
+    Play-SonidoSutil -Frecuencia 1000 -duración 100
 }
 ```
 
@@ -111,11 +112,11 @@ function Play-DeployExitoso {
     .SYNOPSIS
     Sonido para deploy exitoso
     #>
-    Play-SonidoSutil -Frecuencia 600 -Duracion 80
+    Play-SonidoSutil -Frecuencia 600 -duración 80
     Start-Sleep -Milliseconds 60
-    Play-SonidoSutil -Frecuencia 800 -Duracion 80
+    Play-SonidoSutil -Frecuencia 800 -duración 80
     Start-Sleep -Milliseconds 60
-    Play-SonidoSutil -Frecuencia 1000 -Duracion 100
+    Play-SonidoSutil -Frecuencia 1000 -duración 100
 }
 ```
 
@@ -125,35 +126,35 @@ function Play-DeployExitoso {
 
 ✅ **SI usar**:
 - Proceso completado exitosamente
-- Error critico que requiere atencion
-- Solicitar confirmacion importante
+- Error critico que requiere atención
+- Solicitar confirmación importante
 - Alertas de riesgo
 
 ❌ **NO usar**:
-- Cada linea de codigo validada
+- Cada linea de código validada
 - Logs normales
 - Operaciones intermedias
 - Debugging rutinario
 
 ### Principios de Diseño
 
-1. **Sutil por defecto**: La mayoria de sonidos deben ser muy suaves
-2. **Claro cuando importa**: Solo errores criticos son notorios
+1. **Sutil por defecto**: La mayoría de sonidos deben ser muy suaves
+2. **Claro cuando importa**: Solo errores críticos son notorios
 3. **Armonioso**: Usar frecuencias agradables (no estridentes)
 4. **Breve**: Duraciones <200ms para no molestar
 5. **Opcional**: Siempre permitir deshabilitar
 
 ## 🌟 Ejemplos de Uso
 
-### Ejemplo 1: Validacion Exitosa
+### Ejemplo 1: validación Exitosa
 
 ```powershell
-# Ejecutar validacion
+# Ejecutar validación
 .\scripts\validar-codigo.ps1
 
 # Escucharas:
 # 1. [Inicio] Tono suave (proceso iniciado)
-# 2. [Fin] Tono muy sutil (validacion OK)
+# 2. [Fin] Tono muy sutil (validación OK)
 ```
 
 ### Ejemplo 2: Commit Completo
@@ -173,7 +174,7 @@ function Play-DeployExitoso {
 ### Ejemplo 3: Error Critico
 
 ```powershell
-# Si hay errores de validacion
+# Si hay errores de validación
 .\scripts\validar-codigo.ps1
 
 # Escucharas:
@@ -183,7 +184,7 @@ function Play-DeployExitoso {
 
 ## 🛠️ Troubleshooting
 
-### No escucho ningun sonido
+### No escucho ningún sonido
 
 **Posibles causas**:
 1. Hardware de audio no disponible
@@ -207,7 +208,7 @@ function Play-DeployExitoso {
 # Editar scripts/lib/sonidos.ps1:
 $script:SonidosHabilitados = $false
 
-# O usar flag en cada ejecucion
+# O usar flag en cada ejecución
 .\scripts\validar-codigo.ps1 -SinSonidos
 ```
 
@@ -216,15 +217,15 @@ $script:SonidosHabilitados = $false
 ```powershell
 # Editar scripts/lib/sonidos.ps1
 # Cambiar duraciones (en ms) y frecuencias (en Hz)
-Play-SonidoSutil -Frecuencia 1000 -Duracion 300
+Play-SonidoSutil -Frecuencia 1000 -duración 300
 ```
 
 ## 📈 Beneficios
 
-1. **Retroalimentacion inmediata** sin mirar pantalla
+1. **retroalimentación inmediata** sin mirar pantalla
 2. **Awareness** de estado del proceso
 3. **Productividad** - continua trabajando mientras ejecuta
-4. **Satisfaccion** - sonidos de exito gratificantes
+4. **satisfacción** - sonidos de éxito gratificantes
 5. **Alertas** - errores no pasan desapercibidos
 
 ## 🎯 Roadmap
@@ -232,10 +233,10 @@ Play-SonidoSutil -Frecuencia 1000 -Duracion 300
 Posibles mejoras futuras:
 
 - [ ] Archivos WAV personalizados (mas profesional)
-- [ ] Configuracion de volumen relativo
-- [ ] Temas de sonidos (clasico, moderno, cyberpunk)
+- [ ] configuración de volumen relativo
+- [ ] Temas de sonidos (clásico, moderno, cyberpunk)
 - [ ] Sonidos para GitHub Actions (notificaciones)
-- [ ] Integracion con notificaciones de Windows
+- [ ] integración con notificaciones de Windows
 - [ ] Soporte para macOS/Linux (diferentes APIs)
 
 ---
@@ -243,3 +244,5 @@ Posibles mejoras futuras:
 **Desarrollado por**: Mahitek 3D Lab  
 **Version**: 1.0.0  
 **Fecha**: Octubre 2025
+
+

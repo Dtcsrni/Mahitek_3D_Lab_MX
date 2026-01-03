@@ -50,14 +50,14 @@ npm run validate
 ## Datos editables
 
 `data/products.json` (catálogo):
-- Campos usados por el runtime: `id`, `nombre`, `categoria`, `precio_mxn`, `precio_rango_mxn`, `imagen`, `material`, `descripcion`, `incluye`, `variantes`, `sugerencias`, `estado`, `tags`.
+- Campos usados por el runtime: `id`, `nombre`, `categoría`, `precio_mxn`, `precio_rango_mxn`, `imagen`, `material`, `descripcion`, `incluye`, `variantes`, `sugerencias`, `estado`, `tags`.
 - `imagen` puede ser URL o emoji; si está vacía se usa placeholder.
 
 `data/promos.json` (promos activas):
 - Campos claves: `id`, `titulo`, `subtitulo`, `precio_regular` o `precio_especial`, `icono`, `desde`, `hasta`, `estado`.
 
 `data/faq.json` (preguntas frecuentes):
-- Campos usados: `q`, `a`, `categoria`, `destacada`.
+- Campos usados: `q`, `a`, `categoría`, `destacada`.
 
 `data/social.json` (redes):
 - Usado solo si `assets/data/brand.json` no trae el bloque `social`.
@@ -79,3 +79,4 @@ Para el análisis archivo por archivo y lista de archivos desconectados, ver:
 ## Licencia
 
 MIT (ver `package.json`).
+

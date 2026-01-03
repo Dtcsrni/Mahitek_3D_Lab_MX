@@ -1,11 +1,11 @@
 # mahiteklab-admin (Cloudflare Pages)
 
-Panel estatico para administrar campanas y ver metricas del Worker `mahiteklab-api`.
+Panel estático para administrar campañas y ver métricas del Worker `mahiteklab-api`.
 
 ## Deploy (Cloudflare Pages)
 
 - Project name: `mahiteklab-admin`
-- Build command: (vacio)
+- Build command: (vacío)
 - Output directory: `admin`
 
 ## Uso

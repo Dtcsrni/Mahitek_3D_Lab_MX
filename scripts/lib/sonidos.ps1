@@ -1,17 +1,18 @@
-# ===== Libreria de Sonidos para IA - Mahitek 3D Lab =====
+﻿# ===== Librería de Sonidos para IA - Mahitek 3D Lab =====
+# cspell:ignore Validacion Confirmacion Opcion Categoria Navegacion Interaccion Retroalimentacion Compilacion Desconexion ErrorCritico Duracion duracion Minimalista minimalista rapida
 # Diseño basado en investigación de UX sonoro (ISO 9241-910, Norman 2013, Gaver 1986)
 # Optimizado para ambiente de desarrollo nocturno con estética cyberpunk
 # Frecuencias bajas y medias (evita fatiga auditiva - Weber-Fechner Law)
 
-# Configuracion
+# Configuración
 $script:SonidosHabilitados = $true
 $script:PerfilSonido = "Nocturno"  # Nocturno, Diurno, Silencioso
 
-# Parametros de diseño UX sonoro:
+# Parámetros de diseño UX sonoro:
 # - Rango: 200-600 Hz (graves/medios, menos fatigantes)
-# - Duracion: 40-120ms (minimo cognitivo segun Miller 1956)
+# - Duración: 40-120ms (mínimo cognitivo según Miller 1956)
 # - Espaciado: 30-80ms (evita enmascaramiento auditivo)
-# - Patron: Ascendente = exito, Descendente = error (universal)
+# - Patrón: Ascendente = éxito, Descendente = error (universal)
 
 # ===== Funciones Base =====
 
@@ -19,11 +20,11 @@ function Play-SonidoSutil {
     param(
         [int]$Frecuencia = 400,
         [int]$Duracion = 60,
-        [int]$Volumen = 100  # Placeholder para futura implementacion
+        [int]$Volumen = 100  # Placeholder para futura implementación
     )
     if ($script:SonidosHabilitados) {
         try {
-            # Ajustar frecuencia segun perfil
+            # Ajustar frecuencia según perfil
             if ($script:PerfilSonido -eq "Nocturno") {
                 $Frecuencia = [Math]::Max(200, $Frecuencia - 100)  # Mas grave
             }
@@ -39,13 +40,13 @@ function Play-Silencio {
     Start-Sleep -Milliseconds $Duracion
 }
 
-# ===== Categoria 1: Sonidos de Sistema (Muy Sutiles) =====
+# ===== Categoría 1: Sonidos de Sistema (Muy Sutiles) =====
 
 function Play-SistemaIniciado {
     <#
     .SYNOPSIS
     Sonido al iniciar sistema - Pulso bajo cyberpunk
-    Patron: Tono grave breve (como encender terminal)
+    Patrón: Tono grave breve (como encender terminal)
     Frecuencia: 220 Hz (A3 - nota musical baja)
     #>
     Play-SonidoSutil -Frecuencia 220 -Duracion 40
@@ -55,8 +56,8 @@ function Play-ProcesoIniciado {
     <#
     .SYNOPSIS
     Sonido al iniciar proceso largo - Eco bajo
-    Patron: Dos pulsos graves rapidos
-    Investigacion: Sonidos graves indican "carga" sin ansiedad (Gaver 1986)
+    Patrón: Dos pulsos graves rápidos
+    investigación: Sonidos graves indican "carga" sin ansiedad (Gaver 1986)
     #>
     Play-SonidoSutil -Frecuencia 240 -Duracion 45
     Play-Silencio -Duracion 25
@@ -66,8 +67,8 @@ function Play-ProcesoIniciado {
 function Play-CargandoDatos {
     <#
     .SYNOPSIS
-    Sonido de carga de datos - Pulso ritmico
-    Patron: Tres pulsos suaves descendentes
+    Sonido de carga de datos - Pulso rítmico
+    Patrón: Tres pulsos suaves descendentes
     #>
     Play-SonidoSutil -Frecuencia 280 -Duracion 35
     Play-Silencio -Duracion 30
@@ -76,15 +77,15 @@ function Play-CargandoDatos {
     Play-SonidoSutil -Frecuencia 240 -Duracion 35
 }
 
-# ===== Categoria 2: Retroalimentacion Positiva (Ascendente) =====
+# ===== Categoría 2: Retroalimentación Positiva (Ascendente) =====
 
 function Play-TareaCompletada {
     <#
     .SYNOPSIS
     Sonido de tarea exitosa - Acorde menor cyberpunk
-    Patron: Tres tonos ascendentes espaciados
-    Psicologia: Ascenso = exito (universal cross-cultural)
-    Frecuencias: D3 → F3 → A3 (acorde menor armonico)
+    Patrón: Tres tonos ascendentes espaciados
+    Psicología: Ascenso = éxito (universal cross-cultural)
+    Frecuencias: D3 → F3 → A3 (acorde menor armónico)
     #>
     Play-SonidoSutil -Frecuencia 293 -Duracion 60
     Play-Silencio -Duracion 40
@@ -96,8 +97,8 @@ function Play-TareaCompletada {
 function Play-ValidacionOK {
     <#
     .SYNOPSIS
-    Validacion pasada - Click sutil cyberpunk
-    Patron: Dos pulsos rapidos ascendentes
+    Validación pasada - Click sutil cyberpunk
+    Patrón: Dos pulsos rápidos ascendentes
     Diseño: Minimalista, no invasivo (Nielsen 10 Heuristics)
     #>
     Play-SonidoSutil -Frecuencia 330 -Duracion 40
@@ -108,8 +109,8 @@ function Play-ValidacionOK {
 function Play-CommitExitoso {
     <#
     .SYNOPSIS
-    Commit creado - Secuencia de confirmacion cyberpunk
-    Patron: Cuatro tonos ascendentes con ritmo
+    Commit creado - Secuencia de Confirmación cyberpunk
+    Patrón: Cuatro tonos ascendentes con ritmo
     Frecuencias: C3 → E3 → G3 → C4 (acorde mayor, confianza)
     #>
     Play-SonidoSutil -Frecuencia 261 -Duracion 55
@@ -124,9 +125,9 @@ function Play-CommitExitoso {
 function Play-PushExitoso {
     <#
     .SYNOPSIS
-    Push completado - Secuencia de transmision cyberpunk
-    Patron: Cinco tonos ascendentes con aceleracion
-    Investigacion: Aceleracion ritmica = "envio completado" (Blattner 1989)
+    Push completado - Secuencia de transmisión cyberpunk
+    Patrón: Cinco tonos ascendentes con Aceleración
+    investigación: Aceleración rítmica = "envío completado" (Blattner 1989)
     #>
     Play-SonidoSutil -Frecuencia 277 -Duracion 50
     Play-Silencio -Duracion 50
@@ -143,7 +144,7 @@ function Play-DeployExitoso {
     <#
     .SYNOPSIS
     Deploy completo - Fanfarria cyberpunk minimalista
-    Patron: Arpegio ascendente espaciado
+    Patrón: Arpegio ascendente espaciado
     #>
     Play-SonidoSutil -Frecuencia 220 -Duracion 50
     Play-Silencio -Duracion 40
@@ -154,13 +155,13 @@ function Play-DeployExitoso {
     Play-SonidoSutil -Frecuencia 440 -Duracion 70
 }
 
-# ===== Categoria 3: Interaccion Usuario (Neutral) =====
+# ===== Categoría 3: Interacción Usuario (Neutral) =====
 
 function Play-SolicitarConfirmacion {
     <#
     .SYNOPSIS
     Solicitar input - Tono interrogativo
-    Patron: Tono medio estable (neutral, sin sesgo)
+    Patrón: Tono medio estable (neutral, sin sesgo)
     Frecuencia: 330 Hz (E4 - tono neutro universal)
     #>
     Play-SonidoSutil -Frecuencia 330 -Duracion 70
@@ -169,8 +170,8 @@ function Play-SolicitarConfirmacion {
 function Play-OpcionSeleccionada {
     <#
     .SYNOPSIS
-    Usuario selecciono opcion - Click de confirmacion
-    Patron: Pulso unico corto
+    Usuario selecciono Opción - Click de Confirmación
+    Patrón: Pulso único corto
     #>
     Play-SonidoSutil -Frecuencia 370 -Duracion 40
 }
@@ -178,8 +179,8 @@ function Play-OpcionSeleccionada {
 function Play-MenuNavegacion {
     <#
     .SYNOPSIS
-    Navegacion en menu - Tick sutil
-    Patron: Pulso muy breve
+    Navegación en menu - Tick sutil
+    Patrón: Pulso muy breve
     #>
     Play-SonidoSutil -Frecuencia 350 -Duracion 30
 }
@@ -187,22 +188,22 @@ function Play-MenuNavegacion {
 function Play-InputRecibido {
     <#
     .SYNOPSIS
-    Input recibido del usuario - Eco de confirmacion
-    Patron: Dos pulsos iguales
+    Input recibido del usuario - Eco de Confirmación
+    Patrón: Dos pulsos iguales
     #>
     Play-SonidoSutil -Frecuencia 310 -Duracion 40
     Play-Silencio -Duracion 30
     Play-SonidoSutil -Frecuencia 310 -Duracion 40
 }
 
-# ===== Categoria 4: Alertas y Advertencias (Descendente) =====
+# ===== Categoría 4: Alertas y Advertencias (Descendente) =====
 
 function Play-Advertencia {
     <#
     .SYNOPSIS
-    Advertencia menor - Patron de alerta cyberpunk
-    Patron: Dos tonos medios con pequena oscilacion
-    Psicologia: Tono medio-alto sin descender = "atencion" sin panico
+    Advertencia menor - Patrón de alerta cyberpunk
+    Patrón: Dos tonos medios con pequeña oscilación
+    Psicología: Tono medio-alto sin descender = "atención" sin pánico
     #>
     Play-SonidoSutil -Frecuencia 400 -Duracion 65
     Play-Silencio -Duracion 40
@@ -213,7 +214,7 @@ function Play-TestsFallidos {
     <#
     .SYNOPSIS
     Tests fallaron - Descenso grave
-    Patron: Tres tonos descendentes (indica "falla")
+    Patrón: Tres tonos descendentes (indica "falla")
     Weber-Fechner: Descenso perceptible pero no agresivo
     #>
     Play-SonidoSutil -Frecuencia 330 -Duracion 70
@@ -226,9 +227,9 @@ function Play-TestsFallidos {
 function Play-ErrorCritico {
     <#
     .SYNOPSIS
-    Error critico - Secuencia descendente enfatica
-    Patron: Cuatro tonos descendentes con espaciado
-    Investigacion: Descenso rapido = urgencia (Norman 2013)
+    Error critico - Secuencia descendente enfática
+    Patrón: Cuatro tonos descendentes con espaciado
+    investigación: Descenso rápido = urgencia (Norman 2013)
     Frecuencias: A3 → F#3 → E3 → D3 (tension armonica)
     #>
     Play-SonidoSutil -Frecuencia 440 -Duracion 75
@@ -243,9 +244,9 @@ function Play-ErrorCritico {
 function Play-RiesgoDetectado {
     <#
     .SYNOPSIS
-    Riesgo detectado - Oscilacion de alerta
-    Patron: Cuatro pulsos alternantes (efecto "sirena" sutil)
-    ISO 9241-910: Patron alternante indica "verificar"
+    Riesgo detectado - oscilación de alerta
+    Patrón: Cuatro pulsos alternantes (efecto "sirena" sutil)
+    ISO 9241-910: Patrón alternante indica "verificar"
     #>
     Play-SonidoSutil -Frecuencia 350 -Duracion 60
     Play-Silencio -Duracion 35
@@ -259,8 +260,8 @@ function Play-RiesgoDetectado {
 function Play-ConflictoGit {
     <#
     .SYNOPSIS
-    Conflicto de merge - Patron de colision
-    Patron: Dos tonos simultaneos (disonancia)
+    Conflicto de merge - Patrón de colisión
+    Patrón: Dos tonos simultáneos (disonancia)
     #>
     Play-SonidoSutil -Frecuencia 277 -Duracion 80
     Play-Silencio -Duracion 20
@@ -272,8 +273,8 @@ function Play-ConflictoGit {
 function Play-ErrorSintaxis {
     <#
     .SYNOPSIS
-    Error de sintaxis - Glitch rapido
-    Patron: Tres pulsos muy rapidos descendentes
+    Error de sintaxis - Glitch rápido
+    Patrón: Tres pulsos muy rápidos descendentes
     #>
     Play-SonidoSutil -Frecuencia 370 -Duracion 35
     Play-Silencio -Duracion 20
@@ -282,13 +283,13 @@ function Play-ErrorSintaxis {
     Play-SonidoSutil -Frecuencia 330 -Duracion 35
 }
 
-# ===== Categoria 5: Sonidos Especiales Cyberpunk =====
+# ===== Categoría 5: Sonidos Especiales Cyberpunk =====
 
 function Play-ScanIniciado {
     <#
     .SYNOPSIS
     Escaneo de archivos iniciado - Barrido digital
-    Patron: Seis pulsos ascendentes rapidos (efecto "scanner")
+    Patrón: Seis pulsos ascendentes rápidos (efecto "scanner")
     #>
     Play-SonidoSutil -Frecuencia 220 -Duracion 30
     Play-Silencio -Duracion 25
@@ -307,7 +308,7 @@ function Play-DataStream {
     <#
     .SYNOPSIS
     Stream de datos - Pulso continuo de transferencia
-    Patron: Cuatro pulsos rapidos identicos (efecto "transmision")
+    Patrón: Cuatro pulsos rápidos idénticos (efecto "transmisión")
     #>
     $freq = 310
     for ($i = 0; $i -lt 4; $i++) {
@@ -320,7 +321,7 @@ function Play-GitPull {
     <#
     .SYNOPSIS
     Pull de repositorio - Descarga de datos
-    Patron: Descendente lento (datos "bajando")
+    Patrón: Descendente lento (datos "bajando")
     #>
     Play-SonidoSutil -Frecuencia 440 -Duracion 50
     Play-Silencio -Duracion 35
@@ -334,8 +335,8 @@ function Play-GitPull {
 function Play-BuildIniciado {
     <#
     .SYNOPSIS
-    Compilacion iniciada - Motor encendiendo
-    Patron: Tres pulsos graves acelerando
+    Compilación iniciada - Motor encendiendo
+    Patrón: Tres pulsos graves acelerando
     #>
     Play-SonidoSutil -Frecuencia 220 -Duracion 60
     Play-Silencio -Duracion 50
@@ -348,7 +349,7 @@ function Play-BreakpointHit {
     <#
     .SYNOPSIS
     Breakpoint alcanzado - Pausa digital
-    Patron: Pulso unico enfatico
+    Patrón: Pulso único enfático
     #>
     Play-SonidoSutil -Frecuencia 277 -Duracion 90
 }
@@ -356,8 +357,8 @@ function Play-BreakpointHit {
 function Play-AIThinking {
     <#
     .SYNOPSIS
-    IA procesando - Patron de pensamiento
-    Patron: Oscilacion sutil (efecto "computando")
+    IA procesando - Patrón de pensamiento
+    Patrón: oscilación sutil (efecto "computando")
     #>
     Play-SonidoSutil -Frecuencia 330 -Duracion 45
     Play-Silencio -Duracion 30
@@ -369,8 +370,8 @@ function Play-AIThinking {
 function Play-NetworkError {
     <#
     .SYNOPSIS
-    Error de red - Desconexion
-    Patron: Tres pulsos descendentes con espaciado largo
+    Error de red - Desconexión
+    Patrón: Tres pulsos descendentes con espaciado largo
     #>
     Play-SonidoSutil -Frecuencia 370 -Duracion 60
     Play-Silencio -Duracion 60
@@ -382,9 +383,9 @@ function Play-NetworkError {
 function Play-SistemaAlerta {
     <#
     .SYNOPSIS
-    Alerta critica de sistema - Patron de emergencia
-    Patron: Alternancia rapida enfatica (solo para emergencias)
-    Nota: Mas fuerte que otros sonidos (romper patron solo si critico)
+    Alerta critica de sistema - Patrón de emergencia
+    Patrón: Alternancia rapida enfática (solo para emergencias)
+    Nota: Más fuerte que otros sonidos (romper Patrón solo si critico)
     #>
     for ($i = 0; $i -lt 3; $i++) {
         Play-SonidoSutil -Frecuencia 440 -Duracion 80
@@ -439,7 +440,7 @@ function Test-Sonidos {
     Write-Host "  Frecuencias: 200-600 Hz (Nocturno)" -ForegroundColor DarkCyan
     Write-Host "======================================`n" -ForegroundColor Magenta
     
-    Write-Host "[INFO] Categoria 1: Sistema" -ForegroundColor Yellow
+    Write-Host "[INFO] Categoría 1: Sistema" -ForegroundColor Yellow
     Write-Host "  [1.1] Sistema Iniciado (220 Hz):"
     Play-SistemaIniciado
     Start-Sleep -Milliseconds 800
@@ -452,12 +453,12 @@ function Test-Sonidos {
     Play-CargandoDatos
     Start-Sleep -Milliseconds 800
     
-    Write-Host "`n[INFO] Categoria 2: Retroalimentacion Positiva" -ForegroundColor Green
+    Write-Host "`n[INFO] Categoría 2: Retroalimentación Positiva" -ForegroundColor Green
     Write-Host "  [2.1] Tarea Completada (acorde D-F-A):"
     Play-TareaCompletada
     Start-Sleep -Milliseconds 800
     
-    Write-Host "  [2.2] Validacion OK (330-370 Hz):"
+    Write-Host "  [2.2] Validación OK (330-370 Hz):"
     Play-ValidacionOK
     Start-Sleep -Milliseconds 800
     
@@ -473,16 +474,16 @@ function Test-Sonidos {
     Play-DeployExitoso
     Start-Sleep -Milliseconds 800
     
-    Write-Host "`n[INFO] Categoria 3: Interaccion Usuario" -ForegroundColor Cyan
-    Write-Host "  [3.1] Solicitar Confirmacion (330 Hz neutral):"
+    Write-Host "`n[INFO] Categoría 3: Interacción Usuario" -ForegroundColor Cyan
+    Write-Host "  [3.1] Solicitar Confirmación (330 Hz neutral):"
     Play-SolicitarConfirmacion
     Start-Sleep -Milliseconds 800
     
-    Write-Host "  [3.2] Opcion Seleccionada (370 Hz click):"
+    Write-Host "  [3.2] Opción Seleccionada (370 Hz click):"
     Play-OpcionSeleccionada
     Start-Sleep -Milliseconds 800
     
-    Write-Host "  [3.3] Menu Navegacion (350 Hz tick):"
+    Write-Host "  [3.3] Menu Navegación (350 Hz tick):"
     Play-MenuNavegacion
     Start-Sleep -Milliseconds 800
     
@@ -490,7 +491,7 @@ function Test-Sonidos {
     Play-InputRecibido
     Start-Sleep -Milliseconds 800
     
-    Write-Host "`n[WARN] Categoria 4: Alertas y Advertencias" -ForegroundColor Yellow
+    Write-Host "`n[WARN] Categoría 4: Alertas y Advertencias" -ForegroundColor Yellow
     Write-Host "  [4.1] Advertencia (400-380 Hz oscilante):"
     Play-Advertencia
     Start-Sleep -Milliseconds 800
@@ -515,7 +516,7 @@ function Test-Sonidos {
     Play-ErrorSintaxis
     Start-Sleep -Milliseconds 800
     
-    Write-Host "`n[INFO] Categoria 5: Sonidos Cyberpunk Especiales" -ForegroundColor Magenta
+    Write-Host "`n[INFO] Categoría 5: Sonidos Cyberpunk Especiales" -ForegroundColor Magenta
     Write-Host "  [5.1] Scan Iniciado (220-392 Hz barrido):"
     Play-ScanIniciado
     Start-Sleep -Milliseconds 800
@@ -540,7 +541,7 @@ function Test-Sonidos {
     Play-AIThinking
     Start-Sleep -Milliseconds 800
     
-    Write-Host "  [5.7] Network Error (370-293 Hz desconexion):"
+    Write-Host "  [5.7] Network Error (370-293 Hz Desconexión):"
     Play-NetworkError
     Start-Sleep -Milliseconds 800
     
@@ -554,5 +555,9 @@ function Test-Sonidos {
     Write-Host "======================================`n" -ForegroundColor Magenta
 }
 
-# Nota: Las funciones estan disponibles al cargar este script con dot-sourcing (. .\sonidos.ps1)
+# Nota: Las funciones están disponibles al cargar este script con dot-sourcing (. .\sonidos.ps1)
+
+
+
+
 

@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "mahitek-3d-lab-mx",
   "version": "1.0.0",
   "description": "Landing page oficial de Mahitek 3D Lab - Impresión 3D funcional en PETG",
@@ -17,11 +17,12 @@
     "docs:update": "node scripts/generate-analisis-sistema.js",
     "docs:check": "node scripts/check-analisis-sistema.js",
     "validate:encoding": "node scripts/validate-encoding.js",
+    "validate:spelling": "cspell --config cspell.json .",
     "validate:docs": "node scripts/validate-docs.js",
     "validate:html": "node scripts/validate-html.js",
     "validate:links": "node scripts/validate-links.js",
     "validate:public:critical": "node scripts/validate-public.js --build",
-    "validate": "npm run check:format && npm run validate:encoding && npm run validate:docs && npm run validate:html && npm run validate:links && npm run validate:public:critical",
+    "validate": "npm run check:format && npm run validate:encoding && npm run validate:spelling && npm run validate:docs && npm run validate:html && npm run validate:links && npm run validate:public:critical",
     "build:public": "node scripts/build-public.js",
     "validate:public": "npm run build:public && node scripts/validate-html.js --file public/index.html && node scripts/validate-links.js --root public",
     "watch:css": "echo 'CSS directo - no requiere compilación'",
@@ -30,8 +31,8 @@
     "version:patch": "npm version patch -m 'chore(release): v%s'",
     "version:minor": "npm version minor -m 'feat(release): v%s'",
     "version:major": "npm version major -m 'BREAKING CHANGE: v%s'",
-    "preinstall": "echo '📦 Instalando dependencias de desarrollo...'",
-    "postinstall": "echo '✅ Instalación completa. Ejecuta: npm run dev'"
+    "preinstall": "echo 'Instalando dependencias de desarrollo...'",
+    "postinstall": "echo 'Instalación completa. Ejecuta: npm run dev'"
   },
   "keywords": [
     "impresion-3d",
@@ -43,7 +44,9 @@
   "author": "Mahitek 3D Lab",
   "license": "MIT",
   "devDependencies": {
+    "@cspell/dict-es-es": "^3.0.8",
     "@web/dev-server": "^0.4.6",
+    "cspell": "^9.4.0",
     "jsdom": "^24.1.0",
     "prettier": "^3.3.0"
   },
@@ -58,3 +61,11 @@
     "not IE 11"
   ]
 }
+
+
+
+
+
+
+
+

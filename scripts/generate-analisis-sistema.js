@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Regenera la seccion autogenerada de `ANALISIS_SISTEMA.md`.
+ * Regenera la sección autogenerada de `ANALISIS_SISTEMA.md`.
  * - Produce inventario y fingerprint (sha256) del "sistema" (archivos significativos).
  * - No requiere build; funciona en Node >= 18.
  */
@@ -456,7 +456,7 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
   }
   if (jsModulesMissing.length > 0) {
     diagnostics.push(
-      `Modulos JS sin import en app.js (${jsModulesMissing.length}): ${jsModulesMissing.join(
+      `Módulos JS sin import en app.js (${jsModulesMissing.length}): ${jsModulesMissing.join(
         ", ",
       )}`,
     );
@@ -465,7 +465,7 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
     const preview = unusedImages.slice(0, 12).join(", ");
     const suffix = unusedImages.length > 12 ? ", ..." : "";
     diagnostics.push(
-      `Imagenes sin referencia detectada (${unusedImages.length}): ${preview}${suffix}`,
+      `Imágenes sin referencia detectada (${unusedImages.length}): ${preview}${suffix}`,
     );
   }
   if (systemFiles.length > 0) {
@@ -492,7 +492,7 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
       .join(", ");
     const suffix = promosMissingIcon.length > 6 ? ", ..." : "";
     diagnostics.push(
-      `Promos con icono faltante o inexistente (${promosMissingIcon.length}): ${preview}${suffix}`,
+      `Promos con ícono faltante o inexistente (${promosMissingIcon.length}): ${preview}${suffix}`,
     );
   }
   if (brandHasSocial && social) {
@@ -503,16 +503,16 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
     diagnostics.push("data/social.json no se pudo leer.");
   }
   if (!apiBaseValue) {
-    diagnostics.push("NEWSLETTER_API_BASE no esta configurado en assets/js/modules/config.js.");
+    diagnostics.push("NEWSLETTER_API_BASE no está configurado en assets/js/modules/config.js.");
   }
   if (!turnstileValue) {
-    diagnostics.push("NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).");
+    diagnostics.push("NEWSLETTER_TURNSTILE_SITEKEY vacío (modo sin Turnstile).");
   }
   if (qrHasPlaceholderGa) {
     diagnostics.push("qr/qr.js usa un Measurement ID placeholder (G-XXXXXXXXXX).");
   }
   if (!hasAdminHeaders) {
-    diagnostics.push("admin/_headers no existe (CSP/headers no aplicaran en admin).");
+    diagnostics.push("admin/_headers no existe (CSP/headers no aplicarán en admin).");
   }
   if (!hasWranglerToml) {
     diagnostics.push("workers/mahiteklab-api/wrangler.toml no existe.");
@@ -521,17 +521,17 @@ function renderAutoSection({ fingerprint, fingerprintFiles, allFiles }) {
     diagnostics.push("CNAME no existe (dominio custom no configurado).");
   }
   if (!hasLicense) {
-    diagnostics.push("No se encontro LICENSE en la raiz (README lo referencia).");
+    diagnostics.push("No se encontró LICENSE en la raíz (README lo referencia).");
   }
   if (lighthouseCiExists && !lighthouseCiUsed) {
-    diagnostics.push("lighthouserc.ci.json existe, pero no esta referenciado en workflows.");
+    diagnostics.push("lighthouserc.ci.json existe, pero no está referenciado en workflows.");
   }
   if (publicDirExists) {
     diagnostics.push("public/ existe en disco (salida generada). Verifica que no se versiona.");
   }
 
   lines.push("");
-  lines.push("Diagnostico rapido:");
+  lines.push("Diagnóstico rápido:");
   if (diagnostics.length === 0) {
     lines.push("- Sin alertas detectadas.");
   } else {
@@ -545,7 +545,7 @@ function upsertAutoBlock(markdown, newBlock) {
   if (markdown.includes(AUTO_START) && markdown.includes(AUTO_END)) {
     const start = markdown.indexOf(AUTO_START);
     const end = markdown.indexOf(AUTO_END);
-    if (end < start) throw new Error("Markers invalidos en ANALISIS_SISTEMA.md");
+    if (end < start) throw new Error("Markers inválidos en ANALISIS_SISTEMA.md");
     const before = markdown.slice(0, start + AUTO_START.length);
     const after = markdown.slice(end);
     return `${before}\n\n${newBlock}\n\n${after}`;
@@ -582,12 +582,12 @@ function main() {
 
   const existing = fs.existsSync(outputPath)
     ? fs.readFileSync(outputPath, "utf8")
-    : "# Analisis del Sistema\n";
+    : "# Análisis del Sistema\n";
 
   const stored = extractStoredFingerprint(existing);
   const hasAutoBlock = existing.includes(AUTO_START) && existing.includes(AUTO_END);
   if (stored && stored === fingerprint && hasAutoBlock) {
-    console.log(`V ANALISIS_SISTEMA.md ya esta actualizado (fingerprint ${fingerprint.slice(0, 12)}...)`);
+    console.log(`V ANALISIS_SISTEMA.md ya está actualizado (fingerprint ${fingerprint.slice(0, 12)}...)`);
     return;
   }
 

@@ -257,7 +257,7 @@ function renderCampaignList() {
 
   list.innerHTML =
     filtered.map(renderCampaignCard).join('') ||
-    '<div class="empty-state">Sin campanas que coincidan con el filtro.</div>';
+    '<div class="empty-state">Sin campañas que coincidan con el filtro.</div>';
 
   list.querySelectorAll('[data-action="edit"]').forEach(btn => {
     btn.addEventListener('click', ev => {
@@ -325,7 +325,7 @@ async function refreshCampaigns() {
   if (!state) return;
 
   const list = $('campaign-list');
-  list.innerHTML = '<div class="muted">Cargando campanas...</div>';
+  list.innerHTML = '<div class="muted">Cargando campañas...</div>';
 
   const data = await apiFetch('/admin/campaigns', state);
   campaignCache = data.campaigns || [];
@@ -343,7 +343,7 @@ async function refreshStats() {
 }
 
 function openModal(campaign) {
-  $('modal-title').textContent = campaign ? `Editar: ${campaign.id}` : 'Nueva campana';
+  $('modal-title').textContent = campaign ? `Editar: ${campaign.id}` : 'Nueva campaña';
   loadFormFromCampaign(campaign);
   setStatus($('modal-status'), '');
   $('campaign-modal').showModal();
@@ -409,7 +409,7 @@ function main() {
     hydrateUiFromState(state);
     refreshCampaigns().catch(() => {});
     refreshStats().catch(() => {});
-    setStatus($('auth-status'), 'Sesion recuperada.', 'ok');
+    setStatus($('auth-status'), 'Sesión recuperada.', 'ok');
   } else {
     $('apiBase').value = DEFAULT_API_BASE;
   }

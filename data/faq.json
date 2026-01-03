@@ -1,7 +1,7 @@
 [
   {
     "q": "¿Cómo hago un pedido?",
-    "a": "Comparte tu idea (foto, archivo 3D, dibujo o referencia). Respondemos con una lectura inicial: propuesta de materiales/acabados y estimacion clara.",
+    "a": "Comparte tu idea (foto, archivo 3D, dibujo o referencia). Respondemos con una lectura inicial: propuesta de materiales/acabados y estimación clara.",
     "categoria": "pedidos",
     "destacada": true
   },
@@ -13,7 +13,7 @@
   },
   {
     "q": "¿Cuánto tarda mi pedido?",
-    "a": "Depende de la complejidad y carga. Confirmamos tiempos al aprobar el diseno.",
+    "a": "Depende de la complejidad y carga. Confirmamos tiempos al aprobar el diseño.",
     "categoria": "tiempos",
     "destacada": true
   },
@@ -29,7 +29,7 @@
   },
   {
     "q": "¿Envían a todo México?",
-    "a": "Si, envio nacional por paqueteria. El tiempo varia segun zona; te confirmamos al enviar.",
+    "a": "Sí, envío nacional por paquetería. El tiempo varia según zona; te confirmamos al enviar.",
     "categoria": "envíos"
   },
   {
@@ -93,5 +93,6 @@
     "categoria": "privacidad"
   }
 ]
+
 
 

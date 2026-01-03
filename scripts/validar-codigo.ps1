@@ -1,5 +1,6 @@
 #!/usr/bin/env pwsh
-# Sistema de Validacion de Codigo - Mahitek 3D Lab
+# Sistema de Validación de Código - Mahitek 3D Lab
+# cspell:ignore Validacion
 # Valida HTML, CSS, JavaScript y archivos de datos antes de commit
 
 param(
@@ -13,7 +14,7 @@ $script:TotalErrores = 0
 $script:TotalAdvertencias = 0
 $script:TotalPasados = 0
 
-# Cargar libreria de sonidos
+# Cargar librería de sonidos
 $sonidosPath = Join-Path $PSScriptRoot "lib\sonidos.ps1"
 if (Test-Path $sonidosPath) {
     . $sonidosPath
@@ -21,7 +22,7 @@ if (Test-Path $sonidosPath) {
         Set-SonidosHabilitados -Habilitado $false
     }
 } else {
-    # Funciones vacias si no existe la libreria
+    # Funciones vacías si no existe la librería
     function Play-ProcesoIniciado { }
     function Play-ValidacionOK { }
     function Play-Advertencia { }
@@ -291,9 +292,9 @@ function Test-GitStatus {
     }
 }
 
-# ===== 7. Validacion completa (npm run validate) =====
+# ===== 7. Validación completa (npm run validate) =====
 function Test-NpmValidate {
-    Write-Header "Validacion completa (npm run validate)"
+    Write-Header "Validación completa (npm run validate)"
 
     try {
         npm run validate
@@ -315,7 +316,7 @@ function Test-NpmValidate {
 
 # Ejecutar todas las validaciones
 Write-Host "`n================================================" -ForegroundColor Cyan
-Write-Host "  Sistema de Validacion - Mahitek 3D Lab" -ForegroundColor Cyan
+Write-Host "  Sistema de Validación - Mahitek 3D Lab" -ForegroundColor Cyan
 Write-Host "================================================`n" -ForegroundColor Cyan
 
 Play-ProcesoIniciado  # Sonido suave al iniciar
@@ -329,7 +330,7 @@ Test-GitStatus
 Test-NpmValidate
 
 # Resumen Final
-Write-Header "Resumen de Validacion"
+Write-Header "Resumen de Validación"
 Write-Host ""
 Write-Success "Pruebas pasadas: $script:TotalPasados"
 Write-Warning-Custom "Advertencias: $script:TotalAdvertencias"
@@ -341,7 +342,7 @@ if ($script:TotalErrores -eq 0) {
     Write-Host "  VALIDACION EXITOSA - OK PARA COMMIT" -ForegroundColor Green
     Write-Host "================================================`n" -ForegroundColor Green
     
-    # Sonido de exito solo si todo paso (sin advertencias molestas)
+    # Sonido de éxito solo si todo pasó (sin advertencias molestas)
     if ($script:TotalAdvertencias -eq 0) {
         Play-ValidacionOK  # Sonido muy sutil
     } else {
@@ -355,7 +356,7 @@ else {
     Write-Host "  VALIDACION FALLIDA - CORREGIR ERRORES" -ForegroundColor Red
     Write-Host "================================================`n" -ForegroundColor Red
     
-    # Sonido de error SOLO si hay errores criticos
+    # Sonido de error SOLO si hay errores críticos
     Play-TestsFallidos  # Sonido claro pero no molesto
     
     exit 1

@@ -21,7 +21,7 @@ Este repositorio es un sitio estático (GitHub Pages) con HTML/CSS/JS sin build 
 
 - `ANALISIS_SISTEMA.md` incluye una sección autogenerada con inventario y fingerprint (sha256) del sistema.
 - `npm run validate` actualiza `ANALISIS_SISTEMA.md` en local y valida el fingerprint (en CI solo valida).
-- Para que se actualice automáticamente al commitear: ejecuta `.\scripts\instalar-hooks.ps1` (el pre-commit corre `npm run docs:update`).
+- Para que se actualice automáticamente al hacer commit: ejecuta `.\scripts\instalar-hooks.ps1` (el pre-commit corre `npm run docs:update`).
 
 ## Archivos clave
 
@@ -30,7 +30,7 @@ Este repositorio es un sitio estático (GitHub Pages) con HTML/CSS/JS sin build 
 - Runtime ESM: `assets/js/app.js` + `assets/js/modules/*`
 - Datos: `data/*.json` y `assets/data/brand.json`
 - CI/CD: `.github/workflows/ci.yml` y `.github/workflows/lighthouse.yml`
-- Validaciones: `scripts/validate-encoding.js`, `scripts/check-analisis-sistema.js`, `scripts/validate-html.js`, `scripts/validate-links.js`
+- Validaciones: `scripts/validate-encoding.js`, `scripts/check-Análisis-sistema.js`, `scripts/validate-html.js`, `scripts/validate-links.js`
 
 ## Definition of Done (DoD) para cada ticket
 
@@ -47,3 +47,4 @@ Si ves warnings tipo “ignoring broken ref refs/.../desktop.ini” o errores al
 - Este repo puede estar usando `reftable` (`.git/config` -> `extensions.refstorage=reftable`).
   - Fix recomendado: `git refs migrate --ref-format=files`
   - Luego: `git fsck --full` y `git gc`
+

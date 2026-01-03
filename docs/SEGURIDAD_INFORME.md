@@ -34,7 +34,7 @@ Usado en **todos** los campos dinámicos:
 // Productos
 ${escapeHTML(product.nombre)}
 ${escapeHTML(product.descripcion)}
-${escapeHTML(product.categoria)}
+${escapeHTML(product.categoría)}
 
 // Promociones
 ${escapeHTML(promo.titulo)}
@@ -345,3 +345,4 @@ DEBUG_MODE: false
 
 **Firmado:** Sistema de Validación Mahitek v2.0  
 **Próxima revisión:** Al añadir nuevas funcionalidades con input de usuario
+

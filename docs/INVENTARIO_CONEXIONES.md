@@ -1,4 +1,4 @@
-# Inventario de conexiones (archivo por archivo)
+﻿# Inventario de conexiones (archivo por archivo)
 
 ## Metodología
 
@@ -119,8 +119,8 @@
 - `scripts/build-public.js` -> `npm run build:public` y CI.
 - `scripts/validate-encoding.js` -> `npm run validate:encoding`.
 - `scripts/validate-docs.js` -> `npm run validate:docs`.
-- `scripts/check-analisis-sistema.js` -> llamado por `validate-docs.js`.
-- `scripts/generate-analisis-sistema.js` -> `npm run docs:update` y `validate-docs.js`.
+- `scripts/check-Análisis-sistema.js` -> llamado por `validate-docs.js`.
+- `scripts/generate-Análisis-sistema.js` -> `npm run docs:update` y `validate-docs.js`.
 - `scripts/validate-html.js` -> `npm run validate:html` y CI.
 - `scripts/validate-links.js` -> `npm run validate:links` y CI.
 - `scripts/validate-public.js` -> `npm run validate:public:critical`.
@@ -158,3 +158,7 @@
 
 - `public/` -> salida generada por `scripts/build-public.js` (no versionar).
 - `logs/` -> carpeta de logs (gitignored).
+
+
+
+

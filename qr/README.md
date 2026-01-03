@@ -1,6 +1,6 @@
 # QR Redirect (GitHub Pages)
 
-Landing minima para redireccion con UTM y GA4.
+Landing mínima para redirección con UTM y GA4.
 
 ## Ajustes necesarios
 
@@ -8,16 +8,16 @@ Landing minima para redireccion con UTM y GA4.
 
 ## Deploy (opciones)
 
-Opcion A: Mantener dentro de este repo
+Opción A: Mantener dentro de este repo
 - El build `scripts/build-public.js` copia `qr/` a `public/`.
 - La ruta final queda como `https://mahitek3dlab.com/qr/`.
 
-Opcion B: Publicar como repo aparte
+Opción B: Publicar como repo aparte
 - Crea un repo `qr`.
-- Copia `qr/index.html` y `qr/qr.js` a la raiz del repo.
+- Copia `qr/index.html` y `qr/qr.js` a la raíz del repo.
 - En Settings -> Pages, selecciona `main` y carpeta `/`.
 
-## Parametros de URL
+## Parámetros de URL
 
 - `?c=<campaign>` para campaign
 - `?m=<medium>` para medium (default `print`)

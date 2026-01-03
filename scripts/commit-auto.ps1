@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+﻿#!/usr/bin/env pwsh
 # Sistema de Commit Automatizado - Mahitek 3D Lab
 # Ejecuta validaciones, genera mensaje de commit profesional y hace push
 
@@ -18,7 +18,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# Cargar libreria de sonidos
+# Cargar librería de sonidos
 $sonidosPath = Join-Path $PSScriptRoot "lib\sonidos.ps1"
 if (Test-Path $sonidosPath) {
     . $sonidosPath
@@ -26,7 +26,7 @@ if (Test-Path $sonidosPath) {
         Set-SonidosHabilitados -Habilitado $false
     }
 } else {
-    # Funciones vacias si no existe la libreria
+    # Funciones vacías si no existe la librería
     function Play-ProcesoIniciado { }
     function Play-SolicitarConfirmacion { }
     function Play-Advertencia { }
@@ -55,14 +55,14 @@ Write-Header "Verificando cambios en Git"
 
 $status = git status --porcelain
 if (-not $status) {
-    Write-Warning-Custom "No hay cambios para commitear"
+    Write-Warning-Custom "No hay cambios para hacer commit"
     exit 0
 }
 
 Write-Info "Archivos modificados:"
 $status | ForEach-Object { Write-Info "  $_" }
 
-# ===== 2. Ejecutar validaciones (si no se skipean) =====
+# ===== 2. Ejecutar validaciones (si no se omiten) =====
 if (-not $SkipTests) {
     Write-Header "Ejecutando validaciones de código"
     
@@ -144,14 +144,14 @@ if (-not $Mensaje) {
     $Mensaje = $descripcion -join ", "
 }
 
-# Formatear mensaje según Conventional Commits
+# Formatear mensaje segÃºn Conventional Commits
 $commitMsg = "$Tipo`: $Mensaje"
 
 # Agregar detalles adicionales
 $detallesCommit = @"
 
 - Archivos modificados: $($archivosModificados.Count)
-- Validaciones: $(if ($SkipTests) { 'omitidas' } else { 'ejecutadas ✓' })
+- Validaciones: $(if ($SkipTests) { 'omitidas' } else { 'ejecutadas â' })
 - Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
 "@
 
@@ -188,7 +188,7 @@ Write-Header "Creando commit"
 try {
     git commit -m $commitMsgCompleto
     Write-Success "Commit creado exitosamente"
-    Play-CommitExitoso  # Sonido armonioso de exito
+    Play-CommitExitoso  # Sonido armonioso de éxito
     
     # Obtener hash del commit
     $commitHash = git rev-parse --short HEAD
@@ -196,7 +196,7 @@ try {
 }
 catch {
     Write-Error-Custom "Error al crear commit: $($_.Exception.Message)"
-    Play-ErrorCritico  # Sonido de error critico
+    Play-ErrorCritico  # Sonido de error crítico
     exit 1
 }
 
@@ -214,12 +214,12 @@ if (-not $NoPush) {
         try {
             git push origin main
             Write-Success "Cambios subidos a GitHub exitosamente"
-            Play-PushExitoso  # Sonido gratificante de exito completo
+            Play-PushExitoso  # Sonido gratificante de éxito completo
         }
         catch {
             Write-Error-Custom "Error al hacer push: $($_.Exception.Message)"
-            Write-Warning-Custom "El commit se creo localmente pero no se subio"
-            Play-ErrorCritico  # Sonido de error en push
+            Write-Warning-Custom "El commit se creó localmente pero no se subió"
+            Play-ErrorCritico  # Sonido de error crítico
             exit 1
         }
     }
@@ -243,3 +243,10 @@ Write-Info "Push: $pushStatus"
 Write-Host ""
 
 exit 0
+
+
+
+
+
+
+

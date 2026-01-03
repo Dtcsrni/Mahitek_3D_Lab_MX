@@ -128,7 +128,7 @@ async function recordEvent(
 function getCampaignIdFromRequest(body) {
   const candidate = String(body.campaignId || '').trim();
   if (!candidate) return null;
-  // IDs simples para evitar inyeccion/ruido
+  // IDs simples para evitar inyección/ruido
   if (!/^[A-Z0-9_-]{2,32}$/i.test(candidate)) return null;
   return candidate;
 }
@@ -577,8 +577,8 @@ async function handleSubscribe(request, env) {
   const landingUrl = String(env.PUBLIC_LANDING_URL || '').trim();
   const html = renderCouponEmail({ landingUrl, welcome: welcomeCoupon, campaign: campaignCoupon });
   const subject = campaignCoupon
-    ? 'Bienvenida Mahitek 3D Lab: doble cupon listo'
-    : 'Bienvenida a Mahitek 3D Lab: tu cupon ya esta activo';
+    ? 'Bienvenida Mahitek 3D Lab: doble cupón listo'
+    : 'Bienvenida a Mahitek 3D Lab: tu cupón ya está activo';
 
   const emailResult = await sendEmail(env, { to: email, subject, html });
   return json({ ok: true, emailSent: emailResult.ok });

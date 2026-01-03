@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verifica que `ANALISIS_SISTEMA.md` este actualizado para cambios significativos.
+ * Verifica que `ANALISIS_SISTEMA.md` esté actualizado para cambios significativos.
  * Falla si el fingerprint guardado no coincide con el actual.
  */
 const fs = require("node:fs");
@@ -177,7 +177,7 @@ function main() {
   const current = sha256Fingerprint(fingerprintFiles);
 
   if (current !== stored) {
-    console.error("X `ANALISIS_SISTEMA.md` esta desactualizado para cambios significativos");
+    console.error("X `ANALISIS_SISTEMA.md` está desactualizado para cambios significativos");
     console.error(`  Guardado:  ${stored}`);
     console.error(`  Actual:    ${current}`);
     console.error("");

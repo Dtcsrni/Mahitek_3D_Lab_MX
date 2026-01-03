@@ -1,4 +1,5 @@
 # 🧪 Sistema de Pruebas y Commits Automatizados
+<!-- cspell:ignore Validacion condicion -->
 
 Sistema profesional de validación de código y commits automatizados para Mahitek 3D Lab.
 
@@ -397,3 +398,5 @@ Este sistema de pruebas es parte de Mahitek 3D Lab y está bajo la misma licenci
 ---
 
 **¿Necesitas ayuda?** Revisa la [documentación principal](../README.md) o abre un issue en GitHub.
+
+

@@ -309,7 +309,7 @@ if (!ticking) {
 }
 ```
 
-**Evita**: Múltiples recalculos por frame
+**Evita**: Múltiples recálculos por frame
 **Garantiza**: 1 update por frame máximo
 
 ### 2. Passive Event Listeners
@@ -489,7 +489,7 @@ JavaScript solo **mejora** con auto-hide y modo compacto.
 - ✅ Desktop siempre con navbar completo (no compacto)
 - ✅ Excepciones inteligentes (menú abierto, scroll up, near top)
 - ✅ Performance optimizada (60 FPS, GPU-accelerated)
-- ✅ UX no invasiva y predictible
+- ✅ UX no invasiva y predecible
 
 **Próximos pasos opcionales**:
 - [ ] Indicador de sección activa en nav-links

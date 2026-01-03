@@ -739,17 +739,17 @@ navMenu?.addEventListener('click', e => {
 
 ### Accesibilidad extra
 
-- `aria-expanded` en el boton de menu.
+- `aria-expanded` en el botón de menú.
 - Decorativos con `aria-hidden="true"`; solo poner `role` o `aria-label` si aportan significado.
 - Focus visible: `:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }`
 - Contraste en textos sobre gradientes: fondo `rgba(0,0,0,0.72)` o similar.
 
-### Notas de implementacion
+### Notas de implementación
 
 - Insertar `nav-decorations` antes de `.container` para que quede bajo el contenido pero dentro del header.
 - Fallback a `background-color: rgba(0,0,0,0.82);` si no hay `backdrop-filter`.
-- Comprimir SVG (svgo) y centralizar `defs` en un `<svg width="0" height="0" style="position:absolute">` para reuso.
-- Reutilizar el mismo nopal espejado; reduces peso y cargas solo una definicion.
+- Comprimir SVG (svgo) y centralizar `defs` en un `<svg width="0" height="0" style="position:absolute">` para reutilización.
+- Reutilizar el mismo nopal espejado; reduces peso y cargas solo una definición.
 
 ---
 
