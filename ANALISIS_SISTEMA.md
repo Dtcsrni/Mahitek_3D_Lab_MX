@@ -1,15 +1,15 @@
-# ?? Analisis del Sistema - Mahitek 3D Lab MX
+# ?? Análisis del Sistema - Mahitek 3D Lab MX
 
-Este documento describe el estado del proyecto y se mantiene **parcialmente automatico** para evitar desactualizacion.
+Este documento describe el estado del proyecto y se mantiene **parcialmente automático** para evitar desactualización.
 
 ## Objetivo
 
 - Tener un inventario confiable de archivos/estructura (para auditoria y mantenimiento).
-- Detectar cambios "significativos" en el sistema (UI/CSS/JS/datos/scripts/CI) y exigir que el analisis se actualice.
+- Detectar cambios "significativos" en el sistema (UI/CSS/JS/datos/scripts/CI) y exigir que el Análisis se actualice.
 
-## Mantenimiento automatico
+## Mantenimiento automático
 
-- Actualizar: `npm run docs:update` (regenera la seccion autogenerada).
+- Actualizar: `npm run docs:update` (regenera la sección autogenerada).
 - Verificar: `npm run validate` (incluye `validate:docs` y falla si el fingerprint no coincide).
 - Auto en commits: `.\scripts\instalar-hooks.ps1` instala un `pre-commit` que ejecuta `npm run docs:update` y agrega `ANALISIS_SISTEMA.md`.
 
@@ -23,13 +23,13 @@ El fingerprint considera contenido y rutas de:
 - `scripts/**`
 - `package.json`, `package-lock.json`
 
-Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualizacion.
+Cambios fuera de ese alcance (p. ej. docs Markdown) no fuerzan actualización.
 
 ---
 <!-- AUTO-GENERATED:START -->
 
-Generado: 2026-01-02T07:40:43.875Z
-Fingerprint: sha256:69016702f04b99c41e73c4e23f0e2a089e9396fcde97c30393f64b391031397a
+Generado: 2026-01-03T21:15:44.814Z
+Fingerprint: sha256:a76f72e5565d76f1e85b4f32d131c176e97bf8a3f5cbe9985127fdcc65455ca9
 Archivos hasheados: 76
 
 Criterio del fingerprint (cambios significativos):
@@ -49,7 +49,7 @@ Inventario (excluye .git/node_modules/public):
 | `.js` | 44 |
 | `.md` | 31 |
 | `.ini` | 24 |
-| `.json` | 17 |
+| `.json` | 18 |
 | `.ps1` | 12 |
 | `(sin-ext)` | 9 |
 | `.css` | 4 |
@@ -77,47 +77,20 @@ Workflows (3):
 - .github/workflows/desktop.ini
 - .github/workflows/lighthouse.yml
 
-Scripts npm (28):
-- `build`
-- `build:public`
-- `check:format`
-- `deploy`
-- `dev`
-- `dev:open`
-- `docs:check`
-- `docs:update`
-- `format`
-- `format:css`
-- `format:html`
-- `format:js`
-- `monitor`
-- `postinstall`
-- `preinstall`
-- `serve`
-- `start`
-- `validate`
-- `validate:docs`
-- `validate:encoding`
-- `validate:html`
-- `validate:links`
-- `validate:public`
-- `validate:public:critical`
-- `version:major`
-- `version:minor`
-- `version:patch`
-- `watch:css`
+Scripts npm (0):
 
-Diagnostico rapido:
+Diagnóstico rápido:
 - Datos: Productos: 16/16 activos (placeholders: 0) | Promos: 0/3 activas | FAQ: 18 items
 - index.html no referencia assets/css/modules/animations.css.
 - CSS sin referencia en index.html (1): animations.css
-- Modulos JS sin import en app.js (6): faq.js, hero-counters.js, promos.js, scroll-narrative.js, social.js, svg-animations.js
-- Imagenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
+- Módulos JS sin import en app.js (6): faq.js, hero-counters.js, promos.js, scroll-narrative.js, social.js, svg-animations.js
+- Imágenes sin referencia detectada (30): mark-icon.svg, promo-addon-sticker.svg, promo-back-to-school.svg, promo-click-pick.svg, promo-club.svg, promo-combo-pack6-envio.svg, promo-combo-quetzal.svg, promo-combo-zombies.svg, promo-envio-online.svg, promo-figura-duo.svg, promo-figura-med.svg, promo-key-outlet.svg, ...
 - Archivos de sistema detectados (24): .github/desktop.ini, .github/workflows/desktop.ini, admin/desktop.ini, assets/css/desktop.ini, assets/css/modules/desktop.ini, assets/data/desktop.ini, assets/desktop.ini, assets/img/desktop.ini, assets/js/desktop.ini, assets/js/modules/desktop.ini, assets/video/desktop.ini, data/desktop.ini, ...
 - brand.json incluye social; data/social.json queda como fallback.
-- NEWSLETTER_TURNSTILE_SITEKEY vacio (modo sin Turnstile).
-- No se encontro LICENSE en la raiz (README lo referencia).
-- lighthouserc.ci.json existe, pero no esta referenciado en workflows.
+- NEWSLETTER_TURNSTILE_SITEKEY vacío (modo sin Turnstile).
+- No se encontró LICENSE en la raíz (README lo referencia).
+- lighthouserc.ci.json existe, pero no está referenciado en workflows.
 - public/ existe en disco (salida generada). Verifica que no se versiona.
 
 <!-- AUTO-GENERATED:END -->
+
