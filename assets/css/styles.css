@@ -9509,9 +9509,20 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 .process-container {
   display: grid;
   gap: 2rem;
+  grid-template-areas:
+    "header"
+    "steps"
+    "support";
 }
 
-.process-copy {
+.process-header {
+  grid-area: header;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.process-support {
+  grid-area: support;
   display: grid;
   gap: 1.5rem;
 }
@@ -9636,6 +9647,19 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   gap: 0.6rem;
 }
 
+.process-timelapse-header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.process-timelapse-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.9);
+}
+
 .process-timelapse-meta {
   display: flex;
   flex-wrap: wrap;
@@ -9644,7 +9668,20 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--text-secondary);
 }
 
+.process-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.45);
+  color: rgba(226, 232, 240, 0.9);
+  font-size: 0.78rem;
+}
+
 .process-steps {
+  grid-area: steps;
   list-style: none;
   counter-reset: step;
   display: grid;
@@ -9808,6 +9845,8 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 @media (max-width: 640px) {
   .process-flow {
     border-radius: 20px;
+    justify-content: center;
+    text-align: center;
   }
 
   .process-step {
@@ -9822,17 +9861,22 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 
 @media (min-width: 992px) {
   .process-container {
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-areas:
+      "header steps"
+      "support steps";
     align-items: start;
   }
 
   .process-steps {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1.5rem;
   }
 
   .process-step {
     min-height: 240px;
+    height: 100%;
   }
 }
 
