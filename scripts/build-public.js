@@ -15,6 +15,7 @@ const outDir = path.join(repoRoot, "public");
 
 const COPY_TARGETS = [
   "index.html",
+  "aviso-privacidad.html",
   "assets",
   "data",
   "manifest.json",

@@ -2413,15 +2413,38 @@
                 </div>
                 <details class="lead-form card glass" id="lead-form">
                   <summary class="lead-form-summary">
-                    <span class="lead-form-summary-badge">Brief rápido</span>
+                    <span class="lead-form-summary-marker" aria-hidden="true">
+                      <svg class="ui-icon ui-icon--draw" viewBox="0 0 24 24">
+                        <use href="#i-faq-pen"></use>
+                      </svg>
+                    </span>
+                    <span class="lead-form-summary-badge">Brief técnico</span>
                     <span class="lead-form-summary-title">Cuéntanos tu proyecto</span>
                     <span class="lead-form-summary-note">2-3 min</span>
                     <span class="lead-form-summary-icon" aria-hidden="true"></span>
                   </summary>
                   <div class="lead-form-body">
+                    <div class="lead-form-header">
+                      <span class="lead-form-header-icon" aria-hidden="true">
+                        <svg class="ui-icon ui-icon--draw" viewBox="0 0 24 24">
+                          <use href="#i-faq-layers"></use>
+                        </svg>
+                      </span>
+                      <div class="lead-form-header-text">
+                        <p class="lead-form-header-kicker">Brief técnico</p>
+                        <p class="lead-form-header-title">Ruta, materiales y tiempos estimados.</p>
+                      </div>
+                    </div>
                     <p class="lead-form-intro">
-                      Solo si ya quieres cotizar. Recibes ruta inicial y tiempos estimados en el primer contacto.
+                      Si ya quieres cotizar, completa este brief. Con esto definimos uso, escala, detalle gráfico y
+                      acabados.
                     </p>
+                    <ul class="lead-form-highlights">
+                      <li>Ruta de materiales</li>
+                      <li>Estimación de tiempos</li>
+                      <li>Detalle gráfico a color</li>
+                    </ul>
+                    <div class="lead-form-divider" aria-hidden="true"></div>
                     <form
                       class="lead-form-form"
                       action="https://formspree.io/f/xayzlqny"
@@ -2540,7 +2563,11 @@
                       <div class="lead-form-consent">
                         <label>
                           <input id="lead-consent" name="consent" type="checkbox" required />
-                          Acepto el aviso de privacidad y contacto para seguimiento.
+                          Acepto el
+                          <a href="aviso-privacidad.html" target="_blank" rel="noopener noreferrer"
+                            >aviso de privacidad</a
+                          >
+                          y contacto para seguimiento.
                         </label>
                       </div>
                       <input id="lead-source-detail" name="source_detail" type="hidden" value="cta" />
@@ -2552,14 +2579,30 @@
                   </div>
                 </details>
                 <div class="cta-actions">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-cta"
+                    data-action="scroll"
+                    data-target="#lead-form"
+                    data-highlight-target="#lead-form"
+                    data-open-lead-form
+                  >
+                    <span>Iniciar brief</span>
+                    <span class="btn-cta-icon" aria-hidden="true">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="m13 6 6 6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
                   <a
-                    class="btn btn-primary email-link"
+                    class="btn btn-ghost email-link"
                     data-email-user="armsystechno"
                     data-email-domain="gmail.com"
-                    data-email-label="Escribir al taller ✉️"
+                    data-email-label="Escribir al taller"
                     href="mailto:armsystechno@gmail.com"
                     rel="nofollow"
-                    >Escribir al taller ✉️</a
+                    >Escribir al taller</a
                   >
                   <noscript>
                     <span class="noscript-email noscript-email--spaced">
@@ -2567,7 +2610,7 @@
                     </span>
                   </noscript>
                   <a href="https://m.me/mahitek3dlabmx" class="btn btn-ghost" target="_blank" rel="noopener noreferrer"
-                    >💬 Messenger del taller</a
+                    >Messenger del taller</a
                   >
                 </div>
               </div>

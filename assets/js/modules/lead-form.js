@@ -183,6 +183,12 @@ export function initLeadForm() {
   let turnstileToken = '';
   let turnstilePrimed = false;
 
+  const openLeadForm = () => {
+    if (wrapperDetails && !wrapperDetails.open) {
+      wrapperDetails.open = true;
+    }
+  };
+
   function ensureTurnstileContainer() {
     const existing = form.querySelector('#lead-turnstile');
     if (existing) return existing;
@@ -237,6 +243,22 @@ export function initLeadForm() {
         if (wrapperDetails.open) primeTurnstile();
       });
     }
+  }
+
+  if (wrapperDetails) {
+    if (window.location.hash === '#lead-form') {
+      openLeadForm();
+    }
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash === '#lead-form') {
+        openLeadForm();
+      }
+    });
+    document.querySelectorAll('[data-open-lead-form]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        openLeadForm();
+      });
+    });
   }
 
   form.addEventListener('input', ev => {
