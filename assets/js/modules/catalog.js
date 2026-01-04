@@ -83,37 +83,46 @@ function renderProducts({ onEvent } = {}) {
         ? `<div class="product-emoji">${escapeHTML(product.imagen)}</div>`
         : `<img class="product-image" src="${sanitizeURL(product.imagen || CONFIG.PLACEHOLDER_IMAGE)}" alt="${safeName}" data-placeholder="${CONFIG.PLACEHOLDER_IMAGE}" loading="lazy" decoding="async" />`;
 
-      const detailsData = [
-        { label: 'Material', value: product.material },
-        { label: 'Incluye', value: product.incluye },
-        { label: 'Variantes', value: product.variantes }
+      const formatMetricValue = (value, suffix = '') => {
+        if (value === undefined || value === null || value === '') return null;
+        const numeric = typeof value === 'number' ? value : Number(value);
+        const text = Number.isFinite(numeric) ? String(numeric) : String(value);
+        return `${text}${suffix}`;
+      };
+
+      const specsData = [
+        { label: 'Material', value: formatMetricValue(product.material) },
+        { label: 'Peso', value: formatMetricValue(product.peso_g, ' g') },
+        { label: 'Tiempo', value: formatMetricValue(product.tiempo_h, ' h') }
       ].filter(item => item.value);
 
-      const detailMarkup = detailsData.length
+      const specsMarkup = specsData.length
         ? `
-        <dl class="product-details">
-          ${detailsData
+        <div class="product-specs">
+          ${specsData
+            .slice(0, 3)
             .map(
-              detail => `
-            <div>
-              <dt>${escapeHTML(detail.label)}</dt>
-              <dd>${escapeHTML(detail.value)}</dd>
-            </div>
-          `
+              spec =>
+                `<span class="product-spec"><strong>${escapeHTML(spec.label)}:</strong> ${escapeHTML(
+                  spec.value
+                )}</span>`
             )
             .join('')}
-        </dl>
+        </div>
       `
         : '';
 
-      const tagsMarkup =
-        product.tags && product.tags.length
-          ? `
+      const maxTags = 3;
+      const tags = Array.isArray(product.tags) ? product.tags.slice(0, maxTags) : [];
+      const extraTags = Array.isArray(product.tags) ? product.tags.length - tags.length : 0;
+      const tagsMarkup = tags.length
+        ? `
         <div class="product-tags">
-          ${product.tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join('')}
+          ${tags.map(tag => `<span class="tag product-tag">${escapeHTML(tag)}</span>`).join('')}
+          ${extraTags > 0 ? `<span class="tag product-tag">+${extraTags}</span>` : ''}
         </div>
       `
-          : '';
+        : '';
 
       const priceText = product.texto_precio
         ? escapeHTML(String(product.texto_precio))
@@ -139,17 +148,21 @@ function renderProducts({ onEvent } = {}) {
       <div class="product-media">
         ${mediaMarkup}
       </div>
-      <div class="product-meta">
-        <span class="product-sku">${escapeHTML(product.id || '')}</span>
-        ${product.categoria ? `<span class="product-line">${escapeHTML(product.categoria)}</span>` : ''}
+      <div class="product-body">
+        <div class="product-meta">
+          <span class="product-sku">${escapeHTML(product.id || '')}</span>
+          ${product.categoria ? `<span class="product-line">${escapeHTML(product.categoria)}</span>` : ''}
+        </div>
+        <h3 class="product-name">${safeName}</h3>
+        <div class="product-pricing">
+          <p class="product-price">${priceText}</p>
+          <span class="product-price-note">Rango por tamano/grosor y acabados.</span>
+        </div>
+        <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
+        ${specsMarkup}
+        ${tagsMarkup}
+        ${sugerenciasMarkup}
       </div>
-  <h3 class="product-name">${safeName}</h3>
-  <p class="product-price">${priceText}</p>
-  <p class="product-price-note">Rango por tamaño/grosor, acabados, herrajes/adhesivos, alcance y tirada.</p>
-      <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
-      ${detailMarkup}
-      ${tagsMarkup}
-      ${sugerenciasMarkup}
       <a href="${buildMessengerURL(
         `product:${encodeURIComponent(product.id || '')}|${encodeURIComponent(product.nombre)}`
       )}" 
