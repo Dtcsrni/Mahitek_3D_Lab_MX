@@ -28,7 +28,19 @@ const DEFERRED_STYLES = [
 const loadDeferredStyles = () => {
   if (typeof document === 'undefined') return;
   const head = document.head;
-  DEFERRED_STYLES.forEach(href => {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData =
+    typeof navigator !== 'undefined' && navigator.connection && navigator.connection.saveData;
+  const shouldLoadAnimations = !prefersReducedMotion && !saveData;
+  DEFERRED_STYLES.filter(href => {
+    if (!shouldLoadAnimations && href.includes('animations.css')) {
+      return false;
+    }
+    return true;
+  }).forEach(href => {
     if (document.querySelector(`link[data-deferred-style="${href}"]`)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';

@@ -1,5 +1,5 @@
 /**
- * Catálogo: carga, render, filtros y carrusel.
+ * Muestrario: carga, render, filtros y carrusel.
  */
 
 import CONFIG from './config.js';
@@ -66,7 +66,7 @@ function renderProducts({ onEvent } = {}) {
   if (displayedProducts.length === 0) {
     carousel.innerHTML = `
       <div class="card glass placeholder-card" data-animate="fade-up">
-        <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el catálogo" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
+        <img src="assets/img/placeholder-catalog.svg" alt="Sin coincidencias en el muestrario" class="placeholder-illustration" width="320" height="240" loading="lazy" decoding="async" />
         <p>No hay piezas disponibles con estos filtros.</p>
       </div>
     `;
@@ -124,11 +124,12 @@ function renderProducts({ onEvent } = {}) {
       `
         : '';
 
-      const priceText = product.texto_precio
+      const rawPriceText = product.texto_precio
         ? escapeHTML(String(product.texto_precio))
         : product.precio_rango_mxn
           ? `$${escapeHTML(String(product.precio_rango_mxn))} MXN`
           : `$${escapeHTML(String(product.precio_mxn))} MXN`;
+      const priceText = `Referencia: ${rawPriceText}`;
 
       const sugerenciasMarkup = product.sugerencias
         ? `<p class="product-suggestions"><strong>Sugerencias:</strong> ${escapeHTML(
@@ -156,7 +157,7 @@ function renderProducts({ onEvent } = {}) {
         <h3 class="product-name">${safeName}</h3>
         <div class="product-pricing">
           <p class="product-price">${priceText}</p>
-          <span class="product-price-note">Rango por tamano/grosor y acabados.</span>
+          <span class="product-price-note">Referencia por uso, escala/grosor y acabados.</span>
         </div>
         <p class="product-description">${escapeHTML(product.descripcion || '')}</p>
         ${specsMarkup}
@@ -171,7 +172,7 @@ function renderProducts({ onEvent } = {}) {
          rel="noopener noreferrer" 
          data-sku="${escapeHTML(product.id)}" 
          data-name="${escapeHTML(product.nombre)}">
-        Iniciar proyecto
+        Explorar esta pieza
       </a>
     </article>
       `;

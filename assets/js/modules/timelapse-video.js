@@ -9,6 +9,8 @@ const prefersReducedMotion =
   typeof window !== 'undefined' &&
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const saveData =
+  typeof navigator !== 'undefined' && navigator.connection && navigator.connection.saveData;
 
 const createSource = (video, src, type) => {
   if (!src) return;
@@ -43,7 +45,7 @@ export function initTimelapseVideo() {
 
     video.dataset.loaded = 'true';
     video.load();
-    if (!prefersReducedMotion) {
+    if (!prefersReducedMotion && !saveData) {
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(() => {
@@ -80,7 +82,9 @@ export function initTimelapseVideo() {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            loadSources();
+            if (!saveData) {
+              loadSources();
+            }
             observer.disconnect();
           }
         });
@@ -88,11 +92,11 @@ export function initTimelapseVideo() {
       { rootMargin: '200px 0px' }
     );
     observer.observe(video);
-  } else {
+  } else if (!saveData) {
     loadSources();
   }
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || saveData) {
     video.pause();
   }
 

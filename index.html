@@ -5,7 +5,7 @@
     <!-- METADATOS BÁSICOS -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="author" content="Mahitek 3D Lab" />
     <meta
       name="description"
@@ -488,7 +488,7 @@
                     class="nav-icon__pulse"
                   />
                 </svg>
-                <span class="nav-link-text">Catálogo</span>
+                <span class="nav-link-text">Muestrario</span>
                 <span class="nav-link-bg"></span>
               </a>
             </li>
@@ -726,7 +726,7 @@
                 <span data-copy="hero.cta_primary.icon"></span>
               </a>
               <a href="#catalogo" class="btn btn-ghost">
-                <span>Ver catalogo</span>
+                <span>Ver muestrario</span>
               </a>
             </div>
             <div class="hero-note">
@@ -1391,7 +1391,7 @@
         </div>
       </section>
 
-      <!-- ===== Catálogo ===== -->
+      <!-- ===== Muestrario ===== -->
       <section id="catalogo" class="section section-alt section-accent--purple" aria-labelledby="catalogo-title">
         <div class="container">
           <!-- Header -->
@@ -1406,11 +1406,12 @@
                 loading="lazy"
                 decoding="async"
               />
-              <h2 class="section-title" id="catalogo-title">📦 Catálogo de piezas</h2>
+              <h2 class="section-title" id="catalogo-title">?? Muestrario de piezas</h2>
             </div>
             <p class="section-intro">
-              Precios en MXN, claros desde el inicio. El rango depende de
-              <span class="accent-text">escala y acabado</span>. Siempre incluye PETG confiable y empaque curado.
+              Ejemplos reales de piezas y acabados. Este muestrario es referencia para\n
+              <span class="accent-text">materiales, escala y detalle gr fico</span>; cada proyecto se ajusta a tu uso
+              y\n presupuesto.
             </p>
           </div>
 
@@ -1441,15 +1442,15 @@
                 id="search-input"
                 class="filter-search"
                 placeholder="Nombre, estilo, intención..."
-                aria-label="Buscar productos"
+                aria-label="Buscar piezas"
               />
             </div>
           </div>
 
-          <!-- Carrusel de Productos -->
+          <!-- Carrusel del muestrario -->
           <div class="catalog-carousel" data-animate="fade-up">
             <div class="carousel-container">
-              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Productos anteriores">
+              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Piezas anteriores">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
@@ -1460,27 +1461,27 @@
                   id="product-carousel"
                   class="carousel-track product-grid"
                   role="list"
-                  aria-label="Productos disponibles"
+                  aria-label="Piezas del muestrario"
                 >
                   <!-- Placeholder inicial -->
                   <div class="card glass placeholder-card">
                     <div class="placeholder-content">
                       <img
                         src="assets/img/placeholder-catalog.svg"
-                        alt="Cargando Catálogo"
+                        alt="Cargando muestrario"
                         class="placeholder-illustration"
                         width="280"
                         height="200"
                         loading="lazy"
                         decoding="async"
                       />
-                      <p class="placeholder-text">⏳ Cargando piezas y variantes...</p>
+                      <p class="placeholder-text">⏳ Cargando ejemplos y variantes...</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Siguientes productos">
+              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Siguientes piezas">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
@@ -1488,18 +1489,19 @@
             </div>
 
             <!-- Indicadores de paginación -->
-            <div class="carousel-dots" id="catalog-dots" role="tablist" aria-label="Navegación del Catálogo"></div>
+            <div class="carousel-dots" id="catalog-dots" role="tablist" aria-label="Navegación del muestrario"></div>
 
-            <!-- Nota de precios -->
+            <!-- Referencias del muestrario -->
             <div class="catalog-price-note">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 16v-4M12 8h.01" />
               </svg>
               <p>
-                Rango según modelo, escala/grosor, acabados extra, herrajes/adhesivos y cantidad.
-                <strong>Base orientativa: $40 MXN</strong> (min $35 en llaveros planos). Mínimos recomendados: general 3
-                piezas o $150 MXN; llaveros 5; detalles gráficos 30; funcionales/figuras 1 a 2.
+                Referencias orientativas del muestrario; cada proyecto se cotiza por uso y alcance. Rango según modelo,
+                escala/grosor, acabados extra, herrajes/adhesivos y cantidad.
+                <strong>Base de referencia: $40 MXN</strong> (mín $35 en llaveros planos). Mínimos recomendados: general
+                3 piezas o $150 MXN; llaveros 5; detalles gráficos 30; funcionales/figuras 1 a 2.
               </p>
             </div>
           </div>
@@ -2455,7 +2457,7 @@
           <div class="footer-links animate-delay-1" data-animate="fade-up">
             <h4>Enlaces</h4>
             <ul>
-              <li><a href="#catalogo">Catálogo</a></li>
+              <li><a href="#catalogo">Muestrario</a></li>
               <li><a href="#promos">Lanzamientos</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="#proceso">Proceso</a></li>
