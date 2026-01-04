@@ -6854,8 +6854,8 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   background: rgba(8, 12, 18, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.35);
@@ -6875,11 +6875,13 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 }
 
 .carousel-hint--left {
-  left: max(6px, var(--space-xs));
+  left: var(--space-xs);
+  left: calc(var(--space-xs) + env(safe-area-inset-left));
 }
 
 .carousel-hint--right {
-  right: max(6px, var(--space-xs));
+  right: var(--space-xs);
+  right: calc(var(--space-xs) + env(safe-area-inset-right));
 }
 
 .carousel-hint.is-active {
@@ -6888,11 +6890,13 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 }
 
 .carousel-hint--left svg {
-  animation: hintSwipeLeft 1.4s ease-in-out infinite;
+  animation: hintSwipeLeft 1.6s ease-in-out infinite;
+  animation-delay: 0.2s;
 }
 
 .carousel-hint--right svg {
-  animation: hintSwipeRight 1.4s ease-in-out infinite;
+  animation: hintSwipeRight 1.6s ease-in-out infinite;
+  animation-delay: 0.3s;
 }
 
 @keyframes hintSwipeLeft {
