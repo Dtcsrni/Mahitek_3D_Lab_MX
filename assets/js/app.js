@@ -9,6 +9,7 @@ import { initScrollReveal } from './modules/scroll-reveal.js';
 import { initButtonActions } from './modules/button-actions.js';
 import { initEmailLinks } from './modules/email.js';
 import { initNewsletter } from './modules/newsletter.js';
+import { initLeadForm } from './modules/lead-form.js';
 import { initCatalog, filterProducts, getProducts, calculateSalePrice } from './modules/catalog.js';
 import { initLazySections } from './modules/lazy-load.js';
 import { initPromoTicker } from './modules/promo-ticker.js';
@@ -136,6 +137,7 @@ async function initApp() {
   initScrollReveal();
   initEmailLinks();
   initNewsletter();
+  initLeadForm();
   await initOrganizationSchema();
   updateFooterYear();
 

@@ -8585,6 +8585,268 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--accent-cyan);
 }
 
+.lead-form {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background:
+    linear-gradient(140deg, rgba(6, 182, 212, 0.08), rgba(15, 23, 42, 0.92)), rgba(15, 23, 42, 0.6);
+  padding: 1rem 1.1rem;
+}
+
+.lead-form[open] {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: inset 0 0 24px rgba(6, 182, 212, 0.12);
+}
+
+.lead-form-summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text-primary);
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.lead-form-summary::-webkit-details-marker {
+  display: none;
+}
+
+.lead-form-summary:hover {
+  transform: translateY(-1px);
+}
+
+.lead-form-summary-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.lead-form-summary-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.lead-form-summary-note {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+}
+
+.lead-form-summary-icon {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(45deg);
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.lead-form[open] .lead-form-summary-icon {
+  transform: rotate(-135deg);
+}
+
+.lead-form-summary:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.lead-form-body {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  animation: leadFormReveal 420ms var(--motion-ease) both;
+}
+
+.lead-form-intro {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.lead-form-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.lead-form-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lead-form-grid--compact {
+  gap: 0.75rem;
+}
+
+.lead-form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.lead-form-field--wide {
+  grid-column: 1 / -1;
+}
+
+.lead-form-form label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.lead-form-form input,
+.lead-form-form select,
+.lead-form-form textarea {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.875rem;
+  color: var(--text-primary);
+  width: 100%;
+  font-size: 0.95rem;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease),
+    background-color var(--motion-duration-fast) var(--motion-ease);
+}
+
+.lead-form-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.lead-form-form select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(148, 163, 184, 0.8) 50%),
+    linear-gradient(135deg, rgba(148, 163, 184, 0.8) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.lead-form-form input:focus,
+.lead-form-form select:focus,
+.lead-form-form textarea:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.7);
+  background: rgba(15, 23, 42, 0.75);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.lead-form-form input.is-invalid,
+.lead-form-form select.is-invalid,
+.lead-form-form textarea.is-invalid {
+  border-color: rgba(248, 113, 113, 0.7);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.18);
+}
+
+.lead-form-extra {
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+  background: rgba(10, 15, 22, 0.45);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lead-form-extra-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.lead-form-consent label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.lead-form-consent input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-cyan);
+}
+
+.lead-form-turnstile {
+  margin-top: 0.5rem;
+}
+
+.lead-form-status {
+  min-height: 1.25rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.lead-form-status.is-ok {
+  color: #86efac;
+}
+
+.lead-form-status.is-error {
+  color: #fca5a5;
+}
+
+.lead-form-form .btn {
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .lead-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lead-form-form .btn {
+    width: auto;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 520px) {
+  .lead-form-summary {
+    grid-template-columns: 1fr auto;
+    row-gap: 0.35rem;
+  }
+
+  .lead-form-summary-badge,
+  .lead-form-summary-note {
+    grid-column: 1 / -1;
+  }
+}
+
+@keyframes leadFormReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-form-body {
+    animation: none;
+  }
+}
+
 @media (max-width: 640px) {
   .cta-card {
     padding: 2.4rem 1.6rem;
@@ -9581,6 +9843,22 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   color: var(--text-primary);
   width: 100%;
   font-size: 0.95rem;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease),
+    background-color var(--motion-duration-fast) var(--motion-ease);
+}
+
+.newsletter input[type="email"]:focus,
+.newsletter input[type="text"]:focus,
+.newsletter input[type="tel"]:focus,
+.newsletter input[type="url"]:focus,
+.newsletter select:focus,
+.newsletter textarea:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.7);
+  background: rgba(15, 23, 42, 0.75);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
 }
 
 .newsletter textarea {

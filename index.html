@@ -2411,6 +2411,146 @@
                     </li>
                   </ul>
                 </div>
+                <details class="lead-form card glass" id="lead-form">
+                  <summary class="lead-form-summary">
+                    <span class="lead-form-summary-badge">Brief rápido</span>
+                    <span class="lead-form-summary-title">Cuéntanos tu proyecto</span>
+                    <span class="lead-form-summary-note">2-3 min</span>
+                    <span class="lead-form-summary-icon" aria-hidden="true"></span>
+                  </summary>
+                  <div class="lead-form-body">
+                    <p class="lead-form-intro">
+                      Solo si ya quieres cotizar. Recibes ruta inicial y tiempos estimados en el primer contacto.
+                    </p>
+                    <form
+                      class="lead-form-form"
+                      action="https://formspree.io/f/xayzlqny"
+                      method="POST"
+                      data-turnstile-sitekey="0x4AAAAAACICUGDhih2DH0Z2"
+                      aria-label="Brief de proyecto"
+                    >
+                      <div class="lead-form-grid">
+                        <div class="lead-form-field">
+                          <label for="lead-name">Nombre</label>
+                          <input
+                            id="lead-name"
+                            name="name"
+                            type="text"
+                            placeholder="Nombre y apellido"
+                            autocomplete="name"
+                            required
+                          />
+                        </div>
+                        <div class="lead-form-field">
+                          <label for="lead-email">Correo</label>
+                          <input
+                            id="lead-email"
+                            name="email"
+                            type="email"
+                            placeholder="correo@ejemplo.com"
+                            autocomplete="email"
+                          />
+                        </div>
+                        <div class="lead-form-field">
+                          <label for="lead-whatsapp">WhatsApp</label>
+                          <input
+                            id="lead-whatsapp"
+                            name="whatsapp"
+                            type="tel"
+                            placeholder="+52 55 1234 5678"
+                            autocomplete="tel"
+                          />
+                        </div>
+                        <div class="lead-form-field">
+                          <label for="lead-project">Tipo de proyecto</label>
+                          <select id="lead-project" name="project_type" required>
+                            <option value="">Selecciona</option>
+                            <option value="micro-marca">Micro marca</option>
+                            <option value="coleccionismo">Coleccionismo</option>
+                            <option value="regalos">Comercio de regalos</option>
+                            <option value="gaming">Gaming / cosplay</option>
+                            <option value="iot">IoT / prototipos</option>
+                            <option value="otro">Otro</option>
+                          </select>
+                        </div>
+                        <div class="lead-form-field lead-form-field--wide">
+                          <label for="lead-message">Describe tu idea</label>
+                          <textarea
+                            id="lead-message"
+                            name="message"
+                            rows="4"
+                            placeholder="Uso, medidas aproximadas, estilo y referencias clave."
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="lead-form-extra">
+                        <p class="lead-form-extra-title">Detalles opcionales</p>
+                        <div class="lead-form-grid lead-form-grid--compact">
+                          <div class="lead-form-field">
+                            <label for="lead-quantity">Cantidad / escala</label>
+                            <select id="lead-quantity" name="quantity">
+                              <option value="">Selecciona</option>
+                              <option value="1">1 pieza</option>
+                              <option value="2-5">2 a 5 piezas</option>
+                              <option value="6-20">6 a 20 piezas</option>
+                              <option value="20+">20+ piezas</option>
+                            </select>
+                          </div>
+                          <div class="lead-form-field">
+                            <label for="lead-timeline">Tiempo objetivo</label>
+                            <select id="lead-timeline" name="timeline">
+                              <option value="">Selecciona</option>
+                              <option value="urgente">Urgente (1-3 días)</option>
+                              <option value="1-semana">1 semana</option>
+                              <option value="2-3-semanas">2-3 semanas</option>
+                              <option value="flexible">Flexible</option>
+                            </select>
+                          </div>
+                          <div class="lead-form-field">
+                            <label for="lead-budget">Rango de presupuesto</label>
+                            <select id="lead-budget" name="budget_range">
+                              <option value="">Selecciona</option>
+                              <option value="bajo">Bajo / exploración</option>
+                              <option value="medio">Medio / series cortas</option>
+                              <option value="alto">Alto / producción</option>
+                            </select>
+                          </div>
+                          <div class="lead-form-field">
+                            <label for="lead-graphics">Detalles gráficos a color</label>
+                            <select id="lead-graphics" name="graphic_detail">
+                              <option value="">Selecciona</option>
+                              <option value="si">Sí, quiero detalle gráfico</option>
+                              <option value="no">Solo 3D</option>
+                              <option value="no-se">Aún no sé</option>
+                            </select>
+                          </div>
+                          <div class="lead-form-field lead-form-field--wide">
+                            <label for="lead-reference">Link de referencia</label>
+                            <input
+                              id="lead-reference"
+                              name="reference_url"
+                              type="url"
+                              placeholder="https://"
+                              autocomplete="url"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="lead-form-consent">
+                        <label>
+                          <input id="lead-consent" name="consent" type="checkbox" required />
+                          Acepto el aviso de privacidad y contacto para seguimiento.
+                        </label>
+                      </div>
+                      <input id="lead-source-detail" name="source_detail" type="hidden" value="cta" />
+                      <input name="form_type" type="hidden" value="lead" />
+                      <div class="lead-form-turnstile" id="lead-turnstile"></div>
+                      <p class="lead-form-status" id="lead-status" role="status" aria-live="polite"></p>
+                      <button type="submit" class="btn btn-primary">Enviar brief</button>
+                    </form>
+                  </div>
+                </details>
                 <div class="cta-actions">
                   <a
                     class="btn btn-primary email-link"

@@ -324,3 +324,34 @@ export function validateNewsletterConfig({ apiBase, formAction, turnstileSiteKey
 
   return bag.summary(summary);
 }
+
+export function validateLeadConfig({ apiBase, formAction, turnstileSiteKey }) {
+  const bag = collectIssues('lead');
+  const summary = {
+    apiBase: Boolean(apiBase),
+    formAction: Boolean(formAction),
+    turnstile: Boolean(turnstileSiteKey)
+  };
+
+  if (!summary.apiBase && !summary.formAction) {
+    bag.warn('Sin LEADS_API_BASE ni fallback de form action.');
+  }
+  if (summary.apiBase && !isValidUrl(apiBase) && !String(apiBase).includes('localhost')) {
+    bag.warn('LEADS_API_BASE no tiene formato de URL válido.');
+  }
+  if (
+    summary.apiBase &&
+    !String(apiBase).startsWith('https://') &&
+    !String(apiBase).includes('localhost')
+  ) {
+    bag.warn('LEADS_API_BASE no usa HTTPS.');
+  }
+  if (summary.formAction && !isValidUrl(formAction) && !String(formAction).startsWith('/')) {
+    bag.warn('El action del formulario de lead no parece URL válida.');
+  }
+  if (!summary.turnstile) {
+    bag.warn('Turnstile deshabilitado en lead (modo sin verificación).');
+  }
+
+  return bag.summary(summary);
+}

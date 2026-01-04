@@ -23,6 +23,10 @@ const CHECKS = [
     selectors: ['form.newsletter', '#newsletter-status']
   },
   {
+    name: 'lead',
+    selectors: ['.lead-form-form', '#lead-status']
+  },
+  {
     name: 'navegacion',
     selectors: ['.nav-toggle', '.nav-menu']
   }
