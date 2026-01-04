@@ -3047,10 +3047,6 @@ button[data-action]:focus-visible {
   grid-area: aside;
 }
 
-.hero-content {
-  text-align: left;
-}
-
 .hero-highlights {
   list-style: none;
   margin: 1.5rem 0 2rem;
@@ -3773,14 +3769,6 @@ button[data-action]:focus-visible {
   .hero-brand-tagline {
     font-size: 1.375rem;
   }
-
-  .hero-grid {
-    grid-template-areas:
-      "visual visual"
-      "content content";
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
 }
 
 /* 1440+: Escalado elegante de hero y branding */
@@ -4079,18 +4067,6 @@ button[data-action]:focus-visible {
 
   .hero-brand-tagline {
     font-size: 1.25rem;
-  }
-
-  .hero-grid {
-    grid-template-areas:
-      "visual visual"
-      "content content";
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .hero-visual {
-    margin-bottom: 0;
   }
 }
 
@@ -5322,6 +5298,22 @@ html.js-animate [data-animate="zoom-in"].is-visible {
 
 .catalog-carousel .carousel-wrapper {
   min-height: clamp(320px, 48vw, 420px);
+}
+
+@media (max-width: 640px) {
+  .catalog-carousel .carousel-container {
+    padding: 0;
+    margin-left: calc(-1 * var(--space-md));
+    margin-right: calc(-1 * var(--space-md));
+  }
+
+  .catalog-carousel .carousel-wrapper {
+    border-radius: 0;
+  }
+
+  .catalog-carousel .carousel-track {
+    gap: 0.75rem;
+  }
 }
 
 /* Catalog Price Note */
@@ -6845,6 +6837,97 @@ html.js-animate [data-animate="zoom-in"].is-visible {
   .carousel-dots {
     margin-top: 1.25rem;
     padding: 0.75rem;
+  }
+}
+
+.carousel-hints {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.carousel-hint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  opacity: 0;
+  transition:
+    opacity var(--motion-duration-fast) var(--motion-ease),
+    transform var(--motion-duration-fast) var(--motion-ease);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.35);
+}
+
+.carousel-hint svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent-cyan);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.carousel-hint--left {
+  left: max(6px, var(--space-xs));
+}
+
+.carousel-hint--right {
+  right: max(6px, var(--space-xs));
+}
+
+.carousel-hint.is-active {
+  opacity: 0.9;
+  transform: translateY(-50%) scale(1);
+}
+
+.carousel-hint--left svg {
+  animation: hintSwipeLeft 1.4s ease-in-out infinite;
+}
+
+.carousel-hint--right svg {
+  animation: hintSwipeRight 1.4s ease-in-out infinite;
+}
+
+@keyframes hintSwipeLeft {
+  0%,
+  100% {
+    transform: translateX(4px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes hintSwipeRight {
+  0%,
+  100% {
+    transform: translateX(-4px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-hints {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-hint svg {
+    animation: none;
   }
 }
 

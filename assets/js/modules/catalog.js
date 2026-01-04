@@ -202,6 +202,8 @@ function setupCatalogCarousel() {
   const prevBtn = document.querySelector('.carousel-btn-prev');
   const nextBtn = document.querySelector('.carousel-btn-next');
   const dotsContainer = document.getElementById('catalog-dots');
+  const hintLeft = document.querySelector('[data-carousel-hint="left"]');
+  const hintRight = document.querySelector('[data-carousel-hint="right"]');
 
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return null;
 
@@ -210,6 +212,8 @@ function setupCatalogCarousel() {
     prevBtn,
     nextBtn,
     dotsContainer,
+    hintLeft,
+    hintRight,
     currentIndex: 0,
     itemsPerView: 1,
     totalItems: 0
@@ -233,6 +237,16 @@ function setupCatalogCarousel() {
     carouselState.track.style.transform = `translateX(${offset}%)`;
   };
 
+  const updateHints = () => {
+    if (!carouselState.hintLeft || !carouselState.hintRight) return;
+    const totalPages = getTotalPages();
+    const hasMultiple = totalPages > 1;
+    const showLeft = hasMultiple && carouselState.currentIndex > 0;
+    const showRight = hasMultiple && carouselState.currentIndex < totalPages - 1;
+    carouselState.hintLeft.classList.toggle('is-active', showLeft);
+    carouselState.hintRight.classList.toggle('is-active', showRight);
+  };
+
   const updateButtons = () => {
     const totalPages = getTotalPages();
     carouselState.prevBtn.disabled = carouselState.currentIndex === 0;
@@ -241,6 +255,7 @@ function setupCatalogCarousel() {
       carouselState.prevBtn.disabled = true;
       carouselState.nextBtn.disabled = true;
     }
+    updateHints();
   };
 
   const rebuildDots = () => {
@@ -331,6 +346,7 @@ function setupCatalogCarousel() {
   carouselState._updateButtons = updateButtons;
   carouselState._rebuildDots = rebuildDots;
   carouselState._updateDots = updateDots;
+  carouselState._updateHints = updateHints;
 
   updateItemsPerView();
   rebuildDots();
