@@ -64,6 +64,12 @@ const applyPerfHints = () => {
   }
 };
 
+const updateFooterYear = () => {
+  const target = document.querySelector('[data-footer-year]');
+  if (!target) return;
+  target.textContent = String(new Date().getFullYear());
+};
+
 const loadSocialLinks = async () => {
   const { initSocialLinks } = await import('./modules/social.js');
   return initSocialLinks();
@@ -119,6 +125,7 @@ async function initApp() {
   initEmailLinks();
   initNewsletter();
   await initOrganizationSchema();
+  updateFooterYear();
 
   await initCatalog({ onEvent: logEvent });
 
