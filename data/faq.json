@@ -1,13 +1,13 @@
 [
   {
-    "q": "¿Cómo hago un pedido?",
-    "a": "Comparte tu idea (foto, archivo 3D, dibujo o referencia). Respondemos con una lectura inicial: propuesta de materiales/acabados y estimación clara.",
+    "q": "¿Cómo iniciamos un proyecto?",
+    "a": "Comparte tu idea (foto, archivo 3D, boceto 2D o referencia). Respondemos con una lectura inicial: ruta creativa y acabados, propuesta de materiales y estimación clara.",
     "categoria": "pedidos",
     "destacada": true
   },
   {
     "q": "¿Necesito hacer cantidad mínima?",
-    "a": "Sí, manejamos mínimos recomendables: general 3 piezas o $150 MXN. Llaveros: mínimo 5 piezas. Stickers: mínimo 30. Funcionales o figuras: 1 a 2 piezas.",
+    "a": "Sí, manejamos mínimos recomendables: general 3 piezas o $150 MXN. Llaveros: mínimo 5 piezas. Aplicaciones gráficas: mínimo 30. Funcionales o figuras: 1 a 2 piezas.",
     "categoria": "pedidos",
     "destacada": true
   },
@@ -39,17 +39,17 @@
   },
   {
     "q": "¿Qué material usan?",
-    "a": "Principalmente PETG: resistente, durable y con buen acabado. Podemos cotizar otros materiales si el proyecto lo requiere.",
+    "a": "Para 3D usamos principalmente PETG: resistente y con buen acabado. Podemos integrar vinilo, color o etiquetas como detalle gráfico cuando suma al proyecto.",
     "categoria": "materiales"
   },
   {
     "q": "¿Qué archivos aceptan?",
-    "a": "3D: STL, STEP, OBJ. 2D: SVG, PDF, PNG. Si no tienes archivo, envía referencias y lo modelamos.",
+    "a": "3D: STL, STEP, OBJ. 2D (para detalles gráficos): SVG, PDF, PNG. Si no tienes archivo, envía referencias y lo modelamos.",
     "categoria": "diseño"
   },
   {
     "q": "¿Hacen diseño desde cero?",
-    "a": "Sí. Ajustes básicos incluidos; modelado o diseño completo se cotiza por horas de taller.",
+    "a": "Sí. Ajustes básicos incluidos; modelado o diseño completo se define por horas de taller.",
     "categoria": "diseño"
   },
   {

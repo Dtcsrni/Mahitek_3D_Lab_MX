@@ -158,7 +158,7 @@ function renderProducts({ onEvent } = {}) {
          rel="noopener noreferrer" 
          data-sku="${escapeHTML(product.id)}" 
          data-name="${escapeHTML(product.nombre)}">
-        Solicitar cotización
+        Iniciar proyecto
       </a>
     </article>
       `;
